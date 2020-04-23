@@ -1,0 +1,10 @@
+<?php
+
+return[
+
+    'providers'=>[
+        \App\Providers\ServiceProvider::class,
+        \App\Providers\AliasProvider::class,
+        \App\Providers\SessionProvider::class
+    ]
+];
