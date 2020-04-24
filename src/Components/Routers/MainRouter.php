@@ -67,6 +67,11 @@ class MainRouter
     public function __destruct()
     {
         $result = $this->isEqualUrlParamWithRouteParam();
-        (new Printable($result))->output();
+        try {
+            (new Printable($result))->output();
+        } catch (\JsonException $e) {
+
+            echo $e->getMessage();
+        }
     }
 }

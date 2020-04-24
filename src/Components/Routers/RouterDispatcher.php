@@ -5,6 +5,7 @@ namespace App\Components\Routers;
 
 
 use App\Http\Request;
+use JsonException;
 
 /**
  * Class RouterDispatcher
@@ -30,12 +31,11 @@ class RouterDispatcher
     }
 
     /**
-     *
+     * @throws JsonException
      * @noinspection PhpUnused
      */
     public static function call():void
     {
-
         foreach (self::$call as $item) {
 
             if (is_callable($item)) {
@@ -47,6 +47,7 @@ class RouterDispatcher
 
     /**
      * @param $item
+     * @throws JsonException
      */
     private static function dispatch($item): void
     {

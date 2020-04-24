@@ -5,7 +5,6 @@ namespace App\Controllers;
 
 
 use App\Http\Request;
-use App\Models\Model;
 use App\Models\Users;
 
 class Deneme
@@ -13,8 +12,7 @@ class Deneme
 
     public function index(Request $request)
     {
-        return Users::find(1);
-
+        return Users::find(2);
     }
 
 }
