@@ -6,13 +6,11 @@ namespace App\Models\Objectable;
 
 use App\Components\ToString;
 
-class UserPassword
+class UserPassword extends ObjectAbleProperty
 {
-    use ToString;
 
-    public function get()
+    public function strlen()
     {
-        return $this->string;
+        return strlen($this->property);
     }
-
 }

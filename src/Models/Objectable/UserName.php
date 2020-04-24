@@ -6,12 +6,7 @@ namespace App\Models\Objectable;
 
 use App\Components\ToString;
 
-class UserName
+class UserName extends ObjectAbleProperty
 {
-    use ToString;
 
-    public function withSurname(): string
-    {
-        return $this->string . ' sürücü';
-    }
 }

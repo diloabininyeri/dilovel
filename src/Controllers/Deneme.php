@@ -12,7 +12,7 @@ class Deneme
 
     public function index(Request $request)
     {
-        return Users::findOrFail(2)->getPassword()->get();
+        return Users::findOrFail(2)->getPassword()->strlen();
     }
 
 }
