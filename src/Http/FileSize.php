@@ -4,12 +4,23 @@
 namespace App\Http;
 
 
+/**
+ * Class FileSize
+ * @package App\Http
+ */
 class FileSize
 {
 
 
+    /**
+     * @var int
+     */
     private int $size;
 
+    /**
+     * FileSize constructor.
+     * @param int $size
+     */
     public function __construct(int $size)
     {
         $this->size = $size;

@@ -3,12 +3,14 @@
 
 namespace App\Http;
 
+use App\interfaces\Session as SessionInterface;
+
 
 /**
  * Class Session
  * @package App\Http
  */
-class Session
+class Session implements SessionInterface
 {
 
     /**
