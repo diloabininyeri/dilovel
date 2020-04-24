@@ -126,7 +126,7 @@ class IocContainer
 
 
     /**
-     * @return array
+     * @return array|FormRequestInterface
      * @throws ReflectionException
      */
     private function getParameterAsClassName(): array
@@ -161,10 +161,7 @@ class IocContainer
     private function callCustomRequests(): void
     {
         foreach ($this->getParameterAsClassName() as $class) {
-            /**
-             * @var FormRequestInterface $customRequest
-             *
-             */
+
             $customRequest = new $class();
             if (!($customRequest instanceof FormRequestInterface)) {
 
