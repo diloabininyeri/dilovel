@@ -1,11 +1,14 @@
 <?php
 
 
-namespace App\Models;
+namespace App\app\Models;
 
+use App\app\Models\Objectable\UserName;
+use App\app\Models\Objectable\UserPassword;
 use App\Database\BuilderQuery;
-use App\Models\Objectable\UserName;
-use App\Models\Objectable\UserPassword;
+use App\Database\Model;
+use App\Models\HasOne;
+
 
 /**
  * Class Users

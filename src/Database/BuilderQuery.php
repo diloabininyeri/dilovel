@@ -3,7 +3,6 @@
 namespace App\Database;
 
 use App\Components\Collections;
-use App\Models\Model;
 use PDO;
 
 /**
@@ -179,8 +178,7 @@ class BuilderQuery
 
     function save()
     {
-        $vars = get_object_vars($this->modelInstance);
-        return $vars;
+        return get_object_vars($this->modelInstance);
     }
 
 }

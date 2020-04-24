@@ -52,7 +52,7 @@ class ExecuteRouter
     private function createControllerClassName($controller, $namespace=null): string
     {
         if($namespace===null) {
-            return "\\App\\Controllers\\$controller";
+            return "\\App\\app\\Controllers\\$controller";
         }
         return "\\App\\Controllers\\Payment\\$controller";
     }

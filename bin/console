@@ -1,4 +1,8 @@
+#!/usr/bin/env php
 <?php
 
+require_once '../vendor/autoload.php';
 
-print_r($argv);
+use Bin\Console;
+
+Console::run($argv,$argc);

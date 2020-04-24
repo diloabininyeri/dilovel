@@ -1,21 +1,24 @@
 <?php
 
 
-namespace App\Models;
+namespace App\app\Models;
 
+
+use App\Database\Model;
 
 class Book extends Model
 {
 
-    protected $table='books';
+    protected string $table='books';
+
+    protected string $connection='default';
 
 
-    protected $hidden=['name'];
+    protected array $hidden=['name'];
 
 
     public function getBookName()
     {
-
         return strtoupper($this->name);
     }
 

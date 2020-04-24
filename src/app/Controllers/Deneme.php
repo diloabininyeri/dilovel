@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Controllers;
+namespace App\app\Controllers;
 
 
 use App\Http\Request;
-use App\Models\Users;
+use App\app\Models\Users;
 
 class Deneme
 {

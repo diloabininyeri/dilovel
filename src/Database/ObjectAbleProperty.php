@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Models\Objectable;
+namespace App\Database;
 
 
 /**
