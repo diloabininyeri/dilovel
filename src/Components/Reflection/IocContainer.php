@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused*/
 
 
 namespace App\Components\Reflection;
@@ -144,7 +144,7 @@ class IocContainer
     /**
      * @param RuleInterface[] $rules
      */
-    private function callRules($rules)
+    private function callRules($rules): void
     {
         foreach ($rules as $rule) {
             if (!$rule->valid($this->request)) {
