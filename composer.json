@@ -14,7 +14,8 @@
     "ext-apache": "*",
     "ext-pdo": "*",
     "ext-http": "*",
-    "php": ">=7.4"
+    "php": ">=7.4",
+    "ext-iconv": "*"
   },
   "autoload": {
     "psr-4": {
