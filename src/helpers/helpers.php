@@ -78,3 +78,12 @@ function router($name)
 function snakeToCamel ($str) {
     return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $str))));
 }
+
+/**
+ * @param $string
+ * @return string
+ */
+function pascal_to_snake($string)
+{
+   return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $string));
+}
