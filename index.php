@@ -1,7 +1,7 @@
 <?php
 
 use App\Bootstrap\Application;
-use App\Components\NotFound;
+use App\Components\Routers\NotFound;
 
 require_once 'vendor/autoload.php';
 

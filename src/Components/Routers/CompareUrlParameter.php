@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components;
+namespace App\Components\Routers;
 
 
 use App\Http\Request;
@@ -10,7 +10,7 @@ use App\Http\Request;
  * Class isEqualRouterParamUrlParam
  * @package App\Components
  */
-class isEqualRouterParamUrlParam
+class CompareUrlParameter
 {
     /**
      * @var array
@@ -83,9 +83,9 @@ class isEqualRouterParamUrlParam
 
     /**
      * @param string $routeUrlParameter
-     * @return isEqualRouterParamUrlParam
+     * @return CompareUrlParameter
      */
-    private function setDynamicUrlRouterParams(string $routeUrlParameter): isEqualRouterParamUrlParam
+    private function setDynamicUrlRouterParams(string $routeUrlParameter): CompareUrlParameter
     {
         $this->dynamicUrlRouterParams = $this->arrayValues(explode('/', (string)$routeUrlParameter));
         return $this;
@@ -100,9 +100,9 @@ class isEqualRouterParamUrlParam
     }
 
     /**
-     * @return isEqualRouterParamUrlParam
+     * @return CompareUrlParameter
      */
-    public function setUrlParams(): isEqualRouterParamUrlParam
+    public function setUrlParams(): CompareUrlParameter
     {
         $this->dynamicUrlRouterParams = $this->arrayValues(explode('/', (new Request())->url()->path()));
         return $this;

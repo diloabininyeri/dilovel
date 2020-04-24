@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components;
+namespace App\Components\Routers;
 
 
 use App\Http\Request;

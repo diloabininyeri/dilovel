@@ -1,7 +1,7 @@
 <?php /** @noinspection PhpUnhandledExceptionInspection */
 
 
-namespace App\Components;
+namespace App\Components\Routers;
 
 
 use RuntimeException;

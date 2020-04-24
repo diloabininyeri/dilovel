@@ -16,6 +16,6 @@ class AliasProvider implements ProviderInterface
     public function boot(): void
     {
         class_alias('\App\Components\Cache', 'Cache');
-        class_alias('\App\Components\Router', 'Router');
+        class_alias('\App\Components\Routers\Router', 'Router');
     }
 }

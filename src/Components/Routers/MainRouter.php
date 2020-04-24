@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components;
+namespace App\Components\Routers;
 
 
 use App\Http\Request;
@@ -52,7 +52,7 @@ class MainRouter
      */
     private function callFuncRouterDynamic()
     {
-        $isEqualRouterParam = new isEqualRouterParamUrlParam($this->routeUrlParameter);
+        $isEqualRouterParam = new CompareUrlParameter($this->routeUrlParameter);
         return $isEqualRouterParam->callUserFunc($this->routeCallback);
     }
 
