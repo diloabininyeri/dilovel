@@ -16,6 +16,8 @@ class Router
     /**
      * @param $name
      * @param $arguments
+     * @return MainRouter
+     *
      */
     public static function __callStatic($name, $arguments)
     {

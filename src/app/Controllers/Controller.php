@@ -16,12 +16,10 @@ class Controller
 {
     /**
      * @param Request $request
+     * @return false|string
      */
-    function index(Request $request)
+    public function index(Request $request)
     {
-
-
-
         $users=Users::get();
         return view('index', compact('users'));
 

@@ -7,7 +7,7 @@ use App\app\Models\Objectable\UserName;
 use App\app\Models\Objectable\UserPassword;
 use App\Database\BuilderQuery;
 use App\Database\Model;
-use App\Models\HasOne;
+use App\Database\HasOne;
 
 
 /**
@@ -63,7 +63,7 @@ class Users extends Model
     }
 
     /**
-     * @return Book|HasOne
+     * @return HasOne
      */
     public function book()
     {

@@ -26,6 +26,7 @@ abstract class ObjectAbleProperty
 
     /**
      * @return mixed
+     *
      */
     public function __toString()
     {

@@ -3,7 +3,6 @@
 namespace App\Database;
 
 
-use App\Models\HasOne;
 use PDO;
 
 
@@ -71,7 +70,7 @@ class Model
     /**
      * @return string
      */
-    public function getStaticClass()
+    public function getStaticClass(): string
     {
         return static::class;
     }
@@ -156,7 +155,7 @@ class Model
      * @param string $key
      * @return HasOne
      */
-    protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id')
+    protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id'): HasOne
     {
         $hasOne = new HasOne($relationClass, $foreignKey, $key, $this);
         return $hasOne->oneToOne();

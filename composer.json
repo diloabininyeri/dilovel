@@ -19,7 +19,8 @@
   "require": {
     "php": ">=7.4",
     "ext-pdo": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-apache": "*"
   },
   "autoload": {
     "psr-4": {
