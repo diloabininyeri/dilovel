@@ -4,6 +4,8 @@
 namespace App\interfaces;
 
 
+use App\Http\Request;
+
 /**
  * Interface RuleInterface
  * @package App\interfaces
@@ -11,10 +13,10 @@ namespace App\interfaces;
 interface RuleInterface
 {
     /**
-     * @param $value
+     * @param Request $request
      * @return bool
      */
-    public function valid($value): bool;
+    public function valid(Request $request): bool;
 
 
     /**

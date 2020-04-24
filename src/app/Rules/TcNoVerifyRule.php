@@ -4,6 +4,7 @@
 namespace App\app\Rules;
 
 
+use App\Http\Request;
 use App\interfaces\RuleInterface;
 
 /**
@@ -14,12 +15,12 @@ class TcNoVerifyRule implements RuleInterface
 {
 
     /**
-     * @param $value
+     * @param Request $request
      * @return bool
      */
-    public function valid($value): bool
+    public function valid(Request $request): bool
     {
-        return false;
+        return ($request->post('tc_no') === 11111111);
     }
 
     /**
