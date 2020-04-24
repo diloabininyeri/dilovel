@@ -4,11 +4,21 @@
 namespace App\Http;
 
 
+/**
+ * Class Session
+ * @package App\Http
+ */
 class Session
 {
 
-    private array $session = [];
+    /**
+     * @var array
+     */
+    private array $session;
 
+    /**
+     * Session constructor.
+     */
     public function __construct()
     {
         $this->sessionStart();
@@ -18,7 +28,7 @@ class Session
     /**
      *
      */
-    private function sessionStart()
+    private function sessionStart(): void
     {
         if( session_status() === PHP_SESSION_NONE )
         {
@@ -32,13 +42,39 @@ class Session
      * @param null $default
      * @return string|null
      */
-    function get($name, $default = null)
+    public function get($name, $default = null): ?string
     {
         return trim($this->session[$name]) ?? $default;
     }
 
-    function set(string $name, $value)
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    public function exists($name):bool
+    {
+        return isset($this->session[$name]);
+    }
+
+    /**
+     * @param string $name
+     * @param $value
+     * @return bool
+     */
+    public function set(string $name, $value): bool
     {
         $this->session[$name] = $value;
+        return $this->exists($name);
+    }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    public function delete($name):bool
+    {
+        unset($this->session[$name]);
+        return  !$this->exists($name);
     }
 }
