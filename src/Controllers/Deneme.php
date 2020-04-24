@@ -12,7 +12,7 @@ class Deneme
 
     public function index(Request $request)
     {
-        return Users::find(2);
+        return Users::find($request->get('id'));
     }
 
 }

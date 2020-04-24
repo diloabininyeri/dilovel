@@ -3,9 +3,12 @@
   "description": "description",
   "minimum-stability": "stable",
   "license": "proprietary",
-  "bin": ["bin/console.php"],
+  "bin": [
+    "bin/console"
+  ],
   "config": {
-    "bin-dir": "bin/console.php"
+    "bin-dir": "vendor/bin",
+    "preferred-install": "dist"
   },
   "authors": [
     {
