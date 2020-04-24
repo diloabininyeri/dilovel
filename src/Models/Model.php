@@ -101,9 +101,10 @@ class Model
     public function __call($name, $arguments)
     {
         sscanf($name, 'get%s', $property);
-        $property=strtolower($property);
-        if (array_key_exists($property,$this->objectableProperties())) {
-            return new StringUtil($this->$property);
+        $property = strtolower($property);
+        if (array_key_exists($property, $this->objectableProperties())) {
+            $objectAbleClass = $this->objectableProperties()[$property];
+            return new $objectAbleClass($this->$property);
         }
 
         return $this->builder->$name(...$arguments);
@@ -126,7 +127,7 @@ class Model
 
     public function __set($name, $value)
     {
-        $setMethod = 'set' . ucfirst($name).'Attribute';
+        $setMethod = 'set' . ucfirst($name) . 'Attribute';
 
         if (method_exists($this, $setMethod)) {
             return $this->$name = $this->$setMethod($value);

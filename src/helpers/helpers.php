@@ -70,3 +70,11 @@ function router($name)
     $path = \App\Components\Routers\RouterName::getName($name);
     return url()->base(). '/' . $path;
 }
+
+/**
+ * @param $str
+ * @return string
+ */
+function snakeToCamel ($str) {
+    return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $str))));
+}

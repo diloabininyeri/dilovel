@@ -1,7 +1,7 @@
 <?php
 
 
-Router::get('haber/5', 'Deneme@index')->name('deneme');
+Router::get('deneme', 'Deneme@index')->name('deneme');
 
 Router::get('controller', 'Controller@index')->name('controller');
 

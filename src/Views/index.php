@@ -21,9 +21,7 @@ use App\Models\Users;
 <h2><?=session('city')?></h2>
 <pre>
 <?php foreach ($users as $user) : ?>
-
     <h2><?= $user->getName()->strtoupper()?></h2>
-    <h2><?= $user->getPassword()?></h2>
     <hr>
 <?php endforeach; ?>
 

@@ -118,7 +118,10 @@ class Request implements ArrayAble, toJson
         return $this->server['REQUEST_METHOD'];
     }
 
-    public function session()
+    /**
+     * @return Session
+     */
+    public function session(): Session
     {
         return new Session();
     }
@@ -136,17 +139,18 @@ class Request implements ArrayAble, toJson
      * @param string $file
      * @return File
      */
-    public function file(string $file)
+    public function file(string $file): File
     {
         return new File($file);
     }
 
-    public function url()
+    /**
+     * @return Url
+     */
+    public function url(): Url
     {
         return new Url();
     }
-
-
 
 
 }

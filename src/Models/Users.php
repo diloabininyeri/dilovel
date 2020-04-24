@@ -3,9 +3,9 @@
 
 namespace App\Models;
 
-use App\Components\Password;
-use App\Components\StringUtil;
 use App\Database\BuilderQuery;
+use App\Models\Objectable\UserName;
+use App\Models\Objectable\UserPassword;
 
 /**
  * Class Users
@@ -38,8 +38,8 @@ class Users extends Model
      * @var array|string[]
      */
     protected array $objectable = [
-        'name' => StringUtil::class,
-        'password'=>Password::class
+        'name' => UserName::class,
+        'password'=>UserPassword::class,
     ];
 
 
