@@ -1,25 +1,25 @@
 {
-  "name": "vendor_name/deneme",
+  "name": "zues/hmvc",
   "description": "description",
   "minimum-stability": "stable",
   "license": "proprietary",
+  "bin": ["bin/console.php"],
+  "config": {
+    "bin-dir": "bin/console.php"
+  },
   "authors": [
     {
-      "name": "cncnd",
-      "email": "email@example.com"
+      "name": "dılo sürücü",
+      "email": "berxudar@gmail.com"
     }
   ],
   "require": {
-    "ext-json": "*",
-    "ext-apache": "*",
-    "ext-pdo": "*",
-    "ext-http": "*",
-    "php": ">=7.4",
-    "ext-iconv": "*"
+    "php": ">=7.4"
   },
   "autoload": {
     "psr-4": {
-      "App\\": "src/"
+      "App\\": "src/",
+      "Bin\\": "bin"
     },
     "files": ["src/helpers/helpers.php","src/Database/config.php"]
   }
