@@ -33,7 +33,7 @@ class Model
     /**
      * @return PDO
      */
-    public function pdoConnection()
+    public function pdoConnection(): PDO
     {
         return Connection::make(config[$this->getConnection()])->pdo();
     }
@@ -46,7 +46,7 @@ class Model
     /**
      * @return mixed
      */
-    public function getTable()
+    public function getTable(): string
     {
         return $this->table ?? $this->getStaticClassName();
     }
@@ -54,7 +54,7 @@ class Model
     /**
      * @return array
      */
-    public function getHidden()
+    public function getHidden(): array
     {
         return $this->hidden ?? [];
     }
@@ -63,7 +63,7 @@ class Model
     /**
      * @return string
      */
-    private function getStaticClassName()
+    private function getStaticClassName(): string
     {
         $modelName = substr(strrchr(static::class, "\\"), 1);
         return strtolower($modelName);

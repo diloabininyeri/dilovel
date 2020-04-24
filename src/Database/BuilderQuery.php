@@ -22,7 +22,7 @@ class BuilderQuery
      */
     private PDO $pdo;
 
-    private ?string $query=null;
+    private ?string $query = null;
 
     private bool  $activeToSql;
 
@@ -179,7 +179,7 @@ class BuilderQuery
 
     function save()
     {
-        $vars= get_object_vars($this->modelInstance);
+        $vars = get_object_vars($this->modelInstance);
         return $vars;
     }
 

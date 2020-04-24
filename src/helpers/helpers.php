@@ -68,14 +68,15 @@ function url()
 function router($name)
 {
     $path = \App\Components\Routers\RouterName::getName($name);
-    return url()->base(). '/' . $path;
+    return url()->base() . '/' . $path;
 }
 
 /**
  * @param $str
  * @return string
  */
-function snakeToCamel ($str) {
+function snakeToCamel($str)
+{
     return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $str))));
 }
 
@@ -85,5 +86,5 @@ function snakeToCamel ($str) {
  */
 function pascal_to_snake($string)
 {
-   return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $string));
+    return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $string));
 }

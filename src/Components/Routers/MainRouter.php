@@ -67,9 +67,6 @@ class MainRouter
     public function __destruct()
     {
         $result = $this->isEqualUrlParamWithRouteParam();
-        if (is_array($result) || is_object($result)) {
-            dd($result);
-        }
-        echo $result;
+        (new Printable($result))->output();
     }
 }
