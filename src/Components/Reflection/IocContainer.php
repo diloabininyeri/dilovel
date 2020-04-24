@@ -4,7 +4,15 @@
 namespace App\Components\Reflection;
 
 
+use App\Http\Request;
+use App\interfaces\FormRequestInterface;
+use App\interfaces\RuleInterface;
 use Closure;
+use Exception;
+use ReflectionException;
+use ReflectionMethod;
+use ReflectionParameter;
+use RuntimeException;
 
 /**
  * Class IocContainer
@@ -35,12 +43,18 @@ class IocContainer
      * @var Closure
      */
     private Closure $onErrorCallback;
+    /**
+     * @var Request
+     */
+    private Request $request;
 
     /**
      * IocContainer constructor.
+     * @param Request $request
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        $this->request = $request;
     }
 
     /**
@@ -100,12 +114,79 @@ class IocContainer
 
     }
 
+    /**
+     * @return ReflectionParameter[]
+     * @throws ReflectionException
+     */
+    private function getParameters(): array
+    {
+        $reflectionMethod = new ReflectionMethod($this->getController(), $this->getMethod());
+        return $reflectionMethod->getParameters();
+    }
+
 
     /**
-     *
+     * @return array
+     * @throws ReflectionException
+     */
+    private function getParameterAsClassName(): array
+    {
+        $params = [];
+        foreach ($this->getParameters() as $parameter) {
+            if ($parameter->getClass()->getName()) {
+                $params[] = $parameter->getClass()->getName();
+            }
+        }
+        return $params;
+    }
+
+
+    /**
+     * @param RuleInterface[] $rules
+     */
+    private function callRules($rules)
+    {
+        foreach ($rules as $rule) {
+            if (!$rule->valid($this->request)) {
+
+                $this->requestErrors[] = $rule->message();
+            }
+        }
+    }
+
+
+    /**
+     * @throws ReflectionException
+     */
+    private function callCustomRequests(): void
+    {
+        foreach ($this->getParameterAsClassName() as $class) {
+            /**
+             * @var FormRequestInterface $customRequest
+             *
+             */
+            $customRequest = new $class();
+            if (!($customRequest instanceof FormRequestInterface)) {
+
+                throw  new RuntimeException('ioc class must be instance of ' . FormRequestInterface::class);
+            }
+
+            $this->callRules($customRequest->rules());
+        }
+
+    }
+
+    /**
+     * @throws ReflectionException
+     * @throws Exception
      */
     public function call()
     {
+        $this->callCustomRequests();
+        if (empty($this->requestErrors)) {
+            return call_user_func($this->onSuccessCallback, $this->request);
+        }
+        return call_user_func($this->onErrorCallback, $this->requestErrors);
 
     }
 
