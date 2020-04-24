@@ -13,7 +13,8 @@
     "ext-json": "*",
     "ext-apache": "*",
     "ext-pdo": "*",
-    "ext-http": "*"
+    "ext-http": "*",
+    "php": ">=7.4"
   },
   "autoload": {
     "psr-4": {
