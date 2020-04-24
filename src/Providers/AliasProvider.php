@@ -4,6 +4,9 @@
 namespace App\Providers;
 
 
+use App\Components\Cache;
+use App\Components\Routers\Router;
+
 class AliasProvider implements ProviderInterface
 {
 
@@ -15,7 +18,7 @@ class AliasProvider implements ProviderInterface
 
     public function boot(): void
     {
-        class_alias('\App\Components\Cache', 'Cache');
-        class_alias('\App\Components\Routers\Router', 'Router');
+        class_alias(Cache::class, 'Cache');
+        class_alias(Router::class, 'Router');
     }
 }

@@ -4,14 +4,23 @@
 namespace App\Bootstrap;
 
 
+/**
+ * Class Application
+ * @package App\Bootstrap
+ */
 class Application
 {
 
 
-    public static function run()
+    /**
+     *
+     */
+    public static function run(): void
     {
-
         $bootstrap = new Bootstrap();
-        $bootstrap->loadProiders();
+        $bootstrap->loadProviders();
     }
+
+
+
 }

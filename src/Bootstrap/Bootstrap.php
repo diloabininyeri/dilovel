@@ -17,12 +17,13 @@ class Bootstrap
     /**
      *
      */
-    function loadProiders()
+    public function loadProviders(): void
     {
         /**
          * @var  ProviderInterface[] $providers
          */
-        $providers=include base_path('src\app\config.php');
+        $config= base_path('src\app\config.php');
+        $providers=include "$config";
 
         foreach ($providers['providers'] as $provider) {
 

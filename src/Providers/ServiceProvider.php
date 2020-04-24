@@ -18,13 +18,11 @@ class ServiceProvider implements ProviderInterface
      */
     public function boot():void
     {
-
-
-        $reqest=new Request();
-        $reqest->session()->set('city','urfa');
+        $request=new Request();
+        $request->session()->set('city','urfa');
         ModelMacro::addMethod('upper', function ($keys) {
 
-            return array_map(function ($collection) use ($keys) {
+            return array_map(static function ($collection) use ($keys) {
 
                 foreach ($keys as $key) {
 
@@ -36,6 +34,9 @@ class ServiceProvider implements ProviderInterface
         });
     }
 
+    /**
+     *
+     */
     public function register(): void
     {
         // TODO: Implement register() method.

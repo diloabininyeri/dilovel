@@ -22,7 +22,7 @@ class ModelMacro
      * @param $methodName
      * @param Closure $closure
      */
-    public static function addMethod($methodName, Closure $closure)
+    public static function addMethod($methodName, Closure $closure): void
     {
         self::$macro[$methodName] = $closure;
     }

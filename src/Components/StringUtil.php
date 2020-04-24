@@ -11,6 +11,5 @@ namespace App\Components;
 class StringUtil
 {
 
-
     use ToString;
 }

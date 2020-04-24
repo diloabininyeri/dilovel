@@ -78,7 +78,7 @@ class Collections implements ArrayAccess, IteratorAggregate, JsonSerializable, C
     /**
      * @inheritDoc
      */
-    public function count()
+    public function count():int
     {
         return count($this->collection);
     }
@@ -94,6 +94,7 @@ class Collections implements ArrayAccess, IteratorAggregate, JsonSerializable, C
 
     /**
      * @return mixed
+     * @noinspection PhpUnused
      */
     public function first()
     {
@@ -108,7 +109,9 @@ class Collections implements ArrayAccess, IteratorAggregate, JsonSerializable, C
         return new ArrayIterator($this->collection);
     }
 
-    /** @noinspection MagicMethodsValidityInspection */
+    /** @noinspection MagicMethodsValidityInspection
+     * @noinspection PhpUnhandledExceptionInspection
+     */
     public function __toString()
     {
         return json_encode($this->collection, JSON_THROW_ON_ERROR, 512);
@@ -116,6 +119,7 @@ class Collections implements ArrayAccess, IteratorAggregate, JsonSerializable, C
 
     /**
      * @return mixed
+     * @noinspection PhpUnused
      */
     public function last()
     {

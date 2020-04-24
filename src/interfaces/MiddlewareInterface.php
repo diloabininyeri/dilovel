@@ -19,5 +19,5 @@ interface MiddlewareInterface
      * @param $request
      * @return mixed
      */
-    public function hande(Closure $next,Request $request);
+    public function handle(Closure $next, Request $request);
 }

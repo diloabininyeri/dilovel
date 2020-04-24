@@ -67,6 +67,6 @@ function url()
 
 function router($name)
 {
-    $path = \App\Components\RouterName::getName($name);
+    $path = \App\Components\Routers\RouterName::getName($name);
     return url()->base(). '/' . $path;
 }
