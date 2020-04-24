@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Blade;
+namespace App\Components\Blade;
 
 
 class PhpDirective implements BladeDirectiveInterface

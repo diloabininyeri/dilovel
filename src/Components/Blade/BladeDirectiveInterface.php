@@ -1,6 +1,6 @@
 <?php
 
-namespace  Blade;
+namespace App\Components\Blade;
 /**
  * Interface BladeDirectiveInterface
  */
