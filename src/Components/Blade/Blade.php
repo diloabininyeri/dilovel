@@ -2,12 +2,16 @@
 
 namespace App\Components\Blade;
 
+/**
+ * Class Blade
+ * @package App\Components\Blade
+ */
 class Blade
 {
     /**
      * @var BladeDirectiveInterface[] $directives
      */
-    private $directives = [
+    private array $directives = [
 
         CurlBracesDirective::class,
         IfDirective::class,
@@ -23,7 +27,8 @@ class Blade
         IncludeDirective::class,
         CurlBracesAllowedHtmlChars::class,
         CompressBlade::class,
-        JsEscapeDirective::class
+        JsEscapeDirective::class,
+        CommentDirective::class
 
     ];
 

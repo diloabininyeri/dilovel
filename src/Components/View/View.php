@@ -11,8 +11,6 @@ use App\Components\Blade\Blade;
  */
 class View
 {
-
-
     /**
      * @param $blade
      * @return mixed

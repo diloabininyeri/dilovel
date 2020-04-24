@@ -4,18 +4,29 @@
 namespace App\Components\Blade;
 
 
-use Blade\BladeDirectiveInterface;
-
+/**
+ * Class CommentDirective
+ * @package App\Components\Blade
+ */
 class CommentDirective implements BladeDirectiveInterface
 {
 
+    /**
+     * @return mixed|string
+     */
     public function getDirectiveRegexPattern()
     {
-
+        return '/{{--(.*?)--}}/ms';
     }
 
+    /**
+     * @param string $template
+     * @return mixed|string|string[]|null
+     */
     public function replaceTemplate(string $template)
     {
-        // TODO: Implement replaceTemplate() method.
+        return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
+            return '<?php /*' . $find[1] . '*/ :?>';
+        }, $template);
     }
 }
