@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 
 namespace App\Http;
@@ -47,7 +47,7 @@ class PostedFile implements ArrayAble
     /**
      * @return FileSize
      */
-    public function getSize()
+    public function getSize(): FileSize
     {
         return new FileSize($this->file->size);
     }
