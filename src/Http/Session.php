@@ -42,11 +42,11 @@ class Session implements SessionInterface
     /**
      * @param $name
      * @param null $default
-     * @return string|null
+     * @return string|null|mixed
      */
-    public function get($name, $default = null): ?string
+    public function get($name, $default = null)
     {
-        return trim($this->session[$name]) ?? $default;
+        return $this->session[$name] ?? $default;
     }
 
 
@@ -66,7 +66,7 @@ class Session implements SessionInterface
      */
     public function set(string $name, $value): bool
     {
-        $this->session[$name] = $value;
+        $this->session[$name] = trim($value);
         return $this->exists($name);
     }
 
@@ -78,5 +78,34 @@ class Session implements SessionInterface
     {
         unset($this->session[$name]);
         return  !$this->exists($name);
+    }
+
+
+    /**
+     * @param $name
+     * @param $item
+     * @return array
+     */
+    public function push($name,$item): array
+    {
+        $this->session[$name][]=$item;
+        return  $this->get($name);
+    }
+
+    /**
+     * @return bool
+     */
+    public function flushAll(): bool
+    {
+        unset($this->session);
+        return empty($this->session);
+    }
+
+    /**
+     * @return array
+     */
+    public function all(): array
+    {
+       return  $this->session;
     }
 }

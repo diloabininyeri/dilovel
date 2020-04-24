@@ -11,7 +11,9 @@ class Deneme
 
     public function index(Request $request)
     {
-        return router('deneme');
+
+        $request->session()->flushAll();
+
     }
 
 }
