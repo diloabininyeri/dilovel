@@ -49,7 +49,7 @@ class CreateViewCommand implements CommandInterface
      */
     private function createFilePath($name): string
     {
-        return sprintf('%s/%s.php', $this->path, $name);
+        return sprintf('%s/%s.blade.php', $this->path, $name);
     }
 
     /**
