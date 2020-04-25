@@ -1,0 +1,32 @@
+{
+  "name": "zues/hmvc",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "bin": [
+    "bin/console"
+  ],
+  "config": {
+    "bin-dir": "vendor/bin",
+    "preferred-install": "dist"
+  },
+  "authors": [
+    {
+      "name": "dılo sürücü",
+      "email": "berxudar@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-apache": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "Bin\\": "bin"
+    },
+    "files": ["src/helpers/helpers.php","src/Database/config.php"]
+  }
+}
