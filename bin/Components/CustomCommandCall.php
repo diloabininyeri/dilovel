@@ -44,7 +44,12 @@ abstract class  CustomCommandCall
     public function run(): void
     {
         $commandClass = $this->getCommands($this->signals[0]);
-        (new $commandClass())->handle(array_slice($this->signals, 1));
+        echo $commandClass;
+        if (class_exists($commandClass)) {
+            (new $commandClass())->handle(array_slice($this->signals, 1));
+        } else {
+            echo 'Command Not found';
+        }
 
     }
 
@@ -57,7 +62,7 @@ abstract class  CustomCommandCall
         if ($key === null) {
             return $this->commands;
         }
-        return $this->commands[$key];
+        return $this->commands[$key] ?? null;
     }
 
 
