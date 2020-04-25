@@ -88,3 +88,10 @@ function pascal_to_snake($string)
 {
     return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $string));
 }
+
+
+function app($name = null)
+{
+    $app = new App\Components\Container\App();
+    return $name === null ? $app: $app->get($name);
+}

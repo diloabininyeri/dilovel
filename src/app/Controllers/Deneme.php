@@ -12,7 +12,8 @@ class Deneme
 
     public function index(Request $request)
     {
-        return Users::find($request->get('id'));
+        return app('deneme')->test();
+
     }
 
 }
