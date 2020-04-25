@@ -14,6 +14,6 @@ class SessionProvider implements ProviderInterface
 
     public function boot(): void
     {
-        session()->set('city','adana');
+
     }
 }

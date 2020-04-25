@@ -92,6 +92,6 @@ function pascal_to_snake($string)
 
 function app($name = null)
 {
-    $app = new App\Components\Container\App();
-    return $name === null ? $app: $app->get($name);
+    $app = new App();
+    return $name === null ? $app : $app->get($name);
 }

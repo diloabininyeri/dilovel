@@ -5,6 +5,7 @@ namespace App\Providers;
 
 
 use App\Components\Cache;
+use App\Components\Container\App;
 use App\Components\Routers\Router;
 
 class AliasProvider implements ProviderInterface
@@ -20,5 +21,6 @@ class AliasProvider implements ProviderInterface
     {
         class_alias(Cache::class, 'Cache');
         class_alias(Router::class, 'Router');
+        class_alias(App::class, 'App');
     }
 }

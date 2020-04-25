@@ -21,7 +21,7 @@ class AppContainer
      * @param $name
      * @param Closure $callable
      */
-    public static function add($name, Closure $callable)
+    public static function add($name, Closure $callable): void
     {
         if (!isset(self::$containers[$name])) {
             self::$containers[$name] = $callable;

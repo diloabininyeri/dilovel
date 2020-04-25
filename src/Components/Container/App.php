@@ -18,7 +18,7 @@ class App
      * @param $name
      * @param Closure $closure
      */
-    public function register($name, Closure $closure)
+    public function register($name, Closure $closure):void
     {
         AppContainer::add($name, $closure);
     }
