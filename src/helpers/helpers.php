@@ -1,5 +1,7 @@
 <?php /** @noinspection PhpIncludeInspection */
 
+use App\Components\Http\Url;
+
 /**
  * @param $function
  * @return bool
@@ -57,12 +59,10 @@ function session($name = null)
 
 }
 
-/**
- * @return \App\Http\Url
- */
+
 function url()
 {
-    return new \App\Http\Url();
+    return new Url();
 }
 
 function router($name)

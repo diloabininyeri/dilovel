@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http;
+namespace App\Components\Http;
 
 
 use App\Components\Response;

@@ -1,8 +1,10 @@
 <?php
 
 
-namespace App\Http;
+namespace App\Components\Http;
 
+
+use App\Http\PostedFile;
 
 /**
  * Class File

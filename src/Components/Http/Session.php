@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http;
+namespace App\Components\Http;
 
 use App\interfaces\Session as SessionInterface;
 
