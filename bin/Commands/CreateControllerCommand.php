@@ -21,9 +21,9 @@ class CreateControllerCommand implements CommandInterface
     public function handle(?array $parameters): void
     {
         $name = $parameters[0];
-        $fileName = $this->createFileName($name);
+        $filePath = $this->createFilePath($name);
 
-        echo $this->createController($name, $fileName);
+        echo $this->createController($name, $filePath);
 
     }
 
@@ -35,6 +35,7 @@ class CreateControllerCommand implements CommandInterface
     private function createController($name, $path): string
     {
         if (!file_exists($path)) {
+
             file_put_contents($path, $this->controllerTemplate($name));
             return "$name controller created";
         }
@@ -46,7 +47,7 @@ class CreateControllerCommand implements CommandInterface
      * @param $name
      * @return string
      */
-    private function createFileName($name): string
+    private function createFilePath($name): string
     {
         return sprintf('%s/%s.php', $this->namespace, $name);
     }
