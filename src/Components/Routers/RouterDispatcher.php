@@ -41,7 +41,7 @@ class RouterDispatcher
             if (is_callable($item)) {
                 self::dispatch($item(new Request()));
             }
-            echo $item;
+         echo self::dispatch($item);
         }
     }
 
