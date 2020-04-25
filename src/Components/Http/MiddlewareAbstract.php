@@ -35,9 +35,19 @@ abstract class MiddlewareAbstract
      */
     public function __construct(...$names)
     {
-        $this->middlewareRoutes = array_column($this->middleware, implode(',', $names));
+        $this->middlewareRoutes = $this->getMiddlewareRoute($names);
     }
 
+    /**
+     * @param $names
+     * @return array
+     */
+    private function getMiddlewareRoute($names): array
+    {
+        return array_map(function ($name) {
+            return $this->middleware[$name];
+        }, $names);
+    }
 
     /**
      * @param Request $request
