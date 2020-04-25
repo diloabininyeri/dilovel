@@ -1,0 +1,41 @@
+<?php
+
+
+namespace App\app\Models;
+
+
+use App\Database\BuilderQuery;
+use App\Database\Model;
+
+
+
+/**
+ * Class $name
+ * @package App\Models
+ * @mixin BuilderQuery
+ * @method  static get()
+ * @property $name
+ * @method static BuilderQuery|Users order()
+ * @method static BuilderQuery|Users find(int $id)
+ * @method static BuilderQuery|Users findOrFail(int $id)
+ */
+class $name extends Model
+{
+    /**
+     * @var string $table
+     */
+    protected string $table = '$tablo_name';
+
+    /**
+     * @var string
+     */
+    protected string  $connection = 'default';
+
+    /**
+     * @var array|string[]
+     */
+    protected array $hidden = [];
+
+
+
+}
