@@ -21,7 +21,7 @@ class CurlBracesDirective implements BladeDirectiveInterface
     {
         return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
 
-            return '<?php echo ' . e($find[1]) . ';?>';
+            return '<?php echo ' . htmlspecialchars($find[1]) . ';?>';
         }, $template);
 
     }
