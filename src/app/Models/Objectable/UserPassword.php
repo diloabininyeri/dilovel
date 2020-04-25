@@ -4,8 +4,7 @@
 namespace App\app\Models\Objectable;
 
 
-use App\Components\ToString;
-use App\Database\ObjectAbleProperty;
+use App\Components\Database\ObjectAbleProperty;
 
 class UserPassword extends ObjectAbleProperty
 {
