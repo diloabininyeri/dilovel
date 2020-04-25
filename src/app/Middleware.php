@@ -12,7 +12,6 @@ use App\Components\Http\MiddlewareAbstract;
  */
 class Middleware extends MiddlewareAbstract
 {
-
     /**
      * @var array|string[]
      */
