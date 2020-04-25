@@ -44,7 +44,6 @@ abstract class  CustomCommandCall
     public function run(): void
     {
         $commandClass = $this->getCommands($this->signals[0]);
-        echo $commandClass;
         if (class_exists($commandClass)) {
             (new $commandClass())->handle(array_slice($this->signals, 1));
         } else {
