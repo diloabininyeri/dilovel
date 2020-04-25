@@ -56,17 +56,15 @@ abstract class MiddlewareAbstract
     public function call(Request $request): self
     {
         foreach ($this->middlewareRoutes as $middlewareRoute) {
+            $request = $this->callMiddleware($middlewareRoute, $request);
+            $this->response = $request;
 
-            if ($request instanceof Request) {
-                $request = $this->callMiddleware($middlewareRoute, $request);
-            } else {
+            if (!$request instanceof Request) {
+
                 $this->isInstanceOfRequest = false;
-                $this->response = $request;
                 return $this;
             }
         }
-        $this->isInstanceOfRequest = true;
-        $this->response = $request;
         return $this;
 
     }
@@ -90,7 +88,7 @@ abstract class MiddlewareAbstract
     }
 
     /**
-     * @return mixed
+     * @return mixed|Request
      */
     public function getResponse()
     {
