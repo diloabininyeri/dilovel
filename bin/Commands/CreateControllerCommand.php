@@ -34,13 +34,14 @@ class CreateControllerCommand implements CommandInterface
      */
     private function createController($name, $path): string
     {
-        if (!file_exists($path)) {
-
-            file_put_contents($path, $this->controllerTemplate($name));
-            return "$name controller created";
+        if (file_exists($path)) {
+            return 'controller already exists';
         }
 
-        return 'controller already exists';
+        file_put_contents($path, $this->controllerTemplate($name));
+
+        return "$name controller created";
+
     }
 
     /**
