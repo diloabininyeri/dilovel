@@ -20,15 +20,26 @@ class CreateControllerCommand implements CommandInterface
      */
     public function handle(?array $parameters): void
     {
-        $fileName = $this->createFileName($parameters[0]);
         $name = $parameters[0];
-        if (!file_exists($fileName)) {
-            file_put_contents($fileName, $this->controllerTemplate($name));
-            echo "$name controller created";
-        } else {
-            echo 'controller already exists';
+        $fileName = $this->createFileName($name);
+
+        echo $this->createController($name, $fileName);
+
+    }
+
+    /**
+     * @param $name
+     * @param $path
+     * @return string
+     */
+    private function createController($name, $path): string
+    {
+        if (!file_exists($path)) {
+            file_put_contents($path, $this->controllerTemplate($name));
+            return "$name controller created";
         }
 
+        return 'controller already exists';
     }
 
     /**
