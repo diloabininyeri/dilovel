@@ -16,7 +16,7 @@ abstract class MiddlewareAbstract
     /**
      * @var array|null $middlewareRoutes
      */
-    private ?array $middlewareRoutes = [];
+    private ?array $middlewareRoutes;
 
     /**
      * @var $response
