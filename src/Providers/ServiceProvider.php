@@ -18,8 +18,6 @@ class ServiceProvider implements ProviderInterface
      */
     public function boot():void
     {
-        $request=new Request();
-        $request->session()->set('city','urfa');
         ModelMacro::addMethod('upper', function ($keys) {
 
             return array_map(static function ($collection) use ($keys) {

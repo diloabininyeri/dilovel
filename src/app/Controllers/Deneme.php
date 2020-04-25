@@ -12,6 +12,7 @@ class Deneme
 
     public function index(Request $request)
     {
+
         return app('deneme')->test();
 
     }

@@ -49,7 +49,7 @@ function abort($status)
 
 function session($name = null)
 {
-    $session = new \App\Http\Session();
+    $session = new Session();
     if ($name === null) {
         return $session;
     }
