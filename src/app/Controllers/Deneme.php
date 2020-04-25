@@ -13,7 +13,7 @@ class Deneme
     public function index(Request $request)
     {
 
-        return app('deneme')->test();
+        return Users::find(1)->getName();
 
     }
 

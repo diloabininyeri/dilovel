@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Database;
+namespace App\Components\Database;
 
 
 /**

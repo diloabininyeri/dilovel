@@ -4,24 +4,43 @@
 namespace App\app\Models;
 
 
-use App\Database\Model;
+use App\Components\Database\Model;
 
+/**
+ * Class Book
+ * @package App\app\Models
+ */
 class Book extends Model
 {
 
-    protected string $table='books';
+    /**
+     * @var string
+     */
+    protected string $table = 'books';
 
-    protected string $connection='default';
+    /**
+     * @var string
+     */
+    protected string $connection = 'default';
 
 
-    protected array $hidden=['name'];
+    /**
+     * @var array|string[]
+     */
+    protected array $hidden = ['name'];
 
 
+    /**
+     * @return string
+     */
     public function getBookName()
     {
         return strtoupper($this->name);
     }
 
+    /**
+     * @return string
+     */
     public function getDefaultName()
     {
         return 'no names';

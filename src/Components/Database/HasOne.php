@@ -1,10 +1,8 @@
 <?php
 
 
-namespace App\Database;
+namespace App\Components\Database;
 
-
-use App\Database\Model;
 use PDO;
 
 /**

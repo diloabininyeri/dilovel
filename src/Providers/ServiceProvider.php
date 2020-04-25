@@ -4,7 +4,6 @@
 namespace App\Providers;
 
 
-use App\Http\Request;
 use App\Macro\ModelMacro;
 
 /**

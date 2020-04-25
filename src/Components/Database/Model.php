@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Database;
+namespace App\Components\Database;
 
 
 use PDO;
+use const App\Database\config;
 
 
 /**

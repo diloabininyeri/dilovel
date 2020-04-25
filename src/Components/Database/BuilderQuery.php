@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database;
+namespace App\Components\Database;
 
 use App\Components\Collections;
 use PDO;
