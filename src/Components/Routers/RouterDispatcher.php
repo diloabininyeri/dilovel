@@ -39,9 +39,12 @@ class RouterDispatcher
         foreach (self::$call as $item) {
 
             if (is_callable($item)) {
-                self::dispatch($item(new Request()));
-            }
-         echo self::dispatch($item);
+              echo  self::dispatch($item(new Request()));
+            }else
+            {
+              echo self::dispatch($item);
+            }   
+         
         }
     }
 
