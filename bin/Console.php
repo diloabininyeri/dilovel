@@ -5,6 +5,7 @@ namespace Bin;
 
 
 use Bin\Commands\CreateControllerCommand;
+use Bin\Commands\CreateModelCommand;
 use Bin\Commands\CustomCommand;
 use Bin\Components\CustomCommandCall;
 
@@ -20,7 +21,8 @@ class Console extends CustomCommandCall
      */
     protected array $commands=[
         'make:command'=>CustomCommand::class,
-        'make:controller'=>CreateControllerCommand::class
-    ];
+        'make:controller'=>CreateControllerCommand::class,
+        'make:model'=>CreateModelCommand::class
+        ];
 
 }
