@@ -4,5 +4,9 @@
 require_once 'vendor/autoload.php';
 
 use Bin\Console;
+use App\Components\Routers\Printable;
 
-Console::run($argv,$argc);
+
+$console = new Console($argv,$argc);
+$printable = new Printable($console->run());
+$printable->output();

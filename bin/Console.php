@@ -4,10 +4,14 @@
 namespace Bin;
 
 
-class Console
+use Bin\Commands\CustomCommand;
+use Bin\Components\CustomCommandCall;
+
+class Console extends CustomCommandCall
 {
-    public static function run($argv,$argc)
-    {
-        print_r($argv);
-    }
+
+    protected array $commands=[
+        'make:command'=>CustomCommand::class
+    ];
+
 }
