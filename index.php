@@ -9,6 +9,6 @@ Application::run();
 
 include_once 'src/Routers/web.php';
 
-echo NotFound::isCannotFindAny() ? "404":null;
+echo NotFound::isCannotFindAny() ? view('404'):null;
 
 

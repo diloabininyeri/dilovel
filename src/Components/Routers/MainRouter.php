@@ -3,7 +3,7 @@
 namespace App\Components\Routers;
 
 
-use App\Http\Request;
+use App\Components\Http\Request;
 use JsonException;
 
 /**
