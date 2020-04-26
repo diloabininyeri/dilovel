@@ -14,19 +14,13 @@ abstract class  CustomCommandCall
 {
 
     /**
-     * @var array
+     * @var array $signals
      */
     private array $signals;
-
-    /**
-     * @var int
-     */
 
 
     /**
      * CustomCommandCall constructor.
-     * @param $params
-     * @param $count
      */
     public function __construct()
     {
