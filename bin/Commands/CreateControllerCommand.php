@@ -16,7 +16,7 @@ class CreateControllerCommand implements CommandInterface
     private string $namespace = 'src/app/Controllers/';
 
 
-    protected string $description='create controller';
+    protected string $description='Creating a controller is very simple';
 
 
     /**
