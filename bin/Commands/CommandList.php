@@ -28,16 +28,31 @@ class CommandList implements CommandInterface
      */
     public function handle(?array $parameters): void
     {
-
-        $commandList = Command::list();
         Animation::show();
-        foreach ($commandList as $command => $class) {
+        $this->printAllCommandList(Command::list());
 
-            echo str_pad($command, 50, ' ', STR_PAD_RIGHT) . $this->getDescription(new $class) . "\n";
+
+    }
+
+    /**
+     * @param $commandList
+     * @throws ReflectionException
+     */
+    private function printAllCommandList($commandList): void
+    {
+        foreach ($commandList as $command => $class) {
+            echo $this->addPadRight($command) . $this->getDescription(new $class) . "\n";
         }
     }
 
-
+    /**
+     * @param $command
+     * @return string
+     */
+    private function addPadRight($command): string
+    {
+       return  str_pad($command, 50, ' ', STR_PAD_RIGHT);
+    }
     /**
      * @param $object
      * @return mixed
