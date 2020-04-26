@@ -1,9 +1,6 @@
 <?php
 
-Router::get('/',function (){
-     $array=[1,2,3];
-     return view('index',compact('array'));
-});
+Router::get('/',fn()=>view('index'));
 
 Router::get('deneme', 'Deneme@index')->name('deneme');
 
