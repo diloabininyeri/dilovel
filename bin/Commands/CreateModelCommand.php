@@ -18,32 +18,33 @@ class CreateModelCommand implements CommandInterface
     /**
      * @var string
      */
-    protected string $description='create model magic objects and magic model as orm ';
+    protected string $description = 'create model magic objects and magic model as orm ';
 
     /**
      * @param array|null $parameters
      */
     public function handle(?array $parameters): void
     {
-        [$name, $tableName] = $parameters;
-        $filePath = $this->createFilePath($name);
+        [$className, $tableName] = $parameters;
+        $filePath = $this->createFilePath($className);
 
-        echo $this->createModel($name, $filePath,$tableName);
+        echo $this->createModel($className, $filePath, $tableName);
 
     }
 
     /**
      * @param $name
      * @param $path
+     * @param $tableName
      * @return string
      */
-    private function createModel($name, $path,$tableName): string
+    private function createModel($name, $path, $tableName): string
     {
         if (file_exists($path)) {
             return 'model already exists';
         }
 
-        file_put_contents($path, $this->modelTemplate($name,$tableName));
+        file_put_contents($path, $this->modelTemplate($name, $tableName));
 
         return "$name model created";
 
@@ -63,11 +64,10 @@ class CreateModelCommand implements CommandInterface
      * @param $tableName
      * @return false|string|string[]
      */
-    private function modelTemplate($className,$tableName)
+    private function modelTemplate($className, $tableName)
     {
         $stub = file_get_contents(__DIR__ . '/../Stubs/Model');
-
-        return str_replace(['$name','$table_name'], [$className,$tableName], $stub);
+        return str_replace(['$name', '$table_name'], [$className, $tableName], $stub);
     }
 
 
