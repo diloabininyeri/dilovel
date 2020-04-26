@@ -4,12 +4,13 @@
 namespace Bin\Commands;
 
 
+use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
 class CreateViewCommand implements CommandInterface
 {
 
-    protected string $description='create view including html ';
+    protected string $description = 'create view including html ';
     /**
      * @var string
      */
@@ -35,12 +36,12 @@ class CreateViewCommand implements CommandInterface
     private function createView($name, $path): string
     {
         if (file_exists($path)) {
-            return 'view already exists';
+            ColorConsole::getInstance()->getColoredString('view already exists', 'red');
         }
 
         file_put_contents($path, $this->viewTemplate());
 
-        return "$name view created";
+        return ColorConsole::getInstance()->getColoredString("$name view created", 'green');
 
     }
 

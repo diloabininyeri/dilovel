@@ -2,6 +2,7 @@
 
 namespace Bin\Commands;
 
+use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
 /**
@@ -39,12 +40,12 @@ class CreateControllerCommand implements CommandInterface
     private function createController($name, $path): string
     {
         if (file_exists($path)) {
-            return 'controller already exists';
+            return ColorConsole::getInstance()->getColoredString('controller already exists','red');
         }
 
         file_put_contents($path, $this->controllerTemplate($name));
 
-        return "$name controller created";
+        return ColorConsole::getInstance()->getColoredString("$name controller created",'green');
 
     }
 
