@@ -10,9 +10,9 @@ namespace App\Components\Traits;
 trait Singleton
 {
     /**
-     * @var object
+     * @var Singleton|null $this |null
      */
-    private static ?object $singleton=null;
+    private static ?self $singleton=null;
 
     /**
      * @return static
