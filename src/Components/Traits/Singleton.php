@@ -12,7 +12,7 @@ trait Singleton
     /**
      * @var object
      */
-    private static object $singleton;
+    private static ?object $singleton=null;
 
     /**
      * @return static
