@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Bin\Commands;
-
 
 use Bin\Components\CommandInterface;
 
