@@ -9,6 +9,7 @@ use Bin\Components\CommandInterface;
 class CreateViewCommand implements CommandInterface
 {
 
+    protected string $description='create view';
     /**
      * @var string
      */
