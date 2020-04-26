@@ -26,4 +26,5 @@ class CustomCommand implements CommandInterface
         echo 'executed custom console commands';
         print_r($parameters);
     }
+
 }

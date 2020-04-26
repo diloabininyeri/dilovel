@@ -62,4 +62,5 @@ class CreateControllerCommand implements CommandInterface
         $stub = file_get_contents(__DIR__ . '/../Stubs/Controller');
         return str_replace('$name', $className, $stub);
     }
+
 }

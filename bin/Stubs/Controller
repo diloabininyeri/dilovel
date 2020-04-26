@@ -2,7 +2,7 @@
 
 namespace App\app\Controllers;
 
-use App\Http\Request;
+use App\Components\Http\Request;
 
 
 class $name

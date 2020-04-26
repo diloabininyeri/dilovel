@@ -28,20 +28,33 @@ abstract class  CustomCommandCall
      * @param $params
      * @param $count
      */
-    public function __construct($params, $count)
+    public function __construct()
     {
+        if (!empty(func_get_args())) {
+            $this->parseParameters(func_get_args());
+        }
+
+    }
+
+    /**
+     * @param $parameter
+     */
+    private function parseParameters($parameter): void
+    {
+
+        [$params, $count] = $parameter;
+
         if ($count < 3) {
             throw  new RuntimeException('too few parameters !!!');
         }
         $this->signals = array_slice($params, 1);
-
     }
 
     /**
      * @return mixed
      *
      */
-    public function run(): void
+    final public function run(): void
     {
         $commandClass = $this->getCommands($this->signals[0]);
         if (class_exists($commandClass)) {

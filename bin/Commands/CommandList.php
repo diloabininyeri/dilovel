@@ -4,7 +4,7 @@
 namespace Bin\Commands;
 
 
-class CommandList
+class CommandList extends CustomCommand
 {
 
 }
