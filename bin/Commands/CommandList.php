@@ -19,7 +19,7 @@ class CommandList implements CommandInterface
     /**
      * @var string
      */
-    protected string $description = 'list all';
+    protected string $description = 'list all available commands for console';
 
     /**
      * @param array|null $parameters
@@ -29,7 +29,6 @@ class CommandList implements CommandInterface
     {
 
         $commandList = Command::list();
-        unset($commandList['list']);
         foreach ($commandList as $command => $class) {
 
             echo str_pad($command, 50, ' ', STR_PAD_RIGHT) . $this->getDescription(new $class) . "\n";
