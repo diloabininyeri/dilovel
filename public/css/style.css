@@ -1,3 +1,24 @@
 body {
-    background: blue;
+
+    overflow: hidden;
+    background: #ecf0f1;
+}
+
+.container {
+    width: 99%;
+    height: 99vh;
+    display: grid;
+    place-content: center center;
+}
+
+.area{
+    color: #2980b9;
+    padding: 1em;
+}
+
+.text-center {
+    text-align: center;
+}
+a{
+    text-decoration: none;
 }
