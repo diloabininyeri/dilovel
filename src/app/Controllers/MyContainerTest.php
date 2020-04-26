@@ -6,7 +6,7 @@ namespace App\app\Controllers;
 
 class MyContainerTest
 {
-    function test()
+    public function test()
     {
         return "hello world";
     }

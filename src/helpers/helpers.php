@@ -26,6 +26,8 @@ function base_path($file = null)
 /**
  * @param $file
  * @param array $params
+ * @return false|string
+ * @return false|string
  */
 function view($file, $params = [])
 {

@@ -48,7 +48,7 @@ class HasOne
     /**
      * @return mixed
      */
-    function oneToOne()
+    public function oneToOne()
     {
 
         $id = $this->modelInstance->id;

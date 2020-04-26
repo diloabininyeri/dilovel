@@ -3,6 +3,7 @@
 namespace App\Components\Database;
 
 
+use JsonException;
 use PDO;
 use const App\Database\config;
 
@@ -11,7 +12,7 @@ use const App\Database\config;
  * Class Model
  * @package App\Models
  */
-class Model
+abstract class Model
 {
     /**
      * @var BuilderQuery
@@ -37,9 +38,13 @@ class Model
         return Connection::make(config[$this->getConnection()])->pdo();
     }
 
+    /**
+     * @return mixed
+     * @throws JsonException
+     */
     public function toArray()
     {
-        return json_decode(json_encode($this), true);
+        return json_decode(json_encode($this), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -79,15 +84,16 @@ class Model
     /**
      * @return string
      */
-    function getConnection()
+    public function getConnection(): string
     {
         return $this->connection ?? 'default';
     }
 
     /**
      * @return array
+     * @noinspection PhpPossiblePolymorphicInvocationInspection
      */
-    private function objectableProperties()
+    private function objectableProperties(): array
     {
         return $this->objectable;
     }
@@ -148,6 +154,7 @@ class Model
         if (method_exists($this, $name)) {
             return $this->$name();
         }
+        return null;
     }
 
     /**

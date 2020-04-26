@@ -18,6 +18,7 @@ class Router
      * @param $arguments
      * @return MainRouter
      *
+     * @noinspection PhpInconsistentReturnPointsInspection
      */
     public static function __callStatic($name, $arguments)
     {

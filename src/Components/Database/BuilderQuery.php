@@ -38,7 +38,7 @@ class BuilderQuery
 
     public function where($key, $operartor, $value)
     {
-        return "mera-haba";
+        return 'mera-haba';
     }
 
     private function getTable()
@@ -102,7 +102,7 @@ class BuilderQuery
     private function unsetHiddenProperties($result): void
     {
         $hidden = $this->modelInstance->getHidden();
-        array_map(function ($object) use ($hidden) {
+        array_map(static function ($object) use ($hidden) {
             if ($hidden) {
                 foreach ($hidden as $property) {
                     unset($object->$property);
@@ -154,7 +154,7 @@ class BuilderQuery
     }
 
 
-    function activateToSql()
+    public function activateToSql()
     {
         return $this->isActiveToSql();
     }
@@ -176,7 +176,7 @@ class BuilderQuery
     }
 
 
-    function save()
+    public function save()
     {
         return get_object_vars($this->modelInstance);
     }

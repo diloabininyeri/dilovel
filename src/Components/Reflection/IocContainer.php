@@ -4,7 +4,7 @@
 namespace App\Components\Reflection;
 
 
-use App\Http\Request;
+use App\Components\Http\Request;
 use App\interfaces\FormRequestInterface;
 use App\interfaces\RuleInterface;
 use Closure;

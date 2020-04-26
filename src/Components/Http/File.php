@@ -4,8 +4,6 @@
 namespace App\Components\Http;
 
 
-use App\Http\PostedFile;
-
 /**
  * Class File
  * @package App\Http
@@ -30,7 +28,7 @@ class File
     /**
      * @return PostedFile
      */
-    public function postedFile()
+    public function postedFile(): PostedFile
     {
         return new PostedFile((object)$this->file);
     }

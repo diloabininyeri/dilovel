@@ -4,7 +4,8 @@
 namespace App\interfaces;
 
 
-use App\Http\Request;
+
+use App\Components\Http\Request;
 use Closure;
 
 /**

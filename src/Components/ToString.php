@@ -9,6 +9,7 @@ trait ToString
     /**
      * StringUtil constructor.
      * @param string $string
+     * @noinspection PhpUndefinedFieldInspection
      */
     public function __construct(string $string)
     {

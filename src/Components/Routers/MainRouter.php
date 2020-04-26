@@ -4,6 +4,7 @@ namespace App\Components\Routers;
 
 
 use App\Http\Request;
+use JsonException;
 
 /**
  * Class MainRouter
@@ -69,7 +70,7 @@ class MainRouter
         $result = $this->isEqualUrlParamWithRouteParam();
         try {
             (new Printable($result))->output();
-        } catch (\JsonException $e) {
+        } catch (JsonException $e) {
 
             echo $e->getMessage();
         }

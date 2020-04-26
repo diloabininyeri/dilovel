@@ -5,7 +5,7 @@ namespace App\Components\Routers;
 
 
 use App\Components\Collections;
-use App\Database\Model;
+use App\Components\Database\Model;
 use JsonException;
 
 /**

@@ -14,12 +14,12 @@ class Url
     /**
      * @var array
      */
-    private array $request = [];
+    private array $request;
 
     /**
      * @var array
      */
-    private array  $server = [];
+    private array  $server;
 
     /**
      * Url constructor.
@@ -33,15 +33,15 @@ class Url
     /**
      * @return string
      */
-    function getSchema()
+    public function getSchema()
     {
-        return strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, strpos($_SERVER["SERVER_PROTOCOL"], '/'))) . '://';
+        return strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/'))) . '://';
     }
 
     /**
      * @return string
      */
-    function base()
+    public function base(): string
     {
 
         $base = sprintf(
@@ -69,7 +69,7 @@ class Url
     /**
      * @return string
      */
-    public function full()
+    public function full(): string
     {
         return sprintf('%s%s', $this->base(), $this->server['REQUEST_URI']);
     }
@@ -85,7 +85,7 @@ class Url
     /**
      * @return array
      */
-    function query()
+    public function query(): array
     {
         parse_str($this->parse()['query'], $array);
         return $array;

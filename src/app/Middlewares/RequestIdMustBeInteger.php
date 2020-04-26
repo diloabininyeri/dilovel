@@ -4,7 +4,7 @@
 namespace App\app\Middlewares;
 
 
-use App\Http\Request;
+use App\Components\Http\Request;
 use App\interfaces\MiddlewareInterface;
 use Closure;
 

@@ -4,8 +4,6 @@
 namespace App\Components\Http;
 
 
-use App\Http\Request;
-
 /**
  * Class MiddlewareAbstract
  * @package App\Components\Http
