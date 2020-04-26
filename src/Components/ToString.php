@@ -3,7 +3,10 @@
 
 namespace App\Components;
 
-
+/**
+ * Trait ToString
+ * @package App\Components
+ */
 trait ToString
 {
     /**
