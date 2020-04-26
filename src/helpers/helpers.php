@@ -1,6 +1,7 @@
 <?php /** @noinspection PhpIncludeInspection */
 
 use App\Components\Http\Url;
+use App\Components\Routers\RouterName;
 
 /**
  * @param $function
@@ -50,7 +51,10 @@ function abort($status)
     die();
 }
 
-
+/**
+ * @param null $name
+ * @return mixed|Session|string|null
+ */
 function session($name = null)
 {
     $session = new Session();
@@ -61,15 +65,30 @@ function session($name = null)
 
 }
 
-
+/**
+ * @return Url
+ */
 function url()
 {
     return new Url();
 }
 
+/**
+ * @param $file
+ * @return string
+ */
+function assets($file)
+{
+    return sprintf('%s/%s', \url()->base(), trim($file, '/'));
+}
+
+/**
+ * @param $name
+ * @return string
+ */
 function router($name)
 {
-    $path = \App\Components\Routers\RouterName::getName($name);
+    $path = RouterName::getName($name);
     return url()->base() . '/' . $path;
 }
 
@@ -92,6 +111,10 @@ function pascal_to_snake($string)
 }
 
 
+/**
+ * @param null $name
+ * @return App|mixed
+ */
 function app($name = null)
 {
     $app = new App();

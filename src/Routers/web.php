@@ -6,7 +6,7 @@ Router::get('deneme', 'Deneme@index')->name('deneme');
 Router::get('controller', 'Controller@index')->name('controller');
 
 Router::get('dilo/gg',function (){
-    return 'merhabaa';
+    return assets('/css/style.css');
 })->name('ddd');
 
 Router::group(['namespace' => 'Payment'], static function () {
