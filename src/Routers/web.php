@@ -5,7 +5,7 @@ Router::get('deneme', 'Deneme@index')->name('deneme');
 
 Router::get('controller', 'Controller@index')->name('controller');
 
-Router::get('berna/gg',function (){
+Router::get('dilo/gg',function (){
     return 'merhabaa';
 })->name('ddd');
 
