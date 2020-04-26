@@ -32,10 +32,10 @@ class DeleteControllerCommand implements CommandInterface
         $path = $this->createPath($controller);
         if (file_exists($path)) {
             unlink($path);
-            echo 'controller deleted';
+            echo "$controller controller deleted";
         } else {
 
-            echo 'not found controller ';
+            echo "not found $controller controller ";
         }
 
     }
