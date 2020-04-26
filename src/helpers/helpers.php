@@ -32,10 +32,7 @@ function base_path($file = null)
  */
 function view($file, $params = [])
 {
-    extract($params, EXTR_OVERWRITE);
-    ob_start();
-    include_once base_path("src\\views\\$file.php");
-    return ob_get_clean();
+    return  (new \App\Components\View\View($file,$params))->compile();
 }
 
 function dd($param)
@@ -119,4 +116,17 @@ function app($name = null)
 {
     $app = new App();
     return $name === null ? $app : $app->get($name);
+}
+
+/**
+ * @param string|null $view
+ * @return string
+ */
+function view_path(?string $view = null)
+{
+    $viewPath = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'Views';
+    if ($view === null) {
+        return $viewPath;
+    }
+    return $viewPath . DIRECTORY_SEPARATOR . trim("$view.blade.php", '/');
 }
