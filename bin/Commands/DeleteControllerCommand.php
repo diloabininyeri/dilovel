@@ -4,6 +4,7 @@
 namespace Bin\Commands;
 
 
+use Bin\Components\Color;
 use Bin\Components\CommandInterface;
 
 /**
@@ -32,10 +33,10 @@ class DeleteControllerCommand implements CommandInterface
         $path = $this->createPath($controller);
         if (file_exists($path)) {
             unlink($path);
-            echo "$controller controller deleted";
+            echo $this->deletedMessage($controller);
         } else {
 
-            echo "not found $controller controller ";
+            echo $this->notFoundMessage($controller);
         }
 
     }
@@ -47,5 +48,24 @@ class DeleteControllerCommand implements CommandInterface
     private function createPath($controller): string
     {
         return sprintf('%s/%s.php', $this->namespace, $controller);
+    }
+
+    /**
+     * @param $controller
+     * @return string
+     */
+    private function notFoundMessage($controller): string
+    {
+        return Color::consoleText()->getColoredString("not found $controller controller ", 'red');
+    }
+
+    /**
+     * @param $controller
+     * @return string
+     *
+     */
+    private function deletedMessage($controller): string
+    {
+        return Color::consoleText()->getColoredString("$controller controller deleted", 'green');
     }
 }
