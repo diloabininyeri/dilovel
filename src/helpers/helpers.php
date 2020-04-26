@@ -79,7 +79,7 @@ function url()
  */
 function assets($file)
 {
-    return sprintf('%s/%s', \url()->base(), trim($file, '/'));
+    return sprintf('%s/public/%s', \url()->base(), trim($file, '/'));
 }
 
 /**
