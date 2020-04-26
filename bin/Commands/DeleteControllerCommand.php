@@ -3,8 +3,7 @@
 
 namespace Bin\Commands;
 
-
-use Bin\Components\Color;
+use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
 /**
@@ -56,7 +55,7 @@ class DeleteControllerCommand implements CommandInterface
      */
     private function notFoundMessage($controller): string
     {
-        return Color::consoleText()->getColoredString("not found $controller controller ", 'red');
+        return ColorConsole::getInstance()->getColoredString("not found $controller controller ", 'red');
     }
 
     /**
@@ -66,6 +65,6 @@ class DeleteControllerCommand implements CommandInterface
      */
     private function deletedMessage($controller): string
     {
-        return Color::consoleText()->getColoredString("$controller controller deleted", 'green');
+       return  ColorConsole::getInstance()->getColoredString("$controller controller deleted", 'green');
     }
 }
