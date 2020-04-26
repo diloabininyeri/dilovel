@@ -5,6 +5,7 @@ namespace Bin\Commands;
 
 
 use App\Components\Reflection\ProtectedProperty;
+use Bin\Components\Animation;
 use Bin\Components\Command;
 use Bin\Components\CommandInterface;
 use ReflectionException;
@@ -29,6 +30,7 @@ class CommandList implements CommandInterface
     {
 
         $commandList = Command::list();
+        Animation::show();
         foreach ($commandList as $command => $class) {
 
             echo str_pad($command, 50, ' ', STR_PAD_RIGHT) . $this->getDescription(new $class) . "\n";
