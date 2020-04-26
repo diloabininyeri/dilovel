@@ -105,9 +105,13 @@ abstract class  CustomCommandCall
     }
 
 
+    /**
+     * @param $command
+     * @return string
+     */
     private function createNotFoundMessage($command): string
     {
-        return "command not found but you can use $command";
+        return Color::consoleText()->getColoredString( "command not found but you can use $command",'red');
     }
 
 
