@@ -80,7 +80,7 @@ class ColorConsole
     /**
      * @return array
      */
-    private function getForegroundColors(): array
+    public function getForegroundColors(): array
     {
         return array_keys($this->foregroundColors);
     }
@@ -89,7 +89,7 @@ class ColorConsole
     /**
      * @return array
      */
-    private function getBackgroundColors(): array
+    public function getBackgroundColors(): array
     {
         return array_keys($this->backgroundColors);
     }
