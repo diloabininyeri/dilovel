@@ -3,12 +3,18 @@
 
 namespace Bin\Components;
 
+use App\Components\Traits\Singleton;
+
 /**
  * Class ColorConsole
  * @package Bin\Components
  */
 class ColorConsole
 {
+
+    use Singleton;
+
+
     /**
      * @var array
      */

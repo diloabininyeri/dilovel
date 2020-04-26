@@ -12,6 +12,10 @@ class CustomCommand implements CommandInterface
 {
 
     /**
+     * @var string $namespace
+     */
+    private string $namespace='Bin/Commands';
+    /**
      * @var string
      */
     public string $description = 'for example description etc ...';
