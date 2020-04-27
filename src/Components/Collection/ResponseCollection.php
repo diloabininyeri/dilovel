@@ -20,9 +20,9 @@ class ResponseCollection
 
     /**
      * ResponseCollection constructor.
-     * @param Collections $collection
+     * @param Collection $collection
      */
-    public function __construct(Collections $collection)
+    public function __construct(Collection $collection)
     {
 
         $this->collection = $collection->getCollection();

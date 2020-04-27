@@ -16,7 +16,7 @@ use Traversable;
  * Class Collection
  * @noinspection PhpUnused
  */
-class Collections implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable,ArrayAble,toJson
+class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable,ArrayAble,toJson
 {
     /**
      * @var array $collection
@@ -164,9 +164,9 @@ class Collections implements ArrayAccess, IteratorAggregate, JsonSerializable, C
 
     /**
      * @param array $collection
-     * @return Collections
+     * @return Collection
      */
-    public function setCollection(array $collection): Collections
+    public function setCollection(array $collection): Collection
     {
         $this->collection = $collection;
         return $this;

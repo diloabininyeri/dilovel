@@ -2,7 +2,7 @@
 
 namespace App\Components\Database;
 
-use App\Components\Collection\Collections;
+use App\Components\Collection\Collection;
 use PDO;
 
 /**
@@ -82,7 +82,7 @@ class BuilderQuery
     /**
      * @param $query
      * @param array $execute
-     * @return Collections|array
+     * @return Collection|array
      */
     private function run($query, $execute = [])
     {
@@ -91,7 +91,7 @@ class BuilderQuery
             if ($this->modelInstance->getHidden()) {
                 $this->unsetHiddenProperties($result);
             }
-            return new Collections($result);
+            return new Collection($result);
         }
         return [];
     }
