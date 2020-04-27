@@ -17,6 +17,9 @@ class CreateControllerCommand implements CommandInterface
     private string $namespace = 'src/app/Controllers/';
 
 
+    /**
+     * @var string $description
+     */
     protected string $description='Creating a controller is very simple';
 
 
@@ -40,7 +43,7 @@ class CreateControllerCommand implements CommandInterface
     private function createController($name, $path): string
     {
         if (file_exists($path)) {
-            return ColorConsole::getInstance()->getColoredString('controller already exists','red');
+            return ColorConsole::getInstance()->getColoredString("controller already exists\n",'red');
         }
 
         file_put_contents($path, $this->controllerTemplate($name));

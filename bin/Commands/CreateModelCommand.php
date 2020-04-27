@@ -42,12 +42,12 @@ class CreateModelCommand implements CommandInterface
     private function createModel($name, $path, $tableName): string
     {
         if (file_exists($path)) {
-            return ColorConsole::getInstance()->getColoredString('model already exists','red');
+            return ColorConsole::getInstance()->getColoredString("model already exists\n",'red');
         }
 
         file_put_contents($path, $this->modelTemplate($name, $tableName));
 
-        return ColorConsole::getInstance()->getColoredString("$name model created",'green');
+        return ColorConsole::getInstance()->getColoredString("$name model created\n",'green');
 
     }
 

@@ -1,4 +1,4 @@
-<?php
+<?php /**@noinspection PhpUnused*/
 
 
 namespace Bin\Commands;
@@ -20,11 +20,13 @@ class DeleteControllerCommand implements CommandInterface
 
     /**
      * @var string $description
+     * @noinspection PhpUnused
      */
     protected string $description = 'delete  controller is very simple';
 
     /**
      * @param array|null $parameters
+     * @noinspection PhpUnused
      */
     public function handle(?array $parameters): void
     {
@@ -55,7 +57,7 @@ class DeleteControllerCommand implements CommandInterface
      */
     private function notFoundMessage($controller): string
     {
-        return ColorConsole::getInstance()->getColoredString("not found $controller controller ", 'red');
+        return ColorConsole::getInstance()->getColoredString("not found $controller controller \n", 'red');
     }
 
     /**
@@ -65,6 +67,6 @@ class DeleteControllerCommand implements CommandInterface
      */
     private function deletedMessage($controller): string
     {
-       return  ColorConsole::getInstance()->getColoredString("$controller controller deleted", 'green');
+       return  ColorConsole::getInstance()->getColoredString("$controller controller deleted\n", 'green');
     }
 }
