@@ -4,6 +4,7 @@
 namespace Bin;
 
 
+use Bin\Commands\ClearViewCacheCommand;
 use Bin\Commands\CommandList;
 use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateModelCommand;
@@ -28,6 +29,7 @@ class Console extends CustomCommandCall
         'delete:controller' => DeleteControllerCommand::class,
         'make:model' => CreateModelCommand::class,
         'make:view' => CreateViewCommand::class,
+        'clear:view-cache'=>ClearViewCacheCommand::class,
         'list' => CommandList::class,
     ];
 

@@ -22,12 +22,12 @@ class Bootstrap
         /**
          * @var  ProviderInterface[] $providers
          */
-        $config= base_path('src/config/config.php');
-        $providers=include "$config";
+        $config = base_path('src/config/config.php');
+        $providers = include "$config";
 
         foreach ($providers['providers'] as $provider) {
 
-            $provider=new $provider();
+            $provider = new $provider();
             $provider->register();
             $provider->boot();
         }
