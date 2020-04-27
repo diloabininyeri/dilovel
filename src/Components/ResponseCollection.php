@@ -2,6 +2,7 @@
 
 namespace App\Components;
 
+use App\Components\Exceptions\JsonEncodeException;
 use JsonException;
 
 /**
@@ -27,14 +28,19 @@ class ResponseCollection
         $this->collection = $collection->getCollection();
     }
 
+
     /**
      * @return false|string
-     * @throws JsonException
      */
     public function toJson()
     {
         $this->setHeader();
-        return json_encode($this->toArray(), JSON_THROW_ON_ERROR, 512);
+        try {
+            return json_encode($this->toArray(), JSON_THROW_ON_ERROR, 512);
+        } catch (JsonException $e) {
+
+            throw  new JsonEncodeException($e->getMessage());
+        }
     }
 
     /**

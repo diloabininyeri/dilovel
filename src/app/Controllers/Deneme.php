@@ -4,6 +4,7 @@
 namespace App\app\Controllers;
 
 
+use App\app\Responses\ResponseCollectionUser;
 use App\Components\Http\Request;
 use App\app\Models\Users;
 
@@ -13,7 +14,9 @@ class Deneme
     public function index(Request $request)
     {
 
-        return Users::find(1)->getName();
+
+        $users=Users::get();
+        return (new ResponseCollectionUser($users))->toJson();
 
     }
 
