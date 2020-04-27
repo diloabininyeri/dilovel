@@ -2,8 +2,6 @@
 
 namespace App\Components\Http;
 
-
-use App\Components\ResponseCollection;
 use App\interfaces\ArrayAble;
 use App\interfaces\toJson;
 use JsonException;
@@ -90,7 +88,7 @@ class Request implements ArrayAble, toJson
      */
     public function toJson(): ?string
     {
-        return (new ResponseCollection($this->request))->toJson();
+        return json_encode($this->request, JSON_THROW_ON_ERROR);
     }
 
     /**
