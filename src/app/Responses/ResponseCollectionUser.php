@@ -4,7 +4,7 @@
 namespace App\app\Responses;
 
 
-use App\Components\ResponseCollection;
+use App\Components\Collection\ResponseCollection;
 use App\interfaces\ResponseCollectionInterface;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components;
+namespace App\Components\Collection;
 
 use App\Components\Exceptions\JsonEncodeException;
 use JsonException;

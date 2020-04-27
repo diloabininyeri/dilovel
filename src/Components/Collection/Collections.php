@@ -1,5 +1,5 @@
 <?php
-namespace App\Components;
+namespace App\Components\Collection;
 
 use App\interfaces\ArrayAble;
 use App\interfaces\toJson;

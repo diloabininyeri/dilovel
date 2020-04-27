@@ -2,7 +2,7 @@
 
 namespace App\Components\Database;
 
-use App\Components\Collections;
+use App\Components\Collection\Collections;
 use PDO;
 
 /**
