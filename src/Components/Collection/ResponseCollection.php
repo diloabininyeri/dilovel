@@ -9,7 +9,7 @@ use JsonException;
  * Class Response
  * @package App\Components
  */
-class ResponseCollection
+abstract class ResponseCollection
 {
 
 
@@ -24,7 +24,6 @@ class ResponseCollection
      */
     public function __construct(Collection $collection)
     {
-
         $this->collection = $collection->getCollection();
     }
 
