@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\app\Request;
+namespace App\Application\Request;
 
 
-use App\app\Rules\TcNoVerifyRule;
+use App\Application\Rules\TcNoVerifyRule;
 use App\Components\Http\Request;
 use App\interfaces\FormRequestInterface;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\app;
+namespace App\Application;
 
-use App\app\Middlewares\NameMiddleware;
-use App\app\Middlewares\RequestIdMustBeInteger;
+use App\Application\Middlewares\NameMiddleware;
+use App\Application\Middlewares\RequestIdMustBeInteger;
 use App\Components\Http\MiddlewareAbstract;
 
 /**

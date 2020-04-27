@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\app\Rules;
+namespace App\Application\Rules;
 
 
 use App\Components\Http\Request;

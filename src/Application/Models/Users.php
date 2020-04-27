@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\app\Models;
+namespace App\Application\Models;
 
-use App\app\Models\Objectable\UserName;
-use App\app\Models\Objectable\UserPassword;
+use App\Application\Models\Objectable\UserName;
+use App\Application\Models\Objectable\UserPassword;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\HasOne;
 use App\Components\Database\Model;

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\app\Controllers;
+namespace App\Application\Controllers;
 
 
-use App\app\Responses\ResponseCollectionUser;
+use App\Application\Responses\ResponseCollectionUser;
 use App\Components\Http\Request;
-use App\app\Models\Users;
+use App\Application\Models\Users;
 
 class Deneme
 {

@@ -4,7 +4,7 @@
 namespace App\Providers;
 
 
-use App\app\Controllers\MyContainerTest;
+use App\Application\Controllers\MyContainerTest;
 
 /**
  * Class ContainerProvider

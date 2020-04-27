@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\app\Models\Objectable;
+namespace App\Application\Models\Objectable;
 
 
 use App\Components\Database\ObjectAbleProperty;

@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\app\Controllers;
+namespace App\Application\Controllers;
 
 
-use App\app\Request\TcNoVerifyRequest;
-use App\app\Models\Users;
+use App\Application\Request\TcNoVerifyRequest;
+use App\Application\Models\Users;
 
 
 /**

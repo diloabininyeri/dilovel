@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\app\Responses;
+namespace App\Application\Responses;
 
 
 use App\Components\Collection\ResponseCollection;
