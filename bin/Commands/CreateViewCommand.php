@@ -1,4 +1,4 @@
-<?php
+<?php /**@noinspection PhpUnused */
 
 
 namespace Bin\Commands;
@@ -10,12 +10,14 @@ use Bin\Components\CommandInterface;
 /**
  * Class CreateViewCommand
  * @package Bin\Commands
+ * @noinspection PhpUnused
  */
 class CreateViewCommand implements CommandInterface
 {
 
     /**
      * @var string $description
+     *
      */
     protected string $description = 'create view including html ';
     /**
