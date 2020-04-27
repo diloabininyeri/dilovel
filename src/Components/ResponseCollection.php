@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Components;
-
 
 use JsonException;
 
@@ -10,17 +8,23 @@ use JsonException;
  * Class Response
  * @package App\Components
  */
-class Response
+class ResponseCollection
 {
 
-    /**
-     * @var array
-     */
-    private array $array;
 
-    public function __construct(array $array)
+    /**
+     * @var array $collection
+     */
+    protected array $collection;
+
+    /**
+     * ResponseCollection constructor.
+     * @param Collections $collection
+     */
+    public function __construct(Collections $collection)
     {
-        $this->array = $array;
+
+        $this->collection = $collection->getCollection();
     }
 
     /**
@@ -30,7 +34,7 @@ class Response
     public function toJson()
     {
         $this->setHeader();
-        return json_encode($this->array, JSON_THROW_ON_ERROR, 512);
+        return json_encode($this->toArray(), JSON_THROW_ON_ERROR, 512);
     }
 
     /**

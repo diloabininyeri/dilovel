@@ -154,4 +154,22 @@ class Collections implements ArrayAccess, IteratorAggregate, JsonSerializable, C
        return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getCollection(): array
+    {
+        return $this->collection;
+    }
+
+    /**
+     * @param array $collection
+     * @return Collections
+     */
+    public function setCollection(array $collection): Collections
+    {
+        $this->collection = $collection;
+        return $this;
+    }
+
 }

@@ -3,7 +3,7 @@
 namespace App\Components\Http;
 
 
-use App\Components\Response;
+use App\Components\ResponseCollection;
 use App\interfaces\ArrayAble;
 use App\interfaces\toJson;
 use JsonException;
@@ -90,7 +90,7 @@ class Request implements ArrayAble, toJson
      */
     public function toJson(): ?string
     {
-        return (new Response($this->request))->toJson();
+        return (new ResponseCollection($this->request))->toJson();
     }
 
     /**

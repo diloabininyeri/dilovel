@@ -1,7 +1,12 @@
-<?php /** @noinspection PhpIncludeInspection */
+<?php
+/**
+ * @noinspection PhpIncludeInspection
+ * @noinspection PhpUnused
+ */
 
 use App\Components\Http\Url;
 use App\Components\Routers\RouterName;
+use App\Components\View\View;
 
 /**
  * @param $function
@@ -32,7 +37,7 @@ function base_path($file = null)
  */
 function view($file, $params = [])
 {
-    return  (new \App\Components\View\View($file,$params))->compile();
+    return (new View($file, $params))->compile();
 }
 
 function dd($param)
