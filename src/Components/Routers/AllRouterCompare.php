@@ -14,7 +14,7 @@ class AllRouterCompare
     /**
      * @return RouterObject
      */
-    public function findWillWhichExecute()
+    public function findWillWhichExecute():?RouterObject
     {
         $routers = RouterStorage::all();
         foreach ($routers as $router) {
@@ -25,6 +25,7 @@ class AllRouterCompare
             }
 
         }
+        return  null;
 
     }
 
