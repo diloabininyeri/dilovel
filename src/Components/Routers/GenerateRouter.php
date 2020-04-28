@@ -19,10 +19,11 @@ class GenerateRouter
     public function url(string $name, array $parameters = []): string
     {
         $routeUrl = RouterName::getName($name)['router_url'];
+        if(!empty($parameters)) {
+            foreach ($parameters as $key => $value) {
 
-        foreach ($parameters as $key => $value) {
-
-            $routeUrl = str_replace('{'.$key.'}', $value, $routeUrl);
+                $routeUrl = str_replace('{' . $key . '}', $value, $routeUrl);
+            }
         }
         return url()->base() . '/' . $routeUrl;
     }
