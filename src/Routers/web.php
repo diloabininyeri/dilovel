@@ -1,17 +1,8 @@
 <?php
 
-Router::get('/',fn()=>view('index'));
+Router::get('/',fn()=>view('index'))->name('deneme')->middleware('mid','mid2');
+Router::get('/fefe','controller@dsffssffs')->name('deneme1')->middleware('mid','mid2');
+Router::get('/news/id','Controller@meth')->name('fgd')->middleware('mid','mid2');
 
-Router::get('deneme', 'Deneme@index')->name('deneme');
 
-Router::get('controller', 'Controller@index')->name('controller');
-
-Router::get('dilo/gg',function (){
-})->name('ddd');
-
-Router::group(['namespace' => 'Payment'], static function () {
-
-    Router::get('odeme','Pay@make');
-
-});
 

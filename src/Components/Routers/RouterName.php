@@ -39,4 +39,12 @@ class RouterName
         }
         throw new RuntimeException("$name router not found");
     }
+
+    /**
+     * @return array
+     */
+    public static function all(): array
+    {
+        return self::$names;
+    }
 }

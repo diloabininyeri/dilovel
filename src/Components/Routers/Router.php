@@ -7,7 +7,7 @@ namespace App\Components\Routers;
 /**
  * Class Router
  * @package App\Routers\Components
- * @method static get($url, $callback)
+ * @method static MainRouter get($url, $callback)
  * @method static post($url, $callback)
  */
 class Router
@@ -23,15 +23,16 @@ class Router
     public static function __callStatic($name, $arguments)
     {
         if ($_SERVER['REQUEST_METHOD'] === strtoupper($name)) {
-            return new MainRouter(
-                new ParseArguments($arguments)
-            );
+            return (new MainRouter())
+                ->setDynamicUrl($arguments[0])
+                ->setSecondParameter($arguments[1]);
 
         }
     }
 
-    public static function group($attributes,$callback)
+    public static function group($attributes, $callback):void
     {
-        return $callback();
+        (new MainRouter())->group($attributes,$callback);
+
     }
 }

@@ -4,7 +4,7 @@
 namespace App\Components\Routers;
 
 
-use App\Components\Collections;
+use App\Components\Collection\Collection;
 use App\Components\Database\Model;
 use JsonException;
 
@@ -36,7 +36,7 @@ class Printable
 
     public function output(): void
     {
-        if ($this->data instanceof Collections) {
+        if ($this->data instanceof Collection) {
             header('Content-type:application/json');
             echo $this->data;
         } else if ($this->data instanceof Model) {

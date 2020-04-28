@@ -135,3 +135,9 @@ function view_path(?string $view = null)
     }
     return $viewPath . DIRECTORY_SEPARATOR . trim("$view.blade.php", '/');
 }
+
+function activate_errors()
+{
+    error_reporting(E_ALL);
+    ini_set('display_errors',1);
+}
