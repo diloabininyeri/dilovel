@@ -160,7 +160,8 @@ class MainRouter
      */
     public function getUrlPath(): string
     {
-        return trim($_SERVER['REQUEST_URI'], '/');
+        $url = strtok($_SERVER['REQUEST_URI'], '?');
+        return trim($url, '/');
     }
 
     public function __destruct()
