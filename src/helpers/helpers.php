@@ -5,6 +5,7 @@
  */
 
 use App\Components\Http\Url;
+use App\Components\Routers\GenerateRouter;
 use App\Components\Routers\RouterName;
 use App\Components\View\View;
 
@@ -86,12 +87,12 @@ function assets($file)
 
 /**
  * @param $name
+ * @param array $parameters
  * @return string
  */
-function router($name)
+function router($name,array $parameters=[])
 {
-    $path = RouterName::getName($name);
-    return url()->base() . '/' . $path;
+   return  (new GenerateRouter())->router($name,$parameters);
 }
 
 /**
