@@ -83,12 +83,4 @@ class RouterObject
     }
 
 
-    /**
-     *
-     */
-    public function __destruct()
-    {
-        NotFound::$isNotFound++;
-    }
-
 }

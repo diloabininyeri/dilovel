@@ -20,7 +20,7 @@ class AllRouterCompare
         foreach ($routers as $router) {
 
             if ($this->isDynamicAndRealUrlEqual($router)) {
-
+                $this->foundedAnyRoute();
                return new RouterObject($router);
             }
 
@@ -28,6 +28,13 @@ class AllRouterCompare
 
     }
 
+    /**
+     * @return int
+     */
+    private function foundedAnyRoute(): int
+    {
+        return ++NotFound::$isNotFound;
+    }
     /**
      * @param MainRouter $router
      * @return bool
