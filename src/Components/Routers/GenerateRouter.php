@@ -22,7 +22,7 @@ class GenerateRouter
 
         foreach ($parameters as $key => $value) {
 
-            $routeUrl = str_replace($key, $value, $routeUrl);
+            $routeUrl = str_replace('{'.$key.'}', $value, $routeUrl);
         }
         return url()->base() . '/' . $routeUrl;
     }
