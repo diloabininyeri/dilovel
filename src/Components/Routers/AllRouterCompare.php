@@ -14,14 +14,14 @@ class AllRouterCompare
     /**
      * @return RouterObject
      */
-    public function findWillWhichExecute():RouterObject
+    public function findWillWhichExecute()
     {
         $routers = RouterStorage::all();
         foreach ($routers as $router) {
 
             if ($this->isDynamicAndRealUrlEqual($router)) {
                 $this->foundedAnyRoute();
-               return new RouterObject($router);
+                return new RouterObject($router);
             }
 
         }
@@ -35,6 +35,7 @@ class AllRouterCompare
     {
         return ++NotFound::$isNotFound;
     }
+
     /**
      * @param MainRouter $router
      * @return bool
