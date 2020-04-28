@@ -45,7 +45,6 @@ class RouterObject
      */
     public function __construct(MainRouter $router)
     {
-        NotFound::$isNotFound++;
         $this->mainRouter = $router;
     }
 
@@ -83,5 +82,13 @@ class RouterObject
         return is_callable($this->mainRouter->getSecondParameter());
     }
 
+
+    /**
+     *
+     */
+    public function __destruct()
+    {
+        NotFound::$isNotFound++;
+    }
 
 }
