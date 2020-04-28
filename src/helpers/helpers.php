@@ -92,7 +92,7 @@ function assets($file)
  */
 function router($name,array $parameters=[])
 {
-   return  (new GenerateRouter())->router($name,$parameters);
+   return  (new GenerateRouter())->url($name,$parameters);
 }
 
 /**

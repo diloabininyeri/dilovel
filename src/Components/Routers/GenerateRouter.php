@@ -16,7 +16,7 @@ class GenerateRouter
      * @param array $parameters
      * @return string
      */
-    public function router(string $name, array $parameters = []): string
+    public function url(string $name, array $parameters = []): string
     {
         $routeUrl = RouterName::getName($name)['router_url'];
 
