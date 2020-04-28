@@ -20,7 +20,7 @@ class RouterQueryString
      * @param $name
      * @param $value
      */
-    public function set($name, $value): void
+    public static function set($name, $value): void
     {
         self::$queryString[$name] = $value;
     }
@@ -33,6 +33,14 @@ class RouterQueryString
     public static function get($name, $default = null)
     {
         return self::$queryString[$name] ?? $default;
+    }
+
+    /**
+     * @return array
+     */
+    public static function all():array
+    {
+        return  self::$queryString;
     }
 
 }
