@@ -2,6 +2,7 @@
 
 namespace App\Components\Http;
 
+use App\Components\Routers\RouterQueryString;
 use App\interfaces\ArrayAble;
 use App\interfaces\toJson;
 use JsonException;
@@ -50,7 +51,7 @@ class Request implements ArrayAble, toJson
      */
     public function get($key, $default = null)
     {
-        return $this->get[$key] ?? $default;
+        return RouterQueryString::get($key,$this->get[$key] ?? $default);
     }
 
     /**

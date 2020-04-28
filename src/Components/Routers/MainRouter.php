@@ -21,7 +21,7 @@ class MainRouter
     /**
      * @var string
      */
-    private string $name;
+    private ?string $name=null;
 
     /**
      * @var RouterGroup
@@ -47,7 +47,7 @@ class MainRouter
      * @param mixed $name
      * @return MainRouter
      */
-    public function name($name): self
+    public function name(string $name): self
     {
         $this->name = $name;
         return $this;
