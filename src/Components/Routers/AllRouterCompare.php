@@ -24,10 +24,26 @@ class AllRouterCompare
                 return new RouterObject($router);
             }
 
+            if ($this->isEqualCountDynamicAndRealUrl($router) && $this->compareDynamic($router)->isMatched()) {
+                $this->foundedAnyRoute();
+                return new RouterObject($router);
+            }
+
         }
         return  null;
 
     }
+
+
+    /**
+     * @param $router
+     * @return CompareDynamic
+     */
+    private function compareDynamic($router): CompareDynamic
+    {
+        return new CompareDynamic($router);
+    }
+
 
     /**
      * @return int
@@ -52,6 +68,6 @@ class AllRouterCompare
      */
     private function isEqualCountDynamicAndRealUrl(MainRouter $router): bool
     {
-        return count(explode('/', $router->getDynamicUrl(), '/')) === count(explode('/', $router->getUrlPath()));
+        return count(explode('/', $router->getDynamicUrl())) === count(explode('/', $router->getUrlPath()));
     }
 }
