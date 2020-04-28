@@ -26,7 +26,7 @@ class MainRouter
     /**
      * @var RouterGroup
      */
-    private ?RouterGroup $group=null;
+    private ?RouterGroup $group = null;
 
     /**
      * @var string
@@ -43,12 +43,11 @@ class MainRouter
      */
     private array $middleware;
 
-    private MainRouter $mainRouter;
     /**
      * @param mixed $name
      * @return MainRouter
      */
-    public function name($name):self
+    public function name($name): self
     {
         $this->name = $name;
         return $this;
@@ -61,7 +60,6 @@ class MainRouter
     {
         return $this->name;
     }
-
 
 
     /**
@@ -87,7 +85,7 @@ class MainRouter
      * @param Closure $callback
      * @return void
      */
-    public function group($namespaces, Closure $callback):void
+    public function group($namespaces, Closure $callback): void
     {
         $this->group = (new RouterGroup())
             ->setAttribute($namespaces)
@@ -106,7 +104,7 @@ class MainRouter
      * @param mixed $dynamicUrl
      * @return MainRouter
      */
-    public function setDynamicUrl($dynamicUrl):self
+    public function setDynamicUrl($dynamicUrl): self
     {
         $this->dynamicUrl = $dynamicUrl;
         return $this;
@@ -116,7 +114,7 @@ class MainRouter
      * @param mixed $secondParameter
      * @return MainRouter
      */
-    public function setSecondParameter($secondParameter):self
+    public function setSecondParameter($secondParameter): self
     {
         $this->secondParameter = $secondParameter;
         return $this;
@@ -134,7 +132,7 @@ class MainRouter
      * @param mixed $middleware
      * @return MainRouter
      */
-    public function middleware(...$middleware):self
+    public function middleware(...$middleware): self
     {
         $this->middleware = $middleware;
         return $this;
@@ -153,7 +151,7 @@ class MainRouter
      */
     public function getDynamicUrl(): string
     {
-        return trim($this->dynamicUrl,'/');
+        return trim($this->dynamicUrl, '/');
     }
 
 
@@ -162,7 +160,7 @@ class MainRouter
      */
     public function getUrlPath(): string
     {
-        return trim($_SERVER['REQUEST_URI'],'/');
+        return trim($_SERVER['REQUEST_URI'], '/');
     }
 
     public function __destruct()
