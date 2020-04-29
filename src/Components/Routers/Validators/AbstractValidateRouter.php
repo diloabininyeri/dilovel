@@ -16,7 +16,7 @@ abstract class AbstractValidateRouter
      */
     public function validate($param, $type): bool
     {
-        return call_user_func($this->getTypes()[$type].'::validate',$param);
+        return call_user_func([$this->getTypes()[$type],'validate'],$param);
     }
 
     /**
