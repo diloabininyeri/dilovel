@@ -21,9 +21,10 @@ class Dispatcher
     private function callMiddleware($middleware): Middleware
     {
 
-        $middleware=new Middleware(...$middleware);
+        $middleware = new Middleware(...$middleware);
         return $middleware->call(new Request());
     }
+
     /**
      * @param RouterObject $routerObject
      * @return mixed
@@ -32,17 +33,30 @@ class Dispatcher
     {
 
 
-        if(!empty($routerObject->getMiddleware())) {
+        if (!empty($routerObject->getMiddleware())) {
             $middleware = $this->callMiddleware($routerObject->getMiddleware());
             if (!$middleware->isInstanceOfRequest()) {
-                return  $middleware->getResponse();
+                return $middleware->getResponse();
             }
-        }
 
-        if($routerObject->isCallableSecondParameter()) {
+            return $this->callRouterCallable($routerObject, $middleware);
+
+        }
+        return null;
+
+
+    }
+
+    /**
+     * @param RouterObject $routerObject
+     * @param $middleware
+     * @return mixed
+     */
+    private function callRouterCallable(RouterObject $routerObject, $middleware)
+    {
+        if ($routerObject->isCallableSecondParameter()) {
             return call_user_func($routerObject->getSecondParameter(), $middleware->getResponse());
         }
-        return  $routerObject->getSecondParameter();
-
+        return $routerObject->getSecondParameter();
     }
 }
