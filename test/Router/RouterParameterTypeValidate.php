@@ -38,4 +38,9 @@ class RouterParameterTypeValidate extends TestCase
     {
         $this->assertTrue($this->validator->validate('hello', 'string'));
     }
+
+    public function testIsDate()
+    {
+        $this->assertTrue($this->validator->validate('2012-12-12','date'));
+    }
 }
