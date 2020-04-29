@@ -16,7 +16,7 @@ Router::get('deneme/int:id/string:name/:any/date:date',static function (){
         ]);
 
 })->name('asd');
-Router::get('/fefe','controller@dsffssffs')->name('deneme1')->middleware('name1');
+Router::get('/fefe','controller@dsffssffs')->name('deneme1')->middleware('name');
 Router::get('/news/int:id','Controller@meth')->name('fgd')->middleware('mid','mid2');
 Router::get('/news/id/haber','Controlljjjjjjjjjer@meth')->name('fgd')->middleware('mid','mid2');
 

@@ -10,7 +10,7 @@ use RuntimeException;
  * Class MiddlewareNotException
  * @package App\Components\Exceptions
  */
-class MiddlewareNotException extends RuntimeException
+class MiddlewareNotFoundException extends RuntimeException
 {
 
 }

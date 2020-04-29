@@ -4,6 +4,8 @@
 namespace App\Components\Http;
 
 
+use App\Components\Exceptions\MiddlewareNotFoundException;
+
 /**
  * Class MiddlewareAbstract
  * @package App\Components\Http
@@ -43,7 +45,10 @@ abstract class MiddlewareAbstract
     private function getMiddlewareRoute($names): array
     {
         return array_map(function ($name) {
-            return $this->middleware[$name];
+            if(isset($this->middleware[$name])) {
+                return $this->middleware[$name];
+            }
+            throw new MiddlewareNotFoundException("$name middleware not found");
         }, $names);
     }
 
