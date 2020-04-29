@@ -152,5 +152,5 @@ function activate_errors()
  */
 function request()
 {
-    return new SingletonRequest();
+    return SingletonRequest::getInstance();
 }
