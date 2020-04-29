@@ -1,5 +1,7 @@
 <?php
 
+Router::get('/',fn()=>view('index'));
+
 //Router::get('/home/int:id',fn()=>router('deneme',['int:id'=>14]))->name('deneme')->middleware('must_be_int');
 Router::get('/home/int:id',fn()=>'strinh olandan ');
 
