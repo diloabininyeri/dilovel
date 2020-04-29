@@ -5,7 +5,7 @@ Router::get('/home/ff/id',fn()=>router('deneme',['id'=>14]))->name('deneme')->mi
 
 Router::get('deneme/:id',static function (){
 
-    return request()->url()->path();
+    return request()->get('id');
 
 });
 Router::get('/fefe','controller@dsffssffs')->name('deneme1')->middleware('mid','mid2');
