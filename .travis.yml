@@ -1,0 +1,10 @@
+language: php
+php:
+  - '7.4'
+  - hhvm # on Trusty only
+  - nightly
+before_script:
+  - composer install
+script:
+  - ./vendor/bin/phpunit
+
