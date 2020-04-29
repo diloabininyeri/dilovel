@@ -13,10 +13,7 @@ class Deneme
 
     public function index(Request $request)
     {
-
-
-        $users=Users::get();
-        return (new ResponseCollectionUser($users))->toJson();
+        return  $request->toArray();
 
     }
 
