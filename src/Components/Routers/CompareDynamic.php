@@ -4,6 +4,8 @@
 namespace App\Components\Routers;
 
 
+use App\Components\Routers\Validators\ValidateRouter;
+
 /**
  * Class CompareDynamic
  * @package App\Components\Routers
@@ -62,10 +64,21 @@ class CompareDynamic
     {
         $stepMatched = 0;
         foreach ($routerUrl as $key => $routeParam) {
-            if (strpos($routeParam, ':') === 0) {
+            if (strpos($routeParam, ':') !== false) {
 
-                ++$stepMatched;
-                $this->setQueryString($routeParam, $urlPath[$key]);
+                if ($this->isRequiredValidate($routeParam)) {
+                    if ($this->validateRouterParamType($routeParam, $urlPath[$key])) {
+
+                        ++$stepMatched;
+                        $this->setQueryString($this->getDynamicRouterName($routeParam), $urlPath[$key]);
+                    }
+                } else {
+
+                    ++$stepMatched;
+                    $this->setQueryString($routeParam, $urlPath[$key]);
+                }
+
+
             } else if ($urlPath[$key] === $routeParam) {
                 ++$stepMatched;
             }
@@ -102,5 +115,48 @@ class CompareDynamic
     {
         $this->isMatched = $isFound;
         return $this;
+    }
+
+    /**
+     * @param $routerParameter
+     * @return string
+     */
+    private function getDynamicRouterName($routerParameter): string
+    {
+       return $this->findTypeAndName($routerParameter)['router_dynamic_param_name'];
+    }
+
+    /**
+     * @param $routerParameter
+     * @param $value
+     * @return bool
+     */
+    private function validateRouterParamType($routerParameter, $value): bool
+    {
+        $find = $this->findTypeAndName($routerParameter);
+        $validator = new ValidateRouter();
+        return $validator->validate($value, $find['validate_type']);
+
+    }
+
+    /**
+     * @param $routerParameter
+     * @return bool
+     */
+    private function isRequiredValidate($routerParameter):bool
+    {
+        $find = $this->findTypeAndName($routerParameter);
+        return (isset($find['validate_type']) && !empty($find['validate_type']));
+    }
+
+    /**
+     * @param $routerParam
+     * @return array
+     */
+    private function findTypeAndName($routerParam): array
+    {
+        $re = '/(?P<validate_type>.*):(?P<router_dynamic_param_name>.*)/m';
+        preg_match_all($re, $routerParam, $matches, PREG_SET_ORDER, 0);
+        return $matches[0];
     }
 }

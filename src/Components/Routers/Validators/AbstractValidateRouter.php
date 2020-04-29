@@ -11,14 +11,16 @@ namespace App\Components\Routers\Validators;
 abstract class AbstractValidateRouter
 {
     /**
-     * @param $param
+     * @param $value
      * @param $type
      * @return bool
      *
      */
-    public function validate($param, $type): bool
+
+    public function validate($value, $type): bool
     {
-        return call_user_func([$this->getTypes()[$type],'validate'],$param);
+        $class=$this->getTypes()[$type];
+        return (new $class())->validate($value);
     }
 
     /**

@@ -14,11 +14,11 @@ class ValidateRouterParamDate implements ValidateRouterInterface
 {
 
     /**
-     * @param $url
+     * @param $value
      * @return bool
      */
-    public function validate($url): bool
+    public function validate($value): bool
     {
-        return (bool)strtotime($url);
+        return (bool)strtotime($value);
     }
 }

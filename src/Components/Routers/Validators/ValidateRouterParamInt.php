@@ -15,11 +15,12 @@ class ValidateRouterParamInt implements ValidateRouterInterface
 
 
     /**
-     * @param $url
+     * @param $value
      * @return bool
      */
-    public function validate($url): bool
+    public function validate($value): bool
     {
-        return is_int($url);
+
+        return is_numeric($value);
     }
 }
