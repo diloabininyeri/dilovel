@@ -1,3 +1,4 @@
 .idea
 vendor
 deneme.php
+.phpunit.result.cache
