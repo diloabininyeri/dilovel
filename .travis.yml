@@ -1,4 +1,8 @@
 language: php
+os:
+  - linux
+  - osx
+  - windows
 php:
   - '7.4'
   - hhvm # on Trusty only
