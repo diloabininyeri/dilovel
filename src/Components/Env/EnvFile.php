@@ -12,7 +12,7 @@ use JsonException;
  * Class EnvFile
  * @package App\Components\Env
  */
-class EnvFile implements ArrayAble,ToJson
+class EnvFile implements ArrayAble, ToJson
 {
     /**
      * @var array|false
@@ -60,11 +60,11 @@ class EnvFile implements ArrayAble,ToJson
      * @param $line
      * @return array
      */
-    private function reduceArray(array $lines,$line): array
+    private function reduceArray(array $lines, $line): array
     {
         [$key, $value] = array_map('trim', explode('=', $line));
         $lines[$key] = $value;
-        return  $lines;
+        return $lines;
     }
 
     /**
@@ -82,6 +82,14 @@ class EnvFile implements ArrayAble,ToJson
      */
     public function toJson(): ?string
     {
-       return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
+        return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * @return array
+     */
+    public function toLower(): array
+    {
+        return array_change_key_case($this->toArray(), CASE_LOWER);
     }
 }
