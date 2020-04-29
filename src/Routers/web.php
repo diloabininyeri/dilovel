@@ -4,7 +4,7 @@ Router::get('/home/int:id',fn()=>router('deneme',['id'=>14]))->name('deneme')->m
 Router::get('/home/string:id',fn()=>'strinh olandan ');
 
 
-Router::get('deneme/:id',static function (){
+Router::get('deneme/string:id',static function (){
 
     $id= request()->get('id');
     return router('asd',['id'=>$id]);
