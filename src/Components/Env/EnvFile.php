@@ -48,17 +48,21 @@ class EnvFile
      */
     public function toArray(): array
     {
+        return array_reduce($this->envFile, [$this, 'reduceArray'], []);
+    }
 
-        return array_reduce($this->envFile, static function ($array, $line) {
-            $line = explode('=', $line);
-            [$key, $value] = array_map('trim', $line);
-            $array[$key] = $value;
+    /**
+     * @param array $lines
+     * @param $line
+     * @return array
+     */
+    private function reduceArray(array $lines, $line): array
+    {
+        $line = explode('=', $line);
+        [$key, $value] = array_map('trim', $line);
+        $lines[$key] = $value;
 
-            return $array;
-
-        }, []);
-
-
+        return $lines;
     }
 
     /**
