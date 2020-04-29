@@ -2,7 +2,7 @@
 namespace App\Components\Collection;
 
 use App\Interfaces\ArrayAble;
-use App\Interfaces\toJson;
+use App\Interfaces\ToJson;
 use App\Macro\ModelMacro;
 use ArrayAccess;
 use ArrayIterator;
@@ -16,7 +16,7 @@ use Traversable;
  * Class Collection
  * @noinspection PhpUnused
  */
-class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable,ArrayAble,toJson
+class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable,ArrayAble,ToJson
 {
     /**
      * @var array $collection

@@ -4,14 +4,14 @@ namespace App\Components\Http;
 
 use App\Components\Routers\RouterQueryString;
 use App\Interfaces\ArrayAble;
-use App\Interfaces\toJson;
+use App\Interfaces\ToJson;
 use JsonException;
 
 /**
  * Class Request
  * @package App\Http
  */
-class Request implements ArrayAble, toJson
+class Request implements ArrayAble, ToJson
 {
     /**
      * @var array

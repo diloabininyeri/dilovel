@@ -7,7 +7,7 @@ namespace App\Interfaces;
  * Interface toJson
  * @package App\interfaces
  */
-interface toJson
+interface ToJson
 {
     /**
      * @return string
