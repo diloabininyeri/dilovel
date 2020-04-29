@@ -1,6 +1,6 @@
 <?php
 
-Router::get('/home/int:id',fn()=>router('deneme',['id'=>14]))->name('deneme')->middleware('mid','mid2');
+Router::get('/home/int:id',fn()=>router('deneme',['int:id'=>14]))->name('deneme')->middleware('must_be_int');
 Router::get('/home/string:id',fn()=>'strinh olandan ');
 
 

@@ -17,7 +17,7 @@ class MiddlewareTest extends TestCase
      */
     public function testCanPassMiddleware()
     {
-        $middleware = new Middleware('name', 'must_be_int');
+        $middleware = new Middleware('must_be_int');
         $middleware->call(new Request());
         $this->assertInstanceOf(Request::class, $middleware->getResponse());
     }
