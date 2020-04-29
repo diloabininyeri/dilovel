@@ -39,10 +39,10 @@ class Dispatcher
                 return $middleware->getResponse();
             }
 
-            return $this->callRouterCallable($routerObject, $middleware);
+            return $this->callRouterCallableThroughMiddleware($routerObject, $middleware);
 
         }
-        return null;
+        return $this->callUserFunc($routerObject);
 
 
     }
@@ -52,11 +52,25 @@ class Dispatcher
      * @param $middleware
      * @return mixed
      */
-    private function callRouterCallable(RouterObject $routerObject, $middleware)
+    private function callRouterCallableThroughMiddleware(RouterObject $routerObject, $middleware)
     {
         if ($routerObject->isCallableSecondParameter()) {
             return call_user_func($routerObject->getSecondParameter(), $middleware->getResponse());
         }
         return $routerObject->getSecondParameter();
+    }
+
+    /**
+     * @param RouterObject $routerObject
+     * @return mixed
+     */
+    private function callUserFunc(RouterObject $routerObject)
+    {
+        if ($routerObject->isCallableSecondParameter()) {
+            return call_user_func($routerObject->getSecondParameter(), new Request());
+        }
+
+        return $routerObject->getSecondParameter();
+
     }
 }

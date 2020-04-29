@@ -41,7 +41,7 @@ class MainRouter
     /**
      * @var array
      */
-    private array $middleware;
+    private ?array $middleware=[];
 
     /**
      * @param mixed $name

@@ -1,7 +1,7 @@
 <?php
 
-Router::get('/home/int:id',fn()=>router('deneme',['int:id'=>14]))->name('deneme')->middleware('must_be_int');
-Router::get('/home/string:id',fn()=>'strinh olandan ')->middleware('name');
+//Router::get('/home/int:id',fn()=>router('deneme',['int:id'=>14]))->name('deneme')->middleware('must_be_int');
+Router::get('/home/int:id',fn()=>'strinh olandan ');
 
 
 Router::get('deneme/int:id/string:name/:any/date:date',static function (){
