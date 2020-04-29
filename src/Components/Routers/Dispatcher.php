@@ -20,7 +20,6 @@ class Dispatcher
      */
     private function callMiddleware($middleware): Middleware
     {
-
         $middleware = new Middleware(...$middleware);
         return $middleware->call(new Request());
     }
@@ -31,8 +30,6 @@ class Dispatcher
      */
     public function route(RouterObject $routerObject)
     {
-
-
         if (!empty($routerObject->getMiddleware())) {
             $middleware = $this->callMiddleware($routerObject->getMiddleware());
             if (!$middleware->isInstanceOfRequest()) {
