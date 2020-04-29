@@ -4,8 +4,6 @@
 namespace App\Components\Routers\Validators;
 
 
-use App\Interfaces\ValidateRouterInterface;
-
 abstract class AbstractValidateRouter
 {
     /**
