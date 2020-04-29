@@ -14,9 +14,10 @@ class ValidateRouter extends AbstractValidateRouter
     /**
      * @var array|string[]
      */
-    protected array $type=[
+    protected array $type = [
 
-        'int'=>ValidateRouterParamInt::class,
-        'string'=>ValidateRouterParamString::class
+        'int' => ValidateRouterParamInt::class,
+        'string' => ValidateRouterParamString::class,
+        'date' => ValidateRouterParamDate::class
     ];
 }
