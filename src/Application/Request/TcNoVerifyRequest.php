@@ -6,7 +6,7 @@ namespace App\Application\Request;
 
 use App\Application\Rules\TcNoVerifyRule;
 use App\Components\Http\Request;
-use App\interfaces\FormRequestInterface;
+use App\Interfaces\FormRequestInterface;
 
 
 /**

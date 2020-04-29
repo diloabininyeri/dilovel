@@ -5,7 +5,7 @@ namespace App\Application\Rules;
 
 
 use App\Components\Http\Request;
-use App\interfaces\RuleInterface;
+use App\Interfaces\RuleInterface;
 
 /**
  * Class TcNoVerifyRule

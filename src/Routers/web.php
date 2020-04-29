@@ -9,7 +9,7 @@ Router::get('deneme/:id',static function (){
 
 });
 Router::get('/fefe','controller@dsffssffs')->name('deneme1')->middleware('mid','mid2');
-Router::get('/news/5','Controller@meth')->name('fgd')->middleware('mid','mid2');
+Router::get('/news/id','Controller@meth')->name('fgd')->middleware('mid','mid2');
 Router::get('/news/id/haber','Controlljjjjjjjjjer@meth')->name('fgd')->middleware('mid','mid2');
 
 

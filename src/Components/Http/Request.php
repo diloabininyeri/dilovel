@@ -3,8 +3,8 @@
 namespace App\Components\Http;
 
 use App\Components\Routers\RouterQueryString;
-use App\interfaces\ArrayAble;
-use App\interfaces\toJson;
+use App\Interfaces\ArrayAble;
+use App\Interfaces\toJson;
 use JsonException;
 
 /**

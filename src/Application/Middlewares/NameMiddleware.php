@@ -5,7 +5,7 @@ namespace App\Application\Middlewares;
 
 
 use App\Components\Http\Request;
-use App\interfaces\MiddlewareInterface;
+use App\Interfaces\MiddlewareInterface;
 use Closure;
 
 /**

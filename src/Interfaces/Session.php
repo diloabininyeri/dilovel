@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\interfaces;
+namespace App\Interfaces;
 
 /**
  * Interface Session

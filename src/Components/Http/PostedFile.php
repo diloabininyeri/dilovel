@@ -4,7 +4,7 @@
 namespace App\Components\Http;
 
 
-use App\interfaces\ArrayAble;
+use App\Interfaces\ArrayAble;
 
 /**
  * Class PostedFile

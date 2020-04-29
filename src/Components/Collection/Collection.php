@@ -1,8 +1,8 @@
 <?php
 namespace App\Components\Collection;
 
-use App\interfaces\ArrayAble;
-use App\interfaces\toJson;
+use App\Interfaces\ArrayAble;
+use App\Interfaces\toJson;
 use App\Macro\ModelMacro;
 use ArrayAccess;
 use ArrayIterator;

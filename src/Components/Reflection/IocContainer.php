@@ -5,8 +5,8 @@ namespace App\Components\Reflection;
 
 
 use App\Components\Http\Request;
-use App\interfaces\FormRequestInterface;
-use App\interfaces\RuleInterface;
+use App\Interfaces\FormRequestInterface;
+use App\Interfaces\RuleInterface;
 use Closure;
 use Exception;
 use ReflectionException;

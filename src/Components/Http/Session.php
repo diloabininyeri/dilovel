@@ -3,7 +3,7 @@
 
 namespace App\Components\Http;
 
-use App\interfaces\Session as SessionInterface;
+use App\Interfaces\Session as SessionInterface;
 
 
 /**

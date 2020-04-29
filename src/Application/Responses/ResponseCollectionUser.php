@@ -5,7 +5,7 @@ namespace App\Application\Responses;
 
 
 use App\Components\Collection\ResponseCollection;
-use App\interfaces\ResponseCollectionInterface;
+use App\Interfaces\ResponseCollectionInterface;
 
 /**
  * Class ResponseUser
