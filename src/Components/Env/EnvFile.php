@@ -58,11 +58,8 @@ class EnvFile
      */
     private function reduceArray(array $lines, $line): array
     {
-        $line = explode('=', $line);
-        [$key, $value] = array_map('trim', $line);
-        $lines[$key] = $value;
-
-        return $lines;
+        [$key, $value] = array_map('trim', explode('=', $line));
+        return [$key => $value];
     }
 
     /**
