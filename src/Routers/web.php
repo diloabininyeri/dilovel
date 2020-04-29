@@ -4,10 +4,16 @@ Router::get('/home/int:id',fn()=>router('deneme',['id'=>14]))->name('deneme')->m
 Router::get('/home/string:id',fn()=>'strinh olandan ');
 
 
-Router::get('deneme/string:id',static function (){
+Router::get('deneme/int:id/string:name/:any/date:date',static function (){
 
     $id= request()->get('id');
-    return router('asd',['id'=>$id]);
+    return router('asd',
+        [
+            'int:id'=>$id,
+            'string:name'=>request()->get('name'),
+            ':any'=>request()->get('any'),
+            'date:date'=>request()->get('date')
+        ]);
 
 })->name('asd');
 Router::get('/fefe','controller@dsffssffs')->name('deneme1')->middleware('mid','mid2');

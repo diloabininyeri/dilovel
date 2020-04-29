@@ -22,7 +22,6 @@ if ($find instanceof RouterObject) {
     $printable->output();
 }
 
-
 echo NotFound::isCannotFindAny() ? view('404') : null;
 
 
