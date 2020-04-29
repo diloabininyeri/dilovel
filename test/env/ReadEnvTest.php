@@ -12,7 +12,7 @@ class ReadEnvTest extends TestCase
         $file = new EnvFile('.env');
         $value = $file->getValue('TEST_EXAMPLE');
 
-        $this->assertEquals($value,123456);
+        $this->assertEquals(123456, $value);
     }
 
 }

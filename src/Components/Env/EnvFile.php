@@ -52,13 +52,15 @@ class EnvFile
     }
 
     /**
+     * @param array $lines
      * @param $line
      * @return array
      */
-    private function reduceArray($line): array
+    private function reduceArray(array $lines,$line): array
     {
         [$key, $value] = array_map('trim', explode('=', $line));
-        return [$key => $value];
+        $lines[$key] = $value;
+        return  $lines;
     }
 
     /**
