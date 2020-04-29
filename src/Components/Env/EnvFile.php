@@ -4,11 +4,15 @@
 namespace App\Components\Env;
 
 
+use App\Interfaces\ArrayAble;
+use App\Interfaces\ToJson;
+use JsonException;
+
 /**
  * Class EnvFile
  * @package App\Components\Env
  */
-class EnvFile
+class EnvFile implements ArrayAble,ToJson
 {
     /**
      * @var array|false
@@ -70,5 +74,14 @@ class EnvFile
     public function getValue(string $name)
     {
         return $this->toArray()[$name];
+    }
+
+    /**
+     * @return string|null
+     * @throws JsonException
+     */
+    public function toJson(): ?string
+    {
+       return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
     }
 }
