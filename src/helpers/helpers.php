@@ -4,6 +4,7 @@
  * @noinspection PhpUnused
  */
 
+use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Routers\GenerateRouter;
 use App\Components\Routers\RouterName;
@@ -90,9 +91,9 @@ function assets($file)
  * @param array $parameters
  * @return string
  */
-function router($name,array $parameters=[])
+function router($name, array $parameters = [])
 {
-   return  (new GenerateRouter())->url($name,$parameters);
+    return (new GenerateRouter())->url($name, $parameters);
 }
 
 /**
@@ -137,8 +138,19 @@ function view_path(?string $view = null)
     return $viewPath . DIRECTORY_SEPARATOR . trim("$view.blade.php", '/');
 }
 
+/**
+ *
+ */
 function activate_errors()
 {
     error_reporting(E_ALL);
-    ini_set('display_errors',1);
+    ini_set('display_errors', 1);
+}
+
+/**
+ * @return SingletonRequest
+ */
+function request()
+{
+    return new SingletonRequest();
 }
