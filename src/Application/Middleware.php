@@ -2,8 +2,9 @@
 
 namespace App\Application;
 
-use App\Application\Middlewares\NameMiddleware;
-use App\Application\Middlewares\RequestIdMustBeInteger;
+use App\Application\Middleware\NameMiddleware;
+use App\Application\Middleware\RequestIdMustBeInteger;
+use App\Application\Middleware\TestExample;
 use App\Components\Http\MiddlewareAbstract;
 
 /**
@@ -18,7 +19,8 @@ class Middleware extends MiddlewareAbstract
     protected array $middleware = [
 
         'must_be_int' => RequestIdMustBeInteger::class,
-        'name' => NameMiddleware::class
+        'name' => NameMiddleware::class,
+        'example'=>TestExample::class,
 
     ];
 }

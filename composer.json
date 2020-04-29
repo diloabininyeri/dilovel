@@ -20,7 +20,8 @@
     "php": ">=7.4",
     "ext-pdo": "*",
     "ext-json": "*",
-    "ext-apache": "*"
+    "ext-apache": "*",
+    "phpunit/phpunit": "^9.1"
   },
   "autoload": {
     "psr-4": {
