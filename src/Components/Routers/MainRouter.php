@@ -175,10 +175,10 @@ class MainRouter
     }
 
     /**
-     * @param mixed $authorize
+     * @param array $authorize
      * @return MainRouter
      */
-    public function authorize($authorize):self
+    public function authorize(array $authorize):self
     {
         $this->authorize = $authorize;
         return $this;
