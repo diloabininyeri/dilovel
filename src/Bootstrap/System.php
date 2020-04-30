@@ -21,7 +21,7 @@ class System
     /**
      * @return $this
      */
-    public function run():self
+    public function run(): self
     {
         Application::run();
         return $this;
@@ -30,7 +30,7 @@ class System
     /**
      * @return $this
      */
-    public function loadRouterWeb():self
+    public function loadRouterWeb(): self
     {
         includeFile('src/Routers/web.php');
         return $this;
@@ -39,13 +39,16 @@ class System
     /**
      * @throws JsonException
      */
-    public  function startUp():void
+    public function startUp(): void
     {
         $compare = new AllRouterCompare();
-        $find = $compare->findWillWhichExecute();
-        if ($find instanceof RouterObject) {
-            $routeResponse = (new Dispatcher())->route($find);
+        $findRouterObject = $compare->findWillWhichExecute();
+
+        if ($findRouterObject instanceof RouterObject) {
+
+            $routeResponse = (new Dispatcher())->route($findRouterObject);
             $printable = new Printable($routeResponse);
+
             $printable->output();
         }
 
