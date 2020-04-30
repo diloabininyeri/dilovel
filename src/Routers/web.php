@@ -2,6 +2,8 @@
 
 Router::get('/', fn() => view('index'));
 
+Router::post('form','ff@ff');
+
 Router::get('/home/:id', fn() => 'strinh olandan ')->name('home');
 
 

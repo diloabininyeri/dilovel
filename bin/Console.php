@@ -11,6 +11,7 @@ use Bin\Commands\CreateModelCommand;
 use Bin\Commands\CreateViewCommand;
 use Bin\Commands\CustomCommand;
 use Bin\Commands\DeleteControllerCommand;
+use Bin\Commands\RouteListCommand;
 use Bin\Components\CustomCommandCall;
 
 /**
@@ -29,8 +30,9 @@ class Console extends CustomCommandCall
         'delete:controller' => DeleteControllerCommand::class,
         'make:model' => CreateModelCommand::class,
         'make:view' => CreateViewCommand::class,
-        'clear:view-cache'=>ClearViewCacheCommand::class,
+        'clear:view-cache' => ClearViewCacheCommand::class,
         'list' => CommandList::class,
+        'router:list' => RouteListCommand::class
     ];
 
 }

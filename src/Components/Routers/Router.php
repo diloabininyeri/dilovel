@@ -4,11 +4,15 @@
 namespace App\Components\Routers;
 
 
+use App\Interfaces\PseudoRouteInterface;
+
 /**
  * Class Router
- * @package App\Routers\Components
- * @method static MainRouter get($url, $callback)
- * @method static post($url, $callback)
+ * @package App\Components\Routers
+ * @method static PseudoRouteInterface get($urlPattern,$callback)
+ * @method static PseudoRouteInterface post($urlPattern,$callback)
+ * @method PseudoRouteInterface middleware()
+ * @method PseudoRouteInterface name
  */
 class Router
 {
@@ -30,9 +34,9 @@ class Router
         }
     }
 
-    public static function group($attributes, $callback):void
+    public static function group($attributes, $callback): void
     {
-        (new MainRouter())->group($attributes,$callback);
+        (new MainRouter())->group($attributes, $callback);
 
     }
 }
