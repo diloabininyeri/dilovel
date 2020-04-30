@@ -151,5 +151,14 @@ class Request implements ArrayAble, ToJson
         return new Url();
     }
 
+    /**
+     * @return false|string
+     * @throws JsonException
+     * @noinspection MagicMethodsValidityInspection
+     */
+    public function __toString()
+    {
+        return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
+    }
 
 }
