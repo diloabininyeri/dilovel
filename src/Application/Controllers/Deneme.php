@@ -13,8 +13,7 @@ class Deneme
 
     public function index(Request $request)
     {
-        return  $request->toArray();
-
+        return  router('home',[':id'=>45]);
     }
 
 }
