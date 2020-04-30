@@ -7,6 +7,6 @@ require_once 'vendor/autoload.php';
 
 activate_errors();
 
-(new App())
+echo (new App())
     ->run()
     ->call404IfNotFound();
