@@ -4,7 +4,6 @@
 namespace App\Components\Routers;
 
 
-use Closure;
 
 /**
  * Class RouterObject
@@ -12,26 +11,6 @@ use Closure;
  */
 class RouterObject
 {
-
-    /**
-     * @var string
-     */
-    private string $routeName;
-
-    /**
-     * @var Closure
-     */
-    private Closure $callable;
-
-    /**
-     * @var
-     */
-    private $secondParameter;
-
-    /**
-     * @var array
-     */
-    private array $middleware;
 
     /**
      * @var MainRouter $mainRouter
@@ -82,5 +61,21 @@ class RouterObject
         return is_callable($this->mainRouter->getSecondParameter());
     }
 
+    /**
+     * @return array
+     */
+    public function getAuthorize():array
+    {
+        return $this->mainRouter->getAuthorize();
+    }
+
+
+    /**
+     * @return RouterGroup
+     */
+    public function getGroup(): RouterGroup
+    {
+        return $this->mainRouter->getGroup();
+    }
 
 }

@@ -17,24 +17,29 @@ class MainRouter
      */
     private array $namespaces;
 
+    /**
+     * @var array $authorize
+     */
+    private ?array $authorize=[];
+
 
     /**
-     * @var string
+     * @var string $name
      */
     private ?string $name=null;
 
     /**
-     * @var RouterGroup
+     * @var RouterGroup $group
      */
     private ?RouterGroup $group = null;
 
     /**
-     * @var string
+     * @var string $dynamicUrl
      */
     private string $dynamicUrl;
 
     /**
-     * @var
+     * @var $secondParameter
      */
     private $secondParameter;
 
@@ -167,6 +172,24 @@ class MainRouter
     public function __destruct()
     {
         RouterStorage::add($this);
+    }
+
+    /**
+     * @param mixed $authorize
+     * @return MainRouter
+     */
+    public function authorize($authorize):self
+    {
+        $this->authorize = $authorize;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAuthorize(): array
+    {
+        return $this->authorize;
     }
 
 }

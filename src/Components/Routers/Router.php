@@ -13,6 +13,7 @@ use App\Interfaces\PseudoRouteInterface;
  * @method static PseudoRouteInterface post($urlPattern,$callback)
  * @method PseudoRouteInterface middleware()
  * @method PseudoRouteInterface name
+ * @method PseudoRouteInterface authorize(\Closure $callback)
  */
 class Router
 {
