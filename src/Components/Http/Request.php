@@ -42,6 +42,7 @@ class Request implements ArrayAble, ToJson
         $this->request = array_map('trim', $_REQUEST);
         $this->get = array_map('trim', $_GET);
         $this->post = array_map('trim', $_POST);
+        $this->server=$_SERVER;
     }
 
     /**
