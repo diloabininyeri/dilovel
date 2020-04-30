@@ -2,9 +2,11 @@
 
 Router::get('/', fn() => view('index'));
 
-Router::get('form','ff@ff')->middleware('example')->authorize(['App\Routers\Authorize\RouterAuthorizeExample','isAuthorize']);
+Router::get('form', 'ff@ff')->middleware('example')->authorize(['App\Routers\Authorize\RouterAuthorizeExample', 'isAuthorize']);
 
 Router::get('/home/:id', fn() => 'strinh olandan ')->name('home');
+
+Router::get('example', fn() => 'user cant acces this callback due to middleware')->middleware('example');
 
 
 Router::get('deneme/int:id/string:name/:any/date:date', static function () {
