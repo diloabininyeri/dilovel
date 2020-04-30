@@ -12,9 +12,12 @@ use App\Application\Models\Users;
 class Deneme
 {
 
-    public function index(Request $request):Collection
+    public function index(Request $request)
     {
-        return Users::get();
+
+        $collection= new ResponseCollectionUser(Users::get());
+
+        return $collection->toJson();
     }
 
 }

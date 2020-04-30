@@ -35,7 +35,7 @@ abstract class ResponseCollection
     {
         $this->setHeader();
         try {
-            return json_encode($this->toArray(), JSON_THROW_ON_ERROR, 512);
+            return json_encode($this->toArray(), JSON_THROW_ON_ERROR|JSON_PRETTY_PRINT, 512);
         } catch (JsonException $e) {
 
             throw  new JsonEncodeException($e->getMessage());
@@ -48,6 +48,15 @@ abstract class ResponseCollection
     private function setHeader(): void
     {
         header('Content-type:application/json');
+    }
+
+    /**
+     * @return false|string
+     * @noinspection MagicMethodsValidityInspection
+     */
+    public function __toString()
+    {
+       return $this->toJson();
     }
 
 
