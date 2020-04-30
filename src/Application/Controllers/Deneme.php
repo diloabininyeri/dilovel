@@ -5,16 +5,16 @@ namespace App\Application\Controllers;
 
 
 use App\Application\Responses\ResponseCollectionUser;
+use App\Components\Collection\Collection;
 use App\Components\Http\Request;
 use App\Application\Models\Users;
 
 class Deneme
 {
 
-    public function index(Request $request)
+    public function index(Request $request):Collection
     {
-        return $request->server();
-        return  router('home',[':id'=>45]);
+        return Users::get();
     }
 
 }

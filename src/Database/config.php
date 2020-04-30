@@ -7,9 +7,9 @@ namespace App\Database;
 const config = [
 
     'default' => [
-        'database' => 'deneme',
-        'user' => 'root',
-        'password' => null,
+        'database' => 'hmvc',
+        'user' => 'admin',
+        'password' => 'admin',
         'host' => 'localhost',
         'driver' => 'mysql'
     ],
