@@ -78,4 +78,12 @@ class RouterObject
         return $this->mainRouter->getGroup();
     }
 
+    /**
+     * @return MainRouter
+     */
+    public function getMainRouter(): MainRouter
+    {
+        return $this->mainRouter;
+    }
+
 }
