@@ -15,7 +15,7 @@ class DeleteControllerCommand implements CommandInterface
     /**
      * @var string $namespace
      */
-    private string $namespace = 'src/app/Controllers';
+    private string $namespace = 'src/Application/Controllers';
 
 
     /**

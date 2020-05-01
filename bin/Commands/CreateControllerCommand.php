@@ -14,7 +14,7 @@ class CreateControllerCommand implements CommandInterface
     /**
      * @var string
      */
-    private string $namespace = 'src/app/Controllers/';
+    private string $namespace = 'src/Application/Controllers';
 
 
     /**

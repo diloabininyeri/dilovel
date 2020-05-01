@@ -32,7 +32,6 @@ class Console extends CustomCommandCall
         'make:view' => CreateViewCommand::class,
         'clear:view-cache' => ClearViewCacheCommand::class,
         'list' => CommandList::class,
-        'router:list' => RouteListCommand::class
     ];
 
 }
