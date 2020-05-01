@@ -21,6 +21,9 @@
     "ext-pdo": "*",
     "ext-json": "*",
     "ext-apache": "*",
+    "ext-pcntl": "*"
+  },
+  "require-dev": {
     "phpunit/phpunit": "^9.1"
   },
   "autoload": {
