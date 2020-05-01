@@ -4,6 +4,7 @@
  * @noinspection PhpUnused
  */
 
+use App\Components\DateTime\Now;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Routers\GenerateRouter;
@@ -152,4 +153,10 @@ function activate_errors()
 function request()
 {
     return SingletonRequest::getInstance();
+}
+
+
+function now()
+{
+    return new Now();
 }
