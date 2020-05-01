@@ -16,10 +16,10 @@ class Async
     /**
      * @param ProcessForkInterface $processFork
      */
-    public static function callMultiProcess(ProcessForkInterface $processFork):void
+    public static function call(ProcessForkInterface $processFork):void
     {
         $process = new Process($processFork);
-        $process->executeParallelClosure();
+        $process->runOneByOneClosure();
     }
 
 }

@@ -30,7 +30,7 @@ class Process
     /**
      *
      */
-    public function executeParallelClosure(): void
+    public function runOneByOneClosure(): void
     {
 
         foreach ($this->processFork->generateData() as $data) {
