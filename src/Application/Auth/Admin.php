@@ -23,14 +23,9 @@ class Admin
      */
     public function isAuth(Request $request): bool
     {
-
         $request->session()->set('admin', Users::find(1)->toArray() ?? 'user not found');
 
-        if ($request->session()->exists('admin')) {
-            return true;
-        }
-        return false;
-
+        return $request->session()->exists('admin');
     }
 
 }
