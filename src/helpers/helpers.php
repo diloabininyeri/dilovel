@@ -4,6 +4,7 @@
  * @noinspection PhpUnused
  */
 
+use App\Components\Arr\DotNotation;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
 use App\Components\Http\SingletonRequest;
@@ -156,14 +157,50 @@ function request()
     return SingletonRequest::getInstance();
 }
 
+/**
+ * @param $name
+ * @param null $default
+ * @return mixed|null
+ */
 function env($name,$default=null)
 {
-
     return (new EnvFile('.env'))->getValue($name) ?: $default;
-
 }
 
+/**
+ * @return Now
+ */
 function now()
 {
     return new Now();
+}
+
+/**
+ * @return string
+ */
+function config_path()
+{
+    return sprintf('%s/%s',getcwd(),'src/config/');
+}
+
+/**
+ * @param $configFile
+ * @return mixed
+ */
+function get_config_array($configFile)
+{
+    return require sprintf('%s/%s.php',config_path(),$configFile);
+}
+
+
+/**
+ * @param string $config
+ * @return array|mixed|null
+ */
+function config(string $config)
+{
+    $dotConfig=explode('.',$config);
+    $configArray=get_config_array($dotConfig[0]);
+    return (new DotNotation())->getValueByKey($config,$configArray);
+
 }
