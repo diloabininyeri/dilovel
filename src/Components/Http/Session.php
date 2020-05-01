@@ -66,7 +66,7 @@ class Session implements SessionInterface
      */
     public function set(string $name, $value): bool
     {
-        $this->session[$name] = trim($value);
+        $this->session[$name] = is_string($value) ? trim($value):$value;
         return $this->exists($name);
     }
 
