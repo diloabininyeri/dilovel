@@ -156,10 +156,10 @@ function request()
     return SingletonRequest::getInstance();
 }
 
-function env($name)
+function env($name,$default=null)
 {
 
-    return (new EnvFile('.env'))->getValue($name);
+    return (new EnvFile('.env'))->getValue($name) ?: $default;
 
 }
 
