@@ -26,9 +26,9 @@ Router::get('/news/int:id', 'Controller@meth')->name('fgd')->middleware('mid', '
 Router::get('/news/id/haber', 'Controlljjjjjjjjjer@meth')->name('fgd')->middleware('mid', 'mid2');
 
 
-Router::auth('App\Application\Auth\RouterAuth','isAuth',static function () {
+Router::auth('App\Application\Auth\Admin','isAuth',static function () {
 
-    Router::get('aslan',fn()=>'denemememeee');
+    Router::get('admin',fn()=>'admin area');
 });
 
 
