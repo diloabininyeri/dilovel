@@ -1,6 +1,7 @@
 <?php
 /**
  * for phpunit test
+ * @see ConfigReadTest::testDotNotation()
  */
 
 return [
