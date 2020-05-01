@@ -5,6 +5,7 @@
  */
 
 use App\Components\DateTime\Now;
+use App\Components\Env\EnvFile;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Routers\GenerateRouter;
@@ -155,6 +156,12 @@ function request()
     return SingletonRequest::getInstance();
 }
 
+function env($name)
+{
+
+    return (new EnvFile('.env'))->getValue($name);
+
+}
 
 function now()
 {

@@ -28,7 +28,7 @@ Router::get('/news/id/haber', 'Controlljjjjjjjjjer@meth')->name('fgd')->middlewa
 
 Router::auth('App\Application\Auth\Admin','isAuth',static function () {
 
-    Router::get('admin',fn()=>'admin area');
+    Router::get('admin',fn()=>env('REDIS_HOST'));
 });
 
 

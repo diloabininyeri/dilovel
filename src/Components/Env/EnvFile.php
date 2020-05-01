@@ -27,7 +27,7 @@ class EnvFile implements ArrayAble, ToJson
 
     public function __construct(string $envFile)
     {
-        $this->envFile = file($envFile);
+        $this->envFile = array_filter(file($envFile),fn($line)=>$line!=="\n");
     }
 
     /**
@@ -73,7 +73,7 @@ class EnvFile implements ArrayAble, ToJson
      */
     public function getValue(string $name)
     {
-        return $this->toArray()[$name];
+        return $this->toArray()[$name] ?? null;
     }
 
     /**
