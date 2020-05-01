@@ -4,6 +4,8 @@
 namespace Bin\Components\Process;
 
 
+use App\Interfaces\ProcessForkInterface;
+
 /**
  * Class Async
  * @package Bin\Components\Process
@@ -12,14 +14,12 @@ class Async
 {
 
     /**
-     *
+     * @param ProcessForkInterface $processFork
      */
-    public function callMultiProcess():void
+    public static function callMultiProcess(ProcessForkInterface $processFork):void
     {
-
-        $process = new Process(new ExampleProcess());
+        $process = new Process($processFork);
         $process->executeParallelClosure();
-
     }
 
 }
