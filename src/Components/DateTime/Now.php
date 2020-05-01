@@ -121,11 +121,18 @@ class Now
         return $this->dateTime->format('Y-m-d H:i:s');
     }
 
+    /**
+     * @return Carbon
+     * @throws Exception
+     */
     public function carbon()
     {
         return new Carbon($this->get());
     }
 
+    /**
+     * @return string
+     */
     public function diffForHumans():string
     {
         return Carbon::parse($this->get())->diffForHumans();
