@@ -18,7 +18,7 @@ class DotNotation
      * @param null $default
      * @return array|mixed|null
      */
-    public function getValueByKey($key, array $data, $default = null)
+    public function getValueByKey(string $key, array $data, $default = null)
     {
         // @assert $key is a non-empty string
         // @assert $data is a loopable array
