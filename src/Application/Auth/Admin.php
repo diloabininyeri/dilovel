@@ -10,7 +10,7 @@ use App\Components\Http\Request;
  * Class RouterAuth
  * @package App\Application\Auth
  */
-class RouterAuth
+class Admin
 {
 
     /**
@@ -19,8 +19,7 @@ class RouterAuth
      */
     public function isAuth():bool
     {
-
-        return  false;
+        return false;
     }
 
 }
