@@ -201,6 +201,9 @@ function config(string $config)
 {
     $dotConfig=explode('.',$config);
     $configArray=get_config_array($dotConfig[0]);
-    return (new DotNotation())->getValueByKey($config,$configArray);
+    $array=$dotConfig;
+    unset($array[0]);
+
+    return (new DotNotation())->getValueByKey(implode('.',$array),$configArray);
 
 }
