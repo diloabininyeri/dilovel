@@ -2,6 +2,7 @@
 
 namespace App\Components\DateTime;
 
+use Carbon\Carbon;
 use DateInterval;
 use DateTime;
 use Exception;
@@ -120,6 +121,16 @@ class Now
         return $this->dateTime->format('Y-m-d H:i:s');
     }
 
+    public function carbon()
+    {
+        return new Carbon($this->get());
+    }
+
+    public function diffForHumans():string
+    {
+        return Carbon::parse($this->get())->diffForHumans();
+    }
+
     /**
      * @return string
      */
@@ -127,5 +138,6 @@ class Now
     {
         return $this->get();
     }
+
 
 }
