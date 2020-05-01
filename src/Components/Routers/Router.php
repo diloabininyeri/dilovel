@@ -4,7 +4,9 @@
 namespace App\Components\Routers;
 
 
+use App\Components\Http\Request;
 use App\Interfaces\PseudoRouteInterface;
+use Closure;
 
 /**
  * Class Router
@@ -13,7 +15,7 @@ use App\Interfaces\PseudoRouteInterface;
  * @method static PseudoRouteInterface post($urlPattern,$callback)
  * @method PseudoRouteInterface middleware()
  * @method PseudoRouteInterface name
- * @method PseudoRouteInterface authorize(\Closure $callback)
+ * @method PseudoRouteInterface authorize(Closure $callback)
  */
 class Router
 {
@@ -35,6 +37,23 @@ class Router
         }
     }
 
+    /**
+     * @param string $class
+     * @param string $method
+     * @param Closure $closure
+     * @return mixed
+     */
+    public static function auth(string $class, string $method, Closure $closure)
+    {
+        if (call_user_func([new $class(), $method],new Request())) {
+            return $closure();
+        }
+    }
+
+    /**
+     * @param $attributes
+     * @param $callback
+     */
     public static function group($attributes, $callback): void
     {
         (new MainRouter())->group($attributes, $callback);
