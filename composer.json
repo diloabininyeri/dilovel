@@ -33,6 +33,6 @@
       "App\\": "src/",
       "Bin\\": "bin"
     },
-    "files": ["src/helpers/helpers.php","src/Database/config.php"]
+    "files": ["src/helpers/helpers.php"]
   }
 }

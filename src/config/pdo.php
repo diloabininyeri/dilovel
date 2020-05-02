@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Database;
 /**
  * database config settings
  */
-const config = [
+return [
 
     'default' => [
         'database' => 'hmvc',

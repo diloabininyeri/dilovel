@@ -5,7 +5,6 @@ namespace App\Components\Database;
 
 use JsonException;
 use PDO;
-use const App\Database\config;
 
 
 /**
@@ -35,7 +34,7 @@ abstract class Model
      */
     public function pdoConnection(): PDO
     {
-        return Connection::make(config[$this->getConnection()])->pdo();
+        return Connection::make(get_config_array('pdo')[$this->getConnection()])->pdo();
     }
 
     /**
