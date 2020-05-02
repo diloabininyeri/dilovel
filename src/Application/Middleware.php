@@ -32,4 +32,5 @@ class Middleware extends MiddlewareAbstract
     protected array $global=[
         GlobalMiddleware::class
     ];
+
 }

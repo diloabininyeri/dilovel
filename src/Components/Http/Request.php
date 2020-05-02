@@ -162,4 +162,20 @@ class Request implements ArrayAble, ToJson
         return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function ip()
+    {
+        if (!empty($this->server()['HTTP_CLIENT_IP'])) {
+            return  $this->server()['HTTP_CLIENT_IP'];
+        }
+
+        if (!empty($this->server()['HTTP_X_FORWARDED_FOR'])) {
+           return $this->server()['HTTP_X_FORWARDED_FOR'];
+        }
+
+        return $this->server()['REMOTE_ADDR'];
+    }
 }
