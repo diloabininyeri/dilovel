@@ -153,13 +153,11 @@ class Request implements ArrayAble, ToJson
     }
 
     /**
-     * @return false|string
-     * @throws JsonException
-     * @noinspection MagicMethodsValidityInspection
+     * @return mixed
      */
-    public function __toString()
+    public function browser()
     {
-        return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
+        return $this->server()['HTTP_USER_AGENT'];
     }
 
 
@@ -177,5 +175,15 @@ class Request implements ArrayAble, ToJson
         }
 
         return $this->server()['REMOTE_ADDR'];
+    }
+
+    /**
+     * @return false|string
+     * @throws JsonException
+     * @noinspection MagicMethodsValidityInspection
+     */
+    public function __toString()
+    {
+        return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
     }
 }

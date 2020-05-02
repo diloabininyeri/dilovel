@@ -15,8 +15,9 @@ class Deneme
     public function index(Request $request)
     {
 
-        $users = new Users();
-        return $users->getObserveClass();
+        $collection= new ResponseCollectionUser(Users::get());
+
+        return $collection->toJson();
     }
 
 }
