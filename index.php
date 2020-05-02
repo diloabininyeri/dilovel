@@ -21,3 +21,14 @@ if ($globalMiddleware instanceof Request) {
 }else{ echo $globalMiddleware; }
 
 
+function shutdown() {
+    $error = error_get_last();
+    ini_set('error_log','src/logs/error.log');
+    error_log($error['message']);
+}
+
+register_shutdown_function('shutdown');
+
+spl_autoload_register('foo');
+
+
