@@ -23,7 +23,7 @@ class GlobalMiddleware implements MiddlewareInterface
     public function handle(Closure $next, Request $request)
     {
 
-        $yourCondition = false;
+        $yourCondition = true;
 
         if ($yourCondition) {
             return $next($request);
