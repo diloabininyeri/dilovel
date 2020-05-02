@@ -1,10 +1,6 @@
 <?php
 
-use App\Application\Middleware;
-use App\Bootstrap\App;
-use App\Bootstrap\GlobalMiddlewareLayer;
-use App\Components\Http\Request;
-
+use App\{Application\Middleware, Bootstrap\App, Bootstrap\GlobalMiddlewareLayer, Components\Http\Request};
 
 
 require_once 'vendor/autoload.php';
