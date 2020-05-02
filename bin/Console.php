@@ -7,6 +7,7 @@ namespace Bin;
 use Bin\Commands\ClearViewCacheCommand;
 use Bin\Commands\CommandList;
 use Bin\Commands\CreateControllerCommand;
+use Bin\Commands\CreateMiddlewareCommand;
 use Bin\Commands\CreateModelCommand;
 use Bin\Commands\CreateViewCommand;
 use Bin\Commands\CustomCommand;
@@ -32,6 +33,7 @@ class Console extends CustomCommandCall
         'make:view' => CreateViewCommand::class,
         'clear:view-cache' => ClearViewCacheCommand::class,
         'list' => CommandList::class,
+        'make:middleware'=>CreateMiddlewareCommand::class
     ];
 
 }

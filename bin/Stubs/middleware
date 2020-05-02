@@ -12,7 +12,7 @@ use Closure;
  * Class NameMiddleware
  * @package App\app\Middleware
  */
-class NameMiddleware implements MiddlewareInterface
+class $name implements MiddlewareInterface
 {
 
     /**
