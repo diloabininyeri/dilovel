@@ -18,6 +18,8 @@ abstract class Model
      */
     private BuilderQuery $builder;
 
+    private static ?string $observeClass=null;
+
     /**
      * Model constructor.
      */
@@ -35,6 +37,23 @@ abstract class Model
     public function pdoConnection(): PDO
     {
         return Connection::make(get_config_array('pdo')[$this->getConnection()])->pdo();
+    }
+
+
+    /**
+     * @param string $class
+     */
+    public static function observe(string $class):void
+    {
+        self::$observeClass=$class;
+    }
+
+    /**
+     * @return string
+     */
+    public  function getObserveClass(): ?string
+    {
+        return self::$observeClass;
     }
 
     /**

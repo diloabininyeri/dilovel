@@ -3,7 +3,8 @@
 
 namespace App\Providers;
 
-
+use App\Application\Models\Users;
+use App\Application\Observer\UserObserver;
 use App\Macro\ModelMacro;
 
 /**
@@ -36,6 +37,6 @@ class ServiceProvider implements ProviderInterface
      */
     public function register(): void
     {
-        // TODO: Implement register() method.
+       Users::observe(UserObserver::class);
     }
 }
