@@ -1,0 +1,29 @@
+{
+  "name": "hmvc",
+  "version": "1.0.0",
+  "description": "log watcher",
+  "main": "wather.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diloabininyeri/hmvc.git"
+  },
+  "keywords": [
+    "error.log",
+    "watcher"
+  ],
+  "author": "dılo sürücü <berxudar@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diloabininyeri/hmvc/issues"
+  },
+  "homepage": "https://github.com/diloabininyeri/hmvc#readme",
+  "dependencies": {
+    "log-timestamp": "^0.3.0"
+  }
+}

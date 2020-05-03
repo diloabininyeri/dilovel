@@ -23,6 +23,5 @@ class ErrorLogChangedCommand implements CommandInterface
     public function handle(?array $parameters): void
     {
 
-        //send mail to admin an error occur
     }
 }

@@ -211,3 +211,23 @@ Stack trace:
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
 #6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 62
 [03-May-2020 21:21:33 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'Router' (T_STRING) in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 5
+[03-May-2020 23:49:36 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::call404IfNotFoun() in /home/zeus/Desktop/hmvc/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 22
+[03-May-2020 23:49:47 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::call404IfNotFoun() in /home/zeus/Desktop/hmvc/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 22
+[03-May-2020 23:53:10 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::call404IfNotFoun() in /home/zeus/Desktop/hmvc/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 22
+[03-May-2020 23:53:53 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::call404IfNotFoun() in /home/zeus/Desktop/hmvc/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 22
+[03-May-2020 23:54:01 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::call404IfNotFoun() in /home/zeus/Desktop/hmvc/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 22
