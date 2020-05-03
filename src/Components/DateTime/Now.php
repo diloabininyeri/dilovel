@@ -17,7 +17,7 @@ class Now
     /**
      * @var DateTime
      */
-    private $dateTime;
+    private DateTime $dateTime;
 
     /**
      * Now constructor.
@@ -125,13 +125,14 @@ class Now
      * @return Carbon
      * @throws Exception
      */
-    public function carbon()
+    public function carbon(): Carbon
     {
         return new Carbon($this->get());
     }
 
     /**
      * @return string
+     * @noinspection PhpUnused
      */
     public function diffForHumans():string
     {
