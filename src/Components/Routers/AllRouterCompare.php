@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 /**
  * Class AllRouterCompare
  * @package App\Components\Routers
@@ -18,7 +17,6 @@ class AllRouterCompare
     {
         $routers = RouterStorage::all();
         foreach ($routers as $router) {
-
             if ($this->isDynamicAndRealUrlEqual($router)) {
                 $this->foundedAnyRoute();
                 return new RouterObject($router);
@@ -28,10 +26,8 @@ class AllRouterCompare
                 $this->foundedAnyRoute();
                 return new RouterObject($router);
             }
-
         }
         return  null;
-
     }
 
 

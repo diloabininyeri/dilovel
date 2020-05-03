@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers\Validators;
 
-
 use App\Interfaces\ValidateRouterInterface;
 
 /**
@@ -19,7 +18,7 @@ class ValidateRouterParamString implements ValidateRouterInterface
      */
     public function validate($value): bool
     {
-        if(is_numeric($value)) {
+        if (is_numeric($value)) {
             return false;
         }
         return is_string($value);

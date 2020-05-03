@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-
 use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
@@ -13,7 +12,6 @@ use Bin\Components\CommandInterface;
  */
 class CreateModelCommand implements CommandInterface
 {
-
     private string $namespace = 'src/app/Models/';
 
     /**
@@ -30,7 +28,6 @@ class CreateModelCommand implements CommandInterface
         $filePath = $this->createFilePath($className);
 
         echo $this->createModel($className, $filePath, $tableName);
-
     }
 
     /**
@@ -42,13 +39,12 @@ class CreateModelCommand implements CommandInterface
     private function createModel($name, $path, $tableName): string
     {
         if (file_exists($path)) {
-            return ColorConsole::getInstance()->getColoredString("model already exists\n",'red');
+            return ColorConsole::getInstance()->getColoredString("model already exists\n", 'red');
         }
 
         file_put_contents($path, $this->modelTemplate($name, $tableName));
 
-        return ColorConsole::getInstance()->getColoredString("$name model created\n",'green');
-
+        return ColorConsole::getInstance()->getColoredString("$name model created\n", 'green');
     }
 
     /**
@@ -70,6 +66,4 @@ class CreateModelCommand implements CommandInterface
         $stub = file_get_contents(__DIR__ . '/../Stubs/Model');
         return str_replace(['$name', '$table_name'], [$className, $tableName], $stub);
     }
-
-
 }

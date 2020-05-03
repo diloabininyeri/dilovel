@@ -3,7 +3,6 @@
 
 namespace App\Interfaces;
 
-
 /**
  * Interface shutdownRegisterInterface
  * @package App\Interfaces

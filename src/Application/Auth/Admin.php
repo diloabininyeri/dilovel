@@ -3,7 +3,6 @@
 
 namespace App\Application\Auth;
 
-
 use App\Application\Models\Users;
 use App\Components\Http\Request;
 use JsonException;
@@ -27,5 +26,4 @@ class Admin
 
         return $request->session()->exists('admin');
     }
-
 }

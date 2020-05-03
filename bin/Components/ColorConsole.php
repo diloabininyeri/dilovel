@@ -11,7 +11,6 @@ use App\Components\Traits\Singleton;
  */
 class ColorConsole
 {
-
     use Singleton;
 
 
@@ -29,7 +28,6 @@ class ColorConsole
      */
     public function __construct()
     {
-
         $this->foregroundColors['black'] = '0;30';
         $this->foregroundColors['dark_gray'] = '1;30';
         $this->foregroundColors['blue'] = '0;34';

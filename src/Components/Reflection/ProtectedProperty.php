@@ -3,7 +3,6 @@
 
 namespace App\Components\Reflection;
 
-
 use ReflectionException;
 use ReflectionObject;
 
@@ -71,5 +70,4 @@ class ProtectedProperty
 
         return $property->getValue($this->getObject());
     }
-
 }

@@ -3,7 +3,6 @@
 
 namespace App\Application\Rules;
 
-
 use App\Components\Http\Request;
 use App\Interfaces\RuleInterface;
 

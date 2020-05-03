@@ -3,7 +3,6 @@
 
 namespace App\Macro;
 
-
 use Closure;
 
 /**

@@ -3,7 +3,6 @@
 
 namespace App\Application\Responses;
 
-
 use App\Components\Collection\ResponseCollection;
 use App\Interfaces\ResponseCollectionInterface;
 

@@ -3,7 +3,6 @@
 
 namespace App\Providers;
 
-
 /**
  * Interface ProviderInterface
  * @package App\Providers

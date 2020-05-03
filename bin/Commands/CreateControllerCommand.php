@@ -32,7 +32,6 @@ class CreateControllerCommand implements CommandInterface
         $filePath = $this->createFilePath($name);
 
         echo $this->createController($name, $filePath);
-
     }
 
     /**
@@ -43,13 +42,12 @@ class CreateControllerCommand implements CommandInterface
     private function createController($name, $path): string
     {
         if (file_exists($path)) {
-            return ColorConsole::getInstance()->getColoredString("controller already exists\n",'red');
+            return ColorConsole::getInstance()->getColoredString("controller already exists\n", 'red');
         }
 
         file_put_contents($path, $this->controllerTemplate($name));
 
-        return ColorConsole::getInstance()->getColoredString("$name controller created",'green');
-
+        return ColorConsole::getInstance()->getColoredString("$name controller created", 'green');
     }
 
     /**
@@ -70,5 +68,4 @@ class CreateControllerCommand implements CommandInterface
         $stub = file_get_contents(__DIR__ . '/../Stubs/Controller');
         return str_replace('$name', $className, $stub);
     }
-
 }

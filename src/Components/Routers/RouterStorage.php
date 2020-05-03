@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 /**
  * Class RouterStorage
  * @package App\Components\Routers
@@ -34,7 +33,8 @@ class RouterStorage
             [
                 'router_url' => $mainRouter->getDynamicUrl(),
                 'real_url' => $mainRouter->getUrlPath()
-            ]);
+            ]
+        );
     }
 
 
@@ -45,6 +45,4 @@ class RouterStorage
     {
         return self::$mainRouter;
     }
-
-
 }

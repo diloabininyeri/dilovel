@@ -3,7 +3,6 @@
 
 namespace App\Providers;
 
-
 use App\Application\Controllers\MyContainerTest;
 
 /**
@@ -28,6 +27,5 @@ class ContainerProvider implements ProviderInterface
      */
     public function boot(): void
     {
-
     }
 }

@@ -3,13 +3,11 @@
 
 namespace App\Application\Observer;
 
-
 use App\Components\Database\Model;
 use App\Interfaces\ModelObserverInterface;
 
 class UserObserver implements ModelObserverInterface
 {
-
     public function updated(Model $model)
     {
         // TODO: Implement updated() method.

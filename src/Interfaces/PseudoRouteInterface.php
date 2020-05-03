@@ -3,7 +3,6 @@
 
 namespace App\Interfaces;
 
-
 /**
  * Interface PseudoRouteInterface
  * @package App\Interfaces
@@ -43,6 +42,4 @@ interface PseudoRouteInterface
      * @return $this
      */
     public function authorize(callable $callback):self ;
-
-
 }

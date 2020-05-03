@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers\Validators;
 
-
 /**
  * Class ValidateRouter
  * @package App\Components\Routers\Validators

@@ -3,7 +3,6 @@
 
 namespace App\Components\Http;
 
-
 use App\Components\Traits\Singleton;
 
 /**
@@ -12,5 +11,5 @@ use App\Components\Traits\Singleton;
  */
 class SingletonRequest extends Request
 {
-   use Singleton;
+    use Singleton;
 }

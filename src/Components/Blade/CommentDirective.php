@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 /**
  * Class CommentDirective
  * @package App\Components\Blade

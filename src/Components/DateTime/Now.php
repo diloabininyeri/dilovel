@@ -145,6 +145,4 @@ class Now
     {
         return $this->get();
     }
-
-
 }

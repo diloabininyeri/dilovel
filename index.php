@@ -1,8 +1,10 @@
 <?php
 
-use App\{Application\Middleware, Bootstrap\App, Bootstrap\GlobalMiddlewareLayer, Components\Http\Request};
+use App\Application\Middleware;
+use App\Bootstrap\App;
+use App\Bootstrap\GlobalMiddlewareLayer;
+use App\Components\Http\Request;
 use App\Components\Shutdown\App as AppShutdown;
-
 
 require_once 'vendor/autoload.php';
 
@@ -15,13 +17,12 @@ activate_errors();
 $globalMiddleware= (new GlobalMiddlewareLayer())->bind()->call(new Middleware());
 
 if ($globalMiddleware instanceof Request) {
-
     echo (new App())
         ->run()
         ->call404IfNotFound();
-
-}else{ echo $globalMiddleware; }
+} else {
+    echo $globalMiddleware;
+}
 
 
 (new AppShutdown())->onShutdown();
-

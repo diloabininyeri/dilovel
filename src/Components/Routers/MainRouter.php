@@ -2,9 +2,7 @@
 
 namespace App\Components\Routers;
 
-
 use Closure;
-
 
 /**
  * Class MainRouter
@@ -191,5 +189,4 @@ class MainRouter
     {
         return $this->authorize;
     }
-
 }

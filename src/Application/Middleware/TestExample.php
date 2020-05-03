@@ -3,7 +3,6 @@
 
 namespace App\Application\Middleware;
 
-
 use App\Components\Http\Request;
 use App\Interfaces\MiddlewareInterface;
 use Closure;

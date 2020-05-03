@@ -36,10 +36,8 @@ class DeleteControllerCommand implements CommandInterface
             unlink($path);
             echo $this->deletedMessage($controller);
         } else {
-
             echo $this->notFoundMessage($controller);
         }
-
     }
 
     /**
@@ -67,6 +65,6 @@ class DeleteControllerCommand implements CommandInterface
      */
     private function deletedMessage($controller): string
     {
-       return  ColorConsole::getInstance()->getColoredString("$controller controller deleted\n", 'green');
+        return  ColorConsole::getInstance()->getColoredString("$controller controller deleted\n", 'green');
     }
 }

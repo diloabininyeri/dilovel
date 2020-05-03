@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 use App\Components\Http\Request;
 
 /**
@@ -48,9 +47,7 @@ class CallController
      */
     public function call()
     {
-
         if ($this->getRequestMethod() === 'POST') {
-
             return (new CallControllerWithIoc($this->createClassNameController(), $this->method, $this->request))->call();
         }
         return (new CallControllerWithoutIoc($this->createClassNameController(), $this->method, $this->request))->call();
@@ -70,6 +67,6 @@ class CallController
      */
     private function getRequestMethod(): string
     {
-      return   $_SERVER['REQUEST_METHOD'];
+        return   $_SERVER['REQUEST_METHOD'];
     }
 }

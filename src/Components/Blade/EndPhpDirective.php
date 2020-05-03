@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 /**
  * Class EndPhpDirective
  * @package Blade
@@ -24,9 +23,8 @@ class EndPhpDirective implements BladeDirectiveInterface
      */
     public function replaceTemplate(string $template)
     {
-        return preg_replace_callback($this->getDirectiveRegexPattern(),static function () {
+        return preg_replace_callback($this->getDirectiveRegexPattern(), static function () {
             return '; ?>';
         }, $template);
-
     }
 }

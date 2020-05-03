@@ -3,7 +3,6 @@
 
 namespace App\Components\Http;
 
-
 /**
  * Class Url
  * @package App\Http
@@ -43,12 +42,10 @@ class Url
      */
     public function base(): string
     {
-
         $base = sprintf(
             '%s%s',
             $this->getSchema(),
             $_SERVER['SERVER_NAME'],
-
         );
         $port = $this->port();
         if (isset($port)) {
@@ -56,8 +53,6 @@ class Url
             return "$base:$port";
         }
         return $base;
-
-
     }
 
     public function port()

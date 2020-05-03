@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 class CurlBracesAllowedHtmlChars implements BladeDirectiveInterface
 {
 
@@ -12,7 +11,7 @@ class CurlBracesAllowedHtmlChars implements BladeDirectiveInterface
      */
     public function getDirectiveRegexPattern()
     {
-       return '/{!!(.*)!!}/';
+        return '/{!!(.*)!!}/';
     }
 
     /**
@@ -20,7 +19,7 @@ class CurlBracesAllowedHtmlChars implements BladeDirectiveInterface
      */
     public function replaceTemplate(string $template)
     {
-        return preg_replace_callback($this->getDirectiveRegexPattern(),static function ($find) {
+        return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
             return '<?php echo' . $find[1] . '; ?>';
         }, $template);
     }

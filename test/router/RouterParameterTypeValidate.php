@@ -26,7 +26,7 @@ class RouterParameterTypeValidate extends TestCase
     /**
      *
      */
-    function testIsInt()
+    public function testIsInt()
     {
         $this->assertTrue($this->validator->validate(12, 'int'));
     }
@@ -41,6 +41,6 @@ class RouterParameterTypeValidate extends TestCase
 
     public function testIsDate()
     {
-        $this->assertTrue($this->validator->validate('2012-12-12','date'));
+        $this->assertTrue($this->validator->validate('2012-12-12', 'date'));
     }
 }

@@ -3,7 +3,6 @@
 
 namespace App\Components\Reflection;
 
-
 use App\Components\Http\Request;
 use App\Interfaces\FormRequestInterface;
 use App\Interfaces\RuleInterface;
@@ -111,7 +110,6 @@ class IocContainer
     {
         $this->onErrorCallback = $callback;
         return $this;
-
     }
 
     /**
@@ -148,7 +146,6 @@ class IocContainer
     {
         foreach ($rules as $rule) {
             if (!$rule->valid($this->request)) {
-
                 $this->requestErrors[] = $rule->message();
             }
         }
@@ -161,16 +158,13 @@ class IocContainer
     private function callCustomRequests(): void
     {
         foreach ($this->getParameterAsClassName() as $class) {
-
             $customRequest = new $class();
             if (!($customRequest instanceof FormRequestInterface)) {
-
                 throw  new RuntimeException('ioc class must be instance of ' . FormRequestInterface::class);
             }
 
             $this->callRules($customRequest->rules());
         }
-
     }
 
     /**
@@ -184,7 +178,5 @@ class IocContainer
             return call_user_func($this->onSuccessCallback, $this->request);
         }
         return call_user_func($this->onErrorCallback, $this->requestErrors);
-
     }
-
 }

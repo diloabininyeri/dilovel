@@ -2,10 +2,8 @@
 
 namespace App\Components\Database;
 
-
 use JsonException;
 use PDO;
-
 
 /**
  * Class Model
@@ -51,7 +49,7 @@ abstract class Model
     /**
      * @return string
      */
-    public  function getObserveClass(): ?string
+    public function getObserveClass(): ?string
     {
         return self::$observeClass;
     }
@@ -191,6 +189,4 @@ abstract class Model
     {
         return $this->primaryKey ?? 'id';
     }
-
-
 }

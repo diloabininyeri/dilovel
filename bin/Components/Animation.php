@@ -3,7 +3,6 @@
 
 namespace Bin\Components;
 
-
 /**
  * Class Animation
  * @package Bin\Components

@@ -3,7 +3,6 @@
 
 namespace App\Components\Env;
 
-
 use App\Interfaces\ArrayAble;
 use App\Interfaces\ToJson;
 use JsonException;
@@ -27,7 +26,7 @@ class EnvFile implements ArrayAble, ToJson
 
     public function __construct(string $envFile)
     {
-        $this->envFile = array_filter(file($envFile),fn($line)=>$line!=="\n");
+        $this->envFile = array_filter(file($envFile), fn ($line) =>$line!=="\n");
     }
 
     /**

@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Components\Blade;
+
 /**
  * Interface BladeDirectiveInterface
  */
-interface  BladeDirectiveInterface
+interface BladeDirectiveInterface
 {
 
     /**

@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 /**
  * Class GenerateRouter
  * @package App\Components\Routers
@@ -21,7 +20,6 @@ class GenerateRouter
         $routeUrl = RouterName::getName($name)['router_url'];
         if (!empty($parameters)) {
             foreach ($parameters as $key => $value) {
-
                 $routeUrl = str_replace($key, $value, $routeUrl);
             }
         }

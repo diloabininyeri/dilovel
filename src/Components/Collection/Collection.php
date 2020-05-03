@@ -16,7 +16,7 @@ use Traversable;
  * Class Collection
  * @noinspection PhpUnused
  */
-class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable,ArrayAble,ToJson
+class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable, ArrayAble, ToJson
 {
     /**
      * @var array $collection
@@ -54,7 +54,6 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         }
 
         return $this->collection[$offset] = $value;
-
     }
 
     /**
@@ -131,7 +130,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function toArray():array
     {
-        return array_map('get_object_vars',$this->collection);
+        return array_map('get_object_vars', $this->collection);
     }
     /**
      * @return false|string
@@ -149,8 +148,8 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function __call($name, $arguments)
     {
-       $this->collection= ModelMacro::getMethod($name)->call($this,$arguments);
-       return $this;
+        $this->collection= ModelMacro::getMethod($name)->call($this, $arguments);
+        return $this;
     }
 
     /**
@@ -170,5 +169,4 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         $this->collection = $collection;
         return $this;
     }
-
 }

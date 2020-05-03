@@ -3,7 +3,6 @@
 
 namespace App\Interfaces;
 
-
 /**
  * Interface FormRequestInterface
  * @package App\interfaces

@@ -9,6 +9,6 @@ class ConfigReadTest extends TestCase
     {
         $version=config('test.php.version');
 
-        $this->assertEquals($version,7.4);
+        $this->assertEquals($version, 7.4);
     }
 }

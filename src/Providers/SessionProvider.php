@@ -3,10 +3,8 @@
 
 namespace App\Providers;
 
-
 class SessionProvider implements ProviderInterface
 {
-
     public function register(): void
     {
         // TODO: Implement register() method.
@@ -14,6 +12,5 @@ class SessionProvider implements ProviderInterface
 
     public function boot(): void
     {
-
     }
 }

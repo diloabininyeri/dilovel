@@ -3,7 +3,6 @@
 
 namespace App\Components\Database;
 
-
 use PDO;
 
 /**
@@ -57,5 +56,4 @@ class Connection
 
         return new PDO("$driver:host=$host;dbname=$db", $user, $password);
     }
-
 }

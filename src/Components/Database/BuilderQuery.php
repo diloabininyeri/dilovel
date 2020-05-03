@@ -123,7 +123,6 @@ class BuilderQuery
             return $this->modelInstance->$name($this);
         }
         return $this;
-
     }
 
     /**
@@ -180,5 +179,4 @@ class BuilderQuery
     {
         return get_object_vars($this->modelInstance);
     }
-
 }

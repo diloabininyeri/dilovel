@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 class EndforeachDirective implements BladeDirectiveInterface
 {
 
@@ -20,7 +19,7 @@ class EndforeachDirective implements BladeDirectiveInterface
      */
     public function replaceTemplate(string $template)
     {
-        return preg_replace_callback($this->getDirectiveRegexPattern(),static function () {
+        return preg_replace_callback($this->getDirectiveRegexPattern(), static function () {
             return '<?php endforeach; ?>';
         }, $template);
     }

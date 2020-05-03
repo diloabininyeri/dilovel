@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 class IncludeDirective implements BladeDirectiveInterface
 {
 
@@ -21,7 +20,6 @@ class IncludeDirective implements BladeDirectiveInterface
     public function replaceTemplate(string $template)
     {
         return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
-
             return '<php include'.$find[1].'; ?>';
         }, $template);
     }

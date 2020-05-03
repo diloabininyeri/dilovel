@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 use App\Application\Middleware;
 use App\Components\Http\Request;
 
@@ -37,11 +36,8 @@ class Dispatcher
             }
 
             return $this->callRouterCallableThroughMiddleware($routerObject, $middleware);
-
         }
         return $this->callUserFunc($routerObject);
-
-
     }
 
     /**
@@ -71,6 +67,5 @@ class Dispatcher
         }
 
         return $routerObject->getSecondParameter();
-
     }
 }

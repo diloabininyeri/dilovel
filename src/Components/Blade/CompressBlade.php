@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 /**
  * Class Compress
  * @package Blade

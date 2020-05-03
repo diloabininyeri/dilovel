@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-
 use App\Components\Reflection\ProtectedProperty;
 use Bin\Components\Animation;
 use Bin\Components\Command;
@@ -30,8 +29,6 @@ class CommandList implements CommandInterface
     {
         Animation::show();
         $this->printAllCommandList(Command::list());
-
-
     }
 
     /**
@@ -51,7 +48,7 @@ class CommandList implements CommandInterface
      */
     private function addPadRight($command): string
     {
-       return  str_pad($command, 50, ' ', STR_PAD_RIGHT);
+        return  str_pad($command, 50, ' ', STR_PAD_RIGHT);
     }
     /**
      * @param $object
@@ -65,5 +62,4 @@ class CommandList implements CommandInterface
             ->setProperty('description')
             ->getValue();
     }
-
 }

@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-
 use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
@@ -21,7 +20,7 @@ class CreateMiddlewareCommand implements CommandInterface
     /**
      * @var string
      */
-    protected  string  $description='create middleware command';
+    protected string  $description='create middleware command';
 
 
     /**
@@ -33,7 +32,6 @@ class CreateMiddlewareCommand implements CommandInterface
         $filePath = $this->createFilePath($name);
 
         echo $this->createMiddleware($name, $filePath);
-
     }
 
     /**
@@ -44,13 +42,12 @@ class CreateMiddlewareCommand implements CommandInterface
     private function createMiddleware($name, $path): string
     {
         if (file_exists($path)) {
-            return ColorConsole::getInstance()->getColoredString("\nmiddleware already exists\n",'red');
+            return ColorConsole::getInstance()->getColoredString("\nmiddleware already exists\n", 'red');
         }
 
         file_put_contents($path, $this->middlewareTemplate($name));
 
-        return ColorConsole::getInstance()->getColoredString("\n$name middleware created\n",'green');
-
+        return ColorConsole::getInstance()->getColoredString("\n$name middleware created\n", 'green');
     }
 
     /**

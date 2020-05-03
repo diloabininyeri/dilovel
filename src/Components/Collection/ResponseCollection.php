@@ -37,7 +37,6 @@ abstract class ResponseCollection
         try {
             return json_encode($this->toArray(), JSON_THROW_ON_ERROR|JSON_PRETTY_PRINT, 512);
         } catch (JsonException $e) {
-
             throw  new JsonEncodeException($e->getMessage());
         }
     }
@@ -56,8 +55,6 @@ abstract class ResponseCollection
      */
     public function __toString()
     {
-       return $this->toJson();
+        return $this->toJson();
     }
-
-
 }

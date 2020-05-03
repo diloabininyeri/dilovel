@@ -5,7 +5,6 @@ namespace App\Components\Http;
 
 use App\Interfaces\Session as SessionInterface;
 
-
 /**
  * Class Session
  * @package App\Http
@@ -32,11 +31,9 @@ class Session implements SessionInterface
      */
     private function sessionStart(): void
     {
-        if( session_status() === PHP_SESSION_NONE )
-        {
+        if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-
     }
 
     /**
@@ -86,7 +83,7 @@ class Session implements SessionInterface
      * @param $item
      * @return array
      */
-    public function push($name,$item): array
+    public function push($name, $item): array
     {
         $this->session[$name][]=$item;
         return  $this->get($name);
@@ -106,6 +103,6 @@ class Session implements SessionInterface
      */
     public function all(): array
     {
-       return  $this->session;
+        return  $this->session;
     }
 }

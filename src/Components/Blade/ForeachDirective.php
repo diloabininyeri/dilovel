@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 class ForeachDirective implements BladeDirectiveInterface
 {
 
@@ -12,7 +11,7 @@ class ForeachDirective implements BladeDirectiveInterface
      */
     public function getDirectiveRegexPattern()
     {
-       return '/@foreach(.*)/';
+        return '/@foreach(.*)/';
     }
 
     /**
@@ -20,7 +19,7 @@ class ForeachDirective implements BladeDirectiveInterface
      */
     public function replaceTemplate(string $template)
     {
-        return preg_replace_callback($this->getDirectiveRegexPattern(),static function ($find) {
+        return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
             print_r($find);
             return '<?php foreach' . $find[1] . ' :?>';
         }, $template);

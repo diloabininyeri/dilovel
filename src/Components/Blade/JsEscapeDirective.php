@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 class JsEscapeDirective implements BladeDirectiveInterface
 {
 
@@ -21,7 +20,6 @@ class JsEscapeDirective implements BladeDirectiveInterface
     public function replaceTemplate(string $template)
     {
         return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
-
             return '{{' . $find[1] . '}}';
         }, $template);
     }

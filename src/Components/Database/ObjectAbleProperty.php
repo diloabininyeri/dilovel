@@ -3,7 +3,6 @@
 
 namespace App\Components\Database;
 
-
 /**
  * Class ObjectAbleProperty
  * @package App\Models\Objectable

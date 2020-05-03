@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 /**
  * Class Compare
  * @package App\Components\Routers

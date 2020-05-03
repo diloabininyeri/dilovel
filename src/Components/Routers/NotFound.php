@@ -3,14 +3,12 @@
 
 namespace App\Components\Routers;
 
-
 /**
  * Class NotFound
  * @package App\Components
  */
 class NotFound
 {
-
     public static int  $isNotFound=0;
     /**
      * @return bool

@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 /**
  * Class RouterQueryString
  * @package App\Components\Routers
@@ -42,5 +41,4 @@ class RouterQueryString
     {
         return  self::$queryString;
     }
-
 }

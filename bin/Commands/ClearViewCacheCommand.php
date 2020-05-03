@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-
 use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
@@ -48,11 +47,9 @@ class ClearViewCacheCommand implements CommandInterface
     private function deleteAllViewCache($caches): void
     {
         foreach ($caches as $cache) {
-
             unlink($cache);
             echo $this->console->getColoredString("$cache deleted\n", 'green');
             usleep(500000);
-
         }
     }
 }

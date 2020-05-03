@@ -38,7 +38,6 @@ class HasOne
      */
     public function __construct($model, $foreignKey, $key, $modelInstance)
     {
-
         $this->model = $model;
         $this->foreignKey = $foreignKey;
         $this->key = $key;
@@ -50,7 +49,6 @@ class HasOne
      */
     public function oneToOne()
     {
-
         $id = $this->modelInstance->id;
         $model = $this->model;
         $relationModelInstance=new $model();
@@ -60,7 +58,8 @@ class HasOne
             'select * from %s where %s=:%s',
             $relationTable,
             $this->foreignKey,
-            $this->foreignKey);
+            $this->foreignKey
+        );
 
         $pdo = $this->modelInstance->pdoConnection();
 
@@ -71,13 +70,9 @@ class HasOne
         $result= $stmt->fetch();
 
         foreach ($hidden as $item) {
-
-                unset($result->$item);
+            unset($result->$item);
         }
 
         return $result;
-
-
-
     }
 }

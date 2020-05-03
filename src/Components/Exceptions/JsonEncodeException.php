@@ -3,7 +3,6 @@
 
 namespace App\Components\Exceptions;
 
-
 use RuntimeException;
 
 /**
@@ -12,5 +11,4 @@ use RuntimeException;
  */
 class JsonEncodeException extends RuntimeException
 {
-
 }

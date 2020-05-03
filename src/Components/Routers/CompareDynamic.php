@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 use App\Components\Routers\Validators\ValidateRouter;
 
 /**
@@ -48,11 +47,8 @@ class CompareDynamic
         $urlPath = explode('/', $this->urlPath);
         $routerUrl = explode('/', $this->routeDynamicUrl);
         if ($this->isEqual($urlPath, $routerUrl)) {
-
             $this->setIsMatched(true);
         }
-
-
     }
 
     /**
@@ -65,28 +61,21 @@ class CompareDynamic
         $stepMatched = 0;
         foreach ($routerUrl as $key => $routeParam) {
             if (strpos($routeParam, ':') !== false) {
-
                 if ($this->isRequiredValidate($routeParam)) {
                     if ($this->validateRouterParamType($routeParam, $urlPath[$key])) {
-
                         ++$stepMatched;
                         $this->setQueryString($this->getDynamicRouterName($routeParam), $urlPath[$key]);
                     }
                 } else {
-
                     ++$stepMatched;
                     $this->setQueryString($routeParam, $urlPath[$key]);
                 }
-
-
-            } else if ($urlPath[$key] === $routeParam) {
+            } elseif ($urlPath[$key] === $routeParam) {
                 ++$stepMatched;
             }
-
         }
 
         return count($urlPath) === $stepMatched;
-
     }
 
     /**
@@ -123,7 +112,7 @@ class CompareDynamic
      */
     private function getDynamicRouterName($routerParameter): string
     {
-       return $this->findTypeAndName($routerParameter)['router_dynamic_param_name'];
+        return $this->findTypeAndName($routerParameter)['router_dynamic_param_name'];
     }
 
     /**
@@ -136,7 +125,6 @@ class CompareDynamic
         $find = $this->findTypeAndName($routerParameter);
         $validator = new ValidateRouter();
         return $validator->validate($value, $find['validate_type']);
-
     }
 
     /**

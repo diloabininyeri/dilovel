@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 use App\Components\Http\Request;
 use App\Interfaces\PseudoRouteInterface;
 use Closure;
@@ -33,7 +32,6 @@ class Router
             return (new MainRouter())
                 ->setDynamicUrl($arguments[0])
                 ->setSecondParameter($arguments[1]);
-
         }
     }
 
@@ -45,7 +43,7 @@ class Router
      */
     public static function auth(string $class, string $method, Closure $closure)
     {
-        if (call_user_func([new $class(), $method],new Request())) {
+        if (call_user_func([new $class(), $method], new Request())) {
             return $closure();
         }
     }
@@ -57,6 +55,5 @@ class Router
     public static function group($attributes, $callback): void
     {
         (new MainRouter())->group($attributes, $callback);
-
     }
 }

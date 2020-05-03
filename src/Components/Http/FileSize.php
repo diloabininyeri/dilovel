@@ -3,7 +3,6 @@
 
 namespace App\Components\Http;
 
-
 /**
  * Class FileSize
  * @package App\Http

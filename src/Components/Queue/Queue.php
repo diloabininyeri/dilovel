@@ -3,7 +3,6 @@
 
 namespace App\Components\Queue;
 
-
 use SplQueue;
 
 /**
@@ -12,5 +11,4 @@ use SplQueue;
  */
 class Queue extends SplQueue
 {
-
 }

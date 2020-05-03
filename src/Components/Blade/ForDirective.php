@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 /**
  * Class ForDirective
  * @package Blade

@@ -52,7 +52,7 @@ class Request implements ArrayAble, ToJson
      */
     public function get($key, $default = null)
     {
-        return RouterQueryString::get($key,$this->get[$key] ?? $default);
+        return RouterQueryString::get($key, $this->get[$key] ?? $default);
     }
 
     /**
@@ -114,7 +114,6 @@ class Request implements ArrayAble, ToJson
      */
     public function method(): string
     {
-
         return $this->server['REQUEST_METHOD'];
     }
 
@@ -171,7 +170,7 @@ class Request implements ArrayAble, ToJson
         }
 
         if (!empty($this->server()['HTTP_X_FORWARDED_FOR'])) {
-           return $this->server()['HTTP_X_FORWARDED_FOR'];
+            return $this->server()['HTTP_X_FORWARDED_FOR'];
         }
 
         return $this->server()['REMOTE_ADDR'];

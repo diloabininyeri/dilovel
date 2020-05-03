@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 class ElseIfDirective implements BladeDirectiveInterface
 {
 

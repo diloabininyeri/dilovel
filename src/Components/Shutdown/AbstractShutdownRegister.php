@@ -3,7 +3,6 @@
 
 namespace App\Components\Shutdown;
 
-
 use App\Interfaces\RegisterShutdownInterface;
 
 /**
@@ -18,7 +17,7 @@ abstract class AbstractShutdownRegister
      */
     public function onShutdown():void
     {
-        register_shutdown_function(function (){
+        register_shutdown_function(function () {
             foreach ($this->getRegisters() as $register) {
                 /**
                  * @var RegisterShutdownInterface $class

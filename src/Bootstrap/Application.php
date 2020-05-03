@@ -3,7 +3,6 @@
 
 namespace App\Bootstrap;
 
-
 /**
  * Class Application
  * @package App\Bootstrap
@@ -20,6 +19,4 @@ class Application
         $bootstrap = new Bootstrap();
         $bootstrap->loadProviders();
     }
-
-
 }

@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 class PhpDirective implements BladeDirectiveInterface
 {
 
@@ -12,7 +11,7 @@ class PhpDirective implements BladeDirectiveInterface
      */
     public function getDirectiveRegexPattern()
     {
-       return '/@php/';
+        return '/@php/';
     }
 
     /**

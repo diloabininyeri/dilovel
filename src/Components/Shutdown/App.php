@@ -3,7 +3,6 @@
 
 namespace App\Components\Shutdown;
 
-
 use App\Application\Shutdown\ShutdownListener;
 
 /**

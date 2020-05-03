@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-
 use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
@@ -34,7 +33,6 @@ class CreateViewCommand implements CommandInterface
         $filePath = $this->createFilePath($name);
 
         echo $this->createView($name, $filePath);
-
     }
 
     /**
@@ -51,7 +49,6 @@ class CreateViewCommand implements CommandInterface
         file_put_contents($path, $this->viewTemplate());
 
         return ColorConsole::getInstance()->getColoredString("$name view created\n", 'green');
-
     }
 
     /**
@@ -70,6 +67,4 @@ class CreateViewCommand implements CommandInterface
     {
         return file_get_contents(__DIR__ . '/../Stubs/View');
     }
-
-
 }

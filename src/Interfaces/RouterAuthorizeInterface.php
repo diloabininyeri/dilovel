@@ -3,7 +3,6 @@
 
 namespace App\Interfaces;
 
-
 /**
  * Interface RouterAuthorizeInterface
  * @package App\Interfaces

@@ -19,6 +19,4 @@ class CollectionTest extends TestCase
         $collection = new Collection(range(1, 10));
         $this->assertIsIterable($collection);
     }
-
-
 }

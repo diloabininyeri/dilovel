@@ -3,7 +3,6 @@
 
 namespace App\Interfaces;
 
-
 use Closure;
 use Generator;
 
@@ -32,6 +31,4 @@ interface ProcessForkInterface
      * @return Generator
      */
     public function generateData(): Generator;
-
-
 }

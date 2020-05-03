@@ -3,7 +3,6 @@
 
 namespace App\Bootstrap;
 
-
 use App\Providers\ProviderInterface;
 
 /**
@@ -26,11 +25,9 @@ class Bootstrap
         $providers = include "$config";
 
         foreach ($providers['providers'] as $provider) {
-
             $provider = new $provider();
             $provider->register();
             $provider->boot();
         }
-
     }
 }

@@ -22,16 +22,16 @@ class GlobalMiddlewareLayer
     public function bind(): Closure
     {
         return function () {
-
             $request = new Request();
             /**
              * @see Middleware::$global
              */
             foreach ($this->global as $middleware) {
-
                 if ($request instanceof Request) {
-                    $request = (new $middleware)->handle(fn($response) => $response, $request);
-                } else {break;}
+                    $request = (new $middleware)->handle(fn ($response) => $response, $request);
+                } else {
+                    break;
+                }
             }
 
             return $request;

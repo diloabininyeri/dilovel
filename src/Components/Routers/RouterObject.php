@@ -3,8 +3,6 @@
 
 namespace App\Components\Routers;
 
-
-
 /**
  * Class RouterObject
  * @package App\Components\Routers
@@ -85,5 +83,4 @@ class RouterObject
     {
         return $this->mainRouter;
     }
-
 }

@@ -41,13 +41,12 @@ class Blade
      */
     public function render($template)
     {
-        return array_reduce($this->directives, static function ($template, $class){
+        return array_reduce($this->directives, static function ($template, $class) {
             /**
              * @var BladeDirectiveInterface $object
              */
             $object = new $class();
             return $object->replaceTemplate($template);
-
         }, $template);
     }
 }

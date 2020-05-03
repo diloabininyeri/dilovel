@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 use App\Components\Http\Request;
 
 /**
@@ -33,7 +32,7 @@ class CallControllerWithIoc
      * @param string $method
      * @param Request $request
      */
-    public function __construct(string $controller, string $method,Request $request)
+    public function __construct(string $controller, string $method, Request $request)
     {
         $this->controller = $controller;
         $this->method = $method;

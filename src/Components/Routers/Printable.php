@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 use App\Components\Collection\Collection;
 use App\Components\Database\Model;
 use JsonException;
@@ -39,18 +38,15 @@ class Printable
         if ($this->data instanceof Collection) {
             header('Content-type:application/json');
             echo $this->data;
-        } else if ($this->data instanceof Model) {
+        } elseif ($this->data instanceof Model) {
             header('Content-type:application/json');
             echo json_encode($this->data, JSON_THROW_ON_ERROR, 512);
-        } else if (is_array($this->data) || is_object($this->data)) {
+        } elseif (is_array($this->data) || is_object($this->data)) {
             echo '<pre>';
             print_r($this->data);
             echo '</pre>';
         } else {
             echo $this->data;
         }
-
-
     }
-
 }

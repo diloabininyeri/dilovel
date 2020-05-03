@@ -3,10 +3,8 @@
 
 namespace Bin\Components\Process;
 
-
 use App\Interfaces\ProcessForkInterface;
 use Exception;
-
 
 /**
  * Class Process
@@ -32,15 +30,12 @@ class Process
      */
     public function runOneByOneClosure(): void
     {
-
         foreach ($this->processFork->generateData() as $data) {
-
             try {
                 $processId = pcntl_fork();
                 if (!$processId) {
                     print call_user_func($this->processFork->closure(), $data);
                     exit();
-
                 }
             } catch (Exception $exception) {
                 $this->processFork->failed($exception->getMessage());
@@ -48,8 +43,6 @@ class Process
         }
 
         $this->wait();
-
-
     }
 
     /**
@@ -61,5 +54,4 @@ class Process
             $status = pcntl_wexitstatus($status);
         }
     }
-
 }

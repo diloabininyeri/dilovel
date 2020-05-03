@@ -3,7 +3,6 @@
 
 namespace App\Application\Models;
 
-
 use App\Components\Database\Model;
 
 /**

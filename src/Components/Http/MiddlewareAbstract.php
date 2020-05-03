@@ -3,7 +3,6 @@
 
 namespace App\Components\Http;
 
-
 use App\Components\Exceptions\MiddlewareNotFoundException;
 
 /**
@@ -45,7 +44,7 @@ abstract class MiddlewareAbstract
     private function getMiddlewareRoute($names): array
     {
         return array_map(function ($name) {
-            if(isset($this->middleware[$name])) {
+            if (isset($this->middleware[$name])) {
                 return $this->middleware[$name];
             }
             throw new MiddlewareNotFoundException("$name middleware not found");
@@ -63,13 +62,11 @@ abstract class MiddlewareAbstract
             $this->response = $request;
 
             if (!$request instanceof Request) {
-
                 $this->isInstanceOfRequest = false;
                 return $this;
             }
         }
         return $this;
-
     }
 
     /**
@@ -79,7 +76,7 @@ abstract class MiddlewareAbstract
      */
     private function callMiddleware($middleware, $request)
     {
-        return (new $middleware())->handle(fn($response) => $response, $request);
+        return (new $middleware())->handle(fn ($response) => $response, $request);
     }
 
     /**

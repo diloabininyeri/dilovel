@@ -25,7 +25,6 @@ function db_path($file)
 {
     $relative = implode(DIRECTORY_SEPARATOR, ['Database', $file]);
     return base_path($relative);
-
 }
 
 function base_path($file = null)
@@ -68,7 +67,6 @@ function session($name = null)
         return $session;
     }
     return $session->get($name);
-
 }
 
 /**
@@ -150,7 +148,7 @@ function activate_errors()
         ini_set('display_errors', 1);
     }
 
-    ini_set('error_log','src/logs/error.log');
+    ini_set('error_log', 'src/logs/error.log');
 }
 
 /**
@@ -166,7 +164,7 @@ function request()
  * @param null $default
  * @return mixed|null
  */
-function env($name,$default=null)
+function env($name, $default=null)
 {
     return (new EnvFile('.env'))->getValue($name) ?: $default;
 }
@@ -184,7 +182,7 @@ function now()
  */
 function config_path()
 {
-    return sprintf('%s/%s',getcwd(),'src/config/');
+    return sprintf('%s/%s', getcwd(), 'src/config/');
 }
 
 /**
@@ -193,7 +191,7 @@ function config_path()
  */
 function get_config_array($configFile)
 {
-    return require sprintf('%s/%s.php',config_path(),$configFile);
+    return require sprintf('%s/%s.php', config_path(), $configFile);
 }
 
 
@@ -203,11 +201,10 @@ function get_config_array($configFile)
  */
 function config(string $config)
 {
-    $dotConfig=explode('.',$config);
+    $dotConfig=explode('.', $config);
     $configArray=get_config_array($dotConfig[0]);
     $array=$dotConfig;
     unset($array[0]);
 
-    return (new DotNotation())->getValueByKey(implode('.',$array),$configArray);
-
+    return (new DotNotation())->getValueByKey(implode('.', $array), $configArray);
 }

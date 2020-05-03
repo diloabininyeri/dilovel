@@ -3,7 +3,6 @@
 
 namespace App\Interfaces;
 
-
 /**
  * Interface ValidateRouterInterface
  * @package App\Interfaces

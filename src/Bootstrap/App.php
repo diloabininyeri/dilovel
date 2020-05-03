@@ -3,7 +3,6 @@
 
 namespace App\Bootstrap;
 
-
 use App\Components\Routers\NotFound;
 use JsonException;
 
@@ -16,7 +15,7 @@ class App
     /**
      * @throws JsonException
      */
-    public  function run():self
+    public function run():self
     {
         (new System())
             ->run()

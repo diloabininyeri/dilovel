@@ -3,7 +3,6 @@
 
 namespace App\Providers;
 
-
 use App\Components\Cache;
 use App\Components\Container\App;
 use App\Components\Routers\Router;
@@ -11,8 +10,6 @@ use App\Components\Http\Session;
 
 class AliasProvider implements ProviderInterface
 {
-
-
     public function register(): void
     {
         // TODO: Implement register() method.

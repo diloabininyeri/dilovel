@@ -3,7 +3,6 @@
 
 namespace App\Components\Http;
 
-
 use App\Interfaces\ArrayAble;
 
 /**

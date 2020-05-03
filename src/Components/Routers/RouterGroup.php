@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-
 use Closure;
 
 /**
@@ -59,6 +58,4 @@ class RouterGroup
     {
         return $this->callback;
     }
-
-
 }

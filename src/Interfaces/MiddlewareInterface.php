@@ -3,8 +3,6 @@
 
 namespace App\Interfaces;
 
-
-
 use App\Components\Http\Request;
 use Closure;
 

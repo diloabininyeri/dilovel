@@ -3,7 +3,6 @@
 
 namespace App\Components\Queue;
 
-
 use SplStack;
 
 /**
@@ -12,5 +11,4 @@ use SplStack;
  */
 class Stack extends SplStack
 {
-
 }

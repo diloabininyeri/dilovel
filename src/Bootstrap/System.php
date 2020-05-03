@@ -3,7 +3,6 @@
 
 namespace App\Bootstrap;
 
-
 use App\Components\Routers\AllRouterCompare;
 use App\Components\Routers\Dispatcher;
 use App\Components\Routers\Printable;
@@ -45,12 +44,10 @@ class System
         $findRouterObject = $compare->findWillWhichExecute();
 
         if ($findRouterObject instanceof RouterObject) {
-
             $routeResponse = (new Dispatcher())->route($findRouterObject);
             $printable = new Printable($routeResponse);
 
             $printable->output();
         }
-
     }
 }

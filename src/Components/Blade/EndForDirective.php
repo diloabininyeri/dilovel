@@ -3,7 +3,6 @@
 
 namespace App\Components\Blade;
 
-
 class EndForDirective implements BladeDirectiveInterface
 {
 

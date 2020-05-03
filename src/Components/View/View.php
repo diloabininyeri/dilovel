@@ -6,7 +6,6 @@ namespace App\Components\View;
 use App\Components\Blade\Blade;
 use App\Components\Exceptions\ViewNotFoundException;
 
-
 /**
  * Class View
  * @package App\Components\View
@@ -35,7 +34,7 @@ class View
     {
         $this->blade = "src/Views/$view.blade.php";
         $this->variables = $variables;
-        if(!file_exists($this->blade)) {
+        if (!file_exists($this->blade)) {
             throw new ViewNotFoundException("$view view Not Found");
         }
     }
@@ -74,6 +73,5 @@ class View
     {
         $md5=$this->getHashBlade();
         file_put_contents("src/Views/caches/$md5.php", $this->renderWithBlade());
-
     }
 }

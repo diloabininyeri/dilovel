@@ -3,7 +3,6 @@
 
 namespace App\Application\Middleware;
 
-
 use App\Components\Http\Request;
 use App\Interfaces\MiddlewareInterface;
 use Closure;
@@ -22,7 +21,6 @@ class GlobalMiddleware implements MiddlewareInterface
      */
     public function handle(Closure $next, Request $request)
     {
-
         $yourCondition = true;
 
         if ($yourCondition) {

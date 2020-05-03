@@ -3,10 +3,8 @@
 
 namespace App\Application\Controllers;
 
-
 use App\Application\Request\TcNoVerifyRequest;
 use App\Application\Models\Users;
-
 
 /**
  * Class Controller
@@ -22,7 +20,5 @@ class Controller
     {
         $users=Users::get();
         return view('index', compact('users'));
-
-
     }
 }

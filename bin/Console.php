@@ -3,16 +3,15 @@
 
 namespace Bin;
 
-
-use Bin\{Commands\ClearViewCacheCommand,
-    Commands\CommandList,
-    Commands\CreateControllerCommand,
-    Commands\CreateMiddlewareCommand,
-    Commands\CreateModelCommand,
-    Commands\CreateViewCommand,
-    Commands\CustomCommand,
-    Commands\DeleteControllerCommand,
-    Components\CustomCommandCall};
+use Bin\Commands\ClearViewCacheCommand;
+use Bin\Commands\CommandList;
+use Bin\Commands\CreateControllerCommand;
+use Bin\Commands\CreateMiddlewareCommand;
+use Bin\Commands\CreateModelCommand;
+use Bin\Commands\CreateViewCommand;
+use Bin\Commands\CustomCommand;
+use Bin\Commands\DeleteControllerCommand;
+use Bin\Components\CustomCommandCall;
 
 /**
  * Class Console
@@ -34,5 +33,4 @@ class Console extends CustomCommandCall
         'list' => CommandList::class,
         'make:middleware'=>CreateMiddlewareCommand::class
     ];
-
 }

@@ -3,7 +3,6 @@
 
 namespace App\Interfaces;
 
-
 use App\Components\Database\Model;
 
 /**
@@ -36,5 +35,4 @@ interface ModelObserverInterface
      * @return mixed
      */
     public function saved(Model $model);
-
 }

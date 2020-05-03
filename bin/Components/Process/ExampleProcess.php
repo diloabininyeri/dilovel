@@ -3,7 +3,6 @@
 
 namespace Bin\Components\Process;
 
-
 use App\Interfaces\ProcessForkInterface;
 use Closure;
 use Generator;
@@ -21,7 +20,6 @@ class ExampleProcess implements ProcessForkInterface
     public function closure(): Closure
     {
         return static function ($value) {
-
             sleep(1);
             return $value."\n";
         };
@@ -42,8 +40,7 @@ class ExampleProcess implements ProcessForkInterface
      */
     public function generateData(): Generator
     {
-        foreach (range(1,20000) as $item) {
-
+        foreach (range(1, 20000) as $item) {
             yield $item;
         }
     }

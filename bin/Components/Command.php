@@ -3,7 +3,6 @@
 
 namespace Bin\Components;
 
-
 use App\Components\Reflection\ProtectedProperty;
 use Bin\Console;
 use ReflectionException;

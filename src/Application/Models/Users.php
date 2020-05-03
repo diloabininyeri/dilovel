@@ -9,7 +9,6 @@ use App\Components\Database\BuilderQuery;
 use App\Components\Database\HasOne;
 use App\Components\Database\Model;
 
-
 /**
  * Class Users
  * @package App\Models
@@ -49,7 +48,7 @@ class Users extends Model
 
     public function setPasswordAttribute($value)
     {
-       return md5($value);
+        return md5($value);
     }
 
 
@@ -75,5 +74,4 @@ class Users extends Model
     {
         return random_int(1, 123);
     }
-
 }

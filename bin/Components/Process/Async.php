@@ -3,7 +3,6 @@
 
 namespace Bin\Components\Process;
 
-
 use App\Interfaces\ProcessForkInterface;
 
 /**
@@ -21,5 +20,4 @@ class Async
         $process = new Process($processFork);
         $process->runOneByOneClosure();
     }
-
 }

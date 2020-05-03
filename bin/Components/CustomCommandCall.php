@@ -3,14 +3,13 @@
 
 namespace Bin\Components;
 
-
 use RuntimeException;
 
 /**
  * Class CustomCommandCall
  * @package Bin\Components
  */
-abstract class  CustomCommandCall
+abstract class CustomCommandCall
 {
 
     /**
@@ -27,7 +26,6 @@ abstract class  CustomCommandCall
         if (!empty(func_get_args())) {
             $this->parseParameters(func_get_args());
         }
-
     }
 
     /**
@@ -35,7 +33,6 @@ abstract class  CustomCommandCall
      */
     private function parseParameters($parameter): void
     {
-
         [$params, $count] = $parameter;
 
         if ($count < 2) {
@@ -54,11 +51,9 @@ abstract class  CustomCommandCall
 
         if (class_exists($commandClass)) {
             (new $commandClass())->handle(array_slice($this->signals, 1));
-
         } else {
             echo $this->createNotFoundMessage($this->findSimilarCommand($this->signals[0]));
         }
-
     }
 
 
@@ -70,7 +65,6 @@ abstract class  CustomCommandCall
     {
         $similarCommands = $this->sortSimilarity($command);
         return $similarCommands[0]['command'];
-
     }
 
     /**
@@ -87,9 +81,8 @@ abstract class  CustomCommandCall
                 ];
         }, array_keys($this->getCommands()));
 
-        uasort($similarRate, fn($cmd, $cmd1) => -($cmd['similarity'] <=> $cmd1['similarity']));
+        uasort($similarRate, fn ($cmd, $cmd1) => -($cmd['similarity'] <=> $cmd1['similarity']));
         return array_values($similarRate);
-
     }
 
     /**
@@ -111,8 +104,6 @@ abstract class  CustomCommandCall
      */
     private function createNotFoundMessage($command): string
     {
-        return ColorConsole::getInstance()->getColoredString( "command not found but you can use\n=>php console $command\n",'red');
+        return ColorConsole::getInstance()->getColoredString("command not found but you can use\n=>php console $command\n", 'red');
     }
-
-
 }
