@@ -11,6 +11,7 @@ use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Routers\GenerateRouter;
 use App\Components\View\View;
+use App\Components\Routers\Redirect\Redirect;
 
 /**
  * @param $function
@@ -159,6 +160,13 @@ function request()
     return SingletonRequest::getInstance();
 }
 
+/**
+ * @return Redirect
+ */
+function redirect()
+{
+    return new Redirect();
+}
 /**
  * @param $name
  * @param null $default
