@@ -20,9 +20,12 @@ class Command
      */
     public static function list()
     {
-        return (new ProtectedProperty())
+        $commands= (new ProtectedProperty())
             ->setObject(new Console())
             ->setProperty('commands')
             ->getValue();
+
+          ksort($commands);
+          return $commands;
     }
 }
