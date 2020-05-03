@@ -145,11 +145,12 @@ function view_path(?string $view = null)
  */
 function activate_errors()
 {
-    if (env('ERROR_REPORTING')) {
+    if (env('ERROR_REPORTING')==='true') {
         error_reporting(E_ALL & ~E_NOTICE);
         ini_set('display_errors', 1);
-        ini_set('error_log','src/logs/error.log');
     }
+
+    ini_set('error_log','src/logs/error.log');
 }
 
 /**

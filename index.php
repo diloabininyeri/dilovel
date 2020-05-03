@@ -10,18 +10,18 @@ require_once 'vendor/autoload.php';
  * activates errors to see errors in the app
  */
 activate_errors();
-ini_set('error_log','src/logs/error.log');
+
 
 $globalMiddleware= (new GlobalMiddlewareLayer())->bind()->call(new Middleware());
 
 if ($globalMiddleware instanceof Request) {
 
-    echo (new App())
+    echo (new Ap())
         ->run()
-        ->call404IfNotFoun();
+        ->call404IfNotFound();
 
 }else{ echo $globalMiddleware; }
 
 
-(new AppShutdown())->onShutdown();;
+(new AppShutdown())->onShutdown();
 
