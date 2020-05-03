@@ -108,7 +108,10 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         return new ArrayIterator($this->collection);
     }
 
-    /** @noinspection MagicMethodsValidityInspection
+    /**
+     * @noinspection MagicMethodsValidityInspection
+     * @return false|string
+     * @throws JsonException
      */
     public function __toString()
     {
@@ -163,6 +166,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     /**
      * @param array $collection
      * @return Collection
+     * @noinspection PhpUnused
      */
     public function setCollection(array $collection): Collection
     {
