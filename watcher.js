@@ -2,14 +2,14 @@ const fs = require('fs');
 const {exec} = require("child_process");
 require('log-timestamp');
 
-const buttonPressesLogFile = './src/logs/error.log';
+const logFile = './src/logs/error.log';
 const command='php console error:detected';
 
-console.log(`Watching for file changes on ${buttonPressesLogFile}`);
+console.log(`Watching for file changes on ${logFile}`);
 
-fs.watchFile(buttonPressesLogFile, () => {
+fs.watchFile(logFile, () => {
 
-    console.log(`${buttonPressesLogFile} file Changed`);
+    console.log(`${logFile} file Changed`);
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
