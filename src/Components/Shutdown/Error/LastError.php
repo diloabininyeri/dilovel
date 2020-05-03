@@ -4,13 +4,20 @@
 namespace App\Components\Shutdown\Error;
 
 
-use App\Interfaces\registerShutdownInterface;
+use App\Interfaces\RegisterShutdownInterface;
 
-class LastError implements registerShutdownInterface
+/**
+ * Class LastError
+ * @package App\Components\Shutdown\Error
+ */
+class LastError implements RegisterShutdownInterface
 {
 
+    /** @noinspection ForgottenDebugOutputInspection */
     public function appOnShutdown(): void
     {
-        // TODO: Implement appOnShutdown() method.
+       $error=error_get_last();
+       ini_set('error_log','src/logs/error.log');
+       error_log($error['message'],$error['type']);
     }
 }

@@ -8,7 +8,7 @@ namespace App\Interfaces;
  * Interface shutdownRegisterInterface
  * @package App\Interfaces
  */
-interface registerShutdownInterface
+interface RegisterShutdownInterface
 {
     /**
      *
