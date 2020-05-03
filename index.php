@@ -16,7 +16,7 @@ $globalMiddleware= (new GlobalMiddlewareLayer())->bind()->call(new Middleware())
 
 if ($globalMiddleware instanceof Request) {
 
-    echo (new Ap())
+    echo (new App())
         ->run()
         ->call404IfNotFound();
 
