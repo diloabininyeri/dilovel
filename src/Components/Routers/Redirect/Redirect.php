@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers\Redirect;
 
-
 /**
  * Class Redirect
  * @package App\Components\Routers\Redirect
@@ -22,7 +21,7 @@ class Redirect
      */
     public function router(string $name, $parameters = []): self
     {
-        return $this->setUrl(router($name,$parameters));
+        return $this->setUrl(router($name, $parameters));
     }
 
 
@@ -61,5 +60,4 @@ class Redirect
         }
         return null;
     }
-
 }
