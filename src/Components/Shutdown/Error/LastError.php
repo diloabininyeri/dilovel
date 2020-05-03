@@ -8,7 +8,7 @@ use App\Interfaces\RegisterShutdownInterface;
 
 /**
  * Class LastError
- * @package App\Components\Shutdown\Error
+ * @package App\Components\App\Error
  */
 class LastError implements RegisterShutdownInterface
 {
@@ -18,6 +18,9 @@ class LastError implements RegisterShutdownInterface
     {
        $error=error_get_last();
        ini_set('error_log','src/logs/error.log');
-       error_log($error['message'],$error['type']);
+        if (isset($error['message'])) {
+            error_log($error['message'],$error['type']);
+        }
+
     }
 }

@@ -7,10 +7,11 @@ namespace App\Components\Shutdown;
 use App\Components\Shutdown\Error\LastError;
 
 /**
- * Class Shutdown
+ * Class App
  * @package App\Components\Shutdown
+ *
  */
-class Shutdown extends AbstractShutdownRegister
+class App extends AbstractShutdownRegister
 {
 
     /**

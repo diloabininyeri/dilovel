@@ -1,6 +1,7 @@
 <?php
 
 use App\{Application\Middleware, Bootstrap\App, Bootstrap\GlobalMiddlewareLayer, Components\Http\Request};
+use App\Components\Shutdown\App as AppShutdown;
 
 
 require_once 'vendor/autoload.php';
@@ -19,3 +20,7 @@ if ($globalMiddleware instanceof Request) {
         ->call404IfNotFound();
 
 }else{ echo $globalMiddleware; }
+
+
+(new AppShutdown())->onShutdown();;
+
