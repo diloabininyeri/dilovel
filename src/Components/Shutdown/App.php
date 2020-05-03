@@ -4,7 +4,7 @@
 namespace App\Components\Shutdown;
 
 
-use App\Components\Shutdown\Error\LastError;
+use App\Application\Shutdown\ShutdownListener;
 
 /**
  * Class App
@@ -18,6 +18,7 @@ class App extends AbstractShutdownRegister
      * @var array|string[]
      */
     protected array $register = [
-        LastError::class
+
+        ShutdownListener::class
     ];
 }

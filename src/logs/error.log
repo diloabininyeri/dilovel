@@ -7,3 +7,15 @@
 [03-May-2020 03:22:45 Europe/Moscow] PHP   1. App\Components\Shutdown\App->App\Components\Shutdown\{closure:/home/zeus/Desktop/hmvc/src/Components/Shutdown/AbstractShutdownRegister.php:21-29}() /home/zeus/Desktop/hmvc/src/Components/Shutdown/AbstractShutdownRegister.php:0
 [03-May-2020 03:22:45 Europe/Moscow] PHP   2. App\Components\Shutdown\Error\LastError->appOnShutdown() /home/zeus/Desktop/hmvc/src/Components/Shutdown/AbstractShutdownRegister.php:27
 [03-May-2020 03:22:45 Europe/Moscow] 
+[03-May-2020 03:56:06 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::call404IfNotFoun() in /home/zeus/Desktop/hmvc/index.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 21
+[03-May-2020 03:57:03 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::call404IfNotFoun() in /home/zeus/Desktop/hmvc/index.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 21
+[03-May-2020 03:57:09 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::call404IfNotFoun() in /home/zeus/Desktop/hmvc/index.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 21
