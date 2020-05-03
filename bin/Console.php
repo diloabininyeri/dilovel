@@ -11,6 +11,7 @@ use Bin\Commands\CreateModelCommand;
 use Bin\Commands\CreateViewCommand;
 use Bin\Commands\CustomCommand;
 use Bin\Commands\DeleteControllerCommand;
+use Bin\Commands\ErrorLogChangedCommand;
 use Bin\Components\CustomCommandCall;
 
 /**
@@ -31,6 +32,7 @@ class Console extends CustomCommandCall
         'make:view' => CreateViewCommand::class,
         'clear:view-cache' => ClearViewCacheCommand::class,
         'list' => CommandList::class,
-        'make:middleware'=>CreateMiddlewareCommand::class
+        'make:middleware'=>CreateMiddlewareCommand::class,
+        'error:detected'=>ErrorLogChangedCommand::class
     ];
 }

@@ -94,7 +94,16 @@ Stack trace:
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
 #6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 62
 [03-May-2020 20:41:35 Europe/Moscow] PHP Notice:  Undefined index: HTTP_REFERER in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36
-[03-May-2020 20:41:35 Europe/Moscow] PHP Stack trace:
+[03-May-2020 20:41:35 Europe/Moscow] PHP Stack trace:trhth
+trhthr
+trhthththt
+thrhtrhr
+tr
+d
+htgfngngn
+ngfdngn
+htr
+tjytjytjy
 [03-May-2020 20:41:35 Europe/Moscow] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
 [03-May-2020 20:41:35 Europe/Moscow] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
 [03-May-2020 20:41:35 Europe/Moscow] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
@@ -201,3 +210,4 @@ Stack trace:
 #4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
 #6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 62
+[03-May-2020 21:21:33 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'Router' (T_STRING) in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 5
