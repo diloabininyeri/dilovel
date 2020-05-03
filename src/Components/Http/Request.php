@@ -42,7 +42,7 @@ class Request implements ArrayAble, ToJson
         $this->request = array_map('trim', $_REQUEST);
         $this->get = array_map('trim', $_GET);
         $this->post = array_map('trim', $_POST);
-        $this->server=$_SERVER;
+        $this->server = $_SERVER;
     }
 
     /**
@@ -110,6 +110,14 @@ class Request implements ArrayAble, ToJson
     }
 
     /**
+     * @return object
+     */
+    public function serverObject(): object
+    {
+        return (object)array_change_key_case($this->server(), CASE_LOWER);
+    }
+
+    /**
      * @return string
      */
     public function method(): string
@@ -166,7 +174,7 @@ class Request implements ArrayAble, ToJson
     public function ip()
     {
         if (!empty($this->server()['HTTP_CLIENT_IP'])) {
-            return  $this->server()['HTTP_CLIENT_IP'];
+            return $this->server()['HTTP_CLIENT_IP'];
         }
 
         if (!empty($this->server()['HTTP_X_FORWARDED_FOR'])) {
@@ -174,6 +182,28 @@ class Request implements ArrayAble, ToJson
         }
 
         return $this->server()['REMOTE_ADDR'];
+    }
+
+    /**
+     * @param mixed ...$exceptKeys
+     * @return array
+     */
+    public function except(...$exceptKeys): array
+    {
+        $exceptArray = $this->request;
+        foreach ($exceptKeys as $except) {
+            unset($exceptArray[$except]);
+        }
+
+        return $exceptArray;
+    }
+
+    /***
+     * @return array
+     */
+    public function all(): array
+    {
+        return $this->request;
     }
 
     /**
