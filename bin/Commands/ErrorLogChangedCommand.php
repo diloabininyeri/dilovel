@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-
 use Bin\Components\CommandInterface;
 
 /**
@@ -25,6 +24,5 @@ class ErrorLogChangedCommand implements CommandInterface
     {
 
         //send mail to admin an error occur
-
     }
 }

@@ -25,7 +25,7 @@ class Command
             ->setProperty('commands')
             ->getValue();
 
-          ksort($commands);
-          return $commands;
+        ksort($commands);
+        return $commands;
     }
 }
