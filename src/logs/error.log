@@ -26,3 +26,178 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/zeus/Desktop/hmvc/index.php on line 19
+[03-May-2020 20:26:51 Europe/Moscow] PHP Fatal error:  Uncaught App\Components\Exceptions\MiddlewareNotFoundException: mid middleware not found in /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php:50
+Stack trace:
+#0 [internal function]: App\Components\Http\MiddlewareAbstract->App\Components\Http\{closure}()
+#1 /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php(46): array_map()
+#2 /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php(37): App\Components\Http\MiddlewareAbstract->getMiddlewareRoute()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(22): App\Components\Http\MiddlewareAbstract->__construct()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(33): App\Components\Routers\Dispatcher->callMiddleware()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#7 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#8 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php on line 50
+[03-May-2020 20:31:52 Europe/Moscow] PHP Fatal error:  Uncaught RuntimeException: index router not found in /home/zeus/Desktop/hmvc/src/Components/Routers/RouterName.php:38
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/GenerateRouter.php(20): App\Components\Routers\RouterName::getName()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(96): App\Components\Routers\GenerateRouter->url()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php(13): router()
+#3 /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php(16): App\Components\Routers\Redirect\Redirect->router()
+#4 [internal function]: App\Application\Controllers\Deneme->index()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/ in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 20
+[03-May-2020 20:31:52 Europe/Moscow] PHP Fatal error:  Uncaught RuntimeException: index router not found in /home/zeus/Desktop/hmvc/src/Components/Routers/RouterName.php:38
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/GenerateRouter.php(20): App\Components\Routers\RouterName::getName()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(96): App\Components\Routers\GenerateRouter->url()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php(13): router()
+#3 /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php(16): App\Components\Routers\Redirect\Redirect->router()
+#4 [internal function]: App\Application\Controllers\Deneme->index()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/ in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 20
+[03-May-2020 20:41:30 Europe/Moscow] PHP Fatal error:  Uncaught App\Components\Exceptions\MiddlewareNotFoundException: mid middleware not found in /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php:50
+Stack trace:
+#0 [internal function]: App\Components\Http\MiddlewareAbstract->App\Components\Http\{closure}()
+#1 /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php(46): array_map()
+#2 /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php(37): App\Components\Http\MiddlewareAbstract->getMiddlewareRoute()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(22): App\Components\Http\MiddlewareAbstract->__construct()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(33): App\Components\Routers\Dispatcher->callMiddleware()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#7 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#8 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php on line 50
+[03-May-2020 20:41:34 Europe/Moscow] PHP Notice:  Undefined index: HTTP_REFERER in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36
+[03-May-2020 20:41:34 Europe/Moscow] PHP Stack trace:
+[03-May-2020 20:41:34 Europe/Moscow] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[03-May-2020 20:41:34 Europe/Moscow] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[03-May-2020 20:41:34 Europe/Moscow] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[03-May-2020 20:41:34 Europe/Moscow] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[03-May-2020 20:41:34 Europe/Moscow] PHP   5. App\Components\Routers\Dispatcher->callRouterCallableThroughMiddleware() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:38
+[03-May-2020 20:41:34 Europe/Moscow] PHP   6. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:56
+[03-May-2020 20:41:34 Europe/Moscow] PHP   7. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:53
+[03-May-2020 20:41:34 Europe/Moscow] PHP   8. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:41:34 Europe/Moscow] PHP   9. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:41:34 Europe/Moscow] PHP  10. App\Components\Routers\Redirect\Redirect->back() /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php:16
+[03-May-2020 20:41:34 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Components\Routers\Redirect\Redirect::setUrl() must be of the type string, null given, called in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36 and defined in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php:52
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php(36): App\Components\Routers\Redirect\Redirect->setUrl()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php(16): App\Components\Routers\Redirect\Redirect->back()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 62
+[03-May-2020 20:41:35 Europe/Moscow] PHP Notice:  Undefined index: HTTP_REFERER in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36
+[03-May-2020 20:41:35 Europe/Moscow] PHP Stack trace:
+[03-May-2020 20:41:35 Europe/Moscow] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[03-May-2020 20:41:35 Europe/Moscow] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[03-May-2020 20:41:35 Europe/Moscow] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[03-May-2020 20:41:35 Europe/Moscow] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[03-May-2020 20:41:35 Europe/Moscow] PHP   5. App\Components\Routers\Dispatcher->callRouterCallableThroughMiddleware() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:38
+[03-May-2020 20:41:35 Europe/Moscow] PHP   6. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:56
+[03-May-2020 20:41:35 Europe/Moscow] PHP   7. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:53
+[03-May-2020 20:41:35 Europe/Moscow] PHP   8. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:41:35 Europe/Moscow] PHP   9. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:41:35 Europe/Moscow] PHP  10. App\Components\Routers\Redirect\Redirect->back() /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php:16
+[03-May-2020 20:41:35 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Components\Routers\Redirect\Redirect::setUrl() must be of the type string, null given, called in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36 and defined in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php:52
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php(36): App\Components\Routers\Redirect\Redirect->setUrl()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php(16): App\Components\Routers\Redirect\Redirect->back()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 62
+[03-May-2020 20:42:51 Europe/Moscow] PHP Notice:  Undefined index: HTTP_REFERER in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36
+[03-May-2020 20:42:51 Europe/Moscow] PHP Stack trace:
+[03-May-2020 20:42:51 Europe/Moscow] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[03-May-2020 20:42:51 Europe/Moscow] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[03-May-2020 20:42:51 Europe/Moscow] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[03-May-2020 20:42:51 Europe/Moscow] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[03-May-2020 20:42:51 Europe/Moscow] PHP   5. App\Components\Routers\Dispatcher->callRouterCallableThroughMiddleware() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:38
+[03-May-2020 20:42:51 Europe/Moscow] PHP   6. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:56
+[03-May-2020 20:42:51 Europe/Moscow] PHP   7. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:53
+[03-May-2020 20:42:51 Europe/Moscow] PHP   8. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:42:51 Europe/Moscow] PHP   9. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:42:51 Europe/Moscow] PHP  10. App\Components\Routers\Redirect\Redirect->back() /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php:16
+[03-May-2020 20:42:51 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Components\Routers\Redirect\Redirect::setUrl() must be of the type string, null given, called in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36 and defined in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php:52
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php(36): App\Components\Routers\Redirect\Redirect->setUrl()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php(16): App\Components\Routers\Redirect\Redirect->back()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 62
+[03-May-2020 20:43:15 Europe/Moscow] PHP Fatal error:  Uncaught App\Components\Exceptions\MiddlewareNotFoundException: mid middleware not found in /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php:50
+Stack trace:
+#0 [internal function]: App\Components\Http\MiddlewareAbstract->App\Components\Http\{closure}()
+#1 /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php(46): array_map()
+#2 /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php(37): App\Components\Http\MiddlewareAbstract->getMiddlewareRoute()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(22): App\Components\Http\MiddlewareAbstract->__construct()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(33): App\Components\Routers\Dispatcher->callMiddleware()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#7 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#8 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php on line 50
+[03-May-2020 20:44:32 Europe/Moscow] PHP Fatal error:  Uncaught App\Components\Exceptions\MiddlewareNotFoundException: mid middleware not found in /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php:50
+Stack trace:
+#0 [internal function]: App\Components\Http\MiddlewareAbstract->App\Components\Http\{closure}()
+#1 /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php(46): array_map()
+#2 /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php(37): App\Components\Http\MiddlewareAbstract->getMiddlewareRoute()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(22): App\Components\Http\MiddlewareAbstract->__construct()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(33): App\Components\Routers\Dispatcher->callMiddleware()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#7 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#8 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Http/MiddlewareAbstract.php on line 50
+[03-May-2020 20:45:06 Europe/Moscow] PHP Notice:  Undefined index: HTTP_REFERER in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36
+[03-May-2020 20:45:06 Europe/Moscow] PHP Stack trace:
+[03-May-2020 20:45:06 Europe/Moscow] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[03-May-2020 20:45:06 Europe/Moscow] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[03-May-2020 20:45:06 Europe/Moscow] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[03-May-2020 20:45:06 Europe/Moscow] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[03-May-2020 20:45:06 Europe/Moscow] PHP   5. App\Components\Routers\Dispatcher->callRouterCallableThroughMiddleware() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:38
+[03-May-2020 20:45:06 Europe/Moscow] PHP   6. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:56
+[03-May-2020 20:45:06 Europe/Moscow] PHP   7. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:53
+[03-May-2020 20:45:06 Europe/Moscow] PHP   8. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:45:06 Europe/Moscow] PHP   9. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:45:06 Europe/Moscow] PHP  10. App\Components\Routers\Redirect\Redirect->back() /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php:17
+[03-May-2020 20:45:06 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Components\Routers\Redirect\Redirect::setUrl() must be of the type string, null given, called in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36 and defined in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php:52
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php(36): App\Components\Routers\Redirect\Redirect->setUrl()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php(17): App\Components\Routers\Redirect\Redirect->back()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 62
+[03-May-2020 20:45:07 Europe/Moscow] PHP Notice:  Undefined index: HTTP_REFERER in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36
+[03-May-2020 20:45:07 Europe/Moscow] PHP Stack trace:
+[03-May-2020 20:45:07 Europe/Moscow] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[03-May-2020 20:45:07 Europe/Moscow] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[03-May-2020 20:45:07 Europe/Moscow] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[03-May-2020 20:45:07 Europe/Moscow] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[03-May-2020 20:45:07 Europe/Moscow] PHP   5. App\Components\Routers\Dispatcher->callRouterCallableThroughMiddleware() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:38
+[03-May-2020 20:45:07 Europe/Moscow] PHP   6. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:56
+[03-May-2020 20:45:07 Europe/Moscow] PHP   7. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:53
+[03-May-2020 20:45:07 Europe/Moscow] PHP   8. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:45:07 Europe/Moscow] PHP   9. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[03-May-2020 20:45:07 Europe/Moscow] PHP  10. App\Components\Routers\Redirect\Redirect->back() /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php:17
+[03-May-2020 20:45:07 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Components\Routers\Redirect\Redirect::setUrl() must be of the type string, null given, called in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 36 and defined in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php:52
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php(36): App\Components\Routers\Redirect\Redirect->setUrl()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php(17): App\Components\Routers\Redirect\Redirect->back()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 62
