@@ -22,6 +22,5 @@ class ErrorLogChangedCommand implements CommandInterface
      */
     public function handle(?array $parameters): void
     {
-
     }
 }

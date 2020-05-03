@@ -27,19 +27,45 @@ class CommandList implements CommandInterface
      */
     public function handle(?array $parameters): void
     {
-        Animation::show();
+        //Animation::show();
         $this->printAllCommandList(Command::list());
+    }
+
+    /**
+     * @param $commandList
+     */
+    private function printAllCommandList($commandList): void
+    {
+        $commandListByFirstLetter = ($this->groupByFirstLetter($commandList));
+        array_map([$this, 'printGroupBy'], $commandListByFirstLetter);
     }
 
     /**
      * @param $commandList
      * @throws ReflectionException
      */
-    private function printAllCommandList($commandList): void
+    private function printGroupBy($commandList): void
     {
+        echo "-----------------------------------------------------------------------------------------------------------------------------------------\n";
         foreach ($commandList as $command => $class) {
             echo $this->addPadRight($command) . $this->getDescription(new $class) . "\n";
         }
+    }
+
+    /**
+     * @param $commandList
+     * @return array
+     */
+    private function groupByFirstLetter($commandList): array
+    {
+        $commandGroupBy = [];
+
+        foreach ($commandList as $key => $command) {
+            $letter = $key[0];
+            $commandGroupBy[$letter][$key] = $command;
+        }
+
+        return $commandGroupBy;
     }
 
     /**
@@ -48,8 +74,9 @@ class CommandList implements CommandInterface
      */
     private function addPadRight($command): string
     {
-        return  str_pad($command, 50, ' ', STR_PAD_RIGHT);
+        return str_pad($command, 50, ' ', STR_PAD_RIGHT);
     }
+
     /**
      * @param $object
      * @return mixed
