@@ -1,6 +1,6 @@
 <?php
 
-Router::get('/', fn () => view('index'));
+Router::get('/', fn () => view('index'))->name('index');
 
 Router::get('form', 'ff@ff')->middleware('example')->authorize(['App\Routers\Authorize\RouterAuthorizeExample', 'isAuthorize']);
 

@@ -12,8 +12,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $collection= new ResponseCollectionUser(Users::get());
-
-        return $collection->toJson();
+        return redirect()->router('index')->with('name','dılo sürücücü');
     }
 }

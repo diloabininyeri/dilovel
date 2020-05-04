@@ -231,3 +231,24 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/zeus/Desktop/hmvc/index.php on line 22
+[04-May-2020 06:42:20 Europe/Moscow] PHP Notice:  Undefined index: HTTP_REFERER in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 35
+[04-May-2020 06:42:20 Europe/Moscow] PHP Stack trace:
+[04-May-2020 06:42:20 Europe/Moscow] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[04-May-2020 06:42:20 Europe/Moscow] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[04-May-2020 06:42:20 Europe/Moscow] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[04-May-2020 06:42:20 Europe/Moscow] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[04-May-2020 06:42:20 Europe/Moscow] PHP   5. App\Components\Routers\Dispatcher->callRouterCallableThroughMiddleware() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:38
+[04-May-2020 06:42:20 Europe/Moscow] PHP   6. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:56
+[04-May-2020 06:42:20 Europe/Moscow] PHP   7. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:53
+[04-May-2020 06:42:20 Europe/Moscow] PHP   8. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[04-May-2020 06:42:20 Europe/Moscow] PHP   9. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[04-May-2020 06:42:20 Europe/Moscow] PHP  10. App\Components\Routers\Redirect\Redirect->back() /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php:15
+[04-May-2020 06:42:20 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Components\Routers\Redirect\Redirect::setUrl() must be of the type string, null given, called in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 35 and defined in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php:62
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php(35): App\Components\Routers\Redirect\Redirect->setUrl()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Deneme.php(15): App\Components\Routers\Redirect\Redirect->back()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 72

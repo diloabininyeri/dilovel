@@ -216,3 +216,12 @@ function config(string $config)
 
     return (new DotNotation())->getValueByKey(implode('.', $array), $configArray);
 }
+
+/**
+ * @param string $name
+ * @return mixed|string|null
+ */
+function flash(string $name)
+{
+    return (new App\Components\Flash\Flash())->get($name);
+}

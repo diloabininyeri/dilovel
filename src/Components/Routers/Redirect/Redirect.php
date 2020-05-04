@@ -3,6 +3,8 @@
 
 namespace App\Components\Routers\Redirect;
 
+use App\Components\Flash\Flash;
+
 /**
  * Class Redirect
  * @package App\Components\Routers\Redirect
@@ -34,12 +36,23 @@ class Redirect
     }
 
     /**
+     * @param string $name
+     * @param $value
+     * @return $this
+     */
+    public function with(string $name, $value):self
+    {
+        (new Flash())->set($name, $value);
+        return $this;
+    }
+
+    /**
      * @param string $url
      * @return $this
      */
-    public function url(string  $url):self
+    public function url(string $url): self
     {
-        return  $this->setUrl($url);
+        return $this->setUrl($url);
     }
 
     /**
