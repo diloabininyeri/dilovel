@@ -11,7 +11,10 @@ use Bin\Components\CommandInterface;
  */
 class ServeCommand implements CommandInterface
 {
-
+    /**
+     * @var string $description
+     */
+    protected string  $description='app serve with command "php console serve" or "php console serve host=127.0.0.1 port=8888"';
     /**
      * @var string $host
      */
