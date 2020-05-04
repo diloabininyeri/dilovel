@@ -12,6 +12,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return redirect()->router('index')->with('name','dılo sürücücü');
+        return redirect()->router('index')->with('name', 'dılo sürücücü');
     }
 }

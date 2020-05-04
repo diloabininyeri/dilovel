@@ -13,12 +13,12 @@ class Flash
 {
 
     /**
-     * @var Session
+     * @var Session $session
      */
     private Session $session;
 
     /**
-     * @var string
+     * @var string $prefix
      */
     private string $prefix = 'flash_';
 
