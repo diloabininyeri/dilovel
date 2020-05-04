@@ -46,7 +46,7 @@ class CommandList implements CommandInterface
      */
     private function printGroupBy($commandList): void
     {
-        echo "-----------------------------------------------------------------------------------------------------------------------------------------\n";
+        echo str_repeat('_',150)."\n";
         foreach ($commandList as $command => $class) {
             echo $this->addPadRight($command) . $this->getDescription(new $class) . "\n";
         }
