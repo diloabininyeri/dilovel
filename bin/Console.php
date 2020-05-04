@@ -10,7 +10,6 @@ use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateMiddlewareCommand;
 use Bin\Commands\CreateModelCommand;
 use Bin\Commands\CreateViewCommand;
-use Bin\Commands\CustomCommand;
 use Bin\Commands\DeleteControllerCommand;
 use Bin\Commands\ErrorLogChangedCommand;
 use Bin\Commands\ServeCommand;
