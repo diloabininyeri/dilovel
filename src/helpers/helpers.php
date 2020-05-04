@@ -220,9 +220,10 @@ function config(string $config)
 
 /**
  * @param string $name
+ * @param null $type
  * @return mixed|string|null
  */
-function flash(string $name)
+function flash(string $name,$type=null)
 {
-    return (new Flash())->get($name);
+    return (new Flash())->get($name,$type);
 }

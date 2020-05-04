@@ -42,13 +42,18 @@ class Flash
 
     /**
      * @param $name
+     * @param null $type
      * @return mixed|string|null
      */
-    public function get($name)
+    public function get($name,$type=null)
     {
         $flashSessionName = $this->createSessionName($name);
         $this->destroyFlash($flashSessionName);
-        return $this->session->get($flashSessionName);
+        if ($type === null) {
+
+            return $this->session->get($flashSessionName);
+        }
+        return  $this->createTemplate($this->session->get($flashSessionName),$type);
     }
 
     /**
@@ -68,6 +73,16 @@ class Flash
     private function destroyFlash($flashSessionName):void
     {
         register_shutdown_function(fn () => $this->session->delete($flashSessionName));
+    }
+
+    /**
+     * @param $flash
+     * @param $type
+     * @return string
+     */
+    private function createTemplate($flash,$type):string
+    {
+        return /**@lang HTML */ "<div class='alert alert-$type'>$flash</div>";
     }
 
     /**
