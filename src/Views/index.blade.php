@@ -13,7 +13,7 @@
 <h2> {{flash('name','danger')}}</h2>
 <div class="container">
     <div class="area">
-        <h2>WELCOME THE HMV FRAMEWORK</h2>
+        <h2>WELCOME THE HMVC FRAMEWORK</h2>
 
 
         <div class="text-center">
