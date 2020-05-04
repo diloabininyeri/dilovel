@@ -5,6 +5,7 @@ namespace Bin;
 
 use Bin\Commands\ClearViewCacheCommand;
 use Bin\Commands\CommandList;
+use Bin\Commands\CreateCommand;
 use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateMiddlewareCommand;
 use Bin\Commands\CreateModelCommand;
@@ -26,7 +27,6 @@ class Console extends CustomCommandCall
      * @var array|string[]
      */
     protected array $commands = [
-        'make:command' => CustomCommand::class,
         'make:controller' => CreateControllerCommand::class,
         'delete:controller' => DeleteControllerCommand::class,
         'make:model' => CreateModelCommand::class,
@@ -36,5 +36,6 @@ class Console extends CustomCommandCall
         'make:middleware'=>CreateMiddlewareCommand::class,
         'error:detected'=>ErrorLogChangedCommand::class,
         'serve' => ServeCommand::class,
+        'make:command' => CreateCommand::class
     ];
 }
