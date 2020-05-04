@@ -45,15 +45,14 @@ class Flash
      * @param null $type
      * @return mixed|string|null
      */
-    public function get($name,$type=null)
+    public function get($name, $type=null)
     {
         $flashSessionName = $this->createSessionName($name);
         $this->destroyFlash($flashSessionName);
         if ($type === null) {
-
             return $this->session->get($flashSessionName);
         }
-        return  $this->createTemplate($flashSessionName,$type);
+        return  $this->createTemplate($flashSessionName, $type);
     }
 
     /**
@@ -80,9 +79,9 @@ class Flash
      * @param $type
      * @return string
      */
-    private function createTemplate($flashSessionName,$type):?string
+    private function createTemplate($flashSessionName, $type):?string
     {
-        if($this->session->exists($flashSessionName)) {
+        if ($this->session->exists($flashSessionName)) {
             $flash=$this->session->get($flashSessionName);
             return /**@lang HTML */ "<div class='alert alert-$type'>$flash</div>";
         }

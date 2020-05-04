@@ -223,7 +223,7 @@ function config(string $config)
  * @param null $type
  * @return mixed|string|null
  */
-function flash(string $name,$type=null)
+function flash(string $name, $type=null)
 {
-    return (new Flash())->get($name,$type);
+    return (new Flash())->get($name, $type);
 }
