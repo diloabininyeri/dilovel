@@ -62,6 +62,6 @@ class CreateModelCommand implements CommandInterface
     private function modelTemplate($className)
     {
         $stub = file_get_contents(__DIR__ . '/../Stubs/Model');
-        return str_replace('$name', $className,  $stub);
+        return str_replace('$name', $className, $stub);
     }
 }
