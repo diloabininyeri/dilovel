@@ -1,5 +1,6 @@
 .idea
 vendor
+src/Views/caches
 deneme.php
 node_modules
 .phpunit.result.cache
