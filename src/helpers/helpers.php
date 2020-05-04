@@ -12,6 +12,7 @@ use App\Components\Http\Url;
 use App\Components\Routers\GenerateRouter;
 use App\Components\View\View;
 use App\Components\Routers\Redirect\Redirect;
+use App\Components\Flash\Flash;
 
 /**
  * @param $function
@@ -223,5 +224,5 @@ function config(string $config)
  */
 function flash(string $name)
 {
-    return (new App\Components\Flash\Flash())->get($name);
+    return (new Flash())->get($name);
 }
