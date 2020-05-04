@@ -53,7 +53,7 @@ class Flash
 
             return $this->session->get($flashSessionName);
         }
-        return  $this->createTemplate($this->session->get($flashSessionName),$type);
+        return  $this->createTemplate($flashSessionName,$type);
     }
 
     /**
@@ -76,13 +76,17 @@ class Flash
     }
 
     /**
-     * @param $flash
+     * @param $flashSessionName
      * @param $type
      * @return string
      */
-    private function createTemplate($flash,$type):string
+    private function createTemplate($flashSessionName,$type):?string
     {
-        return /**@lang HTML */ "<div class='alert alert-$type'>$flash</div>";
+        if($this->session->exists($flashSessionName)) {
+            $flash=$this->session->get($flashSessionName);
+            return /**@lang HTML */ "<div class='alert alert-$type'>$flash</div>";
+        }
+        return null;
     }
 
     /**

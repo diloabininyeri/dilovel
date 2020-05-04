@@ -252,3 +252,63 @@ Stack trace:
 #4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
 #6 /home/zeus/Desktop/hmvc/src/Componen in /home/zeus/Desktop/hmvc/src/Components/Routers/Redirect/Redirect.php on line 72
+[04-May-2020 07:32:43 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Flash\Flash::createTemplate() must be of the type string, none returned in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php:88
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php(56): App\Components\Flash\Flash->createTemplate()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(228): App\Components\Flash\Flash->get()
+#2 /home/zeus/Desktop/hmvc/src/Views/caches/019fc144d6cf48b1dc8fa568eaf763aa.php(13): flash()
+#3 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(45): App\Components\View\View->compile()
+#5 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#6 [internal function]: {closure}()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.ph in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php on line 88
+[04-May-2020 07:34:52 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Flash\Flash::createTemplate() must be of the type string, none returned in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php:88
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php(56): App\Components\Flash\Flash->createTemplate()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(228): App\Components\Flash\Flash->get()
+#2 /home/zeus/Desktop/hmvc/src/Views/caches/019fc144d6cf48b1dc8fa568eaf763aa.php(13): flash()
+#3 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(45): App\Components\View\View->compile()
+#5 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#6 [internal function]: {closure}()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.ph in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php on line 88
+[04-May-2020 07:34:53 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Flash\Flash::createTemplate() must be of the type string, none returned in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php:88
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php(56): App\Components\Flash\Flash->createTemplate()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(228): App\Components\Flash\Flash->get()
+#2 /home/zeus/Desktop/hmvc/src/Views/caches/019fc144d6cf48b1dc8fa568eaf763aa.php(13): flash()
+#3 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(45): App\Components\View\View->compile()
+#5 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#6 [internal function]: {closure}()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.ph in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php on line 88
+[04-May-2020 07:34:53 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Flash\Flash::createTemplate() must be of the type string, none returned in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php:88
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php(56): App\Components\Flash\Flash->createTemplate()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(228): App\Components\Flash\Flash->get()
+#2 /home/zeus/Desktop/hmvc/src/Views/caches/019fc144d6cf48b1dc8fa568eaf763aa.php(13): flash()
+#3 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(45): App\Components\View\View->compile()
+#5 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#6 [internal function]: {closure}()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.ph in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php on line 88
+[04-May-2020 07:35:32 Europe/Moscow] PHP Fatal error:  Uncaught Error: Object of class App\Components\Http\Session could not be converted to string in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php:86
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php(56): App\Components\Flash\Flash->createTemplate()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(228): App\Components\Flash\Flash->get()
+#2 /home/zeus/Desktop/hmvc/src/Views/caches/019fc144d6cf48b1dc8fa568eaf763aa.php(13): flash()
+#3 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(45): App\Components\View\View->compile()
+#5 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#6 [internal function]: {closure}()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\ in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php on line 86
