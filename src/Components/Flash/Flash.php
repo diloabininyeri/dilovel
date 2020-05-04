@@ -47,7 +47,7 @@ class Flash
     public function get($name)
     {
         $flashSessionName = $this->createSessionName($name);
-        register_shutdown_function(fn () => $this->session->delete($flashSessionName));
+        $this->destroyFlash($flashSessionName);
         return $this->session->get($flashSessionName);
     }
 
@@ -60,6 +60,14 @@ class Flash
     {
         $this->session->set($this->createSessionName($name), $value);
         return $this;
+    }
+
+    /**
+     * @param $flashSessionName
+     */
+    private function destroyFlash($flashSessionName):void
+    {
+        register_shutdown_function(fn () => $this->session->delete($flashSessionName));
     }
 
     /**
