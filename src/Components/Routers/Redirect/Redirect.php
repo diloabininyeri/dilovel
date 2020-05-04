@@ -12,9 +12,21 @@ use App\Components\Flash\Flash;
 class Redirect
 {
     /**
-     * @var string
+     * @var string $url
      */
     private string $url;
+    /**
+     * @var Flash $flash
+     */
+    private Flash $flash;
+
+    /**
+     * Redirect constructor.
+     */
+    public function __construct()
+    {
+        $this->flash=new Flash();
+    }
 
     /**
      * @param string $name
@@ -42,7 +54,7 @@ class Redirect
      */
     public function with(string $name, $value):self
     {
-        (new Flash())->set($name, $value);
+        $this->flash->set($name, $value);
         return $this;
     }
 
