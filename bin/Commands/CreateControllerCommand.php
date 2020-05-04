@@ -47,7 +47,7 @@ class CreateControllerCommand implements CommandInterface
 
         file_put_contents($path, $this->controllerTemplate($name));
 
-        return ColorConsole::getInstance()->getColoredString("$name controller created", 'green');
+        return ColorConsole::getInstance()->getColoredString("$name controller created\n", 'green');
     }
 
     /**
