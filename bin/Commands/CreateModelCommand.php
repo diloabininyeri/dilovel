@@ -12,7 +12,7 @@ use Bin\Components\CommandInterface;
  */
 class CreateModelCommand implements CommandInterface
 {
-    private string $namespace = 'src/app/Models/';
+    private string $namespace = 'src/Application/Models';
 
     /**
      * @var string
@@ -24,25 +24,24 @@ class CreateModelCommand implements CommandInterface
      */
     public function handle(?array $parameters): void
     {
-        [$className, $tableName] = $parameters;
+        [$className,] = $parameters;
         $filePath = $this->createFilePath($className);
 
-        echo $this->createModel($className, $filePath, $tableName);
+        echo $this->createModel($className, $filePath);
     }
 
     /**
      * @param $name
      * @param $path
-     * @param $tableName
      * @return string
      */
-    private function createModel($name, $path, $tableName): string
+    private function createModel($name, $path): string
     {
         if (file_exists($path)) {
             return ColorConsole::getInstance()->getColoredString("model already exists\n", 'red');
         }
 
-        file_put_contents($path, $this->modelTemplate($name, $tableName));
+        file_put_contents($path, $this->modelTemplate($name));
 
         return ColorConsole::getInstance()->getColoredString("$name model created\n", 'green');
     }
@@ -58,12 +57,11 @@ class CreateModelCommand implements CommandInterface
 
     /**
      * @param $className
-     * @param $tableName
      * @return false|string|string[]
      */
-    private function modelTemplate($className, $tableName)
+    private function modelTemplate($className)
     {
         $stub = file_get_contents(__DIR__ . '/../Stubs/Model');
-        return str_replace(['$name', '$table_name'], [$className, $tableName], $stub);
+        return str_replace('$name', $className,  $stub);
     }
 }
