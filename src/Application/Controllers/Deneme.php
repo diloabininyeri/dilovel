@@ -14,6 +14,8 @@ class Deneme
     {
         return redirect()
             ->router('index')
-            ->with('name', 'dılo sürücü');
+            ->with('name', 'dılo sürücü')
+            ->withError('my_error', 'nottttttt')
+            ->withError('deneme', rand(1, 5));
     }
 }

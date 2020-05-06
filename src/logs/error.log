@@ -389,3 +389,100 @@ Stack trace:
 #6 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
 #7 {main}
   thrown in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php on line 25
+[07-May-2020 00:35:22 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '&' in /home/zeus/Desktop/hmvc/src/Views/caches/db655c4d1f4befe26cc09a05c34c12c3.php on line 14
+[07-May-2020 00:35:52 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ';' or ',' in /home/zeus/Desktop/hmvc/src/Views/caches/f1a86269ee90e9fee668075a412528c7.php on line 14
+[07-May-2020 00:36:11 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '?>' in /home/zeus/Desktop/hmvc/src/Views/caches/12eb819dbc3f09ea8c77feac256edb2e.php on line 14
+[07-May-2020 00:36:32 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '?>' in /home/zeus/Desktop/hmvc/src/Views/caches/3172169a38fd7710cbaad80f310d5d86.php on line 13
+[07-May-2020 00:36:32 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '?>' in /home/zeus/Desktop/hmvc/src/Views/caches/3172169a38fd7710cbaad80f310d5d86.php on line 13
+[07-May-2020 00:36:33 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '?>' in /home/zeus/Desktop/hmvc/src/Views/caches/3172169a38fd7710cbaad80f310d5d86.php on line 13
+[07-May-2020 00:36:33 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '?>' in /home/zeus/Desktop/hmvc/src/Views/caches/3172169a38fd7710cbaad80f310d5d86.php on line 13
+[07-May-2020 00:36:50 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '?>' in /home/zeus/Desktop/hmvc/src/Views/caches/3172169a38fd7710cbaad80f310d5d86.php on line 13
+[07-May-2020 00:37:24 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Flash\FlashError::all() must be of the type array, null returned in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php:60
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Views/caches/b5d215fde2b6e283fbba835a53d2793e.php(13): App\Components\Flash\FlashError->all()
+#1 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#2 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(46): App\Components\View\View->compile()
+#3 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#4 [internal function]: {closure}()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#7 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#8 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#9 /home/zeus/Desktop/hmvc/index.p in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php on line 60
+[07-May-2020 00:37:34 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Flash\FlashError::all() must be of the type array, null returned in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php:60
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Views/caches/b5d215fde2b6e283fbba835a53d2793e.php(13): App\Components\Flash\FlashError->all()
+#1 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#2 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(46): App\Components\View\View->compile()
+#3 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#4 [internal function]: {closure}()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#7 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#8 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#9 /home/zeus/Desktop/hmvc/index.p in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php on line 60
+[07-May-2020 00:40:13 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Flash\FlashError::all() must be of the type array, null returned in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php:62
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Views/caches/b5d215fde2b6e283fbba835a53d2793e.php(13): App\Components\Flash\FlashError->all()
+#1 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#2 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(46): App\Components\View\View->compile()
+#3 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#4 [internal function]: {closure}()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#7 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#8 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#9 /home/zeus/Desktop/hmvc/index.p in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php on line 62
+[07-May-2020 00:40:21 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Flash\FlashError::all() must be of the type array, null returned in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php:62
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Views/caches/b5d215fde2b6e283fbba835a53d2793e.php(13): App\Components\Flash\FlashError->all()
+#1 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#2 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(46): App\Components\View\View->compile()
+#3 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#4 [internal function]: {closure}()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#7 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#8 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#9 /home/zeus/Desktop/hmvc/index.p in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php on line 62
+[07-May-2020 00:54:22 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to undefined method App\Components\Flash\FlashError::all() in /home/zeus/Desktop/hmvc/src/Views/caches/2336b8153de940554ee22ead8a705ba4.php:14
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(46): App\Components\View\View->compile()
+#2 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#3 [internal function]: {closure}()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#7 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#8 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#9 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Views/caches/2336b8153de940554ee22ead8a705ba4.php on line 14
+[07-May-2020 00:58:32 Europe/Helsinki] PHP Warning:  sscanf() expects parameter 1 to be string, array given in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php on line 70
+[07-May-2020 00:58:32 Europe/Helsinki] PHP Stack trace:
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   6. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   7. {closure:/home/zeus/Desktop/hmvc/src/Routers/web.php:3-3}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   8. view() /home/zeus/Desktop/hmvc/src/Routers/web.php:3
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   9. App\Components\View\View->compile() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:46
+[07-May-2020 00:58:32 Europe/Helsinki] PHP  10. include() /home/zeus/Desktop/hmvc/src/Components/View/View.php:68
+[07-May-2020 00:58:32 Europe/Helsinki] PHP  11. App\Components\Flash\FlashError->toArray() /home/zeus/Desktop/hmvc/src/Views/caches/5aa9c0f9a60d638634cdedc79ae688fe.php:14
+[07-May-2020 00:58:32 Europe/Helsinki] PHP  12. sscanf() /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php:70
+[07-May-2020 00:58:32 Europe/Helsinki] PHP Warning:  sscanf() expects parameter 1 to be string, array given in /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php on line 70
+[07-May-2020 00:58:32 Europe/Helsinki] PHP Stack trace:
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   6. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   7. {closure:/home/zeus/Desktop/hmvc/src/Routers/web.php:3-3}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   8. view() /home/zeus/Desktop/hmvc/src/Routers/web.php:3
+[07-May-2020 00:58:32 Europe/Helsinki] PHP   9. App\Components\View\View->compile() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:46
+[07-May-2020 00:58:32 Europe/Helsinki] PHP  10. include() /home/zeus/Desktop/hmvc/src/Components/View/View.php:68
+[07-May-2020 00:58:32 Europe/Helsinki] PHP  11. App\Components\Flash\FlashError->toArray() /home/zeus/Desktop/hmvc/src/Views/caches/5aa9c0f9a60d638634cdedc79ae688fe.php:14
+[07-May-2020 00:58:32 Europe/Helsinki] PHP  12. sscanf() /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php:70

@@ -7,6 +7,7 @@
 use App\Components\Arr\DotNotation;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
+use App\Components\Flash\FlashError;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Routers\GenerateRouter;
@@ -226,4 +227,12 @@ function config(string $config)
 function flash(string $name, $type=null)
 {
     return (new Flash())->get($name, $type);
+}
+
+/**
+ * @return FlashError
+ */
+function error()
+{
+    return new FlashError();
 }

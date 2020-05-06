@@ -83,10 +83,22 @@ class Session implements SessionInterface
      * @param $item
      * @return array
      */
-    public function push($name, $item): array
+    public function push($name, $item):array
     {
         $this->session[$name][]=$item;
         return  $this->get($name);
+    }
+
+    /**
+     * @param $arrayName
+     * @param $keyName
+     * @param $value
+     * @return array|null
+     */
+    public function put($arrayName, $keyName, $value):?array
+    {
+        $this->session[$arrayName][$keyName]=$value;
+        return  $this->get($arrayName);
     }
 
     /**

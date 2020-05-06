@@ -4,6 +4,7 @@
 namespace App\Components\Routers\Redirect;
 
 use App\Components\Flash\Flash;
+use App\Components\Flash\FlashError;
 
 /**
  * Class Redirect
@@ -21,11 +22,17 @@ class Redirect
     private Flash $flash;
 
     /**
+     * @var FlashError
+     */
+    private FlashError $flashError;
+
+    /**
      * Redirect constructor.
      */
     public function __construct()
     {
         $this->flash=new Flash();
+        $this->flashError=new FlashError();
     }
 
     /**
@@ -56,6 +63,17 @@ class Redirect
     {
         $this->flash->set($name, $value);
         return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param $value
+     * @return $this
+     */
+    public function withError(string $name, $value):self
+    {
+        $this->flashError->set($name, $value);
+        return  $this;
     }
 
     /**
