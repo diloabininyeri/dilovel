@@ -312,3 +312,80 @@ Stack trace:
 #7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
 #8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
 #9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\ in /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php on line 86
+[07-May-2020 00:07:05 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on bool in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php:25
+Stack trace:
+#0 [internal function]: App\Application\Auth\Admin->isAuth()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Router.php(46): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Routers/web.php(31): App\Components\Routers\Router::auth()
+#3 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#6 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#7 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php on line 25
+[07-May-2020 00:07:26 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on bool in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php:25
+Stack trace:
+#0 [internal function]: App\Application\Auth\Admin->isAuth()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Router.php(46): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Routers/web.php(31): App\Components\Routers\Router::auth()
+#3 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#6 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#7 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php on line 25
+[07-May-2020 00:08:09 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on bool in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php:25
+Stack trace:
+#0 [internal function]: App\Application\Auth\Admin->isAuth()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Router.php(46): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Routers/web.php(31): App\Components\Routers\Router::auth()
+#3 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#6 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#7 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php on line 25
+[07-May-2020 00:08:30 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on bool in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php:25
+Stack trace:
+#0 [internal function]: App\Application\Auth\Admin->isAuth()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Router.php(46): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Routers/web.php(31): App\Components\Routers\Router::auth()
+#3 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#6 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#7 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php on line 25
+[07-May-2020 00:08:48 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on bool in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php:25
+Stack trace:
+#0 [internal function]: App\Application\Auth\Admin->isAuth()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Router.php(46): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Routers/web.php(31): App\Components\Routers\Router::auth()
+#3 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#6 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#7 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php on line 25
+[07-May-2020 00:08:48 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on bool in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php:25
+Stack trace:
+#0 [internal function]: App\Application\Auth\Admin->isAuth()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Router.php(46): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Routers/web.php(31): App\Components\Routers\Router::auth()
+#3 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#6 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#7 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php on line 25
+[07-May-2020 00:09:16 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on bool in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php:25
+Stack trace:
+#0 [internal function]: App\Application\Auth\Admin->isAuth()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Router.php(46): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Routers/web.php(31): App\Components\Routers\Router::auth()
+#3 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#6 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#7 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Application/Auth/Admin.php on line 25

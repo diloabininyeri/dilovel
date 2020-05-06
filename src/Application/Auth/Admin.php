@@ -18,12 +18,10 @@ class Admin
      * for specific router auth for example
      * @param Request $request
      * @return bool
-     * @throws JsonException
+     *
      */
     public function isAuth(Request $request): bool
     {
-        $request->session()->set('admin', Users::find(1)->toArray() ?? 'user not found');
-
-        return $request->session()->exists('admin');
+        return  true;
     }
 }
