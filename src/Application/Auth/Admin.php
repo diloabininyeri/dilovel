@@ -18,7 +18,7 @@ class Admin
      * for specific router auth for example
      * @param Request $request
      * @return bool
-     *
+     *"
      */
     public function isAuth(Request $request): bool
     {
