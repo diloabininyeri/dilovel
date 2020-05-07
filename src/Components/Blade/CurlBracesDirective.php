@@ -19,7 +19,7 @@ class CurlBracesDirective implements BladeDirectiveInterface
     public function replaceTemplate(string $template)
     {
         return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
-            return '<?php echo ' . htmlspecialchars($find[1]) . ';?>';
+            return '<?php echo htmlspecialchars(' . $find[1] .');?>';
         }, $template);
     }
 }
