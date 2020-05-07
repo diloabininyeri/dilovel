@@ -658,3 +658,57 @@ Stack trace:
 #7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
 #8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
 #9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Compone in /home/zeus/Desktop/hmvc/src/Components/Http/Session.php on line 26
+[07-May-2020 20:30:46 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Application\Controllers\Controller::index() must be an instance of App\Application\Request\TcNoVerifyRequest, instance of App\Components\Http\Request given in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:19
+Stack trace:
+#0 [internal function]: App\Application\Controllers\Controller->index()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallControllerWithoutIoc->call()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(56): App\Components\Routers\CallController->call()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(38): App\Components\Routers\Dispatcher->callRouterCallableThroughMiddleware()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System- in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php on line 19
+[07-May-2020 20:39:06 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Controller' not found in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:75
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(69): App\Components\Routers\Dispatcher->callControllerMethod()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#3 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#4 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#5 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php on line 75
+[07-May-2020 20:40:11 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Routers\Dispatcher::callControllerMethod() must be of the type string, object returned in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:79
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(69): App\Components\Routers\Dispatcher->callControllerMethod()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#3 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#4 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#5 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php on line 79
+[07-May-2020 20:40:14 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Routers\Dispatcher::callControllerMethod() must be of the type string, object returned in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:79
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(69): App\Components\Routers\Dispatcher->callControllerMethod()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#3 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#4 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#5 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php on line 79
+[07-May-2020 20:40:15 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Routers\Dispatcher::callControllerMethod() must be of the type string, object returned in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:79
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(69): App\Components\Routers\Dispatcher->callControllerMethod()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#3 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#4 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#5 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php on line 79
+[07-May-2020 20:42:35 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Routers\Dispatcher::callControllerMethod() must be of the type string, array returned in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:79
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(69): App\Components\Routers\Dispatcher->callControllerMethod()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#3 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#4 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#5 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php on line 79

@@ -5,6 +5,7 @@ namespace App\Application\Controllers;
 
 use App\Application\Request\TcNoVerifyRequest;
 use App\Application\Models\Users;
+use App\Components\Http\Request;
 
 /**
  * Class Controller
@@ -16,9 +17,9 @@ class Controller
      * @param TcNoVerifyRequest $request
      * @return false|string
      */
-    public function index(TcNoVerifyRequest $request)
+    public function index(Request $request)
     {
-        $users=Users::get();
+
         return view('index', compact('users'));
     }
 }

@@ -50,10 +50,9 @@ class Dispatcher
         if ($routerObject->isCallableSecondParameter()) {
             return call_user_func($routerObject->getSecondParameter(), $middleware->getResponse());
         }
-        [$controller, $method] = explode('@', $routerObject->getSecondParameter());
 
+        return  $this->callControllerMethod($routerObject,$middleware->getResponse());
 
-        return (new CallController($controller, $method, $middleware->getResponse()))->call();
     }
 
     /**
@@ -66,6 +65,18 @@ class Dispatcher
             return call_user_func($routerObject->getSecondParameter(), new Request());
         }
 
-        return $routerObject->getSecondParameter();
+        return $this->callControllerMethod($routerObject);
+    }
+
+    /**
+     * @param RouterObject $routerObject
+     * @param null $request
+     * @return mixed
+     */
+    private function callControllerMethod(RouterObject $routerObject,$request=null)
+    {
+        [$controller, $method] = explode('@', $routerObject->getSecondParameter());
+        return (new CallController($controller,$method,$request?:new Request()))->call();
+
     }
 }
