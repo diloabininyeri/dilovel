@@ -5,6 +5,7 @@ namespace Bin;
 
 use Bin\Commands\ClearViewCacheCommand;
 use Bin\Commands\CommandList;
+use Bin\Commands\CreateBladeFilterCommand;
 use Bin\Commands\CreateCommand;
 use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateMiddlewareCommand;
@@ -35,6 +36,7 @@ class Console extends CustomCommandCall
         'make:middleware'=>CreateMiddlewareCommand::class,
         'error:detected'=>ErrorLogChangedCommand::class,
         'serve' => ServeCommand::class,
-        'make:command' => CreateCommand::class
+        'make:command' => CreateCommand::class,
+        'blade:filter'=>CreateBladeFilterCommand::class
     ];
 }
