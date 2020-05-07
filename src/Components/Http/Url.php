@@ -13,11 +13,6 @@ class Url
     /**
      * @var array
      */
-    private array $request;
-
-    /**
-     * @var array
-     */
     private array  $server;
 
     /**
@@ -25,14 +20,13 @@ class Url
      */
     public function __construct()
     {
-        $this->request = $_REQUEST;
         $this->server = $_SERVER;
     }
 
     /**
      * @return string
      */
-    public function getSchema()
+    public function getSchema(): string
     {
         return strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/'))) . '://';
     }
