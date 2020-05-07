@@ -18,13 +18,13 @@ class MainRouter
     /**
      * @var array $authorize
      */
-    private ?array $authorize=[];
+    private ?array $authorize = [];
 
 
     /**
      * @var string $name
      */
-    private ?string $name=null;
+    private ?string $name = null;
 
     /**
      * @var RouterGroup $group
@@ -44,7 +44,7 @@ class MainRouter
     /**
      * @var array
      */
-    private ?array $middleware=[];
+    private ?array $middleware = [];
 
     /**
      * @param mixed $name
@@ -176,7 +176,7 @@ class MainRouter
      * @param array $authorize
      * @return MainRouter
      */
-    public function authorize(array $authorize):self
+    public function authorize(array $authorize): self
     {
         $this->authorize = $authorize;
         return $this;
@@ -188,5 +188,13 @@ class MainRouter
     public function getAuthorize(): array
     {
         return $this->authorize;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMethod(): string
+    {
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 }
