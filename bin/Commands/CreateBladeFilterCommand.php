@@ -3,13 +3,11 @@
 
 namespace Bin\Commands;
 
-
 use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
 class CreateBladeFilterCommand implements CommandInterface
 {
-
     protected string $description='create make custom filter for blade ,php blade:filter Phone';
 
     /**
