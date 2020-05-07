@@ -11,8 +11,6 @@
 </head>
 <body>
 <h2> {{flash('name','danger')}}</h2>
-<h2>{{'deneme'|strtoupper}}</h2>
-<h2>{{'ASDD'|strtolower}}</h2>
 <div class="container">
     <div class="area">
         <h2>WELCOME THE HMVC FRAMEWORK</h2>
