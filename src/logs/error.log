@@ -866,3 +866,12 @@ Stack trace:
 [07-May-2020 22:09:38 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:79
 [07-May-2020 22:09:38 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:68
 [07-May-2020 22:09:38 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:47
+[07-May-2020 22:37:56 Europe/Helsinki] PHP Fatal error:  Uncaught RuntimeException: ioc class must be instance of App\Interfaces\FormRequestInterface in /home/zeus/Desktop/hmvc/src/Components/Reflection/IocContainer.php:163
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Reflection/IocContainer.php(176): App\Components\Reflection\IocContainer->callCustomRequests()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php(55): App\Components\Reflection\IocContainer->call()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(67): App\Components\Routers\CallControllerWithIoc->call()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatch in /home/zeus/Desktop/hmvc/src/Components/Reflection/IocContainer.php on line 163

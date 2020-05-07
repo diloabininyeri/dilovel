@@ -5,6 +5,7 @@ namespace App\Components\Routers;
 
 use App\Components\Http\Request;
 use App\Components\Reflection\IocContainer;
+use ReflectionException;
 
 /**
  * Class CallControllerWithIoc
@@ -37,20 +38,42 @@ class CallControllerWithIoc
     {
         $this->controller = $controller;
         $this->method = $method;
-        $this->request=$request;
+        $this->request = $request;
     }
 
     /**
-     * @return string
+     * @return mixed
+     * @throws ReflectionException
      */
     public function call()
     {
-        $ioc=new IocContainer($this->request);
-        return $ioc->onError(function ($error) {
+        if ($this->isNotInjectRequestRules()) {
+            return call_user_func([new $this->controller, $this->method], $this->request);
+        }
+        return $this->createResponseWithIoContainer();
+    }
+
+    /**
+     * @return mixed
+     * @throws ReflectionException
+     */
+    private function createResponseWithIoContainer()
+    {
+        $ioc = new IocContainer($this->request);
+        return $ioc->onError(static function ($error) {
             print_r($error);
-        })->onSuccess(fn ($req) =>call_user_func([new $this->controller,$this->method], $req))
-           ->setController($this->controller)
-           ->setMethod($this->method)
-           ->call();
+        })
+            ->onSuccess(fn ($req) => call_user_func([new $this->controller, $this->method], $req))
+            ->setController($this->controller)
+            ->setMethod($this->method)
+            ->call();
+    }
+
+    /**
+     * @return bool
+     */
+    private function isNotInjectRequestRules(): bool
+    {
+        return get_class($this->request) === Request::class;
     }
 }
