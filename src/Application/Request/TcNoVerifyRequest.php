@@ -3,7 +3,8 @@
 
 namespace App\Application\Request;
 
-use App\Application\Rules\RequiredNumeric;
+use App\Application\Rules\RequiredNumericRule;
+use App\Application\Rules\RequiredRule;
 use App\Application\Rules\TcNoVerifyRule;
 use App\Components\Http\Request;
 use App\Interfaces\FormRequestInterface;
@@ -22,7 +23,8 @@ class TcNoVerifyRequest extends Request implements FormRequestInterface
     {
         return [
             new TcNoVerifyRule(),
-            new RequiredNumeric()
+            new RequiredNumericRule(),
+            new RequiredRule(),
         ];
     }
 }

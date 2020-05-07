@@ -6,7 +6,7 @@ namespace App\Application\Rules;
 use App\Components\Http\Request;
 use App\Interfaces\RuleInterface;
 
-class RequiredNumeric implements RuleInterface
+class RequiredNumericRule implements RuleInterface
 {
     public function valid(Request $request): bool
     {
