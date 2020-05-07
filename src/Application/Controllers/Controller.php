@@ -17,9 +17,10 @@ class Controller
      * @param TcNoVerifyRequest $request
      * @return false|string
      */
-    public function index(Request $request)
+    public function index(TcNoVerifyRequest $request)
     {
 
-        return view('index', compact('users'));
+        return  get_class($request);
+        return $request->get('id');
     }
 }

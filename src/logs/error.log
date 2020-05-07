@@ -712,3 +712,33 @@ Stack trace:
 #4 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
 #5 {main}
   thrown in /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php on line 79
+[07-May-2020 20:56:58 Europe/Helsinki] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function App\Components\Routers\CallController::getRequestClass(), 0 passed in /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php on line 54 and exactly 2 expected in /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:69
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(54): App\Components\Routers\CallController->getRequestClass()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(79): App\Components\Routers\CallController->call()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(68): App\Components\Routers\Dispatcher->callControllerMethod()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#4 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#6 /home/zeus/Desktop/hmvc/in in /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php on line 69
+[07-May-2020 20:57:20 Europe/Helsinki] PHP Fatal error:  Uncaught ReflectionException: Class Controller does not exist in /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:69
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(69): ReflectionMethod->__construct()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(54): App\Components\Routers\CallController->getRequestClass()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(79): App\Components\Routers\CallController->call()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(68): App\Components\Routers\Dispatcher->callControllerMethod()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#7 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#8 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php on line 69
+[07-May-2020 21:10:09 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Application\Controllers\Controller::index() must be an instance of App\Application\Request\TcNoVerifyRequest, instance of App\Components\Http\Request given in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:20
+Stack trace:
+#0 [internal function]: App\Application\Controllers\Controller->index()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(63): App\Components\Routers\CallControllerWithoutIoc->call()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(79): App\Components\Routers\CallController->call()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(68): App\Components\Routers\Dispatcher->callControllerMethod()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Component in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php on line 20

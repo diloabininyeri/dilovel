@@ -4,6 +4,8 @@
 namespace App\Components\Routers;
 
 use App\Components\Http\Request;
+use ReflectionException;
+use ReflectionMethod;
 
 /**
  * Class CallController
@@ -42,15 +44,52 @@ class CallController
         $this->request = $request;
     }
 
+
+    /**
+     * @throws ReflectionException
+     */
+    private function setRequestClass(): void
+    {
+        if (!$this->isNotRuleRequest()) {
+            $request = $this->getRequestClass();
+            $this->request = new $request();
+        }
+    }
     /**
      * @return string
+     * @throws ReflectionException
      */
     public function call()
     {
+
+        $this->setRequestClass();
+
         if ($this->getRequestMethod() === 'POST') {
             return (new CallControllerWithIoc($this->createClassNameController(), $this->method, $this->request))->call();
         }
+
         return (new CallControllerWithoutIoc($this->createClassNameController(), $this->method, $this->request))->call();
+    }
+
+    /**
+     * compare inject class equal is Request class not RuleRequestClass
+     * @return bool
+     * @throws ReflectionException
+     *
+     */
+    private function isNotRuleRequest()
+    {
+        return get_class($this->request) === $this->getRequestClass();
+    }
+
+    /**
+     * @return string
+     * @throws ReflectionException
+     */
+    private function getRequestClass(): string
+    {
+        $reflection = new ReflectionMethod($this->createClassNameController(), $this->method);
+        return $reflection->getParameters()[0]->getClass()->getName();
     }
 
     /**
@@ -67,6 +106,6 @@ class CallController
      */
     private function getRequestMethod(): string
     {
-        return   $_SERVER['REQUEST_METHOD'];
+        return $_SERVER['REQUEST_METHOD'];
     }
 }
