@@ -45,10 +45,10 @@ class CallControllerWithIoc
      */
     public function call()
     {
-       $ioc=new IocContainer($this->request);
-       return $ioc->onError(function($error){
-           print_r($error);
-       })->onSuccess(fn($req)=>call_user_func([new $this->controller,$this->method],$req))
+        $ioc=new IocContainer($this->request);
+        return $ioc->onError(function ($error) {
+            print_r($error);
+        })->onSuccess(fn ($req) =>call_user_func([new $this->controller,$this->method], $req))
            ->setController($this->controller)
            ->setMethod($this->method)
            ->call();

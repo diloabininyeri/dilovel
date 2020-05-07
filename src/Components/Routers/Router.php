@@ -28,7 +28,6 @@ class Router
      */
     public static function __callStatic($name, $arguments)
     {
-
         return (new MainRouter())
             ->setDynamicUrl($arguments[0])
             ->setSecondParameter($arguments[1]);

@@ -18,6 +18,6 @@ class MyFilter implements BladeFilterInterface
      */
     public function filter($value)
     {
-       return  $value;
+        return  $value;
     }
 }

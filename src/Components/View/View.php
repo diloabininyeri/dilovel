@@ -46,7 +46,7 @@ class View
      */
     private function dotNotationTPath(string $notation): string
     {
-        return implode('/',explode('.',$notation));
+        return implode('/', explode('.', $notation));
     }
 
     /**

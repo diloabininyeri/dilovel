@@ -2,7 +2,7 @@
 
 Router::get('/', fn () => view('index'))->name('index');
 
-Router::get('form', fn()=>view('form'))->name('dd');
+Router::get('form', fn () =>view('form'))->name('dd');
 Router::post('dene', 'Controller@index')->name('form.post');
 
 

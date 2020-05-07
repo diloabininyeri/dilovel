@@ -61,7 +61,6 @@ class CallController
      */
     public function call()
     {
-
         $this->setRequestClass();
 
         if ($this->getRequestMethod() === 'POST') {
