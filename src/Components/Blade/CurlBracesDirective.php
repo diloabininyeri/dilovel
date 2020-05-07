@@ -2,6 +2,8 @@
 
 namespace App\Components\Blade;
 
+use App\Components\Blade\Filter\BladeFilters;
+
 class CurlBracesDirective implements BladeDirectiveInterface
 {
 
@@ -19,7 +21,7 @@ class CurlBracesDirective implements BladeDirectiveInterface
     public function replaceTemplate(string $template)
     {
         return preg_replace_callback($this->getDirectiveRegexPattern(), function ($find) {
-            $firstLetter=$this->getFirstLetter($find);
+            $firstLetter = $this->getFirstLetter($find);
 
             if ($firstLetter === '@') {
                 return $find[0];
@@ -46,12 +48,16 @@ class CurlBracesDirective implements BladeDirectiveInterface
      * @param $find
      * @return string
      */
-    private function buildContent($find):string
+    private function buildContent($find): string
     {
-        $content= $find[1];
+        $content = $find[1];
         if (strpos($content, '|') !== false) {
-            [$statement,$filter]=explode('|', $content);
-            $content= $filter($statement);
+            [$statement, $filter] = explode('|', $content);
+            if (is_callable($filter)) {
+                $content = $filter($statement);
+            } else {
+                $content = (new BladeFilters())->filter($filter, $statement);
+            }
         }
         return '<?php echo htmlspecialchars(' . $content . ');?>';
     }

@@ -599,3 +599,10 @@ Stack trace:
 #7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
 #8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
 #9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Compone in /home/zeus/Desktop/hmvc/src/Components/Http/Session.php on line 26
+[07-May-2020 18:04:51 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '566555' (T_LNUMBER), expecting ')' in /home/zeus/Desktop/hmvc/src/Views/caches/e552b03a8e9aa883fc10897213796603.php on line 14
+[07-May-2020 18:05:37 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '566555' (T_LNUMBER), expecting ')' in /home/zeus/Desktop/hmvc/src/Views/caches/e552b03a8e9aa883fc10897213796603.php on line 14
+[07-May-2020 18:05:38 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '566555' (T_LNUMBER), expecting ')' in /home/zeus/Desktop/hmvc/src/Views/caches/e552b03a8e9aa883fc10897213796603.php on line 14
+[07-May-2020 18:05:38 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '566555' (T_LNUMBER), expecting ')' in /home/zeus/Desktop/hmvc/src/Views/caches/e552b03a8e9aa883fc10897213796603.php on line 14
+[07-May-2020 18:24:42 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '(Array  )' (array) (T_ARRAY_CAST), expecting ';' or ',' in /home/zeus/Desktop/hmvc/src/Views/caches/9aa80d82b9983066dba5d1bf76714f60.php on line 20
+[07-May-2020 18:25:46 Europe/Helsinki] PHP Parse error:  Invalid numeric literal in /home/zeus/Desktop/hmvc/src/Views/caches/9aa80d82b9983066dba5d1bf76714f60.php on line 20
+[07-May-2020 18:27:11 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '534' (T_LNUMBER), expecting ')' in /home/zeus/Desktop/hmvc/src/Views/caches/9aa80d82b9983066dba5d1bf76714f60.php on line 20
