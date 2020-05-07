@@ -26,10 +26,10 @@ class CurlBracesDirective implements BladeDirectiveInterface
             }
 
             if ($firstLetter !== ' ') {
-                return $firstLetter . '<?php echo htmlspecialchars(' . $find[1] . ');?>';
+                return $firstLetter . $this->buildContent($find);
             }
 
-            return '<?php echo htmlspecialchars(' . $find[1] . ');?>';
+            return $this->buildContent($find);
         }, $template);
     }
 
@@ -40,5 +40,19 @@ class CurlBracesDirective implements BladeDirectiveInterface
     private function getFirstLetter($find)
     {
         return $find[0][0];
+    }
+
+    /**
+     * @param $find
+     * @return string
+     */
+    private function buildContent($find):string
+    {
+        $content= $find[1];
+        if (strpos($content, '|') !== false) {
+            [$statement,$filter]=explode('|', $content);
+            $content= $filter($statement);
+        }
+        return '<?php echo htmlspecialchars(' . $content . ');?>';
     }
 }

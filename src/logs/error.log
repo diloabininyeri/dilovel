@@ -489,3 +489,63 @@ Stack trace:
 [07-May-2020 13:58:38 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '<' in /home/zeus/Desktop/hmvc/src/Views/caches/e2bd42a9b3596d58235ff34fb32cc3c2.php on line 13
 [07-May-2020 13:59:00 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '<' in /home/zeus/Desktop/hmvc/src/Views/caches/e2bd42a9b3596d58235ff34fb32cc3c2.php on line 13
 [07-May-2020 14:00:20 Europe/Helsinki] PHP Parse error:  syntax error, unexpected ':', expecting end of file in /home/zeus/Desktop/hmvc/src/Views/caches/e2bd42a9b3596d58235ff34fb32cc3c2.php on line 20
+[07-May-2020 14:35:11 Europe/Helsinki] PHP Warning:  Use of undefined constant strtoupper - assumed 'strtoupper' (this will throw an Error in a future version of PHP) in /home/zeus/Desktop/hmvc/src/Views/caches/87881263a98d621b23c49f0ec595f34e.php on line 14
+[07-May-2020 14:35:11 Europe/Helsinki] PHP Stack trace:
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   6. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   7. {closure:/home/zeus/Desktop/hmvc/src/Routers/web.php:3-3}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   8. view() /home/zeus/Desktop/hmvc/src/Routers/web.php:3
+[07-May-2020 14:35:11 Europe/Helsinki] PHP   9. App\Components\View\View->compile() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:46
+[07-May-2020 14:35:11 Europe/Helsinki] PHP  10. include() /home/zeus/Desktop/hmvc/src/Components/View/View.php:68
+[07-May-2020 14:36:44 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to undefined function 'strtoupper'() in /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php:54
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php(29): App\Components\Blade\CurlBracesDirective->buildContent()
+#1 [internal function]: App\Components\Blade\CurlBracesDirective->App\Components\Blade\{closure}()
+#2 /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php(21): preg_replace_callback()
+#3 /home/zeus/Desktop/hmvc/src/Components/Blade/Blade.php(49): App\Components\Blade\CurlBracesDirective->replaceTemplate()
+#4 [internal function]: App\Components\Blade\Blade::App\Components\Blade\{closure}()
+#5 /home/zeus/Desktop/hmvc/src/Components/Blade/Blade.php(44): array_reduce()
+#6 /home/zeus/Desktop/hmvc/src/Components/View/View.php(48): App\Components\Blade\Blade->render()
+#7 /home/zeus/Desktop/hmvc/src/Components/View/View.php(75): App\Components\View\View->renderWithBlade()
+#8 /home/zeus/Desktop/hmvc/src/Components/View/View.php in /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php on line 54
+[07-May-2020 14:39:07 Europe/Helsinki] PHP Warning:  htmlspecialchars() expects at least 1 parameter, 0 given in /home/zeus/Desktop/hmvc/src/Views/caches/ca4a5080ae2bb6aaba512e36810de6fe.php on line 15
+[07-May-2020 14:39:07 Europe/Helsinki] PHP Stack trace:
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   6. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   7. {closure:/home/zeus/Desktop/hmvc/src/Routers/web.php:3-3}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   8. view() /home/zeus/Desktop/hmvc/src/Routers/web.php:3
+[07-May-2020 14:39:07 Europe/Helsinki] PHP   9. App\Components\View\View->compile() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:46
+[07-May-2020 14:39:07 Europe/Helsinki] PHP  10. include() /home/zeus/Desktop/hmvc/src/Components/View/View.php:68
+[07-May-2020 14:39:07 Europe/Helsinki] PHP  11. htmlspecialchars() /home/zeus/Desktop/hmvc/src/Views/caches/ca4a5080ae2bb6aaba512e36810de6fe.php:15
+[07-May-2020 14:39:26 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to undefined function 'strtotime'() in /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php:54
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php(29): App\Components\Blade\CurlBracesDirective->buildContent()
+#1 [internal function]: App\Components\Blade\CurlBracesDirective->App\Components\Blade\{closure}()
+#2 /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php(21): preg_replace_callback()
+#3 /home/zeus/Desktop/hmvc/src/Components/Blade/Blade.php(49): App\Components\Blade\CurlBracesDirective->replaceTemplate()
+#4 [internal function]: App\Components\Blade\Blade::App\Components\Blade\{closure}()
+#5 /home/zeus/Desktop/hmvc/src/Components/Blade/Blade.php(44): array_reduce()
+#6 /home/zeus/Desktop/hmvc/src/Components/View/View.php(48): App\Components\Blade\Blade->render()
+#7 /home/zeus/Desktop/hmvc/src/Components/View/View.php(75): App\Components\View\View->renderWithBlade()
+#8 /home/zeus/Desktop/hmvc/src/Components/View/View.php( in /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php on line 54
+[07-May-2020 14:39:39 Europe/Helsinki] PHP Warning:  htmlspecialchars() expects at least 1 parameter, 0 given in /home/zeus/Desktop/hmvc/src/Views/caches/ca4a5080ae2bb6aaba512e36810de6fe.php on line 15
+[07-May-2020 14:39:39 Europe/Helsinki] PHP Stack trace:
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   6. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   7. {closure:/home/zeus/Desktop/hmvc/src/Routers/web.php:3-3}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   8. view() /home/zeus/Desktop/hmvc/src/Routers/web.php:3
+[07-May-2020 14:39:39 Europe/Helsinki] PHP   9. App\Components\View\View->compile() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:46
+[07-May-2020 14:39:39 Europe/Helsinki] PHP  10. include() /home/zeus/Desktop/hmvc/src/Components/View/View.php:68
+[07-May-2020 14:39:39 Europe/Helsinki] PHP  11. htmlspecialchars() /home/zeus/Desktop/hmvc/src/Views/caches/ca4a5080ae2bb6aaba512e36810de6fe.php:15
