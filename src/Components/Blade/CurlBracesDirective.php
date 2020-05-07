@@ -10,7 +10,7 @@ class CurlBracesDirective implements BladeDirectiveInterface
      */
     public function getDirectiveRegexPattern()
     {
-        return '/[^@]{{(.*)}}/sU';
+        return '/.?{{(.*)}}/sU';
     }
 
     /**
@@ -18,8 +18,27 @@ class CurlBracesDirective implements BladeDirectiveInterface
      */
     public function replaceTemplate(string $template)
     {
-        return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
-            return '<?php echo htmlspecialchars(' . $find[1] .');?>';
+        return preg_replace_callback($this->getDirectiveRegexPattern(), function ($find) {
+            $firstLetter=$this->getFirstLetter($find);
+
+            if ($firstLetter === '@') {
+                return $find[0];
+            }
+
+            if ($firstLetter !== ' ') {
+                return $firstLetter . '<?php echo htmlspecialchars(' . $find[1] . ');?>';
+            }
+
+            return '<?php echo htmlspecialchars(' . $find[1] . ');?>';
         }, $template);
+    }
+
+    /**
+     * @param $find
+     * @return mixed
+     */
+    private function getFirstLetter($find)
+    {
+        return $find[0][0];
     }
 }
