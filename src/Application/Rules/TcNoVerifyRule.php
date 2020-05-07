@@ -19,7 +19,7 @@ class TcNoVerifyRule implements RuleInterface
      */
     public function valid(Request $request): bool
     {
-        return ($request->post('tc_no') === 11111111);
+        return ($request->post('tc_no') == 11);
     }
 
     /**
@@ -27,6 +27,6 @@ class TcNoVerifyRule implements RuleInterface
      */
     public function message(): string
     {
-        return 'tc no verified';
+        return 'tc not verified';
     }
 }

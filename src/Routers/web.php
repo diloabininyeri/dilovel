@@ -2,8 +2,11 @@
 
 Router::get('/', fn () => view('index'))->name('index');
 
-Router::get('form', 'ff@ff')->middleware('example')->authorize(['App\Routers\Authorize\RouterAuthorizeExample', 'isAuthorize']);
+Router::get('form', fn()=>view('form'))->name('dd');
+Router::post('dene', 'Controller@index')->name('form.post');
 
+
+/*
 Router::get('/home/:id', fn () => 'strinh olandan ')->name('home');
 
 Router::get('example', fn () => 'user cant acces this callback due to middleware')->middleware('example');
@@ -29,4 +32,4 @@ Router::get('/news/id/haber', 'Controlljjjjjjjjjer@meth')->name('fgd')->middlewa
 
 Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
     Router::get('admin', fn () =>env('REDIS_HOST'));
-});
+});*/

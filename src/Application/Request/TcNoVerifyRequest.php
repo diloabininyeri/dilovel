@@ -3,6 +3,7 @@
 
 namespace App\Application\Request;
 
+use App\Application\Rules\RequiredNumeric;
 use App\Application\Rules\TcNoVerifyRule;
 use App\Components\Http\Request;
 use App\Interfaces\FormRequestInterface;
@@ -20,7 +21,8 @@ class TcNoVerifyRequest extends Request implements FormRequestInterface
     public function rules(): array
     {
         return [
-            new TcNoVerifyRule()
+            new TcNoVerifyRule(),
+            new RequiredNumeric()
         ];
     }
 }

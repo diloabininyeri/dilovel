@@ -19,8 +19,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-
-        return  get_class($request);
-        return $request->get('id');
+        return $request->post('tc_no');
     }
 }

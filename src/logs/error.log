@@ -742,3 +742,127 @@ Stack trace:
 #4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(68): App\Components\Routers\Dispatcher->callControllerMethod()
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
 #6 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Component in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php on line 20
+[07-May-2020 21:51:57 Europe/Helsinki] PHP Fatal error:  Uncaught ReflectionException: Class App\Application\Controllers\ff does not exist in /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:91
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(91): ReflectionMethod->__construct()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(82): App\Components\Routers\CallController->getRequestClass()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(53): App\Components\Routers\CallController->isNotRuleRequest()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(65): App\Components\Routers\CallController->setRequestClass()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(79): App\Components\Routers\CallController->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(68): App\Components\Routers\Dispatcher->callControllerMethod()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUser in /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php on line 91
+[07-May-2020 21:52:48 Europe/Helsinki] PHP Fatal error:  Uncaught App\Components\Exceptions\ViewNotFoundException: form view Not Found in /home/zeus/Desktop/hmvc/src/Components/View/View.php:39
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(46): App\Components\View\View->__construct()
+#1 /home/zeus/Desktop/hmvc/src/Routers/web.php(5): view()
+#2 [internal function]: {closure}()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(65): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#5 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#7 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#8 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Components/View/View.php on line 39
+[07-May-2020 21:54:16 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:54:35 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:56:19 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:56:22 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:56:57 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:56:58 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:56:58 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:56:58 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:56:58 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 21:57:19 Europe/Helsinki] PHP Fatal error:  Uncaught RuntimeException: form.post router not found in /home/zeus/Desktop/hmvc/src/Components/Routers/RouterName.php:38
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Routers/GenerateRouter.php(20): App\Components\Routers\RouterName::getName()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(99): App\Components\Routers\GenerateRouter->url()
+#2 /home/zeus/Desktop/hmvc/src/Views/caches/7a922dd7b4f61cb5e3ab5e604ceb4c87.php(10): router()
+#3 /home/zeus/Desktop/hmvc/src/Components/View/View.php(78): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(46): App\Components\View\View->compile()
+#5 /home/zeus/Desktop/hmvc/src/Routers/web.php(5): view()
+#6 [internal function]: {closure}()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(65): call_user_func()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher in /home/zeus/Desktop/hmvc/src/Components/Routers/RouterName.php on line 38
+[07-May-2020 21:58:06 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[07-May-2020 22:09:38 Europe/Helsinki] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, second array member is not a valid method in /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php on line 47
+[07-May-2020 22:09:38 Europe/Helsinki] PHP Stack trace:
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:68
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:79
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:68
+[07-May-2020 22:09:38 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:47

@@ -4,6 +4,7 @@
 namespace App\Components\Routers;
 
 use App\Components\Http\Request;
+use App\Components\Reflection\IocContainer;
 
 /**
  * Class CallControllerWithIoc
@@ -44,6 +45,12 @@ class CallControllerWithIoc
      */
     public function call()
     {
-        return $this->controller . '    ' . $this->method.$this->request;
+       $ioc=new IocContainer($this->request);
+       return $ioc->onError(function($error){
+           print_r($error);
+       })->onSuccess(fn($req)=>call_user_func([new $this->controller,$this->method],$req))
+           ->setController($this->controller)
+           ->setMethod($this->method)
+           ->call();
     }
 }

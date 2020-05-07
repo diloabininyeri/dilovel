@@ -28,11 +28,15 @@ class Router
      */
     public static function __callStatic($name, $arguments)
     {
-        if ($_SERVER['REQUEST_METHOD'] === strtoupper($name)) {
+
+        return (new MainRouter())
+            ->setDynamicUrl($arguments[0])
+            ->setSecondParameter($arguments[1]);
+        /*if ($_SERVER['REQUEST_METHOD'] === strtoupper($name)) {
             return (new MainRouter())
                 ->setDynamicUrl($arguments[0])
                 ->setSecondParameter($arguments[1]);
-        }
+        }*/
     }
 
     /**
