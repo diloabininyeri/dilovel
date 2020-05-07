@@ -32,11 +32,21 @@ class View
      */
     public function __construct(string $view, ?array $variables = [])
     {
+        $view=$this->dotNotationTPath($view);
         $this->blade = "src/Views/$view.blade.php";
         $this->variables = $variables;
         if (!file_exists($this->blade)) {
             throw new ViewNotFoundException("$view view Not Found");
         }
+    }
+
+    /**
+     * @param string $notation
+     * @return string
+     */
+    private function dotNotationTPath(string $notation): string
+    {
+        return implode('/',explode('.',$notation));
     }
 
     /**

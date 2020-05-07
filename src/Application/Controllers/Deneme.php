@@ -12,10 +12,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return redirect()
-            ->router('index')
-            ->with('name', 'dılo sürücü')
-            ->withError('my_error', 'nottttttt')
-            ->withError('deneme', rand(1, 5));
+        return view('nested.forexample');
     }
 }
