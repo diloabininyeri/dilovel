@@ -606,3 +606,55 @@ Stack trace:
 [07-May-2020 18:24:42 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '(Array  )' (array) (T_ARRAY_CAST), expecting ';' or ',' in /home/zeus/Desktop/hmvc/src/Views/caches/9aa80d82b9983066dba5d1bf76714f60.php on line 20
 [07-May-2020 18:25:46 Europe/Helsinki] PHP Parse error:  Invalid numeric literal in /home/zeus/Desktop/hmvc/src/Views/caches/9aa80d82b9983066dba5d1bf76714f60.php on line 20
 [07-May-2020 18:27:11 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '534' (T_LNUMBER), expecting ')' in /home/zeus/Desktop/hmvc/src/Views/caches/9aa80d82b9983066dba5d1bf76714f60.php on line 20
+[07-May-2020 19:07:37 Europe/Helsinki] PHP Warning:  array_filter() expects parameter 1 to be array, string given in /home/zeus/Desktop/hmvc/src/Application/Filter/MyFilter.php on line 21
+[07-May-2020 19:07:37 Europe/Helsinki] PHP Stack trace:
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   6. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   7. {closure:/home/zeus/Desktop/hmvc/src/Routers/web.php:3-3}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   8. view() /home/zeus/Desktop/hmvc/src/Routers/web.php:3
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   9. App\Components\View\View->compile() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:46
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  10. App\Components\View\View->filePutViewCache() /home/zeus/Desktop/hmvc/src/Components/View/View.php:65
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  11. App\Components\View\View->renderWithBlade() /home/zeus/Desktop/hmvc/src/Components/View/View.php:75
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  12. App\Components\Blade\Blade->render() /home/zeus/Desktop/hmvc/src/Components/View/View.php:48
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  13. array_reduce() /home/zeus/Desktop/hmvc/src/Components/Blade/Blade.php:44
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  14. App\Components\Blade\Blade::App\Components\Blade\{closure:/home/zeus/Desktop/hmvc/src/Components/Blade/Blade.php:44-50}() /home/zeus/Desktop/hmvc/src/Components/Blade/Blade.php:44
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  15. App\Components\Blade\CurlBracesDirective->replaceTemplate() /home/zeus/Desktop/hmvc/src/Components/Blade/Blade.php:49
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  16. preg_replace_callback() /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php:23
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  17. App\Components\Blade\CurlBracesDirective->App\Components\Blade\{closure:/home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php:23-35}() /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php:23
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  18. App\Components\Blade\CurlBracesDirective->buildContent() /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php:31
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  19. App\Components\Blade\Filter\BladeFilters->filter() /home/zeus/Desktop/hmvc/src/Components/Blade/CurlBracesDirective.php:59
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  20. App\Application\Filter\MyFilter->filter() /home/zeus/Desktop/hmvc/src/Components/Blade/Filter/AbstractBladeFilter.php:21
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  21. array_filter() /home/zeus/Desktop/hmvc/src/Application/Filter/MyFilter.php:21
+[07-May-2020 19:07:37 Europe/Helsinki] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/zeus/Desktop/hmvc/src/Components/Http/Session.php on line 35
+[07-May-2020 19:07:37 Europe/Helsinki] PHP Stack trace:
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   6. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   7. {closure:/home/zeus/Desktop/hmvc/src/Routers/web.php:3-3}() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:66
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   8. view() /home/zeus/Desktop/hmvc/src/Routers/web.php:3
+[07-May-2020 19:07:37 Europe/Helsinki] PHP   9. App\Components\View\View->compile() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:46
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  10. include() /home/zeus/Desktop/hmvc/src/Components/View/View.php:68
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  11. flash() /home/zeus/Desktop/hmvc/src/Views/caches/d6dacbd37fe8051ad73c4ff3320c0d5a.php:14
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  12. App\Components\Flash\Flash->__construct() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:229
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  13. App\Components\Http\Session->__construct() /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php:30
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  14. App\Components\Http\Session->sessionStart() /home/zeus/Desktop/hmvc/src/Components/Http/Session.php:25
+[07-May-2020 19:07:37 Europe/Helsinki] PHP  15. session_start() /home/zeus/Desktop/hmvc/src/Components/Http/Session.php:35
+[07-May-2020 19:07:37 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Typed property App\Components\Http\Session::$session must be array, null used in /home/zeus/Desktop/hmvc/src/Components/Http/Session.php:26
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Flash/Flash.php(30): App\Components\Http\Session->__construct()
+#1 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(229): App\Components\Flash\Flash->__construct()
+#2 /home/zeus/Desktop/hmvc/src/Views/caches/d6dacbd37fe8051ad73c4ff3320c0d5a.php(14): flash()
+#3 /home/zeus/Desktop/hmvc/src/Components/View/View.php(68): include('/home/zeus/Desk...')
+#4 /home/zeus/Desktop/hmvc/src/helpers/helpers.php(46): App\Components\View\View->compile()
+#5 /home/zeus/Desktop/hmvc/src/Routers/web.php(3): view()
+#6 [internal function]: {closure}()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(66): call_user_func()
+#8 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#9 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Compone in /home/zeus/Desktop/hmvc/src/Components/Http/Session.php on line 26

@@ -21,7 +21,8 @@
             <a target="_blank" href="https://github.com/diloabininyeri/hmvc">github repo</a>
         </div>
 
-        <div class="text-center">{{5340882563|phone}}</div>
+        <div class="text-center">{{5340111111|phone}}</div>
+
 
     </div>
 </div>
