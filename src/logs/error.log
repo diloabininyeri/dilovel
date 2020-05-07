@@ -875,3 +875,11 @@ Stack trace:
 #4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
 #6 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatch in /home/zeus/Desktop/hmvc/src/Components/Reflection/IocContainer.php on line 163
+[07-May-2020 23:22:00 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function name() on null in /home/zeus/Desktop/hmvc/src/Routers/web.php:6
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php(444): include()
+#1 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(34): Composer\Autoload\includeFile()
+#2 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(22): App\Bootstrap\System->loadRouterWeb()
+#3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
+#4 {main}
+  thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6

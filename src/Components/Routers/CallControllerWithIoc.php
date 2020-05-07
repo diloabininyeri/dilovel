@@ -61,7 +61,9 @@ class CallControllerWithIoc
     {
         $ioc = new IocContainer($this->request);
         return $ioc->onError(static function ($error) {
-            print_r($error);
+            return redirect()
+                ->back()
+                ->withError('form_validation_error',$error);
         })
             ->onSuccess(fn ($req) => call_user_func([new $this->controller, $this->method], $req))
             ->setController($this->controller)

@@ -11,6 +11,10 @@ use Closure;
 class MainRouter
 {
     /**
+     * @var string $method
+     */
+    private string $method;
+    /**
      * @var array
      */
     private array $namespaces;
@@ -195,6 +199,16 @@ class MainRouter
      */
     public function getMethod(): string
     {
-        return strtolower($_SERVER['REQUEST_METHOD']);
+        return $this->method;
+    }
+
+    /**
+     * @param string $method
+     * @return MainRouter
+     */
+    public function setMethod(string $method): MainRouter
+    {
+        $this->method =strtoupper( $method);
+        return $this;
     }
 }

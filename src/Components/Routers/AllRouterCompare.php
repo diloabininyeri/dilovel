@@ -17,15 +17,18 @@ class AllRouterCompare
     {
         $routers = RouterStorage::all();
         foreach ($routers as $router) {
-            if ($this->isDynamicAndRealUrlEqual($router)) {
-                $this->foundedAnyRoute();
-                return new RouterObject($router);
-            }
+           if($_SERVER['REQUEST_METHOD']===$router->getMethod())
+           {
+               if ($this->isDynamicAndRealUrlEqual($router)) {
+                   $this->foundedAnyRoute();
+                   return new RouterObject($router);
+               }
 
-            if ($this->isEqualCountDynamicAndRealUrl($router) && $this->compareDynamic($router)->isMatched()) {
-                $this->foundedAnyRoute();
-                return new RouterObject($router);
-            }
+               if ($this->isEqualCountDynamicAndRealUrl($router) && $this->compareDynamic($router)->isMatched()) {
+                   $this->foundedAnyRoute();
+                   return new RouterObject($router);
+               }
+           }
         }
         return  null;
     }
