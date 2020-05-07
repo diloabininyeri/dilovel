@@ -13,6 +13,7 @@ class Blade
      */
     private array $directives = [
 
+        CommentDirective::class,
         CurlBracesDirective::class,
         IfDirective::class,
         EndifDirective::class,
@@ -28,7 +29,6 @@ class Blade
         CurlBracesAllowedHtmlChars::class,
         CompressBlade::class,
         JsEscapeDirective::class,
-        CommentDirective::class
 
     ];
 

@@ -486,3 +486,6 @@ Stack trace:
 [07-May-2020 00:58:32 Europe/Helsinki] PHP  10. include() /home/zeus/Desktop/hmvc/src/Components/View/View.php:68
 [07-May-2020 00:58:32 Europe/Helsinki] PHP  11. App\Components\Flash\FlashError->toArray() /home/zeus/Desktop/hmvc/src/Views/caches/5aa9c0f9a60d638634cdedc79ae688fe.php:14
 [07-May-2020 00:58:32 Europe/Helsinki] PHP  12. sscanf() /home/zeus/Desktop/hmvc/src/Components/Flash/FlashError.php:70
+[07-May-2020 13:58:38 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '<' in /home/zeus/Desktop/hmvc/src/Views/caches/e2bd42a9b3596d58235ff34fb32cc3c2.php on line 13
+[07-May-2020 13:59:00 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '<' in /home/zeus/Desktop/hmvc/src/Views/caches/e2bd42a9b3596d58235ff34fb32cc3c2.php on line 13
+[07-May-2020 14:00:20 Europe/Helsinki] PHP Parse error:  syntax error, unexpected ':', expecting end of file in /home/zeus/Desktop/hmvc/src/Views/caches/e2bd42a9b3596d58235ff34fb32cc3c2.php on line 20

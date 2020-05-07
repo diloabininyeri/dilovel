@@ -25,7 +25,7 @@ class CommentDirective implements BladeDirectiveInterface
     public function replaceTemplate(string $template)
     {
         return preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
-            return '<?php /*' . $find[1] . '*/ :?>';
+            return '<?php /*' . $find[1] . '*/ ?>';
         }, $template);
     }
 }
