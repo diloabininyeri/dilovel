@@ -8,7 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-
+grger
+@foreach ($errors as $error)
+    <h2>{{$error}}</h2>
+@endforeach
 <form action="{{router('form.post')}}" method="post">
     <input type="text" name="tc_no">
     <input type="submit" value="gonder">
