@@ -1,0 +1,25 @@
+<?php
+
+
+namespace App\Application\Request;
+
+use App\Components\Http\Request;
+use App\Interfaces\FormRequestInterface;
+
+/**
+ * Class TcNoVerifyRequest
+ * @package App\app\Request
+ */
+class $name extends Request implements FormRequestInterface
+{
+
+    /**
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+
+        ];
+    }
+}

@@ -8,6 +8,7 @@ use Bin\Commands\CommandList;
 use Bin\Commands\CreateBladeFilterCommand;
 use Bin\Commands\CreateCommand;
 use Bin\Commands\CreateControllerCommand;
+use Bin\Commands\CreateCustomRequestCommand;
 use Bin\Commands\CreateMiddlewareCommand;
 use Bin\Commands\CreateModelCommand;
 use Bin\Commands\CreateViewCommand;
@@ -37,6 +38,7 @@ class Console extends CustomCommandCall
         'error:detected'=>ErrorLogChangedCommand::class,
         'serve' => ServeCommand::class,
         'make:command' => CreateCommand::class,
-        'blade:filter'=>CreateBladeFilterCommand::class
+        'blade:filter'=>CreateBladeFilterCommand::class,
+        'make:request'=>CreateCustomRequestCommand::class
     ];
 }

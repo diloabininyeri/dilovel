@@ -1,0 +1,23 @@
+<?php
+
+
+namespace App\Application\Rules;
+
+
+use App\Components\Http\Request;
+use App\Interfaces\RuleInterface;
+
+class $name implements RuleInterface
+{
+
+    public function valid(Request $request): bool
+    {
+
+    }
+
+    public function message(): string
+    {
+       return "pelase write some things";
+
+    }
+}
