@@ -70,8 +70,8 @@ class Users extends Model
     }
 
 
-    public function car()
+    public function nameAndSurname()
     {
-        return random_int(1, 123);
+        return sprintf('%s %s',$this->name,$this->surname);
     }
 }

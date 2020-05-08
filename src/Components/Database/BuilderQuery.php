@@ -26,7 +26,7 @@ class BuilderQuery
 
     private array $bindArray = [];
 
-    private string $orderBy;
+    private ?string $orderBy = null;
 
     /**
      * BuilderQuery constructor.
@@ -60,7 +60,7 @@ class BuilderQuery
     /**
      * @return string
      */
-    private function getOrderBy(): string
+    private function getOrderBy(): ?string
     {
         return $this->orderBy;
     }
@@ -122,7 +122,7 @@ class BuilderQuery
      */
     public function findOrFail($id)
     {
-        return $this->find($id) ?: abort(404);
+        return $this->find($id) ?: die(view(404));
     }
 
     /**
@@ -133,15 +133,28 @@ class BuilderQuery
         $result = $this->fetchAll();
 
         if ($this->modelInstance->getHidden()) {
-            $this->unsetHiddenProperties($result);
+            $this->unsetHiddenPropertiesFromArray($result);
         }
         return new Collection($result);
+    }
+
+
+    /**
+     * @param Model $model
+     * @return Model
+     */
+    private function unsetHiddenProperties(object $model): Model
+    {
+        foreach ($this->getModelInstance()->getHidden() as $hidden) {
+            unset($model->$hidden);
+        }
+        return $model;
     }
 
     /**
      * @param $result
      */
-    private function unsetHiddenProperties($result): void
+    private function unsetHiddenPropertiesFromArray($result): void
     {
         $hidden = $this->modelInstance->getHidden();
         array_map(static function ($object) use ($hidden) {
@@ -154,24 +167,10 @@ class BuilderQuery
     }
 
     /**
-     * @param $name
-     * @param $arguments
-     * @return mixed
-     */
-    public function __call($name, $arguments)
-    {
-        $name = sprintf('scope%s', ucfirst($name));
-        if (method_exists($this->modelInstance, $name)) {
-            return $this->modelInstance->$name($this);
-        }
-        return $this;
-    }
-
-    /**
      * @param string $column
      * @return $this
      */
-    public function orderByAsc(string $column='id'): self
+    public function orderByAsc(string $column = 'id'): self
     {
         $this->setOrderBy(" ORDER BY $column ASC ");
         return $this;
@@ -181,13 +180,11 @@ class BuilderQuery
      * @param string $column
      * @return $this
      */
-    public function orderByDesc(string $column='id'): self
+    public function orderByDesc(string $column = 'id'): self
     {
         $this->setOrderBy(" ORDER BY $column DESC ");
         return $this;
     }
-
-
 
     /**
      * @param mixed $query
@@ -199,12 +196,19 @@ class BuilderQuery
         return $this;
     }
 
+
+    public function first(): Model
+    {
+        $this->setQuery('select * from ' . $this->getTable());
+        return $this->unsetHiddenProperties($this->fetch());
+    }
+
     /**
      * @return mixed
      */
     private function getQuery()
     {
-        return $this->query.$this->getOrderBy();
+        return $this->query . $this->getOrderBy();
     }
 
 
@@ -212,6 +216,7 @@ class BuilderQuery
     {
         return get_object_vars($this->modelInstance);
     }
+
 
     /**
      * @return FetchStatement
@@ -241,5 +246,19 @@ class BuilderQuery
     public function fetchAll(): ?array
     {
         return $this->builderFetchStatement()->fetchAll();
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        $name = sprintf('scope%s', ucfirst($name));
+        if (method_exists($this->modelInstance, $name)) {
+            return $this->modelInstance->$name($this);
+        }
+        return $this;
     }
 }

@@ -990,3 +990,41 @@ Stack trace:
 #5 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Database\BuilderQuery->get()
 #6 [internal function]: App\Application\Controllers\Controller->index()
 #7  in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 65
+[09-May-2020 02:10:28 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Typed property App\Components\Database\BuilderQuery::$orderBy must not be accessed before initialization in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:65
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(213): App\Components\Database\BuilderQuery->getOrderBy()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(232): App\Components\Database\BuilderQuery->getQuery()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(241): App\Components\Database\BuilderQuery->builderFetchStatement()
+#3 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(205): App\Components\Database\BuilderQuery->fetch()
+#4 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->first()
+#5 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#6 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Datab in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 65
+[09-May-2020 02:10:46 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Typed property App\Components\Database\BuilderQuery::$orderBy must not be accessed before initialization in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:65
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(213): App\Components\Database\BuilderQuery->getOrderBy()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(232): App\Components\Database\BuilderQuery->getQuery()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(241): App\Components\Database\BuilderQuery->builderFetchStatement()
+#3 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(205): App\Components\Database\BuilderQuery->fetch()
+#4 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->first()
+#5 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#6 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Datab in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 65
+[09-May-2020 02:10:57 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\BuilderQuery::getOrderBy() must be of the type string, null returned in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:65
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(213): App\Components\Database\BuilderQuery->getOrderBy()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(232): App\Components\Database\BuilderQuery->getQuery()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(241): App\Components\Database\BuilderQuery->builderFetchStatement()
+#3 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(205): App\Components\Database\BuilderQuery->fetch()
+#4 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->first()
+#5 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#6 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Componen in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 65
+[09-May-2020 02:23:17 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function getName() on string in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:22
+Stack trace:
+#0 [internal function]: App\Application\Controllers\Controller->index()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#7 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#8 /home/zeus/Desktop/h in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php on line 22

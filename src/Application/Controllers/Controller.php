@@ -19,6 +19,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::order()->get();
+        return Users::findOrFail(2)->getName();
     }
 }
