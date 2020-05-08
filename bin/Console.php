@@ -11,6 +11,7 @@ use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateCustomRequestCommand;
 use Bin\Commands\CreateMiddlewareCommand;
 use Bin\Commands\CreateModelCommand;
+use Bin\Commands\CreateRuleCommand;
 use Bin\Commands\CreateViewCommand;
 use Bin\Commands\DeleteControllerCommand;
 use Bin\Commands\ErrorLogChangedCommand;
@@ -39,6 +40,7 @@ class Console extends CustomCommandCall
         'serve' => ServeCommand::class,
         'make:command' => CreateCommand::class,
         'blade:filter'=>CreateBladeFilterCommand::class,
-        'make:request'=>CreateCustomRequestCommand::class
+        'make:request'=>CreateCustomRequestCommand::class,
+        'make:rule'=>CreateRuleCommand::class
     ];
 }
