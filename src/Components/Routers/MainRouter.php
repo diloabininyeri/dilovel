@@ -208,7 +208,7 @@ class MainRouter
      */
     public function setMethod(string $method): MainRouter
     {
-        $this->method =strtoupper( $method);
+        $this->method =strtoupper($method);
         return $this;
     }
 }

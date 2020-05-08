@@ -23,7 +23,10 @@ class BuilderQuery
 
     private ?string $query = null;
 
-    private bool  $activeToSql;
+
+    private array $bindArray = [];
+
+    private string $orderBy;
 
     /**
      * BuilderQuery constructor.
@@ -34,6 +37,50 @@ class BuilderQuery
     {
         $this->modelInstance = $model;
         $this->pdo = $pdo;
+    }
+
+    /**
+     * @return array
+     */
+    public function getBindArray(): array
+    {
+        return $this->bindArray;
+    }
+
+    /**
+     * @param array $bindArray
+     * @return BuilderQuery
+     */
+    private function setBindArray(array $bindArray): BuilderQuery
+    {
+        $this->bindArray = $bindArray;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    private function getOrderBy(): string
+    {
+        return $this->orderBy;
+    }
+
+    /**
+     * @param string $orderBy
+     * @return BuilderQuery
+     */
+    private function setOrderBy(string $orderBy): BuilderQuery
+    {
+        $this->orderBy = $orderBy;
+        return $this;
+    }
+
+    /**
+     * @return Model
+     */
+    private function getModelInstance(): Model
+    {
+        return $this->modelInstance;
     }
 
     public function where($key, $operartor, $value)
@@ -48,12 +95,12 @@ class BuilderQuery
 
 
     /**
-     * @return array
+     * @return Collection
      */
-    public function get()
+    public function get(): Collection
     {
-        $table = $this->modelInstance->getTable();
-        return $this->run("select * from  $table " . $this->getQuery());
+        $this->setQuery("SELECT * FROM {$this->getTable()}");
+        return $this->run();
     }
 
 
@@ -63,11 +110,10 @@ class BuilderQuery
      */
     public function find(int $id)
     {
-        $table = $this->getTable();
-        $stmt = $this->pdo->prepare("select * from $table where id=:id");
-        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->modelInstance->getStaticClass());
-        $stmt->execute([$this->modelInstance->getPrimaryKey() => $id]);
-        return $stmt->fetch();
+        $this->setQuery("select * from {$this->getTable()} where {$this->modelInstance->getPrimaryKey()}=:id");
+        $this->setBindArray([$this->modelInstance->getPrimaryKey() => $id]);
+
+        return $this->fetch();
     }
 
     /**
@@ -80,20 +126,16 @@ class BuilderQuery
     }
 
     /**
-     * @param $query
-     * @param array $execute
-     * @return Collection|array
+     * @return Collection
      */
-    private function run($query, $execute = [])
+    private function run(): Collection
     {
-        if (empty($execute)) {
-            $result = $this->pdo->query($query)->fetchAll(PDO::FETCH_CLASS, $this->modelInstance->getStaticClass());
-            if ($this->modelInstance->getHidden()) {
-                $this->unsetHiddenProperties($result);
-            }
-            return new Collection($result);
+        $result = $this->fetchAll();
+
+        if ($this->modelInstance->getHidden()) {
+            $this->unsetHiddenProperties($result);
         }
-        return [];
+        return new Collection($result);
     }
 
     /**
@@ -126,19 +168,32 @@ class BuilderQuery
     }
 
     /**
+     * @param string $column
      * @return $this
      */
-    public function orderByAsc()
+    public function orderByAsc(string $column='id'): self
     {
-        $this->setQuery('order by id desc ');
+        $this->setOrderBy(" ORDER BY $column ASC ");
         return $this;
     }
+
+    /**
+     * @param string $column
+     * @return $this
+     */
+    public function orderByDesc(string $column='id'): self
+    {
+        $this->setOrderBy(" ORDER BY $column DESC ");
+        return $this;
+    }
+
+
 
     /**
      * @param mixed $query
      * @return BuilderQuery
      */
-    private function setQuery($query)
+    private function setQuery($query): BuilderQuery
     {
         $this->query = $query;
         return $this;
@@ -149,34 +204,42 @@ class BuilderQuery
      */
     private function getQuery()
     {
-        return $this->query;
-    }
-
-
-    public function activateToSql()
-    {
-        return $this->isActiveToSql();
-    }
-
-    /**
-     * @return bool
-     */
-    private function isActiveToSql(): bool
-    {
-        return $this->activeToSql;
-    }
-
-    /**
-     * @param bool $activeToSql
-     */
-    private function setActiveToSql(bool $activeToSql): void
-    {
-        $this->activeToSql = $activeToSql;
+        return $this->query.$this->getOrderBy();
     }
 
 
     public function save()
     {
         return get_object_vars($this->modelInstance);
+    }
+
+    /**
+     * @return FetchStatement
+     */
+    private function builderFetchStatement(): FetchStatement
+    {
+        return (new FetchStatement())
+            ->setBuilderQuery($this)
+            ->setModelClass($this->modelInstance->getTable())
+            ->setPdo($this->pdo)
+            ->setModelClass($this->modelInstance->getStaticClass())
+            ->setQuery($this->getQuery())
+            ->setBindArray($this->getBindArray());
+    }
+
+    /**
+     * @return object|null
+     */
+    public function fetch()
+    {
+        return $this->builderFetchStatement()->fetch();
+    }
+
+    /**
+     * @return array|null
+     */
+    public function fetchAll(): ?array
+    {
+        return $this->builderFetchStatement()->fetchAll();
     }
 }

@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-
 use Bin\Components\ColorConsole;
 use Bin\Components\CommandInterface;
 
@@ -66,6 +65,4 @@ class CreateCustomRequestCommand implements CommandInterface
         $stub = file_get_contents(__DIR__ . '/../Stubs/request');
         return str_replace('$name', "{$className}Request", $stub);
     }
-
-
 }

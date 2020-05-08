@@ -883,3 +883,110 @@ Stack trace:
 #3 /home/zeus/Desktop/hmvc/index.php(21): App\Bootstrap\App->run()
 #4 {main}
   thrown in /home/zeus/Desktop/hmvc/src/Routers/web.php on line 6
+[09-May-2020 01:23:13 Europe/Helsinki] PHP Warning:  PDOStatement::fetch() expects parameter 2 to be int, string given in /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php on line 106
+[09-May-2020 01:23:13 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 01:23:13 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 01:23:13 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 01:23:13 Europe/Helsinki] PHP  11. App\Components\Database\Model::find() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:22
+[09-May-2020 01:23:13 Europe/Helsinki] PHP  12. App\Components\Database\Model::__callStatic() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:22
+[09-May-2020 01:23:13 Europe/Helsinki] PHP  13. App\Application\Models\Users->find() /home/zeus/Desktop/hmvc/src/Components/Database/Model.php:141
+[09-May-2020 01:23:13 Europe/Helsinki] PHP  14. App\Application\Models\Users->__call() /home/zeus/Desktop/hmvc/src/Components/Database/Model.php:141
+[09-May-2020 01:23:13 Europe/Helsinki] PHP  15. App\Components\Database\BuilderQuery->find() /home/zeus/Desktop/hmvc/src/Components/Database/Model.php:131
+[09-May-2020 01:23:13 Europe/Helsinki] PHP  16. App\Components\Database\Statement->fetch() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:82
+[09-May-2020 01:23:13 Europe/Helsinki] PHP  17. PDOStatement->fetch() /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php:106
+[09-May-2020 01:23:13 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\Statement::fetch() must be an object, bool returned in /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php:106
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(82): App\Components\Database\Statement->fetch()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->find()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#3 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Database\Model::__callStatic()
+#4 [internal function]: App\Application\Controllers\Controller->index()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): A in /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php on line 106
+[09-May-2020 01:24:09 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\Statement::fetch() must be an object, string returned in /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php:105
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(82): App\Components\Database\Statement->fetch()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->find()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#3 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Database\Model::__callStatic()
+#4 [internal function]: App\Application\Controllers\Controller->index()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): in /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php on line 105
+[09-May-2020 01:25:21 Europe/Helsinki] PHP Warning:  PDOStatement::fetch() expects parameter 2 to be int, string given in /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php on line 105
+[09-May-2020 01:25:21 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 01:25:21 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 01:25:21 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 01:25:21 Europe/Helsinki] PHP  11. App\Components\Database\Model::find() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:22
+[09-May-2020 01:25:21 Europe/Helsinki] PHP  12. App\Components\Database\Model::__callStatic() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:22
+[09-May-2020 01:25:21 Europe/Helsinki] PHP  13. App\Application\Models\Users->find() /home/zeus/Desktop/hmvc/src/Components/Database/Model.php:141
+[09-May-2020 01:25:21 Europe/Helsinki] PHP  14. App\Application\Models\Users->__call() /home/zeus/Desktop/hmvc/src/Components/Database/Model.php:141
+[09-May-2020 01:25:21 Europe/Helsinki] PHP  15. App\Components\Database\BuilderQuery->find() /home/zeus/Desktop/hmvc/src/Components/Database/Model.php:131
+[09-May-2020 01:25:21 Europe/Helsinki] PHP  16. App\Components\Database\Statement->fetch() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:82
+[09-May-2020 01:25:21 Europe/Helsinki] PHP  17. PDOStatement->fetch() /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php:105
+[09-May-2020 01:27:52 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Maximum function nesting level of '256' reached, aborting! in /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php:94
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php(94): PDO->prepare()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php(105): App\Components\Database\Statement->runQuery()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php(106): App\Components\Database\Statement->fetch()
+#3 /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php(106): App\Components\Database\Statement->fetch()
+#4 /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php(106): App\Components\Database\Statement->fetch()
+#5 /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php(106): App\Components\Database\Statement->fetch()
+#6 /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php(106): App\Components\Database\Statement->fetch()
+#7 /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php(106): App\Components\Database\S in /home/zeus/Desktop/hmvc/src/Components/Database/Statement.php on line 94
+[09-May-2020 01:45:53 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\BuilderQuery::toSql() must be of the type bool, none returned in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:192
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->toSql()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Database\Model::__callStatic()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatc in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 192
+[09-May-2020 01:51:43 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\BuilderQuery::fetch() must be an object or null, bool returned in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:209
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(97): App\Components\Database\BuilderQuery->fetch()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(107): App\Components\Database\BuilderQuery->find()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->findOrFail()
+#3 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#4 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Database\Model::__callStatic()
+#5 [internal function]: App\Application\Controllers\Controller->index()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/CallContr in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 209
+[09-May-2020 01:54:16 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Typed property App\Components\Database\BuilderQuery::$bindArray must not be accessed before initialization in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:45
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(202): App\Components\Database\BuilderQuery->getBindArray()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(218): App\Components\Database\BuilderQuery->builderFetchStatement()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(119): App\Components\Database\BuilderQuery->fetchAll()
+#3 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(83): App\Components\Database\BuilderQuery->run()
+#4 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->get()
+#5 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#6 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Databa in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 45
+[09-May-2020 02:06:26 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Typed property App\Components\Database\BuilderQuery::$orderBy must not be accessed before initialization in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:65
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(211): App\Components\Database\BuilderQuery->getOrderBy()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(230): App\Components\Database\BuilderQuery->getQuery()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(247): App\Components\Database\BuilderQuery->builderFetchStatement()
+#3 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(135): App\Components\Database\BuilderQuery->fetchAll()
+#4 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(103): App\Components\Database\BuilderQuery->run()
+#5 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(22): App\Components\Database\BuilderQuery->get()
+#6 [internal function]: App\Application\Controllers\Controller->index()
+#7  in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 65

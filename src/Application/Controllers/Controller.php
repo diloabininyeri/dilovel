@@ -19,6 +19,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return $request->post('tc_no');
+        return Users::order()->get();
     }
 }
