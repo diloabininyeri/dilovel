@@ -57,9 +57,7 @@ class BuilderQuery
     {
         if ($this->isWhereUsed()) {
             $this->whereQuery .= " AND $key$operator:where_$key";
-
         } else {
-
             $this->whereQuery = " WHERE $key$operator:where_$key ";
         }
 
@@ -254,7 +252,6 @@ class BuilderQuery
 
     public function last()
     {
-
     }
 
     /**
