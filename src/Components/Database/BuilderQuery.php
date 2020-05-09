@@ -161,7 +161,7 @@ class BuilderQuery
     /**
      * @return array
      */
-    public function getBindArray(): array
+    private function getBindArray(): array
     {
         return $this->bindArray;
     }
