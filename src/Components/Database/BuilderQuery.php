@@ -123,6 +123,21 @@ class BuilderQuery
     }
 
     /**
+     * @param string $raw
+     * @return $this
+     */
+    public function whereRaw(string $raw): self
+    {
+        if ($this->isWhereUsed()) {
+            $this->whereQuery .= " AND $raw ";
+        } else {
+            $this->whereQuery = " WHERE $raw ";
+        }
+        $this->isWhereUsed=true;
+        return $this;
+    }
+
+    /**
      * @param $key
      * @param $operator
      * @param $value
