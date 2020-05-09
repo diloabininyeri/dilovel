@@ -72,6 +72,6 @@ class Users extends Model
 
     public function nameAndSurname()
     {
-        return sprintf('%s %s',$this->name,$this->surname);
+        return sprintf('%s %s', $this->name, $this->surname);
     }
 }

@@ -28,6 +28,8 @@ class CommandList implements CommandInterface
     public function handle(?array $parameters): void
     {
         //Animation::show();
+        echo $this->printTextBanner();
+        echo "\n";
         $this->printAllCommandList(Command::list());
     }
 
@@ -46,7 +48,7 @@ class CommandList implements CommandInterface
      */
     private function printGroupBy($commandList): void
     {
-        echo str_repeat('_', 150)."\n";
+        echo str_repeat('_', 150) . "\n";
         foreach ($commandList as $command => $class) {
             echo $this->addPadRight($command) . $this->getDescription(new $class) . "\n";
         }
@@ -88,5 +90,14 @@ class CommandList implements CommandInterface
             ->setObject($object)
             ->setProperty('description')
             ->getValue();
+    }
+
+
+    private function printTextBanner():string
+    {
+        return '
+                 __        __                      __      ___  __              ___       __   __       
+                |__) |__| |__)    |__|  |\/| \  / /  `    |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/ 
+                |    |  | |       |  |  |  |  \/  \__,    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \ ';
     }
 }
