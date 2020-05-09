@@ -135,11 +135,11 @@ class BuilderQuery
     }
 
     /**
-     * @param $column
+     * @param string $column
      * @param array $values
      * @return $this
      */
-    public function whereIn($column, array $values)
+    public function whereIn(string $column, array $values): self
     {
         $bind = array_fill(0, count($values), '?');
         $bindImplode = implode(',', $bind);
