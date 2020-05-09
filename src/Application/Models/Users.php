@@ -13,7 +13,7 @@ use App\Components\Database\Model;
  * Class Users
  * @package App\Models
  * @mixin BuilderQuery
- * @method  static get()
+ * @method  static get(...$columns)
  * @property $name
  * @method static BuilderQuery|Users order()
  * @method static BuilderQuery|Users find(int $id)

@@ -89,6 +89,7 @@ class BuilderQuery
      * @param $operator
      * @param $value
      * @return $this
+     * @noinspection PhpUnused
      */
     public function orWhere($key, $value, $operator = '='): self
     {
@@ -112,7 +113,13 @@ class BuilderQuery
         return is_string($data) ? "'$data'" : $data;
     }
 
-
+    /**
+     * @param string $column
+     * @param $smallValue
+     * @param $bigValue
+     * @param $type  @explain between or  not between
+     * @return $this
+     */
     private function builderBetween(string $column, $smallValue, $bigValue, $type): self
     {
         $smallValue = $this->addSingleQuotation($smallValue);
@@ -205,19 +212,22 @@ class BuilderQuery
     }
 
     /**
+     * @param $columns
      * @return string
      */
-    private function builderQuery(): string
+    private function selectBuilderQuery($columns): string
     {
-        return "SELECT * FROM {$this->getTable()}{$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
+        $columns=implode(',',$columns) ?: '*';
+        return "SELECT $columns FROM {$this->getTable()}{$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
     }
 
     /**
+     * @param array $columns
      * @return Collection
      */
-    public function get(): Collection
+    public function get(...$columns): Collection
     {
-        $this->setQuery($this->builderQuery());
+        $this->setQuery($this->selectBuilderQuery($columns));
         return $this->run();
     }
 
@@ -317,22 +327,24 @@ class BuilderQuery
 
 
     /**
+     * @param array $columns
      * @return object
      */
-    public function first(): object
+    public function first(...$columns): object
     {
-        $this->setQuery($this->builderQuery());
+        $this->setQuery($this->selectBuilderQuery($columns));
         return $this->unsetHiddenProperties($this->fetch());
     }
 
     /**
+     * @param array $columns
      * @return object
      */
-    public function last(): object
+    public function last(...$columns): object
     {
         $this->setOrderBy(" ORDER BY {$this->modelInstance->getPrimaryKey()} DESC ");
         $this->limit(1);
-        $this->setQuery($this->builderQuery());
+        $this->setQuery($this->selectBuilderQuery($columns));
         return $this->unsetHiddenProperties($this->fetch());
     }
 
