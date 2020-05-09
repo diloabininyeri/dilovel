@@ -20,7 +20,8 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::select('country')->groupBy('country')->avg('id');
+
+        return Users::where('name','hrth')->firstOrFail();
 
     }
 }

@@ -117,7 +117,7 @@ class BuilderQuery
             $this->whereQuery = " WHERE $key$operator:where_$key ";
         }
 
-        $this->bindArray[":where_$key"] = $this->addSingleQuotation($value);
+        $this->bindArray[":where_$key"] =$value;
         $this->isWhereUsed = true;
         return $this;
     }
@@ -152,19 +152,11 @@ class BuilderQuery
             $this->whereQuery = " WHERE $key$operator:or_where$key ";
         }
 
-        $this->bindArray[":or_where$key"] = $this->addSingleQuotation($value);
+        $this->bindArray[":or_where$key"] = $value;
         $this->isWhereUsed = true;
         return $this;
     }
 
-    /**
-     * @param $data
-     * @return string
-     */
-    private function addSingleQuotation($data): string
-    {
-        return is_string($data) ? "'$data'" : $data;
-    }
 
     /**
      * @param string $column
@@ -175,8 +167,6 @@ class BuilderQuery
      */
     private function builderBetween(string $column, $smallValue, $bigValue, $type): self
     {
-        $smallValue = $this->addSingleQuotation($smallValue);
-        $bigValue = $this->addSingleQuotation($bigValue);
         if ($this->isWhereUsed()) {
             $this->whereQuery .= " AND $column  $type :between_small_value$column AND :between_big_value$column";
         } else {
