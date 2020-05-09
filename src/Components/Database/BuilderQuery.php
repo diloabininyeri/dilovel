@@ -113,6 +113,22 @@ class BuilderQuery
     }
 
 
+    private function builderBetween(string $column, $smallValue, $bigValue, $type): self
+    {
+        $smallValue = $this->addSingleQuotation($smallValue);
+        $bigValue = $this->addSingleQuotation($bigValue);
+        if ($this->isWhereUsed()) {
+            $this->whereQuery .= " AND $column  $type :between_small_value$column AND :between_big_value$column";
+        } else {
+            $this->whereQuery = " WHERE $column $type $smallValue AND $bigValue ";
+        }
+        $this->bindArray[":between_small_value$column"] = $smallValue;
+        $this->bindArray[":between_big_value$column"] = $bigValue;
+
+        $this->isWhereUsed = true;
+        return $this;
+    }
+
     /**
      * @param string $column
      * @param $smallValue
@@ -121,18 +137,18 @@ class BuilderQuery
      */
     public function between(string $column, $smallValue, $bigValue): self
     {
-        $smallValue = $this->addSingleQuotation($smallValue);
-        $bigValue = $this->addSingleQuotation($bigValue);
-        if ($this->isWhereUsed()) {
-            $this->whereQuery .= " AND $column  BETWEEN :between_small_value$column AND :between_big_value$column";
-        } else {
-            $this->whereQuery = " WHERE $column BETWEEN $smallValue AND $bigValue ";
-        }
-        $this->bindArray[":between_small_value$column"] = $smallValue;
-        $this->bindArray[":between_big_value$column"] = $bigValue;
+        return $this->builderBetween($column, $smallValue, $bigValue, 'BETWEEN');
+    }
 
-        $this->isWhereUsed = true;
-        return $this;
+    /**
+     * @param string $column
+     * @param $smallValue
+     * @param $bigValue
+     * @return $this
+     */
+    public function notBetween(string $column, $smallValue, $bigValue): self
+    {
+        return $this->builderBetween($column, $smallValue, $bigValue, 'NOT BETWEEN');
     }
 
     /**
