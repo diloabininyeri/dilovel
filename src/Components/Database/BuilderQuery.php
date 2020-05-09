@@ -48,9 +48,24 @@ class BuilderQuery
     private ?string  $whereQuery = null;
 
     /**
+     * @var bool
+     */
+    private bool $isSelected = false;
+
+    /**
      * @var
      */
     private $limit;
+
+    /**
+     * @var string|null
+     */
+    private ?string $selectQuery = null;
+
+    /**
+     * @var string|null
+     */
+    private ?string $otherQuery = null;
 
 
     /**
@@ -117,7 +132,7 @@ class BuilderQuery
      * @param string $column
      * @param $smallValue
      * @param $bigValue
-     * @param $type  @explain between or  not between
+     * @param $type @explain between or  not between
      * @return $this
      */
     private function builderBetween(string $column, $smallValue, $bigValue, $type): self
@@ -166,7 +181,105 @@ class BuilderQuery
         return $this->bindArray;
     }
 
+    /**
+     * @return $this
+     */
+    private function builderCountQuery(): self
+    {
+        $primaryKey = $this->getModelInstance()->getPrimaryKey();
 
+        if (!$this->isSelected()) {
+            $this->selectQuery = "SELECT COUNT($primaryKey) AS count";
+        } else {
+            $this->selectQuery .= ",COUNT($primaryKey) AS count";
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function count()
+    {
+        $this->builderCountQuery();
+        $this->setQuery($this->selectBuilderQuery('id'));
+        return $this->fetch()->count;
+    }
+
+    /**
+     * @param $column
+     * @return $this
+     */
+    private function builderAvgQuery($column): self
+    {
+        if (!$this->isSelected()) {
+            $this->selectQuery = "SELECT AVG($column) AS avg";
+        } else {
+            $this->selectQuery .= ",AVG($column) AS avg";
+        }
+        return $this;
+    }
+
+    /**
+     * @param $column
+     * @return mixed
+     */
+    public function avg($column)
+    {
+        $this->builderAvgQuery($column);
+        $this->setQuery($this->selectBuilderQuery('id'));
+        return $this->fetch()->avg;
+    }
+
+    /**
+     * @param $column
+     * @return $this
+     */
+    private function builderMaxQuery($column)
+    {
+        if (!$this->isSelected()) {
+            $this->selectQuery = "SELECT MAX($column) AS max";
+        } else {
+            $this->selectQuery .= ",AVG($column) AS max";
+        }
+        return $this;
+    }
+
+    /**
+     * @param $column
+     * @return mixed
+     */
+    public function max($column)
+    {
+        $this->builderMaxQuery($column);
+        $this->setQuery($this->selectBuilderQuery('id'));
+        return $this->fetch()->max;
+    }
+
+    /***
+     * @param $column
+     * @return $this
+     */
+    public function builderMinQuery($column)
+    {
+        if (!$this->isSelected()) {
+            $this->selectQuery = "SELECT MIN($column) AS min";
+        } else {
+            $this->selectQuery .= ",MIN($column) AS min";
+        }
+        return $this;
+    }
+
+    /**
+     * @param $column
+     * @return mixed
+     */
+    public function min($column)
+    {
+        $this->builderMinQuery($column);
+        $this->setQuery($this->selectBuilderQuery('id'));
+        return $this->fetch()->min;
+    }
     /**
      * @param array $bindArray
      * @return BuilderQuery
@@ -211,21 +324,62 @@ class BuilderQuery
         return $this->modelInstance->getTable();
     }
 
+
     /**
      * @param $columns
+     * @param null $aggregate
      * @return string
      */
-    private function selectBuilderQuery($columns): string
+    private function selectBuilderQuery($columns, $aggregate = null): string
     {
-        $columns=implode(',',$columns) ?: '*';
-        return "SELECT $columns FROM {$this->getTable()}{$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
+        if (empty($this->getSelectQuery())) {
+            $columns = implode(',', $columns) ?: '*';
+            $this->setSelectQuery("SELECT $columns");
+        }
+        return "{$this->getSelectQuery()} FROM {$this->getTable()}{$this->otherQuery} {$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
+    }
+
+    /**
+     * @param $table
+     * @param $firstCause
+     * @param $secondCause
+     * @param $type
+     * @return $this
+     */
+    private function builderJoinQuery($table, $firstCause, $secondCause, $type): self
+    {
+        $this->otherQuery .= " $type $table ON $firstCause=$secondCause ";
+        return $this;
+    }
+
+    /**
+     * @param $table
+     * @param $firstCause
+     * @param $secondCause
+     * @return $this
+     */
+    public function innerJoin($table, $firstCause, $secondCause): self
+    {
+        return $this->builderJoinQuery($table, $firstCause, $secondCause, 'INNER JOIN');
+    }
+
+    /**
+     * @param $table
+     * @param $firstCause
+     * @param $secondCause
+     * @return $this
+     *
+     */
+    public function leftJoin($table, $firstCause, $secondCause): self
+    {
+        return $this->builderJoinQuery($table, $firstCause, $secondCause, 'LEFT JOIN');
     }
 
     /**
      * @param array $columns
      * @return Collection
      */
-    public function get(...$columns): Collection
+    public function get(...$columns)
     {
         $this->setQuery($this->selectBuilderQuery($columns));
         return $this->run();
@@ -332,7 +486,7 @@ class BuilderQuery
     public function first(...$columns): ?object
     {
         $this->setQuery($this->selectBuilderQuery($columns));
-        if($this->fetch()) {
+        if ($this->fetch()) {
             return $this->unsetHiddenProperties($this->fetch());
         }
         return null;
@@ -356,7 +510,7 @@ class BuilderQuery
         $this->setOrderBy(" ORDER BY {$this->modelInstance->getPrimaryKey()} DESC ");
         $this->limit(1);
         $this->setQuery($this->selectBuilderQuery($columns));
-        if($this->fetch()) {
+        if ($this->fetch()) {
             return $this->unsetHiddenProperties($this->fetch());
         }
         return null;
@@ -370,6 +524,7 @@ class BuilderQuery
     {
         return $this->last(...$columns) ?: die(view('404'));
     }
+
     /**
      * @return mixed
      */
@@ -468,6 +623,53 @@ class BuilderQuery
         if (method_exists($this->modelInstance, $name)) {
             return $this->modelInstance->$name($this);
         }
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    private function getSelectQuery(): ?string
+    {
+        return $this->selectQuery;
+    }
+
+    /**
+     * @param string $selectQuery
+     * @return BuilderQuery
+     */
+    private function setSelectQuery(string $selectQuery): BuilderQuery
+    {
+        $this->selectQuery = $selectQuery;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSelected(): bool
+    {
+        return $this->isSelected;
+    }
+
+    /**
+     * @param bool $isSelected
+     * @return BuilderQuery
+     */
+    private function setIsSelected(bool $isSelected): BuilderQuery
+    {
+        $this->isSelected = $isSelected;
+        return $this;
+    }
+
+
+    /**
+     * @param string $query
+     * @return $this
+     */
+    private function addSelectQuery(string $query): self
+    {
+        $this->setSelectQuery($this->getSelectQuery() . ' ' . $query);
         return $this;
     }
 }

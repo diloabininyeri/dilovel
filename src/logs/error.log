@@ -1202,3 +1202,149 @@ Stack trace:
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
 #6 /home/zeus/Desktop/hmvc/src in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 274
 [09-May-2020 05:36:45 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '}', expecting variable (T_VARIABLE) or '{' or '$' in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 364
+[09-May-2020 18:03:49 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Typed property App\Components\Database\BuilderQuery::$selectQuery must not be accessed before initialization in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:484
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(222): App\Components\Database\BuilderQuery->getSelectQuery()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(339): App\Components\Database\BuilderQuery->selectBuilderQuery()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\BuilderQuery->first()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#7 /home/zeu in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 484
+[09-May-2020 18:31:32 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\BuilderQuery::get() must be an instance of App\Components\Collection\Collection, string returned in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:270
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\BuilderQuery->get()
+#1 [internal function]: App\Application\Controllers\Controller->index()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFun in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 270
+[09-May-2020 18:40:10 Europe/Helsinki] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function App\Components\Database\BuilderQuery::selectBuilderQuery(), 1 passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 274 and exactly 2 expected in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:230
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(274): App\Components\Database\BuilderQuery->selectBuilderQuery()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\BuilderQuery->get()
+#2 [internal function]: App\Application\Controllers\Controller->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Compon in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 230
+[09-May-2020 18:56:39 Europe/Helsinki] PHP Warning:  implode(): Invalid arguments passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 254
+[09-May-2020 18:56:39 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 18:56:39 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:56:39 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:56:39 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->count() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+[09-May-2020 18:56:39 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->selectBuilderQuery() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:192
+[09-May-2020 18:56:39 Europe/Helsinki] PHP  13. implode() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:254
+[09-May-2020 18:56:56 Europe/Helsinki] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function App\Components\Database\BuilderQuery::selectBuilderQuery(), 0 passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 192 and at least 1 expected in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:251
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(192): App\Components\Database\BuilderQuery->selectBuilderQuery()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\BuilderQuery->count()
+#2 [internal function]: App\Application\Controllers\Controller->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Com in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 251
+[09-May-2020 18:57:31 Europe/Helsinki] PHP Warning:  implode(): Invalid arguments passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 254
+[09-May-2020 18:57:31 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 18:57:31 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:57:31 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:57:31 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->count() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+[09-May-2020 18:57:31 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->selectBuilderQuery() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:192
+[09-May-2020 18:57:31 Europe/Helsinki] PHP  13. implode() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:254
+[09-May-2020 18:58:01 Europe/Helsinki] PHP Warning:  implode(): Invalid arguments passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 254
+[09-May-2020 18:58:01 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 18:58:01 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:58:01 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:58:01 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->count() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+[09-May-2020 18:58:01 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->selectBuilderQuery() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:192
+[09-May-2020 18:58:01 Europe/Helsinki] PHP  13. implode() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:254
+[09-May-2020 18:58:27 Europe/Helsinki] PHP Warning:  implode(): Invalid arguments passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 254
+[09-May-2020 18:58:27 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 18:58:27 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:58:27 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:58:27 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->count() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+[09-May-2020 18:58:27 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->selectBuilderQuery() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:192
+[09-May-2020 18:58:27 Europe/Helsinki] PHP  13. implode() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:254
+[09-May-2020 18:58:28 Europe/Helsinki] PHP Warning:  implode(): Invalid arguments passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 254
+[09-May-2020 18:58:28 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:58:28 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:58:28 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->count() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+[09-May-2020 18:58:28 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->selectBuilderQuery() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:192
+[09-May-2020 18:58:28 Europe/Helsinki] PHP  13. implode() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:254
+[09-May-2020 18:58:28 Europe/Helsinki] PHP Warning:  implode(): Invalid arguments passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 254
+[09-May-2020 18:58:28 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 18:58:28 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:58:28 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 18:58:28 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->count() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+[09-May-2020 18:58:28 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->selectBuilderQuery() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:192
+[09-May-2020 18:58:28 Europe/Helsinki] PHP  13. implode() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:254
+[09-May-2020 18:59:13 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Typed property App\Components\Database\BuilderQuery::$isSelected must not be accessed before initialization in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:564
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(182): App\Components\Database\BuilderQuery->isSelected()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(192): App\Components\Database\BuilderQuery->builderCountQuery()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\BuilderQuery->count()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#7 /home/zeus/Desk in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 564
+[09-May-2020 19:04:56 Europe/Helsinki] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function App\Components\Database\BuilderQuery::builderAvgQuery(), 0 passed in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 221 and exactly 1 expected in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:205
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(221): App\Components\Database\BuilderQuery->builderAvgQuery()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->avg()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#3 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\Model::__callStatic()
+#4 [internal function]: App\Application\Controllers\Controller->index()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php( in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 205
