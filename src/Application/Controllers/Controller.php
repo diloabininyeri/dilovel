@@ -20,6 +20,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::outerJoin('books', 'users.id', 'books.user_id')->get();
+        return Users::select('country')->groupBy('country')->avg('id');
+
     }
 }

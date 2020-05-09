@@ -3,6 +3,7 @@
 namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
+use JsonException;
 use PDO;
 
 /**
@@ -79,6 +80,28 @@ class BuilderQuery
         $this->pdo = $pdo;
     }
 
+
+    /**
+     * @param mixed ...$columns
+     * @return $this
+     */
+    public function select(...$columns): BuilderQuery
+    {
+        if (empty($columns)) {
+            $star = ['*'];
+        }
+
+        $fields = implode(',', $star ?? $columns);
+        if (!$this->isSelected()) {
+            $this->selectQuery = "SELECT $fields ";
+        } else {
+            $this->selectQuery = "SELECT $fields " . $this->selectQuery;
+        }
+
+        $this->setIsSelected(true);
+
+        return $this;
+    }
 
     /**
      * @param $key
@@ -222,15 +245,16 @@ class BuilderQuery
         return $this;
     }
 
-    /**
+    /***
      * @param $column
      * @return mixed
+     * @throws JsonException
      */
     public function avg($column)
     {
         $this->builderAvgQuery($column);
         $this->setQuery($this->selectBuilderQuery('id'));
-        return $this->fetch()->avg;
+        return json_decode(json_encode($this->fetchAll(), JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -283,6 +307,7 @@ class BuilderQuery
         $this->setQuery($this->selectBuilderQuery('id'));
         return $this->fetch()->min;
     }
+
     /**
      * @param array $bindArray
      * @return BuilderQuery
@@ -402,6 +427,7 @@ class BuilderQuery
     {
         return $this->builderJoinQuery($table, $firstCause, $secondCause, 'OUTER JOIN');
     }
+
     /**
      * @param array $columns
      * @return Collection
@@ -629,6 +655,20 @@ class BuilderQuery
             $this->limit = " LIMIT $limit,$end ";
         }
         return $this;
+    }
+
+    /**
+     * @param mixed ...$columns
+     * @return $this
+     */
+    public function groupBy(...$columns): self
+    {
+        if (!empty($columns)) {
+            $c = implode(',', $columns);
+            $this->mixedQuery .= " GROUP BY $c ";
+        }
+        return $this;
+
     }
 
     /**
