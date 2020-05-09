@@ -79,7 +79,7 @@ class BuilderQuery
             $this->whereQuery = " WHERE $key$operator:where_$key ";
         }
 
-        $this->bindArray[":where_$key"] = is_string($value) ? "'$value'" : $value;
+        $this->bindArray[":where_$key"] = $this->addSingleQuotation($value);
         $this->isWhereUsed = true;
         return $this;
     }
