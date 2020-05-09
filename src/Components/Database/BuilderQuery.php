@@ -30,7 +30,7 @@ class BuilderQuery
 
     private bool $isWhereUsed = false;
 
-    private string  $whereQuery;
+    private  $whereQuery;
 
     private $limit;
 
@@ -250,8 +250,15 @@ class BuilderQuery
         return $this->unsetHiddenProperties($this->fetch());
     }
 
-    public function last()
+    /**
+     * @return object
+     */
+    public function last(): object
     {
+        $this->setOrderBy(" ORDER BY {$this->modelInstance->getPrimaryKey()} DESC ");
+        $this->limit(1);
+        $this->setQuery($this->builderQuery());
+        return $this->unsetHiddenProperties($this->fetch());
     }
 
     /**
@@ -351,4 +358,5 @@ class BuilderQuery
     {
         return $this->limit;
     }
+
 }

@@ -20,6 +20,6 @@ class Controller
     public function index(TcNoVerifyRequest $request)
     {
         //id gt 3
-        return Users::where('id', 3, '<')->orderByAsc()->limit(1)->get();
+        return Users::last();
     }
 }
