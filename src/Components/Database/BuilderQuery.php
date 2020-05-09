@@ -28,6 +28,11 @@ class BuilderQuery
 
     private ?string $orderBy = null;
 
+    private bool $isWhereUsed = false;
+
+    private string  $whereQuery;
+
+
     /**
      * BuilderQuery constructor.
      * @param Model $model
@@ -39,6 +44,47 @@ class BuilderQuery
         $this->pdo = $pdo;
     }
 
+
+    /**
+     * @param $key
+     * @param $operator
+     * @param $value
+     * @return $this
+     */
+    public function where($key, $value, $operator = '='): self
+    {
+        if ($this->isWhereUsed()) {
+            $this->whereQuery .= " AND $key$operator:where_$key";
+
+        } else {
+
+            $this->whereQuery = " WHERE $key$operator:where_$key ";
+        }
+
+        $this->bindArray[":where_$key"] = is_string($value) ? "'$value'" : $value;
+        $this->isWhereUsed = true;
+        return $this;
+    }
+
+    /**
+     * @param $key
+     * @param $operator
+     * @param $value
+     * @return $this
+     */
+    public function orWhere($key, $value, $operator = '='): self
+    {
+        if ($this->isWhereUsed()) {
+            $this->whereQuery .= " OR $key$operator:or_where$key";
+        } else {
+            $this->whereQuery = " WHERE $key$operator:or_where$key ";
+        }
+
+        $this->bindArray[":or_where$key"] = is_string($value) ? "'$value'" : $value;
+        $this->isWhereUsed = true;
+        return $this;
+    }
+
     /**
      * @return array
      */
@@ -46,6 +92,7 @@ class BuilderQuery
     {
         return $this->bindArray;
     }
+
 
     /**
      * @param array $bindArray
@@ -83,23 +130,22 @@ class BuilderQuery
         return $this->modelInstance;
     }
 
-    public function where($key, $operartor, $value)
-    {
-        return 'mera-haba';
-    }
-
     private function getTable()
     {
         return $this->modelInstance->getTable();
     }
 
+    private function builderQuery(): string
+    {
+        return "SELECT * FROM {$this->getTable()}{$this->getWhereQuery()}{$this->getOrderBy()}";
+    }
 
     /**
      * @return Collection
      */
     public function get(): Collection
     {
-        $this->setQuery("SELECT * FROM {$this->getTable()}");
+        $this->setQuery($this->builderQuery());
         return $this->run();
     }
 
@@ -130,6 +176,7 @@ class BuilderQuery
      */
     private function run(): Collection
     {
+        echo $this->getQuery();
         $result = $this->fetchAll();
 
         if ($this->modelInstance->getHidden()) {
@@ -140,10 +187,10 @@ class BuilderQuery
 
 
     /**
-     * @param Model $model
-     * @return Model
+     * @param object $model
+     * @return object
      */
-    private function unsetHiddenProperties(object $model): Model
+    private function unsetHiddenProperties(object $model): object
     {
         foreach ($this->getModelInstance()->getHidden() as $hidden) {
             unset($model->$hidden);
@@ -197,10 +244,15 @@ class BuilderQuery
     }
 
 
-    public function first(): Model
+    public function first(): object
     {
-        $this->setQuery('select * from ' . $this->getTable());
+        $this->setQuery($this->builderQuery());
         return $this->unsetHiddenProperties($this->fetch());
+    }
+
+    public function last()
+    {
+
     }
 
     /**
@@ -208,7 +260,7 @@ class BuilderQuery
      */
     private function getQuery()
     {
-        return $this->query . $this->getOrderBy();
+        return $this->query;
     }
 
 
@@ -260,5 +312,21 @@ class BuilderQuery
             return $this->modelInstance->$name($this);
         }
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    private function isWhereUsed(): bool
+    {
+        return $this->isWhereUsed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWhereQuery(): ?string
+    {
+        return $this->whereQuery;
     }
 }

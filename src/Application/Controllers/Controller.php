@@ -19,6 +19,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::findOrFail(2)->getName();
+        //id gt 3
+        return Users::where('id',3,'<')->orderByDesc()->first();
     }
 }
