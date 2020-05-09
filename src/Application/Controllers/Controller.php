@@ -20,6 +20,6 @@ class Controller
     public function index(TcNoVerifyRequest $request)
     {
         //id gt 3
-        return Users::last();
+        return Users::between('id',1,4)->first();
     }
 }

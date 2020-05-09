@@ -1146,3 +1146,22 @@ Stack trace:
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
 #6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
 #7 /home/zeus/Desktop/ in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 332
+[09-May-2020 04:27:54 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Typed property App\Components\Database\BuilderQuery::$whereQuery must not be accessed before initialization in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:352
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(164): App\Components\Database\BuilderQuery->getWhereQuery()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(287): App\Components\Database\BuilderQuery->builderQuery()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->last()
+#3 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#4 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\Model::__callStatic()
+#5 [internal function]: App\Application\Controllers\Controller->index()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#7 /home/zeus/Desktop/hmvc/src/Components/Route in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 352
+[09-May-2020 04:55:18 Europe/Helsinki] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function App\Components\Database\BuilderQuery::between(), 2 passed in /home/zeus/Desktop/hmvc/src/Components/Database/Model.php on line 131 and exactly 3 expected in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:106
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->between()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\Model::__callStatic()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Compon in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 106

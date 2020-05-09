@@ -21,17 +21,35 @@ class BuilderQuery
      */
     private PDO $pdo;
 
+    /**
+     * @var string|null
+     */
     private ?string $query = null;
 
 
+    /**
+     * @var array
+     */
     private array $bindArray = [];
 
+    /**
+     * @var string|null
+     */
     private ?string $orderBy = null;
 
+    /**
+     * @var bool
+     */
     private bool $isWhereUsed = false;
 
-    private  $whereQuery;
+    /**
+     * @var string $whereQuery
+     */
+    private ?string  $whereQuery = null;
 
+    /**
+     * @var
+     */
     private $limit;
 
 
@@ -86,6 +104,38 @@ class BuilderQuery
     }
 
     /**
+     * @param $data
+     * @return string
+     */
+    private function addSingleQuotation($data): string
+    {
+        return is_string($data) ? "'$data'" : $data;
+    }
+
+
+    /**
+     * @param string $column
+     * @param $smallValue
+     * @param $bigValue
+     * @return $this
+     */
+    public function between(string $column, $smallValue, $bigValue): self
+    {
+        $smallValue = $this->addSingleQuotation($smallValue);
+        $bigValue = $this->addSingleQuotation($bigValue);
+        if ($this->isWhereUsed()) {
+            $this->whereQuery .= " AND $column  BETWEEN :between_small_value$column AND :between_big_value$column";
+        } else {
+            $this->whereQuery = " WHERE $column BETWEEN $smallValue AND $bigValue ";
+        }
+        $this->bindArray[":between_small_value$column"] = $smallValue;
+        $this->bindArray[":between_big_value$column"] = $bigValue;
+
+        $this->isWhereUsed = true;
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function getBindArray(): array
@@ -130,11 +180,17 @@ class BuilderQuery
         return $this->modelInstance;
     }
 
+    /**
+     * @return mixed|string
+     */
     private function getTable()
     {
         return $this->modelInstance->getTable();
     }
 
+    /**
+     * @return string
+     */
     private function builderQuery(): string
     {
         return "SELECT * FROM {$this->getTable()}{$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
@@ -244,6 +300,9 @@ class BuilderQuery
     }
 
 
+    /**
+     * @return object
+     */
     public function first(): object
     {
         $this->setQuery($this->builderQuery());
@@ -270,6 +329,9 @@ class BuilderQuery
     }
 
 
+    /**
+     * @return array
+     */
     public function save()
     {
         return get_object_vars($this->modelInstance);
@@ -304,20 +366,6 @@ class BuilderQuery
     public function fetchAll(): ?array
     {
         return $this->builderFetchStatement()->fetchAll();
-    }
-
-    /**
-     * @param $name
-     * @param $arguments
-     * @return mixed
-     */
-    public function __call($name, $arguments)
-    {
-        $name = sprintf('scope%s', ucfirst($name));
-        if (method_exists($this->modelInstance, $name)) {
-            return $this->modelInstance->$name($this);
-        }
-        return $this;
     }
 
     /**
@@ -359,4 +407,17 @@ class BuilderQuery
         return $this->limit;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        $name = sprintf('scope%s', ucfirst($name));
+        if (method_exists($this->modelInstance, $name)) {
+            return $this->modelInstance->$name($this);
+        }
+        return $this;
+    }
 }
