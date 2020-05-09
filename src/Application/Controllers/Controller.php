@@ -6,6 +6,7 @@ namespace App\Application\Controllers;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Application\Models\Users;
 use App\Components\Http\Request;
+use http\Client\Curl\User;
 
 /**
  * Class Controller
@@ -19,7 +20,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        //id gt 3
-        return Users::min('id');
+        return Users::outerJoin('books', 'users.id', 'books.user_id')->get();
     }
 }

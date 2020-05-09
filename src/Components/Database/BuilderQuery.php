@@ -65,7 +65,7 @@ class BuilderQuery
     /**
      * @var string|null
      */
-    private ?string $otherQuery = null;
+    private ?string $mixedQuery = null;
 
 
     /**
@@ -193,6 +193,7 @@ class BuilderQuery
         } else {
             $this->selectQuery .= ",COUNT($primaryKey) AS count";
         }
+        $this->setIsSelected(true);
         return $this;
     }
 
@@ -217,6 +218,7 @@ class BuilderQuery
         } else {
             $this->selectQuery .= ",AVG($column) AS avg";
         }
+        $this->setIsSelected(true);
         return $this;
     }
 
@@ -235,13 +237,14 @@ class BuilderQuery
      * @param $column
      * @return $this
      */
-    private function builderMaxQuery($column)
+    private function builderMaxQuery($column): self
     {
         if (!$this->isSelected()) {
             $this->selectQuery = "SELECT MAX($column) AS max";
         } else {
             $this->selectQuery .= ",AVG($column) AS max";
         }
+        $this->setIsSelected(true);
         return $this;
     }
 
@@ -327,16 +330,15 @@ class BuilderQuery
 
     /**
      * @param $columns
-     * @param null $aggregate
      * @return string
      */
-    private function selectBuilderQuery($columns, $aggregate = null): string
+    private function selectBuilderQuery($columns): string
     {
         if (empty($this->getSelectQuery())) {
             $columns = implode(',', $columns) ?: '*';
             $this->setSelectQuery("SELECT $columns");
         }
-        return "{$this->getSelectQuery()} FROM {$this->getTable()}{$this->otherQuery} {$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
+        return "{$this->getSelectQuery()} FROM {$this->getTable()}{$this->mixedQuery} {$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
     }
 
     /**
@@ -348,7 +350,7 @@ class BuilderQuery
      */
     private function builderJoinQuery($table, $firstCause, $secondCause, $type): self
     {
-        $this->otherQuery .= " $type $table ON $firstCause=$secondCause ";
+        $this->mixedQuery .= " $type $table ON $firstCause=$secondCause ";
         return $this;
     }
 
@@ -375,6 +377,31 @@ class BuilderQuery
         return $this->builderJoinQuery($table, $firstCause, $secondCause, 'LEFT JOIN');
     }
 
+
+    /**
+     * @param $table
+     * @param $firstCause
+     * @param $secondCause
+     * @return $this
+     *
+     */
+    public function rightJoin($table, $firstCause, $secondCause): self
+    {
+        return $this->builderJoinQuery($table, $firstCause, $secondCause, 'RIGHT JOIN');
+    }
+
+
+    /**
+     * @param $table
+     * @param $firstCause
+     * @param $secondCause
+     * @return $this
+     *
+     */
+    public function outerJoin($table, $firstCause, $secondCause): self
+    {
+        return $this->builderJoinQuery($table, $firstCause, $secondCause, 'OUTER JOIN');
+    }
     /**
      * @param array $columns
      * @return Collection
@@ -659,17 +686,6 @@ class BuilderQuery
     private function setIsSelected(bool $isSelected): BuilderQuery
     {
         $this->isSelected = $isSelected;
-        return $this;
-    }
-
-
-    /**
-     * @param string $query
-     * @return $this
-     */
-    private function addSelectQuery(string $query): self
-    {
-        $this->setSelectQuery($this->getSelectQuery() . ' ' . $query);
         return $this;
     }
 }
