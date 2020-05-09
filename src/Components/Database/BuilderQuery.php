@@ -258,7 +258,6 @@ class BuilderQuery
      */
     private function run(): Collection
     {
-        echo $this->getQuery();
         $result = $this->fetchAll();
 
         if ($this->modelInstance->getHidden()) {
@@ -330,24 +329,47 @@ class BuilderQuery
      * @param array $columns
      * @return object
      */
-    public function first(...$columns): object
+    public function first(...$columns): ?object
     {
         $this->setQuery($this->selectBuilderQuery($columns));
-        return $this->unsetHiddenProperties($this->fetch());
+        if($this->fetch()) {
+            return $this->unsetHiddenProperties($this->fetch());
+        }
+        return null;
+    }
+
+    /**
+     * @param mixed ...$columns
+     * @return object|void|null
+     */
+    public function firstOrFail(...$columns)
+    {
+        return $this->first(...$columns) ?: die(view('404'));
     }
 
     /**
      * @param array $columns
      * @return object
      */
-    public function last(...$columns): object
+    public function last(...$columns): ?object
     {
         $this->setOrderBy(" ORDER BY {$this->modelInstance->getPrimaryKey()} DESC ");
         $this->limit(1);
         $this->setQuery($this->selectBuilderQuery($columns));
-        return $this->unsetHiddenProperties($this->fetch());
+        if($this->fetch()) {
+            return $this->unsetHiddenProperties($this->fetch());
+        }
+        return null;
     }
 
+    /**
+     * @param mixed ...$columns
+     * @return object|void|null
+     */
+    public function lastOrFail(...$columns)
+    {
+        return $this->last(...$columns) ?: die(view('404'));
+    }
     /**
      * @return mixed
      */
