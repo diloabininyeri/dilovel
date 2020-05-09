@@ -99,7 +99,7 @@ class BuilderQuery
             $this->whereQuery = " WHERE $key$operator:or_where$key ";
         }
 
-        $this->bindArray[":or_where$key"] = is_string($value) ? "'$value'" : $value;
+        $this->bindArray[":or_where$key"] = $this->addSingleQuotation($value);
         $this->isWhereUsed = true;
         return $this;
     }
