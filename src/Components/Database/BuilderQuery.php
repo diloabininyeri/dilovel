@@ -32,6 +32,8 @@ class BuilderQuery
 
     private string  $whereQuery;
 
+    private $limit;
+
 
     /**
      * BuilderQuery constructor.
@@ -137,7 +139,7 @@ class BuilderQuery
 
     private function builderQuery(): string
     {
-        return "SELECT * FROM {$this->getTable()}{$this->getWhereQuery()}{$this->getOrderBy()}";
+        return "SELECT * FROM {$this->getTable()}{$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
     }
 
     /**
@@ -328,5 +330,28 @@ class BuilderQuery
     public function getWhereQuery(): ?string
     {
         return $this->whereQuery;
+    }
+
+    /**
+     * @param $limit
+     * @param null $end
+     * @return $this
+     */
+    public function limit($limit, $end = null): self
+    {
+        if ($end === null) {
+            $this->limit = " LIMIT $limit ";
+        } else {
+            $this->limit = " LIMIT $limit,$end ";
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getLimit()
+    {
+        return $this->limit;
     }
 }
