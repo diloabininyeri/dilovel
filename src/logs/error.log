@@ -1372,3 +1372,114 @@ Stack trace:
 [09-May-2020 20:09:58 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
 [09-May-2020 20:09:58 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
 [09-May-2020 20:09:58 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:09:16 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function get() on null in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:24
+Stack trace:
+#0 [internal function]: App\Application\Controllers\Controller->index()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#7 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#8 /home/zeus/Desktop/hmvc/in in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php on line 24
+[09-May-2020 22:12:52 Europe/Helsinki] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: mixed named and positional parameters in /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php on line 101
+[09-May-2020 22:12:52 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:12:52 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:12:52 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->get() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:24
+[09-May-2020 22:12:52 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->run() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:461
+[09-May-2020 22:12:52 Europe/Helsinki] PHP  13. App\Components\Database\BuilderQuery->fetchAll() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:491
+[09-May-2020 22:12:52 Europe/Helsinki] PHP  14. App\Components\Database\FetchStatement->fetchAll() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:649
+[09-May-2020 22:12:52 Europe/Helsinki] PHP  15. App\Components\Database\FetchStatement->runQuery() /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:120
+[09-May-2020 22:12:52 Europe/Helsinki] PHP  16. PDOStatement->execute() /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:101
+[09-May-2020 22:12:52 Europe/Helsinki] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:101) in /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php on line 39
+[09-May-2020 22:12:52 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   4. App\Components\Routers\Printable->output() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:50
+[09-May-2020 22:12:52 Europe/Helsinki] PHP   5. header() /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php:39
+[09-May-2020 22:15:42 Europe/Helsinki] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: mixed named and positional parameters in /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php on line 101
+[09-May-2020 22:15:42 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:15:42 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:15:42 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->get() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:24
+[09-May-2020 22:15:42 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->run() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:460
+[09-May-2020 22:15:42 Europe/Helsinki] PHP  13. App\Components\Database\BuilderQuery->fetchAll() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:490
+[09-May-2020 22:15:42 Europe/Helsinki] PHP  14. App\Components\Database\FetchStatement->fetchAll() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:648
+[09-May-2020 22:15:42 Europe/Helsinki] PHP  15. App\Components\Database\FetchStatement->runQuery() /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:120
+[09-May-2020 22:15:42 Europe/Helsinki] PHP  16. PDOStatement->execute() /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:101
+[09-May-2020 22:15:42 Europe/Helsinki] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:101) in /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php on line 39
+[09-May-2020 22:15:42 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   4. App\Components\Routers\Printable->output() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:50
+[09-May-2020 22:15:42 Europe/Helsinki] PHP   5. header() /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php:39
+[09-May-2020 22:15:43 Europe/Helsinki] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: mixed named and positional parameters in /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php on line 101
+[09-May-2020 22:15:43 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->get() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:24
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->run() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:460
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  13. App\Components\Database\BuilderQuery->fetchAll() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:490
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  14. App\Components\Database\FetchStatement->fetchAll() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:648
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  15. App\Components\Database\FetchStatement->runQuery() /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:120
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  16. PDOStatement->execute() /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:101
+[09-May-2020 22:15:43 Europe/Helsinki] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:101) in /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php on line 39
+[09-May-2020 22:15:43 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   4. App\Components\Routers\Printable->output() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:50
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   5. header() /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php:39
+[09-May-2020 22:15:43 Europe/Helsinki] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: mixed named and positional parameters in /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php on line 101
+[09-May-2020 22:15:43 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  11. App\Components\Database\BuilderQuery->get() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:24
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  12. App\Components\Database\BuilderQuery->run() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:460
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  13. App\Components\Database\BuilderQuery->fetchAll() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:490
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  14. App\Components\Database\FetchStatement->fetchAll() /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:648
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  15. App\Components\Database\FetchStatement->runQuery() /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:120
+[09-May-2020 22:15:43 Europe/Helsinki] PHP  16. PDOStatement->execute() /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:101
+[09-May-2020 22:15:43 Europe/Helsinki] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/zeus/Desktop/hmvc/src/Components/Database/FetchStatement.php:101) in /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php on line 39
+[09-May-2020 22:15:43 Europe/Helsinki] PHP Stack trace:
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   4. App\Components\Routers\Printable->output() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:50
+[09-May-2020 22:15:43 Europe/Helsinki] PHP   5. header() /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php:39

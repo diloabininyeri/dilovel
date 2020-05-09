@@ -20,8 +20,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-
-        return Users::where('name','hrth')->firstOrFail();
-
+        return Users::whereIn('id', [1,2])->get();
     }
 }

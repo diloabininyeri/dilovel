@@ -117,7 +117,38 @@ class BuilderQuery
             $this->whereQuery = " WHERE $key$operator:where_$key ";
         }
 
-        $this->bindArray[":where_$key"] =$value;
+        $this->bindArray[":where_$key"] = $value;
+        $this->isWhereUsed = true;
+        return $this;
+    }
+
+    /**
+     * @param $column
+     * @param $value
+     * @param $operator
+     * @return object|null
+     */
+    public function whereFirst($column, $value, $operator)
+    {
+        $this->where($column, $value, $operator);
+        return $this->first();
+    }
+
+    /**
+     * @param $column
+     * @param array $values
+     * @return $this
+     */
+    public function whereIn($column, array $values)
+    {
+        $bind = array_fill(0, count($values), '?');
+        $bindImplode = implode(',', $bind);
+        if ($this->isWhereUsed()) {
+            $this->whereQuery .= " AND $column IN ($bindImplode) ";
+        } else {
+            $this->whereQuery = "WHERE $column IN ($bindImplode)";
+        }
+        $this->bindArray = $values;
         $this->isWhereUsed = true;
         return $this;
     }
@@ -133,7 +164,7 @@ class BuilderQuery
         } else {
             $this->whereQuery = " WHERE $raw ";
         }
-        $this->isWhereUsed=true;
+        $this->isWhereUsed = true;
         return $this;
     }
 
@@ -673,7 +704,6 @@ class BuilderQuery
             $this->mixedQuery .= " GROUP BY $c ";
         }
         return $this;
-
     }
 
     /**
