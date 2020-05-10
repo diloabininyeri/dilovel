@@ -1,5 +1,4 @@
-# hmvc
-hmvc  php framework 
+# DILOVEL php framework 
 
 #continues to develop
 
