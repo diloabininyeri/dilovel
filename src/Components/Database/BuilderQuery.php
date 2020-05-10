@@ -109,6 +109,7 @@ class BuilderQuery
     private function builderUpdateQuery($data): string
     {
         $query = null;
+        $data['updated_at']=now();
         foreach ($data as $key => $value) {
             $query .= " $key=:update_$key ,";
             $this->bindArray[":update_$key"] = $value;
@@ -148,9 +149,13 @@ class BuilderQuery
         return "DELETE FROM {$this->getTable()}  {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimit()}";
     }
 
+    /**
+     * @param $data
+     */
     private function builderCreateQuery($data): void
     {
         $query = null;
+        $data=array_merge($data, ['created_at'=>now(),'updated_at'=>now()]);
         foreach ($data as $key => $value) {
             $query .= ", $key=:insert_$key ";
             $this->bindArray[":insert_$key"] = $value;
@@ -160,6 +165,10 @@ class BuilderQuery
     }
 
 
+    /**
+     * @param array $data
+     * @return bool|mixed|object|null
+     */
     public function create(array $data)
     {
         $this->builderCreateQuery($data);

@@ -24,17 +24,12 @@ class Controller
         $user->name='eşref soyan ';
         $user->country=1000;
         $user->surname='barbaros';
-        $user->created_at=now();
-        $user->updated_at=now()->addWeek(1);
-         $user->save();
+        return $user->save();
 
         $users=new Users();
         $users->name='bertan ';
         $users->country=200;
         $users->surname='korkmaz';
-        $users->created_at=now();
-        $users->updated_at=now()->addYear(1);
         return $users->save();
-
     }
 }
