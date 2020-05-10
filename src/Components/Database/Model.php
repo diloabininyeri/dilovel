@@ -2,7 +2,6 @@
 
 namespace App\Components\Database;
 
-use Carbon\Carbon;
 use JsonException;
 use PDO;
 
@@ -98,7 +97,7 @@ abstract class Model
     /**
      * @return string
      */
-    public function getStaticClass(): string
+    final public function getStaticClass(): string
     {
         return static::class;
     }
@@ -142,7 +141,7 @@ abstract class Model
      * @param $arguments
      * @return mixed
      */
-    public static function __callStatic($name, $arguments)
+    final public static function __callStatic($name, $arguments)
     {
         return (new static())->$name(...$arguments);
     }
@@ -193,7 +192,7 @@ abstract class Model
      * @param string $key
      * @return HasOne
      */
-    protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id'): HasOne
+    final protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id'): HasOne
     {
         $hasOne = new HasOne($relationClass, $foreignKey, $key, $this);
         return $hasOne->oneToOne();
