@@ -20,9 +20,12 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        $user=Users::find(12);
-        $user->name='dılo sürücü';
-        $user->country=4;
-        return $user->update();
+        $user=Users::find(25);
+        $user->name='eşref soyan ';
+        $user->country=408;
+        $user->surname='barbaros';
+        $user->created_at=now();
+        $user->updated_at=now()->addWeek(1);
+        return $user->save();
     }
 }

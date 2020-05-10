@@ -1543,3 +1543,32 @@ Stack trace:
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
 #6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
 #7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispat in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 138
+[10-May-2020 19:44:55 Europe/Helsinki] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:166
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(166): PDOStatement->execute()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->create()
+#2 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(141): App\Components\Database\Model->__call()
+#3 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(24): App\Components\Database\Model::__callStatic()
+#4 [internal function]: App\Application\Controllers\Controller->index()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\Cal in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 166
+[10-May-2020 19:54:22 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\BuilderQuery::save() must be an object or null, bool returned in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:711
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->save()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(29): App\Components\Database\Model->__call()
+#2 [internal function]: App\Application\Controllers\Controller->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/hmvc/src/Components/R in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 711
+[10-May-2020 19:55:15 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\BuilderQuery::save() must be an object or null, bool returned in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:711
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->save()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(29): App\Components\Database\Model->__call()
+#2 [internal function]: App\Application\Controllers\Controller->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/hmvc/src/Components/R in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 711

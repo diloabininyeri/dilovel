@@ -30,7 +30,7 @@ class Connection
      * @param $config
      * @return Connection
      */
-    public static function make($config):self
+    public static function make($config): self
     {
         return new self($config);
     }
@@ -54,6 +54,18 @@ class Connection
         $db = $this->config['database'];
         $driver = $this->config['driver'];
 
-        return new PDO("$driver:host=$host;dbname=$db", $user, $password);
+        return new PDO("$driver:host=$host;dbname=$db", $user, $password, $this->options());
+    }
+
+    /**
+     * @return array
+     */
+    private function options(): array
+    {
+        return [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_CASE => PDO::CASE_NATURAL,
+            PDO::ATTR_ORACLE_NULLS => PDO::NULL_EMPTY_STRING
+        ];
     }
 }

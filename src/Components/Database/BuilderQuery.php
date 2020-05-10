@@ -118,6 +118,9 @@ class BuilderQuery
     }
 
 
+    /**
+     *
+     */
     private function whereByFind(): void
     {
         if ($this->modelInstance->isPrimaryKeyHasValue()) {
@@ -129,7 +132,7 @@ class BuilderQuery
      * @param array $data
      * @return bool
      */
-    public function update(array $data=[]): bool
+    public function update(array $data = []): bool
     {
         $this->whereByFind();
         $this->setQuery($this->builderUpdateQuery($data ?: get_object_vars($this->modelInstance)));
@@ -145,6 +148,28 @@ class BuilderQuery
         return "DELETE FROM {$this->getTable()}  {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimit()}";
     }
 
+    private function builderCreateQuery($data): void
+    {
+        $query = null;
+        foreach ($data as $key => $value) {
+            $query .= ", $key=:insert_$key ";
+            $this->bindArray[":insert_$key"] = $value;
+        }
+        $query = ltrim($query, ',');
+        $this->setQuery("INSERT INTO {$this->getTable()} SET $query");
+    }
+
+
+    public function create(array $data)
+    {
+        $this->builderCreateQuery($data);
+        $sqlQuery = $this->pdo->prepare($this->getQuery());
+        $execute = $sqlQuery->execute($this->bindArray);
+        if ($execute) {
+            return $this->find($this->pdo->lastInsertId());
+        }
+        return $execute;
+    }
 
     /**
      * @return bool
@@ -678,13 +703,18 @@ class BuilderQuery
         return $this->query;
     }
 
-
     /**
-     * @return array
+     * @return object
      */
-    public function save()
+    public function save():object
     {
-        return get_object_vars($this->modelInstance);
+        if ($this->modelInstance->isPrimaryKeyHasValue()) {
+            $execute= $this->update(get_object_vars($this->getModelInstance()));
+            if ($execute) {
+                return  $this->find($this->getModelInstance()->getPrimaryKeyValue());
+            }
+        }
+        return $this->create(get_object_vars($this->getModelInstance()));
     }
 
 
