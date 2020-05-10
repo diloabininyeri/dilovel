@@ -21,6 +21,6 @@ class Controller
     public function index(Request $request)
     {
         echo $request->file('file')
-            ->upload('css','deneme');
+            ->upload('css', 'deneme');
     }
 }

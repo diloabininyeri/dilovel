@@ -148,10 +148,10 @@ function view_path(?string $view = null)
 function public_path($path=null)
 {
     $basePath=dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'public';
-    if($path===null) {
+    if ($path===null) {
         return $basePath;
     }
-    $path=trim($path,'/');
+    $path=trim($path, '/');
     return $basePath.DIRECTORY_SEPARATOR.$path;
 }
 /**

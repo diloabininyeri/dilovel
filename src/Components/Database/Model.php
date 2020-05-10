@@ -230,7 +230,7 @@ abstract class Model
     final public function createdDate($lang=null):string
     {
         if ($lang !== null) {
-           now()->setLocal($lang);
+            now()->setLocal($lang);
         }
         return now()->diffForHumans($this->created_at);
     }

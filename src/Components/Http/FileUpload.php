@@ -3,7 +3,6 @@
 
 namespace App\Components\Http;
 
-
 /**
  * Class FileUpload
  * @package App\Components\Http
@@ -52,7 +51,7 @@ class FileUpload
     public function upload(): self
     {
         $path = $this->generateFilePath();
-        if (move_uploaded_file($this->getFile()['tmp_name'],public_path( $path))) {
+        if (move_uploaded_file($this->getFile()['tmp_name'], public_path($path))) {
             $this->uploadedFile = $path;
         }
         return $this;
@@ -79,7 +78,7 @@ class FileUpload
      */
     private function generateName():?string
     {
-        if($this->name) {
+        if ($this->name) {
             return $this->name . '.' . $this->postedFile->getExtension();
         }
         return null;
@@ -125,6 +124,5 @@ class FileUpload
     public function __toString()
     {
         return $this->uploadedFile;
-
     }
 }

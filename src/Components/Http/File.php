@@ -45,9 +45,9 @@ class File
      * @param string|null $name
      * @return FileUpload
      */
-    public function upload(string $destination,string $name=null): FileUpload
+    public function upload(string $destination, string $name=null): FileUpload
     {
-        $file= new FileUpload($destination,$this->postedFile(),$name);
+        $file= new FileUpload($destination, $this->postedFile(), $name);
         $file->setFile($this->file);
         return  $file->upload();
     }
