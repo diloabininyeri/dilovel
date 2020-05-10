@@ -22,10 +22,19 @@ class Controller
     {
         $user=Users::find(25);
         $user->name='eşref soyan ';
-        $user->country=408;
+        $user->country=1000;
         $user->surname='barbaros';
         $user->created_at=now();
         $user->updated_at=now()->addWeek(1);
-        return $user->save();
+         $user->save();
+
+        $users=new Users();
+        $users->name='bertan ';
+        $users->country=200;
+        $users->surname='korkmaz';
+        $users->created_at=now();
+        $users->updated_at=now()->addYear(1);
+        return $users->save();
+
     }
 }
