@@ -1483,3 +1483,12 @@ Stack trace:
 [09-May-2020 22:15:43 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
 [09-May-2020 22:15:43 Europe/Helsinki] PHP   4. App\Components\Routers\Printable->output() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:50
 [09-May-2020 22:15:43 Europe/Helsinki] PHP   5. header() /home/zeus/Desktop/hmvc/src/Components/Routers/Printable.php:39
+[10-May-2020 03:01:34 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Database\BuilderQuery::update() must be an instance of App\Components\Collection\Collection, string returned in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:142
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Database\BuilderQuery->update()
+#1 [internal function]: App\Application\Controllers\Controller->index()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callU in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 142

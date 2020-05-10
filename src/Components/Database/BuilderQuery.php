@@ -68,7 +68,6 @@ class BuilderQuery
      */
     private ?string $mixedQuery = null;
 
-
     /**
      * BuilderQuery constructor.
      * @param Model $model
@@ -101,6 +100,32 @@ class BuilderQuery
         $this->setIsSelected(true);
 
         return $this;
+    }
+
+    /**
+     * @param $data
+     * @return string
+     */
+    private function builderUpdateQuery($data): string
+    {
+        $query = null;
+        foreach ($data as $key => $value) {
+            $query .= " $key=:update_$key ,";
+            $this->bindArray[":update_$key"] = $value;
+        }
+        $query = rtrim($query, ',');
+        return "UPDATE {$this->getTable()}  SET {$query} {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimit()}";
+    }
+
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function update(array $data): bool
+    {
+        $this->setQuery($this->builderUpdateQuery($data));
+        $query = $this->pdo->prepare($this->getQuery());
+        return $query->execute($this->bindArray);
     }
 
     /**
@@ -468,10 +493,10 @@ class BuilderQuery
      * @param array $columns
      * @return Collection
      */
-    public function get(...$columns)
+    public function get(...$columns): Collection
     {
         $this->setQuery($this->selectBuilderQuery($columns));
-        return $this->run();
+        return $this->runSelect();
     }
 
 
@@ -499,7 +524,7 @@ class BuilderQuery
     /**
      * @return Collection
      */
-    private function run(): Collection
+    private function runSelect(): Collection
     {
         $result = $this->fetchAll();
 
@@ -633,6 +658,19 @@ class BuilderQuery
 
 
     /**
+     * @param $column
+     * @param $value
+     * @param string $operator
+     * @return $this
+     */
+    public function having($column, $value, $operator = '='): self
+    {
+        $this->mixedQuery .= " HAVING $column$operator:hawing_$column ";
+        $this->bindArray[":hawing_$column"] = $value;
+        return $this;
+    }
+
+    /**
      * @return FetchStatement
      */
     private function builderFetchStatement(): FetchStatement
@@ -762,5 +800,10 @@ class BuilderQuery
     {
         $this->isSelected = $isSelected;
         return $this;
+    }
+
+    public function lastInsertId(): int
+    {
+        return $this->pdo->lastInsertId();
     }
 }

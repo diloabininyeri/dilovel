@@ -20,6 +20,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::whereIn('id', [1,2])->get();
+        return Users::where('id', 2)->update(['name'=>'ffffffffff']);
     }
 }
