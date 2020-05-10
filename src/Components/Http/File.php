@@ -40,6 +40,16 @@ class File
         return pathinfo($this->file['name'], PATHINFO_EXTENSION);
     }
 
+    /**
+     * @param string $destination
+     * @param string|null $name
+     * @return FileUpload
+     */
+    public function move(string $destination,string $name=null): FileUpload
+    {
+        return new FileUpload($destination,$this->postedFile(),$name);
+    }
+
 
     /***
      * @return array

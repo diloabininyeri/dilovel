@@ -142,6 +142,19 @@ function view_path(?string $view = null)
 }
 
 /**
+ * @param null $path
+ * @return string
+ */
+function public_path($path=null)
+{
+    $basePath=dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'public';
+    if($path===null) {
+        return $basePath;
+    }
+    $path=trim($path,'/');
+    return $basePath.DIRECTORY_SEPARATOR.$path;
+}
+/**
  *
  */
 function activate_errors()

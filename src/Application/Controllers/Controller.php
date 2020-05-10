@@ -24,5 +24,7 @@ class Controller
         echo $user->createdDate('fr'); //il y a 18 minutes
         echo $user->createdDate('en'); //18 minutes ago
         echo $user->createdDate('tr'); //18 dakika önce
+
+        return  base_path();
     }
 }
