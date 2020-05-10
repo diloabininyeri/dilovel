@@ -20,6 +20,9 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::find(2)->delete();
+        $user=Users::find(12);
+        $user->name='dılo sürücü';
+        $user->country=4;
+        return $user->update();
     }
 }

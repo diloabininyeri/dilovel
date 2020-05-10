@@ -129,11 +129,10 @@ class BuilderQuery
      * @param array $data
      * @return bool
      */
-    public function update(array $data): bool
+    public function update(array $data=[]): bool
     {
         $this->whereByFind();
-
-        $this->setQuery($this->builderUpdateQuery($data));
+        $this->setQuery($this->builderUpdateQuery($data ?: get_object_vars($this->modelInstance)));
         $query = $this->pdo->prepare($this->getQuery());
         return $query->execute($this->bindArray);
     }

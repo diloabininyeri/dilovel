@@ -1492,3 +1492,54 @@ Stack trace:
 #4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
 #6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callU in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 142
+[10-May-2020 03:59:30 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Models\Users could not be converted to string in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:137
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(137): PDOStatement->execute()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->update()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(25): App\Components\Database\Model->__call()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispat in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 137
+[10-May-2020 04:01:09 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Models\Users could not be converted to string in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:137
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(137): PDOStatement->execute()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->update()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(25): App\Components\Database\Model->__call()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispat in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 137
+[10-May-2020 04:02:26 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Models\Users could not be converted to string in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:138
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(138): PDOStatement->execute()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->update()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(25): App\Components\Database\Model->__call()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispat in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 138
+[10-May-2020 04:03:08 Europe/Helsinki] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 134
+[10-May-2020 04:03:23 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Models\Users could not be converted to string in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:138
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(138): PDOStatement->execute()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->update()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(25): App\Components\Database\Model->__call()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispat in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 138
+[10-May-2020 04:04:01 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Models\Users could not be converted to string in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php:138
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php(138): PDOStatement->execute()
+#1 /home/zeus/Desktop/hmvc/src/Components/Database/Model.php(131): App\Components\Database\BuilderQuery->update()
+#2 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(25): App\Components\Database\Model->__call()
+#3 [internal function]: App\Application\Controllers\Controller->index()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispat in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 138
