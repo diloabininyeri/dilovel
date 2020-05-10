@@ -20,6 +20,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::where('id', 2)->update(['name'=>'ffffffffff']);
+        return Users::where('id', 3)->delete();
     }
 }

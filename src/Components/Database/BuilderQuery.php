@@ -129,6 +129,26 @@ class BuilderQuery
     }
 
     /**
+     * @return string
+     */
+    private function builderDeleteQuery():string
+    {
+        return "DELETE FROM {$this->getTable()}  {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimit()}";
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function delete(): bool
+    {
+        $this->setQuery($this->builderDeleteQuery());
+        $query=$this->pdo->prepare($this->getQuery());
+        $query->execute($this->bindArray);
+        return $query->rowCount();
+
+    }
+    /**
      * @param $key
      * @param $operator
      * @param $value
