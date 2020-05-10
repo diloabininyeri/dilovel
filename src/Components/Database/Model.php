@@ -2,12 +2,15 @@
 
 namespace App\Components\Database;
 
+use Carbon\Carbon;
 use JsonException;
 use PDO;
 
 /**
  * Class Model
  * @package App\Models
+ * @property string $created_at
+ * @property string $updated_at
  */
 abstract class Model
 {
@@ -16,6 +19,9 @@ abstract class Model
      */
     private BuilderQuery $builder;
 
+    /**
+     * @var string|null
+     */
     private static ?string $observeClass=null;
 
     /**
@@ -41,7 +47,7 @@ abstract class Model
     /**
      * @param string $class
      */
-    public static function observe(string $class):void
+    final public static function observe(string $class):void
     {
         self::$observeClass=$class;
     }
@@ -49,7 +55,7 @@ abstract class Model
     /**
      * @return string
      */
-    public function getObserveClass(): ?string
+    final public function getObserveClass(): ?string
     {
         return self::$observeClass;
     }
@@ -58,7 +64,7 @@ abstract class Model
      * @return mixed
      * @throws JsonException
      */
-    public function toArray()
+    final public function toArray()
     {
         return json_decode(json_encode($this), true, 512, JSON_THROW_ON_ERROR);
     }
@@ -66,7 +72,7 @@ abstract class Model
     /**
      * @return mixed
      */
-    public function getTable(): string
+    final public function getTable(): string
     {
         return $this->table ?? $this->getStaticClassName();
     }
@@ -74,7 +80,7 @@ abstract class Model
     /**
      * @return array
      */
-    public function getHidden(): array
+    final public function getHidden(): array
     {
         return $this->hidden ?? [];
     }
@@ -100,7 +106,7 @@ abstract class Model
     /**
      * @return string
      */
-    public function getConnection(): string
+    final public function getConnection(): string
     {
         return $this->connection ?? 'default';
     }
@@ -119,7 +125,7 @@ abstract class Model
      * @param $arguments
      * @return mixed
      */
-    public function __call($name, $arguments)
+    final public function __call($name, $arguments)
     {
         sscanf($name, 'get%s', $property);
         $property = strtolower($property);
@@ -141,12 +147,20 @@ abstract class Model
         return (new static())->$name(...$arguments);
     }
 
-    public function __isset($name)
+    /**
+     * @param $name
+     */
+    final public function __isset($name)
     {
         // TODO: Implement __isset() method.
     }
 
-    public function __set($name, $value)
+    /**
+     * @param $name
+     * @param $value
+     * @return mixed
+     */
+    final public function __set($name, $value)
     {
         $setMethod = 'set' . ucfirst($name) . 'Attribute';
 
@@ -160,7 +174,7 @@ abstract class Model
      * @param $name
      * @return mixed
      */
-    public function __get($name)
+    final public function __get($name)
     {
         $method = 'getDefault' . ucfirst($name);
         if (method_exists($this, $method)) {
@@ -185,18 +199,52 @@ abstract class Model
         return $hasOne->oneToOne();
     }
 
-    public function getPrimaryKey()
+    /**
+     * @return mixed|string
+     */
+    final public function getPrimaryKey()
     {
         return $this->primaryKey ?? 'id';
     }
 
-    public function isPrimaryKeyHasValue()
+    /**
+     * @return mixed|null
+     */
+    final public function isPrimaryKeyHasValue()
     {
         return $this->getPrimaryKeyValue();
     }
-    public function getPrimaryKeyValue()
+
+    /**
+     * @return mixed|null
+     */
+    final public function getPrimaryKeyValue()
     {
         $primaryKey=$this->getPrimaryKey();
         return $this->$primaryKey;
+    }
+
+    /**
+     * @param null $lang
+     * @return string
+     */
+    final public function createdDate($lang=null):string
+    {
+        if ($lang !== null) {
+           now()->setLocal($lang);
+        }
+        return now()->diffForHumans($this->created_at);
+    }
+
+    /**
+     * @param null $lang
+     * @return string
+     */
+    final public function updatedDate($lang=null):string
+    {
+        if ($lang !== null) {
+            now()->setLocal($lang);
+        }
+        return now()->diffForHumans($this->updated_at);
     }
 }

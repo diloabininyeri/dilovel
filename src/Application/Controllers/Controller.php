@@ -21,15 +21,8 @@ class Controller
     public function index(TcNoVerifyRequest $request)
     {
         $user=Users::find(25);
-        $user->name='eşref soyan ';
-        $user->country=1000;
-        $user->surname='barbaros';
-        return $user->save();
-
-        $users=new Users();
-        $users->name='bertan ';
-        $users->country=200;
-        $users->surname='korkmaz';
-        return $users->save();
+        echo $user->createdDate('fr'); //il y a 18 minutes
+        echo $user->createdDate('en'); //18 minutes ago
+        echo $user->createdDate('tr'); //18 dakika önce
     }
 }

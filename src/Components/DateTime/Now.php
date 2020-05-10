@@ -131,12 +131,21 @@ class Now
     }
 
     /**
+     * @param string $locale
+     */
+    public function setLocal(string $locale):void
+    {
+        Carbon::setLocale($locale);
+    }
+
+    /**
+     * @param $date
      * @return string
      * @noinspection PhpUnused
      */
-    public function diffForHumans():string
+    public function diffForHumans($date=null):string
     {
-        return Carbon::parse($this->get())->diffForHumans();
+        return Carbon::parse($date ?: $this->get())->diffForHumans();
     }
 
     /**
