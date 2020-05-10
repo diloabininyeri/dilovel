@@ -47,8 +47,7 @@ class File
      */
     public function upload(string $destination, string $name=null): FileUpload
     {
-        $file= new FileUpload($destination, $this->postedFile(), $name);
-        $file->setFile($this->file);
+        $file= new FileUpload($destination, $this->postedFile(), $this->file,$name);
         return  $file->upload();
     }
 

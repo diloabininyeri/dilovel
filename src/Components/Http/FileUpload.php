@@ -1,7 +1,8 @@
 <?php
-
-
 namespace App\Components\Http;
+
+use SplFileInfo;
+use SplFileObject;
 
 /**
  * Class FileUpload
@@ -36,10 +37,12 @@ class FileUpload
      * FileUpload constructor.
      * @param string $destination
      * @param PostedFile $postedFile
+     * @param $file
      * @param string|null $name
      */
-    public function __construct(string $destination, PostedFile $postedFile, ?string $name = null)
+    public function __construct(string $destination, PostedFile $postedFile,array $file, ?string $name = null)
     {
+        $this->setFile($file);
         $this->name = $name;
         $this->destination = $destination;
         $this->postedFile = $postedFile;
@@ -96,12 +99,35 @@ class FileUpload
      * @param mixed $file
      * @return FileUpload
      */
-    public function setFile(array $file): FileUpload
+    private function setFile(array $file): FileUpload
     {
         $this->file = $file;
         return $this;
     }
 
+    /**
+     * @return SplFileInfo
+     */
+    public function splInfo():SplFileInfo
+    {
+        return new SplFileInfo(public_path($this->getUploadedFile()));
+    }
+
+    /**
+     * @return SplFileObject
+     */
+    public function splObject():SplFileObject
+    {
+        return new SplFileObject(public_path($this->generateName()));
+    }
+
+    /**
+     * @return bool
+     */
+    public function deleteUploadFile():bool
+    {
+        return unlink(public_path($this->getUploadedFile()));
+    }
     /**
      * @return mixed
      */
