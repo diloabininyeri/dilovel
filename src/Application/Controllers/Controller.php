@@ -20,6 +20,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::where('id', 3)->delete();
+        return Users::find(2)->delete();
     }
 }

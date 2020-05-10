@@ -189,4 +189,14 @@ abstract class Model
     {
         return $this->primaryKey ?? 'id';
     }
+
+    public function isPrimaryKeyHasValue()
+    {
+        return $this->getPrimaryKeyValue();
+    }
+    public function getPrimaryKeyValue()
+    {
+        $primaryKey=$this->getPrimaryKey();
+        return $this->$primaryKey;
+    }
 }

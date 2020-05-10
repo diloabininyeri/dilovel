@@ -117,12 +117,22 @@ class BuilderQuery
         return "UPDATE {$this->getTable()}  SET {$query} {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimit()}";
     }
 
+
+    private function whereByFind(): void
+    {
+        if ($this->modelInstance->isPrimaryKeyHasValue()) {
+            $this->where($this->modelInstance->getPrimaryKey(), $this->modelInstance->getPrimaryKeyValue());
+        }
+    }
+
     /**
      * @param array $data
      * @return bool
      */
     public function update(array $data): bool
     {
+        $this->whereByFind();
+
         $this->setQuery($this->builderUpdateQuery($data));
         $query = $this->pdo->prepare($this->getQuery());
         return $query->execute($this->bindArray);
@@ -131,7 +141,7 @@ class BuilderQuery
     /**
      * @return string
      */
-    private function builderDeleteQuery():string
+    private function builderDeleteQuery(): string
     {
         return "DELETE FROM {$this->getTable()}  {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimit()}";
     }
@@ -142,12 +152,14 @@ class BuilderQuery
      */
     public function delete(): bool
     {
+        $this->whereByFind();
+
         $this->setQuery($this->builderDeleteQuery());
-        $query=$this->pdo->prepare($this->getQuery());
+        $query = $this->pdo->prepare($this->getQuery());
         $query->execute($this->bindArray);
         return $query->rowCount();
-
     }
+
     /**
      * @param $key
      * @param $operator
