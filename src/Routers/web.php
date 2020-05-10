@@ -3,7 +3,7 @@
 Router::get('/', fn () => view('index'))->name('index');
 
 Router::get('form', fn () =>view('form'))->name('dd');
-Router::get('dene', 'Controller@index')->name('form.post');
+Router::post('dene', 'Controller@index')->name('form.post');
 
 
 Router::get('/home/:id', fn () => 'strinh olandan ')->name('home');

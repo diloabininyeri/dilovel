@@ -18,13 +18,9 @@ class Controller
      * @param TcNoVerifyRequest $request
      * @return false|string
      */
-    public function index(TcNoVerifyRequest $request)
+    public function index(Request $request)
     {
-        $user=Users::find(25);
-        echo $user->createdDate('fr'); //il y a 18 minutes
-        echo $user->createdDate('en'); //18 minutes ago
-        echo $user->createdDate('tr'); //18 dakika önce
-
-        return  base_path();
+        echo $request->file('file')
+            ->upload('css','deneme');
     }
 }

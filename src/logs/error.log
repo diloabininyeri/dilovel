@@ -1572,3 +1572,74 @@ Stack trace:
 #5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
 #6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
 #7 /home/zeus/Desktop/hmvc/src/Components/R in /home/zeus/Desktop/hmvc/src/Components/Database/BuilderQuery.php on line 711
+[11-May-2020 02:20:18 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Http\FileUpload::upload() must be an instance of App\Components\Http\FileUpload, string returned in /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php:53
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Http/File.php(51): App\Components\Http\FileUpload->upload()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Http\File->upload()
+#2 [internal function]: App\Application\Controllers\Controller->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php(51): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(67): App\Components\Routers\CallControllerWithIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/hmvc/src/Components/Rou in /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php on line 53
+[11-May-2020 02:20:33 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Http\FileUpload::upload() must be an instance of App\Components\Http\FileUpload, string returned in /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php:53
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Http/File.php(51): App\Components\Http\FileUpload->upload()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Http\File->upload()
+#2 [internal function]: App\Application\Controllers\Controller->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php(51): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(67): App\Components\Routers\CallControllerWithIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/hmvc/src/Components/Rou in /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php on line 53
+[11-May-2020 02:20:47 Europe/Helsinki] PHP Fatal error:  Uncaught TypeError: Return value of App\Components\Http\FileUpload::upload() must be an instance of App\Components\Http\FileUpload, string returned in /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php:53
+Stack trace:
+#0 /home/zeus/Desktop/hmvc/src/Components/Http/File.php(51): App\Components\Http\FileUpload->upload()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(23): App\Components\Http\File->upload()
+#2 [internal function]: App\Application\Controllers\Controller->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php(51): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(67): App\Components\Routers\CallControllerWithIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/hmvc/src/Components/Rou in /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php on line 53
+[11-May-2020 02:21:23 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to a member function upload() on string in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+Stack trace:
+#0 [internal function]: App\Application\Controllers\Controller->index()
+#1 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php(51): call_user_func()
+#2 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(67): App\Components\Routers\CallControllerWithIoc->call()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUserFunc()
+#6 /home/zeus/Desktop/hmvc/src/Bootstrap/System.php(47): App\Components\Routers\Dispatcher->route()
+#7 /home/zeus/Desktop/hmvc/src/Bootstrap/App.php(23): App\Bootstrap\System->startUp()
+#8 /home/zeus/Desktop/hmvc/ind in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php on line 23
+[11-May-2020 02:26:17 Europe/Helsinki] PHP Warning:  move_uploaded_file(css/file5eb88d998afd08.83962874.png): failed to open stream: No such file or directory in /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php on line 55
+[11-May-2020 02:26:17 Europe/Helsinki] PHP Stack trace:
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:67
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:51}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:51
+[11-May-2020 02:26:17 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:51
+[11-May-2020 02:26:17 Europe/Helsinki] PHP  11. App\Components\Http\File->upload() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+[11-May-2020 02:26:17 Europe/Helsinki] PHP  12. App\Components\Http\FileUpload->upload() /home/zeus/Desktop/hmvc/src/Components/Http/File.php:52
+[11-May-2020 02:26:17 Europe/Helsinki] PHP  13. move_uploaded_file() /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php:55
+[11-May-2020 02:26:17 Europe/Helsinki] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/php3GrL3A' to 'css/file5eb88d998afd08.83962874.png' in /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php on line 55
+[11-May-2020 02:26:17 Europe/Helsinki] PHP Stack trace:
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:21
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:67
+[11-May-2020 02:26:17 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:51}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:51
+[11-May-2020 02:26:17 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithIoc.php:51
+[11-May-2020 02:26:17 Europe/Helsinki] PHP  11. App\Components\Http\File->upload() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:23
+[11-May-2020 02:26:17 Europe/Helsinki] PHP  12. App\Components\Http\FileUpload->upload() /home/zeus/Desktop/hmvc/src/Components/Http/File.php:52
+[11-May-2020 02:26:17 Europe/Helsinki] PHP  13. move_uploaded_file() /home/zeus/Desktop/hmvc/src/Components/Http/FileUpload.php:55

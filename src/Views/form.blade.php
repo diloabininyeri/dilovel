@@ -12,8 +12,8 @@ grger
 @foreach ($errors as $error)
     <h2>{{$error}}</h2>
 @endforeach
-<form action="{{router('form.post')}}" method="post">
-    <input type="text" name="tc_no">
+<form action="{{router('form.post')}}" enctype="multipart/form-data" method="post">
+    <input type="file" name="file">
     <input type="submit" value="gonder">
 </form>
 </body>

@@ -31,6 +31,8 @@ class FileUpload
      */
     private ?string $uploadedFile = null;
 
+    private array $file;
+
     /**
      * FileUpload constructor.
      * @param string $destination
@@ -50,7 +52,7 @@ class FileUpload
     public function upload(): self
     {
         $path = $this->generateFilePath();
-        if (move_uploaded_file($_FILES[$this->name]['tmp_name'], $path)) {
+        if (move_uploaded_file($this->getFile()['tmp_name'],public_path( $path))) {
             $this->uploadedFile = $path;
         }
         return $this;
@@ -69,7 +71,18 @@ class FileUpload
      */
     private function generateFileName(): string
     {
-        return uniqid('file', true) . '.' . $this->postedFile->getExtension();
+        return $this->generateName() ? : uniqid('file', true) . '.' . $this->postedFile->getExtension();
+    }
+
+    /**
+     * @return string|null
+     */
+    private function generateName():?string
+    {
+        if($this->name) {
+            return $this->name . '.' . $this->postedFile->getExtension();
+        }
+        return null;
     }
 
     /**
@@ -78,6 +91,32 @@ class FileUpload
     private function generateFilePath(): string
     {
         return sprintf('%s%s%s', $this->getDestination(), DIRECTORY_SEPARATOR, $this->generateFileName());
+    }
+
+    /**
+     * @param mixed $file
+     * @return FileUpload
+     */
+    public function setFile(array $file): FileUpload
+    {
+        $this->file = $file;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUploadedFile(): ?string
+    {
+        return $this->uploadedFile;
     }
 
     /**
