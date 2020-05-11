@@ -40,7 +40,7 @@ class FileUpload
      * @param $file
      * @param string|null $name
      */
-    public function __construct(string $destination, PostedFile $postedFile,array $file, ?string $name = null)
+    public function __construct(string $destination, PostedFile $postedFile, array $file, ?string $name = null)
     {
         $this->setFile($file);
         $this->name = $name;
@@ -92,7 +92,7 @@ class FileUpload
      */
     private function generateFilePath(): string
     {
-        return sprintf('%s%s%s_%s', $this->getDestination(), DIRECTORY_SEPARATOR,date('Y_m_d'), $this->generateFileName());
+        return sprintf('%s%s%s_%s', $this->getDestination(), DIRECTORY_SEPARATOR, date('Y_m_d'), $this->generateFileName());
     }
 
     /**
