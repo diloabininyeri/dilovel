@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 
+use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Http\Request;
 
 /**
@@ -16,7 +17,7 @@ class Controller
      * @param Request $request
      * @return false|string
      */
-    public function index(Request $request)
+    public function index(TcNoVerifyRequest $request)
     {
         return redirect()
             ->back()

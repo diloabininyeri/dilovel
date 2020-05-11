@@ -13,6 +13,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            {{$errors->error}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
 
             <img class="img-thumbnail" src="{{assets('images/2020_05_11_file5eb8a286a5e531.84547494.png')}}" alt="">
             @foreach ($errors as $error)
