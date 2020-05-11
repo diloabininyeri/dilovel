@@ -14,7 +14,7 @@ class FileUpload
     /**
      * @var string|null
      */
-    private ?string $name = null;
+    private ?string $name;
 
     /**
      * @var string|null
@@ -107,6 +107,7 @@ class FileUpload
 
     /**
      * @return SplFileInfo
+     * @noinspection PhpUnused
      */
     public function splInfo():SplFileInfo
     {
@@ -115,6 +116,7 @@ class FileUpload
 
     /**
      * @return SplFileObject
+     * @noinspection PhpUnused
      */
     public function splObject():SplFileObject
     {
@@ -123,6 +125,7 @@ class FileUpload
 
     /**
      * @return bool
+     * @noinspection PhpUnused
      */
     public function deleteUploadFile():bool
     {
@@ -146,6 +149,7 @@ class FileUpload
 
     /**
      * @return string|null
+     * @noinspection MagicMethodsValidityInspection
      */
     public function __toString()
     {
