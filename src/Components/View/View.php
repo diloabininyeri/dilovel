@@ -74,7 +74,7 @@ class View
     {
         $this->filePutViewCache();
         extract($this->variables, EXTR_OVERWRITE);
-        $errors=error()->get('form_validation_error') ?? [];
+        $errors=error()->get('form_validation_error') ?? error()->all();
         ob_start();
         include 'src/Views/caches/' .$this->getHashBlade(). '.php';
         return ob_get_clean();

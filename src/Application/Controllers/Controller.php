@@ -3,10 +3,8 @@
 
 namespace App\Application\Controllers;
 
-use App\Application\Request\TcNoVerifyRequest;
-use App\Application\Models\Users;
+
 use App\Components\Http\Request;
-use http\Client\Curl\User;
 
 /**
  * Class Controller
@@ -15,11 +13,14 @@ use http\Client\Curl\User;
 class Controller
 {
     /**
-     * @param TcNoVerifyRequest $request
+     * @param Request $request
      * @return false|string
      */
     public function index(Request $request)
     {
-        return (string) $request->file('file')->upload('images');
+        return redirect()
+            ->back()
+            ->withError('error', 'custom error as string')
+            ->withError('other','optional other error');
     }
 }
