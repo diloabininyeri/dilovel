@@ -253,6 +253,16 @@ function is_assoc(array $array)
 }
 
 /**
+ * @param object $object
+ * @return mixed
+ * @throws JsonException
+ */
+function object_to_array(object $object)
+{
+    return json_decode(json_encode($object), true, 512, JSON_THROW_ON_ERROR);
+}
+
+/**
  * @return FlashError
  */
 function error()

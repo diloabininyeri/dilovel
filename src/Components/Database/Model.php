@@ -65,7 +65,7 @@ abstract class Model
      */
     final public function toArray()
     {
-        return json_decode(json_encode($this), true, 512, JSON_THROW_ON_ERROR);
+        return object_to_array($this);
     }
 
     /**
