@@ -73,6 +73,14 @@ class FlashError implements ArrayAble
         return $sessions;
     }
 
+    /**
+     * @return array|mixed|string|null
+     */
+    public function all()
+    {
+        return $this->toArray();
+    }
+
 
     /**
      * @param string $name
