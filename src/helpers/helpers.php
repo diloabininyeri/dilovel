@@ -243,6 +243,16 @@ function flash(string $name, $type=null)
 }
 
 /**
+ * @param array $array
+ * @return bool
+ */
+function is_assoc(array $array)
+{
+    if (array() === $array) return false;
+    return array_keys($array) !== range(0, count($array) - 1);
+}
+
+/**
  * @return FlashError
  */
 function error()
