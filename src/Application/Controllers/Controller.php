@@ -20,6 +20,6 @@ class Controller
      */
     public function index(Request $request)
     {
-        return $request->file('file')->upload('images');
+        return (string) $request->file('file')->upload('images');
     }
 }
