@@ -92,7 +92,7 @@ class FileUpload
      */
     private function generateFilePath(): string
     {
-        return sprintf('%s%s%s', $this->getDestination(), DIRECTORY_SEPARATOR, $this->generateFileName());
+        return sprintf('%s%s%s_%s', $this->getDestination(), DIRECTORY_SEPARATOR,date('Y_m_d'), $this->generateFileName());
     }
 
     /**

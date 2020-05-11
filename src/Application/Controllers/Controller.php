@@ -20,10 +20,6 @@ class Controller
      */
     public function index(Request $request)
     {
-        $file= $request->file('file')
-            ->upload('css');
-
-        return $file;
-
+        return $request->file('file')->upload('images');
     }
 }
