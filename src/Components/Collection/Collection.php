@@ -141,7 +141,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function toJson():string
     {
-        return json_encode($this->collection, JSON_THROW_ON_ERROR, 512);
+        return json_encode($this->collection, JSON_THROW_ON_ERROR |JSON_PRETTY_PRINT, 512);
     }
     /**
      * @param string $delimiter
