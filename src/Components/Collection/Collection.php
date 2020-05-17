@@ -149,7 +149,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function implode($delimiter=','):string
     {
-        return implode($delimiter,array_column($this->toArray(), array_key_first($this->toArray()[0])));
+        return implode($delimiter, array_column($this->toArray(), array_key_first($this->toArray()[0])));
     }
     /**
      * @param $name

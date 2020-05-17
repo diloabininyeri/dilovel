@@ -248,7 +248,9 @@ function flash(string $name, $type=null)
  */
 function is_assoc(array $array)
 {
-    if (array() === $array) return false;
+    if (array() === $array) {
+        return false;
+    }
     return array_keys($array) !== range(0, count($array) - 1);
 }
 

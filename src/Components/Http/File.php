@@ -47,7 +47,7 @@ class File
      */
     public function upload(string $destination, string $name=null): FileUpload
     {
-        $file= new FileUpload(trim($destination,'/'), $this->postedFile(), $this->file, $name);
+        $file= new FileUpload(trim($destination, '/'), $this->postedFile(), $this->file, $name);
         return  $file->upload();
     }
 
