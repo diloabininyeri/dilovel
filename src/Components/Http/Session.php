@@ -3,15 +3,17 @@
 
 namespace App\Components\Http;
 
+use App\Components\Flash\Flash;
+use App\Components\Flash\FlashError;
 use App\Interfaces\Session as SessionInterface;
 
 /**
  * Class Session
  * @package App\Http
+ *
  */
 class Session implements SessionInterface
 {
-
     /**
      * @var array
      */
@@ -111,10 +113,35 @@ class Session implements SessionInterface
     }
 
     /**
+     * @return FlashError
+     */
+    public  function flashError():FlashError
+    {
+        return new FlashError();
+    }
+    /**
+     * @return Flash
+     */
+    public  function flash():Flash
+    {
+        return new Flash();
+    }
+
+    /**
      * @return array
      */
     public function all(): array
     {
         return  $this->session;
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public static function __callStatic($name, $arguments)
+    {
+       return (new self())->$name(...$arguments);
     }
 }

@@ -1719,3 +1719,7 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/zeus/Desktop/hmvc/index.php on line 21
+[17-May-2020 19:55:45 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Call to undefined method App\Bootstrap\App::run1() in /home/zeus/Desktop/hmvc/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/zeus/Desktop/hmvc/index.php on line 22

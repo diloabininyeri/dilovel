@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Application\Middleware;
 use App\Bootstrap\App;
 use App\Bootstrap\BeautifulError;

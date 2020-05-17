@@ -55,7 +55,7 @@ class FlashError implements ArrayAble
     public function get(string $name)
     {
         $this->destroyFlash();
-        return $this->session->get($this->prefix)[$this->createSessionName($name)];
+        return $this->session->get($this->prefix)[$this->createSessionName($name)] ?? null;
     }
 
     /**
