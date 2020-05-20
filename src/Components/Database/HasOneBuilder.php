@@ -26,19 +26,30 @@ class HasOneBuilder
      * @var Model
      */
     private Model $relationModelInstance;
+    /**
+     * @var Model
+     */
+    private Model $mainModel;
+
+
+    private string  $foreignKey;
 
     /**
      * HasOneBuilder constructor.
      * @param Model $model
      * @param Model $relationModelInstance
+     * @param Model $mainModel
      * @param PDO $pdoConnection
+     * @param string $foreignKey
      */
-    public function __construct(Model $model, Model $relationModelInstance, PDO $pdoConnection)
+    public function __construct(Model $model, Model $relationModelInstance, Model $mainModel,PDO $pdoConnection,string $foreignKey)
     {
 
         $this->model = $model;
         $this->pdoConnection = $pdoConnection;
         $this->relationModelInstance = $relationModelInstance;
+        $this->mainModel = $mainModel;
+        $this->foreignKey = $foreignKey;
     }
 
     /**
@@ -57,43 +68,35 @@ class HasOneBuilder
         if (!$this->model->getPrimaryKeyValue()) {
             return false;
         }
-        $table = $this->relationModelInstance->getTable();
-        $primaryKey = $this->model->getPrimaryKey();
-        $deleteQuery = $this->pdoConnection->prepare("DELETE FROM {$table} WHERE $primaryKey=:primary_key");
-        return $deleteQuery->execute([':primary_key' => $this->model->getPrimaryKeyValue()]);
+
+        return $this->builderQuery()
+            ->where(
+                $this->foreignKey,
+                $this->mainModel->getPrimaryKeyValue())
+            ->delete();
     }
 
     /**
      * @param array $data
-     * @return object|null
+     * @return bool
      */
-    public function update(array $data): ?object
+    public function update(array $data): bool
     {
         if (!$this->model->getPrimaryKeyValue()) {
-            return null;
+            return false;
         }
 
-        $updateQuery=null;
-        $bindArray=[];
-        foreach (  $data as $key=>$value) {
+        return $this->builderQuery()->where(
+            $this->model->getPrimaryKey(),
+            $this->model->getPrimaryKeyValue()
+        )->update($data);
 
-            $updateQuery.="$key=:update_$key,";
-            $bindArray[":update_$key"]=$value;
 
-        }
+    }
 
-        $bindArray[':primary_key'] = $this->model->getPrimaryKeyValue();
-        $updateQuery=rtrim($updateQuery,',');
-        $table = $this->relationModelInstance->getTable();
-        $primaryKey = $this->model->getPrimaryKey();
-
-        $deleteQuery = $this->pdoConnection->prepare("UPDATE  {$table} SET $updateQuery  WHERE $primaryKey=:primary_key");
-        if( $deleteQuery->execute($bindArray)) {
-            return $this->find();
-        }
-
-        return null;
-
+    private function builderQuery(): BuilderQuery
+    {
+        return new BuilderQuery($this->relationModelInstance,$this->pdoConnection);
     }
 
     /**
@@ -101,15 +104,17 @@ class HasOneBuilder
      */
     private function find():object
     {
-        return (new BuilderQuery($this->relationModelInstance,$this->pdoConnection))->find($this->model->getPrimaryKeyValue());
+        return $this->builderQuery()->find($this->model->getPrimaryKeyValue());
     }
 
     /**
+     * @param array $data
      * @return object
      */
-    public function create(): object
+    public function create(array $data): object
     {
-
+       $data[$this->foreignKey]=$this->mainModel->getPrimaryKeyValue();
+       return  $this->builderQuery()->create($data);
     }
 
     /**

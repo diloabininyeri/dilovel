@@ -116,7 +116,7 @@ abstract class Model
      */
     private function objectableProperties(): array
     {
-        return $this->objectable;
+        return $this->objectable ?? [];
     }
 
     /**

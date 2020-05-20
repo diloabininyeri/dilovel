@@ -22,7 +22,7 @@ class Controller
     {
 
 
-        return  Users::find(17)->book()->update(['name'=>'17 hrthtrhtrh']);
+        return  Users::find(17)->book()->get();
 
     }
 }
