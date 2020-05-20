@@ -190,9 +190,9 @@ abstract class Model
      * @param string $relationClass
      * @param string $foreignKey
      * @param string $key
-     * @return HasOne
+     * @return HasOneBuilder
      */
-    final protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id'): HasOne
+    final protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id'): HasOneBuilder
     {
         $hasOne = new HasOne($relationClass, $foreignKey, $key, $this);
         return $hasOne->oneToOne();

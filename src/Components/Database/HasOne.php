@@ -15,11 +15,11 @@ class HasOne
     /**
      * @var
      */
-    private $model;
+    private string $relationModelClass;
     /**
      * @var
      */
-    private int $foreignKey;
+    private  $foreignKey;
     /**
      * @var
      */
@@ -31,29 +31,31 @@ class HasOne
 
     /**
      * HasOne constructor.
-     * @param $model
+     * @param $relationModelClass
      * @param $foreignKey
      * @param $key
      * @param $modelInstance
      */
-    public function __construct($model, $foreignKey, $key, $modelInstance)
+    public function __construct($relationModelClass, $foreignKey, $key, $modelInstance)
     {
-        $this->model = $model;
+        $this->relationModelClass = $relationModelClass;
         $this->foreignKey = $foreignKey;
         $this->key = $key;
         $this->modelInstance = $modelInstance;
     }
 
     /**
-     * @return mixed
+     * @return HasOneBuilder
      */
-    public function oneToOne()
+    public function oneToOne(): HasOneBuilder
     {
-        $id = $this->modelInstance->id;
-        $model = $this->model;
+        $id = $this->modelInstance->getPrimaryKeyValue();
+        $model = $this->relationModelClass;
         $relationModelInstance=new $model();
         $relationTable =$relationModelInstance->getTable();
         $hidden=$relationModelInstance->getHidden();
+
+
         $sql = sprintf(
             'select * from %s where %s=:%s',
             $relationTable,
@@ -65,7 +67,7 @@ class HasOne
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue($this->foreignKey, $id);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->model);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->relationModelClass);
         $stmt->execute();
         $result= $stmt->fetch();
 
@@ -73,6 +75,6 @@ class HasOne
             unset($result->$item);
         }
 
-        return $result;
+        return  new HasOneBuilder($result ?:$relationModelInstance ,$relationModelInstance,$this->modelInstance->pdoConnection());
     }
 }

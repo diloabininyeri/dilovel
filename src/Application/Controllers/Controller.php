@@ -21,9 +21,8 @@ class Controller
     public function index(TcNoVerifyRequest $request)
     {
 
-         Session::flash()->set('name','dılo');
-         echo Session::flash()->get('name');
 
-        return  Users::get('id')->implode(); //1,2,5.....
+        return  Users::find(17)->book()->update(['name'=>'17 hrthtrhtrh']);
+
     }
 }

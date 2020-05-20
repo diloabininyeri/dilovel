@@ -26,7 +26,7 @@ class Book extends Model
     /**
      * @var array|string[]
      */
-    protected array $hidden = ['name'];
+    protected array $hidden = [];
 
 
     /**
