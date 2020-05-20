@@ -104,5 +104,4 @@ class HasOneBuilder
         $data[$this->foreignKey]=$this->mainModel->getPrimaryKeyValue();
         return  $this->builderQuery()->create($data);
     }
-
 }

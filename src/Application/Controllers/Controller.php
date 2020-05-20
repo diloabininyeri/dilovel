@@ -15,11 +15,14 @@ use App\Components\Http\Session;
 class Controller
 {
     /**
-     * @param Request $request
+     * @param TcNoVerifyRequest $request
      * @return false|string
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return  Users::find(19)->book()->update(['name'=>"19 nolu kitaptan alıntı"]);
+        /**
+         * add extra property to objects
+         */
+        return  Users::get()->filter(fn ($item) =>$item->id>30)->each(fn ($item) =>$item->city='urfa');
     }
 }

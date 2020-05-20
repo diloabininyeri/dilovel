@@ -6,6 +6,7 @@ use App\Interfaces\ToJson;
 use App\Macro\ModelMacro;
 use ArrayAccess;
 use ArrayIterator;
+use Closure;
 use Countable;
 use IteratorAggregate;
 use JsonException;
@@ -170,6 +171,33 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         return $this->collection;
     }
 
+    /**
+     * @param Closure $closure
+     * @return $this
+     */
+    public function filter(Closure $closure): Collection
+    {
+        $filtered=array_filter($this->collection, $closure);
+        return $this->setCollection(array_values($filtered));
+    }
+
+    /**
+     * @param Closure $closure
+     * @return Collection
+     */
+    public function map(Closure $closure): Collection
+    {
+        return $this->setCollection(array_map($closure, $this->collection));
+    }
+    /**
+     * @param Closure $closure
+     * @return Collection
+     */
+    public function each(Closure $closure): Collection
+    {
+        array_walk($this->collection, $closure);
+        return $this;
+    }
     /**
      * @param array $collection
      * @return Collection
