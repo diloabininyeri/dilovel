@@ -115,14 +115,14 @@ class Session implements SessionInterface
     /**
      * @return FlashError
      */
-    public  function flashError():FlashError
+    public function flashError():FlashError
     {
         return new FlashError();
     }
     /**
      * @return Flash
      */
-    public  function flash():Flash
+    public function flash():Flash
     {
         return new Flash();
     }
@@ -142,6 +142,6 @@ class Session implements SessionInterface
      */
     public static function __callStatic($name, $arguments)
     {
-       return (new self())->$name(...$arguments);
+        return (new self())->$name(...$arguments);
     }
 }

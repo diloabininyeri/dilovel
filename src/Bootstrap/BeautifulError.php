@@ -18,12 +18,10 @@ class BeautifulError
      */
     public static function make(): void
     {
-        if(env('BEAUTIFUL_ERROR')==='true')
-        {
+        if (env('BEAUTIFUL_ERROR')==='true') {
             $whoops = new Run;
             $whoops->pushHandler(new PrettyPageHandler);
             $whoops->register();
         }
-
     }
 }

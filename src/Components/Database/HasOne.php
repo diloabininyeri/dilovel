@@ -19,7 +19,7 @@ class HasOne
     /**
      * @var
      */
-    private  $foreignKey;
+    private $foreignKey;
     /**
      * @var
      */
@@ -77,7 +77,7 @@ class HasOne
         }
 
         return  new HasOneBuilder(
-            $relationObject ?:$relationModelInstance ,
+            $relationObject ?:$relationModelInstance,
             $relationModelInstance,
             $this->mainModelInstance,
             $this->mainModelInstance->pdoConnection(),

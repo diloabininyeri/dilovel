@@ -3,7 +3,6 @@
 
 namespace App\Components\Database;
 
-
 use PDO;
 
 /**
@@ -42,9 +41,8 @@ class HasOneBuilder
      * @param PDO $pdoConnection
      * @param string $foreignKey
      */
-    public function __construct(Model $model, Model $relationModelInstance, Model $mainModel,PDO $pdoConnection,string $foreignKey)
+    public function __construct(Model $model, Model $relationModelInstance, Model $mainModel, PDO $pdoConnection, string $foreignKey)
     {
-
         $this->model = $model;
         $this->pdoConnection = $pdoConnection;
         $this->relationModelInstance = $relationModelInstance;
@@ -72,7 +70,8 @@ class HasOneBuilder
         return $this->builderQuery()
             ->where(
                 $this->foreignKey,
-                $this->mainModel->getPrimaryKeyValue())
+                $this->mainModel->getPrimaryKeyValue()
+            )
             ->delete();
     }
 
@@ -90,13 +89,11 @@ class HasOneBuilder
             $this->model->getPrimaryKey(),
             $this->model->getPrimaryKeyValue()
         )->update($data);
-
-
     }
 
     private function builderQuery(): BuilderQuery
     {
-        return new BuilderQuery($this->relationModelInstance,$this->pdoConnection);
+        return new BuilderQuery($this->relationModelInstance, $this->pdoConnection);
     }
 
     /**
@@ -113,8 +110,8 @@ class HasOneBuilder
      */
     public function create(array $data): object
     {
-       $data[$this->foreignKey]=$this->mainModel->getPrimaryKeyValue();
-       return  $this->builderQuery()->create($data);
+        $data[$this->foreignKey]=$this->mainModel->getPrimaryKeyValue();
+        return  $this->builderQuery()->create($data);
     }
 
     /**

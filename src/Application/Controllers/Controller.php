@@ -20,9 +20,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-
-
         return  Users::find(17)->book()->get();
-
     }
 }
