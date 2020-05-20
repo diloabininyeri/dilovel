@@ -95,15 +95,6 @@ class HasOneBuilder
     {
         return new BuilderQuery($this->relationModelInstance, $this->pdoConnection);
     }
-
-    /**
-     * @return object
-     */
-    private function find():object
-    {
-        return $this->builderQuery()->find($this->model->getPrimaryKeyValue());
-    }
-
     /**
      * @param array $data
      * @return object
@@ -114,11 +105,4 @@ class HasOneBuilder
         return  $this->builderQuery()->create($data);
     }
 
-    /**
-     * @return Model|null
-     */
-    private function getModel(): ?Model
-    {
-        return $this->model;
-    }
 }

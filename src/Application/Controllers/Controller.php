@@ -20,6 +20,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return  Users::find(17)->book()->get();
+        return  Users::find(19)->book()->update(['name'=>"19 nolu kitaptan alıntı"]);
     }
 }
