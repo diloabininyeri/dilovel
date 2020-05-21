@@ -88,7 +88,7 @@ class Session implements SessionInterface
     public function deleteByIndex(string $name, string $index):bool
     {
         unset($this->session[$name][$index]);
-        return (bool) !isset($this->session[$name][$index]);
+        return !isset($this->session[$name][$index]);
     }
 
 

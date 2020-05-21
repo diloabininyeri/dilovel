@@ -7,14 +7,35 @@ use App\Components\Database\Model;
 use App\Components\Http\Session;
 use JsonException;
 
+/**
+ * Class Cart
+ * @package App\Components\Cart
+ */
 class Cart
 {
+    /**
+     * @var Session $session
+     */
     private Session $session;
+
+    /**
+     * @var string $priceFieldName
+     */
     private string $priceFieldName = 'price';
+
+    /**
+     * @var string $quantityFieldName
+     */
     private string $quantityFieldName = 'quantity';
 
+    /**
+     * @var string $sessionPrefix
+     */
     private string  $sessionPrefix = 'cart_sessions';
 
+    /**
+     * Cart constructor.
+     */
     public function __construct()
     {
         $this->session = new Session();
@@ -24,6 +45,8 @@ class Cart
      * @param Model $model
      * @param int $quantity
      * @return Cart
+     * @throws JsonException
+     *
      */
     public function add(Model $model, int $quantity = 1): Cart
     {
@@ -47,6 +70,9 @@ class Cart
         return $this;
     }
 
+    /**
+     * @return array|mixed|string
+     */
     public function get()
     {
         return $this->session->get($this->sessionPrefix) ?? [];
@@ -103,12 +129,18 @@ class Cart
     }
 
 
-    public function delete(Model $model)
+    /**
+     * @param Model $model
+     * @return bool
+     */
+    public function delete(Model $model): bool
     {
-        $this->session->deleteByIndex($this->sessionPrefix, $model->getPrimaryKeyValue());
-        return  true;
+        return $this->session->deleteByIndex($this->sessionPrefix, $model->getPrimaryKeyValue());
     }
 
+    /**
+     * @return bool
+     */
     public function deleteAll():bool
     {
         return $this->session->delete($this->sessionPrefix);
