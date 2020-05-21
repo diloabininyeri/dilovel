@@ -1776,3 +1776,64 @@ Stack trace:
 [21-May-2020 03:59:14 Europe/Helsinki] PHP  13. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/hmvc/src/Components/Cart/Cart.php:51
 [21-May-2020 03:59:14 Europe/Helsinki] PHP  14. Composer\Autoload\includeFile() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:322
 [21-May-2020 03:59:14 Europe/Helsinki] PHP  15. include() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:444
+[21-May-2020 15:53:32 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:53:53 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:54:15 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:54:16 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:54:16 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:54:16 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:55:12 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:55:12 Europe/Helsinki] PHP Stack trace:
+[21-May-2020 15:55:12 Europe/Helsinki] PHP   1. Whoops\Run->handleException() /home/zeus/Desktop/hmvc/vendor/filp/whoops/src/Whoops/Run.php:0
+[21-May-2020 15:55:12 Europe/Helsinki] PHP   2. Whoops\Util\SystemFacade->stopExecution() /home/zeus/Desktop/hmvc/vendor/filp/whoops/src/Whoops/Run.php:339
+[21-May-2020 15:55:49 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:55:49 Europe/Helsinki] PHP Stack trace:
+[21-May-2020 15:55:49 Europe/Helsinki] PHP   1. Whoops\Run->handleException() /home/zeus/Desktop/hmvc/vendor/filp/whoops/src/Whoops/Run.php:0
+[21-May-2020 15:55:49 Europe/Helsinki] PHP   2. Whoops\Util\SystemFacade->stopExecution() /home/zeus/Desktop/hmvc/vendor/filp/whoops/src/Whoops/Run.php:339
+[21-May-2020 15:56:47 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:56:47 Europe/Helsinki] PHP Stack trace:
+[21-May-2020 15:56:47 Europe/Helsinki] PHP   1. Whoops\Run->handleException() /home/zeus/Desktop/hmvc/vendor/filp/whoops/src/Whoops/Run.php:0
+[21-May-2020 15:56:47 Europe/Helsinki] PHP   2. Whoops\Util\SystemFacade->stopExecution() /home/zeus/Desktop/hmvc/vendor/filp/whoops/src/Whoops/Run.php:339
+[21-May-2020 15:57:38 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:57:57 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:58:24 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 15:59:43 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0

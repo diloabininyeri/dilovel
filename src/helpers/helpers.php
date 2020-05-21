@@ -5,6 +5,7 @@
  */
 
 use App\Components\Arr\DotNotation;
+use App\Components\Cart\Cart;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
 use App\Components\Flash\FlashError;
@@ -261,7 +262,7 @@ function is_assoc(array $array)
  */
 function object_to_array(object $object)
 {
-    return json_decode(json_encode($object), true, 512, JSON_THROW_ON_ERROR);
+    return json_decode(json_encode($object, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
 }
 
 /**
@@ -272,8 +273,19 @@ function error()
     return new FlashError();
 }
 
-
+/**
+ * @return Cart
+ */
 function cart()
 {
-    return new App\Components\Cart\Cart();
+    return new Cart();
+}
+
+/**
+ * @param $string
+ * @return bool
+ */
+function is_json($string)
+{
+    return !empty($string) && is_string($string) && is_array(json_decode($string, true)) && json_last_error() == 0;
 }

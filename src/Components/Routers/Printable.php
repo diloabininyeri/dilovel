@@ -31,11 +31,18 @@ class Printable
     /**
      *
      * @throws JsonException
+     * @noinspection NotOptimalIfConditionsInspection
      */
 
     public function output(): void
     {
         if ($this->data instanceof Collection) {
+            header('Content-type:application/json');
+            echo $this->data;
+        } elseif (is_json($this->data)) {
+            header('Content-type:application/json');
+            echo $this->data;
+        } elseif (is_object($this->data) && method_exists($this->data, '__toString')) {
             header('Content-type:application/json');
             echo $this->data;
         } elseif ($this->data instanceof Model) {

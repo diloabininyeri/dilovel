@@ -5,13 +5,14 @@ namespace App\Components\Cart;
 
 use App\Components\Database\Model;
 use App\Components\Http\Session;
+use Countable;
 use JsonException;
 
 /**
  * Class Cart
  * @package App\Components\Cart
  */
-class Cart
+class Cart implements Countable
 {
     /**
      * @var Session $session
@@ -91,7 +92,6 @@ class Cart
         return $total;
     }
 
-
     /**
      * @param Model $model
      * @return bool
@@ -107,5 +107,37 @@ class Cart
     public function deleteAll():bool
     {
         return $this->session->delete($this->sessionPrefix);
+    }
+
+    /**
+     * @return int
+     */
+    public function count():int
+    {
+        return count($this->session->get($this->sessionPrefix) ?: []);
+    }
+
+    /**
+     * @return false|string
+     * @throws JsonException
+     */
+    public function toJson()
+    {
+        return json_encode($this->session->get($this->sessionPrefix), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
+    }
+
+    /** @noinspection MagicMethodsValidityInspection */
+    public function __debugInfo():array
+    {
+        return $this->session->get($this->sessionPrefix) ?: [];
+    }
+    /**
+     * @return false|string
+     * @throws JsonException
+     *
+     */
+    public function __toString(): string
+    {
+        return (string) $this->toJson();
     }
 }
