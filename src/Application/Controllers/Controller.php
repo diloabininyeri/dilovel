@@ -3,10 +3,9 @@
 
 namespace App\Application\Controllers;
 
-use App\Application\Models\Products;
-use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
-use App\Components\Cart\Cart;
+use App\Components\Mail\Mail;
+use JsonException;
 
 /**
  * Class Controller
@@ -17,14 +16,16 @@ class Controller
     /**
      * @param TcNoVerifyRequest $request
      * @return false|string
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function index(TcNoVerifyRequest $request)
     {
-
-        dd($request);
-
-        //$cart->delete(Products::find(1)); specific delete item
-        //$cart->deleteAll();  flush cart
+        $mail=new Mail();
+        $mail->setSubject('title mail');
+        $mail->setTo('berxudar@gmail.com');
+        $mail->attach(__FILE__);
+        $mail->setBody('message content foo bar ');
+        $mail->setFrom('dilsizkaval@windowslive.com');
+        return $mail->send();
     }
 }
