@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Components\Collection;
 
 use App\Interfaces\ArrayAble;
@@ -26,7 +27,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
 
     public function __construct(array $collection)
     {
-        $this->collection=$collection;
+        $this->collection = $collection;
     }
 
     /**
@@ -66,7 +67,6 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     }
 
 
-
     /**
      * @inheritDoc
      */
@@ -78,7 +78,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     /**
      * @inheritDoc
      */
-    public function count():int
+    public function count(): int
     {
         return count($this->collection);
     }
@@ -125,33 +125,36 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function last()
     {
-        return $this->collection[$this->count()-1];
+        return $this->collection[$this->count() - 1];
     }
 
 
     /**
      * @return array
      */
-    public function toArray():array
+    public function toArray(): array
     {
         return array_map('get_object_vars', $this->collection);
     }
+
     /**
      * @return false|string
      * @throws JsonException
      */
-    public function toJson():string
+    public function toJson(): string
     {
-        return json_encode($this->collection, JSON_THROW_ON_ERROR |JSON_PRETTY_PRINT, 512);
+        return json_encode($this->collection, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT, 512);
     }
+
     /**
      * @param string $delimiter
      * @return string
      */
-    public function implode($delimiter=','):string
+    public function implode($delimiter = ','): string
     {
         return implode($delimiter, array_column($this->toArray(), array_key_first($this->toArray()[0])));
     }
+
     /**
      * @param $name
      * @param $arguments
@@ -159,7 +162,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function __call($name, $arguments)
     {
-        $this->collection= ModelMacro::getMethod($name)->call($this, $arguments);
+        $this->collection = ModelMacro::getMethod($name)->call($this, $arguments);
         return $this;
     }
 
@@ -177,7 +180,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function filter(Closure $closure): Collection
     {
-        $filtered=array_filter($this->collection, $closure);
+        $filtered = array_filter($this->collection, $closure);
         return $this->setCollection(array_values($filtered));
     }
 
@@ -189,6 +192,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     {
         return $this->setCollection(array_map($closure, $this->collection));
     }
+
     /**
      * @param Closure $closure
      * @return Collection
@@ -198,6 +202,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         array_walk($this->collection, $closure);
         return $this;
     }
+
     /**
      * @param array $collection
      * @return Collection
@@ -207,5 +212,18 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     {
         $this->collection = $collection;
         return $this;
+    }
+
+    /**
+     * @param string $field
+     * @return float
+     */
+    public function total(string $field): float
+    {
+        $total = 0;
+        foreach ($this->collection as $collection) {
+            $total+=$collection[$field] ?? $collection->$field;
+        }
+        return $total;
     }
 }

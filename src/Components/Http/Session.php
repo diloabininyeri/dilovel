@@ -79,6 +79,18 @@ class Session implements SessionInterface
         return  !$this->exists($name);
     }
 
+    /**
+     * delete item from array for example session is [45=>['name'=>'beer','price'=>144]]
+     * @param string $name
+     * @param string $index
+     * @return bool
+     */
+    public function deleteByIndex(string $name,string $index):bool
+    {
+        unset ($this->session[$name][$index]);
+        return (bool) !isset($this->session[$name][$index]);
+    }
+
 
     /**
      * @param $name

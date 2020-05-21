@@ -3,10 +3,11 @@
 
 namespace App\Application\Controllers;
 
-use App\Application\Models\Users;
+
+use App\Application\Models\Products;
 use App\Application\Request\TcNoVerifyRequest;
-use App\Components\Http\Request;
-use App\Components\Http\Session;
+use App\Components\Cart\Cart;
+
 
 /**
  * Class Controller
@@ -20,9 +21,16 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        /**
-         * add extra property to objects
-         */
-        return  Users::get()->filter(fn ($item) =>$item->id>30)->each(fn ($item) =>$item->city='urfa');
+
+        $cart=new Cart();
+
+        $cart->add(Products::find(1));
+        $cart->add(Products::find(2));
+
+        $total=$cart->total('price','quantity');
+        $allProducts= $cart->get();
+
+        //$cart->delete(Products::find(1)); specific delete item
+        //$cart->deleteAll();  flush cart
     }
 }

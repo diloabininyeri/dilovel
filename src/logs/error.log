@@ -1723,3 +1723,56 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/zeus/Desktop/hmvc/index.php on line 22
+[21-May-2020 03:25:20 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:26:21 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:28:42 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:29:56 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:32:04 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:32:39 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:32:40 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:32:40 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:32:40 Europe/Helsinki] PHP Fatal error:  Uncaught Exception: Serialization of 'PDO' is not allowed in [no active file]:0
+Stack trace:
+#0 {main}
+  thrown in [no active file] on line 0
+[21-May-2020 03:59:14 Europe/Helsinki] PHP Fatal error:  Declaration of App\Components\Cart\CartCollection::total(string $priceField, string $quantityField) must be compatible with App\Components\Collection\Collection::total(string $field): float in /home/zeus/Desktop/hmvc/src/Components/Cart/CartCollection.php on line 13
+[21-May-2020 03:59:14 Europe/Helsinki] PHP Stack trace:
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:24
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[21-May-2020 03:59:14 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[21-May-2020 03:59:14 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[21-May-2020 03:59:14 Europe/Helsinki] PHP  11. App\Components\Cart\Cart->get() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:34
+[21-May-2020 03:59:14 Europe/Helsinki] PHP  12. spl_autoload_call() /home/zeus/Desktop/hmvc/src/Components/Cart/Cart.php:51
+[21-May-2020 03:59:14 Europe/Helsinki] PHP  13. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/hmvc/src/Components/Cart/Cart.php:51
+[21-May-2020 03:59:14 Europe/Helsinki] PHP  14. Composer\Autoload\includeFile() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:322
+[21-May-2020 03:59:14 Europe/Helsinki] PHP  15. include() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:444

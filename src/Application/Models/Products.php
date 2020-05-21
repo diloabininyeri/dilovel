@@ -7,16 +7,16 @@ use App\Components\Database\Model;
 
 
 /**
- * Class $name
+ * Class Products
  * @package App\Models
  * @mixin BuilderQuery
  */
-class $name extends Model
+class Products extends Model
 {
     /**
      * @var string $table
      */
-    protected string $table = '$table_name';
+    protected string $table = 'products';
 
     /**
      * @var string
