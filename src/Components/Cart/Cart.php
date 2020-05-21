@@ -60,7 +60,7 @@ class Cart
      */
     public function find(int $primaryKeyValue)
     {
-        return $this->session->get($this->sessionPrefix)[$primaryKeyValue];
+        return $this->session->get($this->sessionPrefix)[$primaryKeyValue] ?? null;
     }
 
     /**

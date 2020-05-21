@@ -31,6 +31,8 @@ class Controller
         $total=$cart->total('price', 'quantity');
         $allProducts= $cart->get();
 
+        return $cart->find(5);
+
         //$cart->delete(Products::find(1)); specific delete item
         //$cart->deleteAll();  flush cart
     }
