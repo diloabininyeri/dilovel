@@ -18,7 +18,6 @@ class SwiftMailer
     public static function initial(): Swift_Mailer
     {
         $transport=new SmtpTransport();
-        $transport->setConfigs();
         return  new Swift_Mailer($transport->setConfigs());
     }
 }
