@@ -5,14 +5,17 @@ namespace App\Components\Cart;
 
 use App\Components\Database\Model;
 use App\Components\Http\Session;
+use ArrayIterator;
 use Countable;
+use IteratorAggregate;
 use JsonException;
+use Traversable;
 
 /**
  * Class Cart
  * @package App\Components\Cart
  */
-class Cart implements Countable
+class Cart implements Countable, IteratorAggregate
 {
     /**
      * @var Session $session
@@ -139,5 +142,13 @@ class Cart implements Countable
     public function __toString(): string
     {
         return (string) $this->toJson();
+    }
+
+    /**
+     * @return ArrayIterator|Traversable
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->session->get($this->sessionPrefix) ?: []);
     }
 }
