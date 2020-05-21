@@ -17,17 +17,6 @@ class Cart
      * @var Session $session
      */
     private Session $session;
-
-    /**
-     * @var string $priceFieldName
-     */
-    private string $priceFieldName = 'price';
-
-    /**
-     * @var string $quantityFieldName
-     */
-    private string $quantityFieldName = 'quantity';
-
     /**
      * @var string $sessionPrefix
      */
@@ -80,47 +69,12 @@ class Cart
     }
 
     /**
+     * return all item of  on the cart
      * @return array|mixed|string
      */
     public function get()
     {
         return $this->session->get($this->sessionPrefix) ?? [];
-    }
-
-    /**
-     * @param string $priceFieldName
-     * @return Cart
-     */
-    public function setPriceFieldName(string $priceFieldName): Cart
-    {
-        $this->priceFieldName = $priceFieldName;
-        return $this;
-    }
-
-    /**
-     * @param string $quantityFieldName
-     * @return Cart
-     */
-    public function setQuantityFieldName(string $quantityFieldName): Cart
-    {
-        $this->quantityFieldName = $quantityFieldName;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getQuantityFieldName(): string
-    {
-        return $this->quantityFieldName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPriceFieldName(): string
-    {
-        return $this->priceFieldName;
     }
 
     /**

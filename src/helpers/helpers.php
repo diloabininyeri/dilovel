@@ -271,3 +271,9 @@ function error()
 {
     return new FlashError();
 }
+
+
+function cart()
+{
+    return new App\Components\Cart\Cart();
+}

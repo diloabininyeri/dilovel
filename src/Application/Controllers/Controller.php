@@ -20,6 +20,8 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+
+        // cart()->get() global helper
         $cart=new Cart();
 
         $cart->add(Products::find(1));
