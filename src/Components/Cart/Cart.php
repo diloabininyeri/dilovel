@@ -7,7 +7,6 @@ use App\Components\Database\Model;
 use App\Components\Http\Session;
 use JsonException;
 
-
 class Cart
 {
     private Session $session;
@@ -41,7 +40,9 @@ class Cart
     private function addToCart(Model $model, int $quantity = 1): Cart
     {
         $this->session->put(
-            $this->sessionPrefix, $model->getPrimaryKeyValue(), array_merge($model->toArray(), ['quantity' => $quantity])
+            $this->sessionPrefix,
+            $model->getPrimaryKeyValue(),
+            array_merge($model->toArray(), ['quantity' => $quantity])
         );
         return $this;
     }
@@ -99,13 +100,12 @@ class Cart
             $total += $item[$priceField] * $item[$quantityField];
         }
         return $total;
-
     }
 
 
     public function delete(Model $model)
     {
-        $this->session->deleteByIndex($this->sessionPrefix,$model->getPrimaryKeyValue());
+        $this->session->deleteByIndex($this->sessionPrefix, $model->getPrimaryKeyValue());
         return  true;
     }
 
@@ -113,5 +113,4 @@ class Cart
     {
         return $this->session->delete($this->sessionPrefix);
     }
-
 }

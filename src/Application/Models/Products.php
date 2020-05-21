@@ -5,7 +5,6 @@ namespace App\Application\Models;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\Model;
 
-
 /**
  * Class Products
  * @package App\Models
@@ -27,7 +26,4 @@ class Products extends Model
      * @var array|string[]
      */
     protected array $hidden = [];
-
-
-
 }
