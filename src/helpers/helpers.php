@@ -289,3 +289,13 @@ function is_json($string)
 {
     return !empty($string) && is_string($string) && is_array(json_decode($string, true)) && json_last_error() == 0;
 }
+
+/**
+ * @param $data
+ */
+function p_p($data)
+{
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+}
