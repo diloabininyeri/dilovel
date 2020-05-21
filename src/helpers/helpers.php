@@ -47,12 +47,6 @@ function view($file, $params = [])
     return (new View($file, $params))->compile();
 }
 
-function dd($param)
-{
-    var_dump($param);
-    die();
-}
-
 function abort($status)
 {
     http_response_code(404);
