@@ -16,6 +16,7 @@ class Controller
     /**
      * @param TcNoVerifyRequest $request
      * @return false|string
+     * @throws \JsonException
      */
     public function index(TcNoVerifyRequest $request)
     {
@@ -23,7 +24,10 @@ class Controller
 
         $cart->add(Products::find(1));
         $cart->add(Products::find(2));
+        $cart->add(Products::find(5));
 
+
+        $findProduct= $cart->find(5); //specific product from cart is primary key equal is 5
         $total=$cart->total('price', 'quantity');
         $allProducts= $cart->get();
 

@@ -55,6 +55,15 @@ class Cart
 
 
     /**
+     * @param int $primaryKeyValue
+     * @return mixed
+     */
+    public function find(int $primaryKeyValue)
+    {
+        return $this->session->get($this->sessionPrefix)[$primaryKeyValue];
+    }
+
+    /**
      * @param Model $model
      * @param int $quantity
      * @return Cart
