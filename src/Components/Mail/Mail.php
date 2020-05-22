@@ -15,10 +15,7 @@ use Swift_Message;
  */
 class Mail
 {
-    /**
-     * @var Swift_Mailer
-     */
-    private Swift_Mailer $mailer;
+   
     /**
      * @var Swift_Message
      */
@@ -30,7 +27,6 @@ class Mail
      */
     public function __construct()
     {
-        $this->mailer=SwiftMailer::initial();
         $this->message=new Swift_Message();
     }
 
@@ -54,6 +50,6 @@ class Mail
      */
     public function send(): int
     {
-        return $this->mailer->send($this->message);
+       return SwiftMailer::initial()->send($this->message);
     }
 }
