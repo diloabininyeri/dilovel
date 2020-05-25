@@ -18,7 +18,7 @@ class MessageQueueConsumer
      * @param $microSleep
      * @throws ErrorException
      */
-    public static function listen($queueName, $microSleep=1000000): void
+    public static function listen(string $queueName, $microSleep=1000000): void
     {
         $queue = new MessageQueue($queueName);
         $queue->setMicroSleep($microSleep);
@@ -31,7 +31,7 @@ class MessageQueueConsumer
      * @param int $microSleep
      * @throws ErrorException
      */
-    public static function listenWithCallback($queueName, Closure $closure, $microSleep=1000000):void
+    public static function listenWithCallback(string $queueName, Closure $closure, $microSleep=1000000):void
     {
         $queue = new MessageQueue($queueName);
         $queue->setMicroSleep($microSleep);

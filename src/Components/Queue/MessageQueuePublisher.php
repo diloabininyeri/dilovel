@@ -17,7 +17,7 @@ class MessageQueuePublisher
      * @param $queueName
      * @param $message
      */
-    public static function add($queueName, $message): void
+    public static function add(string $queueName,string $message): void
     {
         $queue = new MessageQueue($queueName);
         $queue->addToQueue($message, $queueName);
