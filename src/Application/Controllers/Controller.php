@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Queue\ExampleQueue;
+use App\Application\Queue\SendEmail;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Mail\Mail;
 use App\Components\Queue\Queue;
@@ -34,9 +35,7 @@ class Controller
          * example queue
          */
         $queue=new Queue('test');
+        $queue->add(new SendEmail());
         $queue->add(new ExampleQueue('dılo sürücü'));
-        $queue->add(new ExampleQueue('dılo sürücü'));
-        $queue->add(new ExampleQueue('fef sürücü'));
-        $queue->add(new ExampleQueue('ewf fewfe'));
     }
 }

@@ -37,9 +37,9 @@ class ExampleQueue implements QueueInterface
     }
 
     /**
-     * @param Exception $object
+     * @param Exception $exception
      */
-    public function failed(Exception $object):void
+    public function failed(Exception $exception):void
     {
         // TODO: Implement failed() method.
     }

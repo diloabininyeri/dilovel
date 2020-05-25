@@ -17,7 +17,7 @@ interface QueueInterface
     public function handle();
 
     /**
-     * @param Exception $object
+     * @param Exception $exception
      */
-    public function failed(Exception $object):void ;
+    public function failed(Exception $exception):void ;
 }
