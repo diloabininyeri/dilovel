@@ -3,7 +3,7 @@
 
 namespace App\Application\Queue;
 
-use App\Application\Listeners\Exceptions\Exception;
+use Exception;
 use App\Interfaces\QueueInterface;
 
 /**
