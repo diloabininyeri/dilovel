@@ -16,7 +16,7 @@ class QueueListenCommand implements CommandInterface
     public function handle(?array $parameters): void
     {
         $queue=$parameters[0] ?? 'default';
-        MessageQueueConsumer::listenWithCallback($queue, function ($a) {
+        MessageQueueConsumer::run($queue)->with(static function ($a) {
             /**
              * @var QueueInterface $obj
              */

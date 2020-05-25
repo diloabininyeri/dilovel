@@ -12,29 +12,13 @@ use ErrorException;
  */
 class MessageQueueConsumer
 {
-
     /**
-     * @param $queueName
-     * @param $microSleep
-     * @throws ErrorException
-     */
-    public static function listen(string $queueName, $microSleep=1000000): void
-    {
-        $queue = new MessageQueue($queueName);
-        $queue->setMicroSleep($microSleep);
-        $queue->receive($queueName);
-    }
-
-    /**
-     * @param $queueName
-     * @param Closure $closure
+     * @param string $queueName
      * @param int $microSleep
-     * @throws ErrorException
+     * @return MessageQueueConsumerFactory
      */
-    public static function listenWithCallback(string $queueName, Closure $closure, $microSleep=1000000):void
+    public static function run(string $queueName, $microSleep=10000): MessageQueueConsumerFactory
     {
-        $queue = new MessageQueue($queueName);
-        $queue->setMicroSleep($microSleep);
-        $queue->receiveCallback($queueName, $closure);
+        return new MessageQueueConsumerFactory($queueName, $microSleep);
     }
 }

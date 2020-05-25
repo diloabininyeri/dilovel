@@ -3,7 +3,6 @@
 
 namespace App\Application\Queue;
 
-
 use App\Components\Mail\Mail;
 use Exception;
 use App\Interfaces\QueueInterface;
@@ -36,6 +35,6 @@ class SendEmail implements QueueInterface
     public function failed(Exception $exception):void
     {
         //write or send mail to info for error log
-       $exception->getMessage();
+        $exception->getMessage();
     }
 }
