@@ -50,6 +50,6 @@ class Mail
      */
     public function send(): int
     {
-       return SwiftMailer::initial()->send($this->message);
+        return SwiftMailer::initial()->send($this->message);
     }
 }
