@@ -5,6 +5,7 @@ namespace App\Components\View;
 
 use App\Components\Blade\Blade;
 use App\Components\Exceptions\ViewNotFoundException;
+use RuntimeException;
 
 /**
  * Class View
@@ -82,7 +83,17 @@ class View
 
     private function filePutViewCache(): void
     {
+        $this->checkCacheDir();
         $md5=$this->getHashBlade();
         file_put_contents("src/Views/caches/$md5.php", $this->renderWithBlade());
     }
+
+
+    public function checkCacheDir() : void
+    {
+        if (!is_dir("src/Views/caches/") && !mkdir("src/Views/caches/", 0777,true) && !is_dir("src/Views/caches/")) {
+            throw new RuntimeException(sprintf('Directory "%s" was not created', "src/Views/caches/"));
+        }
+    }
+
 }
