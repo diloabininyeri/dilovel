@@ -1,0 +1,33 @@
+<?php
+
+
+namespace App\Application\Queue;
+
+
+use App\Application\Listeners\Exceptions\Exception;
+use App\Interfaces\QueueInterface;
+
+/**
+ * Class ExampleQueue
+ * @package App\Application\Queue
+ */
+class $name implements QueueInterface
+{
+
+
+    /**
+     * @return mixed|string
+     */
+    public function handle()
+    {
+        return  'foo something bar';
+    }
+
+    /**
+     * @param Exception $object
+     */
+    public function failed(Exception $object):void
+    {
+        // TODO: Implement failed() method.
+    }
+}

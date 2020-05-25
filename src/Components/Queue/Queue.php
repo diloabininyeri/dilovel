@@ -3,6 +3,7 @@
 
 namespace App\Components\Queue;
 
+use App\Interfaces\QueueInterface;
 use Closure;
 use ErrorException;
 
@@ -30,9 +31,9 @@ class Queue
     /**
      * @param $message
      */
-    public function add($message): void
+    public function add(QueueInterface $message): void
     {
-        MessageQueuePublisher::add($this->name, $message);
+        MessageQueuePublisher::add($this->name, serialize($message));
     }
 
     /**
