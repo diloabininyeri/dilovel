@@ -40,7 +40,7 @@ class MessageQueue
      * MessageQueue constructor.
      * @param string $queueName
      */
-    public function __construct($queueName = 'message_queue')
+    public function __construct($queueName = 'default')
     {
         $this->connection = MessageQueueConnection::get();
 

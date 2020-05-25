@@ -17,6 +17,7 @@ use Bin\Commands\CreateViewCommand;
 use Bin\Commands\DeleteControllerCommand;
 use Bin\Commands\ErrorLogChangedCommand;
 use Bin\Commands\QueueListenCommand;
+use Bin\Commands\QueueListenStatusCommand;
 use Bin\Commands\ServeCommand;
 use Bin\Components\CustomCommandCall;
 
@@ -46,5 +47,6 @@ class Console extends CustomCommandCall
         'make:rule'=>CreateRuleCommand::class,
         'make:queue'=>CreateQueueClassCommand::class,
         'queue:listen'=>QueueListenCommand::class,
+        'queue:status'=>QueueListenStatusCommand::class,
     ];
 }

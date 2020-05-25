@@ -35,5 +35,8 @@ class Controller
          */
         $queue=new Queue('test');
         $queue->add(new ExampleQueue('dılo sürücü'));
+        $queue->add(new ExampleQueue('dılo sürücü'));
+        $queue->add(new ExampleQueue('fef sürücü'));
+        $queue->add(new ExampleQueue('ewf fewfe'));
     }
 }

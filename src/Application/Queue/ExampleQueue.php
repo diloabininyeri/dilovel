@@ -32,6 +32,7 @@ class ExampleQueue implements QueueInterface
      */
     public function handle()
     {
+        sleep(10);
         return  $this->name;
     }
 
