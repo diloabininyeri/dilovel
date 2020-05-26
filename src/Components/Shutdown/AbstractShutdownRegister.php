@@ -54,6 +54,6 @@ abstract class AbstractShutdownRegister
      */
     public static function addDeferObject(RegisterShutdownInterface $registerShutdown):void
     {
-       static::$dynamicRegister[]=$registerShutdown;
+        static::$dynamicRegister[]=$registerShutdown;
     }
 }

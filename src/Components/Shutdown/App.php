@@ -24,5 +24,4 @@ class App extends AbstractShutdownRegister
      * @var array|string[] $dynamicRegister
      */
     protected static array $dynamicRegister=[];
-
 }

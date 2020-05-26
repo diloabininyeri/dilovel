@@ -2,7 +2,6 @@
 
 namespace App\Components\Http;
 
-use App\Application\Models\Users;
 use App\Components\Auth\User\User;
 use App\Components\Routers\RouterQueryString;
 use App\Interfaces\ArrayAble;
@@ -225,7 +224,7 @@ class Request implements ArrayAble, ToJson
      */
     public function is(string $device):?bool
     {
-        return (new MobileDetect())->is($device);
+        return $this->device()->is($device);
     }
 
     /**
