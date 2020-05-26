@@ -228,6 +228,22 @@ class Request implements ArrayAble, ToJson
     }
 
     /**
+     * @return bool
+     */
+    public function isMobile(): bool
+    {
+        return $this->device()->isMobile();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTablet(): bool
+    {
+        return $this->device()->isTablet();
+    }
+
+    /**
      * @return MobileDetect
      */
     public function device():MobileDetect
