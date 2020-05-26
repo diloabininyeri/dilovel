@@ -2,6 +2,7 @@
 
 namespace App\Application;
 
+use App\Application\Middleware\AuthMiddleware;
 use App\Application\Middleware\GlobalMiddleware;
 use App\Application\Middleware\NameMiddleware;
 use App\Application\Middleware\RequestIdMustBeInteger;
@@ -22,6 +23,7 @@ class Middleware extends MiddlewareAbstract
         'must_be_int' => RequestIdMustBeInteger::class,
         'name' => NameMiddleware::class,
         'example'=>TestExample::class,
+        'auth'=>AuthMiddleware::class,
 
     ];
 
