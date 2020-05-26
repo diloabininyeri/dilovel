@@ -4,7 +4,6 @@
 namespace App\Components\Mail;
 
 use Swift_Attachment;
-use Swift_Mailer;
 use Swift_Message;
 
 /**
@@ -15,7 +14,7 @@ use Swift_Message;
  */
 class Mail
 {
-   
+
     /**
      * @var Swift_Message
      */
