@@ -23,6 +23,9 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+
+        $request->cookie()->delete('rgreg');
+        return $request->cookie()->exists('rgreg');
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
         //return user()->get();
