@@ -3,7 +3,6 @@
 
 namespace App\Components\Auth\User;
 
-use App\Application\Models\Users;
 use App\Components\Database\Model;
 use App\Interfaces\AuthEventListener as AuthEventListenerInterface;
 
@@ -16,7 +15,7 @@ abstract class AuthEventListener
 
     /**
      * @param string $event
-     * @param Users $user
+     * @param Model $user
      * @return mixed
      */
     public function emit(string $event, Model $user)
@@ -28,6 +27,7 @@ abstract class AuthEventListener
         if ($class !== null) {
             return call_user_func([new $class(),'handle'], $user);
         }
+        return null;
     }
 
     /**
