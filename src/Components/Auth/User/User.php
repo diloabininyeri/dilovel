@@ -81,7 +81,7 @@ class User
      */
     public function get():?Users
     {
-        if ($this->session->get(Enums::USER_AUTH_SESSION_NAME)) {
+        if ($this->check()) {
             return Users::find($this->session->get(Enums::USER_AUTH_SESSION_NAME));
         }
         return null;

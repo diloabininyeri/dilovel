@@ -21,7 +21,6 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-
         return user()->get();
 
         /*$mail=new Mail();
