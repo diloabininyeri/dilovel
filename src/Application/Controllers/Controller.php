@@ -4,13 +4,8 @@
 namespace App\Application\Controllers;
 
 use App\Application\Models\Users;
-use App\Application\Queue\ExampleQueue;
-use App\Application\Queue\SendEmail;
 use App\Application\Request\TcNoVerifyRequest;
-use App\Components\Auth\Hash\Hash;
 use App\Components\Auth\User\Auth;
-use App\Components\Mail\Mail;
-use App\Components\Queue\Queue;
 use JsonException;
 
 /**
@@ -40,5 +35,11 @@ class Controller
 
 
 
+
+
+        // Auth::user()->isCanLogin('berxudar@gmail.com',1234567);
+        //Auth::user()->login(Users::find(34));
+        //Auth::user()->logout()->after(fn()=>redirect()->router('home'));
+        //return Auth::user()->get();
     }
 }
