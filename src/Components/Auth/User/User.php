@@ -32,7 +32,7 @@ class User
      * @param Model $user
      * @return bool
      */
-    public function login(Model $user): bool
+    public function login(Model $user):bool
     {
         return Login::user($user);
     }

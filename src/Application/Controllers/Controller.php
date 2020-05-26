@@ -21,7 +21,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return $request->is('mobile');
+        //return $request->is('mobile');
         //return user()->get();
 
         /*$mail=new Mail();
@@ -42,8 +42,8 @@ class Controller
 
         //$user= $request->user()->get();
         // Auth::user()->isCanLogin('berxudar@gmail.com',1234567);
-        //Auth::user()->login(Users::find(34));
-        //Auth::user()->logout()->after(fn()=>redirect()->router('home'));
+        Auth::user()->login(Users::find(34));
+        Auth::user()->logout();
         //return Auth::user()->get();
     }
 }
