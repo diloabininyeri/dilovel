@@ -12,6 +12,10 @@ use JsonException;
 /**
  * Class Request
  * @package App\Http
+ * @method  bool isMobile()
+ * @method  bool isTablet()
+ * @method  bool isiOS()
+ * @method  bool isAndroidOS()
  */
 class Request implements ArrayAble, ToJson
 {
@@ -226,29 +230,22 @@ class Request implements ArrayAble, ToJson
     {
         return $this->device()->is($device);
     }
-
-    /**
-     * @return bool
-     */
-    public function isMobile(): bool
-    {
-        return $this->device()->isMobile();
-    }
-
-    /**
-     * @return bool
-     */
-    public function isTablet(): bool
-    {
-        return $this->device()->isTablet();
-    }
-
     /**
      * @return MobileDetect
      */
     public function device():MobileDetect
     {
         return new MobileDetect();
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        return $this->device()->$name(...$arguments);
     }
 
     /**
