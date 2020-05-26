@@ -47,11 +47,6 @@ class Users extends Model
 
 
 
-    public function setPasswordAttribute($value)
-    {
-        return md5($value);
-    }
-
 
     /**
      * @param BuilderQuery $query
