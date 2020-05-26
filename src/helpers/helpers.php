@@ -293,3 +293,8 @@ function p_p($data)
     print_r($data);
     echo '</pre>';
 }
+
+function user()
+{
+    return new App\Components\Auth\User\User();
+}
