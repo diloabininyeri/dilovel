@@ -18,6 +18,8 @@ class AuthLoginListener implements AuthEventListener
      */
     public function handle(Users $user):void
     {
+        $user->last_login_at=now();
+        $user->save();
         //redirect()->router('home');
     }
 }
