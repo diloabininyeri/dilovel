@@ -21,6 +21,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+
         /*$mail=new Mail();
         $mail->setSubject('title mail');
         $mail->setTo('berxudar@gmail.com');
@@ -37,6 +38,7 @@ class Controller
 
 
 
+        //$user= $request->user()->get();
         // Auth::user()->isCanLogin('berxudar@gmail.com',1234567);
         //Auth::user()->login(Users::find(34));
         //Auth::user()->logout()->after(fn()=>redirect()->router('home'));

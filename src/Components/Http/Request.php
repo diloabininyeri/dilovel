@@ -2,6 +2,8 @@
 
 namespace App\Components\Http;
 
+use App\Application\Models\Users;
+use App\Components\Auth\User\User;
 use App\Components\Routers\RouterQueryString;
 use App\Interfaces\ArrayAble;
 use App\Interfaces\ToJson;
@@ -204,6 +206,12 @@ class Request implements ArrayAble, ToJson
     public function all(): array
     {
         return $this->request;
+    }
+
+
+    public function user()
+    {
+        return new User();
     }
 
     /**
