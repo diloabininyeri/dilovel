@@ -5,7 +5,9 @@ namespace App\Application\Controllers;
 
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
+use App\Application\Shutdown\ExampleShutdownListener;
 use App\Components\Auth\User\Auth;
+use App\Components\Shutdown\App;
 use JsonException;
 
 /**
@@ -21,6 +23,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+        //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
         //return user()->get();
 
@@ -42,8 +45,8 @@ class Controller
 
         //$user= $request->user()->get();
         // Auth::user()->isCanLogin('berxudar@gmail.com',1234567);
-        Auth::user()->login(Users::find(34));
-        Auth::user()->logout();
+        //Auth::user()->login(Users::find(34));
+        //Auth::user()->logout();
         //return Auth::user()->get();
     }
 }

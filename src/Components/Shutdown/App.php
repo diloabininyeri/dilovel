@@ -12,7 +12,6 @@ use App\Application\Shutdown\ShutdownListener;
  */
 class App extends AbstractShutdownRegister
 {
-
     /**
      * @var array|string[]
      */
@@ -20,4 +19,10 @@ class App extends AbstractShutdownRegister
 
         ShutdownListener::class
     ];
+
+    /**
+     * @var array|string[] $dynamicRegister
+     */
+    protected static array $dynamicRegister=[];
+
 }

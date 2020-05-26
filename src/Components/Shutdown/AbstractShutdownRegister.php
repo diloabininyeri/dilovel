@@ -26,6 +26,7 @@ abstract class AbstractShutdownRegister
                 $class->appOnShutdown();
             }
         });
+        $this->callDeferObjects();
     }
 
 
@@ -35,5 +36,24 @@ abstract class AbstractShutdownRegister
     private function getRegisters():array
     {
         return $this->register;
+    }
+
+    /**
+     *
+     */
+    private function callDeferObjects():void
+    {
+        $objects=$this::$dynamicRegister;
+        foreach ($objects as $object) {
+            $object->appOnShutdown();
+        }
+    }
+
+    /**
+     * @param RegisterShutdownInterface $registerShutdown
+     */
+    public static function addDeferObject(RegisterShutdownInterface $registerShutdown):void
+    {
+       static::$dynamicRegister[]=$registerShutdown;
     }
 }
