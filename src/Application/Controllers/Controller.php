@@ -21,6 +21,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+        return $request->is('mobile');
         //return user()->get();
 
         /*$mail=new Mail();

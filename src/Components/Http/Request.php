@@ -7,6 +7,7 @@ use App\Components\Auth\User\User;
 use App\Components\Routers\RouterQueryString;
 use App\Interfaces\ArrayAble;
 use App\Interfaces\ToJson;
+use Detection\MobileDetect;
 use JsonException;
 
 /**
@@ -209,9 +210,30 @@ class Request implements ArrayAble, ToJson
     }
 
 
+    /**
+     * @return User
+     */
     public function user()
     {
         return new User();
+    }
+
+
+    /**
+     * @param string $device
+     * @return bool|int|null
+     */
+    public function is(string $device):?bool
+    {
+        return (new MobileDetect())->is($device);
+    }
+
+    /**
+     * @return MobileDetect
+     */
+    public function device():MobileDetect
+    {
+        return new MobileDetect();
     }
 
     /**

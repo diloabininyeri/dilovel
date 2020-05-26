@@ -23,7 +23,7 @@ Router::get('deneme/int:id/string:name/:any/date:date', static function () {
         ]
     );
 })->name('asd');
-Router::get('/fefe', 'Controller@index')->middleware('auth');
+Router::get('/fefe', 'Controller@index');
 Router::get('/asd', 'Controller@index')->name('asd')->middleware('example');
 Router::get('/news/int:id', 'Controller@meth')->name('fgd')->middleware('mid', 'mid2');
 Router::get('/news/id/haber', 'Controlljjjjjjjjjer@meth')->name('fgd')->middleware('mid', 'mid2');
