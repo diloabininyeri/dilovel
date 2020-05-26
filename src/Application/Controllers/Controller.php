@@ -21,7 +21,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return user()->get();
+        //return user()->get();
 
         /*$mail=new Mail();
         $mail->setSubject('title mail');
