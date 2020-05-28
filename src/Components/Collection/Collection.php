@@ -125,7 +125,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function last()
     {
-        return $this->collection[$this->count() - 1];
+        return end($this->collection);
     }
 
 
