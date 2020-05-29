@@ -21,8 +21,8 @@ class ViewCache
      */
     public function __construct()
     {
-        $cacheClient = config('cache.view');
-        $cacheClass = config("cache.clients.$cacheClient");
+        $cacheClient = config('viewcache.view');
+        $cacheClass = config("viewcache.clients.$cacheClient");
         $this->cacheObject = new $cacheClass();
     }
     /**
