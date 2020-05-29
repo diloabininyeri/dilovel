@@ -3,7 +3,6 @@
 
 namespace App\Application\Listeners\Auth;
 
-
 use App\Application\Models\Users;
 use App\Interfaces\AuthEventListener;
 

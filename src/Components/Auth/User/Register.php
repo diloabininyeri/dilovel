@@ -21,8 +21,8 @@ class Register
     public static function user(array $data)
     {
         $user= Users::create($data);
-        if($user) {
-           Listener::fire('register',$user);
+        if ($user) {
+            Listener::fire('register', $user);
         }
         return $user;
     }

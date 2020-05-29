@@ -3,6 +3,7 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Models\Book;
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Application\Shutdown\ExampleShutdownListener;
@@ -25,9 +26,10 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+        return Users::find(34)->can('book')->view(Book::find(2));
 
-        return Auth::user()->register();
-        return view_cache('index', 120);
+
+
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
         //return user()->get();

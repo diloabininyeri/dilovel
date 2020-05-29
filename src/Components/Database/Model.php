@@ -2,6 +2,10 @@
 
 namespace App\Components\Database;
 
+use App\Application\Policies\Policy;
+use App\Components\Auth\Policy\PolicyFactory;
+use App\Components\Auth\User\Auth;
+use App\Interfaces\PolicyInterface;
 use JsonException;
 use PDO;
 
@@ -245,5 +249,15 @@ abstract class Model
             now()->setLocal($lang);
         }
         return now()->diffForHumans($this->updated_at);
+    }
+
+    /**
+     * @param string $policy
+     * @return PolicyFactory
+     */
+    public function can(string $policy)
+    {
+        $class=new Policy();
+        return new PolicyFactory($this, $class->createPolicyObject($policy));
     }
 }
