@@ -3,6 +3,7 @@
 
 namespace App\Components\Auth\User;
 
+use App\Application\Listeners\Auth\AuthRegisterListener;
 use App\Application\Models\Users;
 
 /**
@@ -18,6 +19,10 @@ class Register
      */
     public static function user(array $data)
     {
-        return Users::create($data);
+        $user= Users::create($data);
+        if($user) {
+            (new AuthRegisterListener())->handle($user);
+        }
+        return $user;
     }
 }
