@@ -5,6 +5,7 @@ namespace App\Components\Auth\User;
 
 use App\Application\Listeners\Auth\AuthRegisterListener;
 use App\Application\Models\Users;
+use App\Components\Auth\Listener;
 
 /**
  * Class Register
@@ -21,7 +22,7 @@ class Register
     {
         $user= Users::create($data);
         if($user) {
-            (new AuthRegisterListener())->handle($user);
+           Listener::fire('register',$user);
         }
         return $user;
     }

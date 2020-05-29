@@ -5,6 +5,7 @@ namespace App\Components\Auth;
 
 use App\Application\Listeners\Auth\AuthLoginListener;
 use App\Application\Listeners\Auth\AuthLogoutListener;
+use App\Application\Listeners\Auth\AuthRegisterListener;
 use App\Components\Auth\User\AuthEventListener;
 use App\Components\Database\Model;
 
@@ -22,6 +23,7 @@ class Listener extends AuthEventListener
     protected array $listener = [
         'login' => AuthLoginListener::class,
         'logout' => AuthLogoutListener::class,
+        'register'=>AuthRegisterListener::class,
     ];
 
     /**

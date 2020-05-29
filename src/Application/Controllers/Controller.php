@@ -25,6 +25,8 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+
+        return Auth::user()->register();
         return view_cache('index', 120);
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
