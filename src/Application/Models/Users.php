@@ -6,6 +6,7 @@ namespace App\Application\Models;
 use App\Application\Models\Objectable\UserName;
 use App\Application\Models\Objectable\UserPassword;
 use App\Components\Database\BuilderQuery;
+use App\Components\Database\BuilderUserModel;
 use App\Components\Database\HasOne;
 use App\Components\Database\HasOneBuilder;
 use App\Components\Database\Model;
@@ -20,7 +21,7 @@ use App\Components\Database\Model;
  * @method static BuilderQuery|Users find(int $id)
  * @method static BuilderQuery|Users findOrFail(int $id)
  */
-class Users extends Model
+class Users extends BuilderUserModel
 {
     /**
      * @var string $table

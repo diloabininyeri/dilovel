@@ -250,15 +250,4 @@ abstract class Model
         }
         return now()->diffForHumans($this->updated_at);
     }
-
-    /**
-     * @param string $policy
-     * @return PolicyFactory|PolicyAutocomplete
-     * @throws PolicyNotFoundException
-     */
-    public function can(string $policy)
-    {
-        $class=new Policy();
-        return new PolicyFactory($this, $class->createPolicyObject($policy));
-    }
 }
