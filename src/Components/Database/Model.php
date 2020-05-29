@@ -4,6 +4,7 @@ namespace App\Components\Database;
 
 use App\Application\Policies\Policy;
 use App\Components\Auth\Policy\PolicyFactory;
+use App\Components\Exceptions\PolicyNotFoundException;
 use App\Interfaces\Autocomplete\PolicyAutocomplete;
 use JsonException;
 use PDO;
@@ -253,6 +254,7 @@ abstract class Model
     /**
      * @param string $policy
      * @return PolicyFactory|PolicyAutocomplete
+     * @throws PolicyNotFoundException
      */
     public function can(string $policy)
     {

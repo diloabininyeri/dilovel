@@ -5,6 +5,7 @@ namespace App\Components\Auth\User;
 
 use App\Application\Models\Users;
 use App\Components\Auth\Hash\Hash;
+use App\Components\Database\BuilderQuery;
 use App\Components\Database\Model;
 use App\Components\Http\Session;
 
@@ -37,6 +38,14 @@ class User
         return Login::user($user);
     }
 
+
+    /**
+     * @return Users|BuilderQuery
+     */
+    public function model()
+    {
+        return Users::find($this->session->get(Enums::USER_AUTH_SESSION_NAME));
+    }
     /**
      * @return Logout
      */
@@ -82,7 +91,7 @@ class User
     public function get():?Users
     {
         if ($this->check()) {
-            return Users::find($this->session->get(Enums::USER_AUTH_SESSION_NAME));
+            return $this->model();
         }
         return null;
     }

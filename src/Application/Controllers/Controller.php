@@ -6,11 +6,7 @@ namespace App\Application\Controllers;
 use App\Application\Models\Book;
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
-use App\Application\Shutdown\ExampleShutdownListener;
 use App\Components\Auth\User\Auth;
-use App\Components\Cache\Memcache\MemcacheClient;
-use App\Components\Cache\ViewCache;
-use App\Components\Shutdown\App;
 use JsonException;
 
 /**
@@ -26,10 +22,23 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        $policy= Users::find(34)->can('book');
-        return   $policy->view(Book::find(2));  //user can view book->id=2
+        Auth::user()->login(Users::find(34));
+
+        $userModel = $request->user()->model();
+        $userModel->can('book')->view(Book::find(2));
 
 
+        $policy = Users::find(34)->can('book');
+        $policy->view(Book::findOrFail(38));  //user can view book->id=2
+
+
+        $book = Book::find(2);
+        $users = Users::get();
+
+
+        foreach ($users as $user) {
+            echo $user->can('book')->view($book);
+        }
 
 
         //App::addDeferObject(new ExampleShutdownListener());
@@ -47,9 +56,6 @@ class Controller
         $queue=new Queue('test');
         $queue->add(new SendEmail());
         $queue->add(new ExampleQueue('dılo sürücü'));*/
-
-
-
 
 
         //$user= $request->user()->get();

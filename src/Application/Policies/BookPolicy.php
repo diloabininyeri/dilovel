@@ -9,9 +9,9 @@ use App\Interfaces\PolicyInterface;
 
 class BookPolicy implements PolicyInterface
 {
-    public function view(Users $user, Model $model)
+    public function view(Users $user, Model $book)
     {
-        return $user->id===$model->user_id;
+        return $user->id===$book->user_id;
     }
 
     public function create(Users $user, Model $model)
