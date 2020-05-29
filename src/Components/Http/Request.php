@@ -232,6 +232,15 @@ class Request implements ArrayAble, ToJson
     }
 
     /**
+     * this method is not very safe
+     * @return bool
+     */
+    public function isAjax():bool
+    {
+        return isset($this->server['HTTP_X_REQUESTED_WITH']) && $this->server['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+    }
+
+    /**
      * @return MobileDetect
      */
     public function device(): MobileDetect

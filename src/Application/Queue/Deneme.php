@@ -3,7 +3,6 @@
 
 namespace App\Application\Queue;
 
-
 use Exception;
 use App\Interfaces\QueueInterface;
 
@@ -21,7 +20,7 @@ class Deneme implements QueueInterface
     public function handle()
     {
         sleep(10);
-        return  'foo something bar'.random_int(1,100);
+        return  'foo something bar'.random_int(1, 100);
     }
 
     /**

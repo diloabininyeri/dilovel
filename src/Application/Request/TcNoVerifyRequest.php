@@ -27,6 +27,4 @@ class TcNoVerifyRequest extends Request implements FormRequestInterface
             new RequiredRule(),
         ];
     }
-
-
 }

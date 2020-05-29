@@ -3,7 +3,6 @@
 
 namespace App\Components\Http;
 
-
 /**
  * Class Cookie
  * @package App\Components\Http
