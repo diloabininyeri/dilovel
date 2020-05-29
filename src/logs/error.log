@@ -1969,3 +1969,45 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in [no active file] on line 0
+[29-May-2020 21:29:32 Europe/Helsinki] PHP Fatal error:  Class App\Components\Cache\Memcache\ViewMemcached contains 2 abstract methods and must therefore be declared abstract or implement the remaining methods (App\Interfaces\ViewCacheInterface::get, App\Interfaces\ViewCacheInterface::set) in /home/zeus/Desktop/hmvc/src/Components/Cache/Memcache/ViewMemcached.php on line 9
+[29-May-2020 21:29:32 Europe/Helsinki] PHP Stack trace:
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:24
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[29-May-2020 21:29:32 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  11. view_cache() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:29
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  12. App\Components\Cache\ViewCache->__construct() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:60
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  13. config() /home/zeus/Desktop/hmvc/src/Components/Cache/ViewCache.php:22
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  14. get_config_array() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:246
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  15. require() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:235
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  16. spl_autoload_call() /home/zeus/Desktop/hmvc/src/config/cache.php:10
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  17. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/hmvc/src/config/cache.php:10
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  18. Composer\Autoload\includeFile() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:322
+[29-May-2020 21:29:32 Europe/Helsinki] PHP  19. include() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:444
+[29-May-2020 21:31:41 Europe/Helsinki] PHP Fatal error:  Class App\Components\Cache\Memcache\ViewMemcached contains 2 abstract methods and must therefore be declared abstract or implement the remaining methods (App\Interfaces\ViewCacheInterface::get, App\Interfaces\ViewCacheInterface::set) in /home/zeus/Desktop/hmvc/src/Components/Cache/Memcache/ViewMemcached.php on line 9
+[29-May-2020 21:31:41 Europe/Helsinki] PHP Stack trace:
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:24
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   4. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:47
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   7. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   8. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[29-May-2020 21:31:41 Europe/Helsinki] PHP   9. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  10. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  11. view_cache() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:29
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  12. App\Components\Cache\ViewCache->__construct() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:60
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  13. config() /home/zeus/Desktop/hmvc/src/Components/Cache/ViewCache.php:22
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  14. get_config_array() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:246
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  15. require() /home/zeus/Desktop/hmvc/src/helpers/helpers.php:235
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  16. spl_autoload_call() /home/zeus/Desktop/hmvc/src/config/cache.php:10
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  17. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/hmvc/src/config/cache.php:10
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  18. Composer\Autoload\includeFile() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:322
+[29-May-2020 21:31:41 Europe/Helsinki] PHP  19. include() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:444

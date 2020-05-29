@@ -7,6 +7,8 @@ use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Application\Shutdown\ExampleShutdownListener;
 use App\Components\Auth\User\Auth;
+use App\Components\Cache\Memcache\MemcacheClient;
+use App\Components\Cache\ViewCache;
 use App\Components\Shutdown\App;
 use JsonException;
 
@@ -23,7 +25,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-       $request->isAjax();
+        return view_cache('index', 120);
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
         //return user()->get();

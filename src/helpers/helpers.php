@@ -5,6 +5,7 @@
  */
 
 use App\Components\Arr\DotNotation;
+use App\Components\Cache\Memcache\MemcacheClient;
 use App\Components\Cart\Cart;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
@@ -47,6 +48,26 @@ function view($file, $params = [])
     return (new View($file, $params))->compile();
 }
 
+/**
+ * @param $file
+ * @param int $time
+ * @param array $compact
+ * @return mixed
+ */
+function view_cache($file, int $time, array $compact=[])
+{
+    $viewCache=new \App\Components\Cache\ViewCache();
+    if ($viewCache->get()) {
+        return $viewCache->get();
+    }
+
+    $viewCache->set(\view($file, $compact), $time);
+    return $viewCache->get();
+}
+
+/**
+ * @param $status
+ */
 function abort($status)
 {
     http_response_code(404);
@@ -215,7 +236,7 @@ function get_config_array($configFile)
 
 /**
  * @param string $config
- * @return array|mixed|null
+ * @return mixed
  */
 function config(string $config)
 {
@@ -297,4 +318,10 @@ function p_p($data)
 function user()
 {
     return new App\Components\Auth\User\User();
+}
+
+
+function memcached()
+{
+    return MemcacheClient::connection();
 }
