@@ -11,6 +11,7 @@ use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateCustomRequestCommand;
 use Bin\Commands\CreateMiddlewareCommand;
 use Bin\Commands\CreateModelCommand;
+use Bin\Commands\CreatePolicyCommand;
 use Bin\Commands\CreateQueueClassCommand;
 use Bin\Commands\CreateRuleCommand;
 use Bin\Commands\CreateViewCommand;
@@ -48,5 +49,6 @@ class Console extends CustomCommandCall
         'make:queue'=>CreateQueueClassCommand::class,
         'queue:listen'=>QueueListenCommand::class,
         'queue:status'=>QueueListenStatusCommand::class,
+        'make:policy'=>CreatePolicyCommand::class,
     ];
 }
