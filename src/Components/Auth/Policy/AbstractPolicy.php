@@ -3,6 +3,8 @@
 
 namespace App\Components\Auth\Policy;
 
+use App\Components\Exceptions\PolicyNotFoundException;
+
 /**
  * Class AbstractPolicy
  * @package App\Components\Auth\Policy
@@ -14,6 +16,7 @@ abstract class AbstractPolicy
     /**
      * @param string $policy
      * @return mixed
+     * @throws PolicyNotFoundException
      */
     public function createPolicyObject(string $policy)
     {
@@ -21,6 +24,8 @@ abstract class AbstractPolicy
         if ($class !==null) {
             return new $class();
         }
+
+        throw  new PolicyNotFoundException("$policy policy not found");
     }
 
     /**

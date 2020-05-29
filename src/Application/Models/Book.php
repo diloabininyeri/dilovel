@@ -3,11 +3,13 @@
 
 namespace App\Application\Models;
 
+use App\Components\Database\BuilderQuery;
 use App\Components\Database\Model;
 
 /**
  * Class Book
  * @package App\app\Models
+ * @mixin BuilderQuery
  */
 class Book extends Model
 {

@@ -4,8 +4,7 @@ namespace App\Components\Database;
 
 use App\Application\Policies\Policy;
 use App\Components\Auth\Policy\PolicyFactory;
-use App\Components\Auth\User\Auth;
-use App\Interfaces\PolicyInterface;
+use App\Interfaces\Autocomplete\PolicyAutocomplete;
 use JsonException;
 use PDO;
 
@@ -253,7 +252,7 @@ abstract class Model
 
     /**
      * @param string $policy
-     * @return PolicyFactory
+     * @return PolicyFactory|PolicyAutocomplete
      */
     public function can(string $policy)
     {

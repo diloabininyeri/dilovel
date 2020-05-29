@@ -26,7 +26,9 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::find(34)->can('book')->view(Book::find(2));
+        $policy= Users::find(34)->can('book');
+        return   $policy->view(Book::find(2));  //user can view book->id=2
+
 
 
 
