@@ -22,9 +22,8 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-
-        //Auth::user()->login(Users::find(34));
-        Auth::user()->logout();
+        Auth::user()->login(Users::find(34));
+        //Auth::user()->logout();
         return view('auth');
 
         //App::addDeferObject(new ExampleShutdownListener());

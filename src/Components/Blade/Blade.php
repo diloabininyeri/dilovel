@@ -29,6 +29,7 @@ class Blade
         CurlBracesAllowedHtmlChars::class,
         AuthDirective::class,
         EndAuthDirective::class,
+        CustomDirective::class,
         CompressBlade::class,
         JsEscapeDirective::class,
 
