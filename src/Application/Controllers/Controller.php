@@ -22,24 +22,9 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+
         Auth::user()->login(Users::find(34));
-
-        $userModel = $request->user()->model();
-        $userModel->can('book')->view(Book::find(2));
-
-
-        $policy = Users::find(34)->can('book');
-        $policy->view(Book::findOrFail(38));  //user can view book->id=2
-
-
-        $book = Book::find(2);
-        $users = Users::get();
-
-
-        foreach ($users as $user) {
-            echo $user->can('book')->view($book);
-        }
-
+        return Auth::user()->name;
 
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');

@@ -8,10 +8,12 @@ use App\Components\Auth\Hash\Hash;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\Model;
 use App\Components\Http\Session;
+use JsonException;
 
 /**
  * Class User
  * @package App\Components\Auth\User
+ * @mixin Users
  */
 class User
 {
@@ -94,5 +96,43 @@ class User
             return $this->model();
         }
         return null;
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+       return $this->model()->$name(...$arguments);
+    }
+
+    /**
+     * @param $name
+     * @return mixed|null
+     */
+    public function __get($name)
+    {
+        return $this->model()->$name;
+    }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        return isset($this->model()->$name);
+    }
+
+    /**
+     * @return false|string
+     * @noinspection MagicMethodsValidityInspection
+     * @throws JsonException
+     */
+    public function __toString()
+    {
+        return json_encode($this->model(), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
     }
 }
