@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h2>@strlen('merhaba') grgegrrgeg</h2>
+<h2>@lcfirst(strtoupper('merr')) grgegrrgeg</h2>
 @auth()
     <h2>oturum sayfası</h2>
 @endauth
