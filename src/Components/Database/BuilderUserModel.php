@@ -3,7 +3,6 @@
 
 namespace App\Components\Database;
 
-
 use App\Application\Policies\Policy;
 use App\Components\Auth\Policy\PolicyFactory;
 use App\Components\Exceptions\PolicyNotFoundException;
