@@ -18,26 +18,26 @@ interface PolicyInterface
      * @param Model $model
      * @return mixed
      */
-    public function view(Users $user, Model $model):bool ;
+    public function view(Users $user, Model $model):?bool ;
 
     /**
      * @param Users $user
      * @param Model $model
      * @return mixed
      */
-    public function create(Users $user, Model $model):bool ;
+    public function create(Users $user, Model $model):?bool ;
 
     /**
      * @param Users $user
      * @param Model $model
      * @return mixed
      */
-    public function delete(Users $user, Model $model):bool ;
+    public function delete(Users $user, Model $model):?bool ;
 
     /**
      * @param Users $user
      * @param Model $model
      * @return mixed
      */
-    public function update(Users $user, Model $model):bool ;
+    public function update(Users $user, Model $model):?bool ;
 }

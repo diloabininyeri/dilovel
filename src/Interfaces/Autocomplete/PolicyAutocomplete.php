@@ -17,23 +17,23 @@ interface PolicyAutocomplete
      * @param Model $model
      * @return mixed
      */
-    public function view(Model $model);
+    public function view(Model $model):?bool ;
 
     /**
      * @param Model $model
      * @return mixed
      */
-    public function create(Model $model);
+    public function create(Model $model):?bool ;
 
     /**
      * @param Model $model
      * @return mixed
      */
-    public function delete(Model $model);
+    public function delete(Model $model):?bool ;
 
     /**
      * @param Model $model
      * @return mixed
      */
-    public function update(Model $model);
+    public function update(Model $model):?bool ;
 }
