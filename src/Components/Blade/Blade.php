@@ -27,6 +27,8 @@ class Blade
         EndforeachDirective::class,
         IncludeDirective::class,
         CurlBracesAllowedHtmlChars::class,
+        AuthDirective::class,
+        EndAuthDirective::class,
         CompressBlade::class,
         JsEscapeDirective::class,
 
