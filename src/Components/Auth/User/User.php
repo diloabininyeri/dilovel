@@ -92,6 +92,15 @@ class User
         return $this->session->exists(Enums::USER_AUTH_SESSION_NAME);
     }
 
+
+    /**
+     * @return bool
+     */
+    public function guest():bool
+    {
+        return  !$this->check();
+    }
+
     /**
      * @return Users|null
      */
