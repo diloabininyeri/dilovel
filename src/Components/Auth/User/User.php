@@ -119,6 +119,9 @@ class User
      */
     public function __call($name, $arguments)
     {
+        if (Auth::user()->guest()) {
+            return new NullObject();
+        }
         return $this->model()->$name(...$arguments);
     }
 

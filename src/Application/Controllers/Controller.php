@@ -22,9 +22,8 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        Auth::user()->login(Users::find(34));
-        //Auth::user()->logout();
-        return view('auth');
+        Auth::user()->logout();
+        return Auth::user()->can('book')->view(Book::find(2));
 
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
