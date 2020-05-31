@@ -320,8 +320,34 @@ function user()
     return new App\Components\Auth\User\User();
 }
 
-
+/**
+ * @return MemcacheClient
+ */
 function memcached()
 {
     return MemcacheClient::connection();
+}
+
+/**
+ * @param $haystack
+ * @param $needle
+ * @return bool
+ */
+function starts_with($haystack, $needle)
+{
+    return (strpos($haystack, $needle) === 0);
+}
+
+/**
+ * @param $haystack
+ * @param $needle
+ * @return bool
+ */
+function ends_with($haystack, $needle)
+{
+    $length = strlen($needle);
+    if ($length === 0) {
+        return true;
+    }
+    return (substr($haystack, -$length) === $needle);
 }

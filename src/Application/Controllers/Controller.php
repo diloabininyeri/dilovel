@@ -22,7 +22,9 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        Auth::user()->logout();
+
+        return starts_with('merhaba','mer');
+         Auth::user()->logout();
         return Auth::user()->can('book')->view(Book::find(2));
 
         //App::addDeferObject(new ExampleShutdownListener());
