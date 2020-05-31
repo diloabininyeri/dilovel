@@ -3,10 +3,13 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Mappers\ForExampleMapper;
 use App\Application\Models\Book;
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
+use App\Components\Arr\Arr;
 use App\Components\Auth\User\Auth;
+use App\Components\NullObject;
 use App\Components\String\Str;
 use JsonException;
 
@@ -23,10 +26,16 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        $str = new Str('///MERHABA/////');
-        return $str
-            ->length()
-             ->md5();
+        $mapper= Arr::mapper(
+            new ForExampleMapper(),
+            array(
+                ['id'=>12,'name'=>'dılo sürücü'],
+                ['id'=>14,'name'=>'aysun kyacı'])
+        );
+
+        foreach ($mapper as $item) {
+            echo   $item->getName()."<br>";
+        }
 
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
