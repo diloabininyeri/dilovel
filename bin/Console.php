@@ -11,6 +11,7 @@ use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateCustomRequestCommand;
 use Bin\Commands\CreateMiddlewareCommand;
 use Bin\Commands\CreateModelCommand;
+use Bin\Commands\CreateObjectMapperCommand;
 use Bin\Commands\CreatePolicyCommand;
 use Bin\Commands\CreateQueueClassCommand;
 use Bin\Commands\CreateRuleCommand;
@@ -50,5 +51,6 @@ class Console extends CustomCommandCall
         'queue:listen'=>QueueListenCommand::class,
         'queue:status'=>QueueListenStatusCommand::class,
         'make:policy'=>CreatePolicyCommand::class,
+        'make:mapper'=>CreateObjectMapperCommand::class
     ];
 }
