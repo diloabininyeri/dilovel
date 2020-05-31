@@ -7,6 +7,7 @@ use App\Application\Models\Book;
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Auth\User\Auth;
+use App\Components\String\Str;
 use JsonException;
 
 /**
@@ -22,10 +23,9 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+        $str=new Str('merhaba');
+        return $str->str_shuffle()->strtoupper();
 
-        return starts_with('merhaba','mer');
-         Auth::user()->logout();
-        return Auth::user()->can('book')->view(Book::find(2));
 
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
