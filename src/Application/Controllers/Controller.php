@@ -23,9 +23,10 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        $str=new Str('merhaba');
-        return $str->str_shuffle()->strtoupper();
-
+        $str = new Str('///MERHABA/////');
+        return $str
+            ->length()
+             ->md5();
 
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');

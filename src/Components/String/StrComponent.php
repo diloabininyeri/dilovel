@@ -12,7 +12,7 @@ namespace App\Components\String;
  * @method self mb_strtolower()
  * @method self lcfirst()
  * @method self ucfirst()
- * @method self  trim(string $charList)
+ * @method self trim(string $charList)
  * @method self rtrim(string $charList)
  * @method self ltrim(string $charList)
  * @method self strchr(string $chr)
@@ -21,6 +21,7 @@ namespace App\Components\String;
  * @method self nl2br()
  * @method self str_pad($quantity,$complete)
  * @method self str_shuffle()
+ * @method self strlen()
  *
  */
 class StrComponent
@@ -46,6 +47,14 @@ class StrComponent
     public function isContains($haystack): bool
     {
         return strpos($this->string, $haystack)!==false;
+    }
+
+    /**
+     * @return self
+     */
+    public function length():self
+    {
+        return $this->strlen();
     }
 
     /**
