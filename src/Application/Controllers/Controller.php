@@ -9,6 +9,7 @@ use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Arr\Arr;
 use App\Components\Auth\User\Auth;
+use App\Components\Database\PDO;
 use App\Components\NullObject;
 use App\Components\String\Str;
 use JsonException;
@@ -34,8 +35,11 @@ class Controller
         );
 
         foreach ($mapper as $item) {
-            echo   $item->getName()."<br>";
+              //echo $item->getName()."<br>";
         }
+
+        $pdo=PDO::connection('mongo');
+        return $pdo->query('select * from users')->fetchAll();
 
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');
