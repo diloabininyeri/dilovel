@@ -36,7 +36,7 @@ class Connection
     }
 
     /**
-     * @return PDO
+     * @return PDOAdaptor
      */
     public function pdo(): PDO
     {
@@ -44,7 +44,7 @@ class Connection
     }
 
     /**
-     * @return PDO
+     * @return PDOAdaptor
      */
     private function getPdoInstance(): PDO
     {

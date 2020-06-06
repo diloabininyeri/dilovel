@@ -17,7 +17,7 @@ class HasOneBuilder
      */
     private Model $model;
     /**
-     * @var PDO
+     * @var PDOAdaptor
      */
     private PDO $pdoConnection;
 
@@ -38,7 +38,7 @@ class HasOneBuilder
      * @param Model $model
      * @param Model $relationModelInstance
      * @param Model $mainModel
-     * @param PDO $pdoConnection
+     * @param PDOAdaptor $pdoConnection
      * @param string $foreignKey
      */
     public function __construct(Model $model, Model $relationModelInstance, Model $mainModel, PDO $pdoConnection, string $foreignKey)

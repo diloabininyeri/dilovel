@@ -39,7 +39,7 @@ abstract class Model
     }
 
     /**
-     * @return PDO
+     * @return PDOAdaptor
      */
     public function pdoConnection(): PDO
     {

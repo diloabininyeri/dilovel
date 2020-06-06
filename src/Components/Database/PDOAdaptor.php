@@ -10,7 +10,7 @@ use RuntimeException;
  * Class PDO
  * @package App\Components\Database
  */
-class PDO
+class PDOAdaptor
 {
     /**
      * @var string $message

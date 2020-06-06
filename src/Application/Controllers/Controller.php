@@ -9,7 +9,7 @@ use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Arr\Arr;
 use App\Components\Auth\User\Auth;
-use App\Components\Database\PDO;
+use App\Components\Database\PDOAdaptor;
 use App\Components\NullObject;
 use App\Components\String\Str;
 use JsonException;
@@ -24,6 +24,7 @@ class Controller
      * @param TcNoVerifyRequest $request
      * @return false|string
      * @throws JsonException
+     * @throws \Exception
      */
     public function index(TcNoVerifyRequest $request)
     {
@@ -38,8 +39,8 @@ class Controller
               //echo $item->getName()."<br>";
         }
 
-        $pdo=PDO::connection('default');
-        return $pdo->query('select * from users')->fetchAll();
+        $pdo=PDOAdaptor::connection('default');
+        return $pdo->query('select * from users')->fetchAll(\PDO::FETCH_ASSOC);
 
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');

@@ -28,7 +28,7 @@ class FetchStatement
     private array $bindArray;
 
     /**
-     * @var PDO $pdo
+     * @var PDOAdaptor $pdo
      */
     private PDO $pdo;
 
@@ -121,7 +121,7 @@ class FetchStatement
     }
 
     /**
-     * @param PDO $pdo
+     * @param PDOAdaptor $pdo
      * @return FetchStatement
      */
     public function setPdo(PDO $pdo): FetchStatement
@@ -149,7 +149,7 @@ class FetchStatement
     }
 
     /**
-     * @return PDO
+     * @return PDOAdaptor
      */
     private function getPdo(): PDO
     {

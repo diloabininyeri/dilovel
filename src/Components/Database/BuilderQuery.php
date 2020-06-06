@@ -18,7 +18,7 @@ class BuilderQuery
     private Model $modelInstance;
 
     /**
-     * @var PDO
+     * @var PDOAdaptor
      */
     private PDO $pdo;
 
@@ -71,7 +71,7 @@ class BuilderQuery
     /**
      * BuilderQuery constructor.
      * @param Model $model
-     * @param PDO $pdo
+     * @param PDOAdaptor $pdo
      */
     public function __construct(Model $model, PDO $pdo)
     {
