@@ -38,7 +38,7 @@ class Controller
               //echo $item->getName()."<br>";
         }
 
-        $pdo=PDO::connection('mongo');
+        $pdo=PDO::connection('default');
         return $pdo->query('select * from users')->fetchAll();
 
         //App::addDeferObject(new ExampleShutdownListener());

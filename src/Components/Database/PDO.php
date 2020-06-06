@@ -12,6 +12,10 @@ use RuntimeException;
  */
 class PDO
 {
+    /**
+     * @var string $message
+     */
+    private static string $message='%s index not found in src/config/pdo.php';
 
 
     /**
@@ -26,6 +30,7 @@ class PDO
         if($configArray!==null) {
             return Connection::make(get_config_array('pdo')[$name])->pdo();
         }
-        throw new RuntimeException("$name config not found in config/pdo.php");
+
+        throw new RuntimeException(sprintf(self::$message,$name));
     }
 }
