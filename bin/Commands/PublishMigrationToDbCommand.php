@@ -3,6 +3,8 @@
 
 namespace Bin\Commands;
 
+use App\Components\Database\Migration\CallMigrationObjects;
+use App\Components\Database\Migration\MigrationStorage;
 use Bin\Components\CommandInterface;
 
 class PublishMigrationToDbCommand implements CommandInterface
@@ -11,6 +13,8 @@ class PublishMigrationToDbCommand implements CommandInterface
 
     public function handle(?array $parameters): void
     {
-        // TODO: Implement handle() method.
+        CallMigrationObjects::create();
+        $migrations= MigrationStorage::all();
+        print_r($migrations);
     }
 }

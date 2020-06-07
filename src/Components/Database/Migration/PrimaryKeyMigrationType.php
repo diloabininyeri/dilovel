@@ -13,7 +13,7 @@ class PrimaryKeyMigrationType extends AbstractMigrationDataType
 {
     use MigrationDataTypeDestructTrait;
 
-    private string $type='int';
+    private string $type='INTEGER';
 
     /**
      * @var bool $isAutoIncrement
