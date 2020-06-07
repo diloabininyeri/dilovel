@@ -3,6 +3,8 @@
 
 namespace App\Components\Database\Migration;
 
+use Bin\Components\ColorConsole;
+
 /**
  * Class CallMigrationObjects
  * @package App\Components\Database\Migration
@@ -27,7 +29,9 @@ class CallMigrationObjects
     public static function drop():void
     {
         foreach (self::getMigrationPaths() as $migrationPath) {
-            CreateMigrationObject::fromFile($migrationPath)->drop();
+            echo CreateMigrationObject::fromFile($migrationPath)->drop().PHP_EOL;
         }
+
+        echo ColorConsole::getInstance()->getColoredString('command executed', 'green').PHP_EOL;
     }
 }

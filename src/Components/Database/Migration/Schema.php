@@ -4,6 +4,7 @@
 namespace App\Components\Database\Migration;
 
 use App\Components\Database\PDOAdaptor;
+use Bin\Components\ColorConsole;
 use Closure;
 use Exception;
 
@@ -33,6 +34,9 @@ class Schema
      */
     public function drop(string $table)
     {
-        PDOAdaptor::connection($this->pdoConnectionName)->exec("DROP TABLE $table");
+        $isDeleted=PDOAdaptor::connection($this->pdoConnectionName)->exec("DROP TABLE $table");
+        if ($isDeleted) {
+            echo ColorConsole::getInstance()->getColoredString("$table deleted").PHP_EOL;
+        }
     }
 }

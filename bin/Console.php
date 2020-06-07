@@ -17,7 +17,9 @@ use Bin\Commands\CreateQueueClassCommand;
 use Bin\Commands\CreateRuleCommand;
 use Bin\Commands\CreateViewCommand;
 use Bin\Commands\DeleteControllerCommand;
+use Bin\Commands\DropTableFromMigrations;
 use Bin\Commands\ErrorLogChangedCommand;
+use Bin\Commands\PublishMigrationToDbCommand;
 use Bin\Commands\QueueListenCommand;
 use Bin\Commands\QueueListenStatusCommand;
 use Bin\Commands\ServeCommand;
@@ -51,6 +53,8 @@ class Console extends CustomCommandCall
         'queue:listen'=>QueueListenCommand::class,
         'queue:status'=>QueueListenStatusCommand::class,
         'make:policy'=>CreatePolicyCommand::class,
-        'make:mapper'=>CreateObjectMapperCommand::class
+        'make:mapper'=>CreateObjectMapperCommand::class,
+        'tables:create'=>PublishMigrationToDbCommand::class,
+        'tables:drop'=>DropTableFromMigrations::class,
     ];
 }
