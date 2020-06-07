@@ -14,6 +14,16 @@ class PrimaryKeyMigrationType extends AbstractMigrationDataType
     use MigrationDataTypeDestructTrait;
 
     private string $type='int';
+
+    /**
+     * @var bool $isAutoIncrement
+     */
+    private bool $isAutoIncrement=true;
+
+    /**
+     * @var bool $isPrimaryKey
+     */
+    private bool $isPrimaryKey=true;
     /**
      * PrimaryKeyMigrationType constructor.
      * @param string $table

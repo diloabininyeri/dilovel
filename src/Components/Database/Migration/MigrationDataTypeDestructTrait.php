@@ -15,7 +15,9 @@ trait MigrationDataTypeDestructTrait
             'type'=>$this->type,
             'nullable' => $this->isNullable,
             'length' => $this->length,
-            'unique' => $this->isUnique
+            'unique' => $this->isUnique,
+            'auto_increment'=>$this->isAutoIncrement ?? false,
+            'primary_key'=>$this->isPrimaryKey ?? false,
 
         ]);
     }

@@ -31,6 +31,8 @@ class MigrationStorage
             'length' => $attributes['length'],
             'nullable' => $attributes['nullable'],
             'unique' => $attributes['nullable'],
+            'auto_increment'=>$attributes['auto_increment'],
+            'primary_key'=>$attributes['primary_key'],
 
         ];
     }
