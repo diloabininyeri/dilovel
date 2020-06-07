@@ -3,7 +3,6 @@
 
 namespace App\Interfaces;
 
-
 /**
  * Interface MigrationInterface
  * @package App\Interfaces

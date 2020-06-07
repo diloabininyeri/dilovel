@@ -11,16 +11,13 @@ use App\Interfaces\MigrationInterface;
 
 class ExampleMigration implements MigrationInterface
 {
-
     public function create():void
     {
-        Schema::connection('default')->create('peoples',function (MigrationBuilder $migration){
-
-            $migration->primaryKey('id');
-            $migration->string('name');
+        Schema::connection('default')->create('peoples', static function (MigrationBuilder $migration) {
+            $migration->primaryKey('id')->length(100)->unique();
+            $migration->string('name')->nullable();
             $migration->string('surname');
             $migration->dateTime('date');
-
         });
     }
 

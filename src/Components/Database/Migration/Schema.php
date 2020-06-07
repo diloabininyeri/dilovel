@@ -21,9 +21,9 @@ class Schema
         return new self($name);
     }
 
-    public  function create(string $table,Closure  $closure)
+    public function create(string $table, Closure  $closure)
     {
-       return  $closure(new MigrationBuilder($table,$this->pdoConnectionName));
+        return  $closure(new MigrationBuilder($table, $this->pdoConnectionName));
     }
 
 
@@ -31,7 +31,7 @@ class Schema
      * @param string $table
      * @throws Exception
      */
-    public  function drop(string $table)
+    public function drop(string $table)
     {
         PDOAdaptor::connection($this->pdoConnectionName)->exec("DROP TABLE $table");
     }
