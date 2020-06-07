@@ -4,6 +4,7 @@ namespace App\Components\Database;
 
 
 use Exception;
+use PDO;
 use RuntimeException;
 
 /**
@@ -20,10 +21,10 @@ class PDOAdaptor
 
     /**
      * @param string $name
-     * @return \PDO
+     * @return PDO
      * @throws Exception
      */
-    public static function connection(string $name): \PDO
+    public static function connection(string $name='default'): PDO
     {
 
         $configArray=get_config_array('pdo')[$name] ?? null;
