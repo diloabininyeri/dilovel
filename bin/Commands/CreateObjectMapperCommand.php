@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-
 use Bin\Components\ColorConsole;
 
 class CreateObjectMapperCommand
