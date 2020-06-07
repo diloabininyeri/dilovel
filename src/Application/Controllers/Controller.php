@@ -9,6 +9,8 @@ use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Arr\Arr;
 use App\Components\Auth\User\Auth;
+use App\Components\Database\Migration\CallMigrationObjects;
+use App\Components\Database\Migration\MigrationStorage;
 use App\Components\Database\PDOAdaptor;
 use App\Components\NullObject;
 use App\Components\String\Str;
@@ -35,12 +37,27 @@ class Controller
                 ['id'=>14,'name'=>'aysun kyacı'])
         );
 
-        foreach ($mapper as $item) {
-            //echo $item->getName()."<br>";
+
+        CallMigrationObjects::create();
+        $migrations= MigrationStorage::all();
+
+        $tables= array_keys($migrations);
+
+        echo '<pre>';
+        foreach ($tables as $table) {
+
+            $string = null;
+            foreach ($migrations[$table] as $key=>$value) {
+
+                foreach ($value as $itemName=>$itemValue) {
+                    echo $table.'   '.$itemName.'<======>'.$itemValue."<br>";
+                }
+                echo "<br><br><br>";
+            }
+
         }
 
-        $pdo=PDOAdaptor::connection('default');
-        return $pdo->query('select * from users')->fetchAll(\PDO::FETCH_ASSOC);
+
 
         //App::addDeferObject(new ExampleShutdownListener());
         //return $request->is('mobile');

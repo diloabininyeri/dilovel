@@ -16,9 +16,10 @@ class customerMigration2020065 implements MigrationInterface
     {
         Schema::connection('default')->create('customers', static function (MigrationBuilder $migration) {
             $migration->primaryKey('id')->length(100)->unique();
+            $migration->integer('city_id');
             $migration->string('customer_name')->nullable();
-            $migration->string('city_id');
-            $migration->dateTime('date');
+            $migration->text('about');
+            $migration->dateTime('created_at');
         });
     }
 

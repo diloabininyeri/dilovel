@@ -3,18 +3,22 @@
 
 namespace App\Components\Database\Migration;
 
+
 /**
- * Class StringMigrationType
+ * Class IntegerMigrationType
  * @package App\Components\Database\Migration
  */
-class StringMigrationType extends AbstractMigrationDataType
+class IntegerMigrationType extends AbstractMigrationDataType
 {
     use MigrationDataTypeDestructTrait;
 
-    private string $type='VARCHAR';
+    /**
+     * @var string
+     */
+    private string $type='INTEGER';
 
     /**
-     * StringMigrationType constructor.
+     * IntegerMigrationType constructor.
      * @param string $table
      * @param string $column
      * @param $connectionName
@@ -25,4 +29,5 @@ class StringMigrationType extends AbstractMigrationDataType
         $this->column = $column;
         $this->connectionName = $connectionName;
     }
+
 }

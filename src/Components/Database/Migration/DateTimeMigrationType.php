@@ -3,26 +3,33 @@
 
 namespace App\Components\Database\Migration;
 
+
 /**
- * Class StringMigrationType
+ * Class DateTimeMigrationType
  * @package App\Components\Database\Migration
  */
-class StringMigrationType extends AbstractMigrationDataType
+class DateTimeMigrationType extends AbstractMigrationDataType
 {
     use MigrationDataTypeDestructTrait;
 
-    private string $type='VARCHAR';
+    /**
+     * @var string
+     */
+    private string $type='DATETIME';
 
     /**
-     * StringMigrationType constructor.
+     * DateTimeMigrationType constructor.
      * @param string $table
      * @param string $column
      * @param $connectionName
      */
     public function __construct(string $table, string $column, $connectionName)
     {
+        $this->length=10;
         $this->table = $table;
         $this->column = $column;
         $this->connectionName = $connectionName;
     }
+
+
 }
