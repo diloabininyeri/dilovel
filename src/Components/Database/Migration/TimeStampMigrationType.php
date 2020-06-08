@@ -32,6 +32,7 @@ class TimeStampMigrationType extends AbstractMigrationDataType
                 'unique' => $this->isUnique,
                 'auto_increment' => $this->isAutoIncrement ?? false,
                 'primary_key' => $this->isPrimaryKey ?? false,
+                'default'=>null
 
             ]);
         }

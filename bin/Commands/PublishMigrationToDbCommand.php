@@ -31,26 +31,27 @@ class PublishMigrationToDbCommand implements CommandInterface
             foreach ($migrations[$table] as $key => $value) {
                 if (in_array($value['type'], $withoutLengths, true)) {
                     $sql .= sprintf(
-                        '%s %s %s %s,',
+                        '%s %s %s %s %s,',
                         $value['column_name'],
                         $value['type'],
-                        (int) $value['nullable']===1 ? 'not null':'',
-                        (int)$value['unique']===1 ? 'unique' :'',
+                        $value['nullable']===true ? '':'NOT NULL',
+                        $value['unique']===true ? 'unique' :'',
+                        $value['default']!==null ? "DEFAULT {$value['default']}":'',
                     );
                 } else {
                     $sql .= sprintf(
-                        '%s %s(%d) %s %s,',
+                        '%s %s(%d) %s %s %s,',
                         $value['column_name'],
                         $value['type'],
                         $value['length'],
-                        $value['nullable']===false ? 'not null':'',
-                        $value['unique']===true ? 'unique' :'',
+                        $value['nullable']===false ? 'NOT NULL':'',
+                        $value['unique']===true ? 'UNIQUE' :'',
+                        $value['default']!==null ? "DEFAULT {$value['default']}":'',
                     );
                 }
             }
             $sql = rtrim($sql, ',');
             $sql .= ')';
-
             echo PDOAdaptor::connection($migrations[$table][0]['connection_name'])->exec($sql) ?: ColorConsole::getInstance()->getColoredString("$table migrated\n", 'green');
         }
     }

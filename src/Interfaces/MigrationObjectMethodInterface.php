@@ -39,6 +39,12 @@ interface MigrationObjectMethodInterface
     public function length(int $length): self;
 
     /**
+     * @param $default
+     * @return $this
+     */
+    public function default($default):self;
+
+    /**
      *
      */
     public function __destruct();

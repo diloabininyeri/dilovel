@@ -38,6 +38,11 @@ abstract class AbstractMigrationDataType implements MigrationObjectMethodInterfa
      */
     protected int $length=45;
 
+
+    /**
+     * @var string|null
+     */
+    protected ?string $default=null;
     /**
      * @return $this
      */
@@ -53,6 +58,16 @@ abstract class AbstractMigrationDataType implements MigrationObjectMethodInterfa
     public function unique(): self
     {
         $this->isUnique=true;
+        return $this;
+    }
+
+    /**
+     * @param $default
+     * @return $this
+     */
+    public function default($default):self
+    {
+        $this->default=$default;
         return $this;
     }
 
