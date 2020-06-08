@@ -42,7 +42,7 @@ class PublishMigrationToDbCommand implements CommandInterface
      */
     private function createTable(array $tables, array $migrations): void
     {
-        $withoutLengths = ['TEXT', 'LONGTEXT'];
+        $withoutLengths = ['TEXT', 'LONGTEXT','JSON','LONGTEXT'];
         foreach ($tables as $table) {
             $sql = "CREATE TABLE IF NOT EXISTS $table (";
             foreach ($migrations[$table] as $key => $value) {

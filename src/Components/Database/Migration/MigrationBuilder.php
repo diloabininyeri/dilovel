@@ -68,6 +68,14 @@ class MigrationBuilder
 
     /**
      * @param string $column
+     * @return TinyintMigrationType
+     */
+    public function tinyint(string $column): TinyintMigrationType
+    {
+        return new TinyintMigrationType($this->table, $column, $this->connectionName);
+    }
+    /**
+     * @param string $column
      * @return IntegerMigrationType
      */
     public function integer(string $column): IntegerMigrationType
@@ -76,10 +84,28 @@ class MigrationBuilder
     }
 
     /**
+     * @param string $column
+     * @return JsonMigrationType
+     */
+    public function json(string $column):JsonMigrationType
+    {
+        return new JsonMigrationType($this->table, $column, $this->connectionName);
+    }
+
+    /**
      * @return TimeStampMigrationType
      */
     public function timestamp():TimeStampMigrationType
     {
         return new TimeStampMigrationType($this->table, $this->connectionName);
+    }
+
+    /**
+     * @param string $column
+     * @return LongTextMigrationType
+     */
+    public function longText(string $column): LongTextMigrationType
+    {
+        return new LongTextMigrationType($this->table, $column, $this->connectionName);
     }
 }
