@@ -15,6 +15,7 @@ class PaymentsCreateMigration implements MigrationInterface
     {
         Schema::connection('default')->create('payments', static function (MigrationBuilder $migration) {
             $migration->primaryKey('id')->length(100)->unique();
+            $migration->string('name')->unique()->length(112);
             $migration->timestamp();
         });
     }

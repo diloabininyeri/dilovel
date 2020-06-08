@@ -80,6 +80,6 @@ class MigrationBuilder
      */
     public function timestamp():TimeStampMigrationType
     {
-        return new TimeStampMigrationType($this->table,  $this->connectionName);
+        return new TimeStampMigrationType($this->table, $this->connectionName);
     }
 }

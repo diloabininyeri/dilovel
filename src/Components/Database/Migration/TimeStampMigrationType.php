@@ -14,7 +14,7 @@ class TimeStampMigrationType extends AbstractMigrationDataType
      */
     private string $type = 'TIMESTAMP';
 
-    public function __construct(string $table,  $connectionName,$column=null)
+    public function __construct(string $table, $connectionName, $column=null)
     {
         $this->table = $table;
         $this->length=6;

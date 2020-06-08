@@ -26,19 +26,30 @@ class PublishMigrationToDbCommand implements CommandInterface
     private function createTable(array $tables, array $migrations): void
     {
         $withoutLengths = ['TEXT', 'LONGTEXT'];
-
         foreach ($tables as $table) {
             $sql = "CREATE TABLE IF NOT EXISTS $table (";
             foreach ($migrations[$table] as $key => $value) {
                 if (in_array($value['type'], $withoutLengths, true)) {
-                    $sql .= sprintf('%s %s,', $value['column_name'], $value['type']);
+                    $sql .= sprintf(
+                        '%s %s %s %s,',
+                        $value['column_name'],
+                        $value['type'],
+                        (int) $value['nullable']===1 ? 'not null':'',
+                        (int)$value['unique']===1 ? 'unique' :'',
+                    );
                 } else {
-                    $sql .= sprintf('%s %s(%d),', $value['column_name'], $value['type'], $value['length']);
+                    $sql .= sprintf(
+                        '%s %s(%d) %s %s,',
+                        $value['column_name'],
+                        $value['type'],
+                        $value['length'],
+                        $value['nullable']===false ? 'not null':'',
+                        $value['unique']===true ? 'unique' :'',
+                    );
                 }
             }
             $sql = rtrim($sql, ',');
             $sql .= ')';
-
 
             echo PDOAdaptor::connection($migrations[$table][0]['connection_name'])->exec($sql) ?: ColorConsole::getInstance()->getColoredString("$table migrated\n", 'green');
         }
