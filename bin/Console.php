@@ -54,7 +54,7 @@ class Console extends CustomCommandCall
         'queue:status'=>QueueListenStatusCommand::class,
         'make:policy'=>CreatePolicyCommand::class,
         'make:mapper'=>CreateObjectMapperCommand::class,
-        'tables:create'=>PublishMigrationToDbCommand::class,
-        'tables:drop'=>DropTableFromMigrations::class,
+        'migrations:publish'=>PublishMigrationToDbCommand::class,
+        'migrations:drop'=>DropTableFromMigrations::class,
     ];
 }

@@ -54,7 +54,7 @@ class MigrationBuilder
      */
     public function dateTime(string $column):DateTimeMigrationType
     {
-        return new DateTimeMigrationType($this->table,$column,$this->connectionName);
+        return new DateTimeMigrationType($this->table, $column, $this->connectionName);
     }
 
     /**

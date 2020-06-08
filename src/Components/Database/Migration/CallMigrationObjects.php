@@ -29,9 +29,9 @@ class CallMigrationObjects
     public static function drop():void
     {
         foreach (self::getMigrationPaths() as $migrationPath) {
-            echo CreateMigrationObject::fromFile($migrationPath)->drop().PHP_EOL;
+            echo CreateMigrationObject::fromFile($migrationPath)->drop();
         }
 
-        echo ColorConsole::getInstance()->getColoredString('command executed', 'green').PHP_EOL;
+        echo ColorConsole::getInstance()->getColoredString('command executed', 'green');
     }
 }

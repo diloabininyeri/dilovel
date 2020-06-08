@@ -3,7 +3,6 @@
 
 namespace App\Components\Database\Migration;
 
-
 /**
  * Class IntegerMigrationType
  * @package App\Components\Database\Migration
@@ -29,5 +28,4 @@ class IntegerMigrationType extends AbstractMigrationDataType
         $this->column = $column;
         $this->connectionName = $connectionName;
     }
-
 }

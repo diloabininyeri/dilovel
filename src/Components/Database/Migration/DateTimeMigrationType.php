@@ -3,7 +3,6 @@
 
 namespace App\Components\Database\Migration;
 
-
 /**
  * Class DateTimeMigrationType
  * @package App\Components\Database\Migration
@@ -25,11 +24,9 @@ class DateTimeMigrationType extends AbstractMigrationDataType
      */
     public function __construct(string $table, string $column, $connectionName)
     {
-        $this->length=10;
+        $this->length=6;
         $this->table = $table;
         $this->column = $column;
         $this->connectionName = $connectionName;
     }
-
-
 }

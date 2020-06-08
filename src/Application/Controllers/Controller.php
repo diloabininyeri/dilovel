@@ -45,16 +45,13 @@ class Controller
 
         echo '<pre>';
         foreach ($tables as $table) {
-
             $string = null;
             foreach ($migrations[$table] as $key=>$value) {
-
                 foreach ($value as $itemName=>$itemValue) {
                     echo $table.'   '.$itemName.'<======>'.$itemValue."<br>";
                 }
                 echo "<br><br><br>";
             }
-
         }
 
 
