@@ -13,7 +13,7 @@ class PaymentsCreateMigration implements MigrationInterface
 {
     public function create():void
     {
-        Schema::connection('default')->create('$table_name', static function (MigrationBuilder $migration) {
+        Schema::connection('default')->create('payments', static function (MigrationBuilder $migration) {
             $migration->primaryKey('id')->length(100)->unique();
             $migration->timestamp();
         });
@@ -25,6 +25,6 @@ class PaymentsCreateMigration implements MigrationInterface
      */
     public function drop():void
     {
-        Schema::connection('default')->drop('$table_name');
+        Schema::connection('default')->drop('payments');
     }
 }

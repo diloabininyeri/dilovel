@@ -19,7 +19,7 @@ class customerMigration2020065 implements MigrationInterface
             $migration->integer('city_id');
             $migration->string('customer_name')->nullable();
             $migration->text('about');
-            $migration->dateTime('created_at');
+            $migration->timestamp();
         });
     }
 

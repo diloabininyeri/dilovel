@@ -18,6 +18,7 @@ class ExampleMigration implements MigrationInterface
             $migration->string('name')->nullable();
             $migration->string('surname');
             $migration->dateTime('date');
+            $migration->timestamp();
         });
     }
 
