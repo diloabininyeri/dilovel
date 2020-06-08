@@ -9,10 +9,12 @@ use App\Components\Database\Migration\MysqlType\JsonMigrationType;
 use App\Components\Database\Migration\MysqlType\LongTextMigrationType;
 use App\Components\Database\Migration\MysqlType\MediumTextMigrationType;
 use App\Components\Database\Migration\MysqlType\PrimaryKeyMigrationType;
+use App\Components\Database\Migration\MysqlType\SmallIntMigrationType;
 use App\Components\Database\Migration\MysqlType\StringMigrationType;
 use App\Components\Database\Migration\MysqlType\TextMigrationType;
 use App\Components\Database\Migration\MysqlType\TimeStampMigrationType;
 use App\Components\Database\Migration\MysqlType\TinyintMigrationType;
+use App\Components\Database\Migration\MysqlType\TinyTextMigrationType;
 
 /**
  * Class MigrationBuilder
@@ -88,6 +90,15 @@ class MigrationBuilder
 
     /**
      * @param string $column
+     * @return TinyTextMigrationType
+     */
+    public function tinyText(string $column):TinyTextMigrationType
+    {
+        return new TinyTextMigrationType($this->table, $column, $this->connectionName);
+    }
+
+    /**
+     * @param string $column
      * @return TinyintMigrationType
      */
     public function tinyint(string $column): TinyintMigrationType
@@ -101,6 +112,15 @@ class MigrationBuilder
     public function integer(string $column): IntegerMigrationType
     {
         return new IntegerMigrationType($this->table, $column, $this->connectionName);
+    }
+
+    /**
+     * @param string $column
+     * @return SmallIntMigrationType
+     */
+    public function smallInt(string $column):SmallIntMigrationType
+    {
+        return new SmallIntMigrationType($this->table, $column, $this->connectionName);
     }
 
     /**
