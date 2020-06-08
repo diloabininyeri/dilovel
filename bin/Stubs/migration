@@ -13,9 +13,9 @@ class $name implements MigrationInterface
 {
     public function create():void
     {
-        Schema::connection('default')->create('$table_name', static function (MigrationBuilder $migration) {
-            $migration->primaryKey('id')->length(100)->unique();
-            $migration->timestamp();
+        Schema::connection('default')->create('$table_name', static function (MigrationBuilder $table) {
+            $table->primaryKey('id')->length(100)->unique();
+            $table->timestamp();
         });
     }
 

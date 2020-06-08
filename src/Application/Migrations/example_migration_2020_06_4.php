@@ -13,12 +13,12 @@ class ExampleMigration implements MigrationInterface
 {
     public function create():void
     {
-        Schema::connection('default')->create('peoples', static function (MigrationBuilder $migration) {
-            $migration->primaryKey('id')->length(100)->unique();
-            $migration->string('name')->nullable();
-            $migration->string('surname')->comment('surname foo bar comment');
-            $migration->dateTime('date');
-            $migration->timestamp();
+        Schema::connection('default')->create('peoples', static function (MigrationBuilder $table) {
+            $table->primaryKey('id')->length(100)->unique();
+            $table->string('name')->nullable();
+            $table->string('surname')->comment('surname foo bar comment');
+            $table->dateTime('date');
+            $table->timestamp();
         });
     }
 

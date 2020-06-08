@@ -14,12 +14,12 @@ class customerMigration2020065 implements MigrationInterface
 {
     public function create(): void
     {
-        Schema::connection('default')->create('customers', static function (MigrationBuilder $migration) {
-            $migration->primaryKey('id')->length(100)->unique();
-            $migration->integer('city_id');
-            $migration->string('customer_name')->nullable();
-            $migration->text('about');
-            $migration->timestamp();
+        Schema::connection('default')->create('customers', static function (MigrationBuilder $table) {
+            $table->primaryKey('id')->length(100)->unique();
+            $table->integer('city_id');
+            $table->string('customer_name')->nullable();
+            $table->text('about');
+            $table->timestamp();
         });
     }
 
