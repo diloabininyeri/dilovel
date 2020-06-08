@@ -3,6 +3,7 @@
 
 namespace App\Components\Database\Migration;
 
+use App\Components\Database\Migration\MysqlType\BooleanMigrationType;
 use App\Components\Database\Migration\MysqlType\DateTimeMigrationType;
 use App\Components\Database\Migration\MysqlType\IntegerMigrationType;
 use App\Components\Database\Migration\MysqlType\JsonMigrationType;
@@ -121,6 +122,15 @@ class MigrationBuilder
     public function smallInt(string $column):SmallIntMigrationType
     {
         return new SmallIntMigrationType($this->table, $column, $this->connectionName);
+    }
+
+    /**
+     * @param string $column
+     * @return BooleanMigrationType
+     */
+    public function boolean(string $column):BooleanMigrationType
+    {
+        return new BooleanMigrationType($this->table, $column, $this->connectionName);
     }
 
     /**
