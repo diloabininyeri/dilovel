@@ -17,6 +17,7 @@ class Deneme_textCreateMigration implements MigrationInterface
             $table->primaryKey('id')->length(100)->unique();
             $table->smallInt('deneme_small_int');
             $table->tinyText('tiny_text_deneme');
+            $table->boolean('status')->default(1);
             $table->mediumText('medium_text_deneme');
             $table->timestamp();
         });
