@@ -10,6 +10,7 @@ use Bin\Commands\CreateCommand;
 use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateCustomRequestCommand;
 use Bin\Commands\CreateMiddlewareCommand;
+use Bin\Commands\CreateMigrationCommand;
 use Bin\Commands\CreateModelCommand;
 use Bin\Commands\CreateObjectMapperCommand;
 use Bin\Commands\CreatePolicyCommand;
@@ -54,6 +55,7 @@ class Console extends CustomCommandCall
         'queue:status'=>QueueListenStatusCommand::class,
         'make:policy'=>CreatePolicyCommand::class,
         'make:mapper'=>CreateObjectMapperCommand::class,
+        'make:migration'=>CreateMigrationCommand::class,
         'migrations:publish'=>PublishMigrationToDbCommand::class,
         'migrations:drop'=>DropTableFromMigrations::class,
     ];

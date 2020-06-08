@@ -74,4 +74,8 @@ class MigrationBuilder
     {
         return new IntegerMigrationType($this->table, $column, $this->connectionName);
     }
+
+    public function timestamp()
+    {
+    }
 }

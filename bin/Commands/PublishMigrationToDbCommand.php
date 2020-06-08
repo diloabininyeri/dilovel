@@ -21,7 +21,6 @@ class PublishMigrationToDbCommand implements CommandInterface
         $tables = array_keys($migrations);
 
         $this->createTable($tables, $migrations);
-
     }
 
     private function createTable(array $tables, array $migrations): void
@@ -29,7 +28,6 @@ class PublishMigrationToDbCommand implements CommandInterface
         $withoutLengths = ['TEXT', 'LONGTEXT'];
 
         foreach ($tables as $table) {
-
             $sql = "CREATE TABLE IF NOT EXISTS $table (";
             foreach ($migrations[$table] as $key => $value) {
                 if (in_array($value['type'], $withoutLengths, true)) {
@@ -43,8 +41,6 @@ class PublishMigrationToDbCommand implements CommandInterface
 
 
             echo PDOAdaptor::connection($migrations[$table][0]['connection_name'])->exec($sql) ?: ColorConsole::getInstance()->getColoredString("$table migrated\n", 'green');
-
-
         }
     }
 }
