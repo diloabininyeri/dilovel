@@ -48,22 +48,24 @@ class PublishMigrationToDbCommand implements CommandInterface
             foreach ($migrations[$table] as $key => $value) {
                 if (in_array($value['type'], $withoutLengths, true)) {
                     $sql .= sprintf(
-                        '%s %s %s %s %s %s,',
+                        '%s %s %s%s %s %s,',
                         $value['column_name'],
                         $value['type'],
                         $value['nullable'] === true ? '' : 'NOT NULL',
-                        $value['unique'] === true ? 'unique' : '',
+                        (bool)$value['unique'] === true ? 'UNIQUE' : '',
                         $value['default'] !== null ? "DEFAULT {$value['default']}" : '',
                         $value['comment'] !== null ? "COMMENT '" . $value['comment'] . "'" : '',
                     );
                 } else {
                     $sql .= sprintf(
-                        '%s %s(%d) %s %s %s %s,',
+                        '%s %s(%d) %s %s %s %s %s %s,',
                         $value['column_name'],
                         $value['type'],
                         $value['length'],
+                        (bool)$value['primary_key'] === true ? 'PRIMARY KEY' : '',
+                        (bool)$value['auto_increment'] === true ? 'AUTO_INCREMENT' : '',
                         $value['nullable'] === false ? 'NOT NULL' : '',
-                        $value['unique'] === true ? 'UNIQUE' : '',
+                        (bool)$value['unique'] === true ? 'UNIQUE' : '',
                         $value['default'] !== null ? "DEFAULT {$value['default']}" : '',
                         $value['comment'] !== null ? "COMMENT '" . $value['comment'] . "'" : '',
                     );
@@ -74,6 +76,7 @@ class PublishMigrationToDbCommand implements CommandInterface
             echo PDOAdaptor::connection($migrations[$table][0]['connection_name'])
                 ->exec($sql) ?: ColorConsole::getInstance()
                 ->getColoredString("$table migrated\n", 'green');
+            usleep(200000);
         }
     }
 }

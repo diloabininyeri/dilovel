@@ -24,6 +24,7 @@ class PrimaryKeyMigrationType extends AbstractMigrationDataType
      * @var bool $isPrimaryKey
      */
     private bool $isPrimaryKey=true;
+
     /**
      * PrimaryKeyMigrationType constructor.
      * @param string $table
@@ -35,5 +36,6 @@ class PrimaryKeyMigrationType extends AbstractMigrationDataType
         $this->column = $column;
         $this->table = $table;
         $this->connectionName = $connectionName;
+        $this->unique();
     }
 }
