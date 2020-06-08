@@ -22,21 +22,10 @@ class MigrationStorage
      * @param $connectionName
      * @param $attributes
      */
-    public static function add($table, $connectionName, $attributes)
+    public static function add(string$table, string $connectionName,array $attributes)
     {
-        static::$migrationObjects[$table][] = [
-            'connection_name' => $connectionName,
-            'column_name'=>$attributes['column_name'],
-            'type'=>$attributes['type'],
-            'length' => $attributes['length'],
-            'nullable' => $attributes['nullable'],
-            'unique' => $attributes['nullable'],
-            'auto_increment'=>$attributes['auto_increment'],
-            'primary_key'=>$attributes['primary_key'],
-            'default'=>$attributes['default'],
-            'comment'=>$attributes['comment'],
-
-        ];
+        $attributes['connection_name']=$connectionName;
+        static::$migrationObjects[$table][] = $attributes;
     }
 
     /**
