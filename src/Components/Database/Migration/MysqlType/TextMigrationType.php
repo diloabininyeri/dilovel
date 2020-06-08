@@ -1,23 +1,26 @@
 <?php
 
 
-namespace App\Components\Database\Migration;
+namespace App\Components\Database\Migration\MysqlType;
+
+use App\Components\Database\Migration\AbstractMigrationDataType;
+use App\Components\Database\Traits\MigrationDataTypeDestructTrait;
 
 /**
- * Class JsonMigrationType
+ * Class TextMigrationType
  * @package App\Components\Database\Migration
  */
-class JsonMigrationType extends AbstractMigrationDataType
+class TextMigrationType extends AbstractMigrationDataType
 {
     use MigrationDataTypeDestructTrait;
 
     /**
      * @var string
      */
-    private string $type='JSON';
+    private string $type = 'TEXT';
 
     /**
-     * StringMigrationType constructor.
+     * TextMigrationType constructor.
      * @param string $table
      * @param string $column
      * @param $connectionName
@@ -27,5 +30,6 @@ class JsonMigrationType extends AbstractMigrationDataType
         $this->table = $table;
         $this->column = $column;
         $this->connectionName = $connectionName;
+        unset($this->length);
     }
 }

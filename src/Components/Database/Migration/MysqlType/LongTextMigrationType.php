@@ -1,7 +1,10 @@
 <?php
 
 
-namespace App\Components\Database\Migration;
+namespace App\Components\Database\Migration\MysqlType;
+
+use App\Components\Database\Migration\AbstractMigrationDataType;
+use App\Components\Database\Traits\MigrationDataTypeDestructTrait;
 
 /**
  * Class LongTextMigrationType

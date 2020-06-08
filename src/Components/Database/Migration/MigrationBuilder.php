@@ -3,6 +3,17 @@
 
 namespace App\Components\Database\Migration;
 
+use App\Components\Database\Migration\MysqlType\DateTimeMigrationType;
+use App\Components\Database\Migration\MysqlType\IntegerMigrationType;
+use App\Components\Database\Migration\MysqlType\JsonMigrationType;
+use App\Components\Database\Migration\MysqlType\LongTextMigrationType;
+use App\Components\Database\Migration\MysqlType\MediumTextMigrationType;
+use App\Components\Database\Migration\MysqlType\PrimaryKeyMigrationType;
+use App\Components\Database\Migration\MysqlType\StringMigrationType;
+use App\Components\Database\Migration\MysqlType\TextMigrationType;
+use App\Components\Database\Migration\MysqlType\TimeStampMigrationType;
+use App\Components\Database\Migration\MysqlType\TinyintMigrationType;
+
 /**
  * Class MigrationBuilder
  * @package App\Components\Database\Migration
@@ -64,6 +75,15 @@ class MigrationBuilder
     public function text(string $column): TextMigrationType
     {
         return new TextMigrationType($this->table, $column, $this->connectionName);
+    }
+
+    /**
+     * @param string $column
+     * @return MediumTextMigrationType
+     */
+    public function mediumText(string $column):MediumTextMigrationType
+    {
+        return new MediumTextMigrationType($this->table, $column, $this->connectionName);
     }
 
     /**

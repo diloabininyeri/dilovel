@@ -1,20 +1,26 @@
 <?php
 
 
-namespace App\Components\Database\Migration;
+namespace App\Components\Database\Migration\MysqlType;
+
+use App\Components\Database\Migration\AbstractMigrationDataType;
+use App\Components\Database\Traits\MigrationDataTypeDestructTrait;
 
 /**
- * Class StringMigrationType
+ * Class IntegerMigrationType
  * @package App\Components\Database\Migration
  */
-class StringMigrationType extends AbstractMigrationDataType
+class IntegerMigrationType extends AbstractMigrationDataType
 {
     use MigrationDataTypeDestructTrait;
 
-    private string $type='VARCHAR';
+    /**
+     * @var string
+     */
+    private string $type='INTEGER';
 
     /**
-     * StringMigrationType constructor.
+     * IntegerMigrationType constructor.
      * @param string $table
      * @param string $column
      * @param $connectionName

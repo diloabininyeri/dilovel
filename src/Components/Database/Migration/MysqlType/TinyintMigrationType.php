@@ -1,23 +1,19 @@
 <?php
 
 
-namespace App\Components\Database\Migration;
+namespace App\Components\Database\Migration\MysqlType;
 
-/**
- * Class IntegerMigrationType
- * @package App\Components\Database\Migration
- */
-class IntegerMigrationType extends AbstractMigrationDataType
+use App\Components\Database\Migration\AbstractMigrationDataType;
+use App\Components\Database\Traits\MigrationDataTypeDestructTrait;
+
+class TinyintMigrationType extends AbstractMigrationDataType
 {
     use MigrationDataTypeDestructTrait;
 
-    /**
-     * @var string
-     */
-    private string $type='INTEGER';
+    private string $type='TINYINT';
 
     /**
-     * IntegerMigrationType constructor.
+     * StringMigrationType constructor.
      * @param string $table
      * @param string $column
      * @param $connectionName
@@ -27,5 +23,6 @@ class IntegerMigrationType extends AbstractMigrationDataType
         $this->table = $table;
         $this->column = $column;
         $this->connectionName = $connectionName;
+        $this->length=3;
     }
 }

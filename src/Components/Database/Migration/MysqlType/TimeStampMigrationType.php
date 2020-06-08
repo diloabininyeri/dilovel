@@ -1,11 +1,14 @@
 <?php
 
 
-namespace App\Components\Database\Migration;
+namespace App\Components\Database\Migration\MysqlType;
+
+use App\Components\Database\Migration\AbstractMigrationDataType;
+use App\Components\Database\Migration\MigrationStorage;
 
 /**
  * Class TimeStampMigrationType
- * @package App\Components\Database\Migration
+ * @package App\Components\Database\Migration\MysqlType
  */
 class TimeStampMigrationType extends AbstractMigrationDataType
 {

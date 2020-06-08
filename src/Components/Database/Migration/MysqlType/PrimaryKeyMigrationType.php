@@ -1,13 +1,15 @@
 <?php
 
 
-namespace App\Components\Database\Migration;
+namespace App\Components\Database\Migration\MysqlType;
 
+use App\Components\Database\Migration\AbstractMigrationDataType;
+use App\Components\Database\Traits\MigrationDataTypeDestructTrait;
 use App\Interfaces\MigrationObjectMethodInterface;
 
 /**
  * Class PrimaryKeyMigrationType
- * @package App\Components\Database\Migration
+ * @package App\Components\Database\Migration\MysqlType
  */
 class PrimaryKeyMigrationType extends AbstractMigrationDataType
 {

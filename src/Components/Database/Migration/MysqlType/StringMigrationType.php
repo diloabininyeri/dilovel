@@ -1,13 +1,20 @@
 <?php
 
 
-namespace App\Components\Database\Migration;
+namespace App\Components\Database\Migration\MysqlType;
 
-class TinyintMigrationType extends AbstractMigrationDataType
+use App\Components\Database\Migration\AbstractMigrationDataType;
+use App\Components\Database\Traits\MigrationDataTypeDestructTrait;
+
+/**
+ * Class StringMigrationType
+ * @package App\Components\Database\Migration
+ */
+class StringMigrationType extends AbstractMigrationDataType
 {
     use MigrationDataTypeDestructTrait;
 
-    private string $type='TINYINT';
+    private string $type='VARCHAR';
 
     /**
      * StringMigrationType constructor.
@@ -20,6 +27,5 @@ class TinyintMigrationType extends AbstractMigrationDataType
         $this->table = $table;
         $this->column = $column;
         $this->connectionName = $connectionName;
-        $this->length=3;
     }
 }

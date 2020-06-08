@@ -1,7 +1,9 @@
 <?php
 
 
-namespace App\Components\Database\Migration;
+namespace App\Components\Database\Traits;
+
+use App\Components\Database\Migration\MigrationStorage;
 
 trait MigrationDataTypeDestructTrait
 {
