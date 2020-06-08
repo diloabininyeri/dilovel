@@ -34,7 +34,7 @@ class Schema
      */
     public function drop(string $table)
     {
-        $isDeleted=PDOAdaptor::connection($this->pdoConnectionName)->exec("DROP TABLE $table");
+        $isDeleted=PDOAdaptor::connection($this->pdoConnectionName)->exec("DROP TABLE IF EXISTS $table");
         if ($isDeleted) {
             echo ColorConsole::getInstance()->getColoredString("$table deleted").PHP_EOL;
         }
