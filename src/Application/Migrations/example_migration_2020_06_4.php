@@ -16,7 +16,7 @@ class ExampleMigration implements MigrationInterface
         Schema::connection('default')->create('peoples', static function (MigrationBuilder $migration) {
             $migration->primaryKey('id')->length(100)->unique();
             $migration->string('name')->nullable();
-            $migration->string('surname');
+            $migration->string('surname')->comment('surname foo bar comment');
             $migration->dateTime('date');
             $migration->timestamp();
         });

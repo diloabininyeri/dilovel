@@ -45,6 +45,12 @@ interface MigrationObjectMethodInterface
     public function default($default):self;
 
     /**
+     * @param string $comment
+     * @return $this
+     */
+    public function comment(string $comment):self;
+
+    /**
      *
      */
     public function __destruct();

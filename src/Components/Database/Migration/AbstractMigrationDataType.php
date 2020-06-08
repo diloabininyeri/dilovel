@@ -43,6 +43,11 @@ abstract class AbstractMigrationDataType implements MigrationObjectMethodInterfa
      * @var string|null
      */
     protected ?string $default=null;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $comment=null;
     /**
      * @return $this
      */
@@ -71,6 +76,11 @@ abstract class AbstractMigrationDataType implements MigrationObjectMethodInterfa
         return $this;
     }
 
+    public function comment(string $comment):self
+    {
+        $this->comment=$comment;
+        return $this;
+    }
     /**
      * @param int $length
      * @return $this
