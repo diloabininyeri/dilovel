@@ -22,7 +22,7 @@ class MigrationStorage
      * @param $connectionName
      * @param $attributes
      */
-    public static function add(string$table, string $connectionName,array $attributes)
+    public static function add(string$table, string $connectionName,array $attributes): void
     {
         $attributes['connection_name']=$connectionName;
         static::$migrationObjects[$table][] = $attributes;
@@ -40,7 +40,7 @@ class MigrationStorage
     /**
      * @return array
      */
-    public static function all()
+    public static function all(): array
     {
         return static::$migrationObjects;
     }
