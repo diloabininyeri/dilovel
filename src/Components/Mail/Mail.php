@@ -30,6 +30,16 @@ class Mail
     }
 
     /**
+     * @param $renderedContent
+     * @return Swift_Message
+     */
+    public function setView(string $renderedContent): Swift_Message
+    {
+        $this->message->setContentType('text/html');
+        return $this->message->setBody($renderedContent);
+    }
+
+    /**
      * @param $name
      * @param $arguments
      * @return mixed

@@ -12,6 +12,7 @@ use App\Components\Auth\User\Auth;
 use App\Components\Database\Migration\CallMigrationObjects;
 use App\Components\Database\Migration\MigrationStorage;
 use App\Components\Database\PDOAdaptor;
+use App\Components\Mail\Mail;
 use App\Components\NullObject;
 use App\Components\String\Str;
 use JsonException;
@@ -30,30 +31,23 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+        $mail=new Mail();
+        $mail->setSubject('title mail');
+        $mail->setTo('berxudar@gmail.com');
+        $mail->setView(view('index'));
+        $mail->setSender('dilsizkaval@windowslive.com');
+        return $mail->send();
+
+
+
+
+
         $mapper= Arr::mapper(
             new ForExampleMapper(),
             array(
                 ['id'=>12,'name'=>'dılo sürücü'],
                 ['id'=>14,'name'=>'aysun kyacı'])
         );
-
-
-        CallMigrationObjects::create();
-        $migrations= MigrationStorage::all();
-
-        $tables= array_keys($migrations);
-
-        echo '<pre>';
-        foreach ($tables as $table) {
-            $string = null;
-            foreach ($migrations[$table] as $key=>$value) {
-                foreach ($value as $itemName=>$itemValue) {
-                    echo $table.'   '.$itemName.'<======>'.$itemValue."<br>";
-                }
-                echo "<br><br><br>";
-            }
-        }
-
 
 
         //App::addDeferObject(new ExampleShutdownListener());
