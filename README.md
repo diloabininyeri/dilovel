@@ -2,7 +2,8 @@
 
 #continues to develop
 
-###### -mvc-hmvc
+**mvc-hmvc components** 
+###### -auth
 ###### -view cache 
 ###### -router
 ###### -middleware
@@ -13,15 +14,16 @@
 ###### -template engine
 ###### -mailing 
 ###### -request management
->######-file
->######-sessions
->######-cookie
->######-url
->######-redirect
->######-device checks( as mobile etc)
+>-file <br>
+>-sessions<br>
+>-cookie<br>
+>-url<br>
+>-redirect<br>
+>-device checks( as mobile etc)
 ###### -request validation
 ###### -sessions 
 ###### -flash sessions 
+###### -flash sessions  errors
 ###### more ....
 
 
