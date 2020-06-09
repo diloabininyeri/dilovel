@@ -1,5 +1,14 @@
 # DILOVEL php framework 
 
+
+```<?php
+ 
+ Router::get('/', fn () => view('index'))->name('index');
+
+ Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
+     Router::get('admin', fn () =>env('REDIS_HOST'));
+ });
+```
 #continues to develop
 
 **mvc-hmvc components** 
