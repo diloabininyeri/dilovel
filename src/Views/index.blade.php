@@ -22,6 +22,9 @@
         </div>
 
         <div class="text-center">{{5340111111|phone}}</div>
+        @mobile()
+        <div class="text-center">thix text will showing in mobile</div>
+        @endmobile
 
 
     </div>
