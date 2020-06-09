@@ -31,10 +31,15 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Mail::to('berxudar@gmail.com', static function (Mail $mail) {
+       /* return Mail::to('berxudar@gmail.com', static function (Mail $mail) {
             $mail->setSubject('title mail');
             $mail->setView(view('index'));
             $mail->setSender('dilsizkaval@windowslive.com');
+        });*/
+
+
+        Mail::to('berxudar@gmail.com',static function (Mail $mail) {
+            $mail->setView(view('index'));
         });
 
 
@@ -46,12 +51,12 @@ class Controller
          return $mail->send();*/
 
 
-        $mapper = Arr::mapper(
+        /*$mapper = Arr::mapper(
             new ForExampleMapper(),
             array(
                 ['id' => 12, 'name' => 'dılo sürücü'],
                 ['id' => 14, 'name' => 'aysun kyacı'])
-        );
+        );*/
 
 
         //App::addDeferObject(new ExampleShutdownListener());
