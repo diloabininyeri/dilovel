@@ -3,6 +3,7 @@
 
 namespace App\Components\Mail;
 
+use Closure;
 use Swift_Attachment;
 use Swift_Message;
 
@@ -11,6 +12,7 @@ use Swift_Message;
  * @package App\Components\Mail
  * @mixin Swift_Message
  * @noinspection PhpUnused
+ * @method static to(string $toMail, Closure $param)
  */
 class Mail
 {
@@ -26,7 +28,7 @@ class Mail
      */
     public function __construct()
     {
-        $this->message=new Swift_Message();
+        $this->message = new Swift_Message();
     }
 
     /**
@@ -49,10 +51,15 @@ class Mail
         return $this->message->$name(...$arguments);
     }
 
+    /**
+     * @param string $filePath
+     * @return Swift_Message
+     */
     public function attach(string $filePath): Swift_Message
     {
         return $this->message->attach(Swift_Attachment::fromPath($filePath));
     }
+
 
     /**
      * @return int
@@ -60,5 +67,21 @@ class Mail
     public function send(): int
     {
         return SwiftMailer::initial()->send($this->message);
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public static function __callStatic($name, $arguments)
+    {
+        if ($name === 'to') {
+            [$toMail, $callback] = $arguments;
+            $mailObject=new self();
+            $callback($mailObject);
+            $mailObject->setTo($toMail);
+            return $mailObject->send();
+        }
     }
 }

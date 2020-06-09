@@ -26,7 +26,7 @@ class SendEmail implements QueueInterface
         $mail->attach(__FILE__);
         $mail->setBody('message content foo bar ');
         $mail->setFrom('dilsizkaval@windowslive.com');
-        return $mail->send();
+        return $mail->to();
     }
 
     /**
