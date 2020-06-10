@@ -31,14 +31,14 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-       /* return Mail::to('berxudar@gmail.com', static function (Mail $mail) {
-            $mail->setSubject('title mail');
-            $mail->setView(view('index'));
-            $mail->setSender('dilsizkaval@windowslive.com');
-        });*/
+        /* return Mail::to('berxudar@gmail.com', static function (Mail $mail) {
+             $mail->setSubject('title mail');
+             $mail->setView(view('index'));
+             $mail->setSender('dilsizkaval@windowslive.com');
+         });*/
 
 
-        Mail::to('berxudar@gmail.com',static function (Mail $mail) {
+        Mail::to('berxudar@gmail.com', static function (Mail $mail) {
             $mail->setView(view('index'));
         });
 

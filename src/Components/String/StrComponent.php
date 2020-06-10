@@ -123,6 +123,39 @@ class StrComponent
     }
 
     /**
+     * @param $search
+     * @param $replace
+     * @return StrComponent
+     */
+    public function replace($search, $replace): StrComponent
+    {
+        return $this->returnSelf(str_replace($search, $replace, $this->string));
+    }
+
+    /**
+     * @return $this
+     */
+    public function deleteNumeric():self
+    {
+        $replaceString = preg_replace('/\d/', '', $this->string);
+        return $this->returnSelf($replaceString);
+    }
+
+    /**
+     * @return $this
+     * @noinspection NotOptimalRegularExpressionsInspection
+     */
+    public function deleteLetters():self
+    {
+        $replaceString = preg_replace('/[a-zA-Z-ğüşöçİĞÜŞÖÇ]+/', '', $this->string);
+        return $this->returnSelf($replaceString);
+    }
+
+    public function diff(string $string1, string $string2):self
+    {
+    }
+
+    /**
      * @param $name
      * @param $arguments
      * @return StrComponent
