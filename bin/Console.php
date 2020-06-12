@@ -24,6 +24,7 @@ use Bin\Commands\PublishMigrationToDbCommand;
 use Bin\Commands\QueueListenCommand;
 use Bin\Commands\QueueListenStatusCommand;
 use Bin\Commands\ServeCommand;
+use Bin\Commands\VersionCommand;
 use Bin\Components\CustomCommandCall;
 
 /**
@@ -37,6 +38,9 @@ class Console extends CustomCommandCall
      * @var array|string[]
      */
     protected array $commands = [
+        'version'=>VersionCommand::class,
+        'v'=>VersionCommand::class,
+        '-v'=>VersionCommand::class,
         'make:controller' => CreateControllerCommand::class,
         'delete:controller' => DeleteControllerCommand::class,
         'make:model' => CreateModelCommand::class,
