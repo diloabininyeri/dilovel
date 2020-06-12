@@ -13,7 +13,7 @@ class MainRouter
     /**
      * @var string $method
      */
-    private string $method;
+    private ?string $method=null;
     /**
      * @var array
      */
@@ -49,6 +49,8 @@ class MainRouter
      * @var array
      */
     private ?array $middleware = [];
+
+    private ?string $view=null;
 
     /**
      * @param mixed $name
@@ -121,7 +123,7 @@ class MainRouter
      * @param mixed $secondParameter
      * @return MainRouter
      */
-    public function setSecondParameter($secondParameter): self
+    public function setSecondParameter($secondParameter=null): self
     {
         $this->secondParameter = $secondParameter;
         return $this;
@@ -210,5 +212,22 @@ class MainRouter
     {
         $this->method =strtoupper($method);
         return $this;
+    }
+
+    /**
+     * @param string $view
+     * @return $this
+     */
+    public function view(string $view):self
+    {
+        $this->view=$view;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getView(): ?string
+    {
+        return $this->view;
     }
 }

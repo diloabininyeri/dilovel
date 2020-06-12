@@ -36,7 +36,6 @@ class System
     }
 
     /**
-     * @throws JsonException
      */
     public function startUp(): void
     {
@@ -44,10 +43,19 @@ class System
         $findRouterObject = $compare->findWillWhichExecute();
 
         if ($findRouterObject instanceof RouterObject) {
-            $routeResponse = (new Dispatcher())->route($findRouterObject);
-            $printable = new Printable($routeResponse);
-
-            $printable->output();
+            if ($findRouterObject->getMainRouter()->getView() !== null) {
+                echo view($findRouterObject->getMainRouter()->getView());
+            } else {
+                $this->printable($findRouterObject);
+            }
         }
+    }
+
+
+    private function printable(RouterObject $findRouterObject): void
+    {
+        $routeResponse = (new Dispatcher())->route($findRouterObject);
+        $printable = new Printable($routeResponse);
+        $printable->output();
     }
 }

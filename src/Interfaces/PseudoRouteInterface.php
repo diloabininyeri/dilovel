@@ -15,14 +15,14 @@ interface PseudoRouteInterface
      * @param $callback
      * @return $this
      */
-    public function get($dynamicUrl, $callback): self;
+    public function get($dynamicUrl, $callback=null): self;
 
     /**
      * @param $dynamicUrl
      * @param $callback
      * @return $this
      */
-    public function post($dynamicUrl, $callback): self;
+    public function post($dynamicUrl, $callback=null): self;
 
     /**
      * @param mixed ...$middleware
@@ -35,6 +35,8 @@ interface PseudoRouteInterface
      * @return $this
      */
     public function name(string $name): self;
+
+    public function view(string $view):self ;
 
     /**
      * @param callable $callback

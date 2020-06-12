@@ -11,11 +11,12 @@ use function Composer\Autoload\includeFile;
 /**
  * Class Router
  * @package App\Components\Routers
- * @method static PseudoRouteInterface get($urlPattern, $callback)
- * @method static PseudoRouteInterface post($urlPattern, $callback)
+ * @method static PseudoRouteInterface get($urlPattern, $callback=null)
+ * @method static PseudoRouteInterface post($urlPattern, $callback=null)
  * @method PseudoRouteInterface middleware()
  * @method PseudoRouteInterface name
  * @method PseudoRouteInterface authorize(Closure $callback)
+ * @method static PseudoRouteInterface view(string $uri,string $view)
  */
 class Router
 {
@@ -27,6 +28,12 @@ class Router
      */
     public static function __callStatic($name, $arguments)
     {
+        if ($name === 'view') {
+            return (new MainRouter())
+                ->view($arguments[1])
+                ->setDynamicUrl($arguments[0])
+                ->setMethod('GET');
+        }
         return (new MainRouter())
             ->setDynamicUrl($arguments[0])
             ->setSecondParameter($arguments[1])
