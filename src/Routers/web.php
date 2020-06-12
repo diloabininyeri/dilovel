@@ -34,3 +34,5 @@ Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
 });
 
 Router::auth('App\Application\Auth\Admin', 'isAuth')->path('admin');
+
+Router::auth('App\Application\Auth\Admin', 'isAuth')->path('nested.example');

@@ -69,7 +69,8 @@ class RouterAuth
             call_user_func($this->closure);
         }
         if ($this->path && $this->isAuthorization()) {
-            includeFile("src/Routers/$this->path.php");
+            $path = str_replace('.', '/', $this->path);
+            includeFile("src/Routers/$path.php");
         }
     }
 }
