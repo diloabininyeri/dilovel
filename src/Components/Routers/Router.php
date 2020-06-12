@@ -6,6 +6,7 @@ namespace App\Components\Routers;
 use App\Components\Http\Request;
 use App\Interfaces\PseudoRouteInterface;
 use Closure;
+use function Composer\Autoload\includeFile;
 
 /**
  * Class Router
@@ -53,5 +54,14 @@ class Router
     public static function group($attributes, $callback): void
     {
         (new MainRouter())->group($attributes, $callback);
+    }
+
+    /**
+     * @param string $path
+     */
+    public function path(string $path): void
+    {
+        $routerPath=str_replace('.', '/', $path);
+        includeFile("src/Routers/$routerPath.php");
     }
 }

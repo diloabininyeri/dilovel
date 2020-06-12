@@ -36,7 +36,6 @@ interface PseudoRouteInterface
      */
     public function name(string $name): self;
 
-
     /**
      * @param callable $callback
      * @return $this
