@@ -38,11 +38,12 @@ class Router
      * @param Closure $closure
      * @return mixed
      */
-    public static function auth(string $class, string $method, Closure $closure)
+    public static function auth(string $class, string $method, Closure $closure=null)
     {
-        if (call_user_func([new $class(), $method], new Request())) {
-            return $closure();
-        }
+        return new RouterAuth($class, $method, $closure);
+        /*if (call_user_func([new $class(), $method], new Request())) {
+             return $closure();
+         }*/
     }
 
     /**
