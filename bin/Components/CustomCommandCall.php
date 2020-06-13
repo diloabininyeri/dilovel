@@ -104,6 +104,24 @@ abstract class CustomCommandCall
      */
     private function createNotFoundMessage($command): string
     {
-        return ColorConsole::getInstance()->getColoredString("command not found but you can use\n=>php console $command\n", 'red');
+        echo "did you mean  \n=>php console $command   yes/no : ";
+        $confirm=$this->readLine('');
+        if ($confirm === 'yes') {
+            return  shell_exec("php console $command");
+        }
+        return ColorConsole::getInstance()->getColoredString("\naborted\n", 'red');
+    }
+
+    /**
+     * @param string $quiz
+     * @return string
+     */
+    private function readLine(string $quiz): string
+    {
+        $fh = fopen('php://stdin', 'rb');
+        $userInput = trim(fgets($fh));
+        fclose($fh);
+
+        return $userInput;
     }
 }
