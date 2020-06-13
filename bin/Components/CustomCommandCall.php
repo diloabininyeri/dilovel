@@ -36,7 +36,7 @@ abstract class CustomCommandCall
         [$params, $count] = $parameter;
 
         if ($count < 2) {
-            throw  new RuntimeException('too few parameters !!!');
+            die(shell_exec('php console list'));
         }
         $this->signals = array_slice($params, 1);
     }
