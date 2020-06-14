@@ -24,6 +24,7 @@ use Bin\Commands\ErrorLogChangedCommand;
 use Bin\Commands\PublishMigrationToDbCommand;
 use Bin\Commands\QueueListenCommand;
 use Bin\Commands\QueueListenStatusCommand;
+use Bin\Commands\RouteListCommand;
 use Bin\Commands\ServeCommand;
 use Bin\Commands\VersionCommand;
 use Bin\Components\CustomCommandCall;
@@ -64,5 +65,6 @@ class Console extends CustomCommandCall
         'make:mail'=>CreateMailableCommand::class,
         'migrations:publish'=>PublishMigrationToDbCommand::class,
         'migrations:drop'=>DropTableFromMigrations::class,
+        'router:list'=>RouteListCommand::class,
     ];
 }

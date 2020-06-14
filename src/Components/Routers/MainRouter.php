@@ -167,8 +167,11 @@ class MainRouter
     /**
      * @return string
      */
-    public function getUrlPath(): string
+    public function getUrlPath(): ?string
     {
+        if (PHP_SAPI === "cli") {
+            return null;
+        }
         $url = strtok($_SERVER['REQUEST_URI'], '?');
         return trim($url, '/');
     }
