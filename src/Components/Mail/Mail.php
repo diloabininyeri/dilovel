@@ -3,7 +3,7 @@
 
 namespace App\Components\Mail;
 
-use Closure;
+use RuntimeException;
 use Swift_Attachment;
 use Swift_Message;
 
@@ -83,5 +83,6 @@ class Mail
             $mailObject->setTo($toMail);
             return $mailObject->send();
         }
+        throw new RuntimeException(sprintf('%s method not found in %s', $name, self::class));
     }
 }
