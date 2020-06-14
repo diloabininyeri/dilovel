@@ -3,6 +3,8 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Mail\ExampleMailable;
+use App\Application\Mail\UserMail;
 use App\Application\Mappers\ForExampleMapper;
 use App\Application\Models\Book;
 use App\Application\Models\Users;
@@ -37,6 +39,7 @@ class Controller
              $mail->setSender('dilsizkaval@windowslive.com');
          });*/
 
+        return Mail::to('berxudar@gmail.com', new ExampleMailable('mail test subject'));
 
         Mail::to('berxudar@gmail.com', static function (Mail $mail) {
             $mail->setView(view('index'));

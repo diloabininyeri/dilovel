@@ -12,7 +12,7 @@ use Swift_Message;
  * @package App\Components\Mail
  * @mixin Swift_Message
  * @noinspection PhpUnused
- * @method static to(string $toMail, Closure $param)
+ * @method static to(string $toMail, callable $param)
  */
 class Mail
 {

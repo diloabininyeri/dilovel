@@ -7,10 +7,10 @@ use App\Components\Mail\Mail;
 use App\Interfaces\Mailable;
 
 /**
- * Class UserMail
+ * Class ExampleMailable
  * @package App\Application\Mail
  */
-class UserMail implements Mailable
+class ExampleMailable implements Mailable
 {
     private ?string $subject=null;
 

@@ -9,6 +9,7 @@ use Bin\Commands\CreateBladeFilterCommand;
 use Bin\Commands\CreateCommand;
 use Bin\Commands\CreateControllerCommand;
 use Bin\Commands\CreateCustomRequestCommand;
+use Bin\Commands\CreateMailableCommand;
 use Bin\Commands\CreateMiddlewareCommand;
 use Bin\Commands\CreateMigrationCommand;
 use Bin\Commands\CreateModelCommand;
@@ -60,6 +61,7 @@ class Console extends CustomCommandCall
         'make:policy'=>CreatePolicyCommand::class,
         'make:mapper'=>CreateObjectMapperCommand::class,
         'make:migration'=>CreateMigrationCommand::class,
+        'make:mail'=>CreateMailableCommand::class,
         'migrations:publish'=>PublishMigrationToDbCommand::class,
         'migrations:drop'=>DropTableFromMigrations::class,
     ];
