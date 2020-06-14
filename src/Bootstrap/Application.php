@@ -16,7 +16,6 @@ class Application
      */
     public static function run(): void
     {
-        $bootstrap = new Bootstrap();
-        $bootstrap->loadProviders();
+        Bootstrap::loadProviders();
     }
 }

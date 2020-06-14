@@ -16,7 +16,7 @@ class Bootstrap
     /**
      *
      */
-    public function loadProviders(): void
+    public static function loadProviders(): void
     {
         /**
          * @var  ProviderInterface[] $providers

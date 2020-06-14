@@ -3,6 +3,7 @@
 namespace App\Components\Blade;
 
 use App\Components\Blade\Filter\BladeFilters;
+use App\Components\Exceptions\BladeFilterNotFoundException;
 
 class CurlBracesDirective implements BladeDirectiveInterface
 {
@@ -47,6 +48,8 @@ class CurlBracesDirective implements BladeDirectiveInterface
     /**
      * @param $find
      * @return string
+     * @throws BladeFilterNotFoundException
+     *
      */
     private function buildContent($find): string
     {
