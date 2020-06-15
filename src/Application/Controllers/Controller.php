@@ -33,8 +33,9 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        $users= Users::paginate(20);
-        dd($users);
+        $users= Users::where('id', 30, '>')->paginate(4);
+
+
 
         return view('paginate', compact('users'));
         /* return Mail::to('berxudar@gmail.com', static function (Mail $mail) {

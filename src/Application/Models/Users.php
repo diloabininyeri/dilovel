@@ -10,6 +10,7 @@ use App\Components\Database\BuilderUserModel;
 use App\Components\Database\HasOne;
 use App\Components\Database\HasOneBuilder;
 use App\Components\Database\Model;
+use App\Components\Database\Paginate;
 
 /**
  * Class Users
@@ -18,7 +19,7 @@ use App\Components\Database\Model;
  * @method  static get(...$columns)
  * @property $name
  * @method static BuilderQuery|Users order()
- * @method static BuilderQuery|Users paginate(int $perPage)
+ * @method static Paginate paginate(int $perPage)
  * @method static BuilderQuery|Users find(int $id)
  * @method static BuilderQuery|Users findOrFail(int $id)
  */

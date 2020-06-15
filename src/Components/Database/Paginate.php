@@ -51,71 +51,20 @@ class Paginate implements IteratorAggregate
      */
     public function render(): string
     {
-        return $this->createPaginate();
-    }
-
-    /**
-     * @return string
-     */
-    private function createPaginateBody(): string
-    {
-        $maxPage = $this->maxPage();
-        $currentPage = $this->currentPage();
-
-        $lastPage = $currentPage + $this->perPage;
-        if ($lastPage >= $maxPage) {
-            $lastPage = $maxPage;
-        }
-
-        return $this->createList($currentPage, $lastPage);
-    }
-
-    /**
-     * @param int $currentPage
-     * @param int $lastPage
-     * @return string|null
-     */
-    private function createList(int $currentPage, int $lastPage): ?string
-    {
-        $html = null;
-        $pages=range($currentPage, $lastPage);
-        foreach ($pages as $page) {
-            if ($page === $currentPage) {
-                $html .= sprintf('<li class="page-item active"><a class="page-link" href="?page=%d">%d</a></li>', $page, $page);
-            } else {
-                $html .= sprintf('<li class="page-item"><a class="page-link" href="?page=%d">%d</a></li>', $page, $page);
-            }
-        }
-        return $html;
-    }
-
-    /**
-     * @return string
-     */
-    private function createNav(): string
-    {
-        return '<nav aria-label="...">
-                <ul class="pagination">
-                  <li class="page-item">
-                   <a class="page-link" href="?page=1">0</a>
-              </li>';
-    }
-
-    /**
-     * @return string
-     */
-    private function createPaginate(): string
-    {
-        $html = $this->createNav();
-        $html .= $this->createPaginateBody();
-        $html .= '</ul></nav>';
-        return $html;
+        return (new BuilderPaginate($this))->render();
     }
 
     /**
      * @return int
      */
-    private function maxPage(): int
+    public function perPage():int
+    {
+        return $this->perPage;
+    }
+    /**
+     * @return int
+     */
+    public function maxPage(): int
     {
         return ceil($this->count / $this->perPage);
     }
@@ -125,7 +74,7 @@ class Paginate implements IteratorAggregate
      */
     public function currentPage(): int
     {
-        if ($this->request->get('page')>$this->maxPage()) {
+        if ($this->request->get('page') > $this->maxPage()) {
             return $this->maxPage();
         }
         return (int)$this->request->get('page') ?: 1;
