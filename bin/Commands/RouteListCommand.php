@@ -16,7 +16,6 @@ use function Composer\Autoload\includeFile;
  */
 class RouteListCommand implements CommandInterface
 {
-
     protected string $description = 'print all router list';
     /**
      * @param array|null $parameters

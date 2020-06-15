@@ -863,6 +863,20 @@ class BuilderQuery
     }
 
     /**
+     * @param int $perPage
+     * @return Paginate
+     */
+    public function paginate(int $perPage): Paginate
+    {
+        $that=clone $this;
+        $count=$that->count();
+        $start=request()->get('page') ?:1;
+        $this->limit(($start-1)*$perPage, $perPage);
+        $data=$this->get();
+        return new Paginate($data, $count, $perPage);
+    }
+
+    /**
      * @param bool $isSelected
      * @return BuilderQuery
      */

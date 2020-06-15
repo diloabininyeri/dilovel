@@ -2011,3 +2011,40 @@ Stack trace:
 [29-May-2020 21:31:41 Europe/Helsinki] PHP  17. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/hmvc/src/config/cache.php:10
 [29-May-2020 21:31:41 Europe/Helsinki] PHP  18. Composer\Autoload\includeFile() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:322
 [29-May-2020 21:31:41 Europe/Helsinki] PHP  19. include() /home/zeus/Desktop/hmvc/vendor/composer/ClassLoader.php:444
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP Warning:  Uncaught TypeError: Return value of App\Components\Database\Paginate::__debugInfo() must be of the type array, object returned in /home/zeus/Desktop/hmvc/src/Components/Database/Paginate.php:147
+Stack trace:
+#0 [internal function]: App\Components\Database\Paginate->__debugInfo()
+#1 /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php(37): print_r()
+#2 [internal function]: App\Application\Controllers\Controller->index()
+#3 /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php(70): App\Components\Routers\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(78): App\Components\Routers\CallController->call()
+#6 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(67): App\Components\Routers\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php(40): App\Components\Routers\Dispatcher->callUse in /home/zeus/Desktop/hmvc/src/Components/Database/Paginate.php on line 147
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP Stack trace:
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:24
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:49
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:57
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   7. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   8. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   9. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP  10. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP  11. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP  12. print_r() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:37
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP Fatal error:  __debuginfo() must return an array in /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php on line 37
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP Stack trace:
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/hmvc/index.php:0
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/hmvc/index.php:24
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/hmvc/src/Bootstrap/App.php:23
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:49
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/hmvc/src/Bootstrap/System.php:57
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:40
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   7. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:67
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   8. App\Components\Routers\CallController->call() /home/zeus/Desktop/hmvc/src/Components/Routers/Dispatcher.php:78
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP   9. App\Components\Routers\CallControllerWithoutIoc->call() /home/zeus/Desktop/hmvc/src/Components/Routers/CallController.php:70
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP  10. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP  11. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
+[15-Jun-2020 22:25:45 Europe/Helsinki] PHP  12. print_r() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:37

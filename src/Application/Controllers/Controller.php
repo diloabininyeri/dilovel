@@ -33,17 +33,21 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
+        $users= Users::paginate(20);
+        dd($users);
+
+        return view('paginate', compact('users'));
         /* return Mail::to('berxudar@gmail.com', static function (Mail $mail) {
              $mail->setSubject('title mail');
              $mail->setView(view('index'));
              $mail->setSender('dilsizkaval@windowslive.com');
          });*/
 
-        return Mail::to('berxudar@gmail.com', new ExampleMailable('mail test subject'));
+       /* return Mail::to('berxudar@gmail.com', new ExampleMailable('mail test subject'));
 
         Mail::to('berxudar@gmail.com', static function (Mail $mail) {
             $mail->setView(view('index'));
-        });
+        });*/
 
 
         /* $mail=new Mail();

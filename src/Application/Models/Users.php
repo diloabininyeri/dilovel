@@ -18,6 +18,7 @@ use App\Components\Database\Model;
  * @method  static get(...$columns)
  * @property $name
  * @method static BuilderQuery|Users order()
+ * @method static BuilderQuery|Users paginate(int $perPage)
  * @method static BuilderQuery|Users find(int $id)
  * @method static BuilderQuery|Users findOrFail(int $id)
  */
