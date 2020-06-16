@@ -15,7 +15,7 @@ trait Singleton
     private static ?self $singleton=null;
 
     /**
-     * @return static
+     * @return self
      */
     public static function getInstance(): self
     {

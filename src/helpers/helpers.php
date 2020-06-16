@@ -5,7 +5,7 @@
  */
 
 use App\Components\Arr\DotNotation;
-use App\Components\Cache\Memcache\MemcacheClient;
+use App\Components\Cache\Memcache\Memcache;
 use App\Components\Cart\Cart;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
@@ -321,11 +321,11 @@ function user()
 }
 
 /**
- * @return MemcacheClient
+ * @return Memcache
  */
 function memcached()
 {
-    return MemcacheClient::connection();
+    return Memcache::connection();
 }
 
 /**

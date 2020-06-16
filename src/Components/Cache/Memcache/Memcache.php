@@ -11,7 +11,7 @@ use Memcached;
  * @package App\Components\Cache\Memcache
  * @mixin Memcached
  */
-class MemcacheClient
+class Memcache
 {
     use Singleton {
         getInstance as connection;

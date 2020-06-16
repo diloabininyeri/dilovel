@@ -9,7 +9,7 @@ use App\Interfaces\ViewCacheInterface;
  * Class ViewMemcached
  * @package App\Components\Cache\Memcache
  */
-class ViewMemcached extends MemcacheClient implements ViewCacheInterface
+class ViewMemcached extends Memcache implements ViewCacheInterface
 {
 
 

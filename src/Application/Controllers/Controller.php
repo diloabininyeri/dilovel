@@ -3,21 +3,12 @@
 
 namespace App\Application\Controllers;
 
-use App\Application\Mail\ExampleMailable;
-use App\Application\Mail\UserMail;
-use App\Application\Mappers\ForExampleMapper;
-use App\Application\Models\Book;
-use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
-use App\Components\Arr\Arr;
-use App\Components\Auth\User\Auth;
-use App\Components\Database\Migration\CallMigrationObjects;
-use App\Components\Database\Migration\MigrationStorage;
-use App\Components\Database\PDOAdaptor;
-use App\Components\Mail\Mail;
-use App\Components\NullObject;
-use App\Components\String\Str;
-use JsonException;
+use App\Components\Cache\CacheFactory;
+use App\Components\Cache\Memcache\Memcache;
+use App\Components\Cache\Redis\Redis;
+use App\Components\Cache\Redis\RedisClient;
+use Cache;
 
 /**
  * Class Controller
@@ -27,8 +18,34 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $users= Users::where('id', 30, '>')->paginate(12);
-        return view('paginate', compact('users'));
+        $redis=Redis::connection();
+        echo  $redis->get('name');
+
+        $memcache=Memcache::connection();
+
+        echo $memcache->get('name');
+
+
+
+        /**
+         * simple factory cache
+         */
+        $cache=new CacheFactory('memcache');
+        $memcache=$cache->getInstance();
+        $memcache->set('name', 'from mmm');
+        echo  $memcache->get('name');
+
+
+        $cache=new CacheFactory('redis');
+        $redis=$cache->getInstance();
+        echo  $redis->get('name');
+
+
+
+
+
+        /* $users= Users::where('id', 30, '>')->paginate(12);
+         return view('paginate', compact('users'));*/
         /* return Mail::to('berxudar@gmail.com', static function (Mail $mail) {
              $mail->setSubject('title mail');
              $mail->setView(view('index'));
