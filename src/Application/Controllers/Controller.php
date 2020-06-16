@@ -33,7 +33,7 @@ class Controller
      */
     public function index(TcNoVerifyRequest $request)
     {
-        $users= Users::where('id', 30, '>')->paginate(4);
+        $users= Users::where('id', 30, '>')->paginate(12);
 
 
 

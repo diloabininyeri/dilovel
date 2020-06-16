@@ -29,7 +29,7 @@ class BuilderPaginate
      */
     public function render(): string
     {
-        return $this->createPaginate();
+        return  $this->createNav().$this->createPaginateBody().'</ul></nav>';
     }
 
     /**
@@ -37,27 +37,9 @@ class BuilderPaginate
      */
     private function createPaginateBody(): string
     {
-        $maxPage = $this->paginate->maxPage();
-        $currentPage = $this->paginate->currentPage();
-        $lastPage = $currentPage + $this->paginate->perPage();
-        if ($lastPage >= $maxPage) {
-            $lastPage = $maxPage;
-        }
-
-        return $this->createList($currentPage, $lastPage);
-    }
-
-    /**
-     * @param int $currentPage
-     * @param int $lastPage
-     * @return string|null
-     */
-    private function createList(int $currentPage, int $lastPage): ?string
-    {
         $html = null;
-        $pages=range($currentPage, $lastPage);
-        foreach ($pages as $page) {
-            if ($page === $currentPage) {
+        foreach ($this->createPagesRange(1, $this->paginate->maxPage()) as $page) {
+            if ($page === $this->paginate->currentPage()) {
                 $html .= sprintf('<li class="page-item active"><a class="page-link" href="?page=%d">%d</a></li>', $page, $page);
             } else {
                 $html .= sprintf('<li class="page-item"><a class="page-link" href="?page=%d">%d</a></li>', $page, $page);
@@ -67,18 +49,20 @@ class BuilderPaginate
     }
 
     /**
-     * @return string
+     * @param int $currentPage
+     * @param int $maxPage
+     * @return array
      */
-    private function createNav(): string
+    private function createPagesRange(int $currentPage, int  $maxPage):array
     {
-        return '<nav aria-label="..."><ul class="pagination"><li class="page-item"><a class="page-link" href="?page=1">0</a></li>';
+        return range($currentPage, $maxPage);
     }
 
     /**
      * @return string
      */
-    private function createPaginate(): string
+    private function createNav(): string
     {
-        return  $this->createNav().$this->createPaginateBody().'</ul></nav>';
+        return '<nav aria-label="..."><ul class="pagination"><li class="page-item"><a class="page-link" href="?page=1">0</a></li>';
     }
 }
