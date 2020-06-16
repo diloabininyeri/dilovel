@@ -60,6 +60,21 @@ class RouterAuth
         return call_user_func([new $this->class(), $this->method], new Request());
     }
 
+    private function loadRouterFile():void
+    {
+        if ($this->path) {
+            $path = str_replace('.', '/', $this->path);
+            includeFile("src/Routers/$path.php");
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    private function loadCondition():bool
+    {
+        return PHP_SAPI==='cli' || ($this->path && $this->isAuthorization());
+    }
     /**
      *
      */
@@ -68,9 +83,8 @@ class RouterAuth
         if (($this->path === null) && $this->isAuthorization()) {
             call_user_func($this->closure);
         }
-        if ($this->path && $this->isAuthorization()) {
-            $path = str_replace('.', '/', $this->path);
-            includeFile("src/Routers/$path.php");
+        if ($this->loadCondition()) {
+            $this->loadRouterFile();
         }
     }
 }
