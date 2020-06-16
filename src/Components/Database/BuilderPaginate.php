@@ -3,6 +3,8 @@
 
 namespace App\Components\Database;
 
+use App\Components\Http\Url;
+
 /**
  * Class BuilderPaginate
  * @package App\Components\Database
@@ -21,7 +23,7 @@ class BuilderPaginate
      */
     public function __construct(Paginate $paginate)
     {
-        $this->paginate=$paginate;
+        $this->paginate = $paginate;
     }
 
     /**
@@ -29,20 +31,42 @@ class BuilderPaginate
      */
     public function render(): string
     {
-        return  $this->createNav().$this->createPaginateBody().'</ul></nav>';
+        return $this->createNav() . $this->createPaginateBody() . '</ul></nav>';
     }
 
     /**
      * @return string
      */
+    private function currentUrlWithoutQueries(): string
+    {
+        return (new Url())->withoutQueries();
+    }
+
+    /**
+     * @return string
+     * @noinspection HtmlUnknownTarget
+     *
+     */
     private function createPaginateBody(): string
     {
         $html = null;
+        $uri = $this->currentUrlWithoutQueries();
+
         foreach ($this->createPagesRange(1, $this->paginate->maxPage()) as $page) {
             if ($page === $this->paginate->currentPage()) {
-                $html .= sprintf('<li class="page-item active"><a class="page-link" href="?page=%d">%d</a></li>', $page, $page);
+                $html .= sprintf(
+                    '<li class="page-item active"><a class="page-link" href="%s?page=%d">%d</a></li>',
+                    $uri,
+                    $page,
+                    $page
+                );
             } else {
-                $html .= sprintf('<li class="page-item"><a class="page-link" href="?page=%d">%d</a></li>', $page, $page);
+                $html .= sprintf(
+                    '<li class="page-item"><a class="page-link" href="%s?page=%d">%d</a></li>',
+                    $uri,
+                    $page,
+                    $page
+                );
             }
         }
         return $html;
@@ -53,7 +77,7 @@ class BuilderPaginate
      * @param int $maxPage
      * @return array
      */
-    private function createPagesRange(int $currentPage, int  $maxPage):array
+    private function createPagesRange(int $currentPage, int $maxPage): array
     {
         return range($currentPage, $maxPage);
     }

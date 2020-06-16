@@ -53,14 +53,12 @@ class Url
     {
         return $this->server['SERVER_PORT'];
     }
-
-
     /**
      * @return string
      */
     public function full(): string
     {
-        return sprintf('%s%s', $this->base(), $this->server['REQUEST_URI']);
+        return sprintf('%s%s', $this->base(), rtrim($this->server['REQUEST_URI'], '/'));
     }
 
     /**
