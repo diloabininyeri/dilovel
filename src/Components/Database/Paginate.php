@@ -33,6 +33,11 @@ class Paginate implements IteratorAggregate
     private Request $request;
 
     /**
+     * @var BuilderPaginate $builderPaginate
+     */
+    private BuilderPaginate $builderPaginate;
+
+    /**
      * Paginate constructor.
      * @param Collection $data
      * @param int $count
@@ -44,6 +49,7 @@ class Paginate implements IteratorAggregate
         $this->count = $count;
         $this->perPage = $perPage;
         $this->request = new Request();
+        $this->builderPaginate = new BuilderPaginate($this);
     }
 
     /**
@@ -51,7 +57,16 @@ class Paginate implements IteratorAggregate
      */
     public function render(): string
     {
-        return (new BuilderPaginate($this))->render();
+        return $this->builderPaginate->render();
+    }
+
+    /**
+     * @param array $query
+     * @return BuilderPaginate
+     */
+    public function append(array $query): BuilderPaginate
+    {
+        return $this->builderPaginate->append($query);
     }
 
     /**

@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         <div class="col">
-            {!! $users->render() !!}
+            {!! $users->append(['id'=>1222])->render() !!}
         </div>
     </div>
     </div>
