@@ -85,7 +85,7 @@ class Url
      */
     public function query(): array
     {
-        parse_str($this->parse()['query'] ?? [], $array);
+        parse_str($this->parse()['query'] ?? '', $array);
         return $array;
     }
 
