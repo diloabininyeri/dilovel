@@ -72,6 +72,14 @@ class Url
     }
 
     /**
+     * @return string
+     */
+    public function withoutQueries():string
+    {
+        return sprintf('%s%s', $this->base(), rtrim($this->path(), '/'));
+    }
+
+    /**
      * @return array
      */
     public function query(): array
