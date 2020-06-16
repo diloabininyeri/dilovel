@@ -25,12 +25,6 @@ use JsonException;
  */
 class Controller
 {
-    /**
-     * @param TcNoVerifyRequest $request
-     * @return false|string
-     * @throws JsonException
-     * @throws \Exception
-     */
     public function index(TcNoVerifyRequest $request)
     {
         $users= Users::where('id', 30, '>')->paginate(12);

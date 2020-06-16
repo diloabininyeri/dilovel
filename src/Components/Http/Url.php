@@ -3,6 +3,8 @@
 
 namespace App\Components\Http;
 
+use phpDocumentor\Reflection\Types\This;
+
 /**
  * Class Url
  * @package App\Http
@@ -53,6 +55,7 @@ class Url
     {
         return $this->server['SERVER_PORT'];
     }
+
     /**
      * @return string
      */
@@ -72,7 +75,7 @@ class Url
     /**
      * @return string
      */
-    public function withoutQueries():string
+    public function withoutQueries(): string
     {
         return sprintf('%s%s', $this->base(), rtrim($this->path(), '/'));
     }
@@ -82,10 +85,28 @@ class Url
      */
     public function query(): array
     {
-        parse_str($this->parse()['query'], $array);
+        parse_str($this->parse()['query'] ?? [], $array);
         return $array;
     }
 
+    /**
+     * @param mixed ...$except
+     * @return array
+     */
+    public function except(...$except): ?array
+    {
+        $array = [];
+        foreach ($this->query() as $key => $value) {
+            if (!in_array($key, $except, true)) {
+                $array[$key] = $value;
+            }
+        }
+        return $array;
+    }
+
+    /**
+     * @return mixed|string
+     */
     public function path()
     {
         return $this->parse()['path'];

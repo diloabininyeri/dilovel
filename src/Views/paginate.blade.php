@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         <div class="col">
-            {!! $users->append(['id'=>1222])->render() !!}
+            {!! $users->append(url()->except('page'))->render() !!}
         </div>
     </div>
     </div>
