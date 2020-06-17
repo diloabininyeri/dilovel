@@ -18,7 +18,7 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $redis = Redis::connection();
+        return view_cache('index', 100);
 
         $redis->publish('deneme', 'merhaba dunya');
 
