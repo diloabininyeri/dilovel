@@ -24,6 +24,7 @@ use Bin\Commands\ErrorLogChangedCommand;
 use Bin\Commands\PublishMigrationToDbCommand;
 use Bin\Commands\QueueListenCommand;
 use Bin\Commands\QueueListenStatusCommand;
+use Bin\Commands\RedisMessageConsumerCommand;
 use Bin\Commands\RouteListCommand;
 use Bin\Commands\ServeCommand;
 use Bin\Commands\VersionCommand;
@@ -66,5 +67,6 @@ class Console extends CustomCommandCall
         'migrations:publish'=>PublishMigrationToDbCommand::class,
         'migrations:drop'=>DropTableFromMigrations::class,
         'router:list'=>RouteListCommand::class,
+        'redis:consumer'=>RedisMessageConsumerCommand::class,
     ];
 }

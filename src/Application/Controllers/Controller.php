@@ -20,6 +20,8 @@ class Controller
     {
         $redis = Redis::connection();
 
+        $redis->publish('deneme', 'merhaba dunya');
+
         return $redis->pipeline(function ($pipe) {
             $pipe->ping();
             $pipe->flushdb();

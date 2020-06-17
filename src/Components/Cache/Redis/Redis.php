@@ -3,6 +3,7 @@
 
 namespace App\Components\Cache\Redis;
 
+use App\Components\Message\RedisMessageConsumer;
 use App\Components\Traits\Singleton;
 use Closure;
 use Predis\Client;
@@ -187,7 +188,6 @@ class Redis
     {
         return get_config_array('redis');
     }
-
     /**
      * @param $name
      * @param $arguments
@@ -196,5 +196,10 @@ class Redis
     public function __call($name, $arguments)
     {
         return $this->client->$name(...$arguments);
+    }
+
+    public static function subscribe(string $channel, Closure $closure):void
+    {
+        RedisMessageConsumer::subscribe($channel, $closure);
     }
 }
