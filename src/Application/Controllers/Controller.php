@@ -18,19 +18,25 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $redis=Redis::connection();
-        echo  $redis->get('name');
+        $redis = Redis::connection();
 
-        $memcache=Memcache::connection();
+        return $redis->pipeline(function ($pipe) {
+            $pipe->ping();
+            $pipe->flushdb();
+            $pipe->incrby('counter', 10);
+            $pipe->incrby('counter', 30);
+            $pipe->exists('counter');
+            $pipe->get('counter');
+            $pipe->mget('does_not_exist', 'counter');
+        });
 
-        echo $memcache->get('name');
 
 
 
         /**
          * simple factory cache
          */
-        $cache=new CacheFactory('memcache');
+        /*$cache=new CacheFactory('memcache');
         $memcache=$cache->getInstance();
         $memcache->set('name', 'from mmm');
         echo  $memcache->get('name');
@@ -38,10 +44,7 @@ class Controller
 
         $cache=new CacheFactory('redis');
         $redis=$cache->getInstance();
-        echo  $redis->get('name');
-
-
-
+        echo  $redis->get('name');*/
 
 
         /* $users= Users::where('id', 30, '>')->paginate(12);
@@ -52,11 +55,11 @@ class Controller
              $mail->setSender('dilsizkaval@windowslive.com');
          });*/
 
-       /* return Mail::to('berxudar@gmail.com', new ExampleMailable('mail test subject'));
+        /* return Mail::to('berxudar@gmail.com', new ExampleMailable('mail test subject'));
 
-        Mail::to('berxudar@gmail.com', static function (Mail $mail) {
-            $mail->setView(view('index'));
-        });*/
+         Mail::to('berxudar@gmail.com', static function (Mail $mail) {
+             $mail->setView(view('index'));
+         });*/
 
 
         /* $mail=new Mail();

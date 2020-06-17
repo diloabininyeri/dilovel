@@ -4,13 +4,14 @@
 namespace App\Components\Cache\Redis;
 
 use App\Components\Traits\Singleton;
+use Closure;
 use Predis\Client;
 
 /**
  * Class Redis
  * @package App\Components\Cache\Redis
-
-/**
+ *
+* /**
  * @method int del(array $keys)
  * @method string dump($key)
  * @method int exists($key)
@@ -158,6 +159,7 @@ use Predis\Client;
  * @method string geodist($key, $member1, $member2, $unit = null)
  * @method array georadius($key, $longitude, $latitude, $radius, $unit, array $options = null)
  * @method array georadiusbymember($key, $member, $radius, $unit, array $options = null)
+ * @method pipeline(Closure $param)
  *
  */
 class Redis
