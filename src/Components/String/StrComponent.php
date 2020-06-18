@@ -83,7 +83,7 @@ class StrComponent
      * @param $string
      * @return StrComponent
      */
-    public function returnSelf($string): self
+    private function returnSelf($string): self
     {
         return new self($string);
     }
