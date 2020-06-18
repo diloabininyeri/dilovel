@@ -66,6 +66,19 @@ class StrComponent
         return $this->returnSelf(strstr($this->string, $string));
     }
 
+
+    /**
+     * @param string $delimiter
+     * @param int|null $limit
+     * @return array|null
+     */
+    public function split(string $delimiter, int $limit=null):?array
+    {
+        if ($limit) {
+            return explode($delimiter, $this->string, $limit);
+        }
+        return explode($delimiter, $this->string);
+    }
     /**
      * @param $string
      * @return StrComponent
@@ -92,6 +105,24 @@ class StrComponent
     public function isStartsWith(string $string): bool
     {
         return strpos($this->string, $string) === 0;
+    }
+
+    /**
+     * @param string $string
+     * @return $this
+     */
+    public function addToBeginning(string $string):self
+    {
+        return $this->returnSelf("$string$this->string");
+    }
+
+    /**
+     * @param string $string
+     * @return $this
+     */
+    public function addToEnd(string $string):self
+    {
+        return $this->returnSelf("$this->string$string");
     }
 
     /**
