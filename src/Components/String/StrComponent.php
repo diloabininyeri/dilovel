@@ -151,6 +151,21 @@ class StrComponent
         return $this->returnSelf($replaceString);
     }
 
+    /**
+     * @return $this
+     *
+     */
+    public function slug():self
+    {
+        $string= strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->string)));
+        return $this->returnSelf($string);
+    }
+
+    /**
+     * @param string $string1
+     * @param string $string2
+     * @return $this
+     */
     public function diff(string $string1, string $string2):self
     {
     }
