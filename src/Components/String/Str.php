@@ -24,6 +24,7 @@ namespace App\Components\String;
  * @method static StrComponent str_pad(string $string,int $quantity, $complete)
  * @method static StrComponent str_shuffle(string $string)
  * @method static StrComponent strlen(string $string)
+ * @method static StrComponent str_replace($find,$replace,$string)
  *
  */
 class Str
