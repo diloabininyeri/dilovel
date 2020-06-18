@@ -7,6 +7,23 @@ namespace App\Components\String;
  * Class Str
  * @package App\Components\String
  * @mixin StrComponent
+ * @method static StrComponent slug(string $string)
+ * @method static StrComponent strtoupper(string $string)
+ * @method static StrComponent mb_strtoupper(string $string)
+ * @method static StrComponent strtolower(string $string)
+ * @method static StrComponent mb_strtolower(string $string)
+ * @method static StrComponent lcfirst(string $string)
+ * @method static StrComponent ucfirst(string $string)
+ * @method static StrComponent trim(string $string)
+ * @method static StrComponent rtrim(string $string,string $charList)
+ * @method static StrComponent ltrim(string $string,string $charlist)
+ * @method static StrComponent strchr(string $chr)
+ * @method static StrComponent md5(string $string)
+ * @method static StrComponent sha1(string $string)
+ * @method static StrComponent nl2br(string $string)
+ * @method static StrComponent str_pad(string $string,int $quantity, $complete)
+ * @method static StrComponent str_shuffle(string $string)
+ * @method static StrComponent strlen(string $string)
  *
  */
 class Str
@@ -28,8 +45,8 @@ class Str
      */
     public function __construct(string $string)
     {
-        $this->string=$string;
-        $this->strComponent=new StrComponent($string);
+        $this->string = $string;
+        $this->strComponent = new StrComponent($string);
     }
 
     /**
@@ -76,7 +93,7 @@ class Str
      */
     public static function __callStatic($name, $arguments)
     {
-        $string=$arguments[0];
+        $string = $arguments[0];
         unset($arguments[0]);
         return (new StrComponent($string))->$name(...$arguments);
     }
