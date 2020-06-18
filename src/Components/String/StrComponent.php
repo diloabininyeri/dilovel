@@ -19,7 +19,7 @@ namespace App\Components\String;
  * @method self md5()
  * @method self sha1()
  * @method self nl2br()
- * @method self str_pad($quantity,$complete)
+ * @method self str_pad($quantity, $complete)
  * @method self str_shuffle()
  * @method self strlen()
  *
@@ -46,13 +46,13 @@ class StrComponent
      */
     public function isContains($haystack): bool
     {
-        return strpos($this->string, $haystack)!==false;
+        return strpos($this->string, $haystack) !== false;
     }
 
     /**
      * @return self
      */
-    public function length():self
+    public function length(): self
     {
         return $this->strlen();
     }
@@ -72,13 +72,14 @@ class StrComponent
      * @param int|null $limit
      * @return array|null
      */
-    public function split(string $delimiter, int $limit=null):?array
+    public function split(string $delimiter, int $limit = null): ?array
     {
         if ($limit) {
             return explode($delimiter, $this->string, $limit);
         }
         return explode($delimiter, $this->string);
     }
+
     /**
      * @param $string
      * @return StrComponent
@@ -111,7 +112,7 @@ class StrComponent
      * @param string $string
      * @return $this
      */
-    public function addToBeginning(string $string):self
+    public function addToBeginning(string $string): self
     {
         return $this->returnSelf("$string$this->string");
     }
@@ -120,7 +121,7 @@ class StrComponent
      * @param string $string
      * @return $this
      */
-    public function addToEnd(string $string):self
+    public function addToEnd(string $string): self
     {
         return $this->returnSelf("$this->string$string");
     }
@@ -146,11 +147,13 @@ class StrComponent
 
     /**
      * @param int $multiplier
+     * @param null $separator
      * @return $this
      */
-    public function repeat(int $multiplier): self
+    public function repeat($multiplier, $separator = null): self
     {
-        return $this->returnSelf(str_repeat($this->string, $multiplier));
+        $string = str_repeat($this->string . $separator, $multiplier - 1) . $this->string;
+        return $this->returnSelf($string);
     }
 
     /**
@@ -166,7 +169,7 @@ class StrComponent
     /**
      * @return $this
      */
-    public function deleteNumeric():self
+    public function deleteNumeric(): self
     {
         $replaceString = preg_replace('/\d/', '', $this->string);
         return $this->returnSelf($replaceString);
@@ -176,7 +179,7 @@ class StrComponent
      * @return $this
      * @noinspection NotOptimalRegularExpressionsInspection
      */
-    public function deleteLetters():self
+    public function deleteLetters(): self
     {
         $replaceString = preg_replace('/[a-zA-Z-ğüşöçİĞÜŞÖÇ]+/', '', $this->string);
         return $this->returnSelf($replaceString);
@@ -186,9 +189,9 @@ class StrComponent
      * @return $this
      *
      */
-    public function slug():self
+    public function slug(): self
     {
-        $string= strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->string)));
+        $string = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->string)));
         return $this->returnSelf($string);
     }
 
@@ -197,7 +200,7 @@ class StrComponent
      * @param string $string2
      * @return $this
      */
-    public function diff(string $string1, string $string2):self
+    public function diff(string $string1, string $string2): self
     {
     }
 
