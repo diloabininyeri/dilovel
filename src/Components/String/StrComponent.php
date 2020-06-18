@@ -150,7 +150,7 @@ class StrComponent
      * @param null $separator
      * @return $this
      */
-    public function repeat($multiplier, $separator = null): self
+    public function repeat(int $multiplier, $separator = null): self
     {
         $string = str_repeat($this->string . $separator, $multiplier - 1) . $this->string;
         return $this->returnSelf($string);
