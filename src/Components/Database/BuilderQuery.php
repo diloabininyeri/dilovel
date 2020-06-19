@@ -3,6 +3,7 @@
 namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
+use Exception;
 use JsonException;
 use PDO;
 
@@ -16,11 +17,6 @@ class BuilderQuery
      * @var Model
      */
     private Model $modelInstance;
-
-    /**
-     * @var PDOAdaptor
-     */
-    private PDO $pdo;
 
     /**
      * @var string|null
@@ -67,18 +63,29 @@ class BuilderQuery
      * @var string|null
      */
     private ?string $mixedQuery = null;
+    private string $connectionName;
 
     /**
      * BuilderQuery constructor.
      * @param Model $model
-     * @param PDOAdaptor $pdo
+     * @param string $connectionName
+     *
      */
-    public function __construct(Model $model, PDO $pdo)
+    public function __construct(Model $model, string $connectionName)
     {
         $this->modelInstance = $model;
-        $this->pdo = $pdo;
+        $this->connectionName = $connectionName;
     }
 
+
+    /**
+     * @return PDO
+     * @throws Exception
+     */
+    private function pdoInstance(): PDO
+    {
+        return PDOAdaptor::connection($this->connectionName);
+    }
 
     /**
      * @param mixed ...$columns
@@ -109,7 +116,7 @@ class BuilderQuery
     private function builderUpdateQuery($data): string
     {
         $query = null;
-        $data['updated_at']=now();
+        $data['updated_at'] = now();
         foreach ($data as $key => $value) {
             $query .= " $key=:update_$key ,";
             $this->bindArray[":update_$key"] = $value;
@@ -132,12 +139,14 @@ class BuilderQuery
     /**
      * @param array $data
      * @return bool
+     * @throws Exception
+     *
      */
     public function update(array $data = []): bool
     {
         $this->whereByFind();
         $this->setQuery($this->builderUpdateQuery($data ?: get_object_vars($this->modelInstance)));
-        $query = $this->pdo->prepare($this->getQuery());
+        $query = $this->pdoInstance()->prepare($this->getQuery());
         return $query->execute($this->bindArray);
     }
 
@@ -155,7 +164,7 @@ class BuilderQuery
     private function builderCreateQuery($data): void
     {
         $query = null;
-        $data=array_merge($data, ['created_at'=>now(),'updated_at'=>now()]);
+        $data = array_merge($data, ['created_at' => now(), 'updated_at' => now()]);
         foreach ($data as $key => $value) {
             $query .= ", $key=:insert_$key ";
             $this->bindArray[":insert_$key"] = $value;
@@ -172,10 +181,10 @@ class BuilderQuery
     public function create(array $data)
     {
         $this->builderCreateQuery($data);
-        $sqlQuery = $this->pdo->prepare($this->getQuery());
+        $sqlQuery = $this->pdoInstance()->prepare($this->getQuery());
         $execute = $sqlQuery->execute($this->bindArray);
         if ($execute) {
-            return $this->find($this->pdo->lastInsertId());
+            return $this->find($this->pdoInstance()->lastInsertId());
         }
         return $execute;
     }
@@ -188,7 +197,7 @@ class BuilderQuery
         $this->whereByFind();
 
         $this->setQuery($this->builderDeleteQuery());
-        $query = $this->pdo->prepare($this->getQuery());
+        $query = $this->pdoInstance()->prepare($this->getQuery());
         $query->execute($this->bindArray);
         return $query->rowCount();
     }
@@ -715,12 +724,12 @@ class BuilderQuery
     /**
      * @return object
      */
-    public function save():object
+    public function save(): object
     {
         if ($this->modelInstance->isPrimaryKeyHasValue()) {
-            $execute= $this->update(get_object_vars($this->getModelInstance()));
+            $execute = $this->update(get_object_vars($this->getModelInstance()));
             if ($execute) {
-                return  $this->find($this->getModelInstance()->getPrimaryKeyValue());
+                return $this->find($this->getModelInstance()->getPrimaryKeyValue());
             }
         }
         return $this->create(get_object_vars($this->getModelInstance()));
@@ -748,7 +757,7 @@ class BuilderQuery
         return (new FetchStatement())
             ->setBuilderQuery($this)
             ->setModelClass($this->modelInstance->getTable())
-            ->setPdo($this->pdo)
+            ->setPdo($this->pdoInstance())
             ->setModelClass($this->modelInstance->getStaticClass())
             ->setQuery($this->getQuery())
             ->setBindArray($this->getBindArray());
@@ -868,11 +877,11 @@ class BuilderQuery
      */
     public function paginate(int $perPage): Paginate
     {
-        $that=clone $this;
-        $count=$that->count();
-        $start=request()->get('page') ?:1;
-        $this->limit(($start-1)*$perPage, $perPage);
-        $data=$this->get();
+        $that = clone $this;
+        $count = $that->count();
+        $start = request()->get('page') ?: 1;
+        $this->limit(($start - 1) * $perPage, $perPage);
+        $data = $this->get();
         return new Paginate($data, $count, $perPage);
     }
 
@@ -886,8 +895,12 @@ class BuilderQuery
         return $this;
     }
 
+    /**
+     * @return int
+     * @throws Exception
+     */
     public function lastInsertId(): int
     {
-        return $this->pdo->lastInsertId();
+        return $this->pdoInstance()->lastInsertId();
     }
 }

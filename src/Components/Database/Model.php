@@ -34,18 +34,9 @@ abstract class Model
     {
         $this->builder = new BuilderQuery(
             $this,
-            $this->pdoConnection()
+            $this->getConnection()
         );
     }
-
-    /**
-     * @return PDOAdaptor
-     */
-    public function pdoConnection(): PDO
-    {
-        return Connection::make(get_config_array('pdo')[$this->getConnection()])->pdo();
-    }
-
 
     /**
      * @param string $class
