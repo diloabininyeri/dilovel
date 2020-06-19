@@ -182,7 +182,7 @@ class Bayes
      */
     public function learn($text, $category): Bayes
     {
-        $that =clone $this;
+        $that =$this;
         $that->initializeCategory($category);
         $that->docCount[$category]++;
         $that->totalDocuments++;
