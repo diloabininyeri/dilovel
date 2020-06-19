@@ -3,6 +3,7 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Cache\CacheFactory;
 use App\Components\Cache\Memcache\Memcache;
@@ -20,11 +21,17 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $http = new Http();
+        $user=new Users();
+        $user->name = 'deneme';
+
+        $user->save();
+
+        return $user->lastInsertId();
+        /*$http = new Http();
         $http->get('https://www.google.com/', [
             'q'=>'dılo surucu',
         ]);
-        return $http->getResponse();
+        return $http->getResponse();*/
 
 
         /* $http = new Http();

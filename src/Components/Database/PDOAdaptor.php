@@ -21,7 +21,6 @@ class PDOAdaptor
     /**
      * @param string $name
      * @return PDO
-     * @throws Exception
      */
     public static function connection(string $name='default'): PDO
     {
@@ -30,6 +29,6 @@ class PDOAdaptor
             return Connection::make(get_config_array('pdo')[$name])->pdo();
         }
 
-        throw new RuntimeException(sprintf(self::$message, $name));
+        die(sprintf(self::$message, $name));
     }
 }

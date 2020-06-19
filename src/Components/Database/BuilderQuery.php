@@ -24,6 +24,8 @@ class BuilderQuery
     private ?string $query = null;
 
 
+    private ?PDO $pdoConnection=null;
+
     /**
      * @var array
      */
@@ -80,11 +82,13 @@ class BuilderQuery
 
     /**
      * @return PDO
-     * @throws Exception
      */
     private function pdoInstance(): PDO
     {
-        return PDOAdaptor::connection($this->connectionName);
+        if (!$this->pdoConnection) {
+            $this->pdoConnection = PDOAdaptor::connection($this->connectionName);
+        }
+        return $this->pdoConnection;
     }
 
     /**
@@ -139,7 +143,6 @@ class BuilderQuery
     /**
      * @param array $data
      * @return bool
-     * @throws Exception
      *
      */
     public function update(array $data = []): bool
@@ -422,7 +425,7 @@ class BuilderQuery
      * @param $column
      * @return $this
      */
-    public function builderMinQuery($column)
+    public function builderMinQuery($column): self
     {
         if (!$this->isSelected()) {
             $this->selectQuery = "SELECT MIN($column) AS min";
@@ -723,6 +726,7 @@ class BuilderQuery
 
     /**
      * @return object
+     *
      */
     public function save(): object
     {
@@ -897,7 +901,6 @@ class BuilderQuery
 
     /**
      * @return int
-     * @throws Exception
      */
     public function lastInsertId(): int
     {
