@@ -65,18 +65,15 @@ class BuilderQuery
      * @var string|null
      */
     private ?string $mixedQuery = null;
-    private string $connectionName;
+
 
     /**
      * BuilderQuery constructor.
      * @param Model $model
-     * @param string $connectionName
-     *
      */
-    public function __construct(Model $model, string $connectionName)
+    public function __construct(Model $model)
     {
         $this->modelInstance = $model;
-        $this->connectionName = $connectionName;
     }
 
 
@@ -86,7 +83,7 @@ class BuilderQuery
     private function pdoInstance(): PDO
     {
         if (!$this->pdoConnection) {
-            $this->pdoConnection = PDOAdaptor::connection($this->connectionName);
+            $this->pdoConnection = PDOAdaptor::connection($this->modelInstance->getConnection());
         }
         return $this->pdoConnection;
     }

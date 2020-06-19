@@ -24,7 +24,7 @@ class Controller
         $user=new Users();
         $user->name = 'deneme';
 
-        $user->save();
+        return  $user->save();
 
         return $user->lastInsertId();
         /*$http = new Http();
