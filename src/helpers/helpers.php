@@ -13,6 +13,7 @@ use App\Components\Flash\FlashError;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Routers\GenerateRouter;
+use App\Components\View\Master;
 use App\Components\View\View;
 use App\Components\Routers\Redirect\Redirect;
 use App\Components\Flash\Flash;
@@ -24,6 +25,11 @@ use App\Components\Flash\Flash;
 function fn_e($function)
 {
     return function_exists($function);
+}
+
+function master(string $view)
+{
+    return \view($view, Master::getViewShareVariables($view));
 }
 
 function db_path($file)

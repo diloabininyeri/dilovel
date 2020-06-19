@@ -4,6 +4,7 @@
 namespace App\Providers;
 
 use App\Application\Controllers\MyContainerTest;
+use App\Components\View\Master;
 
 /**
  * Class ContainerProvider

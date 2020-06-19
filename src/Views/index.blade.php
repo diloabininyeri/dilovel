@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="<?= assets('css/style.css') ?>">
 </head>
 <body>
+
 <h2> {{flash('name','danger')}}</h2>
 <div class="container">
+    {!! master('header') !!}
     <div class="area">
         <h2>WELCOME THE HMVC FRAMEWORK</h2>
 
@@ -28,6 +30,7 @@
 
 
     </div>
+    {!! master('footer') !!}
 </div>
 </body>
 </html>

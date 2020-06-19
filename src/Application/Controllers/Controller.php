@@ -18,6 +18,9 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
+        activate_errors();
+        return view('index');
+
         return view_cache('index', 100);
 
         $redis->publish('deneme', 'merhaba dunya');
