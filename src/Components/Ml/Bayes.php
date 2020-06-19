@@ -3,6 +3,9 @@
 
 namespace App\Components\Ml;
 
+use Closure;
+use JsonException;
+
 /**
  * Class Bayes
  * @package App\Components\Ml
@@ -13,7 +16,7 @@ class Bayes
     /**
      * @var array
      */
-    public $STATE_KEYS = [
+    private array $STATE_KEYS = [
         'categories', 'docCount',
         'totalDocuments',
         'vocabulary', 'vocabularySize',
@@ -21,99 +24,85 @@ class Bayes
     ];
 
     /**
-     * hashmap of our category names
-     *
      * @var array
      */
-    public $categories;
+    public array $categories;
 
     /**
-     * document frequency table for each of our categories
-     *  for each category, how often were documents mapped to it
-     *
-     * @var number
-     */
-    public $docCount;
-
-    /**
-     * number of documents we have learned from
-     *
-     * @var number
-     */
-    public $totalDocuments;
-
-    /**
-     * Vocabulary list
-     *
      * @var array
      */
-    public $vocabulary;
+    private array $docCount;
+
+    /**
+     * @var int
+     */
+    private int $totalDocuments;
+
+    /**
+     * @var array
+     */
+    private array $vocabulary;
 
     /**
      * Vocabulary size
      *
-     * @var number
+     * @var int
      */
-    public $vocabularySize;
+    private int  $vocabularySize;
 
     /**
      * for each category, how many words total were mapped to it
      *
-     * @var number
+     * @var int[]
      */
-    public $wordCount;
+    private array $wordCount;
 
     /**
      * word frequency table for each category
      *  for each category, how frequent was a given word mapped to it
      *
-     * @var number
+     * @var integer[]
      */
-    public $wordFrequencyCount;
+    private array $wordFrequencyCount;
 
     /**
      * constructor options which include tokenizer
      *
      * @var array
      */
-    protected $options;
+    protected ?array $options;
 
     /**
      * the tokenizer function
      *
-     * @var function
+     *
      */
-    protected $tokenizer;
+    protected Closure $tokenizer;
+
 
     /**
-     * Initialize an instance of a Naive-Bayes Classifier
-     *
-     * @param array $options
+     * Bayes constructor.
+     * @param null $options
      */
     public function __construct($options = null)
     {
-        // set options object
         $this->options = $options;
         $this->reset();
     }
 
+
     /**
-     * Identify the category of the provided text parameter.
-     *
-     * @param string $text
-     * @return string the category or null
+     * @param $text
+     * @return int|string|null
      */
-    public function categorize($text)
+    public function predict($text)
     {
         $that = $this;
         $maxProbability = -INF;
         $chosenCategory = null;
 
         if ($that->totalDocuments > 0) {
-            $probabilities = $that->probabilities($text);
-
-            // iterate thru our categories to find the one with max probability
-            // for this text
+            $probabilities = $that->calculateProbabilities($text);
             foreach ($probabilities as $category => $logProbability) {
                 if ($logProbability > $maxProbability) {
                     $maxProbability = $logProbability;
@@ -125,15 +114,12 @@ class Bayes
         return $chosenCategory;
     }
 
+
     /**
-     * Build a frequency hashmap where
-     *  - the keys are the entries in `tokens`
-     *  - the values are the frequency of each entry in `tokens`
-     *
-     * @param array $tokens array of string
-     * @return array hashmap of token frequency
+     * @param $tokens
+     * @return array
      */
-    public function frequencyTable($tokens): array
+    private function frequencyTable($tokens): array
     {
         $frequencyTable = [];
         foreach ($tokens as $token) {
@@ -147,24 +133,21 @@ class Bayes
         return $frequencyTable;
     }
 
+
     /**
-     * Deserialize from json
+     * @param $json
+     * @return $this
+     * @throws JsonException
      *
-     * @param object $json string or array
-     * @return Bayes
      */
-    public function fromJson($json)
+    public function fromJson($json):self
     {
         $result = $json;
-
-        // deserialize from json
         if (is_string($json)) {
-            $result = json_decode($json, true);
+            $result = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
         }
 
         $this->reset();
-
-        // deserialize from json
         foreach ($this->STATE_KEYS as $k) {
             if (isset($result[$k])) {
                 $this->{$k} = $result[$k];
@@ -174,13 +157,12 @@ class Bayes
         return $this;
     }
 
+
     /**
-     * Make sure the category exists in dictionary
-     *
-     * @param string $categoryName
-     * @return Bayes
+     * @param $categoryName
+     * @return $this
      */
-    public function initializeCategory($categoryName)
+    private function initializeCategory($categoryName): self
     {
         if (!isset($this->categories[$categoryName])) {
             $this->docCount[$categoryName] = 0;
@@ -192,48 +174,32 @@ class Bayes
         return $this;
     }
 
+
     /**
-     * Teach your classifier
-     *
-     * @param string $text
-     * @param string $category
+     * @param $text
+     * @param $category
      * @return Bayes
      */
-    public function learn($text, $category)
+    public function learn($text, $category): Bayes
     {
-        $that = $this;
-
-        // initialize category data structures if we've never seen this category
+        $that =clone $this;
         $that->initializeCategory($category);
-
-        // update our count of how many documents mapped to this category
         $that->docCount[$category]++;
-
-        // update the total number of documents we have learned from
         $that->totalDocuments++;
-
-        // normalize the text into a word array
         $tokens = ($that->tokenizer)($text);
-
-        // get a frequency count for each token in the text
         $frequencyTable = $that->frequencyTable($tokens);
-
-        // Update vocabulary and word frequency count for this category
         foreach ($frequencyTable as $token => $frequencyInText) {
-            // add this word to our vocabulary if not already existing
             if (!isset($that->vocabulary[$token])) {
                 $that->vocabulary[$token] = true;
                 $that->vocabularySize++;
             }
 
-            // update the frequency information for this word in this category
             if (!isset($that->wordFrequencyCount[$category][$token])) {
                 $that->wordFrequencyCount[$category][$token] = $frequencyInText;
             } else {
                 $that->wordFrequencyCount[$category][$token] += $frequencyInText;
             }
 
-            // update the count of all words we have seen mapped to this category
             $that->wordCount[$category] += $frequencyInText;
         }
 
@@ -241,12 +207,19 @@ class Bayes
     }
 
     /**
-     * Extract the probabilities for each known category
-     *
      * @param string $text
-     * @return array  probabilities by category or null
+     * @return array
      */
-    public function probabilities($text)
+    public function calculate(string $text):array
+    {
+        return $this->calculateProbabilities($text);
+    }
+
+    /**
+     * @param $text
+     * @return array
+     */
+    private function calculateProbabilities($text): array
     {
         $that = $this;
         $probabilities = [];
@@ -255,15 +228,12 @@ class Bayes
             $tokens = ($that->tokenizer)($text);
             $frequencyTable = $that->frequencyTable($tokens);
 
-            // for this text
-            // iterate thru our categories to find the one with max probability
             foreach ($that->categories as $category => $value) {
                 $categoryProbability = $that->docCount[$category] / $that->totalDocuments;
                 $logProbability = log($categoryProbability);
                 foreach ($frequencyTable as $token => $frequencyInText) {
                     $tokenProbability = $that->tokenProbability($token, $category);
 
-                    // determine the log of the P( w | c ) for this word
                     $logProbability += $frequencyInText * log($tokenProbability);
                 }
 
@@ -274,33 +244,19 @@ class Bayes
         return $probabilities;
     }
 
+
     /**
-     * Reset the bayes class
-     *
-     * @return Bayes
+     * @return $this
      */
-    public function reset()
+    public function reset(): self
     {
-        if (!$this->options) {
-            $this->options = [];
-        }
+        $this->options??=[];
 
-        // set default tokenizer
-        $this->tokenizer = function ($text) {
-            // convert everything to lowercase
+        $this->tokenizer = $this->options['tokenizer'] ?? function ($text) {
             $text = mb_strtolower($text);
-
-            // split the words
             preg_match_all('/[[:alpha:]]+/u', $text, $matches);
-
-            // first match list of words
-
             return $matches[0];
         };
-
-        if (isset($this->options['tokenizer'])) {
-            $this->tokenizer = $this->options['tokenizer'];
-        }
 
         $this->categories = [];
         $this->docCount = [];
@@ -314,41 +270,28 @@ class Bayes
     }
 
     /**
-     * Serialize to json
-     *
-     * @return string the json string
+     * @return false|string
+     * @throws JsonException
      */
     public function toJson()
     {
         $result = [];
-
-        // serialize to json
         foreach ($this->STATE_KEYS as $k) {
             $result[$k] = $this->{$k};
         }
 
-        return json_encode($result);
+        return json_encode($result, JSON_THROW_ON_ERROR);
     }
 
     /**
-     * Calculate the probability that a `token` belongs to a `category`
-     *
-     * @param string $token
-     * @param string $category
-     * @return number the probability
+     * @param $token
+     * @param $category
+     * @return float|int
      */
     public function tokenProbability($token, $category)
     {
-        // how many times this word has occurred in documents mapped to this category
-        $wordFrequencyCount = 0;
-        if (isset($this->wordFrequencyCount[$category][$token])) {
-            $wordFrequencyCount = $this->wordFrequencyCount[$category][$token];
-        }
-
-        // what is the count of all words that have ever been mapped to this category
+        $wordFrequencyCount = $this->wordFrequencyCount[$category][$token] ?? 0;
         $wordCount = $this->wordCount[$category];
-
-        // use laplace Add-1 Smoothing equation
 
         return ($wordFrequencyCount + 1) / ($wordCount + $this->vocabularySize);
     }
