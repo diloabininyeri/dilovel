@@ -11,7 +11,7 @@ use JsonException;
  * @package App\Components\Ml
  * @link https://github.com/niiknow/bayes
  */
-class Bayes
+class TextCategorize
 {
     /**
      * @var array
@@ -178,9 +178,9 @@ class Bayes
     /**
      * @param $text
      * @param $category
-     * @return Bayes
+     * @return TextCategorize
      */
-    public function learn($text, $category): Bayes
+    public function learn($text, $category): TextCategorize
     {
         $that =$this;
         $that->initializeCategory($category);
