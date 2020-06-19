@@ -2,12 +2,8 @@
 
 namespace App\Components\Database;
 
-use App\Application\Policies\Policy;
-use App\Components\Auth\Policy\PolicyFactory;
-use App\Components\Exceptions\PolicyNotFoundException;
-use App\Interfaces\Autocomplete\PolicyAutocomplete;
+use Exception;
 use JsonException;
-use PDO;
 
 /**
  * Class Model
@@ -186,6 +182,8 @@ abstract class Model
      * @param string $foreignKey
      * @param string $key
      * @return HasOneBuilder
+     * @throws Exception
+     *
      */
     final protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id'): HasOneBuilder
     {

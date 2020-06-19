@@ -46,6 +46,7 @@ class HasOne
 
     /**
      * @return HasOneBuilder
+     * @throws \Exception
      */
     public function oneToOne(): HasOneBuilder
     {
@@ -64,7 +65,7 @@ class HasOne
         );
 
 
-        $pdo = $this->mainModelInstance->pdoConnection();
+        $pdo = PDOAdaptor::connection($this->mainModelInstance->getConnection());
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue($this->foreignKey, $id);
@@ -80,7 +81,7 @@ class HasOne
             $relationObject ?:$relationModelInstance,
             $relationModelInstance,
             $this->mainModelInstance,
-            $this->mainModelInstance->pdoConnection(),
+            $pdo,
             $this->foreignKey
         );
     }

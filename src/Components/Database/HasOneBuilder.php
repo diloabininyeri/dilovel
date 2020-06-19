@@ -3,6 +3,7 @@
 
 namespace App\Components\Database;
 
+use Exception;
 use PDO;
 
 /**
@@ -17,7 +18,7 @@ class HasOneBuilder
      */
     private Model $model;
     /**
-     * @var PDOAdaptor
+     * @var PDO
      */
     private PDO $pdoConnection;
 
@@ -38,7 +39,7 @@ class HasOneBuilder
      * @param Model $model
      * @param Model $relationModelInstance
      * @param Model $mainModel
-     * @param PDOAdaptor $pdoConnection
+     * @param PDO $pdoConnection
      * @param string $foreignKey
      */
     public function __construct(Model $model, Model $relationModelInstance, Model $mainModel, PDO $pdoConnection, string $foreignKey)
@@ -78,6 +79,7 @@ class HasOneBuilder
     /**
      * @param array $data
      * @return bool
+     * @throws Exception
      */
     public function update(array $data): bool
     {
