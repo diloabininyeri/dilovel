@@ -8,7 +8,9 @@ use App\Components\Cache\CacheFactory;
 use App\Components\Cache\Memcache\Memcache;
 use App\Components\Cache\Redis\Redis;
 use App\Components\Cache\Redis\RedisClient;
+use App\Components\Http\Http;
 use Cache;
+use Curl\Curl;
 
 /**
  * Class Controller
@@ -18,11 +20,22 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        activate_errors();
-        return view('index');
+        $http = new Http();
+        $http->get('https://www.google.com/', [
+            'q'=>'dılo surucu',
+        ]);
+        return $http->getResponse();
 
-        return view_cache('index', 100);
 
+        /* $http = new Http();
+         $http->post('https://www.example.com/login/', array(
+             'username' => 'myusername',
+             'password' => 'mypassword',
+         ));
+
+         $http->getResponse();*/
+
+/*
         $redis->publish('deneme', 'merhaba dunya');
 
         return $redis->pipeline(function ($pipe) {
@@ -34,7 +47,7 @@ class Controller
             $pipe->get('counter');
             $pipe->mget('does_not_exist', 'counter');
         });
-
+*/
 
 
 

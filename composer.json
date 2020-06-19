@@ -31,7 +31,8 @@
     "ext-memcache": "*",
     "ext-memcached": "*",
     "ext-readline": "*",
-    "ext-mbstring": "*"
+    "ext-mbstring": "*",
+    "php-curl-class/php-curl-class": "^8.8"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.1",
