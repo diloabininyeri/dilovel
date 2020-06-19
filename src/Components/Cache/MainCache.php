@@ -4,6 +4,7 @@
 namespace App\Components\Cache;
 
 use App\Components\Cache\Redis\Redis;
+use App\Components\String\StrComponent;
 use Closure;
 
 /**
@@ -74,6 +75,14 @@ class MainCache
         return $this->redis->setex($key, $time, $value);
     }
 
+    /**
+     * @param string $key
+     * @return StrComponent|null
+     */
+    public function getString(string $key): ?StrComponent
+    {
+        return new StrComponent($this->redis->get($key)) ?? null;
+    }
     /**
      * @param string $key
      * @return bool

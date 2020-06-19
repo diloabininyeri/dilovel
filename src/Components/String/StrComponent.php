@@ -204,6 +204,16 @@ class StrComponent
     {
     }
 
+
+    /**
+     * @param int $length
+     * @param null $treeDot
+     * @return string
+     */
+    public function limit(int $length, $treeDot=null):self
+    {
+        return $this->returnSelf(mb_strimwidth($this->string, 0, $length, $treeDot));
+    }
     /**
      * @param $name
      * @param $arguments

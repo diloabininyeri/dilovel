@@ -25,6 +25,7 @@ namespace App\Components\String;
  * @method static StrComponent str_shuffle(string $string)
  * @method static StrComponent strlen(string $string)
  * @method static StrComponent str_replace($find,$replace,$string)
+ * @method static StrComponent limit(string $string,int $length,string $threeDot)
  *
  */
 class Str

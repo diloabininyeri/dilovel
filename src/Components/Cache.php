@@ -5,6 +5,7 @@ namespace App\Components;
 
 use App\Components\Cache\MainCache;
 use App\Components\Cache\Redis\Redis;
+use App\Components\String\StrComponent;
 use Closure;
 
 /**
@@ -15,6 +16,7 @@ use Closure;
  * @method static set(string $key, $value)
  * @method static setex(string $key, $value, $time = 120)
  * @method static bool exists(string $key)
+ * @method static StrComponent getString(string $key)
  *
  */
 class Cache
