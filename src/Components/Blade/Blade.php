@@ -15,7 +15,9 @@ class Blade
 
         CommentDirective::class,
         CurlBracesDirective::class,
-        SectionDirective::class,
+        ExtendsDirective::class,
+        YieldDirective::class,
+        RemoveYields::class,
         IfDirective::class,
         EndifDirective::class,
         ForDirective::class,

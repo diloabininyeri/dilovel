@@ -4,17 +4,18 @@
 namespace App\Components\Blade;
 
 /**
- * Class SectionDirective
+ * Class RemoveYields
  * @package App\Components\Blade
  */
-class SectionDirective implements BladeDirectiveInterface
+class RemoveYields implements BladeDirectiveInterface
 {
+
     /**
      * @return mixed|string
      */
     public function getDirectiveRegexPattern()
     {
-        return '/@section\((?P<yield_name>.*)\)\n*(?P<html_content>.*)\n*@endsection/sU';
+        return '/@yield\((?P<yield_name>.*)\)/';
     }
 
     /**
@@ -23,8 +24,8 @@ class SectionDirective implements BladeDirectiveInterface
      */
     public function replaceTemplate(string $template)
     {
-        return  preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
-            return $find['html_content'];
+        return preg_replace_callback($this->getDirectiveRegexPattern(), static function () {
+            return null;
         }, $template);
     }
 }

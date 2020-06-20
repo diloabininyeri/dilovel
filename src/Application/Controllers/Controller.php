@@ -21,7 +21,8 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        return view('deneme');
+        $name = 'dıolo';
+        return view('deneme', compact('name'));
 
 
         /*$user=new Users();
