@@ -6,6 +6,7 @@ namespace App\Components\View;
 use App\Components\Blade\Blade;
 use App\Components\Exceptions\ViewNotFoundException;
 use RuntimeException;
+use function Composer\Autoload\includeFile;
 
 /**
  * Class View
@@ -23,7 +24,6 @@ class View
      * @var array|null
      */
     private ?array $variables;
-
 
 
     /**
@@ -73,14 +73,44 @@ class View
      */
     public function compile()
     {
+        if ($this->isBladeCacheExists()) {
+            return $this->builderReturnBlade();
+        }
         $this->filePutViewCache();
-        extract($this->variables, EXTR_OVERWRITE);
+        return $this->builderReturnBlade();
+    }
+
+    /**
+     * @return string
+     */
+    private function builderReturnBlade():string
+    {
         $errors=(object)(error()->get('form_validation_error') ?? error()->all());
+        extract($this->variables, EXTR_OVERWRITE);
         ob_start();
-        include 'src/Views/caches/' .$this->getHashBlade(). '.php';
+        require $this->getBladeCachePath();
         return ob_get_clean();
     }
 
+    /**
+     * @return string
+     */
+    private function getBladeCachePath(): string
+    {
+        return 'src/Views/caches/' .$this->getHashBlade(). '.php';
+    }
+
+    /**
+     * @return bool
+     */
+    private function isBladeCacheExists():bool
+    {
+        return file_exists($this->getBladeCachePath());
+    }
+
+    /**
+     *
+     */
     private function filePutViewCache(): void
     {
         $this->checkCacheDir();
@@ -89,6 +119,9 @@ class View
     }
 
 
+    /**
+     *
+     */
     public function checkCacheDir() : void
     {
         if (!is_dir("src/Views/caches/") && !mkdir("src/Views/caches/", 0777, true) && !is_dir("src/Views/caches/")) {
