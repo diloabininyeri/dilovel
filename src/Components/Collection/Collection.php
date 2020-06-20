@@ -215,6 +215,20 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     }
 
     /**
+     * @param $item
+     * @param int $index
+     * @return Collection
+     */
+    public function insertNewItem($item, int $index): Collection
+    {
+        $newCollection= array_merge(
+            array_slice($this->collection, 0, $index),
+            [$item],
+            array_slice($this->collection, $index)
+        );
+        return $this->setCollection($newCollection);
+    }
+    /**
      * @param string $field
      * @return float
      */

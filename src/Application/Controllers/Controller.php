@@ -21,8 +21,10 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $name = 'dılo sürücü';
-        return view('deneme', compact('name'));
+        $users=Users::get();
+        $obj=(object)['name'=>'dılo sürücü','surname'=>'dılo sürücü'];
+        $users->insertNewItem($obj, 3);
+        return $users;
 
 
         /*$user=new Users();

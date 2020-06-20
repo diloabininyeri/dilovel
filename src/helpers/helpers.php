@@ -61,9 +61,9 @@ function view($file, $params = [])
  * @param int $index
  * @return array
  */
-function array_push_between(array $array,$item,int $index)
+function array_push_between(array $array, $item, int $index)
 {
-    return array_merge(array_slice($array,0,$index),[$item],array_slice($array,$index));
+    return array_merge(array_slice($array, 0, $index), [$item], array_slice($array, $index));
 }
 
 /**
