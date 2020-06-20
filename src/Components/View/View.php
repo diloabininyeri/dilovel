@@ -6,7 +6,6 @@ namespace App\Components\View;
 use App\Components\Blade\Blade;
 use App\Components\Exceptions\ViewNotFoundException;
 use RuntimeException;
-use function Composer\Autoload\includeFile;
 
 /**
  * Class View
@@ -73,7 +72,8 @@ class View
      */
     public function compile()
     {
-        if ($this->isBladeCacheExists()) {
+        // if ($this->isBladeCacheExists()) {
+        if (false) {
             return $this->builderReturnBlade();
         }
         $this->filePutViewCache();

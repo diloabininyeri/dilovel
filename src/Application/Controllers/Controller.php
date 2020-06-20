@@ -21,7 +21,7 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $name = 'dıolo';
+        $name = 'dılo sürücü';
         return view('deneme', compact('name'));
 
 

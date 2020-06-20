@@ -14,9 +14,10 @@ class Blade
     private array $directives = [
 
         CommentDirective::class,
-        CurlBracesDirective::class,
         ExtendsDirective::class,
         YieldDirective::class,
+        IncludeDirective::class,
+        CurlBracesDirective::class,
         RemoveYields::class,
         RemoveSectionDirective::class,
         IfDirective::class,
@@ -29,7 +30,6 @@ class Blade
         ElseIfDirective::class,
         ForeachDirective::class,
         EndforeachDirective::class,
-        IncludeDirective::class,
         CurlBracesAllowedHtmlChars::class,
         AuthDirective::class,
         EndAuthDirective::class,
