@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 
 @section('other')
     <h2>other section</h2>
