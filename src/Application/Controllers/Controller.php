@@ -21,12 +21,15 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $user=new Users();
+        return view('deneme');
+
+
+        /*$user=new Users();
         $user->name = 'deneme';
 
         return  $user->save();
 
-        return $user->lastInsertId();
+        return $user->lastInsertId();*/
         /*$http = new Http();
         $http->get('https://www.google.com/', [
             'q'=>'dılo surucu',

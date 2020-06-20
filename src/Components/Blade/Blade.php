@@ -15,6 +15,7 @@ class Blade
 
         CommentDirective::class,
         CurlBracesDirective::class,
+        SectionDirective::class,
         IfDirective::class,
         EndifDirective::class,
         ForDirective::class,

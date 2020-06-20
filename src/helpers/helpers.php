@@ -7,6 +7,7 @@
 use App\Components\Arr\DotNotation;
 use App\Components\Cache\Memcache\Memcache;
 use App\Components\Cart\Cart;
+use App\Components\Database\PDOAdaptor;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
 use App\Components\Flash\FlashError;
@@ -52,6 +53,16 @@ function base_path($file = null)
 function view($file, $params = [])
 {
     return (new View($file, $params))->compile();
+}
+
+
+/**
+ * @param string $connectionName
+ * @return PDO
+ */
+function pdo(string $connectionName='default')
+{
+    return PDOAdaptor::connection($connectionName);
 }
 
 /**
