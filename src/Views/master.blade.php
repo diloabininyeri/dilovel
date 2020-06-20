@@ -11,5 +11,6 @@
 <h2>merhabaa</h2>
 @yield('other')
 @yield('area')
+<h2>footer</h2>
 </body>
 </html>

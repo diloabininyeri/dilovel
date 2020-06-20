@@ -18,6 +18,7 @@ class Blade
         ExtendsDirective::class,
         YieldDirective::class,
         RemoveYields::class,
+        RemoveSectionDirective::class,
         IfDirective::class,
         EndifDirective::class,
         ForDirective::class,

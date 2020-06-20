@@ -34,12 +34,10 @@ class YieldDirective implements BladeDirectiveInterface
     public function replaceTemplate(string $template)
     {
         $this->template=$template;
-        preg_replace_callback($this->getDirectiveRegexPattern(), function ($find) {
+        return preg_replace_callback($this->getDirectiveRegexPattern(), function ($find) {
             $this->yieldName = trim($find['yield_name'], '\'');
-            $this->template = $this->replaceYieldWithSection($this->template);
+            return  $this->replaceYieldWithSection($this->template);
         }, $template);
-
-        return $this->template;
     }
 
     /**
@@ -48,10 +46,9 @@ class YieldDirective implements BladeDirectiveInterface
      */
     private function replaceYieldWithSection(string $template): string
     {
-        echo $this->yieldName;
-        $regex = "/@section\(('{$this->yieldName}')\)\n*(?P<html_content>.*)\n*@endsection/sU";
-        return preg_replace_callback($regex, function ($find) {
-            return $find['html_content'];
-        }, $template);
+        $re = "/@section\(('$this->yieldName')\)\n*(?P<html_content>.*)\n*@endsection/sU";
+        preg_match($re, $this->template, $matches, PREG_OFFSET_CAPTURE, 0);
+
+        return $matches['html_content'][0];
     }
 }

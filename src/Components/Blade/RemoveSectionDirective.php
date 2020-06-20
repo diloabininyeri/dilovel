@@ -4,10 +4,11 @@
 namespace App\Components\Blade;
 
 /**
- * Class SectionDirective
+ * Class SectionDirective remove section
  * @package App\Components\Blade
+ *
  */
-class SectionDirective implements BladeDirectiveInterface
+class RemoveSectionDirective implements BladeDirectiveInterface
 {
     /**
      * @return mixed|string
@@ -23,8 +24,8 @@ class SectionDirective implements BladeDirectiveInterface
      */
     public function replaceTemplate(string $template)
     {
-        return  preg_replace_callback($this->getDirectiveRegexPattern(), static function ($find) {
-            return $find['html_content'];
+        return  preg_replace_callback($this->getDirectiveRegexPattern(), static function () {
+            return null;
         }, $template);
     }
 }

@@ -5,7 +5,7 @@
 @endsection
 
 @section('area')
-    <h2>section test {{$name}}</h2>
+    <h2>area section test {{$name}}</h2>
 @endsection
 
 {{5+5}} <br>
