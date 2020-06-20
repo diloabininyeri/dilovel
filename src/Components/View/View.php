@@ -72,8 +72,7 @@ class View
      */
     public function compile()
     {
-        // if ($this->isBladeCacheExists()) {
-        if (false) {
+        if ($this->isBladeCacheExists()) {
             return $this->builderReturnBlade();
         }
         $this->filePutViewCache();
