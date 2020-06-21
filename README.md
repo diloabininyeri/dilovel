@@ -1,6 +1,8 @@
 # DILOVEL php framework 
 
 
+
+
 ```<?php
  
  Router::get('/', fn () => view('index'))->name('index');
@@ -10,6 +12,15 @@
  });
 ```
 #continues to develop
+
+
+stay on at http://localhost
+
+
+
+![stay at localhost](https://i.ibb.co/NSVRG18/carbon.png)
+
+![](https://i.ibb.co/XCfRF09/carbon-1.png)
 
 **mvc-hmvc components** 
 ###### -auth
@@ -56,8 +67,3 @@
 
 
 
-stay on at http://localhost
-
-
-
-![stay at localhost](https://i.ibb.co/NSVRG18/carbon.png)
