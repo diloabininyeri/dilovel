@@ -24,7 +24,7 @@ class Image
     public function __construct(string $imagePath)
     {
         $this->resize = new Resize();
-        $this->imagePath=$imagePath;
+        $this->imagePath = $imagePath;
     }
 
     /**
@@ -32,7 +32,7 @@ class Image
      * @param $height
      * @return $this
      */
-    public function resize($width, $height): self
+    public function resize(int $width, int $height): self
     {
         $this->resize->resize(
             $width,
@@ -48,7 +48,7 @@ class Image
      * @param string $imagePath
      * @return object|self
      */
-    public static function load(string $imagePath):object
+    public static function load(string $imagePath): object
     {
         if (file_exists($imagePath)) {
             return new self($imagePath);
@@ -62,7 +62,7 @@ class Image
      * @param int $quality
      * @return mixed
      */
-    public function save($savePath, $quality = 100)
+    public function save(string $savePath, $quality = 100)
     {
         return $this->resize->save($savePath, $quality);
     }

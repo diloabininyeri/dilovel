@@ -5,6 +5,10 @@ namespace App\Components\Image;
 
 use App\Components\Exceptions\ImageExtensionNotSupported;
 
+/**
+ * Class Resize
+ * @package App\Components\Image
+ */
 class Resize
 {
     /**

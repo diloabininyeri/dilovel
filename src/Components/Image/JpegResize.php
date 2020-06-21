@@ -17,7 +17,7 @@ class JpegResize
      * @param $image
      * @return $this
      */
-    public function resize($width, $height, $image): self
+    public function resize(int $width, int $height, string $image): self
     {
         [$imageWidth, $imageHeight] = getimagesize($image);
         $this->path = imagecreatetruecolor($width, $height);

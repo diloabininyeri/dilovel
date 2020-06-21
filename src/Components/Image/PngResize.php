@@ -17,7 +17,7 @@ class PngResize
      * @param $image
      * @return $this
      */
-    public function resize($width, $height, $image):self
+    public function resize(int $width, int $height, string $image):self
     {
         [$imageWidth, $imageHeight] = getimagesize($image);
         $this->target = imagecreatetruecolor($width, $height);
@@ -43,7 +43,7 @@ class PngResize
      * @param $quality
      * @return bool
      */
-    public function save($savePath, $quality):bool
+    public function save(string $savePath,int $quality):bool
     {
         imagepng($this->target, $savePath, $quality*0.1);
         return imagedestroy($this->target);

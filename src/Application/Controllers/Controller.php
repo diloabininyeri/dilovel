@@ -27,9 +27,9 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        Image::load('d.png')
+        Image::load('d.jpg')
             ->resize(125, 80)
-            ->save('resized.png', 80);
+            ->save('resized.jpg', 80);
 
         /*$http = new Http();
         $http->get('https://www.google.com/', [

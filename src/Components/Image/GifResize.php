@@ -17,7 +17,7 @@ class GifResize
      * @param $image
      * @return $this
      */
-    public function resize($width, $height, $image):GifResize
+    public function resize(int $width, int $height, string $image):GifResize
     {
         [$imageWidth, $imageHeight] = getimagesize($image);
         $this->path = imagecreatetruecolor($width, $height);
