@@ -39,7 +39,7 @@ class ObserverFire
     {
         $observeClass = $model->getObserveClass();
         if ($observeClass) {
-            (new $observeClass)->created($model);
+            (new $observeClass)->deleted($model);
         }
     }
 }

@@ -26,14 +26,8 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $user=Users::find(119);
-        $user->name = 'ffeee';
-
-        $user->update();
-
-        $user->name='esref';
-
-        return  $user->update();
+        $user=Users::find(118);
+        $user->delete();
 
         /*$http = new Http();
         $http->get('https://www.google.com/', [
