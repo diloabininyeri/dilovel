@@ -15,6 +15,7 @@ use App\Components\Cache\Redis\Redis;
 use App\Components\Cache\Redis\RedisClient;
 use App\Components\Database\ObserveStorage;
 use App\Components\Http\Http;
+use App\Components\Image\Image;
 use Cache;
 use Curl\Curl;
 
@@ -26,6 +27,9 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
+        Image::load('d.png')
+            ->resize(125, 80)
+            ->save('resized.png', 80);
 
         /*$http = new Http();
         $http->get('https://www.google.com/', [
