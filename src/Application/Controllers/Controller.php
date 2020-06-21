@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Mappers\ForExampleMapper;
+use App\Application\Mappers\UsersMapper;
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Arr\Arr;
@@ -25,21 +26,14 @@ class Controller
     public function index(TcNoVerifyRequest $request)
     {
 
+        $users=pdo()->query('select * from users')->fetchAll(\PDO::FETCH_ASSOC);
 
-        $objectMapper=Arr::mapper(new ForExampleMapper(),[
+        $usersMappers= Arr::mapper(new UsersMapper(),$users);
 
-            'name'=>'dılo',
-            'surname'=>'sürücü',
-            'mail'=>'berxudar@gmail.com',
-        ]);
-
-
-        return $objectMapper;
-
-
-
-
-        return $users;
+        foreach ($usersMappers as $userMapper)
+        {
+            echo $userMapper->getNameSurname();
+        }
 
 
         /*$user=new Users();
@@ -63,20 +57,19 @@ class Controller
 
          $http->getResponse();*/
 
-/*
-        $redis->publish('deneme', 'merhaba dunya');
+        /*
+                $redis->publish('deneme', 'merhaba dunya');
 
-        return $redis->pipeline(function ($pipe) {
-            $pipe->ping();
-            $pipe->flushdb();
-            $pipe->incrby('counter', 10);
-            $pipe->incrby('counter', 30);
-            $pipe->exists('counter');
-            $pipe->get('counter');
-            $pipe->mget('does_not_exist', 'counter');
-        });
-*/
-
+                return $redis->pipeline(function ($pipe) {
+                    $pipe->ping();
+                    $pipe->flushdb();
+                    $pipe->incrby('counter', 10);
+                    $pipe->incrby('counter', 30);
+                    $pipe->exists('counter');
+                    $pipe->get('counter');
+                    $pipe->mget('does_not_exist', 'counter');
+                });
+        */
 
 
         /**
