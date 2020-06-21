@@ -22,6 +22,11 @@ stay on at http://localhost
 
 ![](https://i.ibb.co/XCfRF09/carbon-1.png)
 
+![](https://i.ibb.co/MP21tw6/carbon-2.png)
+
+![](https://i.ibb.co/L06T3Wm/carbon-3.png)
+
+![](https://i.ibb.co/3zhZ6PX/carbon-4.png)
 **mvc-hmvc components** 
 ###### -auth
 >login logout register all automatically also have obverse that all it can management

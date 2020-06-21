@@ -3,8 +3,11 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Mappers\ForExampleMapper;
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
+use App\Components\Arr\Arr;
+use App\Components\Arr\ArrayMapper;
 use App\Components\Cache\CacheFactory;
 use App\Components\Cache\Memcache\Memcache;
 use App\Components\Cache\Redis\Redis;
@@ -21,9 +24,20 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $users=Users::get();
-        $obj=(object)['name'=>'dılo','surname'=>'sürücü'];
-        $users->insertNewItem($obj, 3);
+
+
+        $objectMapper=Arr::mapper(new ForExampleMapper(),[
+
+            'name'=>'dılo',
+            'surname'=>'sürücü',
+            'mail'=>'berxudar@gmail.com',
+        ]);
+
+
+        return $objectMapper;
+
+
+
 
         return $users;
 
