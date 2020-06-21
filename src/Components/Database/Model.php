@@ -28,9 +28,7 @@ abstract class Model
      */
     public function __construct()
     {
-        $this->builder = new BuilderQuery(
-            $this
-        );
+        $this->builder = new BuilderQuery($this);
     }
 
     /**

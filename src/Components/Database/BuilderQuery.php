@@ -147,6 +147,7 @@ class BuilderQuery
         $this->whereByFind();
         $this->setQuery($this->builderUpdateQuery($data ?: get_object_vars($this->modelInstance)));
         $query = $this->pdoInstance()->prepare($this->getQuery());
+        ObserverFire::updated($this->modelInstance);
         return $query->execute($this->bindArray);
     }
 
@@ -184,6 +185,7 @@ class BuilderQuery
         $sqlQuery = $this->pdoInstance()->prepare($this->getQuery());
         $execute = $sqlQuery->execute($this->bindArray);
         if ($execute) {
+            ObserverFire::created($this->find($this->pdoInstance()->lastInsertId()));
             return $this->find($this->pdoInstance()->lastInsertId());
         }
         return $execute;
@@ -199,7 +201,11 @@ class BuilderQuery
         $this->setQuery($this->builderDeleteQuery());
         $query = $this->pdoInstance()->prepare($this->getQuery());
         $query->execute($this->bindArray);
-        return $query->rowCount();
+        $rowCount= $query->rowCount();
+        if ($rowCount) {
+            ObserverFire::deleted($this->modelInstance);
+        }
+        return $rowCount;
     }
 
     /**
@@ -583,7 +589,9 @@ class BuilderQuery
         $this->setQuery("select * from {$this->getTable()} where {$this->modelInstance->getPrimaryKey()}=:id");
         $this->setBindArray([$this->modelInstance->getPrimaryKey() => $id]);
 
-        return $this->fetch();
+        $fetch= $this->fetch();
+        ObserveStorage::add($this->modelInstance, clone $fetch);
+        return $fetch;
     }
 
     /**

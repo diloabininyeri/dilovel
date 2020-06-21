@@ -3,28 +3,26 @@
 
 namespace App\Application\Observer;
 
+use App\Application\Models\Users;
 use App\Components\Database\Model;
+use App\Components\Database\ObserveStorage;
 use App\Interfaces\ModelObserverInterface;
 
 class UserObserver implements ModelObserverInterface
 {
-    public function updated(Model $model)
+    public function updated($model, $oldModel)
     {
-        // TODO: Implement updated() method.
+        echo $model->name."<br>";
+        echo $oldModel->name;
     }
 
     public function deleted(Model $model)
     {
-        // TODO: Implement deleted() method.
+        echo $model->name.' deleted';
     }
 
-    public function inserted(Model $model)
+    public function created(Model $model)
     {
-        // TODO: Implement inserted() method.
-    }
-
-    public function saved(Model $model)
-    {
-        // TODO: Implement saved() method.
+        echo $model->name . ' cretaed';
     }
 }

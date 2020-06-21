@@ -14,9 +14,10 @@ interface ModelObserverInterface
 
     /**
      * @param Model $model
+     * @param Model $oldModel
      * @return mixed
      */
-    public function updated(Model $model);
+    public function updated(Model $model, Model $oldModel);
 
     /**
      * @param Model $model
@@ -28,11 +29,5 @@ interface ModelObserverInterface
      * @param Model $model
      * @return mixed
      */
-    public function inserted(Model $model);
-
-    /**
-     * @param Model $model
-     * @return mixed
-     */
-    public function saved(Model $model);
+    public function created(Model $model);
 }

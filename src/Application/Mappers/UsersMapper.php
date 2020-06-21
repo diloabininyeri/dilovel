@@ -3,7 +3,6 @@
 
 namespace App\Application\Mappers;
 
-
 use App\Components\Arr\ArrayMapper;
 
 /**
@@ -19,6 +18,6 @@ class UsersMapper extends ArrayMapper
      */
     public function getNameSurname()
     {
-        return sprintf('%s %s',$this->name,$this->surname);
+        return sprintf('%s %s', $this->name, $this->surname);
     }
 }

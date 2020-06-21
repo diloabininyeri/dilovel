@@ -13,6 +13,7 @@ use App\Components\Cache\CacheFactory;
 use App\Components\Cache\Memcache\Memcache;
 use App\Components\Cache\Redis\Redis;
 use App\Components\Cache\Redis\RedisClient;
+use App\Components\Database\ObserveStorage;
 use App\Components\Http\Http;
 use Cache;
 use Curl\Curl;
@@ -25,23 +26,15 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
+        $user=Users::find(119);
+        $user->name = 'ffeee';
 
-        $users=pdo()->query('select * from users')->fetchAll(\PDO::FETCH_ASSOC);
+        $user->update();
 
-        $usersMappers= Arr::mapper(new UsersMapper(),$users);
+        $user->name='esref';
 
-        foreach ($usersMappers as $userMapper)
-        {
-            echo $userMapper->getNameSurname();
-        }
+        return  $user->update();
 
-
-        /*$user=new Users();
-        $user->name = 'deneme';
-
-        return  $user->save();
-
-        return $user->lastInsertId();*/
         /*$http = new Http();
         $http->get('https://www.google.com/', [
             'q'=>'dılo surucu',
