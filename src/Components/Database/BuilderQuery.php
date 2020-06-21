@@ -3,6 +3,7 @@
 namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
+use App\Components\NullObject;
 use Exception;
 use JsonException;
 use PDO;
@@ -588,9 +589,10 @@ class BuilderQuery
     {
         $this->setQuery("select * from {$this->getTable()} where {$this->modelInstance->getPrimaryKey()}=:id");
         $this->setBindArray([$this->modelInstance->getPrimaryKey() => $id]);
-
         $fetch= $this->fetch();
-        ObserveStorage::add($this->modelInstance, clone $fetch);
+        if ($fetch) {
+            ObserveStorage::add($this->modelInstance, clone $fetch);
+        }
         return $fetch;
     }
 
