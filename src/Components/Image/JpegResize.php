@@ -11,14 +11,18 @@ class JpegResize
 {
     private $path;
 
+    private bool $isWillDeleteOldImage;
+
     /**
-     * @param $width
-     * @param $height
-     * @param $image
+     * @param int $width
+     * @param int $height
+     * @param string $image
+     * @param bool $isWillDeleteOldImage
      * @return $this
      */
-    public function resize(int $width, int $height, string $image): self
+    public function resize(int $width, int $height, string $image, bool $isWillDeleteOldImage): self
     {
+        $this->isWillDeleteOldImage=$isWillDeleteOldImage;
         [$imageWidth, $imageHeight] = getimagesize($image);
         $this->path = imagecreatetruecolor($width, $height);
         $source = imagecreatefromjpeg($image);
@@ -46,7 +50,22 @@ class JpegResize
      */
     public function save($savePath, $quality): bool
     {
-        imagejpeg($this->path, $savePath, $quality);
+        $createNewImage=imagejpeg($this->path, $this->resizePath($savePath), $quality);
+        if ($createNewImage && $this->isWillDeleteOldImage) {
+            unlink($savePath);
+        }
         return imagedestroy($this->path);
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    private function resizePath(string $path):string
+    {
+        $pathInfo=pathinfo($path);
+        $newPath= $pathInfo['dirname'].'/resize_' . $pathInfo['basename'];
+        touch($newPath);
+        return $newPath;
     }
 }

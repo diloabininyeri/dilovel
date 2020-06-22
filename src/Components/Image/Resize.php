@@ -33,20 +33,21 @@ class Resize
 
 
     /**
-     * @param $width
-     * @param $height
+     * @param int $width
+     * @param int $height
      * @param $fileMimeType
-     * @param $imagePath
+     * @param string $imagePath
+     * @param bool $willDeleteOldImage
      * @return $this
      */
-    public function resize($width, $height, $fileMimeType, $imagePath): self
+    public function resize(int $width, int  $height, $fileMimeType, string $imagePath, bool $willDeleteOldImage): self
     {
         $extension = strtolower(explode("/", $fileMimeType)[1]);
         if (!in_array(strtolower($extension), $this->allowExtensions, true)) {
             throw new ImageExtensionNotSupported("not supported $extension image type");
         }
         $class = $this->resizeClasses[$extension];
-        $this->resize=(new $class)->resize($width, $height, $imagePath);
+        $this->resize=(new $class())->resize($width, $height, $imagePath, $willDeleteOldImage);
         return $this;
     }
 

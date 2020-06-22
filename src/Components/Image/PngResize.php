@@ -11,14 +11,16 @@ class PngResize
 {
     private $target;
 
+    private bool $isWillDeleteOldImage;
     /**
      * @param $width
      * @param $height
      * @param $image
      * @return $this
      */
-    public function resize(int $width, int $height, string $image):self
+    public function resize(int $width, int $height, string $image, bool $isWillDeleteOldImage):self
     {
+        $this->isWillDeleteOldImage=$isWillDeleteOldImage;
         [$imageWidth, $imageHeight] = getimagesize($image);
         $this->target = imagecreatetruecolor($width, $height);
         imagecopyresampled(
@@ -45,7 +47,22 @@ class PngResize
      */
     public function save(string $savePath, int $quality):bool
     {
-        imagepng($this->target, $savePath, $quality*0.1);
+        $createNewImage=imagepng($this->target, $savePath, $quality*0.1);
+        if ($createNewImage && $this->isWillDeleteOldImage) {
+            unlink($savePath);
+        }
         return imagedestroy($this->target);
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    private function resizePath(string $path):string
+    {
+        $pathInfo=pathinfo($path);
+        $newPath= $pathInfo['dirname'].'/resize_' . $pathInfo['basename'];
+        touch($newPath);
+        return $newPath;
     }
 }

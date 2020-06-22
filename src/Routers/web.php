@@ -7,6 +7,8 @@ Router::path('test');
 Router::view('/view-test', 'index');
 
 
+Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test');
+Router::view('form', 'form');
 
 Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
     Router::get('admin', fn () =>env('REDIS_HOST'));

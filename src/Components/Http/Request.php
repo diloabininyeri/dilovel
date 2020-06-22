@@ -256,6 +256,11 @@ class Request implements ArrayAble, ToJson
         return new Cookie();
     }
 
+    public function validate(array $requests, array $validateRules)
+    {
+        return $validateRules;
+    }
+
     /**
      * @param $name
      * @param $arguments

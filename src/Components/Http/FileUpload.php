@@ -1,6 +1,7 @@
 <?php
 namespace App\Components\Http;
 
+use App\Components\Image\Image;
 use SplFileInfo;
 use SplFileObject;
 
@@ -145,6 +146,12 @@ class FileUpload
     public function getUploadedFile(): ?string
     {
         return $this->uploadedFile;
+    }
+
+
+    public function image()
+    {
+        return  new Image($this->uploadedFile);
     }
 
     /**

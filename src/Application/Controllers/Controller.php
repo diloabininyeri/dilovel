@@ -27,10 +27,17 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        //resize picture 50%
-        Image::load('res.jpeg')
-            ->resizeByRatio(50)
-            ->save('resized.jpg', 80);
+        $request->validate($request->all(), [
+            'name'=>'required|string|min:25',
+        ]);
+
+
+
+        $file=$request->file('fdf')->upload('dd');
+        $file->image()
+             >removeOldImage()
+             ->resizeByRatio(45)
+             ->save($file->getUploadedFile());
 
         /*$http = new Http();
         $http->get('https://www.google.com/', [

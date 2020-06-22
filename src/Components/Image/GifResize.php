@@ -11,14 +11,18 @@ class GifResize
 {
     private $path;
 
+    private bool $isWillDeleteOldImage;
+
     /**
-     * @param $width
-     * @param $height
-     * @param $image
+     * @param int $width
+     * @param int $height
+     * @param string $image
+     * @param bool $isWillDeleteOldImage
      * @return $this
      */
-    public function resize(int $width, int $height, string $image):GifResize
+    public function resize(int $width, int $height, string $image, bool $isWillDeleteOldImage):GifResize
     {
+        $this->isWillDeleteOldImage=$isWillDeleteOldImage;
         [$imageWidth, $imageHeight] = getimagesize($image);
         $this->path = imagecreatetruecolor($width, $height);
         imagecopyresampled(
@@ -43,7 +47,22 @@ class GifResize
      */
     public function save(string $savePath):bool
     {
-        imagegif($this->path, $savePath);
+        $createGif=imagegif($this->path, $savePath);
+        if ($createGif && $this->isWillDeleteOldImage) {
+            unlink($savePath);
+        }
         return imagedestroy($this->path);
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    private function resizePath(string $path):string
+    {
+        $pathInfo=pathinfo($path);
+        $newPath= $pathInfo['dirname'].'/resize_' . $pathInfo['basename'];
+        touch($newPath);
+        return $newPath;
     }
 }

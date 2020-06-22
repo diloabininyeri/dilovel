@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            {{$errors->error}}
+
         </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
             @foreach ($errors as $error)
                 <div class="alert alert-danger">{{$error}}</div>
             @endforeach
-            <form action="{{router('form.post')}}" enctype="multipart/form-data" method="post">
+            <form action="{{router('test')}}" enctype="multipart/form-data" method="post">
                 <div class="form-group">
 
                     <label for="exampleFormControlFile1">Example file input</label>
