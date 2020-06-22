@@ -9,17 +9,38 @@ namespace App\Components\Routers;
  */
 class GenerateRouter
 {
-    private ?string $hash = null;
+    /**
+     * @var string
+     */
+    private string $url;
+
+    /**
+     * GenerateRouter constructor.
+     * @param string $routerName
+     * @param array $parameters
+     */
+    public function __construct(string $routerName, array $parameters=[])
+    {
+        $this->url($routerName, $parameters);
+    }
 
     /**
      * @param string|null $hash
      * @return $this
      */
-    public function withHash(?string $hash): self
+    public function withHash(string $hash): self
     {
-        if ($hash) {
-            $this->hash = '#' . $hash;
-        }
+        $this->url.= '#' . $hash;
+        return $this;
+    }
+
+    /**
+     * @param array $query
+     * @return $this
+     */
+    public function withQuery(array $query):self
+    {
+        $this->url .= '?' . http_build_query($query);
         return $this;
     }
 
@@ -28,7 +49,7 @@ class GenerateRouter
      * @param array $parameters
      * @return string
      */
-    public function url(string $name, array $parameters = []): string
+    private function url(string $name, array $parameters = []): string
     {
         $routeUrl = RouterName::getName($name)['router_url'];
         if (!empty($parameters)) {
@@ -36,9 +57,15 @@ class GenerateRouter
                 $routeUrl = str_replace($key, $value, $routeUrl);
             }
         }
-        if (!$this->hash) {
-            return url()->base() . '/' . $routeUrl;
-        }
-        return url()->base() . '/' . $routeUrl . $this->hash;
+
+        return $this->url=url()->base().'/'.$routeUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->url;
     }
 }

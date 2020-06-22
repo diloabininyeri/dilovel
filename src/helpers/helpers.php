@@ -136,12 +136,11 @@ function assets($file)
 /**
  * @param $name
  * @param array $parameters
- * @param null $hash
- * @return string
+ * @return GenerateRouter
  */
-function router($name, array $parameters = [], $hash=null)
+function router($name, array $parameters = [])
 {
-    return (new GenerateRouter())->withHash($hash)->url($name, $parameters);
+    return new GenerateRouter($name, $parameters);
 }
 
 /**
