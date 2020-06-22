@@ -43,7 +43,7 @@ class PngResize
      * @param $quality
      * @return bool
      */
-    public function save(string $savePath,int $quality):bool
+    public function save(string $savePath, int $quality):bool
     {
         imagepng($this->target, $savePath, $quality*0.1);
         return imagedestroy($this->target);

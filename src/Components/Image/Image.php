@@ -43,6 +43,16 @@ class Image
         return $this;
     }
 
+    /**
+     * @param int $percent
+     * @return $this
+     */
+    public function resizeByRatio(int $percent):self
+    {
+        [$imageWidth, $imageHeight] = getimagesize($this->imagePath);
+        return $this->resize($imageWidth*($percent/100), $imageHeight*($percent/100));
+    }
+
 
     /**
      * @param string $imagePath

@@ -27,8 +27,9 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        Image::load('d.jpg')
-            ->resize(125, 80)
+        //resize picture 50%
+        Image::load('res.jpeg')
+            ->resizeByRatio(50)
             ->save('resized.jpg', 80);
 
         /*$http = new Http();
