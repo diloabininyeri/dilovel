@@ -81,6 +81,14 @@ class Image
 
 
     /**
+     * @param string $image
+     * @return ColorConvert
+     */
+    public static function getAverageColor(string $image): ColorConvert
+    {
+        return (new AverageColor($image))->get();
+    }
+    /**
      * @param $savePath
      * @param int $quality
      * @return mixed

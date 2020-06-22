@@ -27,17 +27,13 @@ class Controller
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $request->validate($request->all(), [
+        /*$request->validate($request->all(), [
             'name'=>'required|string|min:25',
-        ]);
+        ]);*/
 
 
+        return Image::getAverageColor(public_path('images/sea.jpg'))->toHex();
 
-        $file=$request->file('fdf')->upload('dd');
-        $file->image()
-             >removeOldImage()
-             ->resizeByRatio(45)
-             ->save($file->getUploadedFile());
 
         /*$http = new Http();
         $http->get('https://www.google.com/', [
