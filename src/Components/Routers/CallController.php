@@ -76,7 +76,7 @@ class CallController
      * @throws ReflectionException
      *
      */
-    private function isNotRuleRequest()
+    private function isNotRuleRequest(): bool
     {
         return get_class($this->request) === $this->getRequestClass();
     }
@@ -88,7 +88,10 @@ class CallController
     private function getRequestClass(): string
     {
         $reflection = new ReflectionMethod($this->createClassNameController(), $this->method);
-        return $reflection->getParameters()[0]->getClass()->getName();
+        if (isset($reflection->getParameters()[0])) {
+            return $reflection->getParameters()[0]->getClass()->getName();
+        }
+        return Request::class;
     }
 
     /**
