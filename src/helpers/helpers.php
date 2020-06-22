@@ -6,6 +6,7 @@
 
 use App\Components\Arr\DotNotation;
 use App\Components\Cache\Memcache\Memcache;
+use App\Components\Cache\ViewCache;
 use App\Components\Cart\Cart;
 use App\Components\Database\PDOAdaptor;
 use App\Components\DateTime\Now;
@@ -83,7 +84,7 @@ function pdo(string $connectionName='default')
  */
 function view_cache($file, int $time, array $compact=[])
 {
-    $viewCache=new \App\Components\Cache\ViewCache();
+    $viewCache=new ViewCache();
     if ($viewCache->get()) {
         return $viewCache->get();
     }
@@ -135,11 +136,12 @@ function assets($file)
 /**
  * @param $name
  * @param array $parameters
+ * @param null $hash
  * @return string
  */
-function router($name, array $parameters = [])
+function router($name, array $parameters = [], $hash=null)
 {
-    return (new GenerateRouter())->url($name, $parameters);
+    return (new GenerateRouter())->withHash($hash)->url($name, $parameters);
 }
 
 /**

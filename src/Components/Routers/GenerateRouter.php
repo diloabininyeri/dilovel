@@ -9,6 +9,19 @@ namespace App\Components\Routers;
  */
 class GenerateRouter
 {
+    private ?string $hash = null;
+
+    /**
+     * @param string|null $hash
+     * @return $this
+     */
+    public function withHash(?string $hash): self
+    {
+        if ($hash) {
+            $this->hash = '#' . $hash;
+        }
+        return $this;
+    }
 
     /**
      * @param string $name
@@ -23,6 +36,9 @@ class GenerateRouter
                 $routeUrl = str_replace($key, $value, $routeUrl);
             }
         }
-        return url()->base() . '/' . $routeUrl;
+        if (!$this->hash) {
+            return url()->base() . '/' . $routeUrl;
+        }
+        return url()->base() . '/' . $routeUrl . $this->hash;
     }
 }

@@ -21,18 +21,26 @@ class Redirect
      */
     private Flash $flash;
 
+    private ?string $query = null;
+
+    private ?string $hash = null;
     /**
      * @var FlashError
      */
     private FlashError $flashError;
 
     /**
+     * @var bool
+     */
+    private bool $isRequiredHeader=true;
+
+    /**
      * Redirect constructor.
      */
     public function __construct()
     {
-        $this->flash=new Flash();
-        $this->flashError=new FlashError();
+        $this->flash = new Flash();
+        $this->flashError = new FlashError();
     }
 
     /**
@@ -59,9 +67,29 @@ class Redirect
      * @param $value
      * @return $this
      */
-    public function with(string $name, $value):self
+    public function with(string $name, $value): self
     {
         $this->flash->set($name, $value);
+        return $this;
+    }
+
+    /**
+     * @param array $query
+     * @return $this
+     */
+    public function withQuery(array $query): self
+    {
+        $this->query = http_build_query($query);
+        return $this;
+    }
+
+    /**
+     * @param string $hash
+     * @return $this
+     */
+    public function withHash(string $hash): self
+    {
+        $this->hash = '#' . $hash;
         return $this;
     }
 
@@ -70,10 +98,10 @@ class Redirect
      * @param $value
      * @return $this
      */
-    public function withError(string $name, $value):self
+    public function withError(string $name, $value): self
     {
         $this->flashError->set($name, $value);
-        return  $this;
+        return $this;
     }
 
     /**
@@ -95,12 +123,37 @@ class Redirect
         return $this;
     }
 
-    /** @noinspection MagicMethodsValidityInspection */
-    public function __destruct()
+
+    /**
+     * @return string
+     */
+    public function getUrl():string
+    {
+        $this->isRequiredHeader=false;
+        if (!$this->hash) {
+            return $this->url . ($this->query ? "?$this->query" : null);
+        }
+        return $this->url . ($this->query ? "?$this->query" : null) . $this->hash;
+    }
+
+
+    public function header()
     {
         if (!headers_sent()) {
-            return header("location:$this->url");
+            if (!$this->hash) {
+                return header("location:$this->url" . ($this->query ? "?$this->query" : null));
+            }
+            return header('location:' . $this->url . ($this->query ? "?$this->query" : null) . $this->hash);
         }
         return null;
+    }
+
+
+
+    public function __destruct()
+    {
+        if ($this->isRequiredHeader) {
+            $this->header();
+        }
     }
 }

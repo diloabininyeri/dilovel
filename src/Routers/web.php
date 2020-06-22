@@ -6,6 +6,7 @@ Router::path('test');
 
 Router::view('/view-test', 'index');
 
+Router::get('deneme', 'Deneme@index');
 
 Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test');
 Router::view('form', 'form');
