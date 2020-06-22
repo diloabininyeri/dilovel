@@ -23,7 +23,13 @@ class ColorConvert
     {
         $this->rgb = $rgb;
     }
-
+    /**
+     * @return array
+     */
+    public function getRgb(): array
+    {
+        return $this->rgb;
+    }
     /**
      * @return string
      */

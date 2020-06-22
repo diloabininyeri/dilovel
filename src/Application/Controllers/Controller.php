@@ -32,7 +32,8 @@ class Controller
         ]);*/
 
 
-        return Image::getAverageColor(public_path('images/sea.jpg'))->toHex();
+        $image= Image::getAverageColor(public_path('images/sea.jpg'));
+        return $image->toHex();
 
 
         /*$http = new Http();
