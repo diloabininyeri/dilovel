@@ -2,21 +2,12 @@
 
 
 
-
-```<?php
- 
- Router::get('/', fn () => view('index'))->name('index');
-
- Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
-     Router::get('admin', fn () =>env('REDIS_HOST'));
- });
-```
 #continues to develop
 
 
 stay on at http://localhost
 
-
+![](https://i.ibb.co/Xj57jLT/carbon.png)
 
 ![stay at localhost](https://i.ibb.co/NSVRG18/carbon.png)
 
