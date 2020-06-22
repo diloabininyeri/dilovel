@@ -31,15 +31,6 @@ class AverageColor
     {
         return getimagesize($this->image);
     }
-
-    /**
-     * @return string
-     */
-    private function getMime():string
-    {
-        return $this->getImageSize()['mime'];
-    }
-
     /**
      * @return string|string[]
      */
@@ -61,9 +52,9 @@ class AverageColor
     }
 
     /**
-     * @return ColorConvert
+     * @return array
      */
-    public function get():ColorConvert
+    private function calculateAvgColor():array
     {
         $avg = $this->createFunction()($this->image);
         [$width, $height] = $this->getImageSize();
@@ -73,6 +64,13 @@ class AverageColor
         $r = ($rgb >> 16) & 0xFF;
         $g = ($rgb >> 8) & 0xFF;
         $b = $rgb & 0xFF;
-        return new ColorConvert(compact('r', 'g', 'b'));
+        return compact('r', 'g', 'b');
+    }
+    /**
+     * @return ColorConvert
+     */
+    public function get():ColorConvert
+    {
+        return new ColorConvert($this->calculateAvgColor());
     }
 }
