@@ -3,12 +3,32 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Request\TcNoVerifyRequest;
+use App\Application\Rules\UserMustBeAdmin;
+use App\Application\Rules\RequiredRule;
+use App\Application\Rules\TcNoVerifyRule;
 use App\Components\Http\Request;
 
 class Deneme
 {
     public function index(Request $request)
     {
+        $validate=$request->validate([
+            new UserMustBeAdmin(),
+            new TcNoVerifyRule()
+        ]);
+
+        if ($validate->isFailed()) {
+            return $validate->getErrors();
+        }
+
+
+
+
+
+
+
+
         return router('index')
             ->withQuery(['id'=>145,'table'=>'users'])
             ->withHash('hash');
