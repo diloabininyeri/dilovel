@@ -4,3 +4,4 @@ php-cs-fixer fix . --rules=@PHP71Migration
 php-cs-fixer fix . --rules=@PHP73Migration
 git add .
 git status
+git commit -m "$1"
