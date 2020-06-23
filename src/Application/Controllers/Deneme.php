@@ -7,9 +7,10 @@ use App\Application\Request\TcNoVerifyRequest;
 use App\Application\Rules\UserMustBeAdmin;
 use App\Application\Rules\RequiredRule;
 use App\Application\Rules\TcNoVerifyRule;
+use App\Components\Arr\CanIterate;
 use App\Components\Http\Request;
 
-class Deneme
+class Deneme extends CanIterate
 {
     public function index(Request $request)
     {
@@ -37,5 +38,10 @@ class Deneme
             ->withHash('dilocan')
             ->withQuery(['id'=>15,'haber'=>'alasana'])
             ->header();*/
+    }
+
+    public function toArray(): array
+    {
+        // TODO: Implement toArray() method.
     }
 }

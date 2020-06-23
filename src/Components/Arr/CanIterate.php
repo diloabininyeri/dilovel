@@ -23,9 +23,6 @@ abstract class CanIterate implements IteratorAggregate
      */
     final public function getIterator()
     {
-        if (method_exists($this, 'toArray')) {
-            return new ArrayIterator($this->toArray());
-        }
-        return new ArrayIterator([]);
+        return new ArrayIterator($this->toArray());
     }
 }
