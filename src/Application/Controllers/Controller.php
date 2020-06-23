@@ -9,6 +9,7 @@ use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Arr\Arr;
 use App\Components\Arr\ArrayMapper;
+use App\Components\Arr\CanIterate;
 use App\Components\Cache\CacheFactory;
 use App\Components\Cache\Memcache\Memcache;
 use App\Components\Cache\Redis\Redis;
