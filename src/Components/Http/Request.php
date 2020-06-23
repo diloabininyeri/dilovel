@@ -260,7 +260,7 @@ class Request implements ArrayAble, ToJson
      * @param array $rules
      * @return ValidateRequests
      */
-    public function validate(array $rules): ValidateRequests
+    public function validateWithRules(array $rules): ValidateRequests
     {
         return (new ValidateRequests($this))
             ->rules($rules)

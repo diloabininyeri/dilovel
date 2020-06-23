@@ -13,7 +13,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $validate=$request->validate([
+        $validate=$request->validateWithRules([
             new UserMustBeAdmin(),
             new TcNoVerifyRule()
         ]);
