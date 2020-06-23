@@ -19,7 +19,7 @@ class Deneme
         ]);
 
         if ($validate->isFailed()) {
-            return $validate->getErrors();
+            return $validate->getMessages();
         }
 
 

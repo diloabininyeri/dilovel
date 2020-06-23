@@ -10,7 +10,7 @@ class ValidateRequests
     /**
      * @var array
      */
-    private array $errors = [];
+    private array $messages = [];
 
     /**
      * @var array
@@ -57,7 +57,7 @@ class ValidateRequests
     private function callRuleValidationMethod(RuleInterface $rule): bool
     {
         if (!$rule->valid($this->request)) {
-            $this->errors[] = $rule->message();
+            $this->messages[] = $rule->message();
             return false;
         }
         return true;
@@ -68,15 +68,15 @@ class ValidateRequests
      */
     public function isFailed():bool
     {
-        return !empty($this->errors);
+        return !empty($this->messages);
     }
 
 
     /**
      * @return array
      */
-    public function getErrors(): array
+    public function getMessages(): array
     {
-        return $this->errors;
+        return $this->messages;
     }
 }
