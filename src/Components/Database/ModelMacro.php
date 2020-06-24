@@ -1,7 +1,8 @@
 <?php
 
 
-namespace App\Macro;
+namespace App\Components\Database;
+
 
 use Closure;
 

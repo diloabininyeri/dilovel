@@ -5,7 +5,7 @@ namespace App\Providers;
 
 use App\Application\Models\Users;
 use App\Application\Observer\UserObserver;
-use App\Macro\ModelMacro;
+use App\Components\Database\ModelMacro;
 
 /**
  * @property  $collection
