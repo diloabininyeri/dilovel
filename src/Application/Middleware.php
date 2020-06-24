@@ -23,8 +23,9 @@ class Middleware extends MiddlewareAbstract
 
         'must_be_int' => RequestIdMustBeInteger::class,
         'name' => NameMiddleware::class,
-        'example'=>TestExample::class,
-        'auth'=>AuthMiddleware::class,
+        'example' => TestExample::class,
+        'auth' => AuthMiddleware::class,
+        'csrf' => CsrfTokenMiddleware::class,
 
     ];
 
@@ -32,7 +33,7 @@ class Middleware extends MiddlewareAbstract
      * this middleware working every route
      * @var array|string[]
      */
-    protected array $global=[
+    protected array $global = [
         GlobalMiddleware::class,
         CsrfTokenMiddleware::class,
     ];

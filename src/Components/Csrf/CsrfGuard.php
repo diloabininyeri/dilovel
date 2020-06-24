@@ -3,6 +3,7 @@
 
 namespace App\Components\Csrf;
 
+use App\Components\Flash\Flash;
 use App\Components\Http\Session;
 use App\Interfaces\CsrfGuardInterface;
 
@@ -13,16 +14,16 @@ use App\Interfaces\CsrfGuardInterface;
 class CsrfGuard implements CsrfGuardInterface
 {
     /**
-     * @var Session
+     * @var Flash
      */
-    private Session $session;
+    private Flash $flashSession;
 
     /***
      * CsrfGuard constructor.
      */
     public function __construct()
     {
-        $this->session=new Session();
+        $this->flashSession=new Flash();
     }
 
     /**
@@ -32,7 +33,7 @@ class CsrfGuard implements CsrfGuardInterface
     public function generateToken(string $keyName = '__csrf_token'): string
     {
         $token=md5(uniqid('csrf', true));
-        $this->session->set($keyName, $token);
+        $this->flashSession->set($keyName, $token);
         return $token;
     }
 
@@ -46,15 +47,6 @@ class CsrfGuard implements CsrfGuardInterface
         if ($token === null) {
             return false;
         }
-        return $this->session->get($csrfKey)===$token;
-    }
-
-    /**
-     * @param string $csrfKey
-     * @return bool
-     */
-    public function destroyToken(string $csrfKey = '__csrf_token'):bool
-    {
-        return $this->session->delete($csrfKey);
+        return $this->flashSession->get($csrfKey)===$token;
     }
 }

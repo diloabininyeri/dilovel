@@ -22,10 +22,4 @@ interface CsrfGuardInterface
      * @return bool
      */
     public function validateToken(string $token, string $csrfKey = '__csrf') : bool;
-
-    /**
-     * @param string $csrfKey
-     * @return bool
-     */
-    public function destroyToken(string $csrfKey = '__csrf_token'):bool;
 }
