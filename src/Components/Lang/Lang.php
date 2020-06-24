@@ -30,7 +30,7 @@ class Lang
      * @param string $dotNotation
      * @return string
      */
-    public static function get(string $dotNotation): string
+    public static function get(string $dotNotation): ?string
     {
         $lang = Session::getInstance()->get('system_language') ?: 'en';
         [$file, $dot] = explode('.', $dotNotation, 2);
