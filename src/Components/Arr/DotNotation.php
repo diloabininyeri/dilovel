@@ -3,13 +3,15 @@
 
 namespace App\Components\Arr;
 
+use App\Components\Traits\Singleton;
+
 /**
  * Class DotNotation
  * @package App\Components\Arr
  */
 class DotNotation
 {
-
+    use Singleton;
 
     /**
      * @param $key

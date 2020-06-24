@@ -15,6 +15,7 @@ use App\Components\Env\EnvFile;
 use App\Components\Flash\FlashError;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
+use App\Components\Lang\Lang;
 use App\Components\Routers\GenerateRouter;
 use App\Components\View\Master;
 use App\Components\View\View;
@@ -387,4 +388,10 @@ function ends_with($haystack, $needle)
 function csrf()
 {
     return new CsrfGuard();
+}
+
+
+function lang(string $dotNotation)
+{
+    return Lang::get($dotNotation);
 }
