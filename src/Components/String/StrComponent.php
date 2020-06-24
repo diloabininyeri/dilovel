@@ -196,15 +196,6 @@ class StrComponent
     }
 
     /**
-     * @param string $string1
-     * @param string $string2
-     * @return $this
-     */
-    public function diff(string $string1, string $string2): self
-    {
-    }
-
-    /**
      * @param string $string
      * @return bool
      */

@@ -21,6 +21,9 @@ stay on at http://localhost
 ![](https://i.ibb.co/3rrfD3q/carbon.png)
 >
 ![](https://i.ibb.co/0D25d4B/carbon-1.png)
+
+> csrf token verify
+![](https://i.ibb.co/Bs7vV2N/carbon.png)
 **mvc-hmvc components** 
 ###### -auth
 >login logout register all automatically also have obverse that all it can management
