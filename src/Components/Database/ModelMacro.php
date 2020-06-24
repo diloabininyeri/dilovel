@@ -3,7 +3,6 @@
 
 namespace App\Components\Database;
 
-
 use Closure;
 
 /**
@@ -16,7 +15,7 @@ class ModelMacro
     /**
      * @var array
      */
-    public static array  $macro = [];
+    private static array  $macro = [];
 
     /**
      * @param $methodName

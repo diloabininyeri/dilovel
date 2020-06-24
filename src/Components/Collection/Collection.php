@@ -4,7 +4,7 @@ namespace App\Components\Collection;
 
 use App\Interfaces\ArrayAble;
 use App\Interfaces\ToJson;
-use App\Macro\ModelMacro;
+use App\Components\Database\ModelMacro;
 use ArrayAccess;
 use ArrayIterator;
 use Closure;
