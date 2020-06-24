@@ -15,7 +15,8 @@ class Deneme extends CanIterate
 {
     public function index(Request $request)
     {
-
+        csrf()->validateToken($request->post('_token'));
+        return session()->all();
         /*$validate=$request->validateWithRules([
             new UserMustBeAdmin(),
             new TcNoVerifyRule()

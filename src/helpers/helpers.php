@@ -106,7 +106,7 @@ function abort($status)
 
 /**
  * @param null $name
- * @return mixed|Session|string|null
+ * @return mixed|Session|string
  */
 function session($name = null)
 {

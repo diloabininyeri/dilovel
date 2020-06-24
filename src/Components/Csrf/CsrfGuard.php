@@ -4,7 +4,6 @@
 namespace App\Components\Csrf;
 
 use App\Components\Flash\Flash;
-use App\Components\Http\Session;
 use App\Interfaces\CsrfGuardInterface;
 
 /**
@@ -44,9 +43,6 @@ class CsrfGuard implements CsrfGuardInterface
      */
     public function validateToken(string $token, string $csrfKey = '__csrf_token'): bool
     {
-        if ($token === null) {
-            return false;
-        }
         return $this->flashSession->get($csrfKey)===$token;
     }
 }
