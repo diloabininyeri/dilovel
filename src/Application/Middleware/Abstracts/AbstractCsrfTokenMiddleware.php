@@ -36,7 +36,7 @@ namespace App\Application\Middleware\Abstracts;
       */
      final protected function isPathExcept(): bool
      {
-         $path=trim((new Url())->path(), '/');
+         $path=(new Url())->pathWithTrim();
          $trimmedExcepts=array_map(fn ($item) => trim($item, '/'), $this->except);
          return in_array($path, $trimmedExcepts, true);
      }

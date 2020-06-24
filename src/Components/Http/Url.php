@@ -3,8 +3,6 @@
 
 namespace App\Components\Http;
 
-use phpDocumentor\Reflection\Types\This;
-
 /**
  * Class Url
  * @package App\Http
@@ -102,6 +100,15 @@ class Url
             }
         }
         return $array;
+    }
+
+    /**
+     * @param string $charList
+     * @return string
+     */
+    public function pathWithTrim(string $charList='/'):string
+    {
+        return trim($this->path(), $charList);
     }
 
     /**
