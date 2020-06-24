@@ -3,7 +3,7 @@
 
 namespace App\Application\Middleware;
 
-use App\Components\Csrf\CsrfGuard;
+use App\Application\Middleware\Abstracts\AbstractCsrfTokenMiddleware;
 use App\Components\Http\Request;
 use App\Interfaces\MiddlewareInterface;
 use Closure;
@@ -12,8 +12,23 @@ use Closure;
  * Class CsrfTokenMiddleware
  * @package App\Application\Middleware
  */
-class CsrfTokenMiddleware implements MiddlewareInterface
+class CsrfTokenMiddleware extends AbstractCsrfTokenMiddleware implements MiddlewareInterface
 {
+
+    /**
+     * @var array|string[]
+     */
+    protected array $except = [
+        'payment'
+    ];
+
+    /**
+     * trigger validate token when those post
+     * @var array|string[]
+     */
+    protected array $methods = [
+        'POST', 'PUT', 'DELETE',
+    ];
 
     /**
      * @param Closure $next
@@ -22,13 +37,9 @@ class CsrfTokenMiddleware implements MiddlewareInterface
      */
     public function handle(Closure $next, Request $request)
     {
-        if ($request->method() === 'POST') {
-            $csrf = new CsrfGuard();
-            if (!$csrf->validateToken($request->post('_token') ?? '')) {
-                return view(500, ['error'=>' csrf must be verify']);
-            }
+        if ($this->isCanPass($request)) {
+            return $next($request);
         }
-
-        return $next($request);
+        return view(500, ['error' => ' csrf must be verify']);
     }
 }
