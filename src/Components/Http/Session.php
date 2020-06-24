@@ -5,6 +5,7 @@ namespace App\Components\Http;
 
 use App\Components\Flash\Flash;
 use App\Components\Flash\FlashError;
+use App\Components\Traits\Singleton;
 use App\Interfaces\Session as SessionInterface;
 
 /**
@@ -14,6 +15,7 @@ use App\Interfaces\Session as SessionInterface;
  */
 class Session implements SessionInterface
 {
+    use Singleton;
     /**
      * @var array
      */

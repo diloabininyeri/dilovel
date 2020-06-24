@@ -24,6 +24,7 @@
                 <div class="alert alert-danger">{{$error}}</div>
             @endforeach
             <form action="{{router('test')}}" enctype="multipart/form-data" method="post">
+                <input type="hidden" name="_token" value="{{csrf()->generateToken()}}">
                 <div class="form-group">
 
                     <label for="exampleFormControlFile1">Example file input</label>

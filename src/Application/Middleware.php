@@ -3,6 +3,7 @@
 namespace App\Application;
 
 use App\Application\Middleware\AuthMiddleware;
+use App\Application\Middleware\CsrfTokenMiddleware;
 use App\Application\Middleware\GlobalMiddleware;
 use App\Application\Middleware\NameMiddleware;
 use App\Application\Middleware\RequestIdMustBeInteger;
@@ -32,6 +33,7 @@ class Middleware extends MiddlewareAbstract
      * @var array|string[]
      */
     protected array $global=[
-        GlobalMiddleware::class
+        GlobalMiddleware::class,
+        CsrfTokenMiddleware::class,
     ];
 }

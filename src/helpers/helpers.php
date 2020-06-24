@@ -8,6 +8,7 @@ use App\Components\Arr\DotNotation;
 use App\Components\Cache\Memcache\Memcache;
 use App\Components\Cache\ViewCache;
 use App\Components\Cart\Cart;
+use App\Components\Csrf\CsrfGuard;
 use App\Components\Database\PDOAdaptor;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
@@ -378,4 +379,12 @@ function ends_with($haystack, $needle)
         return true;
     }
     return (substr($haystack, -$length) === $needle);
+}
+
+/**
+ * @return CsrfGuard
+ */
+function csrf()
+{
+    return new CsrfGuard();
 }
