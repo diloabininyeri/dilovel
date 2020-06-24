@@ -204,16 +204,63 @@ class StrComponent
     {
     }
 
+    /**
+     * @param string $string
+     * @return bool
+     */
+    public function isMail(): bool
+    {
+        return filter_var($this->string, FILTER_VALIDATE_EMAIL);
+    }
 
+    /**
+     * @return bool
+     */
+    public function isMacAddress():bool
+    {
+        return (bool) filter_var($this->string, FILTER_VALIDATE_MAC);
+    }
+    /**
+     * @return bool
+     */
+    public function isIp():bool
+    {
+        return (bool)filter_var($this->string, FILTER_VALIDATE_IP);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUrl():bool
+    {
+        return (bool) filter_var($this->string, FILTER_VALIDATE_URL);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIp4():bool
+    {
+        return  (bool)filter_var($this->string, FILTER_FLAG_IPV4);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIp6():bool
+    {
+        return (bool)filter_var($this->string, FILTER_FLAG_IPV6);
+    }
     /**
      * @param int $length
      * @param null $treeDot
-     * @return string
+     * @return StrComponent
      */
-    public function limit(int $length, $treeDot=null):self
+    public function limit(int $length, $treeDot = null): self
     {
         return $this->returnSelf(mb_strimwidth($this->string, 0, $length, $treeDot));
     }
+
     /**
      * @param $name
      * @param $arguments

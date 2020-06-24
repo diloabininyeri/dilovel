@@ -26,6 +26,12 @@ namespace App\Components\String;
  * @method static StrComponent strlen(string $string)
  * @method static StrComponent str_replace($find,$replace,$string)
  * @method static StrComponent limit(string $string,int $length,string $threeDot)
+ * @method static bool isMail(string $string)
+ * @method static bool isIp(string $string)
+ * @method static bool isMacAddress(string $string)
+ * @method static bool isUrl(string $string)
+ * @method static bool isIp4(string $string)
+ * @method static bool isIp6(string $string)
  *
  */
 class Str
