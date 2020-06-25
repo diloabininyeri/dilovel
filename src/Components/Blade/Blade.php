@@ -14,6 +14,7 @@ class Blade
     private array $directives = [
 
         CommentDirective::class,
+        CsrfDirective::class,
         ExtendsDirective::class,
         YieldDirective::class,
         IncludeDirective::class,
