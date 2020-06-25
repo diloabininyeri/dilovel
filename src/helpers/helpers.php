@@ -391,7 +391,7 @@ function csrf()
 }
 
 
-function lang(string $dotNotation)
+function lang(string $dotNotation, $default=null)
 {
-    return Lang::get($dotNotation);
+    return Lang::get($dotNotation, $default);
 }

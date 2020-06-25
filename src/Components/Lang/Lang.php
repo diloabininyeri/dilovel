@@ -28,16 +28,17 @@ class Lang
 
     /**
      * @param string $dotNotation
+     * @param null $default
      * @return string
      */
-    public static function get(string $dotNotation): ?string
+    public static function get(string $dotNotation, $default=null): ?string
     {
         [$file, $dot] = explode('.', $dotNotation, 2);
         $path = sprintf('src/Application/Lang/%s/%s.php', self::getName(), $file);
         if (!isset(self::$langFiles[$path])) {
             self::$langFiles[$path]=require $path;
         }
-        return DotNotation::getInstance()->getValueByKey($dot, self::$langFiles[$path]);
+        return DotNotation::getInstance()->getValueByKey($dot, self::$langFiles[$path], $default);
     }
 
     /**
