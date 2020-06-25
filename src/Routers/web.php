@@ -9,7 +9,7 @@ Router::view('/view-test', 'index');
 Router::get('deneme', 'Deneme@index');
 
 Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test')->middleware('captcha');
-Router::view('form', 'form');
+Router::view('form', 'form')->name('form');
 
 Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
     Router::get('admin', fn () =>env('REDIS_HOST'));

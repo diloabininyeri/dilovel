@@ -15,7 +15,7 @@ class Redirect
     /**
      * @var string $url
      */
-    private string $url;
+    private ?string $url=null;
     /**
      * @var Flash $flash
      */
