@@ -103,7 +103,6 @@ class Redirect
         $this->flashError->set($name, $value);
         return $this;
     }
-
     /**
      * @param string $url
      * @return $this

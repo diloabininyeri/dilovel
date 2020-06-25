@@ -28,6 +28,7 @@
     "symfony/swiftmailer-bundle": "^3.4",
     "php-amqplib/php-amqplib": "^2.11",
     "mobiledetect/mobiledetectlib": "^2.8",
+    "gregwar/captcha": "^1.1",
     "ext-memcache": "*",
     "ext-memcached": "*",
     "ext-readline": "*",

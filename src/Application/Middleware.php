@@ -3,6 +3,7 @@
 namespace App\Application;
 
 use App\Application\Middleware\AuthMiddleware;
+use App\Application\Middleware\CaptchaVerifyMiddleware;
 use App\Application\Middleware\CsrfTokenMiddleware;
 use App\Application\Middleware\GlobalMiddleware;
 use App\Application\Middleware\NameMiddleware;
@@ -26,6 +27,7 @@ class Middleware extends MiddlewareAbstract
         'example' => TestExample::class,
         'auth' => AuthMiddleware::class,
         'csrf' => CsrfTokenMiddleware::class,
+        'captcha'=>CaptchaVerifyMiddleware::class,
 
     ];
 

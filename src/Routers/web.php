@@ -8,7 +8,7 @@ Router::view('/view-test', 'index');
 
 Router::get('deneme', 'Deneme@index');
 
-Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test');
+Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test')->middleware('captcha');
 Router::view('form', 'form');
 
 Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
