@@ -402,3 +402,21 @@ function captcha()
 {
     return (new Captcha())->inline();
 }
+
+
+function array_unique_callback(array $array, callable $comparator): array
+{
+    $unique_array = [];
+    while (count($array)>0) {
+        $element = array_shift($array);
+        $unique_array[] = $element;
+
+        $array = array_udiff(
+            $array,
+            [$element],
+            $comparator
+        );
+    }
+
+    return $unique_array;
+}

@@ -15,6 +15,10 @@ class Deneme extends CanIterate
 {
     public function index(Request $request)
     {
+        return redirect()->router('form')->withQuery(['id'=>63,'country'=>'turkey'])->withHash('news');
+
+
+        redirect()->router('form')->withFormError('hatata');
         csrf()->validateToken($request->post('_token'));
         return session()->all();
         /*$validate=$request->validateWithRules([

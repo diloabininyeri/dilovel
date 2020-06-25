@@ -42,18 +42,14 @@
                     <input class="form-control btn btn-info" type="submit" value="gonder">
                 </div>
 
-
-
-
             </form>
         </div>
         <div class="col">
-
-
-
-
         </div>
-        <div class="col"></div>
+        <div class="col">
+            @php $a=12; @endphp
+           <h2>{{$a}}</h2>
+        </div>
     </div>
 </div>
 
