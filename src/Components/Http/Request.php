@@ -5,6 +5,7 @@ namespace App\Components\Http;
 use App\Components\Auth\User\User;
 use App\Components\Routers\RouterQueryString;
 use App\Interfaces\ArrayAble;
+use App\Interfaces\RequestInterface;
 use App\Interfaces\ToJson;
 use Detection\MobileDetect;
 use JsonException;
@@ -17,7 +18,7 @@ use JsonException;
  * @method  bool isiOS()
  * @method  bool isAndroidOS()
  */
-class Request implements ArrayAble, ToJson
+class Request implements ArrayAble, ToJson, RequestInterface
 {
     /**
      * @var array
