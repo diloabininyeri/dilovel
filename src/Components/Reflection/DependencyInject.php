@@ -12,6 +12,8 @@ use ReflectionParameter;
 /**
  * Class DependencyInject
  * @package App\Components\Reflection
+ * @noinspection PhpUnused
+ *
  */
 class DependencyInject
 {
@@ -25,11 +27,6 @@ class DependencyInject
     private string $method;
 
     /**
-     * @var string
-     */
-    private string  $class;
-
-    /**
      * @var RequestInterface|null
      */
     private ?RequestInterface $request=null;
@@ -37,6 +34,7 @@ class DependencyInject
     /**
      * @param object $object
      * @return DependencyInject
+     * @noinspection PhpUnused
      */
     public function setObject(object $object): DependencyInject
     {
@@ -60,13 +58,14 @@ class DependencyInject
      */
     public function getParameters():array
     {
-        $reflectionMethod = new ReflectionMethod(get_class($this->object) ?: $this->class, $this->method);
+        $reflectionMethod = new ReflectionMethod(get_class($this->object), $this->method);
         return $reflectionMethod->getParameters();
     }
 
     /**
      * @return array
      * @throws ReflectionException
+     * @noinspection PhpUnused
      */
     public function getAllClass(): array
     {
@@ -83,6 +82,7 @@ class DependencyInject
     /**
      * @return mixed|null
      * @throws ReflectionException
+     * @noinspection PhpUnused
      */
     public function getFirstInjectClass():?string
     {
@@ -92,6 +92,7 @@ class DependencyInject
     /**
      * @return mixed
      * @throws ReflectionException
+     * @noinspection PhpUnused
      */
     public function call()
     {
@@ -101,6 +102,7 @@ class DependencyInject
     /**
      * @return bool
      * @throws ReflectionException
+     * @noinspection PhpUnused
      */
     public function isExistsRequestClass():bool
     {
@@ -133,18 +135,9 @@ class DependencyInject
     }
 
     /**
-     * @param string $class
-     * @return DependencyInject
-     */
-    public function setClass(string $class): DependencyInject
-    {
-        $this->class = $class;
-        return $this;
-    }
-
-    /**
      * @param Request $request
      * @return DependencyInject
+     * @noinspection PhpUnused
      */
     public function setRequest(Request $request): DependencyInject
     {
@@ -156,6 +149,7 @@ class DependencyInject
     /**
      * @return bool
      * @throws ReflectionException
+     * @noinspection PhpUnused
      */
     public function isExistsClasses():bool
     {
@@ -169,10 +163,8 @@ class DependencyInject
     private function findIndexRequestParameter(array $objects):?int
     {
         foreach ($objects as $key=>$object) {
-            if ($parent = get_parent_class($object)) {
-                if ($parent === Request::class) {
-                    return $key;
-                }
+            if (($parent = get_parent_class($object)) && $parent === Request::class) {
+                return $key;
             }
             if (get_class($object)===Request::class) {
                 return $key;
@@ -183,6 +175,7 @@ class DependencyInject
 
     /**
      * @return object
+     * @noinspection PhpUnused
      */
     public function getObject(): object
     {
@@ -191,6 +184,7 @@ class DependencyInject
 
     /**
      * @return string
+     * @noinspection PhpUnused
      */
     public function getMethod(): string
     {
