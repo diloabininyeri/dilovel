@@ -103,6 +103,15 @@ class Redirect
         $this->flashError->set($name, $value);
         return $this;
     }
+
+    /**
+     * @param $error
+     * @return $this
+     */
+    public function withFormError($error):self
+    {
+        return $this->withError('form_validation_error', $error);
+    }
     /**
      * @param string $url
      * @return $this
