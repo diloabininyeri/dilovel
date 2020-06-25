@@ -7,6 +7,7 @@
 use App\Components\Arr\DotNotation;
 use App\Components\Cache\Memcache\Memcache;
 use App\Components\Cache\ViewCache;
+use App\Components\Captcha;
 use App\Components\Cart\Cart;
 use App\Components\Csrf\CsrfGuard;
 use App\Components\Database\PDOAdaptor;
@@ -394,4 +395,10 @@ function csrf()
 function lang(string $dotNotation, $default=null)
 {
     return Lang::get($dotNotation, $default);
+}
+
+
+function captcha()
+{
+    return (new Captcha())->inline();
 }

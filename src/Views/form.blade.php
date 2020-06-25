@@ -36,7 +36,7 @@
                     <input placeholder="captcha" class="form-control" name="_captcha" type="text">
                 </div>
                 <div class="form-group">
-                    <img src="{{(new \App\Components\Captcha())->inline()}}" />
+                    <img src="{{captcha()}}" />
                 </div>
                 <div class="form-group">
                     <input class="form-control btn btn-info" type="submit" value="gonder">
