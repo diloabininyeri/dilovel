@@ -406,7 +406,7 @@ function captcha()
 
 function array_uunique(array $array, callable $comparator):array
 {
-    return array_unique_callback($array,$comparator);
+    return array_unique_callback($array, $comparator);
 }
 
 function array_unique_callback(array $array, callable $comparator): array
