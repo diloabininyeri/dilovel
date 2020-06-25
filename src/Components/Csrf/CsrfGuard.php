@@ -12,6 +12,7 @@ use App\Interfaces\CsrfGuardInterface;
  */
 class CsrfGuard implements CsrfGuardInterface
 {
+    private static ?string  $token=null;
     /**
      * @var Flash
      */
@@ -31,9 +32,12 @@ class CsrfGuard implements CsrfGuardInterface
      */
     public function generateToken(string $keyName = '__csrf_token'): string
     {
-        $token=md5(uniqid('csrf', true));
-        $this->flashSession->set($keyName, $token);
-        return $token;
+        if (!self::$token) {
+            $token=md5(uniqid('csrf', true));
+            $this->flashSession->set($keyName, $token);
+            self::$token=$token;
+        }
+        return self::$token;
     }
 
     /**

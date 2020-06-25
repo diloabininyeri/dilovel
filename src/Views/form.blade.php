@@ -18,7 +18,8 @@
     </div>
     <div class="row">
         <div class="col">
-
+            <h2>{{csrf()->generateToken()}}</h2>
+            <h2>{{csrf()->generateToken()}}</h2>
             <h2>{{csrf()->generateToken()}}</h2>
             <h2>{{lang('home.notfound','default value')}}</h2>
             <h2>{{lang('home.say')}}</h2>
@@ -45,5 +46,9 @@
     </div>
 </div>
 
+
+<script>
+    alert("{{csrf()->generateToken()}}")
+</script>
 </body>
 </html>
