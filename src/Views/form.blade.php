@@ -19,6 +19,10 @@
     <div class="row">
         <div class="col">
 
+            <h2>{{lang('home.say')}}</h2>
+            <h2>{{lang('home.say')}}</h2>
+            <h2>{{lang('home.say')}}</h2>
+            <h2>{{lang('home.say')}}</h2>
             <img class="img-thumbnail" src="{{assets('images/2020_05_11_file5eb8a286a5e531.84547494.png')}}" alt="">
             @foreach ($errors as $error)
                 <div class="alert alert-danger">{{$error}}</div>

@@ -32,16 +32,12 @@ class Lang
      */
     public static function get(string $dotNotation): ?string
     {
-        $lang = Session::getInstance()->get('system_language') ?: 'en';
         [$file, $dot] = explode('.', $dotNotation, 2);
-        $path = sprintf('src/Application/Lang/%s/%s.php', $lang, $file);
-
+        $path = sprintf('src/Application/Lang/%s/%s.php', self::getName(), $file);
         if (!isset(self::$langFiles[$path])) {
             self::$langFiles[$path]=require $path;
         }
-
-        $langArray=self::$langFiles[$path];
-        return DotNotation::getInstance()->getValueByKey($dot, $langArray);
+        return DotNotation::getInstance()->getValueByKey($dot, self::$langFiles[$path]);
     }
 
     /**
