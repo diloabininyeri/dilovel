@@ -104,7 +104,7 @@ class DependencyInject
      * @throws ReflectionException
      * @noinspection PhpUnused
      */
-    public function isExistsRequestClass():bool
+    public function hasRequestClass():bool
     {
         return $this->findIndexRequestParameter($this->createParametersAsObjects())!==null;
     }
@@ -151,7 +151,7 @@ class DependencyInject
      * @throws ReflectionException
      * @noinspection PhpUnused
      */
-    public function isExistsClasses():bool
+    public function hasClasses():bool
     {
         return !empty($this->getParameters());
     }
