@@ -4,6 +4,7 @@
 namespace App\Bootstrap;
 
 use App\Components\Routers\AllRouterCompare;
+use App\Components\Routers\CurrentRouter;
 use App\Components\Routers\Dispatcher;
 use App\Components\Routers\Printable;
 use App\Components\Routers\RouterObject;
@@ -36,13 +37,23 @@ class System
     }
 
     /**
+     * @param  RouterObject $findRouterObject
+     */
+    private function setCurrentRouter($findRouterObject):void
+    {
+        if ($findRouterObject!==null) {
+            CurrentRouter::set($findRouterObject);
+        }
+    }
+
+    /**
      */
     public function startUp(): void
     {
         $compare = new AllRouterCompare();
         $findRouterObject = $compare->findWillWhichExecute();
-
         if ($findRouterObject instanceof RouterObject) {
+            $this->setCurrentRouter($findRouterObject);
             if ($findRouterObject->getMainRouter()->getView() !== null) {
                 echo view($findRouterObject->getMainRouter()->getView());
             } else {

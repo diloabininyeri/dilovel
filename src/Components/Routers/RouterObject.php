@@ -46,7 +46,7 @@ class RouterObject
     /**
      * @return string
      */
-    public function getRouteName(): string
+    public function getRouteName(): ?string
     {
         return $this->mainRouter->getName();
     }

@@ -6,7 +6,7 @@ Router::path('test');
 
 Router::view('/view-test', 'index');
 
-Router::get('deneme', 'Deneme@index');
+Router::get('deneme', 'Deneme@index')->name('denememe');
 
 Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test')->middleware('captcha');
 Router::view('form', 'form')->name('form');
