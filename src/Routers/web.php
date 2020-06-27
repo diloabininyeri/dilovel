@@ -1,6 +1,6 @@
 <?php
 
-Router::get('/', fn () => view('index'))->name('index')->middleware('auth');
+Router::get('/', fn () => view('index'))->name('index');
 
 Router::path('test');
 
