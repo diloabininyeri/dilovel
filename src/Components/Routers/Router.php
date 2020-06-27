@@ -71,4 +71,16 @@ class Router
         $routerPath=str_replace('.', '/', $path);
         includeFile("src/Routers/$routerPath.php");
     }
+
+    /**
+     * @param array $ip
+     * @param Closure $closure
+     * @return mixed
+     */
+    public static function ip(array $ip, Closure $closure)
+    {
+        if (in_array('::1', $ip, true)) {
+            return $closure();
+        }
+    }
 }

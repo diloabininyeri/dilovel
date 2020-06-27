@@ -18,4 +18,8 @@ Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
 Router::auth('App\Application\Auth\Admin', 'isAuth')->path('admin.admin_test');
 Router::auth('App\Application\Auth\Admin', 'isAuth')->path('nested.example');
 
+Router::ip(['::1','localhost','127.0.0.1'], static function () {
+    Router::get('custom-area', fn () =>'custom area can pass with ip address');
+});
+
 Router::path('custom_router_for_from_path');
