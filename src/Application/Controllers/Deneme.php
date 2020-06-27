@@ -8,14 +8,13 @@ use App\Components\Http\Request;
 use App\Application\Models\Book;
 use App\Components\Reflection\DependencyInject;
 use App\Components\Routers\CurrentRouter;
+use Faker\Factory;
 
 class Deneme
 {
     public function index()
     {
-        $dep=new DependencyInject();
-        $dep->hasRequestClass();
-        $dep->hasClasses();
-        return CurrentRouter::get()->getRouteName();
+        $faker = Factory::create('tr_TR');
+        return $faker->firstName.' '.$faker->lastName;
     }
 }

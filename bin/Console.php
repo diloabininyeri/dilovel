@@ -18,6 +18,7 @@ use Bin\Commands\CreatePolicyCommand;
 use Bin\Commands\CreateQueueClassCommand;
 use Bin\Commands\CreateRuleCommand;
 use Bin\Commands\CreateViewCommand;
+use Bin\Commands\DatabaseSeedRunCommand;
 use Bin\Commands\DeleteControllerCommand;
 use Bin\Commands\DropTableFromMigrations;
 use Bin\Commands\ErrorLogChangedCommand;
@@ -68,5 +69,6 @@ class Console extends CustomCommandCall
         'migrations:drop'=>DropTableFromMigrations::class,
         'router:list'=>RouteListCommand::class,
         'redis:consumer'=>RedisMessageConsumerCommand::class,
+        'db:seed'=>DatabaseSeedRunCommand::class,
     ];
 }
