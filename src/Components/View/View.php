@@ -55,7 +55,8 @@ class View
     private function renderWithBlade()
     {
         $bladeClass = new Blade();
-        return $bladeClass->render(file_get_contents($this->blade));
+        $bladeClass->render(file_get_contents($this->blade));
+        return $bladeClass->renderWithCustomDirective();
     }
 
 

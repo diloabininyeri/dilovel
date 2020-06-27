@@ -9,7 +9,6 @@ class MasterPageProvider implements ProviderInterface
 {
     public function register(): void
     {
-        // TODO: Implement register() method.
     }
 
     public function boot(): void

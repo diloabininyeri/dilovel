@@ -14,7 +14,7 @@ class Deneme
 {
     public function index()
     {
-        $faker = Factory::create('tr_TR');
-        return $faker->firstName.' '.$faker->lastName;
+        $name = 'dılo sürücü';
+        return view('deneme', compact('name'));
     }
 }

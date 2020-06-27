@@ -2,16 +2,19 @@
 
 namespace App\Components\Blade;
 
+use Closure;
+
 /**
  * Class Blade
  * @package App\Components\Blade
  */
-class Blade
+class Blade extends AbstractBlade
 {
+    protected static array  $dynamicDirectives=[];
     /**
      * @var BladeDirectiveInterface[] $directives
      */
-    private array $directives = [
+    protected array $directives = [
 
         CommentDirective::class,
         CsrfDirective::class,
@@ -44,19 +47,19 @@ class Blade
 
 
     /**
-     *
-     * @param $template
-     * @return mixed
-     *
+     * @return array
      */
-    public function render($template)
+    public function getDynamicDirectives(): array
     {
-        return array_reduce($this->directives, static function ($template, $class) {
-            /**
-             * @var BladeDirectiveInterface $object
-             */
-            $object = new $class();
-            return $object->replaceTemplate($template);
-        }, $template);
+        return self::$dynamicDirectives;
+    }
+
+    /**
+     * @param string $directive
+     * @param Closure $closure
+     */
+    public static function directive(string $directive, Closure $closure):void
+    {
+        self::$dynamicDirectives[$directive]=$closure;
     }
 }
