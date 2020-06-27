@@ -24,6 +24,8 @@ stay on at http://localhost
 
 > csrf token verify
 ![](https://i.ibb.co/Bs7vV2N/carbon.png)
+>blade template engine 
+![](https://i.ibb.co/D15N68L/carbon.png)
 **mvc-hmvc components** 
 ###### -auth
 >login logout register all automatically also have obverse that all it can management
