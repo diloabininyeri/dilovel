@@ -14,7 +14,7 @@ class Deneme
 {
     public function index()
     {
-        $name = 'dılo sürücü';
+        $name = 'dılo sürücü'.mt_rand(1, 55);
         return view('deneme', compact('name'));
     }
 }

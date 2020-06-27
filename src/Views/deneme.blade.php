@@ -10,4 +10,4 @@
 @endsection
 {{5+5}} <br>
 {{5+1222}}<br>
-@name('dılo sürücü')
+@name($name)

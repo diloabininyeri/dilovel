@@ -15,7 +15,7 @@ class CustomDirectiveProvider implements ProviderInterface
     public function boot(): void
     {
         Blade::directive('name', static function ($find) {
-            return '<?php echo ' . ucfirst($find[1]) . '; ?>';
+            return '<?php echo  strtoupper('.$find[1].') ; ?>';
         });
     }
 }
