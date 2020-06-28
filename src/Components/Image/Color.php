@@ -31,7 +31,7 @@ class Color
         return sprintf("#%02x%02x%02x", $red, $green, $blue);
     }
 
-    public static function toRgbArrayFromHex(string $hex)
+    public static function toRgbArrayFromHex(string $hex): array
     {
         [$red, $green, $blue] = sscanf($hex, "#%02x%02x%02x");
         return compact('red', 'green', 'blue');
@@ -43,7 +43,7 @@ class Color
     public function toRgbStringFromHex(string $hex):string
     {
         $rgb = self::toRgbArrayFromHex($hex);
-        echo "rgb({$rgb['red']}, {$rgb['green']},{$rgb['blue']})";
+        return "rgb({$rgb['red']}, {$rgb['green']},{$rgb['blue']})";
     }
     /**
      * @param string $rgb

@@ -23,15 +23,15 @@ class Captcha
      */
     private Flash $flashSession;
 
+    /**
+     * @var string $sessionName
+     */
+    private string $sessionName='captcha_phrase';
 
     /**
      * Captcha constructor.
-     * @param int $width
-     * @param int $height
-     * @param null $font
-     * @param null $fingerprint
      */
-    public function __construct($width=150, $height=40, $font=null, $fingerprint=null)
+    public function __construct()
     {
         if (!$this::$instance) {
             $this::$instance = new CaptchaBuilder();
@@ -46,7 +46,7 @@ class Captcha
      */
     public function verify(string $phrase): bool
     {
-        return $this->flashSession->get('captcha_phrase')===$phrase;
+        return $this->flashSession->get($this->sessionName)===$phrase;
     }
 
     /**
@@ -54,7 +54,7 @@ class Captcha
      */
     public function inline(): string
     {
-        $this->flashSession->set('captcha_phrase', $this::$instance->getPhrase());
+        $this->flashSession->set($this->sessionName, $this::$instance->getPhrase());
         return $this::$instance->inline();
     }
     /**
