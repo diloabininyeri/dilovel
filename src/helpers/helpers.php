@@ -425,3 +425,9 @@ function array_unique_callback(array $array, callable $comparator): array
 
     return $unique_array;
 }
+
+
+function response()
+{
+    return new App\Components\Http\Response\Response();
+}

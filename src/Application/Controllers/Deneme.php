@@ -22,6 +22,6 @@ class Deneme
 {
     public function index()
     {
-        return  Users::findOr(1700,fn () =>json_encode(['status'=>false,'data'=>[]]));
+        return response()->toJson(['name']);
     }
 }
