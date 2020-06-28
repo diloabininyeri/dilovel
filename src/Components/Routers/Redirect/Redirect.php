@@ -144,7 +144,6 @@ class Redirect
         return $this->url . ($this->query ? "?$this->query" : null) . $this->hash;
     }
 
-
     public function header()
     {
         if (!headers_sent()) {

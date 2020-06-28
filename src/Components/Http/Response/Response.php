@@ -3,6 +3,7 @@
 
 namespace App\Components\Http\Response;
 
+use App\Components\Routers\Redirect\Redirect;
 use JsonException;
 
 /**
@@ -11,11 +12,19 @@ use JsonException;
  */
 class Response
 {
+    /**
+     * @var int $status
+     */
     private int $status = 200;
 
-    private string  $charset='utf-8';
     /**
-     *
+     * @var string $charset
+     */
+    private string  $charset = 'utf-8';
+
+    private ?string $header=null;
+
+    /***
      */
     private function setHeaderJson()
     {
@@ -50,6 +59,10 @@ class Response
         }
     }
 
+    public static function toImage(): ResponseImage
+    {
+        return new ResponseImage();
+    }
     /**
      * @param int $status
      * @return Response
@@ -67,6 +80,21 @@ class Response
     public function setCharset(string $charset): Response
     {
         $this->charset = $charset;
+        return $this;
+    }
+
+    public static function redirect(): Redirect
+    {
+        return new Redirect();
+    }
+
+    /**
+     * @param string $header
+     * @return Response
+     */
+    public function setHeader(string $header): Response
+    {
+        $this->header = header("Content-Type: $header");
         return $this;
     }
 }

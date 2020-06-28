@@ -8,6 +8,7 @@ use App\Components\Database\BuilderQuery;
 use App\Components\Database\Migration\MysqlType\PrimaryKeyMigrationType;
 use App\Components\Http\Request;
 use App\Application\Models\Book;
+use App\Components\Http\Response\Response;
 use App\Components\Reflection\DependencyInject;
 use App\Components\Reflection\CodeBeautifier;
 use App\Components\Routers\CurrentRouter;
@@ -22,6 +23,8 @@ class Deneme
 {
     public function index()
     {
-        return response()->toJson(['name']);
+        return Response::toImage()
+            ->path('https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg')
+            ->print();
     }
 }
