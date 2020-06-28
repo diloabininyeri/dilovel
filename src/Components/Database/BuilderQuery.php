@@ -4,6 +4,7 @@ namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
 use App\Components\NullObject;
+use Closure;
 use Exception;
 use JsonException;
 use PDO;
@@ -605,6 +606,16 @@ class BuilderQuery
         return $this->find($id) ?: die(view(404));
     }
 
+
+    /**
+     * @param $id
+     * @param Closure $closure
+     * @return mixed|object|null
+     */
+    public function findOr($id, Closure $closure)
+    {
+        return $this->find($id) ?: $closure($this);
+    }
     /**
      * @return Collection
      */
@@ -697,6 +708,15 @@ class BuilderQuery
     public function firstOrFail(...$columns)
     {
         return $this->first(...$columns) ?: die(view('404'));
+    }
+
+    /**
+     * @param Closure $closure
+     * @return mixed|object|null
+     */
+    public function firstOr(Closure $closure)
+    {
+        return $this->first() ?: $closure();
     }
 
     /**

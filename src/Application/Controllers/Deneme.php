@@ -22,6 +22,6 @@ class Deneme
 {
     public function index()
     {
-        return CodeBeautifier::fromPhpCode('<?php echo 5+5; ?>');
+        return  Users::findOr(1700,fn () =>json_encode(['status'=>false,'data'=>[]]));
     }
 }
