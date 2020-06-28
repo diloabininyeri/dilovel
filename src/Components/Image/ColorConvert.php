@@ -46,6 +46,12 @@ class ColorConvert
         return sprintf('rgb(%d,%d,%d)', $this->rgb['r'], $this->rgb['g'], $this->rgb['b']);
     }
 
+
+    public function toHumanize():?string
+    {
+        $color= (new ColorHumanize())->name($this->toHex());
+        return $color['name'] ?? null;
+    }
     /**
      * @return string
      */
