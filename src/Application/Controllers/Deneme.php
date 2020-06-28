@@ -9,6 +9,7 @@ use App\Components\Database\Migration\MysqlType\PrimaryKeyMigrationType;
 use App\Components\Http\Request;
 use App\Application\Models\Book;
 use App\Components\Http\Response\Response;
+use App\Components\Image\Color;
 use App\Components\Image\Image;
 use App\Components\Reflection\DependencyInject;
 use App\Components\Reflection\CodeBeautifier;
@@ -24,8 +25,7 @@ class Deneme
 {
     public function index()
     {
-        $img = 'https://starfikir.files.wordpress.com/2016/02/deniz.jpg';
-
-        return  Image::getAverageColor($img)->toHumanize(); //Smalt Blue
+        $d= Color::rgbParse('rgb(155,200,55)');
+        return Color::rgbParse('rgb(255,200,55)');
     }
 }

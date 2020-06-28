@@ -5,9 +5,7 @@ namespace App\Components\Routers;
 
 use App\Components\Collection\Collection;
 use App\Components\Database\Model;
-use App\Components\Reflection\CodeBeautifier;
 use JsonException;
-use ReflectionObject;
 
 /**
  * Class Printable
@@ -55,21 +53,9 @@ class Printable
             echo '<style>body{display: grid;place-content: center;background: #ecf0f1}</style>';
             echo '<pre style="width: 100%;padding: 2em;color: #263238;background: #FAFAFA;box-shadow: 0 0 15px #263238;overflow: auto;max-height: 75vh">';
             print_r($this->data);
-            echo $this->printObject();
-
             echo '</pre>';
         } else {
             echo $this->data;
-        }
-    }
-
-    /**
-     * @return string|null
-     */
-    private function printObject():?string
-    {
-        if (is_object($this->data)) {
-            return sprintf('<div style="margin-top: 5vh;padding: 5em"><br><br>%s</div>', CodeBeautifier::fromObject($this->data));
         }
     }
 }
