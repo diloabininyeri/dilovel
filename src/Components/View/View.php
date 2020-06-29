@@ -110,9 +110,6 @@ class View
         return file_exists($this->getBladeCachePath());
     }
 
-    /**
-     *
-     */
     private function filePutViewCache(): void
     {
         $this->checkCacheDir();
@@ -120,10 +117,6 @@ class View
         file_put_contents("src/Views/caches/$md5.php", $this->renderWithBlade());
     }
 
-
-    /**
-     *
-     */
     public function checkCacheDir() : void
     {
         if (!is_dir("src/Views/caches/") && !mkdir("src/Views/caches/", 0777, true) && !is_dir("src/Views/caches/")) {
