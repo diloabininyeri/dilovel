@@ -27,6 +27,6 @@ class GlobalMiddleware implements MiddlewareInterface
         if ($yourCondition) {
             return $next($request);
         }
-        return view(404);
+        return view('errors.404');
     }
 }

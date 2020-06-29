@@ -4,6 +4,7 @@
 namespace App\Components\View;
 
 use App\Components\Blade\Blade;
+use App\Components\Enums\FormValidationEnum;
 use App\Components\Exceptions\ViewNotFoundException;
 use RuntimeException;
 
@@ -85,7 +86,7 @@ class View
      */
     private function builderReturnBlade():string
     {
-        $errors=(object)(error()->get('form_validation_error') ?? error()->all());
+        $errors=(object)(error()->get(FormValidationEnum::SESSION_NAME) ?? error()->all());
         extract($this->variables, EXTR_OVERWRITE);
         ob_start();
         require $this->getBladeCachePath();

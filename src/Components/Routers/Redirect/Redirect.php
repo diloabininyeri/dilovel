@@ -3,6 +3,7 @@
 
 namespace App\Components\Routers\Redirect;
 
+use App\Components\Enums\FormValidationEnum;
 use App\Components\Flash\Flash;
 use App\Components\Flash\FlashError;
 
@@ -110,7 +111,7 @@ class Redirect
      */
     public function withFormError($error):self
     {
-        return $this->withError('form_validation_error', $error);
+        return $this->withError(FormValidationEnum::SESSION_NAME, $error);
     }
     /**
      * @param string $url

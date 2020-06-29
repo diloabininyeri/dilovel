@@ -4,7 +4,6 @@
 namespace App\Bootstrap;
 
 use App\Components\Routers\NotFound;
-use JsonException;
 
 /**
  * Class App
@@ -13,7 +12,7 @@ use JsonException;
 class App
 {
     /**
-     * @throws JsonException
+     * @return $this
      */
     public function run():self
     {
@@ -26,10 +25,14 @@ class App
     }
 
     /**
-     * @return false|string|null
+     * @return string|null
      */
     public function call404IfNotFound():?string
     {
-        return NotFound::isCannotFindAny() ? view('404') : null;
+        if (NotFound::isCannotFindAny()) {
+            http_response_code(404);
+            return view('errors.404');
+        }
+        return null;
     }
 }

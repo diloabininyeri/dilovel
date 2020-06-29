@@ -603,7 +603,7 @@ class BuilderQuery
      */
     public function findOrFail($id)
     {
-        return $this->find($id) ?: die(view(404));
+        return $this->find($id) ?: die(view('errors.404'));
     }
 
 
@@ -707,7 +707,7 @@ class BuilderQuery
      */
     public function firstOrFail(...$columns)
     {
-        return $this->first(...$columns) ?: die(view('404'));
+        return $this->first(...$columns) ?: die(view('errors.404'));
     }
 
     /**
@@ -740,7 +740,7 @@ class BuilderQuery
      */
     public function lastOrFail(...$columns)
     {
-        return $this->last(...$columns) ?: die(view('404'));
+        return $this->last(...$columns) ?: die(view('errors.404'));
     }
 
     /**

@@ -25,6 +25,6 @@ class AuthMiddleware implements MiddlewareInterface
         if (Auth::user()->check()) {
             return $next($request);
         }
-        return abort(404);
+        return abort('errors.404');
     }
 }

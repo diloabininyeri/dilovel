@@ -9,6 +9,8 @@ class Deneme
 {
     public function index()
     {
-        return Color::rgbParse('rgb(255,200,55)');
+        return view('errors.404');
+        http_response_code(500);
+        return view(500, ['error'=>77]);
     }
 }
