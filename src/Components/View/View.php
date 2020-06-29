@@ -83,6 +83,7 @@ class View
 
     /**
      * @return string
+     * @noinspection PhpIncludeInspection
      */
     private function builderReturnBlade():string
     {

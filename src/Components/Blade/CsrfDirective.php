@@ -3,6 +3,8 @@
 
 namespace App\Components\Blade;
 
+use App\Components\Enums\CrsfEnum;
+
 class CsrfDirective implements BladeDirectiveInterface
 {
     public function getDirectiveRegexPattern()
@@ -12,6 +14,7 @@ class CsrfDirective implements BladeDirectiveInterface
 
     public function replaceTemplate(string $template)
     {
-        return str_replace('@csrf', '<input type="hidden" value="{{csrf()->generateToken()}}" name="_token"/>', $template);
+        $tokenName=CrsfEnum::CSRF_INPUT_NAME;
+        return str_replace('@csrf', '<input type="hidden" value="{{csrf()->generateToken()}}" name="'.$tokenName.'"/>', $template);
     }
 }

@@ -4,6 +4,7 @@
 namespace App\Application\Middleware\Abstracts;
 
  use App\Components\Csrf\CsrfGuard;
+ use App\Components\Enums\CrsfEnum;
  use App\Components\Http\Request;
  use App\Components\Http\Url;
 
@@ -27,7 +28,7 @@ namespace App\Application\Middleware\Abstracts;
       */
      final protected function validationToken(Request $request): bool
      {
-         return (new CsrfGuard())->validateToken($request->post('_token') ?? 'csrf');
+         return (new CsrfGuard())->validateToken($request->post(CrsfEnum::CSRF_INPUT_NAME) ?? 'csrf');
      }
 
 
