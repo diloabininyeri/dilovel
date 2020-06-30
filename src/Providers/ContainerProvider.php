@@ -5,6 +5,7 @@ namespace App\Providers;
 
 use App\Application\Controllers\MyContainerTest;
 use App\Components\View\Master;
+use Carbon\Carbon;
 
 /**
  * Class ContainerProvider
@@ -28,5 +29,6 @@ class ContainerProvider implements ProviderInterface
      */
     public function boot(): void
     {
+        Carbon::setLocale(config('app.locale'));
     }
 }

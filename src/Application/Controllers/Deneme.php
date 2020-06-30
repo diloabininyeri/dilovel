@@ -14,7 +14,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        Carbon::setLocale('tr_TR');
+        $request->cookie()->set('aaa', range(1, 5), 55);
         return $request->cookie()->get('aaa')->expireForHumans();
     }
 }
