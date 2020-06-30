@@ -49,6 +49,8 @@ Router::middleware(['guest'], static function () {
 });
 
 
+Router::get('prev_next_test', 'PrevNextTest@index');
+
 Router::name('custom_name', static function () {
     Router::get('custom_name_test', fn () =>router('custom_name.test'))->name('test');
     Router::get('custom_name_other', fn () =>router('custom_name.test_other'))->name('test_other');

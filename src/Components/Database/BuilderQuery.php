@@ -3,9 +3,7 @@
 namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
-use App\Components\NullObject;
 use Closure;
-use Exception;
 use JsonException;
 use PDO;
 
@@ -616,6 +614,29 @@ class BuilderQuery
     {
         return $this->find($id) ?: $closure($this);
     }
+
+    /**
+     * @return object|null
+     */
+    public function prev()
+    {
+        $primaryKeyName=$this->modelInstance->getPrimaryKey();
+        $primaryKeyValue=$this->modelInstance->getPrimaryKeyValue();
+        $self = new self($this->modelInstance);
+        return $self->where($primaryKeyName, $primaryKeyValue, '<')->first();
+    }
+
+    /**
+     * @return object|null
+     */
+    public function next()
+    {
+        $primaryKeyName=$this->modelInstance->getPrimaryKey();
+        $primaryKeyValue=$this->modelInstance->getPrimaryKeyValue();
+        $self = new self($this->modelInstance);
+        return $self->where($primaryKeyName, $primaryKeyValue, '>')->first();
+    }
+
     /**
      * @return Collection
      */
