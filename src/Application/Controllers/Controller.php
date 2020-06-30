@@ -33,8 +33,10 @@ class Controller
         ]);*/
 
 
+        $request->cookie()->get();
+
         $image= Image::getAverageColor(public_path('images/sea.jpg'));
-        return $image->toHex();
+        return $image->toHumanize();
 
 
         /*$http = new Http();

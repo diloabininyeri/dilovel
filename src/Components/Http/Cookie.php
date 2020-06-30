@@ -3,11 +3,13 @@
 
 namespace App\Components\Http;
 
+use App\Interfaces\ArrayAble;
+
 /**
  * Class Cookie
  * @package App\Components\Http
  */
-class Cookie
+class Cookie implements ArrayAble
 {
 
     /**
@@ -32,17 +34,26 @@ class Cookie
      */
     public function set(string $name, $value, $time = 3600): bool
     {
-        return setcookie($name, $value, time() + $time);
+        $cookie = serialize(['value' => $value, 'expire' => $time + time()]);
+        return setcookie($name, $cookie, time() + $time);
     }
 
     /**
      * @param string $name
      * @param null $default
-     * @return mixed|null
+     * @return ParseCookie
      */
-    public function get(string $name, $default = null)
+    public function get(string $name, $default = null): ParseCookie
     {
-        return $this->cookie[$name] ?? $default;
+        if (isset($this->cookie[$name]) && $this->isSerializedString($this->cookie[$name])) {
+            return new ParseCookie((object)unserialize($this->cookie[$name], ['allowed_classes' => true]));
+        }
+
+        if (isset($this->cookie[$name])) {
+            return new ParseCookie((object)['value' => $this->cookie[$name], 'expire' => 0]);
+        }
+
+        return new ParseCookie((object)['value' => $default, 'expire' => 0]);
     }
 
     /**
@@ -61,5 +72,33 @@ class Cookie
     public function delete(string $name): bool
     {
         return setcookie($name, null, time() - 3600);
+    }
+
+    private function isSerializedString($string): bool
+    {
+        return ($string === 'b:0;' || @unserialize($string, ['allowed_classes' => true]) !== false);
+    }
+
+    public function toArray(): array
+    {
+        $array = [];
+        foreach ($this->cookie as $name => $value) {
+            if ($this->isSerializedString($value)) {
+                $objectCookie = unserialize($value, ['allowed_classes' => true]);
+                $array[] = [
+
+                    'name' => $name,
+                    'value' => $objectCookie['value'],
+                    'expire' => $objectCookie['expire'] - time()
+                ];
+            } else {
+                $array[]=[
+                    'name'=>$name,
+                    'value'=>$value,
+                    'expire'=>0,
+                ];
+            }
+        }
+        return $array;
     }
 }
