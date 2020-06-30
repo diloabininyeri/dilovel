@@ -626,6 +626,7 @@ class BuilderQuery
             $this->modelInstance->getPrimaryKeyValue(),
             '<'
         )
+            ->orderByDesc($this->modelInstance->getPrimaryKey())
             ->first();
     }
 

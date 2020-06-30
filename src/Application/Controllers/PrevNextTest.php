@@ -9,7 +9,9 @@ class PrevNextTest
 {
     public function index()
     {
-        $users = Users::find(10);
-        return $users->next();
+        $user = Users::find(25);
+
+        return $user->prev();
+        return   $user->next();
     }
 }
