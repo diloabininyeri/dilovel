@@ -12,8 +12,8 @@ class UserObserver implements ModelObserverInterface
 {
     public function updated($model, $oldModel)
     {
-        echo $model->name."<br>";
-        echo $oldModel->name;
+        $model->name;
+        $oldModel->name;
     }
 
     public function deleted(Model $model)
