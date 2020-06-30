@@ -60,7 +60,21 @@ class Router
      */
     public static function group($attributes, $callback): void
     {
-        (new MainRouter())->group($attributes, $callback);
+        $prevRouters=RouterStorage::all();
+        $startIndexNow=count($prevRouters);
+        $callback();
+        $nowRouters=RouterStorage::all();
+        $lastIndexNow=count($nowRouters)-1;
+
+        $routers=array_slice($nowRouters, $startIndexNow, $lastIndexNow);
+        (new GenerateRouterGroup($attributes, $routers))
+            ->updateName()
+            ->updateNamespace();
+
+        /* foreach (range($startIndexNow, $lastIndexNow) as $index) {
+             $nowRouters[$index]->namespace('deneme_namespace');
+         }*/
+        //(new MainRouter())->group($attributes, $callback);
     }
 
     /**

@@ -75,6 +75,6 @@ class Dispatcher
     private function callControllerMethod(RouterObject $routerObject, $request=null)
     {
         [$controller, $method] = explode('@', $routerObject->getSecondParameter());
-        return (new CallController($controller, $method, $request?:new Request()))->call();
+        return (new CallController($controller, $method, $request?:new Request(), $routerObject->getMainRouter()->getNamespace()))->call();
     }
 }

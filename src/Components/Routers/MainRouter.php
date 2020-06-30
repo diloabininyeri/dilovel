@@ -15,9 +15,9 @@ class MainRouter
      */
     private ?string $method=null;
     /**
-     * @var array
+     * @var string
      */
-    private array $namespaces;
+    private ?string $namespace=null;
 
     /**
      * @var array $authorize
@@ -72,21 +72,22 @@ class MainRouter
 
 
     /**
-     * @param array $namespaces
-     * @return MainRouter
+     * @param string $namespaces
+     * @return $this
+     *
      */
-    public function namespaces(array $namespaces): MainRouter
+    public function namespace(string $namespaces): MainRouter
     {
-        $this->namespaces = $namespaces;
+        $this->namespace = $namespaces;
         return $this;
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getNamespaces(): array
+    public function getNamespace(): ?string
     {
-        return $this->namespaces;
+        return $this->namespace;
     }
 
     /**

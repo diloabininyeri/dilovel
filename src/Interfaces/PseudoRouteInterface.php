@@ -43,4 +43,11 @@ interface PseudoRouteInterface
      * @return $this
      */
     public function authorize(callable $callback):self ;
+
+
+    /**
+     * @param string $namespace
+     * @return $this
+     */
+    public function namespace(string $namespace):self ;
 }

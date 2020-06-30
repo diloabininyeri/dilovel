@@ -3,6 +3,8 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Models\Users;
+use App\Components\Cache\Redis\Redis;
 use App\Components\Http\Cookie;
 use App\Components\Http\Request;
 use App\Components\Image\Color;
@@ -14,7 +16,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $request->cookie()->set('aaa', range(1, 5), 55);
-        return $request->cookie()->get('aaa')->expireForHumans();
+        return redirect()->router('other.news');
     }
 }

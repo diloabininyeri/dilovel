@@ -39,6 +39,27 @@ class RouterName
     }
 
     /**
+     * @param $name
+     * @param $value
+     * @return string
+     */
+    public static function addBeginningDynamicUrl($name, $value):string
+    {
+        return self::$names[$name]['router_url'] = trim($value, '/') . '/' . self::$names[$name]['router_url'];
+    }
+    /**
+     * @param $oldName
+     * @param $newName
+     * @param null $newValue
+     * @return mixed|null
+     */
+    public static function update($oldName, $newName, $newValue=null)
+    {
+        $oldValue=self::$names[$oldName];
+        unset(self::$names[$oldName]);
+        return self::$names[$newName]=$newValue ?: $oldValue;
+    }
+    /**
      * @return array
      */
     public static function all(): array

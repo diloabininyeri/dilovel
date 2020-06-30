@@ -36,12 +36,16 @@ class CallController
      * @param string $controller
      * @param string $method
      * @param  $request
+     * @param null $namespace
      */
-    public function __construct(string $controller, string $method, $request)
+    public function __construct(string $controller, string $method, $request, $namespace=null)
     {
         $this->controller = $controller;
         $this->method = $method;
         $this->request = $request;
+        if ($namespace) {
+            $this->namespace.="$namespace\\";
+        }
     }
 
 
