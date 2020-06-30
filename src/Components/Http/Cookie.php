@@ -57,6 +57,16 @@ class Cookie implements ArrayAble
     }
 
     /**
+     * @param string $name
+     * @param \Closure $closure
+     * @return mixed
+     */
+    public function getOr(string $name, \Closure $closure)
+    {
+        return $this->get($name)->value() ?: $closure($this);
+    }
+
+    /**
      * @param $name
      * @return bool
      */

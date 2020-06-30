@@ -3,6 +3,7 @@
 
 namespace App\Application\Controllers;
 
+use App\Components\Http\Cookie;
 use App\Components\Http\Request;
 use App\Components\Image\Color;
 use App\Components\Routers\CurrentRouter;
@@ -12,9 +13,10 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $cookie1=  $request->cookie()->get('arr');
-        echo  $cookie1->expire();
+        return $request->cookie()->getOr('arr', static function (Cookie $cookie) {
 
-        return $cookie1->value();
+            // $cookie->toArray();
+            return 'cookie not found';
+        });
     }
 }
