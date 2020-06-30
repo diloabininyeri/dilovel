@@ -3,6 +3,9 @@
 
 namespace App\Components\Http;
 
+use App\Components\DateTime\Now;
+use Carbon\Carbon;
+
 /**
  * Class ParseCookie
  * @package App\Components\Http
@@ -33,11 +36,21 @@ class ParseCookie
     }
 
     /**
+     * @return string|null
+     */
+    public function expireForHumans():?string
+    {
+        if ($this->expire()!==0) {
+            return Carbon::parse(date('Y/m/d H:i:s', $this->expire()))->diffForHumans();
+        }
+        return null;
+    }
+    /**
      * @return int
      */
     public function expire():int
     {
-        return $this->cookie->expire - time();
+        return $this->cookie->expire;
     }
 
     /**

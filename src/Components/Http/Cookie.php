@@ -99,13 +99,15 @@ class Cookie implements ArrayAble
 
                     'name' => $name,
                     'value' => $objectCookie['value'],
-                    'expire' => $objectCookie['expire'] - time()
+                    'expire' => $objectCookie['expire'],
+                    'remaining_time'=>$objectCookie['expire'] - time()
                 ];
             } else {
                 $array[]=[
                     'name'=>$name,
                     'value'=>$value,
                     'expire'=>0,
+                    'remaining_time'=>0,
                 ];
             }
         }

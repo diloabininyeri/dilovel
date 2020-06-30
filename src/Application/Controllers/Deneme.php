@@ -7,16 +7,14 @@ use App\Components\Http\Cookie;
 use App\Components\Http\Request;
 use App\Components\Image\Color;
 use App\Components\Routers\CurrentRouter;
+use Carbon\Carbon;
 use Facebook\Facebook;
 
 class Deneme
 {
     public function index(Request $request)
     {
-        return $request->cookie()->getOr('arr', static function (Cookie $cookie) {
-
-            // $cookie->toArray();
-            return 'cookie not found';
-        });
+        Carbon::setLocale('tr_TR');
+        return $request->cookie()->get('aaa')->expireForHumans();
     }
 }
