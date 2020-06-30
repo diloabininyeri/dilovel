@@ -620,10 +620,13 @@ class BuilderQuery
      */
     public function prev()
     {
-        $primaryKeyName=$this->modelInstance->getPrimaryKey();
-        $primaryKeyValue=$this->modelInstance->getPrimaryKeyValue();
         $self = new self($this->modelInstance);
-        return $self->where($primaryKeyName, $primaryKeyValue, '<')->first();
+        return $self->where(
+            $this->modelInstance->getPrimaryKey(),
+            $this->modelInstance->getPrimaryKeyValue(),
+            '<'
+        )
+            ->first();
     }
 
     /**
@@ -631,10 +634,13 @@ class BuilderQuery
      */
     public function next()
     {
-        $primaryKeyName=$this->modelInstance->getPrimaryKey();
-        $primaryKeyValue=$this->modelInstance->getPrimaryKeyValue();
         $self = new self($this->modelInstance);
-        return $self->where($primaryKeyName, $primaryKeyValue, '>')->first();
+        return $self->where(
+            $this->modelInstance->getPrimaryKey(),
+            $this->modelInstance->getPrimaryKeyValue(),
+            '>'
+        )
+            ->first();
     }
 
     /**
