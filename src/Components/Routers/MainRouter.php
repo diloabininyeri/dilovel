@@ -76,7 +76,7 @@ class MainRouter
      * @return $this
      *
      */
-    public function namespace(string $namespaces): MainRouter
+    public function namespace(?string $namespaces): MainRouter
     {
         $this->namespace = $namespaces;
         return $this;

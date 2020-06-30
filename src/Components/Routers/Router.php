@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-use App\Components\Http\Request;
 use App\Interfaces\PseudoRouteInterface;
 use Closure;
 use function Composer\Autoload\includeFile;
@@ -13,8 +12,6 @@ use function Composer\Autoload\includeFile;
  * @package App\Components\Routers
  * @method static PseudoRouteInterface get($urlPattern, $callback=null)
  * @method static PseudoRouteInterface post($urlPattern, $callback=null)
- * @method PseudoRouteInterface middleware()
- * @method PseudoRouteInterface name
  * @method PseudoRouteInterface authorize(Closure $callback)
  * @method static PseudoRouteInterface view(string $uri,string $view)
  */
@@ -49,9 +46,6 @@ class Router
     public static function auth(string $class, string $method, Closure $closure=null)
     {
         return new RouterAuth($class, $method, $closure);
-        /*if (call_user_func([new $class(), $method], new Request())) {
-             return $closure();
-         }*/
     }
 
     /**
@@ -70,13 +64,30 @@ class Router
         (new GenerateRouterGroup($attributes, $routers))
             ->updateName()
             ->updateNamespace();
-
-        /* foreach (range($startIndexNow, $lastIndexNow) as $index) {
-             $nowRouters[$index]->namespace('deneme_namespace');
-         }*/
-        //(new MainRouter())->group($attributes, $callback);
     }
 
+    /**
+     * @param string $namespace
+     * @param Closure $closure
+     */
+    public static function prefix(string $namespace, Closure $closure): void
+    {
+        self::group(['namespace'=>$namespace], $closure);
+    }
+
+    public static function middleware(array $middleware, Closure $closure):void
+    {
+        self::group(['middleware'=>$middleware], $closure);
+    }
+
+    /**
+     * @param string $name
+     * @param Closure $closure
+     */
+    public static function name(string $name, Closure $closure):void
+    {
+        self::group(['name'=>$name], $closure);
+    }
     /**
      * @param string $path
      */
@@ -96,5 +107,6 @@ class Router
         if (in_array('::1', $ip, true)) {
             return $closure();
         }
+        return  null;
     }
 }

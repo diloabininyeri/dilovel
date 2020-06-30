@@ -22,7 +22,7 @@ class GenerateRouterGroup
     /**
      * @var mixed|string
      */
-    private string  $namespace;
+    private ?string  $namespace=null;
 
     private ?string $prefix=null;
     /**
@@ -40,7 +40,7 @@ class GenerateRouterGroup
     {
         $this->namespaceGroupName = $namespaceAttribute['name'] ?? null;
         $this->middleware = $namespaceAttribute['middleware'] ?? [];
-        $this->namespace = $namespaceAttribute['namespace'];
+        $this->namespace = $namespaceAttribute['namespace'] ?? null;
         $this->routers = $routers;
         $this->prefix=$namespaceAttribute['prefix'] ??null;
     }

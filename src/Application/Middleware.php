@@ -26,6 +26,7 @@ class Middleware extends MiddlewareAbstract
         'name' => NameMiddleware::class,
         'example' => TestExample::class,
         'auth' => AuthMiddleware::class,
+        'guest'=>GuestMiddleware::class,
         'csrf' => CsrfTokenMiddleware::class,
         'captcha'=>CaptchaVerifyMiddleware::class,
 

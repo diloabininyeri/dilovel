@@ -37,3 +37,19 @@ Router::group(['namespace' => 'Other', 'name' => 'other', 'middleware' => [],'pr
     Router::get('foo', 'Abs@index')->name('news');
     Router::get('/personel/foo', fn () => 'fewfwfewfewf')->name('personel');
 });
+
+Router::get('hass/hiss', fn () =>__FUNCTION__);
+
+Router::prefix('Other', static function () {
+    Router::get('prefix_test', 'Abs@index');
+});
+
+Router::middleware(['guest'], static function () {
+    Router::get('middleware_test', fn () =>router('middleware_test'))->name('middleware_test');
+});
+
+
+Router::name('custom_name', static function () {
+    Router::get('custom_name_test', fn () =>router('custom_name.test'))->name('test');
+    Router::get('custom_name_other', fn () =>router('custom_name.test_other'))->name('test_other');
+});
