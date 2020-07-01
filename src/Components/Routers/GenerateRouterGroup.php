@@ -85,7 +85,7 @@ class GenerateRouterGroup
     /**
      * @return $this
      */
-    public function updateName(): self
+    public function updateNameAndPrefix(): self
     {
         foreach ($this->routers as $router) {
             $isUpdatedRouter = false;

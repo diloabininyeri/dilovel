@@ -45,8 +45,9 @@ Router::prefix('Other', static function () {
     Router::get('prefix_test', 'Abs@index');
 });
 
-Router::middleware(['guest'], static function () {
+Router::middleware(['example'], static function () {
     Router::get('middleware_test', fn () =>router('middleware_test'))->name('middleware_test');
+    Router::get('middleware_test1', fn () =>router('middleware_test'))->name('middleware_test1');
 });
 
 
