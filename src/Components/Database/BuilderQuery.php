@@ -6,6 +6,7 @@ use App\Components\Collection\Collection;
 use Closure;
 use JsonException;
 use PDO;
+use function request;
 
 /**
  * Class BuilderQuery
@@ -251,7 +252,7 @@ class BuilderQuery
     public function filter($optional=[]):self
     {
         $columnNames=$this->columnNames();
-        $queries=array_merge(\request()->url()->query(), $optional);
+        $queries=array_merge(request()->url()->query(), $optional);
         foreach ($queries as $key=>$value) {
             if (in_array($key, $columnNames, true) && in_array($key, $this->getModelInstance()->getFilterableFields(), true)) {
                 $this->where($key, $value);

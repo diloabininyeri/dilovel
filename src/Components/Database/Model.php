@@ -16,7 +16,7 @@ abstract class Model
     /**
      * @var BuilderQuery
      */
-    private BuilderQuery $builder;
+    private BuilderQuery $builderQuery;
 
     /**
      * @var string|null
@@ -28,7 +28,7 @@ abstract class Model
      */
     public function __construct()
     {
-        $this->builder = new BuilderQuery($this);
+        $this->builderQuery = new BuilderQuery($this);
     }
 
     /**
@@ -121,7 +121,7 @@ abstract class Model
             return new $objectAbleClass($this->$property);
         }
 
-        return $this->builder->$name(...$arguments);
+        return $this->builderQuery->$name(...$arguments);
     }
 
     /**
@@ -237,8 +237,11 @@ abstract class Model
         return now()->diffForHumans($this->updated_at);
     }
 
+    /**
+     * @return array
+     */
     final public function getFilterableFields():array
     {
-        return $this->filterable ?? [];
+        return $this->filterable ?? $this->builderQuery->columnNames();
     }
 }
