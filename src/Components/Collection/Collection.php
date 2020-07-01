@@ -28,9 +28,9 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     /**
      * @var BuilderQuery
      */
-    private BuilderQuery $builderQuery;
+    private ?BuilderQuery $builderQuery;
 
-    public function __construct(array $collection, BuilderQuery $builderQuery)
+    public function __construct(array $collection, BuilderQuery $builderQuery=null)
     {
         $this->collection = $collection;
         $this->builderQuery = $builderQuery;
@@ -222,6 +222,22 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     {
         array_walk($this->collection, $closure);
         return $this;
+    }
+
+    public function shuffle():self
+    {
+        shuffle($this->collection);
+        return  new self($this->collection);
+    }
+
+    /**
+     * @param int $count
+     * @return $this
+     */
+    public function random(int $count=1): self
+    {
+        shuffle($this->collection);
+        return new self(array_slice($this->collection, 0, $count));
     }
 
     /**

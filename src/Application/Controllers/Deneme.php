@@ -18,8 +18,7 @@ class Deneme
 {
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::whereFirstOr('id', 10, '<', static function () {
-            return 'not found any record';
-        });
+        $users= Users::get();
+        return $users->random(5);
     }
 }
