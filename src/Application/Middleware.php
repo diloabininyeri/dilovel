@@ -6,6 +6,7 @@ use App\Application\Middleware\AuthMiddleware;
 use App\Application\Middleware\CaptchaVerifyMiddleware;
 use App\Application\Middleware\CsrfTokenMiddleware;
 use App\Application\Middleware\GlobalMiddleware;
+use App\Application\Middleware\GuestMiddleware;
 use App\Application\Middleware\NameMiddleware;
 use App\Application\Middleware\RequestIdMustBeInteger;
 use App\Application\Middleware\TestExample;

@@ -9,11 +9,5 @@ class PrevNextTest
 {
     public function index()
     {
-        $user = Users::find(25);
-        $user->name='emre mor';
-        $user->save();
-
-        return $user->prev();
-        return   $user->next();
     }
 }

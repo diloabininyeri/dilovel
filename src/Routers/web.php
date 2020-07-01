@@ -4,9 +4,10 @@ Router::get('/', fn () => view('index'))->name('index');
 
 Router::path('test');
 
+Router::get('router_test', fn () =>router('custom_name.test'));
 Router::view('/view-test', 'index');
 
-Router::get('deneme/:id', 'Deneme@index')->name('deneme');
+Router::get('deneme/:id', 'Deneme@index')->name('reg');
 
 Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test')->middleware('captcha');
 Router::view('form', 'form')->name('form');
@@ -33,7 +34,7 @@ Router::group(['namespace' => 'Nested', 'name' => 'nested', 'middleware' => [],'
 
 Router::get('gorup-out', fn () => __FUNCTION__);
 
-Router::group(['namespace' => 'Other', 'name' => 'other', 'middleware' => [],'prefix'=>'other/bar/'], static function () {
+Router::group(['namespace' => 'Other', 'name' => 'other', 'middleware' => ['example'],'prefix'=>'other/bar/'], static function () {
     Router::get('foo', 'Abs@index')->name('news');
     Router::get('/personel/foo', fn () => 'fewfwfewfewf')->name('personel');
 });
@@ -52,6 +53,6 @@ Router::middleware(['guest'], static function () {
 Router::get('prev_next_test', 'PrevNextTest@index');
 
 Router::name('custom_name', static function () {
-    Router::get('custom_name_test', fn () =>router('custom_name.test'))->name('test');
+    Router::get('custom_name_test', fn () =>router('custom_name.test'))->name('test1');
     Router::get('custom_name_other', fn () =>router('custom_name.test_other'))->name('test_other');
 });

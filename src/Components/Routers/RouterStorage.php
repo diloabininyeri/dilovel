@@ -14,7 +14,7 @@ class RouterStorage
     /**
      * @var array
      */
-    private static array  $mainRouter;
+    private static ?array  $mainRouter=[];
 
 
     /**

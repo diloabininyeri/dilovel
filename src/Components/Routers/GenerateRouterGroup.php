@@ -22,9 +22,9 @@ class GenerateRouterGroup
     /**
      * @var mixed|string
      */
-    private ?string  $namespace=null;
+    private ?string  $namespace = null;
 
-    private ?string $prefix=null;
+    private ?string $prefix = null;
     /**
      * @var array|MainRouter[]
      */
@@ -42,7 +42,7 @@ class GenerateRouterGroup
         $this->middleware = $namespaceAttribute['middleware'] ?? [];
         $this->namespace = $namespaceAttribute['namespace'] ?? null;
         $this->routers = $routers;
-        $this->prefix=$namespaceAttribute['prefix'] ??null;
+        $this->prefix = $namespaceAttribute['prefix'] ?? null;
     }
 
     /**
@@ -69,23 +69,39 @@ class GenerateRouterGroup
     /**
      * @return $this
      */
+    public function updateMiddleware(): self
+    {
+        foreach ($this->routers as $router) {
+            if ($this->middleware && $router->getMiddleware()) {
+                $router->middleware(...array_merge($router->getMiddleware(), $this->middleware));
+            }
+            if ($this->middleware && empty($router->getMiddleware())) {
+                $router->middleware(...$this->middleware);
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
     public function updateName(): self
     {
         foreach ($this->routers as $router) {
-            $isUpdatedRouter=false;
-            if ($this->namespaceGroupName!==null && $router->getName()) {
-                $newName=$this->namespaceGroupName.'.'.$router->getName();
+            $isUpdatedRouter = false;
+            if ($this->namespaceGroupName !== null && $router->getName()) {
+                $newName = $this->namespaceGroupName . '.' . $router->getName();
                 RouterName::update($router->getName(), $newName);
-                $isUpdatedRouter=true;
+                $isUpdatedRouter = true;
                 $router->name($newName);
             }
             if ($this->prefix !== null) {
-                if ($isUpdatedRouter===true) {
+                if ($isUpdatedRouter === true) {
                     RouterName::addBeginningDynamicUrl($newName, $this->prefix);
                 } else {
                     RouterName::addBeginningDynamicUrl($router->getName(), $this->prefix);
                 }
-                $router->setDynamicUrl(trim($this->prefix, '/').'/'.trim($router->getDynamicUrl(), '/'));
+                $router->setDynamicUrl(trim($this->prefix, '/') . '/' . trim($router->getDynamicUrl(), '/'));
             }
         }
         return $this;

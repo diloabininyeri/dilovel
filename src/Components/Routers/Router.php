@@ -63,6 +63,7 @@ class Router
         $routers=array_slice($nowRouters, $startIndexNow, $lastIndexNow);
         (new GenerateRouterGroup($attributes, $routers))
             ->updateName()
+            ->updateMiddleware()
             ->updateNamespace();
     }
 
