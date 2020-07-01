@@ -3,7 +3,6 @@
 
 namespace Bin\Commands;
 
-use App\Bootstrap\Application;
 use App\Bootstrap\Bootstrap;
 use App\Components\Routers\MainRouter;
 use App\Components\Routers\RouterStorage;
@@ -44,7 +43,10 @@ class RouteListCommand implements CommandInterface
             return 'closure';
         }
         if (is_string($router->getSecondParameter())) {
-            return $router->getSecondParameter();
+            if ($router->getNamespace()) {
+                return sprintf('%s/%s/%s', 'src/Application/Controllers', trim($router->getNamespace(), '/'), $router->getSecondParameter());
+            }
+            return  sprintf('%s/%s', 'src/Application/Controllers', trim($router->getSecondParameter(), '/'));
         }
         return 'view';
     }
