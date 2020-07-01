@@ -19,7 +19,7 @@ class Deneme
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $users= Users::find(18);
+        $users= Users::find(2);
         return optional($users)->doesnt_exists_property;
     }
 }
