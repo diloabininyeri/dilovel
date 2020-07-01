@@ -10,6 +10,7 @@ use App\Components\Database\BuilderQuery;
 use App\Components\Http\Cookie;
 use App\Components\Http\Request;
 use App\Components\Image\Color;
+use App\Components\NullObject;
 use App\Components\Routers\CurrentRouter;
 use Carbon\Carbon;
 use Facebook\Facebook;
@@ -18,7 +19,7 @@ class Deneme
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $users= Users::get();
-        return $users->total('id');
+        $users= Users::find(18);
+        return optional($users)->doesnt_exists_property;
     }
 }

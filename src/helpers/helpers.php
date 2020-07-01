@@ -10,6 +10,7 @@ use App\Components\Cache\ViewCache;
 use App\Components\Captcha;
 use App\Components\Cart\Cart;
 use App\Components\Csrf\CsrfGuard;
+use App\Components\Database\Optional;
 use App\Components\Database\PDOAdaptor;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
@@ -430,4 +431,13 @@ function array_unique_callback(array $array, callable $comparator): array
 function response()
 {
     return new App\Components\Http\Response\Response();
+}
+
+/**
+ * @param $data
+ * @return Optional
+ */
+function optional($data)
+{
+    return new Optional($data);
 }
