@@ -19,6 +19,6 @@ class Deneme
     public function index(TcNoVerifyRequest $request)
     {
         $users= Users::get();
-        return $users->random(5);
+        return $users->total('id');
     }
 }

@@ -273,7 +273,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     {
         $total = 0;
         foreach ($this->collection as $collection) {
-            $total+=$collection[$field] ?? $collection->$field;
+            $total+=$collection->$field ?? $collection[$field];
         }
         return $total;
     }
