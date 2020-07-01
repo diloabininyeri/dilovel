@@ -5,6 +5,7 @@ namespace App\Application\Models;
 
 use App\Application\Models\Objectable\UserName;
 use App\Application\Models\Objectable\UserPassword;
+use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\BuilderUserModel;
 use App\Components\Database\HasOne;
@@ -16,7 +17,7 @@ use App\Components\Database\Paginate;
  * Class Users
  * @package App\Models
  * @mixin BuilderQuery
- * @method  static get(...$columns)
+ * @method   static Collection get(...$columns)
  * @property $name
  * @method static BuilderQuery|Users order()
  * @method static Paginate paginate(int $perPage)

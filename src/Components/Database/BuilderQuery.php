@@ -25,7 +25,7 @@ class BuilderQuery
     private ?string $query = null;
 
 
-    private ?PDO $pdoConnection=null;
+    private ?PDO $pdoConnection = null;
 
     /**
      * @var array
@@ -202,7 +202,7 @@ class BuilderQuery
         $this->setQuery($this->builderDeleteQuery());
         $query = $this->pdoInstance()->prepare($this->getQuery());
         $query->execute($this->bindArray);
-        $rowCount= $query->rowCount();
+        $rowCount = $query->rowCount();
         if ($rowCount) {
             ObserverFire::deleted($this->modelInstance);
         }
@@ -231,7 +231,7 @@ class BuilderQuery
     /**
      * @return array
      */
-    public function columns():array
+    public function columns(): array
     {
         return $this->pdoInstance()->query("SHOW columns FROM {$this->getTable()}")->fetchAll();
     }
@@ -239,7 +239,7 @@ class BuilderQuery
     /**
      * @return array
      */
-    public function columnNames():array
+    public function columnNames(): array
     {
         return array_column($this->columns(), 'Field');
     }
@@ -249,26 +249,63 @@ class BuilderQuery
      * @param array $optional
      * @return $this
      */
-    public function filter($optional=[]):self
+    public function filter($optional = []): self
     {
-        $columnNames=$this->columnNames();
-        $queries=array_merge(request()->url()->query(), $optional);
-        foreach ($queries as $key=>$value) {
+        $columnNames = $this->columnNames();
+        $queries = array_merge(request()->url()->query(), $optional);
+        foreach ($queries as $key => $value) {
             if (in_array($key, $columnNames, true) && in_array($key, $this->getModelInstance()->getFilterableFields(), true)) {
                 $this->where($key, $value);
             }
         }
         return $this;
     }
+
     /**
      * @param $column
      * @param $value
      * @param $operator
      * @return object|null
      */
-    public function whereFirst($column, $value, $operator)
+    public function whereFirst(string $column, $value, $operator)
     {
         $this->where($column, $value, $operator);
+        return $this->first();
+    }
+
+    /**
+     * @param string $column
+     * @param $value
+     * @param $operator
+     * @param Closure $closure
+     * @return mixed|object|null
+     */
+    public function whereFirstOr(string $column, $value, $operator, Closure $closure)
+    {
+        return $this->whereFirst($column, $value, $operator) ?: $closure($this);
+    }
+
+    /**
+     * @param $column
+     * @param $value
+     * @param $operator
+     * @param Closure $closure
+     * @return object|null
+     */
+    public function whereLastOr($column, $value, $operator, Closure $closure)
+    {
+        return  $this->whereLast($column, $value, $operator) ?: $closure($this);
+    }
+
+    /**
+     * @param $column
+     * @param $value
+     * @param $operator
+     * @return object|null
+     */
+    public function whereLast($column, $value, $operator)
+    {
+        $this->where($column, $value, $operator)->orderByDesc($this->getModelInstance()->getPrimaryKey());
         return $this->first();
     }
 
@@ -461,7 +498,7 @@ class BuilderQuery
      * @param $column
      * @return $this
      */
-    public function builderMinQuery($column): self
+    private function builderMinQuery($column): self
     {
         if (!$this->isSelected()) {
             $this->selectQuery = "SELECT MIN($column) AS min";
@@ -614,6 +651,17 @@ class BuilderQuery
 
 
     /**
+     * @param array $columns
+     * @param Closure $closure
+     * @return Collection|mixed
+     */
+    public function getOr(array $columns, Closure $closure)
+    {
+        $this->setQuery($this->selectBuilderQuery($columns));
+        return  $this->runSelect() ?: $closure($this);
+    }
+
+    /**
      * @param int $id
      * @return mixed
      */
@@ -621,7 +669,7 @@ class BuilderQuery
     {
         $this->setQuery("select * from {$this->getTable()} where {$this->modelInstance->getPrimaryKey()}=:id");
         $this->setBindArray([$this->modelInstance->getPrimaryKey() => $id]);
-        $fetch= $this->fetch();
+        $fetch = $this->fetch();
         if ($fetch) {
             ObserveStorage::add($this->modelInstance, clone $fetch);
         }
@@ -687,7 +735,7 @@ class BuilderQuery
         if ($this->modelInstance->getHidden()) {
             $this->unsetHiddenPropertiesFromArray($result);
         }
-        return new Collection($result);
+        return new Collection($result, $this);
     }
 
 
@@ -805,6 +853,15 @@ class BuilderQuery
     }
 
     /**
+     * @param Closure $closure
+     * @return mixed|object|null
+     */
+    public function lastOr(Closure $closure)
+    {
+        return $this->last() ?: $closure($this);
+    }
+
+    /**
      * @return mixed
      */
     private function getQuery()
@@ -882,7 +939,7 @@ class BuilderQuery
     /**
      * @return string
      */
-    public function getWhereQuery(): ?string
+    private function getWhereQuery(): ?string
     {
         return $this->whereQuery;
     }
@@ -993,5 +1050,36 @@ class BuilderQuery
     public function lastInsertId(): int
     {
         return $this->pdoInstance()->lastInsertId();
+    }
+
+
+    /**
+     * @param mixed ...$columns
+     * @return mixed|string|null
+     */
+    public function getSqlQuery(...$columns)
+    {
+        $this->setQuery($this->selectBuilderQuery($columns));
+        return $this->getQuery();
+    }
+
+    /**
+     * @return mixed|string|null
+     */
+    public function deleteSqlQuery()
+    {
+        $this->setQuery($this->builderDeleteQuery());
+        return $this->getQuery();
+    }
+
+
+    /**
+     * @param array $data
+     * @return mixed|string|null
+     */
+    public function updateSqlQuery(array $data)
+    {
+        $this->setQuery($this->builderUpdateQuery($data ?: get_object_vars($this->modelInstance)));
+        return $this->getQuery();
     }
 }

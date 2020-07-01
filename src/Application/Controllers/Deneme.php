@@ -6,6 +6,7 @@ namespace App\Application\Controllers;
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Cache\Redis\Redis;
+use App\Components\Database\BuilderQuery;
 use App\Components\Http\Cookie;
 use App\Components\Http\Request;
 use App\Components\Image\Color;
@@ -17,6 +18,8 @@ class Deneme
 {
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::filter()->get();
+        return Users::whereFirstOr('id', 10, '<', static function () {
+            return 'not found any record';
+        });
     }
 }
