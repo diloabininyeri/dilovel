@@ -236,4 +236,9 @@ abstract class Model
         }
         return now()->diffForHumans($this->updated_at);
     }
+
+    final public function getFilterableFields():array
+    {
+        return $this->filterable ?? [];
+    }
 }

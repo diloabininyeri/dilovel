@@ -253,7 +253,7 @@ class BuilderQuery
         $columnNames=$this->columnNames();
         $queries=array_merge(\request()->url()->query(), $optional);
         foreach ($queries as $key=>$value) {
-            if (in_array($key, $columnNames, true)) {
+            if (in_array($key, $columnNames, true) && in_array($key, $this->getModelInstance()->getFilterableFields(), true)) {
                 $this->where($key, $value);
             }
         }

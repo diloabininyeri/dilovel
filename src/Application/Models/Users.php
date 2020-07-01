@@ -38,8 +38,12 @@ class Users extends BuilderUserModel
     /**
      * @var array|string[]
      */
-    protected array $hidden = [];
+    protected array $hidden = ['password'];
 
+    /**
+     * @var array|string[]
+     */
+    protected array $filterable = ['id','name'];
     /**
      * @var array|string[]
      */
