@@ -228,6 +228,38 @@ class BuilderQuery
     }
 
     /**
+     * @return array
+     */
+    public function columns():array
+    {
+        return $this->pdoInstance()->query("SHOW columns FROM {$this->getTable()}")->fetchAll();
+    }
+
+    /**
+     * @return array
+     */
+    public function columnNames():array
+    {
+        return array_column($this->columns(), 'Field');
+    }
+
+
+    /**
+     * @param array $optional
+     * @return $this
+     */
+    public function filter($optional=[]):self
+    {
+        $columnNames=$this->columnNames();
+        $queries=array_merge(\request()->url()->query(), $optional);
+        foreach ($queries as $key=>$value) {
+            if (in_array($key, $columnNames, true)) {
+                $this->where($key, $value);
+            }
+        }
+        return $this;
+    }
+    /**
      * @param $column
      * @param $value
      * @param $operator

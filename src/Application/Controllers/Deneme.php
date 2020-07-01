@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Models\Users;
+use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Cache\Redis\Redis;
 use App\Components\Http\Cookie;
 use App\Components\Http\Request;
@@ -14,8 +15,8 @@ use Facebook\Facebook;
 
 class Deneme
 {
-    public function index(Request $request)
+    public function index(TcNoVerifyRequest $request)
     {
-        return redirect()->router('other.news');
+        return Users::filter()->get();
     }
 }
