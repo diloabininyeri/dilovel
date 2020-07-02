@@ -3,6 +3,8 @@
 
 namespace App\Components\Routers\Validators;
 
+use App\Application\Routervalidators\Validator;
+
 /**
  * Class AbstractValidateRouter
  * @package App\Components\Routers\Validators
@@ -27,6 +29,6 @@ abstract class AbstractValidateRouter
      */
     private function getTypes(): array
     {
-        return $this->type;
+        return array_merge($this->type, (new Validator())->getTypes());
     }
 }
