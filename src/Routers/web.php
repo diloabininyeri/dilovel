@@ -1,7 +1,7 @@
 <?php
 
 Router::get('/', fn () => view('index'))->name('index');
-Router::get('/test_validate/email:param', fn () => 'test passed');
+
 
 Router::path('test');
 
