@@ -360,11 +360,10 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     public function unique(string $field): self
     {
         $unique_collection = [];
-        $collection = $this->collection;
-        while (count($collection) > 0) {
-            $element = array_shift($collection);
+        while (count($this->collection) > 0) {
+            $element = array_shift($this->collection);
             $unique_collection[] = $element;
-            $collection = array_udiff($collection, [$element], fn ($prev, $next) => $prev->$field <=> $next->$field);
+            $this->collection= array_udiff($this->collection, [$element], fn ($prev, $next) => $prev->$field <=> $next->$field);
         }
 
         return $this->setCollection($unique_collection);
