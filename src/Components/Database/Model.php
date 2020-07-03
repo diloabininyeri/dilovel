@@ -2,6 +2,7 @@
 
 namespace App\Components\Database;
 
+use App\Components\Collection\Collection;
 use Carbon\Carbon;
 use Exception;
 use JsonException;
@@ -278,6 +279,20 @@ abstract class Model
     {
         $this->created_at = Carbon::parse($this->created_at)->diffForHumans();
         $this->updated_at = Carbon::parse($this->updated_at)->diffForHumans();
+        return  $this;
+    }
+    /**
+     * @param $oldName
+     * @param $newName
+     * @param bool $delete
+     * @return $this
+     */
+    public function renameAttribute($oldName, $newName, $delete = true): self
+    {
+        $this->$newName=$this->$oldName;
+        if ($delete) {
+            unset($this->$oldName);
+        }
         return  $this;
     }
 }

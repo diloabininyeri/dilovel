@@ -316,19 +316,40 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      * @param callable $closure
      * @return $this
      */
-    public function setAttribute(string $attribute, callable $closure):self
+    public function setAttribute(string $attribute, callable $closure): self
     {
-        array_walk($this->collection, static function ($item) use ($attribute,$closure) {
-            $item->$attribute=$closure($item->$attribute);
+        array_walk($this->collection, static function ($item) use ($attribute, $closure) {
+            $item->$attribute = $closure($item->$attribute);
         });
 
-        return  $this;
+        return $this;
     }
 
-    public function toDiffForHumans():self
+
+    /**
+     * @return $this
+     */
+    public function toDiffForHumans(): self
     {
-        $this->setAttribute('created_at', fn ($createdAt) =>Carbon::parse($createdAt)->diffForHumans());
-        $this->setAttribute('updated_at', fn ($createdAt) =>Carbon::parse($createdAt)->diffForHumans());
-        return  $this;
+        $this->setAttribute('created_at', fn ($createdAt) => Carbon::parse($createdAt)->diffForHumans());
+        $this->setAttribute('updated_at', fn ($createdAt) => Carbon::parse($createdAt)->diffForHumans());
+        return $this;
+    }
+
+    /**
+     * @param $oldName
+     * @param $newName
+     * @param bool $delete
+     * @return $this
+     */
+    public function renameAttribute($oldName, $newName, $delete = true): self
+    {
+        array_walk($this->collection, static function ($collection) use ($oldName, $newName, $delete) {
+            $collection->$newName = $collection->$oldName;
+            if ($delete) {
+                unset($collection->$oldName);
+            }
+        });
+        return $this;
     }
 }
