@@ -352,4 +352,21 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         });
         return $this;
     }
+
+    /**
+     * @param string $field
+     * @return $this
+     */
+    public function unique(string $field): self
+    {
+        $unique_collection = [];
+        $collection = $this->collection;
+        while (count($collection) > 0) {
+            $element = array_shift($collection);
+            $unique_collection[] = $element;
+            $collection = array_udiff($collection, [$element], fn ($prev, $next) => $prev->$field <=> $next->$field);
+        }
+
+        return $this->setCollection($unique_collection);
+    }
 }

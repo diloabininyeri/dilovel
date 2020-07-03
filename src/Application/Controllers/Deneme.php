@@ -21,8 +21,7 @@ class Deneme
     {
         $users = Users::get();
         $users->toDiffForHumans();
-        $users->renameAttribute('created_at', 'olusturma_tarihi');
-
-        return $users;
+        $users->unique('name');
+        return $users->count();
     }
 }
