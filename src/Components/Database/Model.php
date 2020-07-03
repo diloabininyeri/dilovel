@@ -21,7 +21,7 @@ abstract class Model
     /**
      * @var string|null
      */
-    private static ?string $observeClass=null;
+    private static ?string $observeClass = null;
 
     /**
      * Model constructor.
@@ -34,9 +34,9 @@ abstract class Model
     /**
      * @param string $class
      */
-    final public static function observe(string $class):void
+    final public static function observe(string $class): void
     {
-        self::$observeClass=$class;
+        self::$observeClass = $class;
     }
 
     /**
@@ -209,7 +209,7 @@ abstract class Model
      */
     final public function getPrimaryKeyValue()
     {
-        $primaryKey=$this->getPrimaryKey();
+        $primaryKey = $this->getPrimaryKey();
         return $this->$primaryKey;
     }
 
@@ -217,7 +217,7 @@ abstract class Model
      * @param null $lang
      * @return string
      */
-    final public function createdDate($lang=null):string
+    final public function createdDate($lang = null): string
     {
         if ($lang !== null) {
             now()->setLocal($lang);
@@ -229,7 +229,7 @@ abstract class Model
      * @param null $lang
      * @return string
      */
-    final public function updatedDate($lang=null):string
+    final public function updatedDate($lang = null): string
     {
         if ($lang !== null) {
             now()->setLocal($lang);
@@ -240,8 +240,33 @@ abstract class Model
     /**
      * @return array
      */
-    final public function getFilterableFields():array
+    final public function getFilterableFields(): array
     {
         return $this->filterable ?? $this->builderQuery->columnNames();
+    }
+
+    /**
+     * @param array $default
+     * @return $this
+     */
+    public function withDefault(array $default): self
+    {
+        foreach ($default as $key => $value) {
+            if ($this->$key === null) {
+                $this->$key = $value;
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * @param string $attribute
+     * @param callable $callable
+     * @return $this
+     */
+    public function setAttribute(string $attribute, callable $callable):self
+    {
+        $this->$attribute=$callable($this->$attribute);
+        return $this;
     }
 }

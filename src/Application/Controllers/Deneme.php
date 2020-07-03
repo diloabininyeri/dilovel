@@ -19,19 +19,12 @@ class Deneme
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $users = Users::where('id', 68, '>')->get();
+        $users = Users::find(115);
+        return $users->setAttribute('name', new self());
+    }
 
-        $users
-            ->withDefault(['surname' => 'surucu', 'add' => '655'])
-            ->withAttributes(['doesnt_exist' => random_int(1, 555)])
-            ->setAttribute('name', function ($name) {
-                return strtoupper($name);
-            })
-            ->setAttribute('created_at', fn ($date) => Carbon::parse($date)->diffForHumans());
-
-
-        foreach ($users as $user) {
-            dd($user);
-        }
+    public function __invoke($name)
+    {
+        return "dılo $name";
     }
 }
