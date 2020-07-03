@@ -309,4 +309,18 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         }
         return $total;
     }
+
+    /**
+     * @param string $attribute
+     * @param callable $closure
+     * @return $this
+     */
+    public function setAttribute(string $attribute, callable $closure):self
+    {
+        array_walk($this->collection, static function ($item) use ($attribute,$closure) {
+            $item->$attribute=$closure($item->$attribute);
+        });
+
+        return  $this;
+    }
 }
