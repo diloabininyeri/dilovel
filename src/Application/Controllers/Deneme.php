@@ -19,7 +19,10 @@ class Deneme
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $users= Users::find(2);
-        return optional($users)->doesnt_exists_property;
+        $users= Users::where('id', 68, '>')->get();
+
+        return $users
+            ->withDefault(['surname'=>'surucu','add'=>'655'])
+            ->withAttributes(['doesnt_exist'=>random_int(1, 555)]);
     }
 }

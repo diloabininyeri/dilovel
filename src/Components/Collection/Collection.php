@@ -30,7 +30,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     private ?BuilderQuery $builderQuery;
 
-    public function __construct(array $collection, BuilderQuery $builderQuery=null)
+    public function __construct(array $collection, BuilderQuery $builderQuery = null)
     {
         $this->collection = $collection;
         $this->builderQuery = $builderQuery;
@@ -183,7 +183,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     /**
      * @return BuilderQuery
      */
-    public function builderQuery():BuilderQuery
+    public function builderQuery(): BuilderQuery
     {
         return $this->builderQuery;
     }
@@ -193,8 +193,9 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function toSql()
     {
-        return (fn () =>$this->getQuery())->call($this->builderQuery);
+        return (fn () => $this->getQuery())->call($this->builderQuery);
     }
+
     /**
      * @param Closure $closure
      * @return $this
@@ -224,20 +225,50 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         return $this;
     }
 
-    public function shuffle():self
+    public function shuffle(): self
     {
         shuffle($this->collection);
-        return  new self($this->collection);
+        return new self($this->collection);
     }
 
     /**
      * @param int $count
      * @return $this
      */
-    public function random(int $count=1): self
+    public function random(int $count = 1): self
     {
         shuffle($this->collection);
         return new self(array_slice($this->collection, 0, $count));
+    }
+
+    /**
+     * @param array $data
+     * @return $this
+     */
+    public function withDefault(array $data): self
+    {
+        array_walk($this->collection, function ($item) use ($data) {
+            foreach ($data as $key => $value) {
+                if ($item->$key === null) {
+                    $item->$key = $value;
+                }
+            }
+        });
+        return $this;
+    }
+
+    /**
+     * @param array $attributes
+     * @return $this
+     */
+    public function withAttributes(array $attributes): self
+    {
+        array_walk($this->collection, static function ($item) use ($attributes) {
+            foreach ($attributes as $key => $value) {
+                $item->$key = $value;
+            }
+        });
+        return $this;
     }
 
     /**
@@ -258,13 +289,14 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function insertNewItem($item, int $index): Collection
     {
-        $newCollection= array_merge(
+        $newCollection = array_merge(
             array_slice($this->collection, 0, $index),
             [$item],
             array_slice($this->collection, $index)
         );
         return $this->setCollection($newCollection);
     }
+
     /**
      * @param string $field
      * @return float
@@ -273,7 +305,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     {
         $total = 0;
         foreach ($this->collection as $collection) {
-            $total+=$collection->$field ?? $collection[$field];
+            $total += $collection->$field ?? $collection[$field];
         }
         return $total;
     }
