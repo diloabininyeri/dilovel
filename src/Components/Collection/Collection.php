@@ -8,6 +8,7 @@ use App\Interfaces\ToJson;
 use App\Components\Database\ModelMacro;
 use ArrayAccess;
 use ArrayIterator;
+use Carbon\Carbon;
 use Closure;
 use Countable;
 use IteratorAggregate;
@@ -321,6 +322,13 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
             $item->$attribute=$closure($item->$attribute);
         });
 
+        return  $this;
+    }
+
+    public function toDiffForHumans():self
+    {
+        $this->setAttribute('created_at', fn ($createdAt) =>Carbon::parse($createdAt)->diffForHumans());
+        $this->setAttribute('updated_at', fn ($createdAt) =>Carbon::parse($createdAt)->diffForHumans());
         return  $this;
     }
 }

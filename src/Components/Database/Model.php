@@ -2,6 +2,7 @@
 
 namespace App\Components\Database;
 
+use Carbon\Carbon;
 use Exception;
 use JsonException;
 
@@ -268,5 +269,15 @@ abstract class Model
     {
         $this->$attribute=$callable($this->$attribute);
         return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function toDiffForHumans():self
+    {
+        $this->created_at = Carbon::parse($this->created_at)->diffForHumans();
+        $this->updated_at = Carbon::parse($this->updated_at)->diffForHumans();
+        return  $this;
     }
 }

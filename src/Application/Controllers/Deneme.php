@@ -19,12 +19,9 @@ class Deneme
 {
     public function index(TcNoVerifyRequest $request)
     {
-        $users = Users::find(115);
-        return $users->setAttribute('name', new self());
-    }
+        $users = Users::get();
+        $users->toDiffForHumans();
 
-    public function __invoke($name)
-    {
-        return "dılo $name";
+        return $users;
     }
 }
