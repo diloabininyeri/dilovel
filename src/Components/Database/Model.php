@@ -250,7 +250,7 @@ abstract class Model
      * @param array $default
      * @return $this
      */
-    public function withDefault(array $default): self
+    final public function withDefault(array $default): self
     {
         foreach ($default as $key => $value) {
             if ($this->$key === null) {
@@ -265,7 +265,7 @@ abstract class Model
      * @param callable $callable
      * @return $this
      */
-    public function setAttribute(string $attribute, callable $callable):self
+    final public function setAttribute(string $attribute, callable $callable):self
     {
         $this->$attribute=$callable($this->$attribute);
         return $this;
@@ -274,7 +274,7 @@ abstract class Model
     /**
      * @return $this
      */
-    public function toDiffForHumans():self
+    final public function toDiffForHumans():self
     {
         $this->created_at = Carbon::parse($this->created_at)->diffForHumans();
         $this->updated_at = Carbon::parse($this->updated_at)->diffForHumans();
