@@ -192,6 +192,16 @@ class Request implements ArrayAble, ToJson, RequestInterface
     }
 
     /**
+     * @param null $ip
+     * @return Location
+     * @throws JsonException
+     */
+    public function location($ip=null):Location
+    {
+        return new Location($ip ?: $this->ip());
+    }
+
+    /**
      * @param mixed ...$exceptKeys
      * @return array
      */

@@ -16,6 +16,10 @@ class Lang
      * @var array
      */
     private static array $langFiles = [];
+    /**
+     * @var string
+     */
+    private static string $sessionName = 'system_language';
 
     /**
      * @param string $folderName
@@ -23,7 +27,7 @@ class Lang
      */
     public static function set(string $folderName = 'en'): bool
     {
-        return Session::getInstance()->set('system_language', $folderName);
+        return Session::getInstance()->set(self::$sessionName, $folderName);
     }
 
     /**
@@ -34,7 +38,7 @@ class Lang
     public static function get(string $dotNotation, $default=null): ?string
     {
         [$file, $dot] = explode('.', $dotNotation, 2);
-        $path = sprintf('src/Application/Lang/%s/%s.php', self::getName(), $file);
+        $path = sprintf('src/Application/Lang/%s/%s.php', self::getLanguageName(), $file);
         if (!isset(self::$langFiles[$path])) {
             self::$langFiles[$path]=require $path;
         }
@@ -42,10 +46,18 @@ class Lang
     }
 
     /**
+     * @return bool
+     */
+    public static function isExistSessionLanguage():bool
+    {
+        return Session::getInstance()->exists(self::$sessionName);
+    }
+
+    /**
      * @return mixed|string
      */
-    public static function getName()
+    public static function getLanguageName()
     {
-        return Session::getInstance()->get('system_language') ?? 'en';
+        return Session::getInstance()->get(self::$sessionName) ?? 'en';
     }
 }
