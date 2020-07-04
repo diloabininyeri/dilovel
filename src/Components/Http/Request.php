@@ -224,11 +224,12 @@ class Request implements ArrayAble, ToJson, RequestInterface
 
     /**
      * @param null $name
+     * @param null $default
      * @return array|mixed|null
      */
-    public function json($name = null)
+    public function json($name = null, $default=null)
     {
-        return $name === null ? $this->phpInput() : $this->phpInput()[$name];
+        return ($name === null ? $this->phpInput() : $this->phpInput()[$name] ?? $default);
     }
 
     /**
