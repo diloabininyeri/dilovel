@@ -5,6 +5,7 @@ namespace App\Application\Controllers;
 
 use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
+use App\Components\Cache;
 use App\Components\Cache\Redis\Redis;
 use App\Components\Database\BuilderQuery;
 use App\Components\Http\Cookie;
@@ -22,6 +23,8 @@ class Deneme
 {
     public function index(TcNoVerifyRequest $request)
     {
-        return $request->location('89.78.15.8')->country();
+        $request->location('89.78.15.8')->country();
+
+        return Cache::remember('users', fn () =>Users::get());
     }
 }

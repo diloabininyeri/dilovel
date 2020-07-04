@@ -735,7 +735,7 @@ class BuilderQuery
         if ($this->modelInstance->getHidden()) {
             $this->unsetHiddenPropertiesFromArray($result);
         }
-        return new Collection($result, $this);
+        return new Collection($result);
     }
 
 

@@ -26,15 +26,14 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      * @var array $collection
      */
     private array  $collection;
-    /**
-     * @var BuilderQuery
-     */
-    private ?BuilderQuery $builderQuery;
 
-    public function __construct(array $collection, BuilderQuery $builderQuery = null)
+    /**
+     * Collection constructor.
+     * @param array $collection
+     */
+    public function __construct(array $collection)
     {
         $this->collection = $collection;
-        $this->builderQuery = $builderQuery;
     }
 
     /**
@@ -180,23 +179,6 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     {
         return $this->collection;
     }
-
-    /**
-     * @return BuilderQuery
-     */
-    public function builderQuery(): BuilderQuery
-    {
-        return $this->builderQuery;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function toSql()
-    {
-        return (fn () => $this->getQuery())->call($this->builderQuery);
-    }
-
     /**
      * @param Closure $closure
      * @return $this
