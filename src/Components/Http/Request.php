@@ -213,6 +213,23 @@ class Request implements ArrayAble, ToJson, RequestInterface
         return $this->request;
     }
 
+    /**
+     * @return array|null
+     */
+    public function phpInput(): ?array
+    {
+        parse_str(file_get_contents('php://input'), $phpInput);
+        return $phpInput;
+    }
+
+    /**
+     * @param null $name
+     * @return array|mixed|null
+     */
+    public function json($name = null)
+    {
+        return $name === null ? $this->phpInput() : $this->phpInput()[$name];
+    }
 
     /**
      * @return User
@@ -236,7 +253,7 @@ class Request implements ArrayAble, ToJson, RequestInterface
      * this method is not very safe
      * @return bool
      */
-    public function isAjax():bool
+    public function isAjax(): bool
     {
         return isset($this->server['HTTP_X_REQUESTED_WITH']) && $this->server['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
     }
@@ -252,7 +269,7 @@ class Request implements ArrayAble, ToJson, RequestInterface
     /**
      * @return Cookie
      */
-    public function cookie():Cookie
+    public function cookie(): Cookie
     {
         return new Cookie();
     }
