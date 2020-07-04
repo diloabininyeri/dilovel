@@ -40,7 +40,6 @@ class CsrfTokenMiddleware extends AbstractCsrfTokenMiddleware implements Middlew
         if ($this->isCanPass($request)) {
             return $next($request);
         }
-        http_response_code(500);
-        return view('errors.csrf', ['error' => ' csrf must be verify']);
+        return $this->returnError($request);
     }
 }
