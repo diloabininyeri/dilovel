@@ -14,6 +14,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return $request->cookie()->get('dizi')->createdAtForHumans();
+        return $request->cookie()->get('dizi')->expireToDateTime();
     }
 }

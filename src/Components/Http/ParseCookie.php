@@ -4,6 +4,8 @@
 namespace App\Components\Http;
 
 use Carbon\Carbon;
+use DateTime;
+use Exception;
 
 /**
  * Class ParseCookie
@@ -50,6 +52,39 @@ class ParseCookie
     public function expire():int
     {
         return $this->cookie->expire;
+    }
+
+    /**
+     * @return DateTime
+     * @throws Exception,
+     */
+    public function expireToDateTime():DateTime
+    {
+        return new DateTime(date('Y/m/d H:i:s', $this->expire()));
+    }
+
+    /**
+     * @return false|string
+     */
+    public function createdAtToDate()
+    {
+        return date('Y/m/d H:i:s', $this->createdAt());
+    }
+
+    /**
+     * @return string
+     */
+    public function expireToDate():string
+    {
+        return date('Y/m/d H:i:s', $this->expire());
+    }
+    /**
+     * @return DateTime
+     * @throws Exception
+     */
+    public function createAdToDateTime():DateTime
+    {
+        return new DateTime(date('Y/m/d H:i:s', $this->createdAt()));
     }
 
     /**
