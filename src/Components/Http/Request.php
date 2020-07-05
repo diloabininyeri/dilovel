@@ -141,12 +141,30 @@ class Request implements ArrayAble, ToJson, RequestInterface
     }
 
     /**
+     * @param string $name
+     * @return bool
+     */
+    public function has(string $name): bool
+    {
+        return !empty($this->post($name));
+    }
+
+    /**
      * @param $name
      * @return bool
      */
     public function hasFile($name): bool
     {
-        return isset($_FILES[$name]);
+        return file_exists($_FILES[$name]['tmp_name']);
+    }
+
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public function hasFiles(string $name):bool
+    {
+        return file_exists($_FILES[$name]['tmp_name'][0]);
     }
 
     /**

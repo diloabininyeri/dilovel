@@ -11,11 +11,9 @@ class ImageFormHandleAndResizeTest
 {
     public function test(Request $request)
     {
-
-        $uploaded=[];
-        foreach ($request->files('images') as $file) {
-            $uploaded[]=  $file->upload('images')->getUploadedFile();
-        }
-        return $uploaded;
+        /**
+         *
+         */
+        return $request->hasFiles('images');
     }
 }
