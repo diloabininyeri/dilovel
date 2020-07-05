@@ -7,6 +7,7 @@ use App\Application\Models\Users;
 use App\Application\Request\TcNoVerifyRequest;
 use App\Components\Cache;
 use App\Components\Cache\Redis\Redis;
+use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Http\Cookie;
 use App\Components\Http\Http;
@@ -19,12 +20,27 @@ use Carbon\Carbon;
 use Facebook\Facebook;
 use Locale;
 
+/**
+ * Class Deneme
+ * @package App\Application\Controllers
+ */
 class Deneme
 {
+    /**
+     * @param TcNoVerifyRequest $request
+     * @return Collection
+     */
     public function index(TcNoVerifyRequest $request)
     {
-        $request->location('89.78.15.8')->country();
+        return Users::get()->when($request->has('humans'),new self());
+    }
 
-        return Cache::remember('users', fn () =>Users::get());
+    /**
+     * @param Collection $collection
+     * @return Collection
+     */
+    function __invoke(Collection $collection)
+    {
+       return $collection->toDiffForHumans();
     }
 }
