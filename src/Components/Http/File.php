@@ -4,6 +4,7 @@
 namespace App\Components\Http;
 
 use SplFileInfo;
+use SplFileObject;
 
 /**
  * Class File
@@ -59,6 +60,14 @@ class File
     public function getInfo(): SplFileInfo
     {
         return new SplFileInfo($this->file['tmp_name']);
+    }
+
+    /**
+     * @return SplFileObject
+     */
+    public function getObject():SplFileObject
+    {
+        return new SplFileObject($this->file['tmp_name']);
     }
     /**
      * @return string

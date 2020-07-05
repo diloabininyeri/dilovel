@@ -14,8 +14,6 @@ class ImageFormHandleAndResizeTest
 {
     public function test(Request $request)
     {
-        return  $request->file('images')->getInfo()->getOwner();
-
         return $request->whenReturnCallback(
             $request->hasFiles('images'),
             fn (Request $request) => (new self())->uploadImages($request->files('images'))
