@@ -3,6 +3,8 @@
 
 namespace App\Components\Http;
 
+use SplFileInfo;
+
 /**
  * Class File
  * @package App\Http
@@ -38,6 +40,25 @@ class File
     public function isImage():bool
     {
         return (bool) exif_imagetype($this->file['tmp_name']);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMimeType():?string
+    {
+        if (file_exists($this->file['tmp_name'])) {
+            return mime_content_type($this->file['tmp_name']);
+        }
+        return null;
+    }
+
+    /**
+     * @return SplFileInfo
+     */
+    public function getInfo(): SplFileInfo
+    {
+        return new SplFileInfo($this->file['tmp_name']);
     }
     /**
      * @return string
