@@ -3,7 +3,6 @@
 
 namespace App\Components\Http;
 
-use App\Components\DateTime\Now;
 use Carbon\Carbon;
 
 /**
@@ -51,6 +50,21 @@ class ParseCookie
     public function expire():int
     {
         return $this->cookie->expire;
+    }
+
+    /**
+     * @return string
+     */
+    public function createdAtForHumans():string
+    {
+        return Carbon::parse(date('Y/m/d H:i:s', $this->createdAt()))->diffForHumans();
+    }
+    /**
+     * @return mixed
+     */
+    public function createdAt()
+    {
+        return $this->cookie->created_at;
     }
 
     /**

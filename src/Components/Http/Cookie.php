@@ -34,7 +34,7 @@ class Cookie implements ArrayAble
      */
     public function set(string $name, $value, $time = 3600): bool
     {
-        $cookie = serialize(['value' => $value, 'expire' => $time + time()]);
+        $cookie = serialize(['value' => $value, 'expire' => $time + time(),'created_at'=>time()]);
         return setcookie($name, $cookie, time() + $time);
     }
 
@@ -50,10 +50,10 @@ class Cookie implements ArrayAble
         }
 
         if (isset($this->cookie[$name])) {
-            return new ParseCookie((object)['value' => $this->cookie[$name], 'expire' => 0]);
+            return new ParseCookie((object)['value' => $this->cookie[$name], 'expire' => 0,'created_at'=>0]);
         }
 
-        return new ParseCookie((object)['value' => $default, 'expire' => 0]);
+        return new ParseCookie((object)['value' => $default, 'expire' => 0,'created_at'=>0]);
     }
 
     /**
@@ -100,7 +100,8 @@ class Cookie implements ArrayAble
                     'name' => $name,
                     'value' => $objectCookie['value'],
                     'expire' => $objectCookie['expire'],
-                    'remaining_time'=>$objectCookie['expire'] - time()
+                    'remaining_time'=>$objectCookie['expire'] - time(),
+                    'created_at'=>$objectCookie['created_at']
                 ];
             } else {
                 $array[]=[
@@ -108,6 +109,7 @@ class Cookie implements ArrayAble
                     'value'=>$value,
                     'expire'=>0,
                     'remaining_time'=>0,
+                    'created_at'=>0
                 ];
             }
         }
