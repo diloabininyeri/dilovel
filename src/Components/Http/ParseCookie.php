@@ -3,6 +3,7 @@
 
 namespace App\Components\Http;
 
+use App\Components\String\StrComponent;
 use Carbon\Carbon;
 use DateTime;
 use Exception;
@@ -34,6 +35,14 @@ class ParseCookie
     public function value()
     {
         return $this->cookie->value;
+    }
+
+    /**
+     * @return StrComponent
+     */
+    public function stringValue():StrComponent
+    {
+        return new StrComponent($this->cookie->value);
     }
 
     /**
