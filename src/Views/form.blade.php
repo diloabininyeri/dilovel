@@ -27,16 +27,12 @@
             @endforeach
             <form action="{{router('test')}}" enctype="multipart/form-data" method="post">
                 @csrf
-                <div class="form-group">
 
-                    <label for="exampleFormControlFile1">Example file input</label>
-                    <input type="file" class="form-control-file" name="file">
-                </div>
                 <div class="form-group">
                     <input placeholder="captcha" class="form-control" name="_captcha" type="text">
                 </div>
                 <div class="form-group">
-                    <img src="{{captcha()}}" />
+                    <input class="form-control-file" type="file" name="images[]" multiple>
                 </div>
                 <div class="form-group">
                     <input class="form-control btn btn-info" type="submit" value="gonder">

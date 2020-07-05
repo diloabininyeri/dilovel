@@ -10,7 +10,7 @@ Router::view('/view-test', 'index');
 
 Router::get('deneme/', 'Deneme@index')->name('reg');
 
-Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test')->middleware('captcha');
+Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test');
 Router::view('form', 'form')->name('form');
 
 Router::get('fef', 1)->namespace('fefef');

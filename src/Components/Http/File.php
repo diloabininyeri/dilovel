@@ -19,9 +19,9 @@ class File
      * File constructor.
      * @param string $file
      */
-    public function __construct(string $file)
+    public function __construct(array $file)
     {
-        $this->file = $_FILES[$file];
+        $this->file = $file;
     }
 
     /**

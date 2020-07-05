@@ -155,7 +155,27 @@ class Request implements ArrayAble, ToJson, RequestInterface
      */
     public function file(string $file): File
     {
-        return new File($file);
+        return new File($_FILES[$file]);
+    }
+
+    /**
+     * @param string $file
+     * @return array
+     */
+    public function files(string $file):array
+    {
+        $fileArray = array();
+        $files=$_FILES[$file];
+        $fileCount = count($files['name']);
+        $fileKeys = array_keys($files);
+
+        for ($i=0; $i<$fileCount; $i++) {
+            foreach ($fileKeys as $key) {
+                $fileArray[$i][$key] = $files[$key][$i];
+            }
+        }
+
+        return  array_map(fn ($item) =>new File($item), $fileArray);
     }
 
     /**
