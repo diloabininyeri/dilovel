@@ -32,7 +32,7 @@
                     <input placeholder="captcha" class="form-control" name="_captcha" type="text">
                 </div>
                 <div class="form-group">
-                    <input class="form-control-file" type="file" name="images[]" multiple>
+                    <input class="form-control-file" type="file" name="images" multiple>
                 </div>
                 <div class="form-group">
                     <input class="form-control btn btn-info" type="submit" value="gonder">

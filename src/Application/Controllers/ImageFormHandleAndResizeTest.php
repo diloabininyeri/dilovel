@@ -5,8 +5,11 @@ namespace App\Application\Controllers;
 
 use App\Components\Http\File;
 use App\Components\Http\Request;
-use App\Components\Image\Image;
 
+/**
+ * Class ImageFormHandleAndResizeTest
+ * @package App\Application\Controllers
+ */
 class ImageFormHandleAndResizeTest
 {
     public function test(Request $request)
@@ -25,7 +28,7 @@ class ImageFormHandleAndResizeTest
         $uploaded = [];
         foreach ($files as $file) {
             if ($file->getExtension()==='png') {
-                $uploaded[] = $file->upload('images')->upload()->getUploadedFile();
+                $uploaded[] = $file->upload('images')->getUploadedFile();
             }
         }
         return $uploaded;

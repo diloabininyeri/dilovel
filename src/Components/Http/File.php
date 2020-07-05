@@ -33,6 +33,13 @@ class File
     }
 
     /**
+     * @return bool
+     */
+    public function isImage():bool
+    {
+        return (bool) exif_imagetype($this->file['tmp_name']);
+    }
+    /**
      * @return string
      */
     public function getExtension(): string
