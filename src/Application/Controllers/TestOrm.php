@@ -3,7 +3,6 @@
 
 namespace App\Application\Controllers;
 
-
 use App\Application\Models\Users;
 
 /**
@@ -19,6 +18,6 @@ class TestOrm
      */
     public function index()
     {
-        return Users::findOr(18,fn()=>[response()->toJson(['data'=>[],'status'])]);
+        return Users::findOr(18, fn () =>[response()->toJson(['data'=>[],'status'])]);
     }
 }

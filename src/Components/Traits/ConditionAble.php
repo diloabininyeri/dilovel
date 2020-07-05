@@ -22,6 +22,14 @@ trait ConditionAble
         return $this;
     }
 
+    public function whenReturnCallback(bool $condition, callable $callable)
+    {
+        if ($condition) {
+            return  $callable($this, $condition);
+        }
+        return $this;
+    }
+
     /**
      * @param $condition
      * @param $callable

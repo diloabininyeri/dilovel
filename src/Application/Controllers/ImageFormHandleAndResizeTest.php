@@ -11,7 +11,23 @@ class ImageFormHandleAndResizeTest
 {
     public function test(Request $request)
     {
-        $request->hasFile('images');
-        $request->hasFiles('images');
+        return $request->whenReturnCallback(
+            $request->hasFiles('images'),
+            fn (Request $request) => (new self())->uploadImages($request->files('images'))
+        );
+    }
+    /**
+     * @param File[] $files
+     * @return array
+     */
+    public function uploadImages(array $files): array
+    {
+        $uploaded = [];
+        foreach ($files as $file) {
+            if ($file->getExtension()==='png') {
+                $uploaded[] = $file->upload('images')->upload()->getUploadedFile();
+            }
+        }
+        return $uploaded;
     }
 }

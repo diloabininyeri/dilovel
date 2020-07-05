@@ -4,6 +4,7 @@ namespace App\Components\Http;
 
 use App\Components\Auth\User\User;
 use App\Components\Routers\RouterQueryString;
+use App\Components\Traits\ConditionAble;
 use App\Interfaces\ArrayAble;
 use App\Interfaces\RequestInterface;
 use App\Interfaces\ToJson;
@@ -20,6 +21,7 @@ use JsonException;
  */
 class Request implements ArrayAble, ToJson, RequestInterface
 {
+    use ConditionAble;
     /**
      * @var array
      */

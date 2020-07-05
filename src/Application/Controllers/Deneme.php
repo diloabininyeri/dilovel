@@ -32,15 +32,15 @@ class Deneme
      */
     public function index(TcNoVerifyRequest $request)
     {
-        return Users::get()->when($request->has('humans'),new self());
+        return Users::get()->when($request->has('humans'), new self());
     }
 
     /**
      * @param Collection $collection
      * @return Collection
      */
-    function __invoke(Collection $collection)
+    public function __invoke(Collection $collection)
     {
-       return $collection->toDiffForHumans();
+        return $collection->toDiffForHumans();
     }
 }
