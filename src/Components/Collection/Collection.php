@@ -3,6 +3,7 @@
 namespace App\Components\Collection;
 
 use App\Components\Database\BuilderQuery;
+use App\Components\Traits\ConditionAble;
 use App\Interfaces\ArrayAble;
 use App\Interfaces\ToJson;
 use App\Components\Database\ModelMacro;
@@ -22,6 +23,7 @@ use Traversable;
  */
 class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable, ArrayAble, ToJson
 {
+    use ConditionAble;
     /**
      * @var array $collection
      */
