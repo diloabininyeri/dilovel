@@ -14,7 +14,7 @@ trait ConditionAble
      * @param $callable
      * @return $this
      */
-    public function when($condition, $callable): ConditionAble
+    public function when($condition, $callable): self
     {
         if ($condition) {
             $callable($this, $condition);
@@ -27,7 +27,7 @@ trait ConditionAble
      * @param $callable
      * @return ConditionAble
      */
-    public function unless($condition, $callable): ConditionAble
+    public function unless($condition, $callable): self
     {
         return $this->when(!$condition, $callable);
     }
