@@ -7,7 +7,7 @@
 
 stay on at http://localhost
 
-![](https://i.ibb.co/Xj57jLT/carbon.png)
+![](https://i.ibb.co/ZN5FGfQ/carbon-2.png)
 
 ![stay at localhost](https://i.ibb.co/NSVRG18/carbon.png)
 
