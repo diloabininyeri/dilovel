@@ -17,7 +17,7 @@ class File
 
     /**
      * File constructor.
-     * @param string $file
+     * @param array $file
      */
     public function __construct(array $file)
     {
