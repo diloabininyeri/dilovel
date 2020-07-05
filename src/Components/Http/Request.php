@@ -153,9 +153,14 @@ class Request implements ArrayAble, ToJson, RequestInterface
      * @param $name
      * @return bool
      */
-    public function hasFile($name): bool
+    public function hasFile(string $name): bool
     {
-        return file_exists($_FILES[$name]['tmp_name']);
+        $tmpName=$_FILES[$name]['tmp_name'];
+
+        if (isset($_FILES[$name]['tmp_name']) && !is_array($tmpName)) {
+            return file_exists($_FILES[$name]['tmp_name']);
+        }
+        return  false;
     }
 
     /**
@@ -164,7 +169,11 @@ class Request implements ArrayAble, ToJson, RequestInterface
      */
     public function hasFiles(string $name):bool
     {
-        return file_exists($_FILES[$name]['tmp_name'][0]);
+        $tmpName=$_FILES[$name]['tmp_name'];
+        if (isset($_FILES[$name]['tmp_name'][0]) && is_array($tmpName)) {
+            return file_exists($_FILES[$name]['tmp_name'][0]);
+        }
+        return false;
     }
 
     /**

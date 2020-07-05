@@ -2048,3 +2048,19 @@ Stack trace:
 [15-Jun-2020 22:25:45 Europe/Helsinki] PHP  10. call_user_func:{/home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
 [15-Jun-2020 22:25:45 Europe/Helsinki] PHP  11. App\Application\Controllers\Controller->index() /home/zeus/Desktop/hmvc/src/Components/Routers/CallControllerWithoutIoc.php:47
 [15-Jun-2020 22:25:45 Europe/Helsinki] PHP  12. print_r() /home/zeus/Desktop/hmvc/src/Application/Controllers/Controller.php:37
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/zeus/Desktop/dilovel/src/Components/Http/Request.php on line 158
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP Stack trace:
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   2. Closure->call() /home/zeus/Desktop/dilovel/index.php:20
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   3. App\Application\Middleware->App\Bootstrap\{closure:/home/zeus/Desktop/dilovel/src/Bootstrap/GlobalMiddlewareLayer.php:24-38}() /home/zeus/Desktop/dilovel/index.php:20
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   4. spl_autoload_call() /home/zeus/Desktop/dilovel/src/Bootstrap/GlobalMiddlewareLayer.php:25
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   5. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/dilovel/src/Bootstrap/GlobalMiddlewareLayer.php:25
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   6. Composer\Autoload\includeFile() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:322
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/zeus/Desktop/dilovel/src/Components/Http/Request.php on line 158
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP Stack trace:
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   2. Closure->call() /home/zeus/Desktop/dilovel/index.php:20
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   3. App\Application\Middleware->App\Bootstrap\{closure:/home/zeus/Desktop/dilovel/src/Bootstrap/GlobalMiddlewareLayer.php:24-38}() /home/zeus/Desktop/dilovel/index.php:20
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   4. spl_autoload_call() /home/zeus/Desktop/dilovel/src/Bootstrap/GlobalMiddlewareLayer.php:25
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   5. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/dilovel/src/Bootstrap/GlobalMiddlewareLayer.php:25
+[05-Jul-2020 03:48:42 Europe/Helsinki] PHP   6. Composer\Autoload\includeFile() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:322

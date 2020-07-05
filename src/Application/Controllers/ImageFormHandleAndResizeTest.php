@@ -11,9 +11,7 @@ class ImageFormHandleAndResizeTest
 {
     public function test(Request $request)
     {
-        /**
-         *
-         */
-        return $request->hasFiles('images');
+        $request->hasFile('images');
+        $request->hasFiles('images');
     }
 }
