@@ -25,7 +25,7 @@ namespace App\Components\String;
  * @method static StrComponent str_shuffle(string $string)
  * @method static StrComponent strlen(string $string)
  * @method static StrComponent str_replace($find,$replace,$string)
- * @method static StrComponent limit(string $string,int $length,string $threeDot)
+ * @method static StrComponent limit(string $string,int $length,string $threeDot=null)
  * @method static bool isMail(string $string)
  * @method static bool isIp(string $string)
  * @method static bool isMacAddress(string $string)

@@ -9,6 +9,7 @@ use App\Application\Controllers\Pipes\PipeTest3;
 use App\Components\Http\Request;
 
 use App\Components\Pipeline\Pipe;
+use App\Components\String\Str;
 use Session;
 
 /**

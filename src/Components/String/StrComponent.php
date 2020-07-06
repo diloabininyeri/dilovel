@@ -247,7 +247,7 @@ class StrComponent
      * @param null $treeDot
      * @return StrComponent
      */
-    public function limit(int $length, $treeDot = null): self
+    public function limit(int $length, $treeDot = '...'): self
     {
         return $this->returnSelf(mb_strimwidth($this->string, 0, $length, $treeDot));
     }
