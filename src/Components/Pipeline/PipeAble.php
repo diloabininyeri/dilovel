@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Next;
+namespace App\Components\Pipeline;
 
 use App\Interfaces\PipeAble as NextAbleInterface;
 
