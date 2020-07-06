@@ -3,8 +3,6 @@
 
 namespace App\Components\File;
 
-use phpDocumentor\Reflection\Types\This;
-
 /**
  * Class ExcelExport
  * @package App\Components\File
@@ -40,6 +38,29 @@ class ExcelExport
         $this->data = $data;
         $this->name = $name;
     }
+
+    /**
+     * @return int
+     */
+    public function count():int
+    {
+        return count($this->data);
+    }
+
+    /**
+     * @param array $keys
+     * @return $this
+     */
+    public function except(array $keys):self
+    {
+        $count=$this->count();
+        for ($i = 0; $i < $count; $i++) {
+            foreach ($keys as $ex) {
+                unset($this->data[$i][$ex]);
+            }
+        }
+        return $this;
+    }
     /**
      * @param array $keys
      * @return $this
@@ -63,6 +84,16 @@ class ExcelExport
     public function filter(callable $closure):self
     {
         $this->data=array_filter($this->data, $closure);
+        return $this;
+    }
+
+    /**
+     * @param callable $closure
+     * @return $this
+     */
+    public function each(callable $closure):self
+    {
+        array_walk($this->data, $closure);
         return $this;
     }
     /**
@@ -115,7 +146,7 @@ class ExcelExport
     /**
      * @return string
      */
-    public function createHtmlWithTable(): string
+    public function toHtml(): string
     {
         return sprintf(
             '  <meta charset="%s"><table>%s%s</table>',
@@ -135,7 +166,7 @@ class ExcelExport
         header('Content-Disposition: attachment;filename="' . $this->name . '"');
         header('Cache-Control: max-age=0');
         $output = fopen('php://output', 'wb');
-        fwrite($output, $this->createHtmlWithTable());
+        fwrite($output, $this->toHtml());
         return fclose($output);
     }
 

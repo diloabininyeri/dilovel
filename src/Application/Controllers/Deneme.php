@@ -28,9 +28,9 @@ class Deneme
             ->setCharset('UTF-8')
             ->setName('deneme')
             ->setLabels(['rename_id', 'rename_name'])
-            ->only(['id', 'name'])
+            ->except(['created_at', 'updated_at'])
             ->filter(fn ($item) =>$item['id']>18)
-            ->download();
+            ->toHtml();
 
 
         /*$pipe = new Pipe('haba');
