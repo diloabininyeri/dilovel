@@ -124,11 +124,11 @@ class ExcelExport
      */
     private function createThElements(): string
     {
-        $header = '<tr>';
+        $header = '<thead><tr>';
         foreach ($this->getLabels() as $key => $value) {
             $header .= "<th>$value</th>";
         }
-        $header .= '</tr>';
+        $header .= '</tr></thead>';
         return $header;
     }
 
@@ -137,7 +137,7 @@ class ExcelExport
      */
     private function createTdElements(): string
     {
-        $html = null;
+        $html = '<tbody>';
         foreach ($this->data as $iValue) {
             $html .= '<tr>';
             foreach ($iValue as $key => $value) {
@@ -145,6 +145,7 @@ class ExcelExport
             }
             $html .= '</tr>';
         }
+        $html.='</tbody>';
         return $html;
     }
 
@@ -152,6 +153,25 @@ class ExcelExport
      * @return string
      */
     public function toHtml(): ?string
+    {
+        $open = fopen('php://output', 'wb');
+        fwrite($open, $this->importCss());
+        fwrite($open, $this->getHtmlContent());
+        return fclose($open);
+    }
+
+    /**
+     * @return string
+     */
+    private function importCss():string
+    {
+        return sprintf('<link rel="stylesheet" href="%s">', assets('css/excel.table.css'));
+    }
+
+    /**
+     * @return string|null
+     */
+    private function getHtmlContent():?string
     {
         if ($this->isMulti()) {
             return sprintf(
@@ -163,7 +183,6 @@ class ExcelExport
         }
         return null;
     }
-
 
     /**
      * @return bool
@@ -184,7 +203,7 @@ class ExcelExport
             header('Content-Disposition: attachment;filename="' . $this->name . '"');
             header('Cache-Control: max-age=0');
             $output = fopen('php://output', 'wb');
-            fwrite($output, $this->toHtml());
+            fwrite($output, $this->getHtmlContent());
             return fclose($output);
         }
         return false;

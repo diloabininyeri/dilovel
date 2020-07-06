@@ -28,8 +28,7 @@ class Deneme
         $excel= Excel::export($users);
         $excel->only(['id','name','surname','country']);
         $excel->unique('name');
-        $excel->slice(0, 10);
-        $excel->download();
+        return $excel->toHtml();
 
 
 

@@ -132,7 +132,7 @@ function url()
  * @param $file
  * @return string
  */
-function assets($file)
+function assets($file):string
 {
     return sprintf('%s/public/%s', \url()->base(), trim($file, '/'));
 }
