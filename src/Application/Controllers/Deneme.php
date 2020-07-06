@@ -12,6 +12,7 @@ use App\Components\Http\Request;
 
 use App\Components\Pipeline\Pipe;
 use App\Components\String\Str;
+use Mpdf\Mpdf;
 use Session;
 
 /**
@@ -22,15 +23,10 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $data = Users::limit(5)->get()->toArray();
 
-        return Excel::export($data)
-            ->setCharset('UTF-8')
-            ->setName('deneme')
-            ->setLabels(['rename_id', 'rename_name'])
-            ->except(['created_at', 'updated_at'])
-            ->filter(fn ($item) =>$item['id']>18)
-            ->download();
+        $pdf = new Mpdf();
+        $pdf->WriteHTML(view('index'));
+        return $pdf->Output();
 
 
         /*$pipe = new Pipe('haba');
