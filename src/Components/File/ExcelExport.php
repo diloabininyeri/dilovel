@@ -42,7 +42,7 @@ class ExcelExport
     /**
      * @return int
      */
-    public function count():int
+    public function count(): int
     {
         return count($this->data);
     }
@@ -51,9 +51,9 @@ class ExcelExport
      * @param array $keys
      * @return $this
      */
-    public function except(array $keys):self
+    public function except(array $keys): self
     {
-        $count=$this->count();
+        $count = $this->count();
         for ($i = 0; $i < $count; $i++) {
             foreach ($keys as $ex) {
                 unset($this->data[$i][$ex]);
@@ -61,16 +61,17 @@ class ExcelExport
         }
         return $this;
     }
+
     /**
      * @param array $keys
      * @return $this
      */
-    public function only(array $keys):self
+    public function only(array $keys): self
     {
-        $this->data= array_map(static function ($item) use ($keys) {
-            $return=[];
+        $this->data = array_map(static function ($item) use ($keys) {
+            $return = [];
             foreach ($keys as $key) {
-                $return[$key]=$item[$key];
+                $return[$key] = $item[$key];
             }
             return $return;
         }, $this->data);
@@ -81,9 +82,9 @@ class ExcelExport
      * @param callable $closure
      * @return $this
      */
-    public function filter(callable $closure):self
+    public function filter(callable $closure): self
     {
-        $this->data=array_filter($this->data, $closure);
+        $this->data = array_filter($this->data, $closure);
         return $this;
     }
 
@@ -91,18 +92,19 @@ class ExcelExport
      * @param callable $closure
      * @return $this
      */
-    public function each(callable $closure):self
+    public function each(callable $closure): self
     {
         array_walk($this->data, $closure);
         return $this;
     }
+
     /**
      * @param array $labels
      * @return $this
      */
-    public function setLabels(array $labels):self
+    public function setLabels(array $labels): self
     {
-        $this->labels=$labels;
+        $this->labels = $labels;
         return $this;
     }
 
@@ -130,7 +132,7 @@ class ExcelExport
     /**
      * @return string
      */
-    private function createTdElements():string
+    private function createTdElements(): string
     {
         $html = null;
         foreach ($this->data as $iValue) {
@@ -140,34 +142,49 @@ class ExcelExport
             }
             $html .= '</tr>';
         }
-        return  $html;
+        return $html;
     }
 
     /**
      * @return string
      */
-    public function toHtml(): string
+    public function toHtml(): ?string
     {
-        return sprintf(
-            '  <meta charset="%s"><table>%s%s</table>',
-            $this->charset,
-            $this->createThElements(),
-            $this->createTdElements()
-        );
+        if ($this->isMulti()) {
+            return sprintf(
+                '  <meta charset="%s"><table>%s%s</table>',
+                $this->charset,
+                $this->createThElements(),
+                $this->createTdElements()
+            );
+        }
+        return null;
     }
 
 
     /**
      * @return bool
      */
+    private function isMulti():bool
+    {
+        $check = array_filter($this->data, 'is_array');
+        return (count($check) > 0);
+    }
+
+    /**
+     * @return bool
+     */
     public function download(): bool
     {
-        header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="' . $this->name . '"');
-        header('Cache-Control: max-age=0');
-        $output = fopen('php://output', 'wb');
-        fwrite($output, $this->toHtml());
-        return fclose($output);
+        if ($this->isMulti()) {
+            header('Content-Type: application/vnd.ms-excel');
+            header('Content-Disposition: attachment;filename="' . $this->name . '"');
+            header('Cache-Control: max-age=0');
+            $output = fopen('php://output', 'wb');
+            fwrite($output, $this->toHtml());
+            return fclose($output);
+        }
+        return false;
     }
 
     /**
@@ -194,7 +211,7 @@ class ExcelExport
      */
     public function setName(string $name): ExcelExport
     {
-        $this->name = $name.'.xlsx';
+        $this->name = $name . '.xlsx';
         return $this;
     }
 }

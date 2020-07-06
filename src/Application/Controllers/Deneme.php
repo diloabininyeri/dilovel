@@ -23,8 +23,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $read= Excel::import('sample.xlsx')->rows();
-        return response()->toJson($read);
+
 
         /*$pipe = new Pipe('haba');
         $pipe->addObject(new PipeTest1());

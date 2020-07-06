@@ -303,6 +303,17 @@ function is_assoc(array $array)
 }
 
 /**
+ * @param array $array
+ * @return bool
+ */
+function is_multi(array $array)
+{
+    $rv = array_filter($array, 'is_array');
+    return (count($rv)>0);
+}
+
+
+/**
  * @param object $object
  * @return mixed
  * @throws JsonException
