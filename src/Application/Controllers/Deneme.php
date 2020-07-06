@@ -30,7 +30,7 @@ class Deneme
             ->setLabels(['rename_id', 'rename_name'])
             ->except(['created_at', 'updated_at'])
             ->filter(fn ($item) =>$item['id']>18)
-            ->toHtml();
+            ->download();
 
 
         /*$pipe = new Pipe('haba');
