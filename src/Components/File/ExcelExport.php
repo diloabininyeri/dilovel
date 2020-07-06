@@ -31,7 +31,6 @@ class ExcelExport
      * ExcelExport constructor.
      * @param array $data
      * @param string $name
-     * @param array $labels
      */
     public function __construct(array $data, string $name)
     {
@@ -84,7 +83,7 @@ class ExcelExport
      */
     public function filter(callable $closure): self
     {
-        $this->data = array_filter($this->data, $closure);
+        $this->data = array_values(array_filter($this->data, $closure));
         return $this;
     }
 
@@ -96,6 +95,16 @@ class ExcelExport
     {
         array_walk($this->data, $closure);
         return $this;
+    }
+
+    /**
+     * @param callable $callable
+     * @return $this
+     */
+    public function map(callable $callable):self
+    {
+        $this->data= array_map($callable, $this->data);
+        return  $this;
     }
 
     /**
@@ -213,5 +222,13 @@ class ExcelExport
     {
         $this->name = $name . '.xlsx';
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData(): array
+    {
+        return $this->data;
     }
 }
