@@ -225,4 +225,32 @@ class ExcelExport
     {
         return $this->data;
     }
+
+    /**
+     * @param int $offset
+     * @param null $length
+     * @return $this
+     */
+    public function slice(int $offset, $length=null):self
+    {
+        $this->data=array_slice($this->data, $offset, $length);
+        return $this;
+    }
+
+    /**
+     * @param string ...$indexNames
+     * @return $this
+     */
+    public function unique(string ...$indexNames):self
+    {
+        foreach ($indexNames as $indexName) {
+            $this->data=array_uunique($this->data, fn ($i, $k) =>$i[$indexName]<=>$k[$indexName]);
+        }
+        return $this;
+    }
+
+    public function inspect(): void
+    {
+        dd($this->data);
+    }
 }

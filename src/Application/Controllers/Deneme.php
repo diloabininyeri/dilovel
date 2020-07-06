@@ -24,13 +24,14 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $all=['id','name','surname','country'];
-
         $users= Users::get()->toArray();
         $excel= Excel::export($users);
-        $excel->except(['id','name','surname','country']);
+        $excel->only(['id','name','surname','country']);
+        $excel->unique('name');
+        $excel->slice(0, 10);
+        $excel->download();
 
-        return$excel->toHtml();
+
 
 
         /*$pipe = new Pipe('haba');
