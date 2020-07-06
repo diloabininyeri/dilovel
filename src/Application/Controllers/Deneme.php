@@ -23,11 +23,8 @@ class Deneme
 {
     public function index(Request $request)
     {
-
-        $pdf = new Mpdf();
-        $pdf->WriteHTML(view('index'));
-        return $pdf->Output();
-
+        $read= Excel::import('sample.xlsx')->rows();
+        return response()->toJson($read);
 
         /*$pipe = new Pipe('haba');
         $pipe->addObject(new PipeTest1());

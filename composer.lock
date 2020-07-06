@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c970f9c78b0005af3ec2f1ac46ea072a",
+    "content-hash": "7e1ce739784b4b1f80e1e177055a8021",
     "packages": [
         {
             "name": "doctrine/lexer",
@@ -1158,6 +1158,53 @@
                 }
             ],
             "time": "2020-04-28T12:40:35+00:00"
+        },
+        {
+            "name": "shuchkin/simplexlsx",
+            "version": "0.8.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shuchkin/simplexlsx.git",
+                "reference": "5056d968ed11e0ac3c9e41a0b09e86a9ff02a68f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shuchkin/simplexlsx/zipball/5056d968ed11e0ac3c9e41a0b09e86a9ff02a68f",
+                "reference": "5056d968ed11e0ac3c9e41a0b09e86a9ff02a68f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-libxml": "*",
+                "ext-simplexml": "*",
+                "ext-zlib": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/SimpleXLSX.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Shuchkin (SMSPILOT)",
+                    "email": "sergey.shuchkin@gmail.com",
+                    "homepage": "http://www.shuchkin.ru/"
+                }
+            ],
+            "description": "Parse and retrieve data from Excel XLSx files. MS Excel 2007 workbooks PHP reader.",
+            "homepage": "https://github.com/shuchkin/simplexlsx",
+            "keywords": [
+                "backend",
+                "excel",
+                "parser",
+                "php",
+                "xlsx"
+            ],
+            "time": "2020-06-15T07:44:12+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
