@@ -52,13 +52,7 @@ class ExcelExport
      */
     public function except(array $keys): self
     {
-        $count = $this->count();
-        for ($i = 0; $i < $count; $i++) {
-            foreach ($keys as $ex) {
-                unset($this->data[$i][$ex]);
-            }
-        }
-        return $this;
+        return $this->only(array_diff($this->getLabels(), $keys));
     }
 
     /**

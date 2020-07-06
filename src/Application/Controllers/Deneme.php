@@ -24,22 +24,13 @@ class Deneme
 {
     public function index(Request $request)
     {
+        $all=['id','name','surname','country'];
+
         $users= Users::get()->toArray();
         $excel= Excel::export($users);
-        $excel->map(static function ($item) {
-            return [
-                'sıra'=>$item['id'],
-                'oluşturma tarihi'=>Carbon::parse($item['created_at'])->diffForHumans(),
-                'isim'=>$item['name'],
-                'soyad'=>$item['surname'],
-            ];
-        });
+        $excel->except(['id','name','surname','country']);
 
-
-        $excel->filter(fn ($item) =>$item['sıra']>150);
-
-        // for inspect $excel->toHtml();
-        return$excel->download();
+        return$excel->toHtml();
 
 
         /*$pipe = new Pipe('haba');
