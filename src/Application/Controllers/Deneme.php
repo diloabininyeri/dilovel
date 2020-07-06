@@ -19,7 +19,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $pipe = new Pipe('merhaba');
+        $pipe = new Pipe('haba');
         $pipe->addObject(new PipeTest1());
         $pipe->addObject(new PipeTest2());
         $pipe->addObject(new PipeTest3());
@@ -27,6 +27,6 @@ class Deneme
         if ($pipe->passed()) {
             return 'congrats you  arrived to end of pipe';
         }
-        return  $pipe->getCantNextPipeResponses();
+        return  $pipe->getResponses();
     }
 }

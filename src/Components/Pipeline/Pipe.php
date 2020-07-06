@@ -51,29 +51,13 @@ class Pipe
      */
     public function passed():bool
     {
-        return empty($this->getCantNextPipeResponses());
+        return empty($this->getResponses());
     }
 
     /**
      * @return array
      */
-    public function getPipeResponses():array
-    {
-        $responses=[];
-        $pipe=new PipeAble();
-        /**
-         * @var $object PipeAbleInterface
-         */
-        foreach ($this->objects as $object) {
-            $responses[]=$object->condition($this->data, $pipe);
-        }
-        return $responses;
-    }
-
-    /**
-     * @return array
-     */
-    public function getCantNextPipeResponses(): array
+    public function getResponses(): array
     {
         $result=[];
         $next=new PipeAble();
