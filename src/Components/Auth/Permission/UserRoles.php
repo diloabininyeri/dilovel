@@ -5,6 +5,7 @@ namespace App\Components\Auth\Permission;
 
 use App\Components\Database\Model;
 use App\Components\Database\PDOAdaptor;
+use App\Components\Exceptions\RoleNotFoundException;
 use PDO;
 
 /**
@@ -64,7 +65,7 @@ class UserRoles
     public function assignRole(string $roleName): bool
     {
         if (!$this->has($roleName)) {
-            $role=$this->findByName($roleName);
+            $role = $this->findByName($roleName);
             $query = $this->getPdoConnection()->prepare('INSERT INTO  user_roles SET user_id=:user_id,role_id=:role_id,created_at=:created_at,updated_at=:updated_at');
             $execute = $query->execute([':user_id' => $this->getUserId(), ':role_id' => $role->id, ':created_at' => now(), ':updated_at' => now()]);
             return $execute && $query->rowCount();
@@ -85,18 +86,24 @@ class UserRoles
      * @param string $roleName
      * @return object
      */
-    private function findByName(string  $roleName):object
+    private function findByName(string $roleName): object
     {
-        return (new Role())->findByName($roleName);
+        $role = (new Role())->findByName($roleName);
+        if ($role) {
+            return $role;
+        }
+        throw new RoleNotFoundException("there is no such $roleName role");
     }
+
     /**
      * @param string $roleName
      * @return bool
      */
     public function delete(string $roleName): bool
     {
-        /*  $query = $this->getPdoConnection()->prepare('DELETE FROM user_roles WHERE role_id=:role_id and user_id=:user_id');
-          $execute = $query->execute([':role_id' => $roleName, ':user_id' => $this->getUserId()]);
-          return ($execute && $query->rowCount());*/
+        $role=$this->findByName($roleName);
+        $query = $this->getPdoConnection()->prepare('DELETE FROM user_roles WHERE role_id=:role_id and user_id=:user_id');
+        $execute = $query->execute([':role_id' => $role->id, ':user_id' => $this->getUserId()]);
+        return ($execute && $query->rowCount());
     }
 }
