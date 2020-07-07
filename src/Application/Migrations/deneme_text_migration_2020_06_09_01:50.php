@@ -9,6 +9,10 @@ use App\Components\Database\Migration\MigrationBuilder;
 use App\Components\Database\Migration\Schema;
 use App\Interfaces\MigrationInterface;
 
+/**
+ * Class Deneme_textCreateMigration
+ * @noinspection PhpUnused
+ */
 class Deneme_textCreateMigration implements MigrationInterface
 {
     public function create():void

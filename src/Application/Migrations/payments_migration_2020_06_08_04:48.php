@@ -9,6 +9,10 @@ use App\Components\Database\Migration\MigrationBuilder;
 use App\Components\Database\Migration\Schema;
 use App\Interfaces\MigrationInterface;
 
+/**
+ * Class PaymentsCreateMigration
+ * @noinspection PhpUnused
+ */
 class PaymentsCreateMigration implements MigrationInterface
 {
     public function create():void

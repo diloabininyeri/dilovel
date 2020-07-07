@@ -9,6 +9,10 @@ use App\Components\Database\Migration\MigrationBuilder;
 use App\Components\Database\Migration\Schema;
 use App\Interfaces\MigrationInterface;
 
+/**
+ * Class ExampleMigration
+ * @noinspection PhpUnused
+ */
 class ExampleMigration implements MigrationInterface
 {
     public function create():void
