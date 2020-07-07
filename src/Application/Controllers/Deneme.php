@@ -18,7 +18,8 @@ class Deneme
         $role=new Role();
         $role->create('tester');
         $user = Users::find(18);
-        $user->role()->assignRole('developer');
-        //return $user->role()->delete('developer');
+        $user->role()->assign('developer');
+
+        return $user->role()->removeAll();
     }
 }

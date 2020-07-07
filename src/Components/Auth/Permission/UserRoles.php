@@ -62,7 +62,7 @@ class UserRoles
      * @param string $roleName
      * @return bool
      */
-    public function assignRole(string $roleName): bool
+    public function assign(string $roleName): bool
     {
         if (!$this->has($roleName)) {
             $role = $this->findByName($roleName);
@@ -99,11 +99,21 @@ class UserRoles
      * @param string $roleName
      * @return bool
      */
-    public function delete(string $roleName): bool
+    public function remove(string $roleName): bool
     {
         $role=$this->findByName($roleName);
         $query = $this->getPdoConnection()->prepare('DELETE FROM user_roles WHERE role_id=:role_id and user_id=:user_id');
         $execute = $query->execute([':role_id' => $role->id, ':user_id' => $this->getUserId()]);
+        return ($execute && $query->rowCount());
+    }
+
+    /**
+     * @return bool
+     */
+    public function removeAll():bool
+    {
+        $query=$this->getPdoConnection()->prepare('DELETE FROM user_roles WHERE user_id=:user_id');
+        $execute=$query->execute([':user_id' => $this->getUserId()]);
         return ($execute && $query->rowCount());
     }
 }
