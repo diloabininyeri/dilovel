@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Models\Users;
+use App\Components\Auth\Permission\Permission;
 use App\Components\Auth\Permission\Role;
 use App\Components\Http\Request;
 
@@ -15,10 +16,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $role=new Role();
-        $role->create('tester');
         $user = Users::find(18);
-        $user->role()->assign('developer');
-
+        return $user->permission()->has('can_delete');
     }
 }

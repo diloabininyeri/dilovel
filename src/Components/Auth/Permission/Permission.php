@@ -47,7 +47,7 @@ class Permission
 
     /**
      * @param string $permission
-     * @return object
+     * @return object|null
      */
     public function findByName(string $permission): ?object
     {
