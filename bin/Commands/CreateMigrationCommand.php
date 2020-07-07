@@ -11,7 +11,7 @@ class CreateMigrationCommand implements CommandInterface
     /**
      * @var string
      */
-    private string $namespace = 'src/Application/Migrations';
+    private string $namespace = 'bin/Migrations';
 
 
     /**
