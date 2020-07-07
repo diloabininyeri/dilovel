@@ -4,6 +4,7 @@
 namespace App\Components\Database;
 
 use App\Application\Policies\Policy;
+use App\Components\Auth\Permission\UserPermission;
 use App\Components\Auth\Permission\UserRoles;
 use App\Components\Auth\Policy\PolicyFactory;
 use App\Components\Exceptions\PolicyNotFoundException;
@@ -29,5 +30,13 @@ class BuilderUserModel extends Model
     final public function role():UserRoles
     {
         return new UserRoles($this);
+    }
+
+    /**
+     * @return UserPermission
+     */
+    final public function permission():UserPermission
+    {
+        return  new UserPermission($this);
     }
 }

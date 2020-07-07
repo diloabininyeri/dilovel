@@ -20,6 +20,5 @@ class Deneme
         $user = Users::find(18);
         $user->role()->assign('developer');
 
-        return $user->role()->removeAll();
     }
 }
