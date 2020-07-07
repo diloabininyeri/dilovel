@@ -20,7 +20,7 @@ class RoleMigration implements MigrationInterface
     {
         Schema::connection('default')->create('roles', static function (MigrationBuilder $table) {
             $table->primaryKey('id')->length(100)->unique();
-            $table->string('name')->nullable();
+            $table->string('name')->unique();
             $table->timestamp();
         });
     }

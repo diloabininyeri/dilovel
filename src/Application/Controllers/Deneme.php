@@ -7,6 +7,7 @@ use App\Application\Controllers\Pipes\PipeTest1;
 use App\Application\Controllers\Pipes\PipeTest2;
 use App\Application\Controllers\Pipes\PipeTest3;
 use App\Application\Models\Users;
+use App\Components\Auth\Permission\Role;
 use App\Components\File\Excel;
 use App\Components\Http\Request;
 
@@ -24,13 +25,10 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users= Users::get()->toArray();
-        $excel= Excel::export($users);
-        $excel->only(['id','name','surname','country']);
-        $excel->unique('name');
-        return $excel->toHtml();
+        $user = Users::find(18);
 
-
+        return $user->role()->delete('admin');
+        //return $user->role()->has('admin');
 
 
         /*$pipe = new Pipe('haba');
