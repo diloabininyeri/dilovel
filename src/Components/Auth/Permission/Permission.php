@@ -23,36 +23,36 @@ class Permission
     }
 
     /**
-     * @param string $roleName
+     * @param string $permission
      * @return object|null
      */
-    public function create(string $roleName): ?object
+    public function create(string $permission): ?object
     {
-        if ($this->findByName($roleName)) {
-            return $this->findByName($roleName);
+        if ($this->findByName($permission)) {
+            return $this->findByName($permission);
         }
         $pdo = $this->getPdoConnection();
         $query = $pdo->prepare('INSERT INTO permissions SET name=:name,created_at=:created_at,updated_at=:updated_at');
         $execute = $query->execute([
-            ':name' => $roleName,
+            ':name' => $permission,
             ':created_at' => now(),
             ':updated_at' => now()
         ]);
         if ($execute && $query->rowCount()) {
-            return (object)['name' => $roleName, 'id' => $pdo->lastInsertId()];
+            return (object)['name' => $permission, 'id' => $pdo->lastInsertId()];
         }
         return null;
     }
 
 
     /**
-     * @param string $roleName
+     * @param string $permission
      * @return object
      */
-    public function findByName(string $roleName): ?object
+    public function findByName(string $permission): ?object
     {
         $query = $this->getPdoConnection()->prepare('SELECT * FROM permissions WHERE name=:name');
-        $query->execute(['name' => $roleName]);
+        $query->execute(['name' => $permission]);
         $result = $query->fetch(PDO::FETCH_OBJ);
         if ($result) {
             return $result;
@@ -61,12 +61,12 @@ class Permission
     }
 
     /**
-     * @param string $roleName
+     * @param string $permission
      * @return bool
      */
-    public function exists(string $roleName):bool
+    public function exists(string $permission):bool
     {
-        return (bool)$this->findByName($roleName);
+        return (bool)$this->findByName($permission);
     }
 
     /**
@@ -80,13 +80,13 @@ class Permission
     }
 
     /**
-     * @param string $roleName
+     * @param string $permission
      * @return bool
      */
-    public function delete(string $roleName):bool
+    public function delete(string $permission):bool
     {
         $query = $this->getPdoConnection()->prepare('DELETE FROM permissions WHERE name=:name');
-        $execute = $query->execute([':name' => $roleName]);
+        $execute = $query->execute([':name' => $permission]);
         return ($execute && $query->rowCount());
     }
     /**
