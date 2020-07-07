@@ -19,7 +19,7 @@ class Migration
     /**
      * @var string
      */
-    private string $path = 'src/Application/Migrations/*.php';
+    private string $path = 'bin/Migrations/*.php';
 
 
     public function __construct()
