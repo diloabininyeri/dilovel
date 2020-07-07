@@ -52,18 +52,19 @@ class UserRoles
      */
     public function has(string $roleName): bool
     {
-        $query = $this->getPdoConnection()->prepare('SELECT id FROM user_roles WHERE  role_id IN (SELECT role_id FROM roles WHERE name=:name) AND user_id=:user_id');
+        $query = $this->getPdoConnection()->prepare('SELECT id FROM user_roles WHERE  role_id IN (SELECT id FROM roles WHERE name=:name) AND user_id=:user_id');
         $query->execute(['name' => $roleName, 'user_id' => $this->userModel->id]);
         return !empty($query->fetchAll());
     }
 
     /**
-     * @param object $role
+     * @param string $roleName
      * @return bool
      */
-    public function giveRole(object $role): bool
+    public function assignRole(string $roleName): bool
     {
-        if (!$this->has($role->name)) {
+        if (!$this->has($roleName)) {
+            $role=$this->findByName($roleName);
             $query = $this->getPdoConnection()->prepare('INSERT INTO  user_roles SET user_id=:user_id,role_id=:role_id,created_at=:created_at,updated_at=:updated_at');
             $execute = $query->execute([':user_id' => $this->getUserId(), ':role_id' => $role->id, ':created_at' => now(), ':updated_at' => now()]);
             return $execute && $query->rowCount();
@@ -82,11 +83,11 @@ class UserRoles
 
     /**
      * @param string $roleName
-     * @return object|null
+     * @return object
      */
-    private function findByNameOfUser(string  $roleName):?object
+    private function findByName(string  $roleName):object
     {
-        $query=$this->getPdoConnection()->prepare('SELECT role_id FROM user_roles WHERE user_id=:user_id AND role_');
+        return (new Role())->findByName($roleName);
     }
     /**
      * @param string $roleName

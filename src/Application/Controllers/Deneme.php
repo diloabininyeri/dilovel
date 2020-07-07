@@ -27,7 +27,16 @@ class Deneme
     {
         $user = Users::find(18);
 
-        return $user->role()->delete('admin');
+        $role=new Role();
+        $role->create('developer');
+        return $user->role()->assignRole('developer');
+
+
+        //return $user->role()->delete('admin');
+
+
+
+
         //return $user->role()->has('admin');
 
 

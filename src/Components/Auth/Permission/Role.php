@@ -64,6 +64,17 @@ class Role
     }
 
     /**
+     * @param string $oldName
+     * @param string $newName
+     * @return bool
+     */
+    public function updateName(string $oldName, string $newName):bool
+    {
+        $query=$this->getPdoConnection()->prepare('UPDATE roles SET name=:new_name WHERE  name=:name ');
+        $execute=$query->execute([':name'=>$oldName,':new_name'=>$newName]);
+        return ($execute && $query->rowCount());
+    }
+    /**
      * @return array
      */
     public function getAll(): array
