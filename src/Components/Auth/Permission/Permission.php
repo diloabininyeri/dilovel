@@ -39,7 +39,13 @@ class Permission
             ':updated_at' => now()
         ]);
         if ($execute && $query->rowCount()) {
-            return (object)['name' => $permission, 'id' => $pdo->lastInsertId()];
+            $pdo=$this->getPdoConnection();
+            $statement= $pdo->query('SELECT * FROM permissions WHERE id=:id');
+            $statement->setFetchMode(PDO::FETCH_CLASS, PermissionMapperObject::class, [$this->getPdoConnection()]);
+            $statement->execute([
+                'id'=>$pdo->lastInsertId()
+            ]);
+            return $statement->fetch();
         }
         return null;
     }

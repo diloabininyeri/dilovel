@@ -20,14 +20,7 @@ class Deneme
           return $user->permission()->has('can_delete');*/
 
 
-        $rol = new Role();
-        $role = $rol->findByName('admin');
-        if ($role) {
-
-            //$role->givePermission('can_create');
-            $role->remove('can_create');
-            //return $role->has('can_create');
-        }
-        return false;
+        $per=new Permission();
+        return $per->delete('can_next');
     }
 }
