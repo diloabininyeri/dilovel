@@ -20,12 +20,12 @@ class Deneme
          return $user->permission()->has('can_delete');*/
 
 
-        $permission=new Permission();
-        $find= $permission->findByName('can_update');
-
-        if ($find) {
-            $find->attachRole('admin');
-            return $find->detachRole('admin');
+        $rol = new Role();
+        $role = $rol->findByName('admin');
+        if ($role) {
+            $role->remove('can_create');
+            return $role->has('can_create');
         }
+        return false;
     }
 }

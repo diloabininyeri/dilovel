@@ -50,9 +50,9 @@ class Role
 
     /**
      * @param string $roleName
-     * @return object
+     * @return RoleMapperObject
      */
-    public function findByName(string $roleName): ?object
+    public function findByName(string $roleName): ?RoleMapperObject
     {
         $query = $this->getPdoConnection()->prepare('SELECT * FROM roles WHERE name=:name');
         $query->setFetchMode(PDO::FETCH_CLASS, RoleMapperObject::class, [$this->getPdoConnection()]);
