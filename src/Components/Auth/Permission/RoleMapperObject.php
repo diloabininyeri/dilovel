@@ -80,4 +80,25 @@ class RoleMapperObject
     {
         return $this->pdoConnection;
     }
+
+    /**
+     * @param string $permissionName
+     * @return bool
+     */
+    public function givePermission(string $permissionName):bool
+    {
+        $permissionObject = $this->getPermissionObject($permissionName);
+
+        if ($permissionObject && !$this->has($permissionName)) {
+            $query = $this->getPdoConnection()->prepare('INSERT INTO  role_permissions  SET role_id=:role_id ,permission_id=:permission_id,created_at=:created_at,updated_at=:updated_at');
+            $execute = $query->execute([
+                'role_id' => $this->id,
+                'permission_id' => $permissionObject->id,
+                'created_at'=>now(),
+                'updated_at'=>now()
+            ]);
+            return ($execute && $query->rowCount());
+        }
+        return false;
+    }
 }
