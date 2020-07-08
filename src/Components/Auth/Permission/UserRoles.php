@@ -3,6 +3,7 @@
 
 namespace App\Components\Auth\Permission;
 
+use App\Components\Collection\Collection;
 use App\Components\Database\Model;
 use App\Components\Database\PDOAdaptor;
 use App\Components\Exceptions\RoleNotFoundException;
@@ -101,7 +102,7 @@ class UserRoles
      */
     public function remove(string $roleName): bool
     {
-        $role=$this->findByName($roleName);
+        $role = $this->findByName($roleName);
         $query = $this->getPdoConnection()->prepare('DELETE FROM user_roles WHERE role_id=:role_id and user_id=:user_id');
         $execute = $query->execute([':role_id' => $role->id, ':user_id' => $this->getUserId()]);
         return ($execute && $query->rowCount());
@@ -110,10 +111,35 @@ class UserRoles
     /**
      * @return bool
      */
-    public function removeAll():bool
+    public function removeAll(): bool
     {
-        $query=$this->getPdoConnection()->prepare('DELETE FROM user_roles WHERE user_id=:user_id');
-        $execute=$query->execute([':user_id' => $this->getUserId()]);
+        $query = $this->getPdoConnection()->prepare('DELETE FROM user_roles WHERE user_id=:user_id');
+        $execute = $query->execute([':user_id' => $this->getUserId()]);
         return ($execute && $query->rowCount());
+    }
+
+
+    /**
+     * @return array
+     *
+     */
+    public function getPermissions():array
+    {
+        $sql = 'select permissions.id as id,permissions.name as name from permissions inner join role_permissions rp on permissions.id = rp.permission_id
+            inner join roles on rp.role_id = roles.id left join user_roles ur on roles.id = ur.role_id where ur.user_id=:user_id';
+        $query = $this->getPdoConnection()->prepare($sql);
+        $query->setFetchMode(PDO::FETCH_CLASS, PermissionMapperObject::class, [$this->getPdoConnection()]);
+        $query->execute(['user_id'=>$this->getUserId()]);
+        return $query->fetchAll();
+    }
+
+    /**
+     * @param string $permission
+     * @return bool
+     */
+    public function hasPermission(string $permission):bool
+    {
+        $permissions=array_column($this->getPermissions(), 'name');
+        return in_array($permission, $permissions, true);
     }
 }

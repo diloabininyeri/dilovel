@@ -5,6 +5,7 @@ namespace App\Application\Controllers;
 
 use App\Application\Models\Users;
 use App\Components\Auth\Permission\Permission;
+use App\Components\Auth\Permission\PermissionMapperObject;
 use App\Components\Auth\Permission\Role;
 use App\Components\Http\Request;
 
@@ -16,10 +17,8 @@ class Deneme
 {
     public function index(Request $request)
     {
-        /* $user = Users::find(18);
-          return $user->permission()->has('can_delete');*/
-
-
-        return $request->isMethod('post');
+        $user = Users::find(18);
+        $permissions= $user->role()->getPermissions();
+        return $permissions;
     }
 }
