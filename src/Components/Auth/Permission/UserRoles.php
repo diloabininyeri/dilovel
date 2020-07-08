@@ -3,7 +3,6 @@
 
 namespace App\Components\Auth\Permission;
 
-use App\Components\Collection\Collection;
 use App\Components\Database\Model;
 use App\Components\Database\PDOAdaptor;
 use App\Components\Exceptions\RoleNotFoundException;

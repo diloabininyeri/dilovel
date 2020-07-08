@@ -27,7 +27,7 @@ class BuilderUserModel extends Model
     /**
      * @return UserRoles
      */
-    final public function role():UserRoles
+    final public function role(): UserRoles
     {
         return new UserRoles($this);
     }
@@ -35,8 +35,27 @@ class BuilderUserModel extends Model
     /**
      * @return UserPermission
      */
-    final public function permission():UserPermission
+    final public function permission(): UserPermission
     {
-        return  new UserPermission($this);
+        return new UserPermission($this);
+    }
+
+    /**
+     * @param string $privilege
+     * @return bool
+     */
+    final public function isHasPrivilege(string $privilege):bool
+    {
+        $role = $this->role();
+        if ($role->has($privilege) || $role->hasPermission($privilege)) {
+            return true;
+        }
+
+        $permission = $this->permission();
+        if ($permission->has($privilege)) {
+            return true;
+        }
+
+        return false;
     }
 }
