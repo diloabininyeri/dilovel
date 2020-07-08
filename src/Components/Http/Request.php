@@ -135,6 +135,15 @@ class Request implements ArrayAble, ToJson, RequestInterface
     }
 
     /**
+     * @param string $method
+     * @return bool
+     */
+    public function isMethod(string $method):bool
+    {
+        return (strtolower(trim($method))===strtolower($this->method()));
+    }
+
+    /**
      * @return Session
      */
     public function session(): Session

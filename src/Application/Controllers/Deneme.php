@@ -20,7 +20,6 @@ class Deneme
           return $user->permission()->has('can_delete');*/
 
 
-        $per=new Permission();
-        return $per->delete('can_next');
+        return $request->isMethod('post');
     }
 }
