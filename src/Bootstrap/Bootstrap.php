@@ -22,7 +22,7 @@ class Bootstrap
          * @var  ProviderInterface[] $providers
          */
         $config = base_path('src/config/config.php');
-        $providers = include "$config";
+        $providers = require "$config";
 
         foreach ($providers['providers'] as $provider) {
             $provider = new $provider();

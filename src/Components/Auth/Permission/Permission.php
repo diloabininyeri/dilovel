@@ -47,13 +47,14 @@ class Permission
 
     /**
      * @param string $permission
-     * @return object|null
+     * @return PermissionMapperObject|null
      */
-    public function findByName(string $permission): ?object
+    public function findByName(string $permission): ?PermissionMapperObject
     {
         $query = $this->getPdoConnection()->prepare('SELECT * FROM permissions WHERE name=:name');
+        $query->setFetchMode(PDO::FETCH_CLASS, PermissionMapperObject::class, [$this->getPdoConnection()]);
         $query->execute(['name' => $permission]);
-        $result = $query->fetch(PDO::FETCH_OBJ);
+        $result = $query->fetch();
         if ($result) {
             return $result;
         }
