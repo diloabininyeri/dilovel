@@ -23,6 +23,8 @@ use App\Components\Database\Paginate;
  * @method static Paginate paginate(int $perPage)
  * @method static BuilderQuery|Users find(int $id)
  * @method static BuilderQuery|Users findOrFail(int $id)
+ * @method static BuilderQuery|Users findByName(string $name)
+ * @method static BuilderQuery|Users findById(int $id)
  */
 class Users extends BuilderUserModel
 {
@@ -52,9 +54,6 @@ class Users extends BuilderUserModel
         'name' => UserName::class,
         'password'=>UserPassword::class,
     ];
-
-
-
 
     /**
      * @param BuilderQuery $query

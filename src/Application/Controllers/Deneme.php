@@ -17,8 +17,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $user = Users::find(18);
-        $user->isHasPrivilege('admin');
-        return $user->isHasPrivilege('can_view');
+        return Users::findByName('enes');
     }
 }

@@ -987,10 +987,17 @@ class BuilderQuery
      */
     public function __call($name, $arguments)
     {
+        if (stripos($name, 'findBy') === 0) {
+            $column = substr($name, 6, strlen($name));
+            if (!empty($column)) {
+                return $this->where(pascal_to_snake($column), $arguments[0] ?? null)->first();
+            }
+        }
         $name = sprintf('scope%s', ucfirst($name));
         if (method_exists($this->modelInstance, $name)) {
             return $this->modelInstance->$name($this);
         }
+
         return $this;
     }
 
