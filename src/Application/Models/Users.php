@@ -8,9 +8,7 @@ use App\Application\Models\Objectable\UserPassword;
 use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\BuilderUserModel;
-use App\Components\Database\HasOne;
 use App\Components\Database\HasOneBuilder;
-use App\Components\Database\Model;
 use App\Components\Database\Paginate;
 
 /**
@@ -54,6 +52,14 @@ class Users extends BuilderUserModel
         'name' => UserName::class,
         'password'=>UserPassword::class,
     ];
+
+    /**
+     * when this model is created this method trigger
+     * for multi serve or multi host, set different connection name
+     */
+    public function onConstruct():void
+    {
+    }
 
     /**
      * @param BuilderQuery $query

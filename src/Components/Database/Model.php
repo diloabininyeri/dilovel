@@ -2,7 +2,6 @@
 
 namespace App\Components\Database;
 
-use App\Components\Collection\Collection;
 use Carbon\Carbon;
 use Exception;
 use JsonException;
@@ -126,6 +125,7 @@ abstract class Model
         return $this->builderQuery->$name(...$arguments);
     }
 
+
     /**
      * @param $name
      * @param $arguments
@@ -133,7 +133,11 @@ abstract class Model
      */
     final public static function __callStatic($name, $arguments)
     {
-        return (new static())->$name(...$arguments);
+        $model=new static();
+        if (method_exists($model, 'onConstruct')) {
+            $model->onConstruct();
+        }
+        return $model->$name(...$arguments);
     }
 
     /**
