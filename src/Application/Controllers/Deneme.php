@@ -19,7 +19,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        DB::select('s');
+        return Db::select('select * from users limit 10');
         //custom query
 
         Db::connection('default', new self());

@@ -50,6 +50,6 @@ class Db
      */
     public static function __callStatic($name, $arguments)
     {
-        return new DbQuery(self::getPdoConnection());
+        return (new DbQuery(self::getPdoConnection()))->$name(...$arguments);
     }
 }
