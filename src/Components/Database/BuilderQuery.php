@@ -6,6 +6,8 @@ use App\Components\Collection\Collection;
 use Closure;
 use JsonException;
 use PDO;
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
 use function request;
 
 /**
@@ -67,6 +69,10 @@ class BuilderQuery
      */
     private ?string $mixedQuery = null;
 
+    /**
+     * @var array $eager
+     */
+    private array $eager=[];
 
     /**
      * BuilderQuery constructor.
@@ -77,6 +83,15 @@ class BuilderQuery
         $this->modelInstance = $model;
     }
 
+    /**
+     * @param string ...$relations
+     * @return $this
+     */
+    public function with(string ...$relations):self
+    {
+        $this->eager[]=$relations;
+        return $this;
+    }
 
     /**
      * @return PDO
@@ -735,9 +750,22 @@ class BuilderQuery
         if ($this->modelInstance->getHidden()) {
             $this->unsetHiddenPropertiesFromArray($result);
         }
+
         return new Collection($result);
     }
 
+    /**
+     * @return array
+     */
+    private function getEager():array
+    {
+        $return =[];
+        $array=$this->eager;
+        array_walk_recursive($array, static function ($a) use (&$return) {
+            $return[]=$a;
+        });
+        return $return;
+    }
 
     /**
      * @param object $model

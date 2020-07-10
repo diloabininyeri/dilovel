@@ -75,7 +75,7 @@ function array_push_between(array $array, $item, int $index)
  * @param string $connectionName
  * @return PDO
  */
-function pdo(string $connectionName='default')
+function pdo(string $connectionName = 'default')
 {
     return PDOAdaptor::connection($connectionName);
 }
@@ -86,9 +86,9 @@ function pdo(string $connectionName='default')
  * @param array $compact
  * @return mixed
  */
-function view_cache($file, int $time, array $compact=[])
+function view_cache($file, int $time, array $compact = [])
 {
-    $viewCache=new ViewCache();
+    $viewCache = new ViewCache();
     if ($viewCache->get()) {
         return $viewCache->get();
     }
@@ -132,7 +132,7 @@ function url()
  * @param $file
  * @return string
  */
-function assets($file):string
+function assets($file): string
 {
     return sprintf('%s/public/%s', \url()->base(), trim($file, '/'));
 }
@@ -193,21 +193,22 @@ function view_path(?string $view = null)
  * @param null $path
  * @return string
  */
-function public_path($path=null)
+function public_path($path = null)
 {
-    $basePath=dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'public';
-    if ($path===null) {
+    $basePath = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'public';
+    if ($path === null) {
         return $basePath;
     }
-    $path=trim($path, '/');
-    return $basePath.DIRECTORY_SEPARATOR.$path;
+    $path = trim($path, '/');
+    return $basePath . DIRECTORY_SEPARATOR . $path;
 }
+
 /**
  *
  */
 function activate_errors()
 {
-    if (env('ERROR_REPORTING')==='true') {
+    if (env('ERROR_REPORTING') === 'true') {
         error_reporting(E_ALL & ~E_NOTICE);
         ini_set('display_errors', 1);
     }
@@ -230,12 +231,13 @@ function redirect()
 {
     return new Redirect();
 }
+
 /**
  * @param $name
  * @param null $default
  * @return mixed|null
  */
-function env($name, $default=null)
+function env($name, $default = null)
 {
     return (new EnvFile('.env'))->getValue($name) ?: $default;
 }
@@ -272,9 +274,9 @@ function get_config_array($configFile)
  */
 function config(string $config)
 {
-    $dotConfig=explode('.', $config);
-    $configArray=get_config_array($dotConfig[0]);
-    $array=$dotConfig;
+    $dotConfig = explode('.', $config);
+    $configArray = get_config_array($dotConfig[0]);
+    $array = $dotConfig;
     unset($array[0]);
 
     return (new DotNotation())->getValueByKey(implode('.', $array), $configArray);
@@ -285,7 +287,7 @@ function config(string $config)
  * @param null $type
  * @return mixed|string|null
  */
-function flash(string $name, $type=null)
+function flash(string $name, $type = null)
 {
     return (new Flash())->get($name, $type);
 }
@@ -309,7 +311,7 @@ function is_assoc(array $array)
 function is_multi(array $array)
 {
     $rv = array_filter($array, 'is_array');
-    return (count($rv)>0);
+    return (count($rv) > 0);
 }
 
 
@@ -404,7 +406,7 @@ function csrf()
 }
 
 
-function lang(string $dotNotation, $default=null)
+function lang(string $dotNotation, $default = null)
 {
     return Lang::get($dotNotation, $default);
 }
@@ -416,7 +418,7 @@ function captcha()
 }
 
 
-function array_uunique(array $array, callable $comparator):array
+function array_uunique(array $array, callable $comparator): array
 {
     return array_unique_callback($array, $comparator);
 }
@@ -424,7 +426,7 @@ function array_uunique(array $array, callable $comparator):array
 function array_unique_callback(array $array, callable $comparator): array
 {
     $unique_array = [];
-    while (count($array)>0) {
+    while (count($array) > 0) {
         $element = array_shift($array);
         $unique_array[] = $element;
 
@@ -451,4 +453,17 @@ function response()
 function optional($data)
 {
     return new Optional($data);
+}
+
+/**
+ * @param array $array
+ * @return array
+ */
+function array_flatten(array $array): array
+{
+    $return = array();
+    array_walk_recursive($array, static function ($a) use (&$return) {
+        $return[]=$a;
+    });
+    return $return;
 }
