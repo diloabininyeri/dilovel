@@ -3,13 +3,15 @@
 
 namespace App\Components\Database\Custom;
 
+use App\Components\Collection\Collection;
 use App\Components\Database\PDOAdaptor;
-use Closure;
 use PDO;
 
 /**
  * Class Db
  * @package App\Components\Database\Custom
+ * @method static Collection select(string $query, array $bind=[], string $mapperClass=null)
+ * @method static bool query(string $query, array $bind=[])
  */
 class Db
 {
@@ -38,8 +40,16 @@ class Db
             return new DbQuery(self::getPdoConnection($connectionName));
         }
 
-        if ($connectionName !== null && $closure !== null) {
-            return  $closure(PDOAdaptor::connection($connectionName));
-        }
+        return  $closure(PDOAdaptor::connection($connectionName));
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return DbQuery
+     */
+    public static function __callStatic($name, $arguments)
+    {
+        return new DbQuery(self::getPdoConnection());
     }
 }

@@ -19,7 +19,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-
+        DB::select('s');
         //custom query
 
         Db::connection('default', new self());
