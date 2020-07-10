@@ -12,11 +12,11 @@ return [
         'host' => 'localhost',
         'driver' => 'mysql'
     ],
-    'mongodb' => [
-        'database' => 'collections',
-        'user' => 'root',
-        'password' => null,
+    'role' => [
+        'database' => 'roles',
+        'user' => 'admin',
+        'password' => 'admin',
         'host' => 'localhost',
-        'driver' => 'mongodb'
+        'driver' => 'mysql'
     ]
 ];

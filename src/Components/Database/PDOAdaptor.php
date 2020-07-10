@@ -2,9 +2,7 @@
 
 namespace App\Components\Database;
 
-use Exception;
 use PDO;
-use RuntimeException;
 
 /**
  * Class PDO
@@ -26,7 +24,8 @@ class PDOAdaptor
     {
         $configArray=get_config_array('pdo')[$name] ?? null;
         if ($configArray!==null) {
-            return Connection::make(get_config_array('pdo')[$name])->pdo();
+            return Connection::make($configArray)->pdo();
+            //return Connection::make(get_config_array('pdo')[$name])->pdo();
         }
 
         die(sprintf(self::$message, $name));
