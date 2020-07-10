@@ -299,4 +299,12 @@ abstract class Model
         }
         return  $this;
     }
+    /**
+     * @return object
+     * @throws JsonException
+     */
+    public function getAttributes():object
+    {
+        return (object)$this->toArray();
+    }
 }
