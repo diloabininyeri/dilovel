@@ -28,6 +28,7 @@ class PDOAdaptor
             //return Connection::make(get_config_array('pdo')[$name])->pdo();
         }
 
-        die(sprintf(self::$message, $name));
+        http_response_code(500);
+        die(view('errors.general_error', ['error'=>sprintf(self::$message, $name)]));
     }
 }
