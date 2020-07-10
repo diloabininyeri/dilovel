@@ -104,9 +104,16 @@ class Permission
      */
     public function delete(string $permission):bool
     {
-        $query = $this->getPdoConnection()->prepare('DELETE FROM permissions WHERE name=:name');
-        $execute = $query->execute([':name' => $permission]);
-        return ($execute && $query->rowCount());
+        $findPermission = $this->findByName($permission);
+        if ($findPermission) {
+            $query = $this->getPdoConnection()->prepare('DELETE FROM permissions WHERE name=:name');
+            $execute = $query->execute([':name' => $permission]);
+            $isDeleted= ($execute && $query->rowCount());
+            if ($isDeleted) {
+                return  $this->deleteRelationData($findPermission->id);
+            }
+        }
+        return  false;
     }
     /**
      * @param string $connectionName
@@ -116,5 +123,36 @@ class Permission
     {
         $this->connectionName = $connectionName;
         return $this;
+    }
+
+    /**
+     * @param int $permissionId
+     * @return bool
+     */
+    private function deleteRelationData(int $permissionId):bool
+    {
+        return (
+            $this->deleteUserPermission($permissionId) && $this->deleteRolePermissions($permissionId)
+        );
+    }
+
+    /**
+     * @param int $permissionId
+     * @return bool
+     */
+    private function deleteUserPermission(int  $permissionId):bool
+    {
+        $query=$this->getPdoConnection()->prepare('DELETE FROM user_permissions WHERE permission_id=:permission_id');
+        return ($query->execute(['permission_id'=>$permissionId]) && $query->rowCount());
+    }
+
+    /**
+     * @param int $permissionId
+     * @return bool
+     */
+    private function deleteRolePermissions(int $permissionId):bool
+    {
+        $query=$this->getPdoConnection()->prepare('DELETE FROM role_permissions WHERE permission_id=:permission_id');
+        return ($query->execute(['permission_id'=>$permissionId]) && $query->rowCount());
     }
 }
