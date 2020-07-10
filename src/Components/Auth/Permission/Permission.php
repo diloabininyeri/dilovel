@@ -109,9 +109,8 @@ class Permission
             $query = $this->getPdoConnection()->prepare('DELETE FROM permissions WHERE name=:name');
             $execute = $query->execute([':name' => $permission]);
             $isDeleted= ($execute && $query->rowCount());
-            if ($isDeleted) {
-                return  $this->deleteRelationData($findPermission->id);
-            }
+            $this->deleteRelationData($findPermission->id);
+            return $isDeleted;
         }
         return  false;
     }
@@ -132,7 +131,7 @@ class Permission
     private function deleteRelationData(int $permissionId):bool
     {
         return (
-            $this->deleteUserPermission($permissionId) && $this->deleteRolePermissions($permissionId)
+            $this->deleteUserPermission($permissionId) || $this->deleteRolePermissions($permissionId)
         );
     }
 

@@ -107,9 +107,7 @@ class Role
             $query = $pdo->prepare('DELETE FROM roles WHERE name=:name');
             $execute = $query->execute([':name' => $findRole->name]);
             $isDeleted= ($execute && $query->rowCount());
-            if ($isDeleted) {
-                return  $this->deleteRelationData($findRole->id);
-            }
+            $this->deleteRelationData($findRole->id);
             return $isDeleted;
         }
         return  false;
