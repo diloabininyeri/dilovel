@@ -101,9 +101,18 @@ class Role
      */
     public function delete(string $roleName): bool
     {
-        $query = $this->getPdoConnection()->prepare('DELETE FROM roles WHERE name=:name');
-        $execute = $query->execute([':name' => $roleName]);
-        return ($execute && $query->rowCount());
+        $findRole=$this->findByName($roleName);
+        if ($findRole) {
+            $pdo=$this->getPdoConnection();
+            $query = $pdo->prepare('DELETE FROM roles WHERE name=:name');
+            $execute = $query->execute([':name' => $findRole->name]);
+            $isDeleted= ($execute && $query->rowCount());
+            if ($isDeleted) {
+                return  $this->deleteRelationData($findRole->id);
+            }
+            return $isDeleted;
+        }
+        return  false;
     }
 
     /**
@@ -114,5 +123,35 @@ class Role
     {
         $this->connectionName = $connectionName;
         return $this;
+    }
+
+
+    /**
+     * @param int $roleId
+     * @return bool
+     */
+    private function deleteRelationData(int $roleId):bool
+    {
+        return ($this->deleteRolePermission($roleId)&& $this->deleteUserRole($roleId));
+    }
+    /**
+     * @param $roleId
+     * @return bool
+     */
+    private function deleteRolePermission($roleId):bool
+    {
+        return  $this->getPdoConnection()
+            ->prepare('DELETE FROM role_permissions WHERE role_id=:role_id')
+            ->execute(['role_id'=>$roleId]);
+    }
+    /**
+     * @param $roleId
+     * @return bool
+     */
+    private function deleteUserRole($roleId):bool
+    {
+        return  $this->getPdoConnection()
+            ->prepare('DELETE FROM user_roles WHERE role_id=:role_id')
+            ->execute(['role_id'=>$roleId]);
     }
 }
