@@ -38,7 +38,7 @@ class DbQuery
         $statement=$this->pdoConnection->prepare($query);
         $statement->execute($bind);
         if ($mapperClass) {
-            return new Collection($statement->fetchAll(PDO::FETCH_CLASS));
+            return new Collection($statement->fetchAll(PDO::FETCH_CLASS,$mapperClass));
         }
         return new Collection($statement->fetchAll(PDO::FETCH_OBJ));
     }
