@@ -15,25 +15,11 @@ use PDO;
  * Class Deneme
  * @package App\Application\Controllers
  */
-class Deneme
+class TestWithOrm
 {
     public function index(Request $request)
     {
-        return Db::select('select * from users limit 10');
-        //custom query
-
-        Db::connection('default', new self());
-
-        Db::connection('default', static function (PDO $PDO) {
-            return $PDO->query('select * from users limit 10')->fetchAll();
-        });
-
-        Db::connection()->select('select * from users', [], Users::class);
-        Db::connection()->query('update denemeler set name=?  where id=?  ', ['ergregr',1]);
+        return Users::with('book', 'role')->get();
     }
 
-    public function __invoke(PDO $PDO)
-    {
-        return $PDO->query('select * from users limit 5')->fetchAll();
-    }
 }
