@@ -14,6 +14,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Users::with('book','product')->get();
+        return Users::with('book', 'product')->get();
     }
 }

@@ -4,7 +4,6 @@
 namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
-use function foo\func;
 
 /**
  * Class HasOne
@@ -13,11 +12,6 @@ use function foo\func;
  */
 class HasOne
 {
-
-    /**
-     * @var Model|mixed
-     */
-    private Model $relationModelInstance;
     /**
      * @var string
      */
@@ -36,12 +30,22 @@ class HasOne
     private BuilderQuery $buildQuery;
 
     /**
+     * @var array $withDefault
+     */
+    private array $withDefault=[];
+
+    /**
      * HasOne constructor.
      * @param string $relationClass
      */
     public function __construct(string $relationClass)
     {
         $this->buildQuery = new BuilderQuery(new $relationClass);
+    }
+
+    public function withDefault(array $default):self
+    {
+        return $this;
     }
 
     /**
@@ -63,13 +67,12 @@ class HasOne
     private function findHasRelation(Collection $model, int $primaryKey): ?Model
     {
         foreach ($model as $item) {
-            if ((int)$item->user_id === $primaryKey) {
+            if ((int)$item->{$this->foreignKey} === $primaryKey) {
                 return $item;
             }
         }
         return null;
     }
-
     /**
      * @param array $records
      * @param string $relation
@@ -84,7 +87,6 @@ class HasOne
 
 
         $relationData = $this->getWithWhereIn($primaryKeyValues);
-
         foreach ($records as $record) {
             $record->$relation = $this->findHasRelation($relationData, $record->{$this->primaryKey});
         }

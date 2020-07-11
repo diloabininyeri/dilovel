@@ -84,7 +84,7 @@ class Users extends BuilderUserModel
      */
     public function product():HasOne
     {
-        return $this->hasOne(Products::class,'user_id','id');
+        return $this->hasOne(Products::class, 'user_id', 'id');
     }
 
 
