@@ -3,86 +3,147 @@
 
 namespace App\Components\Database;
 
-use PDO;
+use App\Components\Collection\Collection;
+use function foo\func;
 
 /**
  * Class HasOne
  * @package App\Models
+ * @mixin BuilderQuery
  */
 class HasOne
 {
 
     /**
-     * @var
+     * @var Model|mixed
      */
-    private string $relationModelClass;
+    private Model $relationModelInstance;
     /**
-     * @var
+     * @var string
      */
-    private $foreignKey;
+    private string $foreignKey;
     /**
-     * @var
+     * @var string
      */
-    private $mainModelKey;
+    private string $primaryKey;
     /**
      * @var Model
      */
-    private Model $mainModelInstance;
+    private Model $model;
+    /**
+     * @var BuilderQuery
+     */
+    private BuilderQuery $buildQuery;
 
     /**
      * HasOne constructor.
-     * @param $relationModelClass
-     * @param $foreignKey
-     * @param $key
-     * @param $mainModelInstance
+     * @param string $relationClass
      */
-    public function __construct($relationModelClass, $foreignKey, $key, $mainModelInstance)
+    public function __construct(string $relationClass)
     {
-        $this->relationModelClass = $relationModelClass;
-        $this->foreignKey = $foreignKey;
-        $this->mainModelKey = $key;
-        $this->mainModelInstance = $mainModelInstance;
+        $this->buildQuery = new BuilderQuery(new $relationClass);
     }
 
     /**
-     * @return HasOneBuilder
-     * @throws \Exception
+     * @param $name
+     * @param $arguments
+     * @return mixed
      */
-    public function oneToOne(): HasOneBuilder
+    public function __call($name, $arguments)
     {
-        $id = $this->mainModelInstance->getPrimaryKeyValue();
-        $model = $this->relationModelClass;
-        $relationModelInstance=new $model();
-        $relationTable =$relationModelInstance->getTable();
-        $hidden=$relationModelInstance->getHidden();
+        return $this->buildQuery->$name(...$arguments);
+    }
 
 
-        $sql = sprintf(
-            'select * from %s where %s=:%s',
-            $relationTable,
-            $this->foreignKey,
-            $this->foreignKey
-        );
-
-
-        $pdo = PDOAdaptor::connection($this->mainModelInstance->getConnection());
-
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue($this->foreignKey, $id);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->relationModelClass);
-        $stmt->execute();
-        $relationObject= $stmt->fetch();
-
-        foreach ($hidden as $item) {
-            unset($relationObject->$item);
+    /**
+     * @param Collection $model
+     * @param int $primaryKey
+     * @return Model|null
+     */
+    private function findHasRelation(Collection $model, int $primaryKey): ?Model
+    {
+        foreach ($model as $item) {
+            if ((int)$item->user_id === $primaryKey) {
+                return $item;
+            }
         }
+        return null;
+    }
 
-        return  new HasOneBuilder(
-            $relationObject ?:$relationModelInstance,
-            $relationModelInstance,
-            $this->mainModelInstance,
-            $pdo,
-            $this->foreignKey
-        );
+    /**
+     * @param array $records
+     * @param string $relation
+     * @return array
+     */
+    public function getWithRelation(array $records, string $relation): array
+    {
+        $primaryKey = $this->primaryKey;
+        $primaryKeyValues = array_map(static function ($item) use ($primaryKey) {
+            return $item->$primaryKey;
+        }, $records);
+
+
+        $relationData = $this->getWithWhereIn($primaryKeyValues);
+
+        foreach ($records as $record) {
+            $record->$relation = $this->findHasRelation($relationData, $record->{$this->primaryKey});
+        }
+        return $records;
+    }
+
+    /**
+     * @param array $primaryKeyValues
+     * @return Collection
+     */
+    private function getWithWhereIn(array $primaryKeyValues): Collection
+    {
+        return $this->buildQuery->whereIn($this->foreignKey, $primaryKeyValues)->get();
+    }
+
+    /**
+     * @param string $foreignKey
+     * @return HasOne
+     */
+    public function setForeignKey(string $foreignKey): self
+    {
+        $this->foreignKey = $foreignKey;
+        return $this;
+    }
+
+    /**
+     * @return object|null
+     */
+    public function get()
+    {
+        $this->where($this->foreignKey, $this->model->getPrimaryKeyValue());
+        return $this->buildQuery->first();
+    }
+
+    /**
+     * @param string $primaryKey
+     * @return HasOne
+     */
+    public function setPrimaryKey(string $primaryKey): self
+    {
+        $this->primaryKey = $primaryKey;
+        return $this;
+    }
+
+    /**
+     * @param Model $model
+     * @return HasOne
+     */
+    public function setModel(Model $model): HasOne
+    {
+        $this->model = $model;
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function build(): self
+    {
+        return $this;
     }
 }

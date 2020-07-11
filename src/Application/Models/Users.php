@@ -8,6 +8,7 @@ use App\Application\Models\Objectable\UserPassword;
 use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\BuilderUserModel;
+use App\Components\Database\HasOne;
 use App\Components\Database\HasOneBuilder;
 use App\Components\Database\Paginate;
 
@@ -71,11 +72,19 @@ class Users extends BuilderUserModel
     }
 
     /**
-     * @return HasOneBuilder
+     * @return HasOne
      */
-    public function book()
+    public function book():HasOne
     {
         return $this->hasOne(Book::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function product():HasOne
+    {
+        return $this->hasOne(Products::class,'user_id','id');
     }
 
 

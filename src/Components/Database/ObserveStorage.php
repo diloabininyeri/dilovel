@@ -33,10 +33,10 @@ class ObserveStorage
 
     /**
      * @param Model $model
-     * @return Model
+     * @return array|null
      */
     public static function get(Model $model):?array
     {
-        return self::$storage[get_class($model)];
+        return self::$storage[get_class($model)] ?? null;
     }
 }

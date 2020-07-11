@@ -133,7 +133,7 @@ abstract class Model
      */
     final public static function __callStatic($name, $arguments)
     {
-        $model=new static();
+        $model = new static();
         if (method_exists($model, 'onConstruct')) {
             $model->onConstruct();
         }
@@ -184,14 +184,15 @@ abstract class Model
      * @param string $relationClass
      * @param string $foreignKey
      * @param string $key
-     * @return HasOneBuilder
-     * @throws Exception
-     *
+     * @return HasOne
      */
-    final protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id'): HasOneBuilder
+    final protected function hasOne(string $relationClass, string $foreignKey, string $key = 'id'): HasOne
     {
-        $hasOne = new HasOne($relationClass, $foreignKey, $key, $this);
-        return $hasOne->oneToOne();
+        return (new HasOne($relationClass))
+            ->setForeignKey($foreignKey)
+            ->setPrimaryKey($key)
+            ->setModel($this)
+            ->build();
     }
 
     /**
@@ -270,21 +271,22 @@ abstract class Model
      * @param callable $callable
      * @return $this
      */
-    final public function setAttribute(string $attribute, callable $callable):self
+    final public function setAttribute(string $attribute, callable $callable): self
     {
-        $this->$attribute=$callable($this->$attribute);
+        $this->$attribute = $callable($this->$attribute);
         return $this;
     }
 
     /**
      * @return $this
      */
-    final public function toDiffForHumans():self
+    final public function toDiffForHumans(): self
     {
         $this->created_at = Carbon::parse($this->created_at)->diffForHumans();
         $this->updated_at = Carbon::parse($this->updated_at)->diffForHumans();
-        return  $this;
+        return $this;
     }
+
     /**
      * @param $oldName
      * @param $newName
@@ -293,17 +295,18 @@ abstract class Model
      */
     public function renameAttribute($oldName, $newName, $delete = true): self
     {
-        $this->$newName=$this->$oldName;
+        $this->$newName = $this->$oldName;
         if ($delete) {
             unset($this->$oldName);
         }
-        return  $this;
+        return $this;
     }
+
     /**
      * @return object
      * @throws JsonException
      */
-    public function getAttributes():object
+    public function getAttributes(): object
     {
         return (object)$this->toArray();
     }

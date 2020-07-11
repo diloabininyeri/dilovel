@@ -6,8 +6,6 @@ use App\Components\Collection\Collection;
 use Closure;
 use JsonException;
 use PDO;
-use RecursiveArrayIterator;
-use RecursiveIteratorIterator;
 use function request;
 
 /**
@@ -72,7 +70,7 @@ class BuilderQuery
     /**
      * @var array $eager
      */
-    private array $eager=[];
+    private array $eager = [];
 
     /**
      * BuilderQuery constructor.
@@ -87,9 +85,9 @@ class BuilderQuery
      * @param string ...$relations
      * @return $this
      */
-    public function with(string ...$relations):self
+    public function with(string ...$relations): self
     {
-        $this->eager[]=$relations;
+        $this->eager[] = $relations;
         return $this;
     }
 
@@ -309,7 +307,7 @@ class BuilderQuery
      */
     public function whereLastOr($column, $value, $operator, Closure $closure)
     {
-        return  $this->whereLast($column, $value, $operator) ?: $closure($this);
+        return $this->whereLast($column, $value, $operator) ?: $closure($this);
     }
 
     /**
@@ -673,7 +671,7 @@ class BuilderQuery
     public function getOr(array $columns, Closure $closure)
     {
         $this->setQuery($this->selectBuilderQuery($columns));
-        return  $this->runSelect() ?: $closure($this);
+        return $this->runSelect() ?: $closure($this);
     }
 
     /**
@@ -751,18 +749,32 @@ class BuilderQuery
             $this->unsetHiddenPropertiesFromArray($result);
         }
 
-        return new Collection($result);
+        return new Collection($this->crateResultWithRelation($result));
+    }
+
+    /**
+     * @param array $result
+     * @return array
+     */
+    private function crateResultWithRelation(array $result): array
+    {
+        if ($eager = $this->getEager()) {
+            foreach ($eager as $with) {
+                $result = $this->modelInstance->$with()->getWithRelation($result, $with);
+            }
+        }
+        return $result;
     }
 
     /**
      * @return array
      */
-    private function getEager():array
+    private function getEager(): array
     {
-        $return =[];
-        $array=$this->eager;
+        $return = [];
+        $array = $this->eager;
         array_walk_recursive($array, static function ($a) use (&$return) {
-            $return[]=$a;
+            $return[] = $a;
         });
         return $return;
     }
@@ -1106,8 +1118,6 @@ class BuilderQuery
         $this->setQuery($this->builderDeleteQuery());
         return $this->getQuery();
     }
-
-
     /**
      * @param array $data
      * @return mixed|string|null

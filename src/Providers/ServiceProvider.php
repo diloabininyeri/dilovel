@@ -3,6 +3,7 @@
 
 namespace App\Providers;
 
+use App\Application\Models\Book;
 use App\Application\Models\Users;
 use App\Application\Observer\UserObserver;
 use App\Components\Database\ModelMacro;
