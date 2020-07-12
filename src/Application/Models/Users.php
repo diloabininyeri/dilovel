@@ -79,6 +79,11 @@ class Users extends BuilderUserModel
         return $this->hasOne(Book::class, 'user_id', 'id');
     }
 
+
+    public function phone()
+    {
+        return $this->hasOne(Phone::class, 'user_id');
+    }
     /**
      * @return HasOne
      */

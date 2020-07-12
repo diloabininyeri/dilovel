@@ -3,7 +3,6 @@
 namespace App\Components\Database;
 
 use Carbon\Carbon;
-use Exception;
 use JsonException;
 
 /**
@@ -191,6 +190,37 @@ abstract class Model
         return (new HasOne($relationClass))
             ->setForeignKey($foreignKey)
             ->setPrimaryKey($key)
+            ->setModel($this)
+            ->build();
+    }
+
+    /**
+     * @param string $relationClass
+     * @param string $foreignKey
+     * @param string $primaryKey
+     * @return HasMany
+     */
+    final protected function hasMany(string $relationClass, string $foreignKey, string $primaryKey = 'id'):HasMany
+    {
+        return (new HasMany($relationClass))
+            ->setForeignKey($foreignKey)
+            ->setPrimaryKey($primaryKey)
+            ->setModel($this)
+            ->build();
+    }
+
+
+    /**
+     * @param string $relationClass
+     * @param string $foreignKey
+     * @param string $primaryKey
+     * @return BelongsTo
+     */
+    final protected function belongsTo(string $relationClass, string $foreignKey, string $primaryKey = 'id'):BelongsTo
+    {
+        return (new BelongsTo($relationClass))
+            ->setForeignKey($foreignKey)
+            ->setPrimaryKey($primaryKey)
             ->setModel($this)
             ->build();
     }

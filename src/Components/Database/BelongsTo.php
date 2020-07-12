@@ -5,7 +5,12 @@ namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
 
-class HasMany
+/**
+ * Class BelongsTo
+ * @package App\Components\Database
+ * @mixin BuilderQuery
+ */
+class BelongsTo
 {
     /**
      * @var string
@@ -23,6 +28,7 @@ class HasMany
      * @var BuilderQuery
      */
     private BuilderQuery $buildQuery;
+
 
     /**
      * @var array $withDefault
@@ -59,10 +65,10 @@ class HasMany
      * @param int $primaryKey
      * @return Model|null
      */
-    private function findHasRelation(Collection $model, int $primaryKey): ?Model
+    private function findHasRelation(Collection $model, ?int $primaryKey): ?Model
     {
         foreach ($model as $item) {
-            if ((int)$item->{$this->foreignKey} === $primaryKey) {
+            if ((int)$item->{$this->primaryKey} === $primaryKey) {
                 return $item;
             }
         }
@@ -75,6 +81,17 @@ class HasMany
      */
     public function getWithRelation(array $records, string $relation): array
     {
+        $primaryKey = $this->foreignKey;
+        $primaryKeyValues = array_map(static function ($item) use ($primaryKey) {
+            return $item->$primaryKey;
+        }, $records);
+
+        $relationData = $this->getWithWhereIn($primaryKeyValues);
+
+        foreach ($records as $record) {
+            $record->$relation = $this->findHasRelation($relationData, $record->{$this->foreignKey});
+        }
+        return $records;
     }
 
     /**
@@ -83,7 +100,7 @@ class HasMany
      */
     private function getWithWhereIn(array $primaryKeyValues): Collection
     {
-        return $this->buildQuery->whereIn($this->foreignKey, $primaryKeyValues)->get();
+        return $this->buildQuery->whereIn($this->primaryKey, $primaryKeyValues)->get();
     }
 
     /**
@@ -101,7 +118,7 @@ class HasMany
      */
     public function get()
     {
-        $this->buildQuery->where($this->foreignKey, $this->model->getPrimaryKeyValue());
+        $this->buildQuery->where($this->primaryKey, $this->model->{$this->foreignKey});
         return $this->buildQuery->first();
     }
 
@@ -125,11 +142,13 @@ class HasMany
         return $this;
     }
 
+
     /**
      * @return $this
      */
     public function build(): self
     {
+        //  $this->buildQuery->where($this->primaryKey, $this->model->{$this->foreignKey});
         return $this;
     }
 }

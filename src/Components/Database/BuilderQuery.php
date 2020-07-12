@@ -242,6 +242,15 @@ class BuilderQuery
     }
 
     /**
+     * @param string $key
+     * @param $value
+     * @return $this
+     */
+    public function whereNot(string $key, $value):self
+    {
+        return  $this->where($key, $value, '<>');
+    }
+    /**
      * @return array
      */
     public function columns(): array

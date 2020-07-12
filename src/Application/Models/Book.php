@@ -10,6 +10,7 @@ use App\Components\Database\Model;
  * Class Book
  * @package App\app\Models
  * @mixin BuilderQuery
+ * @method static BuilderQuery|Users find(int $id)
  */
 class Book extends Model
 {

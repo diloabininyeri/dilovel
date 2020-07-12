@@ -29,6 +29,7 @@ class HasOne
      */
     private BuilderQuery $buildQuery;
 
+
     /**
      * @var array $withDefault
      */
@@ -117,7 +118,6 @@ class HasOne
      */
     public function get()
     {
-        $this->where($this->foreignKey, $this->model->getPrimaryKeyValue());
         return $this->buildQuery->first();
     }
 
@@ -146,6 +146,7 @@ class HasOne
      */
     public function build(): self
     {
+        $this->buildQuery->where($this->foreignKey, $this->model->getPrimaryKeyValue());
         return $this;
     }
 }
