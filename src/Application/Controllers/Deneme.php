@@ -16,6 +16,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Phone::with('user')->get();
+        return Users::with('phone', 'book')->get();
     }
 }

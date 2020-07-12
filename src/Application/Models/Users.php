@@ -8,9 +8,8 @@ use App\Application\Models\Objectable\UserPassword;
 use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\BuilderUserModel;
-use App\Components\Database\HasOne;
-use App\Components\Database\HasOneBuilder;
 use App\Components\Database\Paginate;
+use App\Components\Database\Relation\HasOne;
 
 /**
  * Class Users

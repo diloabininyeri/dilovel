@@ -2,6 +2,8 @@
 
 namespace App\Components\Database;
 
+use App\Components\Database\Relation\BelongsTo;
+use App\Components\Database\Relation\HasOne;
 use Carbon\Carbon;
 use JsonException;
 

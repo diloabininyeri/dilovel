@@ -1,9 +1,11 @@
 <?php
 
 
-namespace App\Components\Database;
+namespace App\Components\Database\Relation;
 
 use App\Components\Collection\Collection;
+use App\Components\Database\BuilderQuery;
+use App\Components\Database\Model;
 
 /**
  * Class BelongsTo
@@ -148,7 +150,9 @@ class BelongsTo
      */
     public function build(): self
     {
-        //  $this->buildQuery->where($this->primaryKey, $this->model->{$this->foreignKey});
+        if ($this->model->isPrimaryKeyHasValue()) {
+            $this->buildQuery->where($this->primaryKey, $this->model->{$this->foreignKey});
+        }
         return $this;
     }
 }
