@@ -121,7 +121,7 @@ class HasOne
      */
     public function get(...$columns)
     {
-        return $this->buildQuery->first($columns);
+        return $this->buildQuery->first(...$columns);
     }
 
     /**

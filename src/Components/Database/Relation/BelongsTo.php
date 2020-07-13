@@ -122,7 +122,7 @@ class BelongsTo
     public function get(...$columns)
     {
         $this->buildQuery->where($this->primaryKey, $this->model->{$this->foreignKey});
-        return $this->buildQuery->first($columns);
+        return $this->buildQuery->first(...$columns);
     }
 
     /**
