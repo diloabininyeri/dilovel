@@ -4,6 +4,7 @@ namespace App\Components\Database;
 
 use App\Components\Database\Relation\BelongsTo;
 use App\Components\Database\Relation\HasOne;
+use App\Components\Database\Relation\HasMany;
 use Carbon\Carbon;
 use JsonException;
 

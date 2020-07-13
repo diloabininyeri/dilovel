@@ -1,10 +1,17 @@
 <?php
 
 
-namespace App\Components\Database;
+namespace App\Components\Database\Relation;
 
 use App\Components\Collection\Collection;
+use App\Components\Database\BuilderQuery;
+use App\Components\Database\Model;
 
+/**
+ * Class HasMany
+ * @package App\Components\Database\Relation
+ *
+ */
 class HasMany
 {
     /**
@@ -38,6 +45,11 @@ class HasMany
         $this->buildQuery = new BuilderQuery(new $relationClass);
     }
 
+    /**
+     * @param array $default
+     * @return $this
+     * @noinspection PhpUnused
+     */
     public function withDefault(array $default):self
     {
         return $this;
@@ -55,18 +67,17 @@ class HasMany
 
 
     /**
-     * @param Collection $model
-     * @param int $primaryKey
-     * @return Model|null
+     * @param Collection $relationData
+     * @param Model $record
+     * @param $relationName
      */
-    private function findHasRelation(Collection $model, int $primaryKey): ?Model
+    private function pairRelation(Collection $relationData, Model $record, $relationName): void
     {
-        foreach ($model as $item) {
-            if ((int)$item->{$this->foreignKey} === $primaryKey) {
-                return $item;
+        foreach ($relationData as $relationDatum) {
+            if ((int)$relationDatum->{$this->foreignKey} === (int)$record->{$this->primaryKey}) {
+                $record->$relationName[]=$relationDatum;
             }
         }
-        return null;
     }
     /**
      * @param array $records
@@ -75,6 +86,19 @@ class HasMany
      */
     public function getWithRelation(array $records, string $relation): array
     {
+        $primaryKeyValues = array_map(function ($item) {
+            return $item->{$this->primaryKey};
+        }, $records);
+
+
+        $relationData = $this->getWithWhereIn($primaryKeyValues);
+        array_walk($records, fn ($item) =>$item->$relation=[]);
+
+
+        foreach ($records as $record) {
+            $this->pairRelation($relationData, $record, $relation);
+        }
+        return $records;
     }
 
     /**
@@ -96,13 +120,38 @@ class HasMany
         return $this;
     }
 
+
+    /**
+     * @return array
+     */
+    public function delete():array
+    {
+        $status=[];
+        foreach ($this->get() as $item) {
+            $status[]=$item->delelte();
+        }
+        return $status;
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function update(array $data): array
+    {
+        $status=[];
+        foreach ($this->get() as $item) {
+            $status[]=$item->update($data);
+        }
+        return $status;
+    }
+
     /**
      * @return object|null
      */
     public function get()
     {
-        $this->buildQuery->where($this->foreignKey, $this->model->getPrimaryKeyValue());
-        return $this->buildQuery->first();
+        return $this->buildQuery->get();
     }
 
     /**
@@ -130,6 +179,9 @@ class HasMany
      */
     public function build(): self
     {
+        if ($this->model->isPrimaryKeyHasValue()) {
+            $this->buildQuery->where($this->foreignKey, $this->model->getPrimaryKeyValue());
+        }
         return $this;
     }
 }

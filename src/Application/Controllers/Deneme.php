@@ -16,6 +16,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Users::with('phone', 'book')->get();
+        $d= Users::find(25)->books()->update(['name'=>'nested update ']);
+        dd($d);
     }
 }
