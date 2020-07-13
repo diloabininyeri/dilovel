@@ -116,11 +116,12 @@ class HasOne
     }
 
     /**
+     * @param array $columns
      * @return object|null
      */
-    public function get()
+    public function get(...$columns)
     {
-        return $this->buildQuery->first();
+        return $this->buildQuery->first($columns);
     }
 
     /**

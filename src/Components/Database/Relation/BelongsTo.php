@@ -116,12 +116,13 @@ class BelongsTo
     }
 
     /**
+     * @param array $columns
      * @return object|null
      */
-    public function get()
+    public function get(...$columns)
     {
         $this->buildQuery->where($this->primaryKey, $this->model->{$this->foreignKey});
-        return $this->buildQuery->first();
+        return $this->buildQuery->first($columns);
     }
 
     /**

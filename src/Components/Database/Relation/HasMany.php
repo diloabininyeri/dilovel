@@ -147,11 +147,12 @@ class HasMany
     }
 
     /**
+     * @param array $columns
      * @return object|null
      */
-    public function get()
+    public function get(...$columns)
     {
-        return $this->buildQuery->get();
+        return $this->buildQuery->get(...$columns);
     }
 
     /**
