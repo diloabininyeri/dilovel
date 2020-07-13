@@ -3,6 +3,7 @@
 namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
+use App\Components\Exceptions\MethodNotfoundInModelException;
 use Closure;
 use JsonException;
 use PDO;
@@ -769,7 +770,11 @@ class BuilderQuery
     {
         if ($eager = $this->getEager()) {
             foreach ($eager as $with) {
-                $result = $this->modelInstance->$with()->getWithRelation($result, $with);
+                if (method_exists($this->modelInstance, $with)) {
+                    $result = $this->modelInstance->$with()->getWithRelation($result, $with);
+                } else {
+                    throw new MethodNotfoundInModelException("$with method not found in ".get_class($this->modelInstance));
+                }
             }
         }
         return $result;

@@ -96,6 +96,11 @@ class Users extends BuilderUserModel
         return $this->hasOne(Products::class, 'user_id', 'id');
     }
 
+    public function products()
+    {
+        return $this->hasMany(Products::class, 'user_id');
+    }
+
 
     public function nameAndSurname()
     {

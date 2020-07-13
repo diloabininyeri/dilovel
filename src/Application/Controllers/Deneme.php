@@ -16,7 +16,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $d= Users::find(25)->book()->get('id', 'name');
-        dd($d);
+        $users=Users::with('book','product')->limit(10)->get();
+        dd($users);
     }
 }
