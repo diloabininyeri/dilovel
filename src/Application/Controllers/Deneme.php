@@ -16,7 +16,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users=Users::notRegexp('name', '\d{2,}')->paginate(2);
+        $users=Users::with('book')->selectRaw('select * from users where id=?', [18]);
         dd($users);
     }
 }

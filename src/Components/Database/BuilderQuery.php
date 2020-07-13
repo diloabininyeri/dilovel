@@ -1200,4 +1200,16 @@ class BuilderQuery
         $this->setQuery($this->builderUpdateQuery($data ?: get_object_vars($this->modelInstance)));
         return $this->getQuery();
     }
+
+    /**
+     * @param string $query
+     * @param array $bind
+     * @return Collection
+     */
+    public function selectRaw(string $query, array $bind=[]) :Collection
+    {
+        $this->setQuery($query);
+        $this->bindArray=$bind;
+        return  $this->runSelect();
+    }
 }
