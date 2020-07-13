@@ -251,6 +251,45 @@ class BuilderQuery
     {
         return  $this->where($key, $value, '<>');
     }
+
+    /**
+     * @param string $key
+     * @param string $keyword
+     * @param $value
+     * @return $this
+     */
+    private function builderLikeOrRegexp(string $key, string $keyword, $value):self
+    {
+        if ($this->isWhereUsed()) {
+            $this->whereQuery .= " AND $key  $keyword :$keyword$key ";
+        } else {
+            $this->whereQuery = " WHERE $key $keyword :$keyword$key ";
+        }
+
+        $this->bindArray[":$keyword$key"] = $value;
+        $this->isWhereUsed = true;
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param $value
+     * @return $this
+     */
+    public function like(string $key, $value):self
+    {
+        return  $this->builderLikeOrRegexp($key, 'LIKE', $value);
+    }
+
+    /**
+     * @param string $key
+     * @param $value
+     * @return $this
+     */
+    public function regexp(string $key, $value):self
+    {
+        return  $this->builderLikeOrRegexp($key, 'REGEXP', $value);
+    }
     /**
      * @return array
      */

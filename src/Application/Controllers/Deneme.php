@@ -16,7 +16,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users=Users::with('book','product')->limit(10)->get();
+        $users=Users::regexp('created_at', '\d{2,}')->get();
         dd($users);
     }
 }
