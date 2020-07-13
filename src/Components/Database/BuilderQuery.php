@@ -258,12 +258,12 @@ class BuilderQuery
      * @param $value
      * @return $this
      */
-    private function builderLikeOrRegexp(string $key, string $keyword, $value):self
+    private function builderLikeOrRegexp(string $key, string $keyword, $value, $not=null):self
     {
         if ($this->isWhereUsed()) {
-            $this->whereQuery .= " AND $key  $keyword :$keyword$key ";
+            $this->whereQuery .= " AND $key $not  $keyword :$keyword$key ";
         } else {
-            $this->whereQuery = " WHERE $key $keyword :$keyword$key ";
+            $this->whereQuery = " WHERE $key $not $keyword :$keyword$key ";
         }
 
         $this->bindArray[":$keyword$key"] = $value;
@@ -281,6 +281,16 @@ class BuilderQuery
         return  $this->builderLikeOrRegexp($key, 'LIKE', $value);
     }
 
+
+    /**
+     * @param string $key
+     * @param $value
+     * @return $this
+     */
+    public function notLike(string $key, $value):self
+    {
+        return $this->builderLikeOrRegexp($key, 'LIKE', $value, 'NOT');
+    }
     /**
      * @param string $key
      * @param $value
@@ -289,6 +299,16 @@ class BuilderQuery
     public function regexp(string $key, $value):self
     {
         return  $this->builderLikeOrRegexp($key, 'REGEXP', $value);
+    }
+
+    /**
+     * @param string $key
+     * @param $value
+     * @return $this
+     */
+    public function notRegexp(string $key, $value):self
+    {
+        return $this->builderLikeOrRegexp($key, 'REGEXP', $value, 'NOT');
     }
     /**
      * @return array

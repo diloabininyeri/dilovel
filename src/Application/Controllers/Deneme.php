@@ -16,7 +16,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users=Users::regexp('created_at', '\d{2,}')->get();
+        $users=Users::notRegexp('name', '\d{2,}')->paginate(2);
         dd($users);
     }
 }
