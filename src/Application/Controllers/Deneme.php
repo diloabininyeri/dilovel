@@ -3,8 +3,7 @@
 
 namespace App\Application\Controllers;
 
-use App\Application\Models\Book;
-use App\Application\Models\Phone;
+
 use App\Application\Models\Users;
 use App\Components\Http\Request;
 
@@ -16,7 +15,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users=Users::rawQuery('update users set surname=? where id=?', ['celebican',18]);
+        $users=Users::selectRaw('select * from users where id=?', [18]);
         dd($users);
     }
 }
