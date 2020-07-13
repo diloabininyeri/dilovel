@@ -16,7 +16,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users=Users::with('book')->selectRaw('select * from users where id=?', [18]);
+        $users=Users::rawQuery('update users set surname=? where id=?', ['celebican',18]);
         dd($users);
     }
 }

@@ -1212,4 +1212,16 @@ class BuilderQuery
         $this->bindArray=$bind;
         return  $this->runSelect();
     }
+
+    /**
+     * @param string $query
+     * @param array $bind
+     * @return bool
+     */
+    public function rawQuery(string $query, array $bind):bool
+    {
+        $this->setQuery($query);
+        $statement = $this->pdoInstance()->prepare($this->getQuery());
+        return $statement->execute($bind);
+    }
 }
