@@ -15,6 +15,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        echo optional(Users::find(18)->name)->book->name;
+        echo infinite_optional(Users::find(18)->name)->book->name->fwefe;
     }
 }
