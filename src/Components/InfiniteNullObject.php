@@ -16,7 +16,7 @@ class InfiniteNullObject
      */
     public function __isset($name)
     {
-        return new self();
+        return $this;
     }
 
     /**
@@ -26,7 +26,7 @@ class InfiniteNullObject
      */
     public function __set($name, $value)
     {
-        return new self();
+        return $this;
     }
 
     /**
@@ -35,7 +35,7 @@ class InfiniteNullObject
      */
     public function __get($name)
     {
-        return new self();
+        return $this;
     }
 
     /**
@@ -45,7 +45,7 @@ class InfiniteNullObject
      */
     public function __call($name, $arguments)
     {
-        return new self();
+        return $this;
     }
 
     /**
