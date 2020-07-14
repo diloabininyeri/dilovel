@@ -10,6 +10,7 @@ use App\Components\Cache\ViewCache;
 use App\Components\Captcha;
 use App\Components\Cart\Cart;
 use App\Components\Csrf\CsrfGuard;
+use App\Components\Database\InfiniteOptional;
 use App\Components\Database\Optional;
 use App\Components\Database\PDOAdaptor;
 use App\Components\DateTime\Now;
@@ -455,6 +456,10 @@ function optional($data)
     return new Optional($data);
 }
 
+function infinite_optional($data)
+{
+    return new InfiniteOptional($data);
+}
 /**
  * @param array $array
  * @return array

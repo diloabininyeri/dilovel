@@ -15,7 +15,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users=Users::with('roles')->get();
-        dd($users);
+        echo optional(Users::find(18)->name)->book->name;
     }
 }
