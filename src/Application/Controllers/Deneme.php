@@ -3,7 +3,7 @@
 
 namespace App\Application\Controllers;
 
-
+use App\Application\Models\Role;
 use App\Application\Models\Users;
 use App\Components\Http\Request;
 
@@ -15,7 +15,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users=Users::selectRaw('select * from users where id=?', [18]);
+        $users=Users::find(18)->roles()->get();
         dd($users);
     }
 }

@@ -136,7 +136,14 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         return end($this->collection);
     }
 
-
+    /**
+     * @param string $column
+     * @return array
+     */
+    public function column(string $column):array
+    {
+        return  array_map(fn ($i) =>$i[$column], $this->toArray());
+    }
     /**
      * @return array
      */

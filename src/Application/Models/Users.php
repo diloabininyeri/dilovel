@@ -9,6 +9,7 @@ use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\BuilderUserModel;
 use App\Components\Database\Paginate;
+use App\Components\Database\Relation\BelongsToMany;
 use App\Components\Database\Relation\HasOne;
 
 /**
@@ -78,9 +79,9 @@ class Users extends BuilderUserModel
         return $this->hasOne(Book::class, 'user_id', 'id');
     }
 
-    public function books()
+    public function roles():BelongsToMany
     {
-        return $this->hasMany(Book::class, 'user_id');
+        return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Components\Database;
 
 use App\Components\Database\Relation\BelongsTo;
+use App\Components\Database\Relation\BelongsToMany;
 use App\Components\Database\Relation\HasOne;
 use App\Components\Database\Relation\HasMany;
 use Carbon\Carbon;
@@ -228,6 +229,22 @@ abstract class Model
             ->build();
     }
 
+    /**
+     * @param string $relationClass
+     * @param string $table
+     * @param string $relationForeignKey
+     * @param string $foreignKey
+     * @return BelongsToMany
+     */
+    final protected function belongsToMany(string $relationClass, string $table, string $relationForeignKey, string $foreignKey):BelongsToMany
+    {
+        return (new BelongsToMany($relationClass))
+            ->setModel($this)
+            ->setRelationForeignKey($relationForeignKey)
+            ->setForeignKey($foreignKey)
+            ->setTable($table)
+            ->build();
+    }
     /**
      * @return mixed|string
      */
