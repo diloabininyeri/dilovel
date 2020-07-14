@@ -15,7 +15,7 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $users=Users::find(18)->roles()->get();
+        $users=Users::with('roles')->get();
         dd($users);
     }
 }

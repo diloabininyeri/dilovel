@@ -6,13 +6,14 @@ namespace App\Components\Database\Relation;
 use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\Model;
+use App\Interfaces\RelationInterface;
 
 /**
  * Class HasOne
  * @package App\Models
  * @mixin BuilderQuery
  */
-class HasOne
+class HasOne implements RelationInterface
 {
     /**
      * @var string

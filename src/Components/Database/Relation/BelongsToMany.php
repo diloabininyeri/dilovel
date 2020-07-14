@@ -3,16 +3,18 @@
 
 namespace App\Components\Database\Relation;
 
+use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\Custom\Db;
 use App\Components\Database\Model;
+use App\Interfaces\RelationInterface;
 
 /**
  * Class BelongsToMany
  * @package App\Components\Database\Relation
  * @mixin BuilderQuery
  */
-class BelongsToMany
+class BelongsToMany implements RelationInterface
 {
     /**
      * @var BuilderQuery
@@ -34,10 +36,17 @@ class BelongsToMany
      */
     private string $table;
 
+
     /**
      * @var Model
      */
-    private ?Model $model=null;
+    private ?Model $model = null;
+
+
+    /**
+     * @var Model|mixed
+     */
+    private Model $relationClassInstance;
 
     /**
      * BelongsToMany constructor.
@@ -45,7 +54,68 @@ class BelongsToMany
      */
     public function __construct(string $relationClass)
     {
-        $this->builderQuery=new BuilderQuery(new $relationClass);
+        $this->relationClassInstance = new $relationClass;
+        $this->builderQuery = new BuilderQuery($this->relationClassInstance);
+    }
+
+    /**
+     * @param array $records
+     * @param string $relationName
+     * @return array
+     */
+    public function getWithRelation(array $records, string $relationName): array
+    {
+        array_map(fn ($i) =>$i->$relationName=[], $records);
+        $getAllManyToManyData = $this->getAllRelationData($records);  //user has user_roles
+
+        $manyToManyIds = $getAllManyToManyData->column($this->foreignKey); //just role_id of user_roles
+        $manyRelationData=$this->builderQuery->whereIn($this->relationClassInstance->getPrimaryKey(), $manyToManyIds)->get(); //roles
+
+        foreach ($records as $record) {
+            $this->pairRelation($record, $relationName, $manyRelationData, $getAllManyToManyData);
+        }
+
+        return $records;
+    }
+
+    /**
+     * @param Model $record
+     * @param $relationName
+     * @param $manyRelationData
+     * @param $getAllManyToManyData
+     */
+    private function pairRelation(Model $record, $relationName, $manyRelationData, $getAllManyToManyData):void
+    {
+        foreach ($manyRelationData as $manyRelationDatum) {
+            foreach ($getAllManyToManyData as $getAllManyToManyDatum) {
+                if (((int)$getAllManyToManyDatum->{$this->foreignKey} === (int)$manyRelationDatum->id) && $record->{$record->getPrimaryKey()} === $getAllManyToManyDatum->{$this->relationForeignKey}) {
+                    $record->$relationName[] = $manyRelationDatum;
+                }
+            }
+        }
+    }
+
+
+    /**
+     * @param array $records
+     * @return Collection
+     */
+    private function getAllRelationData(array $records): Collection
+    {
+        $modelIds = array_map(fn ($item) => $item->{$this->getModel()->getPrimaryKey()}, $records);
+        return $this->getManyToManyRelationDataBySql($modelIds);
+    }
+
+
+    /**
+     * @param array $ids
+     * @return Collection
+     */
+    private function getManyToManyRelationDataBySql(array $ids): Collection
+    {
+        $quizMark = implode(',', array_fill(0, count($ids), '?'));
+        $sql = "SELECT * FROM $this->table WHERE $this->relationForeignKey IN($quizMark)";
+        return Db::select($sql, $ids);
     }
 
     /**
@@ -115,7 +185,7 @@ class BelongsToMany
     /**
      * @return $this
      */
-    public function build():self
+    public function build(): self
     {
         if ($this->getModel()->isPrimaryKeyHasValue()) {
             $this->builderQuery->whereIn($this->getModel()->getPrimaryKey(), $this->getIds());
@@ -126,11 +196,12 @@ class BelongsToMany
     /**
      * @return array
      */
-    private function getIds():array
+    private function getIds(): array
     {
-        $sql="SELECT * FROM $this->table WHERE $this->relationForeignKey IN(?)";
+        $sql = "SELECT * FROM $this->table WHERE $this->relationForeignKey IN(?)";
         return Db::select($sql, [$this->getModel()->getPrimaryKeyValue()])->column($this->foreignKey);
     }
+
     /**
      * @param Model $model
      * @return BelongsToMany
