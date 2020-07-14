@@ -128,7 +128,8 @@ class BelongsToMany
      */
     private function getIds():array
     {
-        return Db::select("SELECT * FROM $this->table WHERE $this->relationForeignKey IN(?)", [$this->getModel()->getPrimaryKeyValue()])->column($this->foreignKey);
+        $sql="SELECT * FROM $this->table WHERE $this->relationForeignKey IN(?)";
+        return Db::select($sql, [$this->getModel()->getPrimaryKeyValue()])->column($this->foreignKey);
     }
     /**
      * @param Model $model
