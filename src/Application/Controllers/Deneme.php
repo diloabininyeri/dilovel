@@ -18,7 +18,7 @@ class Deneme
     {
 
       // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
-        return  Users::with('products')->get();
+        return  Users::with('roles')->where('id',100)->get();
         Users::has('book')->avg('id');
         Users::has('book')->max('id');
         Users::has('book')->min('id');

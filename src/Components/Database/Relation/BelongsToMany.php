@@ -65,6 +65,9 @@ class BelongsToMany implements RelationInterface
      */
     public function getWithRelation(array $records, string $relationName): array
     {
+        if (empty($records)) {
+            return  $records;
+        }
         array_map(fn ($i) =>$i->$relationName=[], $records);
         $getAllManyToManyData = $this->getAllRelationData($records);  //user has user_roles
 
