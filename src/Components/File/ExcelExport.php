@@ -3,8 +3,6 @@
 
 namespace App\Components\File;
 
-use phpDocumentor\Reflection\Types\This;
-
 /**
  * Class ExcelExport
  * @package App\Components\File
@@ -231,6 +229,7 @@ class ExcelExport
             header('Content-Disposition: attachment; filename="' . str_replace('.xlsx', '.csv', $this->name) . '";');
             return stream_get_contents($file);
         }
+        return  false;
     }
 
     /**
@@ -264,9 +263,17 @@ class ExcelExport
     /**
      * @return array
      */
-    public function getData(): array
+    public function toArray(): array
     {
         return $this->data;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function toArrayString():string
+    {
+        return var_export($this->toArray(), true);
     }
 
     /**
@@ -342,5 +349,15 @@ class ExcelExport
             $item[implode(' ', $labels)]=implode($separator, $valueJoin);
             return $item;
         });
+    }
+
+    /**
+     * @return false|string
+     * @throws \JsonException
+     */
+    public function toJson()
+    {
+        header('Content-type:application/json');
+        return json_encode($this->data, JSON_PRETTY_PRINT|JSON_THROW_ON_ERROR);
     }
 }
