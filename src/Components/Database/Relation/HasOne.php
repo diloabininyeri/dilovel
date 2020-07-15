@@ -14,7 +14,7 @@ use App\Interfaces\RelationInterface;
  * @package App\Models
  * @mixin BuilderQuery
  */
-class HasOne implements RelationInterface,HasRelationInterface
+class HasOne implements RelationInterface, HasRelationInterface
 {
     /**
      * @var string

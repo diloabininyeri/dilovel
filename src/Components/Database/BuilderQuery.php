@@ -176,6 +176,9 @@ class BuilderQuery
     {
         $this->whereByFind();
         $this->setQuery($this->builderUpdateQuery($data ?: get_object_vars($this->modelInstance)));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
         $query = $this->pdoInstance()->prepare($this->getQuery());
         ObserverFire::updated($this->modelInstance);
         return $query->execute($this->bindArray);
@@ -229,6 +232,9 @@ class BuilderQuery
         $this->whereByFind();
 
         $this->setQuery($this->builderDeleteQuery());
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
         $query = $this->pdoInstance()->prepare($this->getQuery());
         $query->execute($this->bindArray);
         $rowCount = $query->rowCount();
@@ -840,7 +846,7 @@ class BuilderQuery
      */
     private function setHasRelationQuery():self
     {
-       return  $this->getModelInstance()->{$this->hasRelation}()->setHasExistQuery($this);
+        return  $this->getModelInstance()->{$this->hasRelation}()->setHasExistQuery($this);
     }
 
     /**
