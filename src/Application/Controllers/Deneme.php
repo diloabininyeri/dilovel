@@ -19,11 +19,11 @@ class Deneme
     public function index(Request $request)
     {
         return Excel::export(Users::get()->toArray())
-            ->withDefault(['email'=>'email@yok.com'])
+            ->withDefault(['email' => 'email@yok.com'])
             ->setValue('surname', 'strtoupper')
-            ->joinLabel(['name','surname'])
-            ->joinLabel(['id','country'])
-            ->toHtml();
+            ->joinLabel(['name', 'surname'])
+            ->joinLabel(['id', 'country'])
+            ->downloadAsCsv();
 
         // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
         //return  Users::with('roles')->where('id',100)->get();

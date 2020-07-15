@@ -3,6 +3,8 @@
 
 namespace App\Components\File;
 
+use phpDocumentor\Reflection\Types\This;
+
 /**
  * Class ExcelExport
  * @package App\Components\File
@@ -212,6 +214,26 @@ class ExcelExport
     }
 
     /**
+     * @param string $delimiter
+     * @param string $enclosure
+     * @param string $escapeChar
+     * @return false|string
+     */
+    public function downloadAsCsv($delimiter = ',', $enclosure = '"', $escapeChar = "\\")
+    {
+        if ($this->isMulti()) {
+            $file = fopen('php://memory', 'rb+');
+            foreach ($this->data as $item) {
+                fputcsv($file, $item, $delimiter, $enclosure, $escapeChar);
+            }
+            rewind($file);
+            header('content-type:text/csv');
+            header('Content-Disposition: attachment; filename="' . str_replace('.xlsx', '.csv', $this->name) . '";');
+            return stream_get_contents($file);
+        }
+    }
+
+    /**
      * @param string $charset
      * @return ExcelExport
      */
@@ -305,19 +327,19 @@ class ExcelExport
 
     /**
      * @param array $labels
-     * @param string $seperator
+     * @param string $separator
      * @return $this
      */
-    public function joinLabel(array $labels, string $seperator=' '):self
+    public function joinLabel(array $labels, string $separator=' '):self
     {
-        return $this->map(static function ($item) use ($labels,$seperator) {
+        return $this->map(static function ($item) use ($labels,$separator) {
             $valueJoin=[];
             foreach ($labels as $label) {
                 $valueJoin[]=$item[$label];
                 unset($item[$label]);
             }
 
-            $item[implode(' ', $labels)]=implode($seperator, $valueJoin);
+            $item[implode(' ', $labels)]=implode($separator, $valueJoin);
             return $item;
         });
     }
