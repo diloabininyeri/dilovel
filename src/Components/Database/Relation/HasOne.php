@@ -50,9 +50,28 @@ class HasOne implements RelationInterface, HasRelationInterface
 
     public function withDefault(array $default):self
     {
+        $this->withDefault=$default;
         return $this;
     }
 
+    /**
+     * @param array $records
+     * @return array
+     */
+    private function setDefaultAttribute(array $records):array
+    {
+        if (empty($this->withDefault)) {
+            return $records;
+        }
+        array_walk($records, function ($item) {
+            foreach ($this->withDefault as $key => $value) {
+                if ($item->$key === null) {
+                    $item->$key = $value;
+                }
+            }
+        });
+        return $records;
+    }
     /**
      * @param $name
      * @param $arguments
@@ -98,7 +117,8 @@ class HasOne implements RelationInterface, HasRelationInterface
         foreach ($records as $record) {
             $record->$relation = $this->findHasRelation($relationData, $record->{$this->primaryKey});
         }
-        return $records;
+
+        return $this->setDefaultAttribute($records);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Application\Controllers;
 
 use App\Application\Models\Role;
 use App\Application\Models\Users;
+use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Http\Request;
 
@@ -16,9 +17,10 @@ class Deneme
 {
     public function index(Request $request)
     {
+        Collection::class;
 
-      // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
-        return  Users::with('roles')->where('id',100)->get();
+        // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
+        //return  Users::with('roles')->where('id',100)->get();
         Users::has('book')->avg('id');
         Users::has('book')->max('id');
         Users::has('book')->min('id');
@@ -28,7 +30,7 @@ class Deneme
         Users::has('book')->firstOr(fn () =>'optiona closure');
         Users::has('book')->first();
         Users::has('book')->firstOrFail();
-        Users::has('book')->get();
+        return  Users::with('book')->get();
 
         return Users::when($request->has('id'), fn ($query) =>$query->where('id', $request->get('id')))->get();
     }

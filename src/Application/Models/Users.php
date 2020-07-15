@@ -76,7 +76,7 @@ class Users extends BuilderUserModel
      */
     public function book():HasOne
     {
-        return $this->hasOne(Book::class, 'user_id', 'id');
+        return $this->hasOne(Book::class, 'user_id', 'id')->withDefault(['email'=>777]);
     }
 
     public function roles():BelongsToMany
