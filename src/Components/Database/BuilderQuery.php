@@ -74,12 +74,27 @@ class BuilderQuery
     private array $eager = [];
 
     /**
+     * @var string|null
+     */
+    private ?string $hasRelation = null;
+
+    /**
      * BuilderQuery constructor.
      * @param Model $model
      */
     public function __construct(Model $model)
     {
         $this->modelInstance = $model;
+    }
+
+    /**
+     * @param string $relation
+     * @return $this
+     */
+    public function has(string $relation): self
+    {
+        $this->hasRelation = $relation;
+        return $this;
     }
 
     /**
@@ -247,9 +262,9 @@ class BuilderQuery
      * @param $value
      * @return $this
      */
-    public function whereNot(string $key, $value):self
+    public function whereNot(string $key, $value): self
     {
-        return  $this->where($key, $value, '<>');
+        return $this->where($key, $value, '<>');
     }
 
     /**
@@ -258,7 +273,7 @@ class BuilderQuery
      * @param $value
      * @return $this
      */
-    private function builderLikeOrRegexp(string $key, string $keyword, $value, $not=null):self
+    private function builderLikeOrRegexp(string $key, string $keyword, $value, $not = null): self
     {
         if ($this->isWhereUsed()) {
             $this->whereQuery .= " AND $key $not  $keyword :$keyword$key ";
@@ -276,9 +291,9 @@ class BuilderQuery
      * @param $value
      * @return $this
      */
-    public function like(string $key, $value):self
+    public function like(string $key, $value): self
     {
-        return  $this->builderLikeOrRegexp($key, 'LIKE', $value);
+        return $this->builderLikeOrRegexp($key, 'LIKE', $value);
     }
 
 
@@ -287,18 +302,19 @@ class BuilderQuery
      * @param $value
      * @return $this
      */
-    public function notLike(string $key, $value):self
+    public function notLike(string $key, $value): self
     {
         return $this->builderLikeOrRegexp($key, 'LIKE', $value, 'NOT');
     }
+
     /**
      * @param string $key
      * @param $value
      * @return $this
      */
-    public function regexp(string $key, $value):self
+    public function regexp(string $key, $value): self
     {
-        return  $this->builderLikeOrRegexp($key, 'REGEXP', $value);
+        return $this->builderLikeOrRegexp($key, 'REGEXP', $value);
     }
 
     /**
@@ -306,10 +322,11 @@ class BuilderQuery
      * @param $value
      * @return $this
      */
-    public function notRegexp(string $key, $value):self
+    public function notRegexp(string $key, $value): self
     {
         return $this->builderLikeOrRegexp($key, 'REGEXP', $value, 'NOT');
     }
+
     /**
      * @return array
      */
@@ -605,7 +622,7 @@ class BuilderQuery
      * @param array $bindArray
      * @return BuilderQuery
      */
-    private function setBindArray(array $bindArray): BuilderQuery
+    public function setBindArray(array $bindArray): BuilderQuery
     {
         $this->bindArray = $bindArray;
         return $this;
@@ -640,7 +657,7 @@ class BuilderQuery
     /**
      * @return mixed|string
      */
-    private function getTable()
+    public function getTable()
     {
         return $this->modelInstance->getTable();
     }
@@ -808,10 +825,22 @@ class BuilderQuery
     }
 
     /**
+     * @return $this
+     */
+    private function isHasRelationSetQuery(): self
+    {
+        if ($this->hasRelation) {
+            $this->getModelInstance()->{$this->hasRelation}()->setHasExistQuery($this);
+        }
+        return $this;
+    }
+
+    /**
      * @return Collection
      */
     private function runSelect(): Collection
     {
+        $this->isHasRelationSetQuery();
         $result = $this->fetchAll();
 
         if ($this->modelInstance->getHidden()) {
@@ -832,7 +861,7 @@ class BuilderQuery
                 if (method_exists($this->modelInstance, $with)) {
                     $result = $this->modelInstance->$with()->getWithRelation($result, $with);
                 } else {
-                    throw new MethodNotfoundInModelException("$with method not found in ".get_class($this->modelInstance));
+                    throw new MethodNotfoundInModelException("$with method not found in " . get_class($this->modelInstance));
                 }
             }
         }
@@ -903,7 +932,7 @@ class BuilderQuery
      * @param mixed $query
      * @return BuilderQuery
      */
-    private function setQuery($query): BuilderQuery
+    public function setQuery($query): BuilderQuery
     {
         $this->query = $query;
         return $this;
@@ -977,7 +1006,7 @@ class BuilderQuery
     /**
      * @return mixed
      */
-    private function getQuery()
+    public function getQuery()
     {
         return $this->query;
     }
@@ -1191,6 +1220,7 @@ class BuilderQuery
         $this->setQuery($this->builderDeleteQuery());
         return $this->getQuery();
     }
+
     /**
      * @param array $data
      * @return mixed|string|null
@@ -1206,11 +1236,11 @@ class BuilderQuery
      * @param array $bind
      * @return Collection
      */
-    public function selectRaw(string $query, array $bind=[]) :Collection
+    public function selectRaw(string $query, array $bind = []): Collection
     {
         $this->setQuery($query);
-        $this->bindArray=$bind;
-        return  $this->runSelect();
+        $this->bindArray = $bind;
+        return $this->runSelect();
     }
 
     /**
@@ -1218,7 +1248,7 @@ class BuilderQuery
      * @param array $bind
      * @return bool
      */
-    public function rawQuery(string $query, array $bind):bool
+    public function rawQuery(string $query, array $bind): bool
     {
         $this->setQuery($query);
         $statement = $this->pdoInstance()->prepare($this->getQuery());

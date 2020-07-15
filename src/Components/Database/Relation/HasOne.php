@@ -6,6 +6,7 @@ namespace App\Components\Database\Relation;
 use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\Database\Model;
+use App\Interfaces\HasRelationInterface;
 use App\Interfaces\RelationInterface;
 
 /**
@@ -13,7 +14,7 @@ use App\Interfaces\RelationInterface;
  * @package App\Models
  * @mixin BuilderQuery
  */
-class HasOne implements RelationInterface
+class HasOne implements RelationInterface,HasRelationInterface
 {
     /**
      * @var string
@@ -145,6 +146,23 @@ class HasOne implements RelationInterface
         return $this;
     }
 
+
+    /**
+     * for example Users::has('book')->get();
+     * @param BuilderQuery $builderQuery
+     * @return BuilderQuery
+     */
+    public function setHasExistQuery(BuilderQuery $builderQuery):BuilderQuery
+    {
+        $relationTable=$this->buildQuery->getTable();
+        $table=$builderQuery->getTable();
+        $foreignKey=$this->foreignKey;
+        $primaryKey=$this->primaryKey;
+        if (strpos($builderQuery->getQuery(), 'WHERE')) {
+            return $builderQuery->setQuery($builderQuery->getQuery()." AND EXISTS (SELECT * FROM $relationTable WHERE $relationTable.$foreignKey=$table.$primaryKey)");
+        }
+        return  $builderQuery->setQuery($builderQuery->getQuery()." WHERE EXISTS (SELECT * FROM  $relationTable WHERE $relationTable.$foreignKey=$table.$primaryKey)");
+    }
     /**
      * @return $this
      */
