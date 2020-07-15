@@ -15,6 +15,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Users::has('book')->get();
+        return Users::has('book')->first();
     }
 }

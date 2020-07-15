@@ -836,6 +836,14 @@ class BuilderQuery
     }
 
     /**
+     * @return $this
+     */
+    private function setHasRelationQuery():self
+    {
+       return  $this->getModelInstance()->{$this->hasRelation}()->setHasExistQuery($this);
+    }
+
+    /**
      * @return Collection
      */
     private function runSelect(): Collection
@@ -945,7 +953,11 @@ class BuilderQuery
      */
     public function first(...$columns): ?object
     {
+        $this->isHasRelationSetQuery();
         $this->setQuery($this->selectBuilderQuery($columns));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
         if ($this->fetch()) {
             return $this->unsetHiddenProperties($this->fetch());
         }
