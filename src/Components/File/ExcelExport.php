@@ -296,10 +296,10 @@ class ExcelExport
 
     /**
      * @param string $key
-     * @param Closure $closure
+     * @param callable $closure
      * @return $this
      */
-    public function setValue(string $key, Closure $closure):self
+    public function setValue(string $key, callable $closure):self
     {
         array_walk($this->data,fn(&$i)=>$i[$key]=$closure($i[$key]));
         return  $this;
