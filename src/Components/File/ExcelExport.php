@@ -3,6 +3,8 @@
 
 namespace App\Components\File;
 
+use Closure;
+
 /**
  * Class ExcelExport
  * @package App\Components\File
@@ -290,5 +292,16 @@ class ExcelExport
         });
 
         return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param Closure $closure
+     * @return $this
+     */
+    public function setValue(string $key, Closure $closure):self
+    {
+        array_walk($this->data,fn(&$i)=>$i[$key]=$closure($i[$key]));
+        return  $this;
     }
 }

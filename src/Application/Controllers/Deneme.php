@@ -18,7 +18,12 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Excel::export(Users::get()->toArray())->withDefault(['email'=>'ddd']);
+        return Excel::export(Users::get()->toArray())
+            ->withDefault(['email'=>'email@yok.com'])
+            ->setValue('surname',static function($v){
+                return strtoupper($v);
+            })
+            ->toHtml();
 
         // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
         //return  Users::with('roles')->where('id',100)->get();
