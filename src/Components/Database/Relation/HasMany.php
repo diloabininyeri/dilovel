@@ -87,6 +87,9 @@ class HasMany implements RelationInterface
      */
     public function getWithRelation(array $records, string $relation): array
     {
+        if (empty($records)) {
+            return  $records;
+        }
         $primaryKeyValues = array_map(function ($item) {
             return $item->{$this->primaryKey};
         }, $records);

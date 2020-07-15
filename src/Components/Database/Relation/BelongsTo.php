@@ -84,6 +84,9 @@ class BelongsTo implements RelationInterface
      */
     public function getWithRelation(array $records, string $relation): array
     {
+        if (empty($records)) {
+            return  $records;
+        }
         $primaryKey = $this->foreignKey;
         $primaryKeyValues = array_map(static function ($item) use ($primaryKey) {
             return $item->$primaryKey;
