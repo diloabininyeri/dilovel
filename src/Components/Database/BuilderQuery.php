@@ -5,7 +5,6 @@ namespace App\Components\Database;
 use App\Components\Collection\Collection;
 use App\Components\Exceptions\MethodNotfoundInModelException;
 use Closure;
-use JsonException;
 use PDO;
 use function request;
 
@@ -564,13 +563,16 @@ class BuilderQuery
     /***
      * @param $column
      * @return mixed
-     * @throws JsonException
      */
     public function avg($column)
     {
         $this->builderAvgQuery($column);
         $this->setQuery($this->selectBuilderQuery('id'));
-        return json_decode(json_encode($this->fetchAll(), JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
+        return  $this->fetch()->avg;
+       // return json_decode(json_encode($this->fetchAll(), JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -596,6 +598,9 @@ class BuilderQuery
     {
         $this->builderMaxQuery($column);
         $this->setQuery($this->selectBuilderQuery('id'));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
         return $this->fetch()->max;
     }
 
@@ -621,6 +626,9 @@ class BuilderQuery
     {
         $this->builderMinQuery($column);
         $this->setQuery($this->selectBuilderQuery('id'));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
         return $this->fetch()->min;
     }
 

@@ -15,6 +15,15 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Users::has('book')->get();
+         Users::has('book')->avg('id');
+         Users::has('book')->max('id');
+         Users::has('book')->min('id');
+         //Users::has('book')->delete();
+         //Users::has('book')->update(['name'=>'dilo']);
+
+         Users::has('book')->firstOr(fn()=>'optiona closure');
+         Users::has('book')->first();
+         Users::has('book')->firstOrFail();
+         Users::has('book')->get();
     }
 }
