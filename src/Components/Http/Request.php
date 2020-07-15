@@ -157,7 +157,7 @@ class Request implements ArrayAble, ToJson, RequestInterface
      */
     public function has(string $name): bool
     {
-        return !empty($this->post($name)) ?: $this->get($name);
+        return !empty($this->post($name)) ?: $this->get($name) ?: false;
     }
 
     /**

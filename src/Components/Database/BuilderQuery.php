@@ -4,6 +4,7 @@ namespace App\Components\Database;
 
 use App\Components\Collection\Collection;
 use App\Components\Exceptions\MethodNotfoundInModelException;
+use App\Components\Traits\ConditionAble;
 use Closure;
 use PDO;
 use function request;
@@ -14,6 +15,7 @@ use function request;
  */
 class BuilderQuery
 {
+    use ConditionAble;
     /**
      * @var Model
      */
@@ -572,7 +574,7 @@ class BuilderQuery
             $this->setHasRelationQuery();
         }
         return  $this->fetch()->avg;
-       // return json_decode(json_encode($this->fetchAll(), JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
+        // return json_decode(json_encode($this->fetchAll(), JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
