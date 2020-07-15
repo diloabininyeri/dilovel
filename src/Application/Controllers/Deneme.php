@@ -20,7 +20,9 @@ class Deneme
     {
         return Excel::export(Users::get()->toArray())
             ->withDefault(['email'=>'email@yok.com'])
-            ->setValue('surname','strtoupper')
+            ->setValue('surname', 'strtoupper')
+            ->joinLabel(['name','surname'])
+            ->joinLabel(['id','country'])
             ->toHtml();
 
         // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);

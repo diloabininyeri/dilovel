@@ -3,8 +3,6 @@
 
 namespace App\Components\File;
 
-use Closure;
-
 /**
  * Class ExcelExport
  * @package App\Components\File
@@ -301,7 +299,26 @@ class ExcelExport
      */
     public function setValue(string $key, callable $closure):self
     {
-        array_walk($this->data,fn(&$i)=>$i[$key]=$closure($i[$key]));
+        array_walk($this->data, fn (&$i) =>$i[$key]=$closure($i[$key]));
         return  $this;
+    }
+
+    /**
+     * @param array $labels
+     * @param string $seperator
+     * @return $this
+     */
+    public function joinLabel(array $labels, string $seperator=' '):self
+    {
+        return $this->map(static function ($item) use ($labels,$seperator) {
+            $valueJoin=[];
+            foreach ($labels as $label) {
+                $valueJoin[]=$item[$label];
+                unset($item[$label]);
+            }
+
+            $item[implode(' ', $labels)]=implode($seperator, $valueJoin);
+            return $item;
+        });
     }
 }
