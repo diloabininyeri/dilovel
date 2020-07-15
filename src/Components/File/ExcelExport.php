@@ -27,6 +27,7 @@ class ExcelExport
      */
     private string  $charset = 'UTF-8';
 
+
     /**
      * ExcelExport constructor.
      * @param array $data
@@ -162,6 +163,7 @@ class ExcelExport
 
     /**
      * @return string
+     * @noinspection HtmlUnknownTarget
      */
     private function importCss():string
     {
@@ -271,5 +273,22 @@ class ExcelExport
     public function inspect(): void
     {
         dd($this->data);
+    }
+
+    /**
+     * @param array $default
+     * @return $this
+     */
+    public function withDefault(array $default):self
+    {
+        array_walk($this->data, static function (&$item) use ($default) {
+            foreach ($default as $key => $value) {
+                if ($item[$key] === null) {
+                    $item[$key]=$value;
+                }
+            }
+        });
+
+        return $this;
     }
 }
