@@ -23,7 +23,17 @@ class Deneme
 
         // return Users::has('book')->avg('id');
 
-        return  Users::has('book')->rest('id,name');
+        $users=  Users::get('id', 'name')->chunk(4);
+
+
+        foreach ($users as $user) {
+            echo "<hr>";
+            foreach ($user as $item) {
+                echo $item->name."<br>";
+            }
+        }
+
+
 
 
         return ;

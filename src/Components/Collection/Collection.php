@@ -233,6 +233,12 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         return new self(array_slice($this->collection, 0, $count));
     }
 
+    public function chunk(int $count, bool $reIndex=false)
+    {
+        $this->collection= array_chunk($this->collection, $count, $reIndex);
+        return $this;
+    }
+
     /**
      * @param array $data
      * @return $this
