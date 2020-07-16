@@ -23,7 +23,10 @@ class Deneme
 
         // return Users::has('book')->avg('id');
 
-        return Users::has('book')->sum('id');
+        return  Users::has('book')->rest('id,name');
+
+
+        return ;
 
         // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
         //return  Users::with('roles')->where('id',100)->get();

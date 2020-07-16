@@ -605,6 +605,81 @@ class BuilderQuery
         return  $this->fetch()->sum;
     }
 
+    /**
+     * @param string $column
+     * @return mixed
+     */
+    public function variance(string $column)
+    {
+        $this->builderAggregateQuery('variance', $column);
+        $this->setQuery($this->selectBuilderQuery($column));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
+        return  $this->fetch()->variance;
+    }
+
+    /**
+     * @param string $column
+     * @return float
+     */
+    public function std(string $column)
+    {
+        $this->builderAggregateQuery('std', $column);
+        $this->setQuery($this->selectBuilderQuery($column));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
+        return  $this->fetch()->std;
+    }
+
+    /**
+     * @param string $aggregate
+     * @param string $column
+     * @return $this
+     */
+    private function builderAggregateQuery(string $aggregate, string $column):self
+    {
+        $aggregateUpper=strtoupper($aggregate);
+        $aggregateLower=strtolower($aggregate);
+        if (!$this->isSelected()) {
+            $this->selectQuery = "SELECT $aggregateUpper($column) AS $aggregateLower";
+        } else {
+            $this->selectQuery .= ",$aggregateUpper($column) AS $aggregateLower";
+        }
+        $this->setIsSelected(true);
+        return $this;
+    }
+
+    /**
+     * @param string $column
+     * @return mixed
+     * @throws \JsonException
+     */
+    public function pluck(string $column)
+    {
+        $this->builderAggregateQuery('JSON_ARRAYAGG', $column);
+        $this->setQuery($this->selectBuilderQuery($column));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
+        return json_decode($this->fetch()->json_arrayagg, true, 512, JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * @param $columns
+     * @return mixed
+     */
+    public function rest($columns)
+    {
+        $this->builderAggregateQuery('JSON_OBJECTAGG', $columns);
+        $this->setQuery($this->selectBuilderQuery($columns));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
+        return $this->fetch()->json_objectagg;
+    }
+
 
     /**
      * @param $column
