@@ -3,6 +3,7 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Models\Book;
 use App\Application\Models\Role;
 use App\Application\Models\Users;
 use App\Components\Collection\Collection;
@@ -18,35 +19,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Users::whereDate('created_at', '2020-06-20')->get();
-
-        // return Users::where('id',600,'<')->max('id');
-
-        // return Users::has('book')->avg('id');
-
-        return Users::whereYear('created_at', 2020)
-            ->whereDay('created_at', 20)
-            ->get('id', 'name');
-
-
-        return $users;
-
-
-
-        return ;
-
-        // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
-        //return  Users::with('roles')->where('id',100)->get();
-        /*  Users::has('book')->avg('id');
-          Users::has('book')->max('id');
-          Users::has('book')->min('id');
-          //Users::has('book')->delete();
-          //Users::has('book')->update(['name'=>'dilo']);
-
-          Users::has('book')->firstOr(fn () =>'optiona closure');
-          Users::has('book')->first();
-          Users::has('book')->firstOrFail();*/
-        // return  Users::has('book')->regexp('name', '[a-z]')->orderByDesc()->get();
-        return  Users::has('book')->between('id', 0, 30)->limit(21)->orderByDesc()->get();
+        return Book::groupBy('user_id')->having('avg', 2, '<=')->first('avg(id) as avg,any_value(id) as id');
     }
 }

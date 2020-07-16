@@ -80,6 +80,17 @@ class BuilderQuery
     private ?string $hasRelation = null;
 
     /**
+     * @var string|null $groupBy
+     */
+    private ?string $groupBy=null;
+
+
+    /**
+     * @var string
+     */
+    private ?string $havingQuery=null;
+
+    /**
      * BuilderQuery constructor.
      * @param Model $model
      */
@@ -853,7 +864,7 @@ class BuilderQuery
             $columns = implode(',', $columns) ?: '*';
             $this->setSelectQuery("SELECT $columns");
         }
-        return "{$this->getSelectQuery()} FROM {$this->getTable()}{$this->mixedQuery} {$this->getWhereQuery()}{$this->getOrderBy()}{$this->getLimit()}";
+        return "{$this->getSelectQuery()} FROM {$this->getTable()}{$this->mixedQuery} {$this->getWhereQuery()} {$this->getGroupBy()} {$this->getHavingQuery()} {$this->getOrderBy()}{$this->getLimit()}";
     }
 
     /**
@@ -1228,7 +1239,7 @@ class BuilderQuery
      */
     public function having($column, $value, $operator = '='): self
     {
-        $this->mixedQuery .= " HAVING $column$operator:hawing_$column ";
+        $this->havingQuery = " HAVING $column$operator:hawing_$column ";
         $this->bindArray[":hawing_$column"] = $value;
         return $this;
     }
@@ -1302,7 +1313,7 @@ class BuilderQuery
     {
         if (!empty($columns)) {
             $c = implode(',', $columns);
-            $this->mixedQuery .= " GROUP BY $c ";
+            $this->groupBy = " GROUP BY $c ";
         }
         return $this;
     }
@@ -1454,5 +1465,39 @@ class BuilderQuery
     public function getMixedQuery(): ?string
     {
         return $this->mixedQuery;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGroupBy(): ?string
+    {
+        return $this->groupBy;
+    }
+
+    /**
+     * @param string|null $groupBy
+     */
+    public function setGroupBy(?string $groupBy): void
+    {
+        $this->groupBy = $groupBy;
+    }
+
+    /**
+     * @param string $havingQuery
+     * @return BuilderQuery
+     */
+    public function setHavingQuery(string $havingQuery): BuilderQuery
+    {
+        $this->havingQuery = $havingQuery;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHavingQuery(): ?string
+    {
+        return $this->havingQuery;
     }
 }
