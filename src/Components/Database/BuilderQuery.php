@@ -647,7 +647,7 @@ class BuilderQuery
     /**
      * @return string
      */
-    private function getOrderBy(): ?string
+    public function getOrderBy(): ?string
     {
         return $this->orderBy;
     }
@@ -852,6 +852,7 @@ class BuilderQuery
     }
 
     /**
+     * if has relation query change completely query
      * @return $this
      */
     private function setHasRelationQuery():self
@@ -1101,7 +1102,7 @@ class BuilderQuery
     /**
      * @return bool
      */
-    private function isWhereUsed(): bool
+    public function isWhereUsed(): bool
     {
         return $this->isWhereUsed;
     }
@@ -1109,7 +1110,7 @@ class BuilderQuery
     /**
      * @return string
      */
-    private function getWhereQuery(): ?string
+    public function getWhereQuery(): ?string
     {
         return $this->whereQuery;
     }
@@ -1145,7 +1146,7 @@ class BuilderQuery
     /**
      * @return mixed
      */
-    private function getLimit()
+    public function getLimit()
     {
         return $this->limit;
     }
@@ -1281,5 +1282,13 @@ class BuilderQuery
         $this->setQuery($query);
         $statement = $this->pdoInstance()->prepare($this->getQuery());
         return $statement->execute($bind);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMixedQuery(): ?string
+    {
+        return $this->mixedQuery;
     }
 }

@@ -31,7 +31,7 @@ class HasOne implements RelationInterface, HasRelationInterface
     /**
      * @var BuilderQuery
      */
-    private BuilderQuery $buildQuery;
+    private BuilderQuery $builderQuery;
 
 
     /**
@@ -45,7 +45,7 @@ class HasOne implements RelationInterface, HasRelationInterface
      */
     public function __construct(string $relationClass)
     {
-        $this->buildQuery = new BuilderQuery(new $relationClass);
+        $this->builderQuery = new BuilderQuery(new $relationClass);
     }
 
     public function withDefault(array $default):self
@@ -79,7 +79,7 @@ class HasOne implements RelationInterface, HasRelationInterface
      */
     public function __call($name, $arguments)
     {
-        return $this->buildQuery->$name(...$arguments);
+        return $this->builderQuery->$name(...$arguments);
     }
 
 
@@ -127,7 +127,7 @@ class HasOne implements RelationInterface, HasRelationInterface
      */
     private function getWithWhereIn(array $primaryKeyValues): Collection
     {
-        return $this->buildQuery->whereIn($this->foreignKey, $primaryKeyValues)->get();
+        return $this->builderQuery->whereIn($this->foreignKey, $primaryKeyValues)->get();
     }
 
     /**
@@ -146,7 +146,7 @@ class HasOne implements RelationInterface, HasRelationInterface
      */
     public function get(...$columns)
     {
-        return $this->buildQuery->first(...$columns);
+        return $this->builderQuery->first(...$columns);
     }
 
     /**
@@ -177,14 +177,7 @@ class HasOne implements RelationInterface, HasRelationInterface
      */
     public function setHasExistQuery(BuilderQuery $builderQuery):BuilderQuery
     {
-        $relationTable=$this->buildQuery->getTable();
-        $table=$builderQuery->getTable();
-        $foreignKey=$this->foreignKey;
-        $primaryKey=$this->primaryKey;
-        if (strpos($builderQuery->getQuery(), 'WHERE')) {
-            return $builderQuery->setQuery($builderQuery->getQuery()." AND EXISTS (SELECT * FROM $relationTable WHERE $relationTable.$foreignKey=$table.$primaryKey)");
-        }
-        return  $builderQuery->setQuery($builderQuery->getQuery()." WHERE EXISTS (SELECT * FROM  $relationTable WHERE $relationTable.$foreignKey=$table.$primaryKey)");
+        return  (new HasOneRelation($this))->setHasExistQuery($builderQuery);
     }
     /**
      * @return $this
@@ -192,8 +185,32 @@ class HasOne implements RelationInterface, HasRelationInterface
     public function build(): self
     {
         if ($this->model->isPrimaryKeyHasValue()) {
-            $this->buildQuery->where($this->foreignKey, $this->model->getPrimaryKeyValue());
+            $this->builderQuery->where($this->foreignKey, $this->model->getPrimaryKeyValue());
         }
         return $this;
+    }
+
+    /**
+     * @return BuilderQuery
+     */
+    public function getBuilderQuery(): BuilderQuery
+    {
+        return $this->builderQuery;
+    }
+
+    /**
+     * @return string
+     */
+    public function getForeignKey(): string
+    {
+        return $this->foreignKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrimaryKey(): string
+    {
+        return $this->primaryKey;
     }
 }

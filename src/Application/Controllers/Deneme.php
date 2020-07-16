@@ -18,28 +18,19 @@ class Deneme
 {
     public function index(Request $request)
     {
-        echo  Excel::export(Users::limit(5)->get()->toArray())
-            ->withDefault(['email' => 'email@yok.com'])
-            ->setValue('surname', 'strtoupper')
-            ->joinLabel(['name', 'surname'])
-            ->joinLabel(['id', 'country'])
-            ->toJson();
-
-        return;
 
         // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
         //return  Users::with('roles')->where('id',100)->get();
-        Users::has('book')->avg('id');
-        Users::has('book')->max('id');
-        Users::has('book')->min('id');
-        //Users::has('book')->delete();
-        //Users::has('book')->update(['name'=>'dilo']);
+        /*  Users::has('book')->avg('id');
+          Users::has('book')->max('id');
+          Users::has('book')->min('id');
+          //Users::has('book')->delete();
+          //Users::has('book')->update(['name'=>'dilo']);
 
-        Users::has('book')->firstOr(fn () =>'optiona closure');
-        Users::has('book')->first();
-        Users::has('book')->firstOrFail();
-        return  Users::with('book')->get();
-
-        return Users::when($request->has('id'), fn ($query) =>$query->where('id', $request->get('id')))->get();
+          Users::has('book')->firstOr(fn () =>'optiona closure');
+          Users::has('book')->first();
+          Users::has('book')->firstOrFail();*/
+        // return  Users::has('book')->regexp('name', '[a-z]')->orderByDesc()->get();
+        return  Users::has('book')->between('id', 0, 30)->limit(21)->orderByDesc()->get();
     }
 }
