@@ -19,6 +19,10 @@ class Deneme
     public function index(Request $request)
     {
 
+       // return Users::where('id',600,'<')->max('id');
+
+        return Users::has('book')->avg('id');
+
         // return  Users::with('book')->selectRaw('select * from users where id=:id',['id'=>100]);
         //return  Users::with('roles')->where('id',100)->get();
         /*  Users::has('book')->avg('id');

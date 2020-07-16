@@ -1175,7 +1175,7 @@ class BuilderQuery
     /**
      * @return string
      */
-    private function getSelectQuery(): ?string
+    public function getSelectQuery(): ?string
     {
         return $this->selectQuery;
     }
