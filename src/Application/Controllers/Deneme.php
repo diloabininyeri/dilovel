@@ -23,7 +23,9 @@ class Deneme
 
         // return Users::has('book')->avg('id');
 
-        $users=  Users::whereHour('created_at', 25)->get('id', 'name');
+        return Users::whereYear('created_at', 2020)
+            ->whereDay('created_at',20)
+            ->get('id', 'name');
 
 
         return $users;
