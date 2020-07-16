@@ -562,6 +562,21 @@ class BuilderQuery
         return $this;
     }
 
+    /**
+     * @param string $column
+     * @return $this
+     */
+    private function builderSumQuery(string $column):self
+    {
+        if (!$this->isSelected()) {
+            $this->selectQuery = "SELECT SUM($column) AS sum";
+        } else {
+            $this->selectQuery .= ",SUM($column) AS sum";
+        }
+        $this->setIsSelected(true);
+        return $this;
+    }
+
     /***
      * @param $column
      * @return mixed
@@ -569,13 +584,27 @@ class BuilderQuery
     public function avg($column)
     {
         $this->builderAvgQuery($column);
-        $this->setQuery($this->selectBuilderQuery('id'));
+        $this->setQuery($this->selectBuilderQuery($column));
         if ($this->hasRelation) {
             $this->setHasRelationQuery();
         }
         return  $this->fetch()->avg;
-        // return json_decode(json_encode($this->fetchAll(), JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
     }
+
+    /**
+     * @param string $column
+     * @return mixed
+     */
+    public function sum(string $column)
+    {
+        $this->builderSumQuery($column);
+        $this->setQuery($this->selectBuilderQuery($column));
+        if ($this->hasRelation) {
+            $this->setHasRelationQuery();
+        }
+        return  $this->fetch()->sum;
+    }
+
 
     /**
      * @param $column
@@ -586,7 +615,7 @@ class BuilderQuery
         if (!$this->isSelected()) {
             $this->selectQuery = "SELECT MAX($column) AS max";
         } else {
-            $this->selectQuery .= ",AVG($column) AS max";
+            $this->selectQuery .= ",MAX($column) AS max";
         }
         $this->setIsSelected(true);
         return $this;
