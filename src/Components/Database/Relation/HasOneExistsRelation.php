@@ -9,7 +9,7 @@ use App\Components\Database\BuilderQuery;
  * Class HasOneRelation
  * @package App\Components\Database\Relation
  */
-class HasOneRelation
+class HasOneExistsRelation
 {
 
     /**

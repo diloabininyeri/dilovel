@@ -177,7 +177,7 @@ class HasOne implements RelationInterface, HasRelationInterface
      */
     public function setHasExistQuery(BuilderQuery $builderQuery):BuilderQuery
     {
-        return  (new HasOneRelation($this))->setHasExistQuery($builderQuery);
+        return  (new HasOneExistsRelation($this))->setHasExistQuery($builderQuery);
     }
     /**
      * @return $this
