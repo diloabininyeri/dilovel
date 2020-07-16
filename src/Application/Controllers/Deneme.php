@@ -23,16 +23,10 @@ class Deneme
 
         // return Users::has('book')->avg('id');
 
-        $users=  Users::get('id', 'name')->chunk(4);
+        $users=  Users::whereHour('created_at', 25)->get('id', 'name');
 
 
-        foreach ($users as $user) {
-            echo "<hr>";
-            foreach ($user as $item) {
-                echo $item->name."<br>";
-            }
-        }
-
+        return $users;
 
 
 

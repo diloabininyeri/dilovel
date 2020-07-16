@@ -2,7 +2,6 @@
 
 namespace App\Components\Collection;
 
-use App\Components\Database\BuilderQuery;
 use App\Components\Traits\ConditionAble;
 use App\Interfaces\ArrayAble;
 use App\Interfaces\ToJson;

@@ -253,17 +253,66 @@ class BuilderQuery
      */
     public function where($key, $value, $operator = '='): self
     {
+        $trimKey=str_replace(['(',')'], '', $key);
+
         if ($this->isWhereUsed()) {
-            $this->whereQuery .= " AND $key$operator:where_$key";
+            $this->whereQuery .= " AND $key$operator:where_$trimKey";
         } else {
-            $this->whereQuery = " WHERE $key$operator:where_$key ";
+            $this->whereQuery = " WHERE $key$operator:where_$trimKey ";
         }
 
-        $this->bindArray[":where_$key"] = $value;
+        $this->bindArray[":where_$trimKey"] = $value;
         $this->isWhereUsed = true;
         return $this;
     }
 
+    /**
+     * @param string $column
+     * @param int $year
+     * @return $this
+     */
+    public function whereYear(string $column, int $year):self
+    {
+        return  $this->where("YEAR($column)", $year);
+    }
+
+    /**
+     * @param string $column
+     * @param int $week
+     * @return $this
+     */
+    public function whereWeek(string $column, int $week):self
+    {
+        return  $this->where("WEEK($column)", $week);
+    }
+    /**
+     * @param string $column
+     * @param int $month
+     * @return $this
+     */
+    public function whereMonth(string $column, int $month):self
+    {
+        return  $this->where("MONTH($column)", $month);
+    }
+    /**
+     * @param string $column
+     * @param int $day
+     * @return $this
+     */
+    public function whereDay(string $column, int $day):self
+    {
+        return  $this->where("DAY($column)", $day);
+    }
+
+    /**
+     * @param string $column
+     * @param int $hour
+     * @return $this
+     */
+    public function whereHour(string $column, int $hour):self
+    {
+        return  $this->where("HOUR($column)", $hour);
+    }
     /**
      * @param string $key
      * @param $value
@@ -273,6 +322,7 @@ class BuilderQuery
     {
         return $this->where($key, $value, '<>');
     }
+
 
     /**
      * @param string $key
