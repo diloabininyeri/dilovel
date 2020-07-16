@@ -264,7 +264,7 @@ class BuilderQuery
      */
     public function where($key, $value, $operator = '='): self
     {
-        $trimKey=str_replace(['(',')'], '', $key);
+        $trimKey=str_replace(['(',')','.'], '', $key);
 
         if ($this->isWhereUsed()) {
             $this->whereQuery .= " AND $key$operator:where_$trimKey";
@@ -1212,7 +1212,7 @@ class BuilderQuery
      */
     public function getQuery()
     {
-        return $this->query;
+        return trim($this->query);
     }
 
     /**
