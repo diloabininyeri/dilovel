@@ -306,6 +306,16 @@ class BuilderQuery
 
     /**
      * @param string $column
+     * @param string $date
+     * @return $this
+     */
+    public function whereDate(string $column, string $date):self
+    {
+        return  $this->where("DATE($column)", $date);
+    }
+
+    /**
+     * @param string $column
      * @param int $hour
      * @return $this
      */

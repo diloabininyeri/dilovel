@@ -18,13 +18,14 @@ class Deneme
 {
     public function index(Request $request)
     {
+        return Users::whereDate('created_at', '2020-06-20')->get();
 
-       // return Users::where('id',600,'<')->max('id');
+        // return Users::where('id',600,'<')->max('id');
 
         // return Users::has('book')->avg('id');
 
         return Users::whereYear('created_at', 2020)
-            ->whereDay('created_at',20)
+            ->whereDay('created_at', 20)
             ->get('id', 'name');
 
 
