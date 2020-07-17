@@ -1500,4 +1500,14 @@ class BuilderQuery
     {
         return $this->havingQuery;
     }
+
+    /**
+     * @param int $count
+     * @param bool $reIndex
+     * @return Collection
+     */
+    public function chunk(int $count, bool $reIndex=false): Collection
+    {
+        return $this->get()->chunk($count, $reIndex);
+    }
 }

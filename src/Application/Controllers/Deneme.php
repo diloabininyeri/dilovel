@@ -20,6 +20,6 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Book::groupBy('user_id')->having('avg', 2, '<=')->first('avg(id) as avg,any_value(id) as id');
+        return  Book::chunk(3);
     }
 }
