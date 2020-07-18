@@ -8,6 +8,7 @@ use App\Application\Rules\RequiredRule;
 use App\Application\Rules\TcNoVerifyRule;
 use App\Components\Http\Request;
 use App\Interfaces\FormRequestInterface;
+use App\Interfaces\RuleInterface;
 
 /**
  * Class TcNoVerifyRequest

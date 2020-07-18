@@ -10,6 +10,7 @@ use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\File\Excel;
 use App\Components\Http\Request;
+use App\Components\Reflection\CodeBeautifier;
 use Carbon\Carbon;
 
 /**
@@ -18,8 +19,22 @@ use Carbon\Carbon;
  */
 class Deneme
 {
+    public function __construct()
+    {
+    }
+
     public function index(Request $request)
     {
-        return  Book::chunk(3);
+        $inputs = $request->check([
+            'isim' => 'required|string|max:15',
+            'soyad' => 'string|numeric|min:5'
+        ])->validate();
+
+
+        return $inputs->getError('isim');
+        if ($inputs->isFailed()) {
+            return $inputs->getErrors(true);
+        }
+        return "validated";
     }
 }

@@ -373,4 +373,13 @@ class Request implements ArrayAble, ToJson, RequestInterface
     {
         return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
     }
+
+    /**
+     * @param array $data
+     * @return AdvanceValidateRequest
+     */
+    public function check(array $data): AdvanceValidateRequest
+    {
+        return (new AdvanceValidateRequest($data, $this));
+    }
 }
