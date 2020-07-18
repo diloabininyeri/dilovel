@@ -8,6 +8,7 @@ use App\Components\Http\Validate\ImageValidate;
 use App\Components\Http\Validate\MaxValidate;
 use App\Components\Http\Validate\MinValidate;
 use App\Components\Http\Validate\NumericValidate;
+use App\Components\Http\Validate\OptionalImageValidate;
 use App\Components\Http\Validate\RequiredValidate;
 use App\Components\Http\Validate\StringValidate;
 use App\Interfaces\ValidateLengthInterface;
@@ -46,6 +47,7 @@ class AdvanceValidateRequest
         'min'=>MinValidate::class,
         'date'=>DateValidate::class,
         'image'=>ImageValidate::class,
+        'optional_image'=>OptionalImageValidate::class,
     ];
 
     /**
