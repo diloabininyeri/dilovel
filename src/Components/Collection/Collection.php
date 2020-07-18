@@ -364,4 +364,15 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
 
         return $this->setCollection($unique_collection);
     }
+
+    /**
+     * @param int $start
+     * @param null $length
+     * @return $this
+     */
+    public function slice(int $start, $length=null):self
+    {
+        $this->collection=array_slice($this->collection, $start, $length);
+        return $this;
+    }
 }

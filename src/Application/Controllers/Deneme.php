@@ -25,6 +25,12 @@ class Deneme
 
     public function index(Request $request)
     {
+
+
+        $books = Users::get();
+        dd($books->slice(0,10));
+
+
         $inputs = $request->check([
             'isim' => 'required|string|max:15',
             'soyad' => 'string|numeric|min:5|date|optional_image'
