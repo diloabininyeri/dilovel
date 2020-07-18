@@ -21,7 +21,7 @@ class StringValidate implements ValidatorInterface
     public function valid(Request $request, string $input): bool
     {
         $this->input=$input;
-        return is_string($request->get($input));
+        return is_string($request->post($input));
     }
 
     /**

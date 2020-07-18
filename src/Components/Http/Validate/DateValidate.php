@@ -3,15 +3,17 @@
 
 namespace App\Components\Http\Validate;
 
+
 use App\Components\Http\Request;
 use App\Interfaces\ValidatorInterface;
 
 /**
- * Class NumericValidate
+ * Class DateValidate
  * @package App\Components\Http\Validate
  */
-class NumericValidate implements ValidatorInterface
+class DateValidate implements ValidatorInterface
 {
+
     /**
      * @var string|null
      */
@@ -25,7 +27,7 @@ class NumericValidate implements ValidatorInterface
     public function valid(Request $request, string $input): bool
     {
         $this->input=$input;
-        return is_numeric($request->post($input));
+        return (bool) strtotime($request->get($input));
     }
 
     /**
@@ -33,6 +35,6 @@ class NumericValidate implements ValidatorInterface
      */
     public function message(): string
     {
-        return $this->input.' must be numeric';
+        return  "$this->input must be date";
     }
 }

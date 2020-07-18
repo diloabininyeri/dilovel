@@ -3,6 +3,7 @@
 
 namespace App\Components\Http;
 
+use App\Components\Http\Validate\DateValidate;
 use App\Components\Http\Validate\MaxValidate;
 use App\Components\Http\Validate\MinValidate;
 use App\Components\Http\Validate\NumericValidate;
@@ -42,6 +43,7 @@ class AdvanceValidateRequest
         'numeric' => NumericValidate::class,
         'max' => MaxValidate::class,
         'min'=>MinValidate::class,
+        'date'=>DateValidate::class,
     ];
 
     /**
