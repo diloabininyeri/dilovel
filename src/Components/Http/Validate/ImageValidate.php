@@ -3,16 +3,16 @@
 
 namespace App\Components\Http\Validate;
 
+use App\Components\Http\File;
 use App\Components\Http\Request;
 use App\Interfaces\ValidatorInterface;
 
 /**
- * Class DateValidate
+ * Class ImageValidate
  * @package App\Components\Http\Validate
  */
-class DateValidate implements ValidatorInterface
+class ImageValidate implements ValidatorInterface
 {
-
     /**
      * @var string|null
      */
@@ -26,7 +26,7 @@ class DateValidate implements ValidatorInterface
     public function valid(Request $request, string $input): bool
     {
         $this->input=$input;
-        return (bool) strtotime($request->get($input));
+        return (new File($_FILES[$input]))->isImage();
     }
 
     /**
@@ -34,6 +34,6 @@ class DateValidate implements ValidatorInterface
      */
     public function message(): string
     {
-        return  "$this->input must be date";
+        return "$this->input must be is image";
     }
 }

@@ -4,6 +4,7 @@
 namespace App\Components\Http;
 
 use App\Components\Http\Validate\DateValidate;
+use App\Components\Http\Validate\ImageValidate;
 use App\Components\Http\Validate\MaxValidate;
 use App\Components\Http\Validate\MinValidate;
 use App\Components\Http\Validate\NumericValidate;
@@ -44,6 +45,7 @@ class AdvanceValidateRequest
         'max' => MaxValidate::class,
         'min'=>MinValidate::class,
         'date'=>DateValidate::class,
+        'image'=>ImageValidate::class,
     ];
 
     /**
@@ -55,7 +57,7 @@ class AdvanceValidateRequest
     {
         $array = [];
         foreach ($validators as $input => $condition) {
-            $array[$input] = array_map('trim',explode('|', $condition));
+            $array[$input] = array_map('trim', explode('|', $condition));
         }
 
         $this->validators = $array;

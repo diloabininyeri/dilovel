@@ -27,7 +27,7 @@ class Deneme
     {
         $inputs = $request->check([
             'isim' => 'required|string|max:15',
-            'soyad' => 'string|numeric|min:5|date'
+            'soyad' => 'string|numeric|min:5|date|image'
         ])->validate();
 
 
