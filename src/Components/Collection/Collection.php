@@ -23,6 +23,7 @@ use Traversable;
 class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable, ArrayAble, ToJson
 {
     use ConditionAble;
+
     /**
      * @var array $collection
      */
@@ -139,10 +140,11 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      * @param string $column
      * @return array
      */
-    public function column(string $column):array
+    public function column(string $column): array
     {
-        return  array_map(fn ($i) =>$i[$column], $this->toArray());
+        return array_map(fn ($i) => $i[$column], $this->toArray());
     }
+
     /**
      * @return array
      */
@@ -187,6 +189,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     {
         return $this->collection;
     }
+
     /**
      * @param Closure $closure
      * @return $this
@@ -232,9 +235,9 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         return new self(array_slice($this->collection, 0, $count));
     }
 
-    public function chunk(int $count, bool $reIndex=false)
+    public function chunk(int $count, bool $reIndex = false)
     {
-        $this->collection= array_chunk($this->collection, $count, $reIndex);
+        $this->collection = array_chunk($this->collection, $count, $reIndex);
         return $this;
     }
 
@@ -359,7 +362,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
         while (count($this->collection) > 0) {
             $element = array_shift($this->collection);
             $unique_collection[] = $element;
-            $this->collection= array_udiff($this->collection, [$element], fn ($prev, $next) => $prev->$field <=> $next->$field);
+            $this->collection = array_udiff($this->collection, [$element], fn ($prev, $next) => $prev->$field <=> $next->$field);
         }
 
         return $this->setCollection($unique_collection);
@@ -370,9 +373,48 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      * @param null $length
      * @return $this
      */
-    public function slice(int $start, $length=null):self
+    public function slice(int $start, $length = null): self
     {
-        $this->collection=array_slice($this->collection, $start, $length);
+        $this->collection = array_slice($this->collection, $start, $length);
         return $this;
+    }
+
+    /**
+     * @param array $attributes
+     * @param string $concat
+     * @param bool $delete
+     * @return $this
+     */
+    public function combineAttributes(array $attributes, $concat = ' ',$delete=false): self
+    {
+        $this->each(static function ($item) use ($attributes, $concat) {
+            $join = [];
+            $name = [];
+            foreach ($attributes as $attribute) {
+                $join[] = $item->$attribute;
+                $name[] = $attribute;
+            }
+            $item->{implode('_', $name)} = implode($concat, $join);
+        });
+
+        if ($delete) {
+            $this->deleteAttribute(...$attributes);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string ...$attributes
+     * @return $this
+     */
+    public function deleteAttribute(string ...$attributes): self
+    {
+        $this->each(static function ($item) use ($attributes) {
+            foreach ($attributes as $attribute) {
+                unset($item->$attribute);
+            }
+        });
+        return  $this;
     }
 }

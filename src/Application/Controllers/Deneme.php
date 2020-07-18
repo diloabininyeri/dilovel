@@ -25,10 +25,9 @@ class Deneme
 
     public function index(Request $request)
     {
-
-
         $books = Users::get();
-        dd($books->slice(0,10));
+        $books->combineAttributes(['name','surname']);
+        return ($books->slice(0, 10));
 
 
         $inputs = $request->check([
@@ -41,5 +40,11 @@ class Deneme
             return $inputs->getErrors();
         }
         return "validated";
+    }
+
+
+    public function __invoke($name)
+    {
+        return strtoupper($name).' dir';
     }
 }
