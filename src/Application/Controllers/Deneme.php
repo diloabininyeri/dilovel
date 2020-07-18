@@ -31,9 +31,8 @@ class Deneme
         ])->validate();
 
 
-        return $inputs->getError('isim');
         if ($inputs->isFailed()) {
-            return $inputs->getErrors(true);
+            return $inputs->getErrors();
         }
         return "validated";
     }

@@ -53,7 +53,7 @@ class AdvanceValidateRequest
     {
         $array = [];
         foreach ($validators as $input => $condition) {
-            $array[$input] = explode('|', $condition);
+            $array[$input] = array_map('trim',explode('|', $condition));
         }
 
         $this->validators = $array;
@@ -73,7 +73,7 @@ class AdvanceValidateRequest
      * @param bool $flatten
      * @return array
      */
-    public function getErrors($flatten = false): array
+    public function getErrors($flatten = true): array
     {
         if ($flatten) {
             $messages = $this->messages;
