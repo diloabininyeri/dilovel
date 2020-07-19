@@ -3,7 +3,6 @@
 
 namespace App\Components\Routers;
 
-use App\Components\Enums\FormValidationEnum;
 use App\Components\Http\Request;
 use App\Components\Reflection\IocContainer;
 use ReflectionException;
@@ -64,7 +63,9 @@ class CallControllerWithIoc
         return $ioc->onError(static function ($error) {
             return redirect()
                 ->back()
-                ->withError(FormValidationEnum::SESSION_NAME, $error);
+                ->withOldInput()
+                ->withFormError($error);
+            // ->withError(FormValidationEnum::SESSION_NAME, $error);
         })
             ->onSuccess(fn ($req) => call_user_func([new $this->controller, $this->method], $req))
             ->setController($this->controller)

@@ -26,6 +26,6 @@ class CaptchaVerifyMiddleware implements MiddlewareInterface
         if ((new Captcha())->verify($request->post('_captcha'))) {
             return $next($request);
         }
-        return  redirect()->back()->withFormError(Lang::get('captcha.message'));
+        return  redirect()->back()->withOldInput()->withFormError(Lang::get('captcha.message'));
     }
 }

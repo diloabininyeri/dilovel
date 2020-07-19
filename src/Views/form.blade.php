@@ -17,11 +17,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <h2>{{csrf()->generateToken()}}</h2>
-            <h2>{{lang('home.notfound','default value')}}</h2>
-            <h2>{{lang('home.say')}}</h2>
-            <img class="img-thumbnail" src="{{assets('images/2020_05_11_file5eb8a286a5e531.84547494.png')}}" alt="">
+        <div class="col p-15">
             @foreach ($errors as $error)
                 <div class="alert alert-danger">{{$error}}</div>
             @endforeach
@@ -33,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="isim" value="{{old('isim','default')}}">
+                    <input type="text" name="isim" value="{{old('isim')}}">
                 </div>
                 <div class="form-group">
                     <input class="form-control-file" type="file" name="images" multiple>
@@ -47,8 +43,7 @@
         <div class="col">
         </div>
         <div class="col">
-            @php $a=12; @endphp
-           <h2>{{$a}}</h2>
+
         </div>
     </div>
 </div>
