@@ -26,7 +26,7 @@ class MinValidate implements ValidateLengthInterface
     public function valid(Request $request, string $input, int $length): bool
     {
         $this->input=$input;
-        return (strlen($request->post($input) < $length));
+        return (strlen($request->post($input))>$length);
     }
 
     /**
