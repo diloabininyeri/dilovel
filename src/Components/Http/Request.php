@@ -288,6 +288,16 @@ class Request implements ArrayAble, ToJson, RequestInterface
     }
 
     /**
+     * @param string $input
+     * @param null $default
+     * @return mixed|null
+     */
+    public function input(string $input, $default=null)
+    {
+        return $this->post($input, $default);
+    }
+
+    /**
      * @return array|null
      */
     public function phpInput(): ?array
@@ -422,5 +432,13 @@ class Request implements ArrayAble, ToJson, RequestInterface
     public function __unset($name)
     {
         unset($this->$name);
+    }
+
+    /**
+     * @return array
+     */
+    public function getPost(): array
+    {
+        return $this->post;
     }
 }

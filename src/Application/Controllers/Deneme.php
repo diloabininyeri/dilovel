@@ -9,6 +9,7 @@ use App\Application\Models\Users;
 use App\Components\Collection\Collection;
 use App\Components\Database\BuilderQuery;
 use App\Components\File\Excel;
+use App\Components\Flash\HtmlFormValuesStorage;
 use App\Components\Http\Request;
 use App\Components\Reflection\CodeBeautifier;
 use Carbon\Carbon;
@@ -25,11 +26,9 @@ class Deneme
 
     public function index(Request $request)
     {
-        $books = Users::get();
-        $books->combineAttributes(['name','surname']);
-        return ($books->slice(0, 10));
+        return redirect()->router('form')->withOldInput();
 
-
+        return 1;
         $inputs = $request->check([
             'isim' => 'required|string|max:15',
             'soyad' => 'string|numeric|min:5|date|optional_image'

@@ -16,6 +16,7 @@ use App\Components\Database\PDOAdaptor;
 use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
 use App\Components\Flash\FlashError;
+use App\Components\Flash\HtmlFormValuesStorage;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Lang\Lang;
@@ -471,4 +472,14 @@ function array_flatten(array $array): array
         $return[]=$a;
     });
     return $return;
+}
+
+/**
+ * @param string $input
+ * @param null $default
+ * @return mixed|null
+ */
+function old(string $input, $default=null)
+{
+    return HtmlFormValuesStorage::getInstance()->get($input) ?: $default;
 }

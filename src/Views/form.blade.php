@@ -25,11 +25,15 @@
             @foreach ($errors as $error)
                 <div class="alert alert-danger">{{$error}}</div>
             @endforeach
-            <form action="{{router('test')}}" enctype="multipart/form-data" method="post">
+            <form action="{{router('reg')}}" enctype="multipart/form-data" method="post">
                 @csrf
 
                 <div class="form-group">
                     <input placeholder="captcha" class="form-control" name="_captcha" type="text">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="isim" value="{{old('isim','default')}}">
                 </div>
                 <div class="form-group">
                     <input class="form-control-file" type="file" name="images" multiple>
