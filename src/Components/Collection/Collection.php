@@ -385,7 +385,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      * @param bool $delete
      * @return $this
      */
-    public function combineAttributes(array $attributes, $concat = ' ',$delete=false): self
+    public function combineAttributes(array $attributes, $concat = ' ', $delete=false): self
     {
         $this->each(static function ($item) use ($attributes, $concat) {
             $join = [];

@@ -388,4 +388,39 @@ class Request implements ArrayAble, ToJson, RequestInterface
     {
         return (new AdvanceValidateRequest($data, $this));
     }
+
+    /**
+     * @param $name
+     * @return mixed|null
+     */
+    public function __get($name)
+    {
+        return $this->post($name) ?: $this->get($name);
+    }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        return $this->has($name);
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value)
+    {
+        $this->$name=$value;
+    }
+
+    /**
+     * @param $name
+     */
+    public function __unset($name)
+    {
+        unset($this->$name);
+    }
 }
