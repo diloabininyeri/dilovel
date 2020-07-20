@@ -89,13 +89,13 @@ class Permission
     }
 
     /**
-     * @return array
+     * @return PermissionMapperObject[]
      */
     public function getAll():array
     {
         return $this->getPdoConnection()
                ->query('SELECT * FROM permissions')
-             ->fetchAll(PDO::FETCH_OBJ);
+             ->fetchAll(PDO::FETCH_CLASS, PermissionMapperObject::class, [$this->getPdoConnection()]);
     }
 
     /**
