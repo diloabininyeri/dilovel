@@ -11,13 +11,8 @@ use App\Interfaces\ValidatorInterface;
  * Class NumericValidate
  * @package App\Components\Http\Validate
  */
-class NumericValidate implements ValidatorInterface
+class NumericValidate extends AbstractValidate implements ValidatorInterface
 {
-    /**
-     * @var string|null
-     */
-    private ?string $input=null;
-
     /**
      * @param Request $request
      * @param string $input
@@ -25,7 +20,6 @@ class NumericValidate implements ValidatorInterface
      */
     public function valid(Request $request, string $input): bool
     {
-        $this->input=$input;
         return is_numeric($request->post($input));
     }
 
@@ -34,6 +28,6 @@ class NumericValidate implements ValidatorInterface
      */
     public function message(): string
     {
-        return str_replace(':element', $this->input, Lang::get('form.numeric'));
+        return str_replace(':element', $this->optionalInputName ?: $this->input, Lang::get('form.numeric'));
     }
 }

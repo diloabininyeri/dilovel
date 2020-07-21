@@ -2064,3 +2064,23 @@ Stack trace:
 [05-Jul-2020 03:48:42 Europe/Helsinki] PHP   4. spl_autoload_call() /home/zeus/Desktop/dilovel/src/Bootstrap/GlobalMiddlewareLayer.php:25
 [05-Jul-2020 03:48:42 Europe/Helsinki] PHP   5. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/dilovel/src/Bootstrap/GlobalMiddlewareLayer.php:25
 [05-Jul-2020 03:48:42 Europe/Helsinki] PHP   6. Composer\Autoload\includeFile() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:322
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP Fatal error:  Declaration of App\Components\Http\Validate\MinValidate::valid(App\Components\Http\Request $request, string $input, int $length): bool must be compatible with App\Interfaces\ValidateLengthInterface::valid(App\Components\Http\Request $request, int $length): bool in /home/zeus/Desktop/dilovel/src/Components/Http/Validate/MinValidate.php on line 27
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP Stack trace:
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/dilovel/index.php:24
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/dilovel/src/Bootstrap/App.php:22
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:60
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:68
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/dilovel/src/Components/Routers/Dispatcher.php:40
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   7. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/dilovel/src/Components/Routers/Dispatcher.php:67
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   8. App\Components\Routers\CallController->call() /home/zeus/Desktop/dilovel/src/Components/Routers/Dispatcher.php:78
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP   9. App\Components\Routers\CallControllerWithIoc->call() /home/zeus/Desktop/dilovel/src/Components/Routers/CallController.php:71
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  10. call_user_func:{/home/zeus/Desktop/dilovel/src/Components/Routers/CallControllerWithIoc.php:51}() /home/zeus/Desktop/dilovel/src/Components/Routers/CallControllerWithIoc.php:51
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  11. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/dilovel/src/Components/Routers/CallControllerWithIoc.php:51
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  12. App\Application\Controllers\Deneme->validate() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:22
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  13. App\Components\Http\AdvanceValidateRequest->validate() /home/zeus/Desktop/dilovel/src/Components/Http/Controller/AbstractController.php:21
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  14. App\Components\Http\AdvanceValidateRequest->makeValidate() /home/zeus/Desktop/dilovel/src/Components/Http/AdvanceValidateRequest.php:99
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  15. spl_autoload_call() /home/zeus/Desktop/dilovel/src/Components/Http/AdvanceValidateRequest.php:131
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  16. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/dilovel/src/Components/Http/AdvanceValidateRequest.php:131
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  17. Composer\Autoload\includeFile() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:322
+[21-Jul-2020 18:39:43 Europe/Helsinki] PHP  18. include() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:444

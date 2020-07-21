@@ -12,12 +12,8 @@ use App\Interfaces\ValidatorInterface;
  * Class ImageValidate
  * @package App\Components\Http\Validate
  */
-class ImageValidate implements ValidatorInterface
+class ImageValidate extends AbstractValidate implements ValidatorInterface
 {
-    /**
-     * @var string|null
-     */
-    private ?string $input=null;
 
     /**
      * @param Request $request
@@ -26,7 +22,6 @@ class ImageValidate implements ValidatorInterface
      */
     public function valid(Request $request, string $input): bool
     {
-        $this->input=$input;
         return (new File($_FILES[$input]))->isImage();
     }
 
@@ -35,6 +30,6 @@ class ImageValidate implements ValidatorInterface
      */
     public function message(): string
     {
-        return str_replace(':element', $this->input, Lang::get('form.image'));
+        return str_replace(':element', $this->optionalInputName ?: $this->input, Lang::get('form.image'));
     }
 }

@@ -11,9 +11,8 @@ use App\Interfaces\ValidatorInterface;
  * Class RequiredValidate
  * @package App\Components\Http\Validate
  */
-class RequiredValidate implements ValidatorInterface
+class RequiredValidate extends AbstractValidate implements ValidatorInterface
 {
-    private ?string $input=null;
     /**
      * @param Request $request
      * @param string $input
@@ -21,8 +20,6 @@ class RequiredValidate implements ValidatorInterface
      */
     public function valid(Request $request, string  $input):bool
     {
-        $this->input=$input;
-
         return $request->has($input);
     }
 
@@ -31,6 +28,6 @@ class RequiredValidate implements ValidatorInterface
      */
     public function message():string
     {
-        return str_replace(':element', $this->input, Lang::get('form.required'));
+        return str_replace(':element', $this->optionalInputName ?: $this->input, Lang::get('form.required'));
     }
 }

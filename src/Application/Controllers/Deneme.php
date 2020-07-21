@@ -16,11 +16,11 @@ class Deneme extends AbstractController
     public function index(Request $request)
     {
         $rules = [
-            'isim' => 'required|min:15|numeric',
+            'isim|xxx optional field name' => 'required|min:15|numeric',
         ];
 
         $this->validate($request, $rules);
 
-        touch('deneme.txt');
+        return __FILE__;
     }
 }

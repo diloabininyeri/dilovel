@@ -93,9 +93,16 @@ class AdvanceValidateRequest
      */
     public function validate():self
     {
-        foreach ($this->validators as $inputName => $validators) {
+        foreach ($this->validators as $prefixInput => $validators) {
             foreach ($validators as $validator) {
-                $this->makeValidate($inputName, $validator);
+                $explodePrefixInput= explode('|', $prefixInput);
+                if (isset($explodePrefixInput[1])) {
+                    [$input,$optionalInputName]=$explodePrefixInput;
+                } else {
+                    $input=$explodePrefixInput[0];
+                    $optionalInputName=null;
+                }
+                $this->makeValidate($input, $validator, $optionalInputName);
             }
         }
         return $this;
@@ -112,21 +119,22 @@ class AdvanceValidateRequest
     /**
      * @param string $inputName
      * @param string $validator
+     * @param string $optionalInputName
      */
-    private function makeValidate(string $inputName, string $validator): void
+    private function makeValidate(string $inputName, string $validator, string $optionalInputName=null): void
     {
         /**
          * @var ValidatorInterface $validatorObject
          * @var ValidateLengthInterface $validatorLengthObject
          */
         if (strpos($validator, ':') === false) {
-            $validatorObject = (new $this->rules[$validator]);
+            $validatorObject = (new $this->rules[$validator]($inputName, $optionalInputName));
             if (!$validatorObject->valid($this->request, $inputName)) {
                 $this->messages[$inputName][] = $validatorObject->message();
             }
         } else {
             [$validatorName, $length] = explode(':', $validator);
-            $validatorLengthObject = (new $this->rules[$validatorName]);
+            $validatorLengthObject = (new $this->rules[$validatorName]($inputName, $optionalInputName));
             if (!$validatorLengthObject->valid($this->request, $inputName, $length)) {
                 $this->messages[$inputName][] = $validatorLengthObject->message();
             }

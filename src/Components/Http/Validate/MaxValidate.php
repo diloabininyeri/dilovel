@@ -4,16 +4,15 @@
 namespace App\Components\Http\Validate;
 
 use App\Components\Http\Request;
+use App\Components\Lang\Lang;
 use App\Interfaces\ValidateLengthInterface;
-use App\Interfaces\ValidatorInterface;
 
 /**
  * Class MaxValidate
  * @package App\Components\Http\Validate
  */
-class MaxValidate implements ValidateLengthInterface
+class MaxValidate extends AbstractValidate implements ValidateLengthInterface
 {
-    private ?string $input=null;
     /**
      * @param Request $request
      * @param string $input
@@ -22,7 +21,6 @@ class MaxValidate implements ValidateLengthInterface
      */
     public function valid(Request $request, string $input, int $length): bool
     {
-        $this->input=$input;
         return (strlen($request->post($input))<$length);
     }
 
@@ -31,6 +29,6 @@ class MaxValidate implements ValidateLengthInterface
      */
     public function message(): string
     {
-        return "$this->input to max";
+        return str_replace(':element', $this->optionalInputName ?: $this->input, Lang::get('form.max'));
     }
 }

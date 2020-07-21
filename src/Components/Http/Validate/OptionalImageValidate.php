@@ -5,19 +5,15 @@ namespace App\Components\Http\Validate;
 
 use App\Components\Http\File;
 use App\Components\Http\Request;
+use App\Components\Lang\Lang;
 use App\Interfaces\ValidatorInterface;
 
 /**
  * Class OptionalImageValidate
  * @package App\Components\Http\Validate
  */
-class OptionalImageValidate implements ValidatorInterface
+class OptionalImageValidate extends AbstractValidate implements ValidatorInterface
 {
-    /**
-     * @var string|null
-     */
-    private ?string $input=null;
-
     /**
      * @param Request $request
      * @param string $input
@@ -25,7 +21,6 @@ class OptionalImageValidate implements ValidatorInterface
      */
     public function valid(Request $request, string $input): bool
     {
-        $this->input=$input;
         if (!$request->hasFile($input)) {
             return  true;
         }
@@ -37,6 +32,6 @@ class OptionalImageValidate implements ValidatorInterface
      */
     public function message(): string
     {
-        return  "$this->input must be image";
+        return str_replace(':element', $this->optionalInputName ?: $this->input, Lang::get('form.optional_image'));
     }
 }

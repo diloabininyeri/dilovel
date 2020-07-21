@@ -11,13 +11,10 @@ use App\Interfaces\ValidatorInterface;
  * Class DateValidate
  * @package App\Components\Http\Validate
  */
-class DateValidate implements ValidatorInterface
+class DateValidate extends AbstractValidate implements ValidatorInterface
 {
 
-    /**
-     * @var string|null
-     */
-    private ?string $input=null;
+
 
     /**
      * @param Request $request
@@ -26,7 +23,6 @@ class DateValidate implements ValidatorInterface
      */
     public function valid(Request $request, string $input): bool
     {
-        $this->input=$input;
         return (bool) strtotime($request->get($input));
     }
 
@@ -35,6 +31,6 @@ class DateValidate implements ValidatorInterface
      */
     public function message(): string
     {
-        return str_replace(':element', $this->input, Lang::get('form.date'));
+        return str_replace(':element', $this->optionalInputName ?: $this->input, Lang::get('form.date'));
     }
 }

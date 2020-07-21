@@ -11,9 +11,8 @@ use App\Interfaces\ValidatorInterface;
  * Class StringValidate
  * @package App\Components\Http\Validate
  */
-class StringValidate implements ValidatorInterface
+class StringValidate extends AbstractValidate implements ValidatorInterface
 {
-    private ?string $input=null;
     /**
      * @param Request $request
      * @param string $input
@@ -21,7 +20,6 @@ class StringValidate implements ValidatorInterface
      */
     public function valid(Request $request, string $input): bool
     {
-        $this->input=$input;
         return is_string($request->post($input));
     }
 
@@ -30,6 +28,6 @@ class StringValidate implements ValidatorInterface
      */
     public function message(): string
     {
-        return str_replace(':element', $this->input, Lang::get('form.string'));
+        return str_replace(':element', $this->optionalInputName ?: $this->input, Lang::get('form.string'));
     }
 }
