@@ -4,6 +4,7 @@
 namespace App\Components\Http;
 
 use App\Components\Http\Validate\DateValidate;
+use App\Components\Http\Validate\EmailValidate;
 use App\Components\Http\Validate\ImageValidate;
 use App\Components\Http\Validate\MaxValidate;
 use App\Components\Http\Validate\MinValidate;
@@ -47,6 +48,7 @@ class AdvanceValidateRequest
         'min'=>MinValidate::class,
         'date'=>DateValidate::class,
         'image'=>ImageValidate::class,
+        'email'=>EmailValidate::class,
         'optional_image'=>OptionalImageValidate::class,
     ];
 

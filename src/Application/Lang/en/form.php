@@ -3,6 +3,7 @@
 return [
 
     'string'=>':element must be string',
+    'email'=>':element must  be email',
     'numeric'=>':element must be numeric',
     'date'=>':element must be string',
     'required'=>':element is required',

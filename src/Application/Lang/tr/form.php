@@ -3,6 +3,7 @@
 return [
 
     'string'=>':element string olmalı ',
+    'email'=>':element geçersiz email adresi ',
     'numeric'=>':element alanı mutlaka sayısal olmalı',
     'date'=>':element alanı tarih olmalı',
     'required'=>':element alanı  gereklidir',

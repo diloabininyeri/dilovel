@@ -5,7 +5,6 @@ namespace App\Application\Controllers;
 
 use App\Components\Http\Controller\AbstractController;
 use App\Components\Http\Request;
-use App\Components\Http\Validate\Validate;
 use App\Components\Lang\Lang;
 
 /**
@@ -24,7 +23,7 @@ class Deneme extends AbstractController
     public function index(Request $request)
     {
         $rules = [
-            'isim| sizin isminiz' => 'required|min:15|numeric',
+            'isim| sizin isminiz' => 'required|min:15|email',
             'image|dosya alanı' => 'optional_image',
         ];
 
