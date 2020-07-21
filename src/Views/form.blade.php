@@ -18,8 +18,9 @@
     </div>
     <div class="row">
         <div class="col p-15">
+
             @foreach ($errors as $error)
-                <div class="alert alert-danger">{{$error}}</div>
+                <div class="alert alert-danger">{{($error)}}</div>
             @endforeach
             <form action="{{router('reg')}}" enctype="multipart/form-data" method="post">
                 @csrf

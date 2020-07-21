@@ -8,6 +8,7 @@ use App\Components\Flash\Flash;
 use App\Components\Flash\FlashError;
 use App\Components\Flash\HtmlFormValuesStorage;
 use App\Components\Http\SingletonRequest;
+use App\Components\Http\Url;
 
 /**
  * Class Redirect
@@ -56,6 +57,16 @@ class Redirect
         return $this->setUrl(router($name, $parameters));
     }
 
+
+    /**
+     * @param string $path
+     * @return $this
+     */
+    public function to(string $path):self
+    {
+        $path=sprintf('%s/%s', (new Url())->base(), trim($path, '/'));
+        return $this->setUrl($path);
+    }
 
     /**
      * @return Redirect

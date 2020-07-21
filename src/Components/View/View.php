@@ -82,12 +82,19 @@ class View
     }
 
     /**
+     * @return object
+     */
+    private function createFormErrors()
+    {
+        return(object)(error()->getFormErrors() ?? error()->all());
+    }
+    /**
      * @return string
      * @noinspection PhpIncludeInspection
      */
     private function builderReturnBlade():string
     {
-        $errors=(object)(error()->get(FormValidationEnum::SESSION_NAME) ?? error()->all());
+        $this->variables['errors']=$this->createFormErrors();
         extract($this->variables, EXTR_OVERWRITE);
         ob_start();
         require $this->getBladeCachePath();

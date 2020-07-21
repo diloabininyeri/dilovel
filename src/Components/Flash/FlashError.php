@@ -3,6 +3,7 @@
 
 namespace App\Components\Flash;
 
+use App\Components\Enums\FormValidationEnum;
 use App\Components\Http\Session;
 use App\Interfaces\ArrayAble;
 
@@ -56,6 +57,14 @@ class FlashError implements ArrayAble
     {
         $this->destroyFlash();
         return $this->session->get($this->prefix)[$this->createSessionName($name)] ?? null;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getFormErrors()
+    {
+        return $this->get(FormValidationEnum::SESSION_NAME);
     }
 
     /**
