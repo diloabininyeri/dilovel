@@ -22,7 +22,10 @@ class ImageValidate extends AbstractValidate implements ValidatorInterface
      */
     public function valid(Request $request, string $input): bool
     {
-        return (new File($_FILES[$input]))->isImage();
+        if ($request->hasFile($input)) {
+            return (new File($_FILES[$input]))->isImage();
+        }
+        return  false;
     }
 
     /**

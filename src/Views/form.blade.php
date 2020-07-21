@@ -32,6 +32,10 @@
                 <div class="form-group">
                     <input type="text" name="isim" value="{{old('isim')}}">
                 </div>
+
+                <div class="form-group">
+                    <input type="file" name="image">
+                </div>
                 <div class="form-group">
                     <input class="form-control-file" type="file" name="images" multiple>
                 </div>
