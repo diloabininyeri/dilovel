@@ -5,6 +5,7 @@ namespace App\Application\Controllers;
 
 use App\Components\Http\Controller\AbstractController;
 use App\Components\Http\Request;
+use App\Components\Http\Validate\Validate;
 use App\Components\Lang\Lang;
 
 /**
@@ -13,6 +14,13 @@ use App\Components\Lang\Lang;
  */
 class Deneme extends AbstractController
 {
+    /**
+     * @param Request $request
+     * @return string
+     * @rule(max:255)
+     * @rule(required)
+     * @rule(string)
+     */
     public function index(Request $request)
     {
         $rules = [
