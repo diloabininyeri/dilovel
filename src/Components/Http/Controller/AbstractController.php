@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Application\Controllers;
+namespace App\Components\Http\Controller;
 
 use App\Components\Http\Request;
 
