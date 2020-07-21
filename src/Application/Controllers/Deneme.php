@@ -5,6 +5,7 @@ namespace App\Application\Controllers;
 
 use App\Components\Http\Controller\AbstractController;
 use App\Components\Http\Request;
+use App\Components\Lang\Lang;
 
 /**
  * Class Deneme
@@ -15,7 +16,7 @@ class Deneme extends AbstractController
     public function index(Request $request)
     {
         $rules = [
-            'isim' => 'required|string|max:15|min:5',
+            'isim' => 'required|min:15|numeric',
         ];
 
         $this->validate($request, $rules);

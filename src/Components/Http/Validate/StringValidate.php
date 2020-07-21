@@ -4,6 +4,7 @@
 namespace App\Components\Http\Validate;
 
 use App\Components\Http\Request;
+use App\Components\Lang\Lang;
 use App\Interfaces\ValidatorInterface;
 
 /**
@@ -29,6 +30,6 @@ class StringValidate implements ValidatorInterface
      */
     public function message(): string
     {
-        return "$this->input field is must be string";
+        return str_replace(':element', $this->input, Lang::get('form.string'));
     }
 }

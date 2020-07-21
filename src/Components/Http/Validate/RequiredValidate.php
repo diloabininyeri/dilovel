@@ -4,6 +4,7 @@
 namespace App\Components\Http\Validate;
 
 use App\Components\Http\Request;
+use App\Components\Lang\Lang;
 use App\Interfaces\ValidatorInterface;
 
 /**
@@ -30,6 +31,6 @@ class RequiredValidate implements ValidatorInterface
      */
     public function message():string
     {
-        return "$this->input required";
+        return str_replace(':element', $this->input, Lang::get('form.required'));
     }
 }

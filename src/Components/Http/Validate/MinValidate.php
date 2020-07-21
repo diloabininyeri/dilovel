@@ -4,6 +4,7 @@
 namespace App\Components\Http\Validate;
 
 use App\Components\Http\Request;
+use App\Components\Lang\Lang;
 use App\Interfaces\ValidateLengthInterface;
 
 /**
@@ -34,6 +35,6 @@ class MinValidate implements ValidateLengthInterface
      */
     public function message(): string
     {
-        return "$this->input to short ";
+        return str_replace(':element', $this->input, Lang::get('form.min'));
     }
 }
