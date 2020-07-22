@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Components\Routers;
+namespace App\Components\Router;
 
 use RuntimeException;
 
 /**
  * Class RouterName
- * @package App\Components
+ * @package App\Components\Router
  */
 class RouterName
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Components\Routers\Validators\ValidateRouter;
+use App\Components\Router\Validators\ValidateRouter;
 use PHPUnit\Framework\TestCase;
 
 /**

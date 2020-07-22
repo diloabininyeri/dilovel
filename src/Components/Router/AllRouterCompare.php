@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Components\Routers;
+namespace App\Components\Router;
 
 /**
  * Class AllRouterCompare
- * @package App\Components\Routers
+ * @package App\Components\Router
  */
 class AllRouterCompare
 {

@@ -20,10 +20,10 @@ use App\Components\Flash\HtmlFormValuesStorage;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Lang\Lang;
-use App\Components\Routers\GenerateRouter;
+use App\Components\Router\GenerateRoute;
 use App\Components\View\Master;
 use App\Components\View\View;
-use App\Components\Routers\Redirect\Redirect;
+use App\Components\Router\Redirect\Redirect;
 use App\Components\Flash\Flash;
 
 /**
@@ -142,11 +142,11 @@ function assets($file): string
 /**
  * @param $name
  * @param array $parameters
- * @return GenerateRouter
+ * @return GenerateRoute
  */
-function router($name, array $parameters = [])
+function route($name, array $parameters = [])
 {
-    return new GenerateRouter($name, $parameters);
+    return new GenerateRoute($name, $parameters);
 }
 
 /**

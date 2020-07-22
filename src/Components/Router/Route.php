@@ -1,21 +1,21 @@
 <?php
 
 
-namespace App\Components\Routers;
+namespace App\Components\Router;
 
 use App\Interfaces\PseudoRouteInterface;
 use Closure;
 use function Composer\Autoload\includeFile;
 
 /**
- * Class Router
- * @package App\Components\Routers
+ * Class Route
+ * @package App\Components\Router
  * @method static PseudoRouteInterface get($urlPattern, $callback=null)
  * @method static PseudoRouteInterface post($urlPattern, $callback=null)
  * @method PseudoRouteInterface authorize(Closure $callback)
  * @method static PseudoRouteInterface view(string $uri,string $view)
  */
-class Router
+class Route
 {
 
     /**
@@ -89,13 +89,25 @@ class Router
     {
         self::group(['name'=>$name], $closure);
     }
+
     /**
-     * @param string $path
+     * @param $path
      */
-    public function path(string $path): void
+    public static function path($path): void
     {
         $routerPath=str_replace('.', '/', $path);
         includeFile("src/Routers/$routerPath.php");
+    }
+    /**
+     * @param $name
+     * @param $arguments
+     */
+    public function __call($name, $arguments)
+    {
+        if ($name === 'path') {
+            $routerPath=str_replace('.', '/', $arguments[0]);
+            includeFile("src/Routers/$routerPath.php");
+        }
     }
 
     /**

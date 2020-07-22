@@ -3,9 +3,8 @@
 Router::get('/', fn () => view('index'))->name('index');
 
 
-Router::path('test');
 
-Router::get('router_test', fn () =>router('custom_name.test'));
+Router::get('router_test', fn () =>route('custom_name.test'));
 Router::view('/view-test', 'index');
 
 Router::post('deneme/', 'Deneme@index')->name('reg');
@@ -25,8 +24,8 @@ Router::ip(['::1', 'localhost', '127.0.0.1'], static function () {
     Router::get('custom-area', fn () => 'custom area can pass with ip address');
 });
 
-Router::path('custom_router_for_from_path');
 
+Router::path('test');
 
 Router::group(['namespace' => 'Nested', 'name' => 'nested', 'middleware' => [],'prefix'=>'nested'], static function () {
     Router::get('/news', 'NestedTestController@index')->name('news');
@@ -47,14 +46,14 @@ Router::prefix('Other', static function () {
 });
 
 Router::middleware(['example'], static function () {
-    Router::get('middleware_test', fn () =>router('middleware_test'))->name('middleware_test');
-    Router::get('middleware_test1', fn () =>router('middleware_test'))->name('middleware_test1');
+    Router::get('middleware_test', fn () =>route('middleware_test'))->name('middleware_test');
+    Router::get('middleware_test1', fn () =>route('middleware_test'))->name('middleware_test1');
 });
 
 
 Router::get('prev_next_test', 'PrevNextTest@index');
 
 Router::name('custom_name', static function () {
-    Router::get('custom_name_test', fn () =>router('custom_name.test'))->name('test1');
-    Router::get('custom_name_other', fn () =>router('custom_name.test_other'))->name('test_other');
+    Router::get('custom_name_test', fn () =>route('custom_name.test'))->name('test1');
+    Router::get('custom_name_other', fn () =>route('custom_name.test_other'))->name('test_other');
 });

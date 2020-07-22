@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Routers\Redirect;
+namespace App\Components\Router\Redirect;
 
 use App\Components\Enums\FormValidationEnum;
 use App\Components\Flash\Flash;
@@ -54,7 +54,7 @@ class Redirect
      */
     public function router(string $name, $parameters = []): self
     {
-        return $this->setUrl(router($name, $parameters));
+        return $this->setUrl(route($name, $parameters));
     }
 
 

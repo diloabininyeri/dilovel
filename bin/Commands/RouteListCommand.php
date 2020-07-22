@@ -4,8 +4,8 @@
 namespace Bin\Commands;
 
 use App\Bootstrap\Bootstrap;
-use App\Components\Routers\MainRouter;
-use App\Components\Routers\RouterStorage;
+use App\Components\Router\MainRouter;
+use App\Components\Router\RouterStorage;
 use Bin\Components\CommandInterface;
 use function Composer\Autoload\includeFile;
 

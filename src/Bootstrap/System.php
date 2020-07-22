@@ -3,11 +3,11 @@
 
 namespace App\Bootstrap;
 
-use App\Components\Routers\AllRouterCompare;
-use App\Components\Routers\CurrentRouter;
-use App\Components\Routers\Dispatcher;
-use App\Components\Routers\Printable;
-use App\Components\Routers\RouterObject;
+use App\Components\Router\AllRouterCompare;
+use App\Components\Router\CurrentRouter;
+use App\Components\Router\Dispatcher;
+use App\Components\Router\Printable;
+use App\Components\Router\RouterObject;
 use JsonException;
 use function Composer\Autoload\includeFile;
 

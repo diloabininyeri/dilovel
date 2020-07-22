@@ -22,7 +22,7 @@
             @foreach ($errors as $error)
                 <div class="alert alert-danger">{{($error)}}</div>
             @endforeach
-            <form action="{{router('reg')}}" enctype="multipart/form-data" method="post">
+            <form action="{{route('reg')}}" enctype="multipart/form-data" method="post">
                 @csrf
 
                 <div class="form-group">

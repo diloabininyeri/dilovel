@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Routers\Validators;
+namespace App\Components\Router\Validators;
 
 use App\Application\Routervalidators\Validator;
 

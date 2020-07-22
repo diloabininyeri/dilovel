@@ -3,7 +3,7 @@
 
 namespace App\Bootstrap;
 
-use App\Components\Routers\NotFound;
+use App\Components\Router\NotFound;
 
 /**
  * Class App

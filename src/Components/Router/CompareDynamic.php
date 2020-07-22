@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Components\Routers;
+namespace App\Components\Router;
 
-use App\Components\Routers\Validators\ValidateRouter;
+use App\Components\Router\Validators\ValidateRouter;
 
 /**
  * Class CompareDynamic
- * @package App\Components\Routers
+ * @package App\Components\Router
  */
 class CompareDynamic
 {

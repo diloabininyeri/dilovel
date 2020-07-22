@@ -13,7 +13,7 @@ Router::get('example', fn () => 'user cant acces this callback due to middleware
 
 Router::get('deneme/int:id/string:name/:any/date:date', static function () {
     $id = request()->get('id');
-    return router(
+    return route(
         'asd',
         [
             'int:id' => $id,

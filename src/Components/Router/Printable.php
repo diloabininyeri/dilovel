@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Routers;
+namespace App\Components\Router;
 
 use App\Components\Collection\Collection;
 use App\Components\Database\Model;
@@ -9,7 +9,7 @@ use JsonException;
 
 /**
  * Class Printable
- * @package App\Components\Routers
+ * @package App\Components\Router
  */
 class Printable
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Routers;
+namespace App\Components\Router;
 
 use App\Components\Http\Request;
 use Closure;
@@ -9,7 +9,7 @@ use function Composer\Autoload\includeFile;
 
 /**
  * Class RouterAuth
- * @package App\Components\Routers
+ * @package App\Components\Router
  */
 class RouterAuth
 {
