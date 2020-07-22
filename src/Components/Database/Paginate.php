@@ -48,7 +48,7 @@ class Paginate implements IteratorAggregate
         $this->data = $data;
         $this->count = $count;
         $this->perPage = $perPage;
-        $this->request = new Request();
+        $this->request = Request::getInstance();
         $this->builderPaginate = new BuilderPaginate($this);
     }
 

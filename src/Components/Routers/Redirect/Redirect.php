@@ -7,7 +7,7 @@ use App\Components\Enums\FormValidationEnum;
 use App\Components\Flash\Flash;
 use App\Components\Flash\FlashError;
 use App\Components\Flash\HtmlFormValuesStorage;
-use App\Components\Http\SingletonRequest;
+use App\Components\Http\Request;
 use App\Components\Http\Url;
 
 /**
@@ -151,7 +151,7 @@ class Redirect
      */
     public function withOldInput():self
     {
-        $posts=SingletonRequest::getInstance()->getPost();
+        $posts=Request::getInstance()->getPost();
         $formFlashSession=HtmlFormValuesStorage::getInstance();
         foreach ($posts as $input=>$value) {
             $formFlashSession->set($input, $value);

@@ -57,7 +57,7 @@ class RouterAuth
      */
     private function isAuthorization(): bool
     {
-        return call_user_func([new $this->class(), $this->method], new Request());
+        return call_user_func([new $this->class(), $this->method], Request::getInstance());
     }
 
     private function loadRouterFile():void

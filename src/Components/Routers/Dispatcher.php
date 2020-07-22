@@ -20,7 +20,7 @@ class Dispatcher
     private function callMiddleware($middleware): Middleware
     {
         $middleware = new Middleware(...$middleware);
-        return $middleware->call(new Request());
+        return $middleware->call(Request::getInstance());
     }
 
     /**
@@ -61,7 +61,7 @@ class Dispatcher
     private function callUserFunc(RouterObject $routerObject)
     {
         if ($routerObject->isCallableSecondParameter()) {
-            return call_user_func($routerObject->getSecondParameter(), new Request());
+            return call_user_func($routerObject->getSecondParameter(), Request::getInstance());
         }
 
         return $this->callControllerMethod($routerObject);
@@ -75,6 +75,6 @@ class Dispatcher
     private function callControllerMethod(RouterObject $routerObject, $request=null)
     {
         [$controller, $method] = explode('@', $routerObject->getSecondParameter());
-        return (new CallController($controller, $method, $request?:new Request(), $routerObject->getMainRouter()->getNamespace()))->call();
+        return (new CallController($controller, $method, $request?:Request::getInstance(), $routerObject->getMainRouter()->getNamespace()))->call();
     }
 }

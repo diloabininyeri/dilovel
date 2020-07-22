@@ -5,6 +5,7 @@ namespace App\Components\Http;
 use App\Components\Auth\User\User;
 use App\Components\Routers\RouterQueryString;
 use App\Components\Traits\ConditionAble;
+use App\Components\Traits\Singleton;
 use App\Interfaces\ArrayAble;
 use App\Interfaces\RequestInterface;
 use App\Interfaces\ToJson;
@@ -21,7 +22,7 @@ use JsonException;
  */
 class Request implements ArrayAble, ToJson, RequestInterface
 {
-    use ConditionAble;
+    use ConditionAble,Singleton;
     /**
      * @var array
      */
@@ -40,7 +41,7 @@ class Request implements ArrayAble, ToJson, RequestInterface
     /**
      * @var array
      */
-    private array  $server = [];
+    private array  $server;
 
 
     /**

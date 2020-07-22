@@ -22,7 +22,7 @@ class GlobalMiddlewareLayer
     public function bind(): Closure
     {
         return function () {
-            $request = new Request();
+            $request =Request::getInstance();
             /**
              * @see Middleware::$global
              */

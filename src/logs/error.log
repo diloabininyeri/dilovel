@@ -2084,3 +2084,21 @@ Stack trace:
 [21-Jul-2020 18:39:43 Europe/Helsinki] PHP  16. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/dilovel/src/Components/Http/AdvanceValidateRequest.php:131
 [21-Jul-2020 18:39:43 Europe/Helsinki] PHP  17. Composer\Autoload\includeFile() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:322
 [21-Jul-2020 18:39:43 Europe/Helsinki] PHP  18. include() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:444
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP Fatal error:  Declaration of App\Components\Traits\Singleton::getInstance(): App\Components\Traits\Singleton must be compatible with App\Components\Http\Request::getInstance(): App\Components\Http\Request in /home/zeus/Desktop/dilovel/src/Components/Http/SingletonRequest.php on line 20
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP Stack trace:
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/dilovel/index.php:24
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/dilovel/src/Bootstrap/App.php:22
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:60
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   5. App\Components\Routers\Dispatcher->route() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:68
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   6. App\Components\Routers\Dispatcher->callUserFunc() /home/zeus/Desktop/dilovel/src/Components/Routers/Dispatcher.php:40
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   7. App\Components\Routers\Dispatcher->callControllerMethod() /home/zeus/Desktop/dilovel/src/Components/Routers/Dispatcher.php:67
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   8. App\Components\Routers\CallController->call() /home/zeus/Desktop/dilovel/src/Components/Routers/Dispatcher.php:78
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP   9. App\Components\Routers\CallControllerWithIoc->call() /home/zeus/Desktop/dilovel/src/Components/Routers/CallController.php:71
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP  10. App\Application\Controllers\Deneme->__construct() /home/zeus/Desktop/dilovel/src/Components/Routers/CallControllerWithIoc.php:51
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP  11. App\Application\Controllers\Deneme->validate() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:23
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP  12. App\Components\Routers\Redirect\Redirect->withOldInput() /home/zeus/Desktop/dilovel/src/Components/Traits/RequestValidation.php:26
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP  13. spl_autoload_call() /home/zeus/Desktop/dilovel/src/Components/Routers/Redirect/Redirect.php:154
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP  14. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/dilovel/src/Components/Routers/Redirect/Redirect.php:154
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP  15. Composer\Autoload\includeFile() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:322
+[22-Jul-2020 18:17:42 Europe/Helsinki] PHP  16. include() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:444

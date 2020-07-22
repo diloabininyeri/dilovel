@@ -36,7 +36,7 @@ trait RequestValidation
     final public function middleware(string ...$middleware)
     {
         $union=new Middleware(...$middleware);
-        $union->call(new Request());
+        $union->call(Request::getInstance());
         if (!$union->isInstanceOfRequest()) {
             return exit($union->getResponse());
         }
