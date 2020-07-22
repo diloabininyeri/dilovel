@@ -17,7 +17,7 @@ use App\Components\DateTime\Now;
 use App\Components\Env\EnvFile;
 use App\Components\Flash\FlashError;
 use App\Components\Flash\HtmlFormValuesStorage;
-use App\Components\Http\Request;
+use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Lang\Lang;
 use App\Components\Routers\GenerateRouter;
@@ -221,7 +221,7 @@ function activate_errors()
 
 function request()
 {
-    return Request::getInstance();
+    return SingletonRequest::get();
 }
 
 /**

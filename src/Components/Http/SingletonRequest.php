@@ -3,13 +3,17 @@
 
 namespace App\Components\Http;
 
-use App\Components\Traits\Singleton;
-
 /**
  * Class SingletonRequest
  * @package App\Components\Http
  */
-class SingletonRequest extends Request
+class SingletonRequest
 {
-    use Singleton;
+    /**
+     * @return Request
+     */
+    public static function get(): Request
+    {
+        return Request::getInstance();
+    }
 }
