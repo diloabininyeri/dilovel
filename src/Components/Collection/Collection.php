@@ -159,6 +159,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function toJson(): string
     {
+        header('Content-type:application/json');
         return json_encode($this->collection, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT, 512);
     }
 
