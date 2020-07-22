@@ -41,6 +41,26 @@ class StrComponent
     }
 
     /**
+     * @param $str
+     * @return string
+     */
+    public function snakeToCamel():string
+    {
+        $str= lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $this->string))));
+        return $this->returnSelf($str);
+    }
+
+    /**
+     * @return string
+     */
+    public function pascalToSnake():string
+    {
+        $str= strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $this->string));
+        return $this->returnSelf($str);
+    }
+
+
+    /**
      * @param $haystack
      * @return bool
      */

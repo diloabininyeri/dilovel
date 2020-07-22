@@ -16,14 +16,19 @@ class RuleAnnotation
     /**
      * @var object
      */
-    private object  $object;
+    private ?object  $object=null;
 
 
     /**
      * @var string
      */
-    private string $class;
+    private ?string $class=null;
 
+
+    /**
+     * @var string
+     */
+    private string $property;
 
     /**
      * @var string
@@ -81,8 +86,22 @@ class RuleAnnotation
      */
     public function read():?array
     {
-        $annotation = $this->reflection()->getMethod($this->method)->getDocComment();
+        if ($this->method) {
+            $annotation = $this->reflection()->getMethod($this->method)->getDocComment();
+        } else {
+            $annotation = $this->reflection()->getProperty($this->property)->getDocComment();
+        }
         preg_match_all($this->getRegexPattern(), $annotation, $matches, PREG_SET_ORDER, 0);
         return array_map(fn ($i) => $i['parameters'], $matches);
+    }
+
+    /**
+     * @param string $property
+     * @return RuleAnnotation
+     */
+    public function setProperty(string $property): RuleAnnotation
+    {
+        $this->property = $property;
+        return $this;
     }
 }

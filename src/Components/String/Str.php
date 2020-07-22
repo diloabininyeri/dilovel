@@ -26,6 +26,7 @@ namespace App\Components\String;
  * @method static StrComponent strlen(string $string)
  * @method static StrComponent str_replace($find,$replace,$string)
  * @method static StrComponent limit(string $string,int $length,string $threeDot=null)
+ * @method static StrComponent snakeToCamel(string $string)
  * @method static bool isMail(string $string)
  * @method static bool isIp(string $string)
  * @method static bool isMacAddress(string $string)
