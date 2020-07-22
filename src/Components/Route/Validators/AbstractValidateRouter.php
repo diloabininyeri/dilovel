@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Components\Router\Validators;
+namespace App\Components\Route\Validators;
 
 use App\Application\Routervalidators\Validator;
 
 /**
  * Class AbstractValidateRouter
- * @package App\Components\Routers\Validators
+ * @package App\Components\Route\Validators
  */
 abstract class AbstractValidateRouter
 {

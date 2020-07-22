@@ -4,7 +4,7 @@
 require_once '../vendor/autoload.php';
 
 use Bin\Console;
-use App\Components\Router\Printable;
+use App\Components\Route\Printable;
 
 
 $console = new Console($argv,$argc);

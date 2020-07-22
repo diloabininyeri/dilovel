@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 use Closure;
 
 /**
  * Class RouterGroup
- * @package App\Components\Router
+ * @package App\Components\Route
  */
 class RouterGroup
 {

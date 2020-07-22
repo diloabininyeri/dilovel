@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 use App\Components\Http\Request;
 use Closure;
@@ -9,7 +9,7 @@ use function Composer\Autoload\includeFile;
 
 /**
  * Class RouterAuth
- * @package App\Components\Router
+ * @package App\Components\Route
  */
 class RouterAuth
 {
@@ -64,7 +64,7 @@ class RouterAuth
     {
         if ($this->path) {
             $path = str_replace('.', '/', $this->path);
-            includeFile("src/Routers/$path.php");
+            includeFile("src/Route/$path.php");
         }
     }
 

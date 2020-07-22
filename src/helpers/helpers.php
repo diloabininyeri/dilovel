@@ -20,10 +20,10 @@ use App\Components\Flash\HtmlFormValuesStorage;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Lang\Lang;
-use App\Components\Router\GenerateRoute;
+use App\Components\Route\GenerateRoute;
 use App\Components\View\Master;
 use App\Components\View\View;
-use App\Components\Router\Redirect\Redirect;
+use App\Components\Route\Redirect\Redirect;
 use App\Components\Flash\Flash;
 
 /**

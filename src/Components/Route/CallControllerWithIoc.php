@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 use App\Components\Http\Request;
 use App\Components\Reflection\IocContainer;
@@ -9,7 +9,7 @@ use ReflectionException;
 
 /**
  * Class CallControllerWithIoc
- * @package App\Components\Router
+ * @package App\Components\Route
  */
 class CallControllerWithIoc
 {

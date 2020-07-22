@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 /**
  * Class GenerateRouterGroup
- * @package App\Components\Router
+ * @package App\Components\Route
  */
 class GenerateRouterGroup
 {

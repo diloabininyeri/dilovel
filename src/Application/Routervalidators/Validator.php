@@ -3,7 +3,7 @@
 
 namespace App\Application\Routervalidators;
 
-use App\Components\Router\Validators\ValidateRouter;
+use App\Components\Route\Validators\ValidateRouter;
 
 /**
  * Class Validator

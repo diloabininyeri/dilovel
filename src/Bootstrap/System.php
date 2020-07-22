@@ -3,11 +3,11 @@
 
 namespace App\Bootstrap;
 
-use App\Components\Router\AllRouterCompare;
-use App\Components\Router\CurrentRouter;
-use App\Components\Router\Dispatcher;
-use App\Components\Router\Printable;
-use App\Components\Router\RouterObject;
+use App\Components\Route\AllRouterCompare;
+use App\Components\Route\CurrentRouter;
+use App\Components\Route\Dispatcher;
+use App\Components\Route\Printable;
+use App\Components\Route\RouterObject;
 use JsonException;
 use function Composer\Autoload\includeFile;
 
@@ -32,7 +32,7 @@ class System
      */
     public function loadRouterWeb(): self
     {
-        includeFile('src/Routers/web.php');
+        includeFile('src/Route/web.php');
         return $this;
     }
 

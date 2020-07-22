@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 /**
  * Class NotFound
- * @package App\Components\Router
+ * @package App\Components\Route
  */
 class NotFound
 {

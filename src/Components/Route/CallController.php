@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 use App\Components\Http\Request;
 use ReflectionException;
@@ -9,7 +9,7 @@ use ReflectionMethod;
 
 /**
  * Class CallController
- * @package App\Components\Router
+ * @package App\Components\Route
  */
 class CallController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 use Closure;
 

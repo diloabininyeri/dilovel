@@ -3,7 +3,7 @@
 namespace App\Components\Http;
 
 use App\Components\Auth\User\User;
-use App\Components\Router\RouterQueryString;
+use App\Components\Route\RouterQueryString;
 use App\Components\Traits\ConditionAble;
 use App\Components\Traits\Singleton;
 use App\Interfaces\ArrayAble;

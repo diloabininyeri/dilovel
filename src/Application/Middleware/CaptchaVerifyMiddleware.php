@@ -6,7 +6,7 @@ namespace App\Application\Middleware;
 use App\Components\Captcha;
 use App\Components\Http\Request;
 use App\Components\Lang\Lang;
-use App\Components\Router\Redirect\Redirect;
+use App\Components\Route\Redirect\Redirect;
 use App\Interfaces\MiddlewareInterface;
 use Closure;
 

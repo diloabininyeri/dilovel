@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Router\Redirect;
+namespace App\Components\Route\Redirect;
 
 use App\Components\Enums\FormValidationEnum;
 use App\Components\Flash\Flash;
@@ -12,7 +12,7 @@ use App\Components\Http\Url;
 
 /**
  * Class Redirect
- * @package App\Components\Routers\Redirect
+ * @package App\Components\Route\Redirect
  */
 class Redirect
 {

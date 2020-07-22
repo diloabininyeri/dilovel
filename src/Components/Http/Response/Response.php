@@ -3,7 +3,7 @@
 
 namespace App\Components\Http\Response;
 
-use App\Components\Router\Redirect\Redirect;
+use App\Components\Route\Redirect\Redirect;
 use JsonException;
 
 /**

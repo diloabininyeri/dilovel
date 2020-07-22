@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Components\Router\Validators;
+namespace App\Components\Route\Validators;
 
 use App\Interfaces\ValidateRouterInterface;
 
 /**
  * Class ValidateRouterParamDate
- * @package App\Components\Routers\Validators
+ * @package App\Components\Route\Validators
  */
 class ValidateRouterParamDate implements ValidateRouterInterface
 {

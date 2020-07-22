@@ -4,8 +4,8 @@
 namespace Bin\Commands;
 
 use App\Bootstrap\Bootstrap;
-use App\Components\Router\MainRouter;
-use App\Components\Router\RouterStorage;
+use App\Components\Route\MainRouter;
+use App\Components\Route\RouterStorage;
 use Bin\Components\CommandInterface;
 use function Composer\Autoload\includeFile;
 
@@ -22,7 +22,7 @@ class RouteListCommand implements CommandInterface
     public function handle(?array $parameters): void
     {
         Bootstrap::loadProviders();
-        includeFile("src/Routers/web.php");
+        includeFile("src/Route/web.php");
         $routers=array_reverse(RouterStorage::all());
         echo   str_pad('dynamic uri', 50).str_pad('name', 50).'action'.PHP_EOL;
         echo str_repeat('-', 150);

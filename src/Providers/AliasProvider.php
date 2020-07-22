@@ -5,7 +5,7 @@ namespace App\Providers;
 
 use App\Components\Cache;
 use App\Components\Container\App;
-use App\Components\Router\Route;
+use App\Components\Route\Route;
 use App\Components\Http\Session;
 
 class AliasProvider implements ProviderInterface

@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 use App\Components\Http\Request;
 
 /**
  * Class CallControllerWithoutIoc
- * @package App\Components\Router
+ * @package App\Components\Route
  */
 class CallControllerWithoutIoc
 {

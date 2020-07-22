@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 use App\Application\Middleware;
 use App\Components\Http\Request;
 
 /**
  * Class Dispatcher
- * @package App\Components\Router
+ * @package App\Components\Route
  */
 class Dispatcher
 {

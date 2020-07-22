@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Components\Router;
+namespace App\Components\Route;
 
 use App\Interfaces\PseudoRouteInterface;
 use Closure;
@@ -9,7 +9,7 @@ use function Composer\Autoload\includeFile;
 
 /**
  * Class Route
- * @package App\Components\Router
+ * @package App\Components\Route
  * @method static PseudoRouteInterface get($urlPattern, $callback=null)
  * @method static PseudoRouteInterface post($urlPattern, $callback=null)
  * @method PseudoRouteInterface authorize(Closure $callback)
@@ -96,7 +96,7 @@ class Route
     public static function path($path): void
     {
         $routerPath=str_replace('.', '/', $path);
-        includeFile("src/Routers/$routerPath.php");
+        includeFile("src/Route/$routerPath.php");
     }
     /**
      * @param $name
@@ -106,7 +106,7 @@ class Route
     {
         if ($name === 'path') {
             $routerPath=str_replace('.', '/', $arguments[0]);
-            includeFile("src/Routers/$routerPath.php");
+            includeFile("src/Route/$routerPath.php");
         }
     }
 
