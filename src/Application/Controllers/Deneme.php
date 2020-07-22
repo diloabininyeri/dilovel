@@ -3,16 +3,26 @@
 
 namespace App\Application\Controllers;
 
-use App\Components\Http\Controller\AbstractController;
 use App\Components\Http\Request;
-use App\Components\Lang\Lang;
+use App\Components\Traits\RequestValidation;
 
 /**
  * Class Deneme
  * @package App\Application\Controllers
  */
-class Deneme extends AbstractController
+class Deneme
 {
+    use RequestValidation;
+
+    public function __construct()
+    {
+        $rules = [
+            'image|resim alanı' => 'jpg_image|required',
+        ];
+
+        $this->validate($rules);
+    }
+
     /**
      * @param Request $request
      * @return string
@@ -22,12 +32,6 @@ class Deneme extends AbstractController
      */
     public function index(Request $request)
     {
-        $rules = [
-            'image|resim alanı' => 'jpg_image|required',
-        ];
-
-        $this->validate($request, $rules);
-
         return __FILE__;
     }
 }
