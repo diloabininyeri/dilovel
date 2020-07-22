@@ -81,7 +81,7 @@ class Request implements ArrayAble, ToJson, RequestInterface
      */
     public function merge(array $array): self
     {
-        array_merge($this->request, $array);
+        $this->request=array_merge($this->request, $array);
         return $this;
     }
 

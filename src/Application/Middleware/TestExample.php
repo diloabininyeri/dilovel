@@ -22,6 +22,7 @@ class TestExample implements MiddlewareInterface
      */
     public function handle(Closure $next, Request $request)
     {
-        return 'cant passed';
+        $request->merge(['id'=>63,'name'=>'urfa']);
+        return $next($request);
     }
 }
