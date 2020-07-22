@@ -11,4 +11,5 @@ return [
     'max'=>':element to max',
     'image'=>':element must be image',
     'optional_image'=>':element must be image',
+    'jpg_image'=>':element type must be jpg or jpeg',
 ];

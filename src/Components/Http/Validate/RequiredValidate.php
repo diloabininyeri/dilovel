@@ -20,7 +20,7 @@ class RequiredValidate extends AbstractValidate implements ValidatorInterface
      */
     public function valid(Request $request, string  $input):bool
     {
-        return $request->has($input);
+        return ($request->hasFile($input) || $request->has($input) || $request->hasFiles($input));
     }
 
     /**

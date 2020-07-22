@@ -23,8 +23,7 @@ class Deneme extends AbstractController
     public function index(Request $request)
     {
         $rules = [
-            'isim| sizin isminiz' => 'required|min:15|email',
-            'image|dosya alanı' => 'optional_image',
+            'image|resim alanı' => 'jpg_image|required',
         ];
 
         $this->validate($request, $rules);

@@ -11,4 +11,5 @@ return [
     'max'=>':element alanı çok uzun oldu',
     'image'=>':element resim olmalıdır',
     'optional_image'=>':element resim olmalıdır',
+    'jpg_image'=>':element türü jpg veya jpeg olmalı',
 ];
