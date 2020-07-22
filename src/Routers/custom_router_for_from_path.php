@@ -1,3 +1,3 @@
 <?php
 
-Router::get('for-custom', fn () =>'for custom');
+Route::get('for-custom', fn () =>'for custom');

@@ -1,2 +1,2 @@
 <?php
-Router::get('nested-example', fn () =>__FUNCTION__);
+Route::get('nested-example', fn () =>__FUNCTION__);

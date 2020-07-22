@@ -1,59 +1,59 @@
 <?php
 
-Router::get('/', fn () => view('index'))->name('index');
+Route::get('/', fn () => view('index'))->name('index');
 
 
 
-Router::get('router_test', fn () =>route('custom_name.test'));
-Router::view('/view-test', 'index');
+Route::get('router_test', fn () =>route('custom_name.test'));
+Route::view('/view-test', 'index');
 
-Router::post('deneme/', 'Deneme@index')->name('reg');
+Route::post('deneme/', 'Deneme@index')->name('reg');
 
-Router::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test');
-Router::view('form', 'form')->name('form');
+Route::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test');
+Route::view('form', 'form')->name('form');
 
-Router::get('fef', 1)->namespace('fefef');
-Router::auth('App\Application\Auth\Admin', 'isAuth', static function () {
-    Router::get('admin', fn () => env('REDIS_HOST'));
+Route::get('fef', 1)->namespace('fefef');
+Route::auth('App\Application\Auth\Admin', 'isAuth', static function () {
+    Route::get('admin', fn () => env('REDIS_HOST'));
 });
 
-Router::auth('App\Application\Auth\Admin', 'isAuth')->path('admin.admin_test');
-Router::auth('App\Application\Auth\Admin', 'isAuth')->path('nested.example');
+Route::auth('App\Application\Auth\Admin', 'isAuth')->path('admin.admin_test');
+Route::auth('App\Application\Auth\Admin', 'isAuth')->path('nested.example');
 
-Router::ip(['::1', 'localhost', '127.0.0.1'], static function () {
-    Router::get('custom-area', fn () => 'custom area can pass with ip address');
-});
-
-
-Router::path('test');
-
-Router::group(['namespace' => 'Nested', 'name' => 'nested', 'middleware' => [],'prefix'=>'nested'], static function () {
-    Router::get('/news', 'NestedTestController@index')->name('news');
-    Router::get('/personel', fn () => 'fewfwfewfewf')->name('personel');
-});
-
-Router::get('gorup-out', fn () => __FUNCTION__);
-
-Router::group(['namespace' => 'Other', 'name' => 'other', 'middleware' => ['example'],'prefix'=>'other/bar/'], static function () {
-    Router::get('foo', 'Abs@index')->name('news');
-    Router::get('/personel/foo', fn () => 'fewfwfewfewf')->name('personel');
-});
-
-Router::get('hass/hiss', fn () =>__FUNCTION__);
-
-Router::prefix('Other', static function () {
-    Router::get('prefix_test', 'Abs@index');
-});
-
-Router::middleware(['example'], static function () {
-    Router::get('middleware_test', fn () =>route('middleware_test'))->name('middleware_test');
-    Router::get('middleware_test1', fn () =>route('middleware_test'))->name('middleware_test1');
+Route::ip(['::1', 'localhost', '127.0.0.1'], static function () {
+    Route::get('custom-area', fn () => 'custom area can pass with ip address');
 });
 
 
-Router::get('prev_next_test', 'PrevNextTest@index');
+Route::path('test');
 
-Router::name('custom_name', static function () {
-    Router::get('custom_name_test', fn () =>route('custom_name.test'))->name('test1');
-    Router::get('custom_name_other', fn () =>route('custom_name.test_other'))->name('test_other');
+Route::group(['namespace' => 'Nested', 'name' => 'nested', 'middleware' => [],'prefix'=>'nested'], static function () {
+    Route::get('/news', 'NestedTestController@index')->name('news');
+    Route::get('/personel', fn () => 'fewfwfewfewf')->name('personel');
+});
+
+Route::get('gorup-out', fn () => __FUNCTION__);
+
+Route::group(['namespace' => 'Other', 'name' => 'other', 'middleware' => ['example'],'prefix'=>'other/bar/'], static function () {
+    Route::get('foo', 'Abs@index')->name('news');
+    Route::get('/personel/foo', fn () => 'fewfwfewfewf')->name('personel');
+});
+
+Route::get('hass/hiss', fn () =>__FUNCTION__);
+
+Route::prefix('Other', static function () {
+    Route::get('prefix_test', 'Abs@index');
+});
+
+Route::middleware(['example'], static function () {
+    Route::get('middleware_test', fn () =>route('middleware_test'))->name('middleware_test');
+    Route::get('middleware_test1', fn () =>route('middleware_test'))->name('middleware_test1');
+});
+
+
+Route::get('prev_next_test', 'PrevNextTest@index');
+
+Route::name('custom_name', static function () {
+    Route::get('custom_name_test', fn () =>route('custom_name.test'))->name('test1');
+    Route::get('custom_name_other', fn () =>route('custom_name.test_other'))->name('test_other');
 });
