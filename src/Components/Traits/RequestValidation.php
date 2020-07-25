@@ -7,9 +7,20 @@ use App\Application\Middleware;
 use App\Components\Http\Request;
 use App\Components\Http\SingletonRequest;
 
+/**
+ * Trait RequestValidation
+ * @package App\Components\Traits
+ */
 trait RequestValidation
 {
 
+    /**
+     * @return Request
+     */
+    final public function getRequest(): Request
+    {
+        return SingletonRequest::get();
+    }
     /**
      * @param Request $request
      * @param array $rules
@@ -17,7 +28,7 @@ trait RequestValidation
      */
     final public function validate(array $rules, Request $request=null)
     {
-        $request=$request ?: SingletonRequest::get();
+        $request=$request ?: $this->getRequest();
         $inputs = $request->check($rules)->validate();
 
         if ($inputs->isFailed()) {
