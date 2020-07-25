@@ -51,7 +51,7 @@ class HasOneExistsRelation
      */
     private function setQueryWithWhere(BuilderQuery $builderQuery, array $features): BuilderQuery
     {
-        $sql="{$builderQuery->getSelectQuery()} FROM {$features['table']}  WHERE EXISTS (SELECT * FROM  {$features['relationTable']} WHERE {$features['relationTable']}.{$features['foreignKey']}={$features['table']}.{$features['primaryKey']}) {$builderQuery->getOrderBy()} {$builderQuery->getLimit()} ";
+        $sql="{$builderQuery->getSelectQuery()} FROM {$features['table']}  WHERE EXISTS (SELECT * FROM  {$features['relationTable']} WHERE {$features['relationTable']}.{$features['foreignKey']}={$features['table']}.{$features['primaryKey']}) {$builderQuery->getOrderBy()} {$builderQuery->getLimitQuery()} ";
 
         return $builderQuery->setQuery(trim($sql));
     }
@@ -63,7 +63,7 @@ class HasOneExistsRelation
      */
     private function setQueryWithoutWhere(BuilderQuery $builderQuery, array $features): BuilderQuery
     {
-        $sql="{$builderQuery->getSelectQuery()} FROM {$features['table']} {$builderQuery->getWhereQuery()} AND EXISTS (SELECT * FROM  {$features['relationTable']} WHERE {$features['relationTable']}.{$features['foreignKey']}={$features['table']}.{$features['primaryKey']})  {$builderQuery->getOrderBy()} {$builderQuery->getLimit()}";
+        $sql="{$builderQuery->getSelectQuery()} FROM {$features['table']} {$builderQuery->getWhereQuery()} AND EXISTS (SELECT * FROM  {$features['relationTable']} WHERE {$features['relationTable']}.{$features['foreignKey']}={$features['table']}.{$features['primaryKey']})  {$builderQuery->getOrderBy()} {$builderQuery->getLimitQuery()}";
         return $builderQuery->setQuery(trim($sql));
     }
 }

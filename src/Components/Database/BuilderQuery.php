@@ -57,7 +57,7 @@ class BuilderQuery
     /**
      * @var
      */
-    private $limit;
+    private $limitQuery;
 
     /**
      * @var string|null
@@ -165,7 +165,7 @@ class BuilderQuery
             $this->bindArray[":update_$key"] = $value;
         }
         $query = rtrim($query, ',');
-        return "UPDATE {$this->getTable()}  SET {$query} {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimit()}";
+        return "UPDATE {$this->getTable()}  SET {$query} {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimitQuery()}";
     }
 
 
@@ -201,7 +201,7 @@ class BuilderQuery
      */
     private function builderDeleteQuery(): string
     {
-        return "DELETE FROM {$this->getTable()}  {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimit()}";
+        return "DELETE FROM {$this->getTable()}  {$this->mixedQuery} {$this->getWhereQuery()}{$this->getLimitQuery()}";
     }
 
     /**
@@ -864,7 +864,7 @@ class BuilderQuery
             $columns = implode(',', $columns) ?: '*';
             $this->setSelectQuery("SELECT $columns");
         }
-        return "{$this->getSelectQuery()} FROM {$this->getTable()}{$this->mixedQuery} {$this->getWhereQuery()} {$this->getGroupBy()} {$this->getHavingQuery()} {$this->getOrderBy()}{$this->getLimit()}";
+        return "{$this->getSelectQuery()} FROM {$this->getTable()}{$this->mixedQuery} {$this->getWhereQuery()} {$this->getGroupBy()} {$this->getHavingQuery()} {$this->getOrderBy()}{$this->getLimitQuery()}";
     }
 
     /**
@@ -1306,9 +1306,9 @@ class BuilderQuery
     public function limit($limit, $end = null): self
     {
         if ($end === null) {
-            $this->limit = " LIMIT $limit ";
+            $this->limitQuery = " LIMIT $limit ";
         } else {
-            $this->limit = " LIMIT $limit,$end ";
+            $this->limitQuery = " LIMIT $limit,$end ";
         }
         return $this;
     }
@@ -1329,9 +1329,9 @@ class BuilderQuery
     /**
      * @return mixed
      */
-    public function getLimit()
+    public function getLimitQuery()
     {
-        return $this->limit;
+        return $this->limitQuery;
     }
 
     /**
