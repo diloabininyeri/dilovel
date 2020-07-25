@@ -27,6 +27,12 @@ abstract class Model
      */
     private static ?string $observeClass = null;
 
+
+    /**
+     * @var int|null
+     */
+    private ?int $cacheTime=null;
+
     /**
      * Model constructor.
      */
@@ -135,6 +141,16 @@ abstract class Model
     final public function getCacheTime():?int
     {
         return $this->cacheTime ?? null;
+    }
+
+    /**
+     * @param int $seconds
+     * @return $this
+     */
+    final public function setCacheTime(int $seconds):self
+    {
+        $this->cacheTime=$seconds;
+        return $this;
     }
 
     /**

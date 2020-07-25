@@ -102,6 +102,15 @@ class BuilderQuery
     }
 
     /**
+     * @param int $seconds
+     * @return $this
+     */
+    public function withCache(int $seconds=120):self
+    {
+        $this->modelInstance->setCacheTime($seconds);
+        return $this;
+    }
+    /**
      * @return $this
      */
     public function withoutCache():self

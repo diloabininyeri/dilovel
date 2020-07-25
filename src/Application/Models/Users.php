@@ -33,11 +33,6 @@ class Users extends BuilderUserModel
     protected string $table = 'users';
 
     /**
-     * @var int
-     */
-    protected int $cacheTime=120;
-
-    /**
      * @var string
      */
     protected string  $connection = 'default';
