@@ -54,12 +54,24 @@ class DbQuery
         return $this;
     }
 
+    /**
+     * @param string $query
+     * @param array $bind
+     * @param string|null $mapperClass
+     * @return string
+     */
     private function createKeyHash(string $query, array $bind=[], string $mapperClass=null):string
     {
         $key=$query.implode($bind).$mapperClass;
         return md5($key);
     }
 
+    /**
+     * @param string $query
+     * @param array $bind
+     * @param string|null $mapperClass
+     * @return Collection
+     */
     private function selectWithCache(string $query, array $bind=[], string $mapperClass=null):Collection
     {
         $hashKey=$this->createKeyHash($query, $bind, $mapperClass);
@@ -81,7 +93,7 @@ class DbQuery
      */
     public function select(string $query, array $bind=[], string $mapperClass=null):Collection
     {
-        if ($this->cacheTime) {
+        if ($this->withCache) {
             return $this->selectWithCache($query, $bind, $mapperClass);
         }
 
