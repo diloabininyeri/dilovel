@@ -939,7 +939,15 @@ class BuilderQuery
         return $this->runSelect();
     }
 
-
+    /**
+     * @param int $count
+     * @return Collection
+     */
+    public function take(int $count): Collection
+    {
+        $this->limit($count);
+        return $this->get();
+    }
     /**
      * @param array $columns
      * @param Closure $closure
