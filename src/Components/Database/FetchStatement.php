@@ -151,7 +151,7 @@ class FetchStatement
     public function fetchAll():?array
     {
         if ($this->model->getCacheTime()) {
-            $this->fetchAllWithCache();
+            return $this->fetchAllWithCache();
         }
         return $this->runQuery()->fetchAll();
     }
