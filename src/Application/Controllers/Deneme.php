@@ -5,7 +5,9 @@ namespace App\Application\Controllers;
 
 use App\Application\Models\Users;
 use App\Components\Http\Request;
+use App\Components\Reflection\CodeBeautifier;
 use App\Components\Traits\RequestValidation;
+use ReflectionObject;
 
 /**
  * Class Deneme
@@ -13,15 +15,8 @@ use App\Components\Traits\RequestValidation;
  */
 class Deneme
 {
-    use RequestValidation;
-
     public function __construct()
     {
-        $rules = [
-            'image|resim alanı' => 'jpg_image|required',
-        ];
-
-        //$this->validate($rules);
     }
 
     /**
@@ -34,7 +29,6 @@ class Deneme
     public function index(Request $request)
     {
 
-        //return Users::withoutCache()->limit(10)->get();
-        return Users::withCache(1500)->get();
+        return Users::withCache()->get();
     }
 }

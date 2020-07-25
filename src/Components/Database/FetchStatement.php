@@ -116,11 +116,18 @@ class FetchStatement
 
 
     /**
+     * @return string
+     */
+    private function createCacheKey():string
+    {
+        return md5($this->query.implode($this->bindArray));
+    }
+    /**
      * @return mixed
      */
     private function fetchWithCache()
     {
-        return Cache::remember(md5($this->query), function () {
+        return Cache::remember($this->createCacheKey(), function () {
             return $this->runQuery()->fetch();
         }, $this->model->getCacheTime());
     }
@@ -144,7 +151,7 @@ class FetchStatement
      */
     public function fetchAllWithCache()
     {
-        return Cache::remember(md5($this->query), function () {
+        return Cache::remember($this->createCacheKey(), function () {
             return $this->runQuery()->fetchAll();
         }, $this->model->getCacheTime());
     }
