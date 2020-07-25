@@ -120,7 +120,7 @@ class FetchStatement
      */
     private function createCacheKey():string
     {
-        return md5($this->query.implode($this->bindArray));
+        return md5($this->model->getConnection().$this->query.implode($this->bindArray));
     }
     /**
      * @return mixed
