@@ -45,22 +45,24 @@ class DbQuery
     }
 
     /**
-     * @param $name
-     * @param $arguments
+     * @param int $seconds
      * @return $this
      */
-    public function __call($name, $arguments)
+    public function withCache(int $seconds=120):self
     {
-        if ($name === 'withCache') {
-            $this->withCache=true;
-            $this->cacheTime=$arguments[0] ?? 120;
-        }
-        if ($name === 'withoutCache') {
-            $this->withCache=false;
-        }
+        $this->cacheTime=$seconds;
+        $this->withCache=true;
         return $this;
     }
 
+    /**
+     * @return $this
+     */
+    public function withoutCache():self
+    {
+        $this->withCache=false;
+        return $this;
+    }
     /**
      * @param string $query
      * @param array $bind
