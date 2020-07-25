@@ -33,6 +33,6 @@ class Deneme
      */
     public function index(Request $request)
     {
-        return Users::limit(10)->get();
+        return Users::withoutCache()->limit(10)->get();
     }
 }

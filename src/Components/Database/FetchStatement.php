@@ -43,8 +43,9 @@ class FetchStatement
      */
     private Model $model;
 
-    public function __construct(Model $model)
+    public function __construct(Model $model, BuilderQuery $builderQuery)
     {
+        $this->builderQuery=$builderQuery;
         $this->model=$model;
     }
 
@@ -128,6 +129,9 @@ class FetchStatement
      */
     public function fetch()
     {
+        if ($this->builderQuery->isWithoutCache()) {
+            return $this->runQuery()->fetch();
+        }
         if ($this->model->getCacheTime()) {
             return $this->fetchWithCache();
         }
@@ -150,6 +154,9 @@ class FetchStatement
      */
     public function fetchAll():?array
     {
+        if ($this->builderQuery->isWithoutCache()) {
+            return $this->runQuery()->fetchAll();
+        }
         if ($this->model->getCacheTime()) {
             return $this->fetchAllWithCache();
         }

@@ -90,6 +90,8 @@ class BuilderQuery
      */
     private ?string $havingQuery=null;
 
+    private bool $withoutCache=false;
+
     /**
      * BuilderQuery constructor.
      * @param Model $model
@@ -97,6 +99,15 @@ class BuilderQuery
     public function __construct(Model $model)
     {
         $this->modelInstance = $model;
+    }
+
+    /**
+     * @return $this
+     */
+    public function withoutCache():self
+    {
+        $this->withoutCache=true;
+        return $this;
     }
 
     /**
@@ -1257,7 +1268,7 @@ class BuilderQuery
      */
     private function builderFetchStatement(): FetchStatement
     {
-        return (new FetchStatement($this->getModelInstance()))
+        return (new FetchStatement($this->getModelInstance(), $this))
             ->setBuilderQuery($this)
             ->setModelClass($this->modelInstance->getTable())
             ->setPdo($this->pdoInstance())
@@ -1517,5 +1528,13 @@ class BuilderQuery
     public function chunk(int $count, bool $reIndex=false): Collection
     {
         return $this->get()->chunk($count, $reIndex);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isWithoutCache(): bool
+    {
+        return $this->withoutCache;
     }
 }
