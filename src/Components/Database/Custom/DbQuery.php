@@ -3,6 +3,7 @@
 
 namespace App\Components\Database\Custom;
 
+use App\Components\Cache;
 use App\Components\Collection\Collection;
 use PDO;
 
@@ -18,6 +19,16 @@ class DbQuery
     private PDO $pdoConnection;
 
     /**
+     * @var bool
+     */
+    private bool $withCache=false;
+
+    /**
+     * @var int
+     */
+    private int  $cacheTime=0;
+
+    /**
      * DbQuery constructor.
      * @param PDO $pdoConnection
      */
@@ -26,6 +37,41 @@ class DbQuery
         $this->pdoConnection = $pdoConnection;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @return $this
+     */
+    public function __call($name, $arguments)
+    {
+        if ($name === 'withCache') {
+            $this->withCache=true;
+            $this->cacheTime=$arguments[0] ?? 120;
+        }
+        if ($name === 'withoutCache') {
+            $this->withCache=false;
+        }
+        return $this;
+    }
+
+    private function createKeyHash(string $query, array $bind=[], string $mapperClass=null):string
+    {
+        $key=$query.implode($bind).$mapperClass;
+        return md5($key);
+    }
+
+    private function selectWithCache(string $query, array $bind=[], string $mapperClass=null):Collection
+    {
+        $hashKey=$this->createKeyHash($query, $bind, $mapperClass);
+        return Cache::remember($hashKey, function () use ($bind,$query,$mapperClass) {
+            $statement=$this->pdoConnection->prepare($query);
+            $statement->execute($bind);
+            if ($mapperClass) {
+                return new Collection($statement->fetchAll(PDO::FETCH_CLASS, $mapperClass));
+            }
+            return new Collection($statement->fetchAll(PDO::FETCH_OBJ));
+        }, $this->cacheTime);
+    }
 
     /**
      * @param string $query
@@ -35,6 +81,10 @@ class DbQuery
      */
     public function select(string $query, array $bind=[], string $mapperClass=null):Collection
     {
+        if ($this->cacheTime) {
+            return $this->selectWithCache($query, $bind, $mapperClass);
+        }
+
         $statement=$this->pdoConnection->prepare($query);
         $statement->execute($bind);
         if ($mapperClass) {

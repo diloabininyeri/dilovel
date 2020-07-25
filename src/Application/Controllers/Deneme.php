@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Models\Users;
+use App\Components\Database\Custom\Db;
 use App\Components\Http\Request;
 use App\Components\Reflection\CodeBeautifier;
 use App\Components\Traits\RequestValidation;
@@ -28,7 +29,6 @@ class Deneme
      */
     public function index(Request $request)
     {
-
-        return Users::withCache()->get();
+        return Db::withCache()->select('select * from users limit 200');
     }
 }

@@ -12,6 +12,8 @@ use PDO;
  * @package App\Components\Database\Custom
  * @method static Collection select(string $query, array $bind=[], string $mapperClass=null)
  * @method static bool query(string $query, array $bind=[])
+ * @method static DbQuery withCache(int $seconds=120)
+ * @method static DbQuery withoutCache()
  */
 class Db
 {
