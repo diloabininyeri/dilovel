@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUndefinedClassInspection */
 
 namespace App\Components\Http;
 
@@ -205,7 +206,7 @@ class Request implements ArrayAble, ToJson, RequestInterface
 
     /**
      * @param string $file
-     * @return array
+     * @return array|File[]
      */
     public function files(string $file):array
     {
@@ -320,7 +321,7 @@ class Request implements ArrayAble, ToJson, RequestInterface
     /**
      * @return User
      */
-    public function user()
+    public function user(): User
     {
         return new User();
     }
