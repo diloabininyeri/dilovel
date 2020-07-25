@@ -117,16 +117,33 @@ class FetchStatement
     /**
      * @return mixed
      */
+    private function fetchWithCache()
+    {
+        return Cache::remember(md5($this->query), function () {
+            return $this->runQuery()->fetch();
+        }, $this->model->getCacheTime());
+    }
+    /**
+     * @return mixed
+     */
     public function fetch()
     {
         if ($this->model->getCacheTime()) {
-            return Cache::remember(md5($this->query), function () {
-                return $this->runQuery()->fetch();
-            }, $this->model->getCacheTime());
+            return $this->fetchWithCache();
         }
         return $this->runQuery()->fetch();
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function fetchAllWithCache()
+    {
+        return Cache::remember(md5($this->query), function () {
+            return $this->runQuery()->fetchAll();
+        }, $this->model->getCacheTime());
+    }
 
     /**
      * @return array|null
@@ -134,9 +151,7 @@ class FetchStatement
     public function fetchAll():?array
     {
         if ($this->model->getCacheTime()) {
-            return Cache::remember(md5($this->query), function () {
-                return $this->runQuery()->fetchAll();
-            }, $this->model->getCacheTime());
+            $this->fetchAllWithCache();
         }
         return $this->runQuery()->fetchAll();
     }
