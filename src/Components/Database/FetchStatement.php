@@ -3,6 +3,7 @@
 
 namespace App\Components\Database;
 
+use App\Components\Cache;
 use PDO;
 use PDOStatement;
 
@@ -28,7 +29,7 @@ class FetchStatement
     private array $bindArray;
 
     /**
-     * @var PDOAdaptor $pdo
+     * @var PDO $pdo
      */
     private PDO $pdo;
 
@@ -36,6 +37,16 @@ class FetchStatement
      * @var BuilderQuery $builderQuery
      */
     private BuilderQuery $builderQuery;
+
+    /**
+     * @var Model $model
+     */
+    private Model $model;
+
+    public function __construct(Model $model)
+    {
+        $this->model=$model;
+    }
 
     /**
      * @param string $query
@@ -108,6 +119,11 @@ class FetchStatement
      */
     public function fetch()
     {
+        if ($this->model->getCacheTime()) {
+            return Cache::remember(md5($this->query), function () {
+                return $this->runQuery()->fetch();
+            }, $this->model->getCacheTime());
+        }
         return $this->runQuery()->fetch();
     }
 
@@ -115,13 +131,18 @@ class FetchStatement
     /**
      * @return array|null
      */
-    public function fetchAll(): ?array
+    public function fetchAll():?array
     {
+        if ($this->model->getCacheTime()) {
+            return Cache::remember(md5($this->query), function () {
+                return $this->runQuery()->fetchAll();
+            }, $this->model->getCacheTime());
+        }
         return $this->runQuery()->fetchAll();
     }
 
     /**
-     * @param PDOAdaptor $pdo
+     * @param PDO $pdo
      * @return FetchStatement
      */
     public function setPdo(PDO $pdo): FetchStatement
@@ -149,7 +170,7 @@ class FetchStatement
     }
 
     /**
-     * @return PDOAdaptor
+     * @return PDO
      */
     private function getPdo(): PDO
     {

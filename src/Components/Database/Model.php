@@ -130,6 +130,14 @@ abstract class Model
 
 
     /**
+     * @return int|null
+     */
+    final public function getCacheTime():?int
+    {
+        return $this->cacheTime ?? null;
+    }
+
+    /**
      * @param $name
      * @param $arguments
      * @return mixed

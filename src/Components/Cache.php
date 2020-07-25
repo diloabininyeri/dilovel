@@ -11,7 +11,7 @@ use Closure;
 /**
  * Class Cache
  * @package App\Components
- * @method static remember($key, Closure $closure)
+ * @method static remember($key, Closure $closure,int  $seconds=120)
  * @method static get(string $key, $default = null)
  * @method static set(string $key, $value)
  * @method static setex(string $key, $value, $time = 120)

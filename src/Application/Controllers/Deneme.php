@@ -3,6 +3,7 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Models\Users;
 use App\Components\Http\Request;
 use App\Components\Traits\RequestValidation;
 
@@ -20,7 +21,7 @@ class Deneme
             'image|resim alanı' => 'jpg_image|required',
         ];
 
-        $this->validate($rules);
+        //$this->validate($rules);
     }
 
     /**
@@ -32,6 +33,6 @@ class Deneme
      */
     public function index(Request $request)
     {
-        return __FILE__;
+        return Users::limit(10)->get();
     }
 }

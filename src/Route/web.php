@@ -8,6 +8,7 @@ Route::get('router_test', fn () =>route('custom_name.test'));
 Route::view('/view-test', 'index');
 
 Route::post('deneme/', 'Deneme@index')->name('reg');
+Route::get('deneme/', 'Deneme@index')->name('reg');
 
 Route::post('upload', 'ImageFormHandleAndResizeTest@test')->name('test');
 Route::view('form', 'form')->name('form');

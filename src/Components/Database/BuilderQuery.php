@@ -1257,7 +1257,7 @@ class BuilderQuery
      */
     private function builderFetchStatement(): FetchStatement
     {
-        return (new FetchStatement())
+        return (new FetchStatement($this->getModelInstance()))
             ->setBuilderQuery($this)
             ->setModelClass($this->modelInstance->getTable())
             ->setPdo($this->pdoInstance())
