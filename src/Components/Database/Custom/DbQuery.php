@@ -29,12 +29,19 @@ class DbQuery
     private int  $cacheTime=0;
 
     /**
+     * @var string $connectionName
+     */
+    private string $connectionName;
+
+    /**
      * DbQuery constructor.
      * @param PDO $pdoConnection
+     * @param string $connectionName
      */
-    public function __construct(PDO $pdoConnection)
+    public function __construct(PDO $pdoConnection, string $connectionName='default')
     {
         $this->pdoConnection = $pdoConnection;
+        $this->connectionName=$connectionName;
     }
 
     /**
@@ -62,7 +69,7 @@ class DbQuery
      */
     private function createKeyHash(string $query, array $bind=[], string $mapperClass=null):string
     {
-        $key=$query.implode($bind).$mapperClass;
+        $key=$this->connectionName.$query.implode($bind).$mapperClass;
         return md5($key);
     }
 

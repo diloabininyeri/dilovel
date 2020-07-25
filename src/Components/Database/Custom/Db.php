@@ -39,7 +39,7 @@ class Db
             return new DbQuery(self::getPdoConnection('default'));
         }
         if ($connectionName !== null && $closure === null) {
-            return new DbQuery(self::getPdoConnection($connectionName));
+            return new DbQuery(self::getPdoConnection($connectionName), $connectionName);
         }
 
         return  $closure(PDOAdaptor::connection($connectionName));
