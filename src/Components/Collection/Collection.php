@@ -80,7 +80,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function jsonSerialize()
     {
-        return serialize($this->collection);
+        return $this->collection;
     }
 
     /**
