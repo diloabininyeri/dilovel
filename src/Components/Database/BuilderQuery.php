@@ -354,6 +354,19 @@ class BuilderQuery
 
     /**
      * @param string $column
+     * @param string $dateForHumans
+     * @param string $operator
+     * @return $this
+     * @throws \Exception
+     */
+    public function whereDateForHumans(string $column, string $dateForHumans, string $operator='='):self
+    {
+        $date=(new \DateTime($dateForHumans))->format('Y-m-d');
+        return $this->whereDate($column, $date, $operator);
+    }
+
+    /**
+     * @param string $column
      * @param int $hour
      * @param string|null $operator
      * @return $this
