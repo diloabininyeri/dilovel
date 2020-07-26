@@ -6,6 +6,8 @@ use App\Components\Collection\Collection;
 use App\Components\Exceptions\MethodNotfoundInModelException;
 use App\Components\Traits\ConditionAble;
 use Closure;
+use DateTime;
+use Exception;
 use PDO;
 use function request;
 
@@ -357,11 +359,11 @@ class BuilderQuery
      * @param string $dateForHumans
      * @param string $operator
      * @return $this
-     * @throws \Exception
+     * @throws Exception
      */
     public function whereDateForHumans(string $column, string $dateForHumans, string $operator='='):self
     {
-        $date=(new \DateTime($dateForHumans))->format('Y-m-d');
+        $date=(new DateTime($dateForHumans))->format('Y-m-d');
         return $this->whereDate($column, $date, $operator);
     }
 
@@ -735,7 +737,7 @@ class BuilderQuery
      * @param string $column
      * @return float
      */
-    public function std(string $column)
+    public function std(string $column): float
     {
         $this->builderAggregateQuery('std', $column);
         $this->setQuery($this->selectBuilderQuery($column));
