@@ -29,6 +29,7 @@ class Deneme
      */
     public function index(Request $request)
     {
-        return Db::withCache()->select('select * from users limit 200');
+        $users=new Users();
+        return$a=$users->whereDate('created_at', '2020/05/10', '<=')->get();
     }
 }

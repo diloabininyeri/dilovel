@@ -300,59 +300,67 @@ class BuilderQuery
     /**
      * @param string $column
      * @param int $year
+     * @param string|null $operator
      * @return $this
      */
-    public function whereYear(string $column, int $year):self
+    public function whereYear(string $column, int $year, string $operator=null):self
     {
-        return  $this->where("YEAR($column)", $year);
+        return  $this->where("YEAR($column)", $year, $operator);
     }
 
     /**
      * @param string $column
      * @param int $week
+     * @param string|null $operator
      * @return $this
      */
-    public function whereWeek(string $column, int $week):self
+    public function whereWeek(string $column, int $week, string $operator=null):self
     {
-        return  $this->where("WEEK($column)", $week);
+        return  $this->where("WEEK($column)", $week, $operator);
     }
+
     /**
      * @param string $column
      * @param int $month
+     * @param string|null $operator
      * @return $this
      */
-    public function whereMonth(string $column, int $month):self
+    public function whereMonth(string $column, int $month, string $operator=null):self
     {
-        return  $this->where("MONTH($column)", $month);
+        return  $this->where("MONTH($column)", $month, $operator);
     }
+
     /**
      * @param string $column
      * @param int $day
+     * @param string|null $operator
      * @return $this
      */
-    public function whereDay(string $column, int $day):self
+    public function whereDay(string $column, int $day, string $operator=null):self
     {
-        return  $this->where("DAY($column)", $day);
+        return  $this->where("DAY($column)", $day, $operator);
     }
 
     /**
      * @param string $column
      * @param string $date
+     * @param string|null $operator
      * @return $this
      */
-    public function whereDate(string $column, string $date):self
+    public function whereDate(string $column, string $date, string $operator=null):self
     {
-        return  $this->where("DATE($column)", $date);
+        return  $this->where("DATE($column)", $date, $operator);
     }
 
     /**
      * @param string $column
      * @param int $hour
+     * @param string|null $operator
      * @return $this
      */
-    public function whereHour(string $column, int $hour):self
+    public function whereHour(string $column, int $hour, string $operator=null):self
     {
-        return  $this->where("HOUR($column)", $hour);
+        return  $this->where("HOUR($column)", $hour, $operator);
     }
     /**
      * @param string $key
