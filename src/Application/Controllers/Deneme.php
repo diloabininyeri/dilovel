@@ -30,6 +30,6 @@ class Deneme
     public function index(Request $request)
     {
         $users=new Users();
-        return$a=$users->whereDate('created_at', '2020/05/10', '<=')->get();
+        return $users->whereDate('created_at', '2020/05/10', '>')->get();
     }
 }

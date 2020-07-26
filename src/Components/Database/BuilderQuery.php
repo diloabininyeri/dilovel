@@ -303,7 +303,7 @@ class BuilderQuery
      * @param string|null $operator
      * @return $this
      */
-    public function whereYear(string $column, int $year, string $operator=null):self
+    public function whereYear(string $column, int $year, string $operator='='):self
     {
         return  $this->where("YEAR($column)", $year, $operator);
     }
@@ -314,7 +314,7 @@ class BuilderQuery
      * @param string|null $operator
      * @return $this
      */
-    public function whereWeek(string $column, int $week, string $operator=null):self
+    public function whereWeek(string $column, int $week, string $operator='='):self
     {
         return  $this->where("WEEK($column)", $week, $operator);
     }
@@ -325,7 +325,7 @@ class BuilderQuery
      * @param string|null $operator
      * @return $this
      */
-    public function whereMonth(string $column, int $month, string $operator=null):self
+    public function whereMonth(string $column, int $month, string $operator='='):self
     {
         return  $this->where("MONTH($column)", $month, $operator);
     }
@@ -336,7 +336,7 @@ class BuilderQuery
      * @param string|null $operator
      * @return $this
      */
-    public function whereDay(string $column, int $day, string $operator=null):self
+    public function whereDay(string $column, int $day, string $operator='='):self
     {
         return  $this->where("DAY($column)", $day, $operator);
     }
@@ -347,7 +347,7 @@ class BuilderQuery
      * @param string|null $operator
      * @return $this
      */
-    public function whereDate(string $column, string $date, string $operator=null):self
+    public function whereDate(string $column, string $date, string $operator='='):self
     {
         return  $this->where("DATE($column)", $date, $operator);
     }
@@ -358,7 +358,7 @@ class BuilderQuery
      * @param string|null $operator
      * @return $this
      */
-    public function whereHour(string $column, int $hour, string $operator=null):self
+    public function whereHour(string $column, int $hour, string $operator='='):self
     {
         return  $this->where("HOUR($column)", $hour, $operator);
     }
