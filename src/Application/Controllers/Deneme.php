@@ -3,8 +3,11 @@
 
 namespace App\Application\Controllers;
 
+use App\Application\Elastic\ElasticModelExample;
 use App\Application\Models\Users;
+use App\Components\Collection\Collection;
 use App\Components\Http\Request;
+use App\Components\Reflection\RuleAnnotation;
 
 /**
  * Class Deneme
@@ -16,15 +19,12 @@ class Deneme
     {
     }
 
-    /**
-     * @param Request $request
-     * @return string
-     * @rule(max:255)
-     * @rule(required)
-     * @rule(string)
-     */
+
     public function index(Request $request)
     {
-        return Users::whereDateForHumans('created_at', '3 weeks ago', '>')->get();
+        $d=ElasticModelExample::all();
+        foreach ($d as $item) {
+            echo $item->testField;
+        }
     }
 }

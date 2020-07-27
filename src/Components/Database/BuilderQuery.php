@@ -362,7 +362,7 @@ class BuilderQuery
      */
     public function whereDateForHumans(string $column, string $dateForHumans, string $operator='='):self
     {
-        $date=date('Y-m-d',strtotime($dateForHumans));
+        $date=date('Y-m-d', strtotime($dateForHumans));
         return $this->whereDate($column, $date, $operator);
     }
 

@@ -2102,3 +2102,103 @@ Stack trace:
 [22-Jul-2020 18:17:42 Europe/Helsinki] PHP  14. Composer\Autoload\ClassLoader->loadClass() /home/zeus/Desktop/dilovel/src/Components/Routers/Redirect/Redirect.php:154
 [22-Jul-2020 18:17:42 Europe/Helsinki] PHP  15. Composer\Autoload\includeFile() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:322
 [22-Jul-2020 18:17:42 Europe/Helsinki] PHP  16. include() /home/zeus/Desktop/dilovel/vendor/composer/ClassLoader.php:444
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Elastic\ElasticModelExample could not be converted to string in /home/zeus/Desktop/dilovel/src/Application/Elastic/ElasticModelExample.php:23
+Stack trace:
+#0 /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php(44): App\Application\Elastic\ElasticModelExample->construct()
+#1 /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php(29): App\Components\Elasticsearch\Model::__callStatic()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/dilovel/src/Components/Route/CallController.php(74): App\Components\Route\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php(78): App\Components\Route\CallController->call()
+#6 /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php(67): App\Components\Route\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/di in /home/zeus/Desktop/dilovel/src/Application/Elastic/ElasticModelExample.php on line 23
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP Stack trace:
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/dilovel/index.php:24
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/dilovel/src/Bootstrap/App.php:22
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:60
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   5. App\Components\Route\Dispatcher->route() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:68
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   6. App\Components\Route\Dispatcher->callUserFunc() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:40
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   7. App\Components\Route\Dispatcher->callControllerMethod() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:67
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   8. App\Components\Route\CallController->call() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:78
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP   9. App\Components\Route\CallControllerWithoutIoc->call() /home/zeus/Desktop/dilovel/src/Components/Route/CallController.php:74
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP  10. call_user_func:{/home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP  11. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP  12. App\Components\Elasticsearch\Model::exists() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP  13. App\Components\Elasticsearch\Model::__callStatic() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
+[27-Jul-2020 00:58:23 Europe/Helsinki] PHP  14. App\Application\Elastic\ElasticModelExample->construct() /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php:44
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Elastic\ElasticModelExample could not be converted to string in /home/zeus/Desktop/dilovel/src/Application/Elastic/ElasticModelExample.php:23
+Stack trace:
+#0 /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php(44): App\Application\Elastic\ElasticModelExample->construct()
+#1 /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php(29): App\Components\Elasticsearch\Model::__callStatic()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/dilovel/src/Components/Route/CallController.php(74): App\Components\Route\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php(78): App\Components\Route\CallController->call()
+#6 /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php(67): App\Components\Route\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/di in /home/zeus/Desktop/dilovel/src/Application/Elastic/ElasticModelExample.php on line 23
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP Stack trace:
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/dilovel/index.php:24
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/dilovel/src/Bootstrap/App.php:22
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:60
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   5. App\Components\Route\Dispatcher->route() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:68
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   6. App\Components\Route\Dispatcher->callUserFunc() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:40
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   7. App\Components\Route\Dispatcher->callControllerMethod() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:67
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   8. App\Components\Route\CallController->call() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:78
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP   9. App\Components\Route\CallControllerWithoutIoc->call() /home/zeus/Desktop/dilovel/src/Components/Route/CallController.php:74
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP  10. call_user_func:{/home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP  11. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP  12. App\Components\Elasticsearch\Model::exists() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP  13. App\Components\Elasticsearch\Model::__callStatic() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
+[27-Jul-2020 00:58:37 Europe/Helsinki] PHP  14. App\Application\Elastic\ElasticModelExample->construct() /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php:44
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Elastic\ElasticModelExample could not be converted to string in /home/zeus/Desktop/dilovel/src/Application/Elastic/ElasticModelExample.php:23
+Stack trace:
+#0 /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php(44): App\Application\Elastic\ElasticModelExample->construct()
+#1 /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php(29): App\Components\Elasticsearch\Model::__callStatic()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/dilovel/src/Components/Route/CallController.php(74): App\Components\Route\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php(78): App\Components\Route\CallController->call()
+#6 /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php(67): App\Components\Route\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/di in /home/zeus/Desktop/dilovel/src/Application/Elastic/ElasticModelExample.php on line 23
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP Stack trace:
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/dilovel/index.php:24
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/dilovel/src/Bootstrap/App.php:22
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:60
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   5. App\Components\Route\Dispatcher->route() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:68
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   6. App\Components\Route\Dispatcher->callUserFunc() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:40
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   7. App\Components\Route\Dispatcher->callControllerMethod() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:67
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   8. App\Components\Route\CallController->call() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:78
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP   9. App\Components\Route\CallControllerWithoutIoc->call() /home/zeus/Desktop/dilovel/src/Components/Route/CallController.php:74
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP  10. call_user_func:{/home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP  11. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP  12. App\Components\Elasticsearch\Model::exists() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP  13. App\Components\Elasticsearch\Model::__callStatic() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
+[27-Jul-2020 00:58:38 Europe/Helsinki] PHP  14. App\Application\Elastic\ElasticModelExample->construct() /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php:44
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Object of class App\Application\Elastic\ElasticModelExample could not be converted to string in /home/zeus/Desktop/dilovel/src/Application/Elastic/ElasticModelExample.php:23
+Stack trace:
+#0 /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php(44): App\Application\Elastic\ElasticModelExample->construct()
+#1 /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php(29): App\Components\Elasticsearch\Model::__callStatic()
+#2 [internal function]: App\Application\Controllers\Deneme->index()
+#3 /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php(47): call_user_func()
+#4 /home/zeus/Desktop/dilovel/src/Components/Route/CallController.php(74): App\Components\Route\CallControllerWithoutIoc->call()
+#5 /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php(78): App\Components\Route\CallController->call()
+#6 /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php(67): App\Components\Route\Dispatcher->callControllerMethod()
+#7 /home/zeus/Desktop/di in /home/zeus/Desktop/dilovel/src/Application/Elastic/ElasticModelExample.php on line 23
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP Stack trace:
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/dilovel/index.php:24
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/dilovel/src/Bootstrap/App.php:22
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:60
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   5. App\Components\Route\Dispatcher->route() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:68
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   6. App\Components\Route\Dispatcher->callUserFunc() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:40
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   7. App\Components\Route\Dispatcher->callControllerMethod() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:67
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   8. App\Components\Route\CallController->call() /home/zeus/Desktop/dilovel/src/Components/Route/Dispatcher.php:78
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP   9. App\Components\Route\CallControllerWithoutIoc->call() /home/zeus/Desktop/dilovel/src/Components/Route/CallController.php:74
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP  10. call_user_func:{/home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47}() /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP  11. App\Application\Controllers\Deneme->index() /home/zeus/Desktop/dilovel/src/Components/Route/CallControllerWithoutIoc.php:47
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP  12. App\Components\Elasticsearch\Model::exists() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP  13. App\Components\Elasticsearch\Model::__callStatic() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
+[27-Jul-2020 00:58:39 Europe/Helsinki] PHP  14. App\Application\Elastic\ElasticModelExample->construct() /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php:44
