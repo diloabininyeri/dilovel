@@ -12,27 +12,15 @@ class ModelMapper
     /**
      * @param Model $model
      * @param array $data
-     * @return array
+     * @return array|Model[]
      */
     public static function make(Model $model, array $data):array
     {
-        if (isset($data['hits']['hits'])) {
-            $data=$data['hits']['hits'];
-            $return = [];
-            foreach ($data as $key =>$value) {
-                $clonedModel = clone $model;
-                foreach ($value as $item=>$itemValue) {
-                    $clonedModel->$item=$itemValue;
-                }
-                foreach ($value['_source'] as $sourceKey=>$sourceValue) {
-                    $clonedModel->$sourceKey=$sourceValue;
-                }
-                unset($clonedModel->_source);
-                $return[]=$clonedModel;
-            }
-            return $return;
+        $return=[];
+        foreach ($data['hits']['hits'] as $hit) {
+            $return[]= self::instance($hit, clone $model);
         }
-        return  [];
+        return $return;
     }
 
     /**
