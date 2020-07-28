@@ -5,7 +5,6 @@ namespace App\Components\Elasticsearch;
 
 use App\Components\Collection\Collection;
 use Elasticsearch\Client;
-use phpDocumentor\Reflection\Types\This;
 
 class ElasticQuery
 {
@@ -44,15 +43,7 @@ class ElasticQuery
     public function find(): ?Model
     {
         if ($this->client->exists($this->query)) {
-            $result= $this->client->get($this->query);
-            $source=$result['_source'];
-            $source['id']=$result['_id'];
-            foreach ($source as $key=>$value) {
-                $this->model->$key=$value;
-            }
-
-            $this->model->setAttributes($source);
-            return  $this->model;
+            return ModelMapper::instance($this->client->get($this->query), $this->model);
         }
         return null;
     }

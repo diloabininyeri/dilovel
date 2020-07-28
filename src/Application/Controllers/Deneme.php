@@ -15,11 +15,6 @@ use App\Components\Reflection\RuleAnnotation;
  */
 class Deneme
 {
-    public function __construct()
-    {
-    }
-
-
     public function index(Request $request)
     {
         $model=ElasticModelExample::find('dene5f1f2df66d99a6.80384871');

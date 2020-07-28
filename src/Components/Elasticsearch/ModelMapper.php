@@ -34,4 +34,20 @@ class ModelMapper
         }
         return  [];
     }
+
+    /**
+     * @param array $data
+     * @param Model $model
+     * @return Model
+     */
+    public static function instance(array $data, Model $model):Model
+    {
+        $source=$data['_source'];
+        $source['id']=$data['_id'];
+        foreach ($source as $key=>$value) {
+            $model->$key=$value;
+        }
+        $model->setAttributes($source);
+        return  $model;
+    }
 }
