@@ -11,7 +11,10 @@ use App\Components\Elasticsearch\Model;
  * @package App\Application\Elastic
  * @method static exists()
  * @method static Collection all()
+ * @method static self find($id)
  * @construct(deneme)
+ * @property $id
+ * @property $testField
  */
 class ElasticModelExample extends Model
 {
@@ -24,4 +27,20 @@ class ElasticModelExample extends Model
      * @var string
      */
     protected string $primaryKey='id';
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTestField()
+    {
+        return $this->testField;
+    }
 }

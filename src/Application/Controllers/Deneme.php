@@ -22,9 +22,7 @@ class Deneme
 
     public function index(Request $request)
     {
-        $d=ElasticModelExample::all();
-        foreach ($d as $item) {
-            echo $item->testField;
-        }
+        $model=ElasticModelExample::find('dene5f1f2df66d99a6.80384871');
+        return sprintf('%s %s', $model->getId(), $model->getTestField());
     }
 }

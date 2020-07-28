@@ -3,8 +3,6 @@
 
 namespace App\Components\Elasticsearch;
 
-use App\Components\Reflection\RuleAnnotation;
-
 /**
  * Class Model
  * @package App\Components\Elasticsearch
@@ -18,6 +16,11 @@ class Model
     private ElasticBuilderQuery $builderQuery;
 
     /**
+     * @var array
+     */
+    private array $attributes = [];
+
+    /**
      * Model constructor.
      */
     public function __construct()
@@ -25,6 +28,13 @@ class Model
         $this->builderQuery = new ElasticBuilderQuery($this);
     }
 
+    /**
+     * @return string
+     */
+    public function getStaticClass():string
+    {
+        return static::class;
+    }
     /**
      * @return string
      */
@@ -40,6 +50,15 @@ class Model
     {
         return $this->primaryKey ?? 'id';
     }
+
+    /**
+     * @return array
+     */
+    public function __debugInfo()
+    {
+        return $this->attributes;
+    }
+
     /**
      * @param $name
      * @param $arguments
@@ -62,5 +81,23 @@ class Model
     public function __call($name, $arguments)
     {
         return $this->builderQuery->$name(...$arguments);
+    }
+
+    /**
+     * @param array $attributes
+     * @return Model
+     */
+    public function setAttributes(array $attributes): Model
+    {
+        $this->attributes = $attributes;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttributes(): array
+    {
+        return $this->attributes;
     }
 }

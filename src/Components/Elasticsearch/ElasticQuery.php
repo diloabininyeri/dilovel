@@ -4,6 +4,8 @@
 namespace App\Components\Elasticsearch;
 
 use App\Components\Collection\Collection;
+use Elasticsearch\Client;
+use phpDocumentor\Reflection\Types\This;
 
 class ElasticQuery
 {
@@ -12,6 +14,8 @@ class ElasticQuery
 
     private ?array $query=null;
 
+
+    private Client $client;
     /**
      * @param Model $model
      * @return ElasticQuery
@@ -19,6 +23,7 @@ class ElasticQuery
     public function setModel(Model $model): ElasticQuery
     {
         $this->model = $model;
+        $this->client=Elastic::connection();
         return $this;
     }
 
@@ -32,9 +37,29 @@ class ElasticQuery
         return $this;
     }
 
-    public function search()
+    /**
+     * @return Model|null
+     * @see ElasticBuilderQuery::find()
+     */
+    public function find(): ?Model
     {
-        $result= Elastic::connection()->search($this->query);
+        if ($this->client->exists($this->query)) {
+            $result= $this->client->get($this->query);
+            $source=$result['_source'];
+            $source['id']=$result['_id'];
+            foreach ($source as $key=>$value) {
+                $this->model->$key=$value;
+            }
+
+            $this->model->setAttributes($source);
+            return  $this->model;
+        }
+        return null;
+    }
+
+    public function search(): Collection
+    {
+        $result= $this->client->search($this->query);
         return new Collection(ModelMapper::make($this->model, $result));
     }
 }

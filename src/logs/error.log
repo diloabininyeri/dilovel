@@ -2202,3 +2202,29 @@ Stack trace:
 [27-Jul-2020 00:58:39 Europe/Helsinki] PHP  12. App\Components\Elasticsearch\Model::exists() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
 [27-Jul-2020 00:58:39 Europe/Helsinki] PHP  13. App\Components\Elasticsearch\Model::__callStatic() /home/zeus/Desktop/dilovel/src/Application/Controllers/Deneme.php:29
 [27-Jul-2020 00:58:39 Europe/Helsinki] PHP  14. App\Application\Elastic\ElasticModelExample->construct() /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php:44
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP Warning:  Uncaught Whoops\Exception\ErrorException: Undefined property: App\Application\Elastic\ElasticModelExample::$_source in /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php:46
+Stack trace:
+#0 /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php(46): Whoops\Run->handleError()
+#1 [internal function]: App\Components\Elasticsearch\Model->__debugInfo()
+#2 /home/zeus/Desktop/dilovel/src/Components/Route/Printable.php(55): print_r()
+#3 /home/zeus/Desktop/dilovel/src/Bootstrap/System.php(70): App\Components\Route\Printable->output()
+#4 /home/zeus/Desktop/dilovel/src/Bootstrap/System.php(60): App\Bootstrap\System->printable()
+#5 /home/zeus/Desktop/dilovel/src/Bootstrap/App.php(22): App\Bootstrap\System->startUp()
+#6 /home/zeus/Desktop/dilovel/index.php(24): App\Bootstrap\App->run()
+#7 {main}
+  thrown in /home/zeus/Desktop/dilovel/src/Components/Elasticsearch/Model.php on line 46
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP Stack trace:
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/dilovel/index.php:24
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/dilovel/src/Bootstrap/App.php:22
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:60
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   5. App\Components\Route\Printable->output() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:70
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   6. print_r() /home/zeus/Desktop/dilovel/src/Components/Route/Printable.php:55
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP Fatal error:  __debuginfo() must return an array in /home/zeus/Desktop/dilovel/src/Components/Route/Printable.php on line 55
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP Stack trace:
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   1. {main}() /home/zeus/Desktop/dilovel/index.php:0
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   2. App\Bootstrap\App->run() /home/zeus/Desktop/dilovel/index.php:24
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   3. App\Bootstrap\System->startUp() /home/zeus/Desktop/dilovel/src/Bootstrap/App.php:22
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   4. App\Bootstrap\System->printable() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:60
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   5. App\Components\Route\Printable->output() /home/zeus/Desktop/dilovel/src/Bootstrap/System.php:70
+[28-Jul-2020 06:00:54 Europe/Helsinki] PHP   6. print_r() /home/zeus/Desktop/dilovel/src/Components/Route/Printable.php:55
