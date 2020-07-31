@@ -19,10 +19,10 @@ class Deneme
     {
         $elastic=new ElasticModelExample();
         $elastic->testField='elbet bir gün';
-        return $elastic->save();
+        // return $elastic->save();
 
-        $model=ElasticModelExample::find('dene5f1f2df66d99a6.80384871');
-        $model->testField = 'gece ateşi';
+        $model=ElasticModelExample::find('94kHp3MBpIOyzQvKzcmy');
+        $model->testField = 'elbet bir';
         return   $model->save();
     }
 }

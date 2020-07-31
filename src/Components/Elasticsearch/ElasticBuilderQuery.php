@@ -69,11 +69,18 @@ class ElasticBuilderQuery
     }
 
     /**
+     * @return array
+     */
+    private function getModelAttributes():array
+    {
+        return get_object_vars($this->model);
+    }
+    /**
      * @return mixed
      */
     public function save():Model
     {
-        $attributes = get_object_vars($this->model);
+        $attributes = $this->getModelAttributes();
 
         if ($this->model->isHasPrimaryKeyValue()) {
             $params = $this->builderUpdateQuery($this->model->getPrimaryKeyValue(), $attributes);
