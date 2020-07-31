@@ -56,6 +56,16 @@ class ElasticBuilderQuery
     }
 
     /**
+     * @param $id
+     * @param callable $callable
+     * @return Model|mixed
+     */
+    public function findOr($id, callable $callable)
+    {
+        return $this->find($id) ?? $callable();
+    }
+
+    /**
      * @param array $params
      * @param string $method
      * @return mixed

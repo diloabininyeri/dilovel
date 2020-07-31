@@ -17,6 +17,10 @@ class Deneme
 {
     public function index(Request $request)
     {
+        return ElasticModelExample::findOr('94kHp3MBpIOyzQvKzcmy', static function () {
+            return 'dd';
+        });
+
         $elastic=new ElasticModelExample();
         $elastic->testField='elbet bir gün';
         // return $elastic->save();
