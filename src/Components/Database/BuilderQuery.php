@@ -46,7 +46,7 @@ class BuilderQuery
     private bool $isWhereUsed = false;
 
     /**
-     * @var string $whereQuery
+     * @var string|null
      */
     private ?string  $whereQuery = null;
 
@@ -254,7 +254,7 @@ class BuilderQuery
             ObserverFire::created($this->find($this->pdoInstance()->lastInsertId()));
             return $this->find($this->pdoInstance()->lastInsertId());
         }
-        return $execute;
+        return false;
     }
 
     /**
@@ -282,12 +282,13 @@ class BuilderQuery
      * @param int $incr
      * @return Model
      */
-    public function increment(string $column, int $incr=1):Model
+    public function increment(string $column, int $incr=1):?Model
     {
         if ($this->modelInstance->isPrimaryKeyHasValue()) {
             $this->modelInstance->$column += $incr;
             return call_user_func([$this->modelInstance,'save']);
         }
+        return null;
     }
 
     /**
@@ -295,12 +296,13 @@ class BuilderQuery
      * @param int $decr
      * @return Model
      */
-    public function decrement(string $column, int $decr=1):Model
+    public function decrement(string $column, int $decr=1):?Model
     {
         if ($this->modelInstance->isPrimaryKeyHasValue()) {
             $this->modelInstance->$column -= $decr;
             return call_user_func([$this->modelInstance,'save']);
         }
+        return null;
     }
     /**
      * @param $key
@@ -416,6 +418,7 @@ class BuilderQuery
      * @param string $key
      * @param string $keyword
      * @param $value
+     * @param null $not
      * @return $this
      */
     private function builderLikeOrRegexp(string $key, string $keyword, $value, $not = null): self
@@ -592,7 +595,6 @@ class BuilderQuery
      * @param $operator
      * @param $value
      * @return $this
-     * @noinspection PhpUnused
      */
     public function orWhere($key, $value, $operator = '='): self
     {
