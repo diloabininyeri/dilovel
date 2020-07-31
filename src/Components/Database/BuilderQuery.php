@@ -87,7 +87,7 @@ class BuilderQuery
 
 
     /**
-     * @var string
+     * @var ?string $havingQuery
      */
     private ?string $havingQuery=null;
 
@@ -282,7 +282,7 @@ class BuilderQuery
      * @param int $incr
      * @return Model
      */
-    public function increment(string $column, int $incr):Model
+    public function increment(string $column, int $incr=1):Model
     {
         if ($this->modelInstance->isPrimaryKeyHasValue()) {
             $this->modelInstance->$column += $incr;
@@ -295,7 +295,7 @@ class BuilderQuery
      * @param int $decr
      * @return Model
      */
-    public function decrement(string $column, int $decr):Model
+    public function decrement(string $column, int $decr=1):Model
     {
         if ($this->modelInstance->isPrimaryKeyHasValue()) {
             $this->modelInstance->$column -= $decr;
