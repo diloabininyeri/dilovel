@@ -6,6 +6,7 @@ namespace App\Components\Elasticsearch;
 /**
  * Class Model
  * @package App\Components\Elasticsearch
+ * @property $_id
  */
 class Model
 {
@@ -19,6 +20,7 @@ class Model
      * @var array
      */
     private array $attributes = [];
+
 
     /**
      * Model constructor.
@@ -91,6 +93,23 @@ class Model
     {
         $this->attributes = $attributes;
         return $this;
+    }
+
+
+    public function getPrimaryKeyValue()
+    {
+        if ($this->isHasPrimaryKeyValue()) {
+            return $this->id ?? $this->_id;
+        }
+        return null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasPrimaryKeyValue():bool
+    {
+        return !empty($this->id ?? $this->_id ?? null);
     }
 
     /**

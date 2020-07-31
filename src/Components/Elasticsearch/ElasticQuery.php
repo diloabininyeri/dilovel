@@ -6,15 +6,42 @@ namespace App\Components\Elasticsearch;
 use App\Components\Collection\Collection;
 use Elasticsearch\Client;
 
+/**
+ * Class ElasticQuery
+ * @package App\Components\Elasticsearch
+ */
 class ElasticQuery
 {
-    private ?Model  $model=null;
+    /**
+     * @var Model|null
+     */
+    private ?Model  $model = null;
 
 
-    private ?array $query=null;
+    /**
+     * @var array|null
+     */
+    private ?array $query = null;
 
 
+    /**
+     * @var Client
+     */
     private Client $client;
+    /**
+     * @var ElasticBuilderQuery
+     */
+    private ElasticBuilderQuery $builderQuery;
+
+    /**
+     * ElasticQuery constructor.
+     * @param ElasticBuilderQuery $builderQuery
+     */
+    public function __construct(ElasticBuilderQuery $builderQuery)
+    {
+        $this->builderQuery = $builderQuery;
+    }
+
     /**
      * @param Model $model
      * @return ElasticQuery
@@ -22,7 +49,7 @@ class ElasticQuery
     public function setModel(Model $model): ElasticQuery
     {
         $this->model = $model;
-        $this->client=Elastic::connection();
+        $this->client = Elastic::connection();
         return $this;
     }
 
@@ -48,9 +75,30 @@ class ElasticQuery
         return null;
     }
 
+    /**
+     * @return Model|mixed|null
+     */
+    public function updateExists()
+    {
+        $response = $this->client->update($this->query);
+        return $this->builderQuery->find($response['id'] ?? $response['_id']);
+    }
+
+    /**
+     * @return Model|mixed|null
+     */
+    public function create()
+    {
+        $saved = $this->client->index($this->query);
+        return $this->builderQuery->find($saved['_id'] ?? $saved['id']);
+    }
+
+    /**
+     * @return Collection
+     */
     public function search(): Collection
     {
-        $result= $this->client->search($this->query);
+        $result = $this->client->search($this->query);
         return new Collection(ModelMapper::make($this->model, $result));
     }
 }

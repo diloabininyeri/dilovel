@@ -17,10 +17,12 @@ class Deneme
 {
     public function index(Request $request)
     {
-        return Users::find(17)->increment('country');
-
+        $elastic=new ElasticModelExample();
+        $elastic->testField='elbet bir gün';
+        return $elastic->save();
 
         $model=ElasticModelExample::find('dene5f1f2df66d99a6.80384871');
-        return sprintf('%s %s', $model->getId(), $model->getTestField());
+        $model->testField = 'gece ateşi';
+        return   $model->save();
     }
 }

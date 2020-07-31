@@ -28,7 +28,7 @@ class ElasticBuilderQuery
      */
     public function __construct(Model $model)
     {
-        $this->elasticQuery = new ElasticQuery();
+        $this->elasticQuery = new ElasticQuery($this);
         $this->model = $model;
     }
 
@@ -37,12 +37,12 @@ class ElasticBuilderQuery
      * @return mixed
      * @see ElasticQuery::find()
      */
-    public function find($id):?Model
+    public function find($id): ?Model
     {
-        $params=[
-             'index'=>$this->model->getIndex(),
-             'id'=>$id
-         ];
+        $params = [
+            'index' => $this->model->getIndex(),
+            'id' => $id
+        ];
         return $this->executeQuery($params, 'find');
     }
 
@@ -68,6 +68,46 @@ class ElasticBuilderQuery
             ->$method();
     }
 
+    /**
+     * @return mixed
+     */
+    public function save():Model
+    {
+        $attributes = get_object_vars($this->model);
+
+        if ($this->model->isHasPrimaryKeyValue()) {
+            $params = $this->builderUpdateQuery($this->model->getPrimaryKeyValue(), $attributes);
+            return $this->executeQuery($params, 'updateExists');
+        }
+        return $this->executeQuery($this->builderQuery($attributes), 'create');
+    }
+
+    /**
+     * @param $id
+     * @param array $params
+     * @return array
+     */
+    private function builderUpdateQuery($id, array $params):array
+    {
+        return [
+            'index' => $this->model->getIndex(),
+            'id'=>$id,
+            'body' =>[
+                'doc'=>$params
+            ]
+        ];
+    }
+    /**
+     * @param array $params
+     * @return array
+     */
+    private function builderQuery(array $params): array
+    {
+        return [
+            'index' => $this->model->getIndex(),
+            'body' => $params
+        ];
+    }
 
     /**
      * @return Collection
