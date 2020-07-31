@@ -94,9 +94,21 @@ class ElasticBuilderQuery
 
         if ($this->model->isHasPrimaryKeyValue()) {
             $params = $this->builderUpdateQuery($this->model->getPrimaryKeyValue(), $attributes);
-            return $this->executeQuery($params, 'updateExists');
+            return $this->executeQuery($params, 'updateWithInstance');
         }
         return $this->executeQuery($this->builderQuery($attributes), 'create');
+    }
+
+    /**
+     * @return bool
+     */
+    public function delete():bool
+    {
+        if ($this->model->isHasPrimaryKeyValue()) {
+            return $this->executeQuery($this->builderDeleteQuery(), 'deleteWithInstance');
+        }
+
+        return false;
     }
 
     /**
@@ -112,6 +124,14 @@ class ElasticBuilderQuery
             'body' =>[
                 'doc'=>$params
             ]
+        ];
+    }
+
+    private function builderDeleteQuery():array
+    {
+        return [
+            'index' => $this->model->getIndex(),
+            'id' => $this->model->getPrimaryKeyValue()
         ];
     }
     /**

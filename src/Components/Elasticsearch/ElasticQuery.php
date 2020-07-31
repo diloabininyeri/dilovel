@@ -78,10 +78,19 @@ class ElasticQuery
     /**
      * @return Model|mixed|null
      */
-    public function updateExists()
+    public function updateWithInstance()
     {
         $response = $this->client->update($this->query);
         return $this->builderQuery->find($response['id'] ?? $response['_id']);
+    }
+
+    /**
+     * @return bool
+     */
+    public function deleteWithInstance():bool
+    {
+        $delete= $this->client->delete($this->query);
+        return (bool)($delete['_shards']['successful'] ?? false);
     }
 
     /**
