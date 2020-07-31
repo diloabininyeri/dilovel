@@ -278,6 +278,31 @@ class BuilderQuery
     }
 
     /**
+     * @param string $column
+     * @param int $incr
+     * @return Model
+     */
+    public function increment(string $column, int $incr):Model
+    {
+        if ($this->modelInstance->isPrimaryKeyHasValue()) {
+            $this->modelInstance->$column += $incr;
+            return call_user_func([$this->modelInstance,'save']);
+        }
+    }
+
+    /**
+     * @param string $column
+     * @param int $decr
+     * @return Model
+     */
+    public function decrement(string $column, int $decr):Model
+    {
+        if ($this->modelInstance->isPrimaryKeyHasValue()) {
+            $this->modelInstance->$column -= $decr;
+            return call_user_func([$this->modelInstance,'save']);
+        }
+    }
+    /**
      * @param $key
      * @param $operator
      * @param $value

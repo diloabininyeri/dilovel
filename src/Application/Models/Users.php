@@ -21,6 +21,7 @@ use App\Components\Database\Relation\HasOne;
  * @method static BuilderQuery|Users order()
  * @method static Paginate paginate(int $perPage)
  * @method static BuilderQuery|Users find(int $id)
+ * @method static BuilderQuery|Users increment(string $column,int $inc)
  * @method static BuilderQuery|Users findOrFail(int $id)
  * @method static BuilderQuery|Users findByName(string $name)
  * @method static BuilderQuery|Users findById(int $id)

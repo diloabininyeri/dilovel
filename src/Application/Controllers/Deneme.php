@@ -17,6 +17,9 @@ class Deneme
 {
     public function index(Request $request)
     {
+        return Users::find(17)->increment('country',4);
+
+
         $model=ElasticModelExample::find('dene5f1f2df66d99a6.80384871');
         return sprintf('%s %s', $model->getId(), $model->getTestField());
     }
