@@ -19,10 +19,11 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $dd= ElasticModelExample::all(1000)
-            ->sortBy('surname', 'desc');
-
-
-        return $dd->toArray();
+        $scroll= ElasticModelExample::scroll();
+        $scroll->matchAll();
+        $scroll->life('40s');
+        $scroll->size(100);
+        $collection=$scroll->get()->id();
+        dd($collection);
     }
 }

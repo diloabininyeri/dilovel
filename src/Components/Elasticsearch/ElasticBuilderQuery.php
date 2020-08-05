@@ -185,4 +185,12 @@ class ElasticBuilderQuery
     {
         return new ElasticBoolQuery($this);
     }
+
+    /**
+     * @return ElasticScrollQuery
+     */
+    public function scroll(): ElasticScrollQuery
+    {
+        return new ElasticScrollQuery($this);
+    }
 }

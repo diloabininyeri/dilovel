@@ -5,6 +5,7 @@ namespace App\Application\Elastic;
 
 use App\Components\Collection\Collection;
 use App\Components\Elasticsearch\ElasticBoolQuery;
+use App\Components\Elasticsearch\ElasticScrollQuery;
 use App\Components\Elasticsearch\Model;
 
 /**
@@ -14,6 +15,7 @@ use App\Components\Elasticsearch\Model;
  * @method static Collection all()
  * @method static self find($id)
  * @method static ElasticBoolQuery  bool();
+ * @method static ElasticScrollQuery  scroll();
  * @construct(deneme)
  * @property $id
  * @property $testField
