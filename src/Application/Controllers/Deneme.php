@@ -22,8 +22,8 @@ class Deneme
         $scroll= ElasticModelExample::scroll();
         $scroll->matchAll();
         $scroll->life('40s');
-        $scroll->size(100);
-        $collection=$scroll->get()->id();
+        $scroll->size(10);
+        $collection=$scroll->get()->getScrollData();
         dd($collection);
     }
 }

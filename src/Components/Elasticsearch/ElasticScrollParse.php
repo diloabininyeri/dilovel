@@ -4,8 +4,6 @@
 namespace App\Components\Elasticsearch;
 
 use App\Components\Collection\Collection;
-use App\Interfaces\ArrayAble;
-use phpDocumentor\Reflection\Types\This;
 
 /**
  * Class ElasticScrollParse
@@ -19,19 +17,19 @@ class ElasticScrollParse
      */
     private array $scrollData;
     /**
-     * @var ElasticBuilderQuery
+     * @var ElasticScrollQuery
      */
-    private ElasticBuilderQuery $builderQuery;
+    private ElasticScrollQuery $elasticScrollQuery;
 
     /**
      * ElasticScrollParse constructor.
      * @param array $scrollData
-     * @param ElasticBuilderQuery $builderQuery
+     * @param ElasticScrollQuery $scrollQuery
      */
-    public function __construct(array $scrollData, ElasticBuilderQuery  $builderQuery)
+    public function __construct(array $scrollData, ElasticScrollQuery $scrollQuery)
     {
         $this->scrollData = $scrollData;
-        $this->builderQuery = $builderQuery;
+        $this->elasticScrollQuery = $scrollQuery;
     }
 
 
@@ -65,6 +63,14 @@ class ElasticScrollParse
      */
     public function collection():Collection
     {
-        return ElasticCollection::make($this->builderQuery->getModel(), $this->scrollData);
+        return ElasticCollection::make($this->elasticScrollQuery->getBuilderQuery()->getModel(), $this->scrollData);
+    }
+
+    /**
+     * @return array
+     */
+    public function query():array
+    {
+        return $this->elasticScrollQuery->getQuery();
     }
 }

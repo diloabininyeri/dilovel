@@ -59,6 +59,19 @@ class ElasticScrollQuery
     }
 
     /**
+     * @param string $key
+     * @param array $logical
+     * @return $this
+     */
+    public function range(string $key, array $logical):self
+    {
+        $this->query['range']=[
+            $key=>$logical
+        ];
+        return $this;
+    }
+
+    /**
      * @param string $time
      * @return $this
      */
@@ -112,7 +125,14 @@ class ElasticScrollQuery
      */
     public function get():ElasticScrollParse
     {
-        $search=$this->client->search($this->getQuery());
-        return new ElasticScrollParse($search, $this->builderQuery);
+        return new ElasticScrollParse($this->client->search($this->getQuery()), $this);
+    }
+
+    /**
+     * @return ElasticBuilderQuery
+     */
+    public function getBuilderQuery(): ElasticBuilderQuery
+    {
+        return $this->builderQuery;
     }
 }
