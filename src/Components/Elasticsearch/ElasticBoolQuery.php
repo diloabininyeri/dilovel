@@ -3,6 +3,7 @@
 
 namespace App\Components\Elasticsearch;
 
+use Elasticsearch\Client;
 use stdClass;
 
 /**
@@ -42,11 +43,17 @@ class ElasticBoolQuery
     private ElasticBuilderQuery $builderQuery;
 
     /**
+     * @var Client
+     */
+    private Client $client;
+
+    /**
      * BoolQuery constructor.
      * @param ElasticBuilderQuery $builderQuery
      */
     public function __construct(ElasticBuilderQuery $builderQuery)
     {
+        $this->client=Elastic::connection();
         $this->builderQuery = $builderQuery;
     }
 
@@ -242,9 +249,16 @@ class ElasticBoolQuery
     /**
      * @return array
      */
+    public function delete():array
+    {
+        return $this->client->deleteByQuery($this->getQuery());
+    }
+    /**
+     * @return array
+     */
     public function get(): array
     {
-        $records=Elastic::connection()->search($this->getQuery());
+        $records=$this->client->search($this->getQuery());
         return ModelMapper::make($this->builderQuery->getModel(), $records);
     }
     /**

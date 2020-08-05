@@ -19,7 +19,7 @@ class Deneme
     public function index(Request $request)
     {
         $model=ElasticModelExample::bool();
-        $model->mustMatch('name', 'İrem');
-        return $model->get();
+        $model->mustMatch('name', 'İrem5555');
+        return $model->delete();
     }
 }
