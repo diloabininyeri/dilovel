@@ -3,7 +3,9 @@
 
 namespace App\Components\Elasticsearch;
 
+use App\Components\Collection\Collection;
 use Elasticsearch\Client;
+use Exception;
 use stdClass;
 use Throwable;
 
@@ -76,7 +78,7 @@ class ElasticScrollQuery
      * @param string $time
      * @return $this
      */
-    public function life(string $time = '60s'): self
+    public function life(string $time = '1m'): self
     {
         $this->scrollTime = $time;
         return $this;
@@ -134,18 +136,44 @@ class ElasticScrollQuery
      */
     public function generateId():string
     {
+        if (!$this->scrollTime) {
+            $this->life('1m');
+        }
+        if (empty($this->query)) {
+            $this->matchAll();
+        }
         return $this->get()->id();
     }
 
+
     /**
-     * @param string $id
+     * @param string $scrollId
+     * @param string $life
+     * @return mixed
+     */
+    public function isAlive(string $scrollId, string $life='1m'):bool
+    {
+        try {
+            $scrollQuery = [
+                'scroll_id' => $scrollId,
+                'scroll' => $life,
+            ];
+
+            $result = $this->client->scroll($scrollQuery);
+            return isset($result['hits']['hits']);
+        } catch (Exception $exception) {
+            return false;
+        }
+    }
+    /**
+     * @param string $scrollId
      * @return bool
      */
-    public function deleteId(string $id):bool
+    public function deleteId(string $scrollId):bool
     {
         try {
             $clearScroll= $this->client->clearScroll([
-                'scroll_id'=>[$id]
+                'scroll_id'=>[$scrollId]
             ]);
         } catch (Throwable $exception) {
             return false;
@@ -159,5 +187,20 @@ class ElasticScrollQuery
     public function getBuilderQuery(): ElasticBuilderQuery
     {
         return $this->builderQuery;
+    }
+
+    /**
+     * @param string $scrollId
+     * @param string $life
+     * @return Collection
+     */
+    public function lazyLoad(string $scrollId, string $life='1m'):Collection
+    {
+        $scrollQuery = [
+            'scroll_id' => $scrollId,
+            'scroll' => $life,
+        ];
+        $result = $this->client->scroll($scrollQuery);
+        return ElasticCollection::make($this->builderQuery->getModel(), $result);
     }
 }

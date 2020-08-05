@@ -14,13 +14,14 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $scroll= ElasticModelExample::scroll();
+        if (!$request->cookie()->exists('scroll')) {
+            $id=ElasticModelExample::scroll()->generateId();
+            $request->cookie()->set('scroll', $id);
+        }
 
-        return $scroll->deleteId('F');
-        $scroll->matchAll();
-        $scroll->life('40s');
-        $scroll->size(10);
-        $collection=$scroll->generateId();
-        return $collection;
+
+        $scrollId=$request->cookie()->get('scroll');
+        $scroll= ElasticModelExample::scroll();
+        return $scroll->lazyLoad($scrollId, '1m');
     }
 }
