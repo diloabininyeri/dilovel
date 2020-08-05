@@ -19,8 +19,9 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $dd= ElasticModelExample::all(20)->sortBy('name');
-
+        $dd= ElasticModelExample::all(1000)
+            ->filter(fn ($item) =>strlen($item->name)>4)
+            ->sortByAsc('surname');
         dd($dd);
     }
 }
