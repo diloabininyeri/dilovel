@@ -20,7 +20,7 @@ class Deneme
     public function index(Request $request)
     {
         $dd= ElasticModelExample::all(1000)
-            ->sortByAsc('surname');
+            ->sortBy('surname', 'desc');
 
 
         return $dd->toArray();

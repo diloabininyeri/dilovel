@@ -432,12 +432,10 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      * @param string $direction
      * @return Collection
      */
-    public function sortBy(string $key,string $direction='asc'): Collection
+    public function sortBy(string $key, string $direction='asc'): Collection
     {
-        if ($direction === 'asc') {
-            return $this->sortByAsc($key);
-        }
-        return $this->sortByDesc($key);
+        $method='sortBy'.ucfirst($direction);
+        return $this->{$method}($key);
     }
 
     /**
