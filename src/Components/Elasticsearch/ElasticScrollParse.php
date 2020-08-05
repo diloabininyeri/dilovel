@@ -43,6 +43,7 @@ class ElasticScrollParse
 
     /**
      * @return array
+     *
      */
     public function getScrollData(): array
     {
@@ -72,5 +73,13 @@ class ElasticScrollParse
     public function query():array
     {
         return $this->elasticScrollQuery->getQuery();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string)$this->id();
     }
 }

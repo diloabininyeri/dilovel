@@ -4,12 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Elastic\ElasticModelExample;
-use App\Application\Models\Users;
-use App\Components\Collection\Collection;
-use App\Components\Elasticsearch\Elastic;
 use App\Components\Http\Request;
-use App\Components\Reflection\RuleAnnotation;
-use Faker\Factory;
 
 /**
  * Class Deneme
@@ -20,10 +15,12 @@ class Deneme
     public function index(Request $request)
     {
         $scroll= ElasticModelExample::scroll();
+
+        return $scroll->deleteId('F');
         $scroll->matchAll();
         $scroll->life('40s');
         $scroll->size(10);
-        $collection=$scroll->get()->getScrollData();
-        dd($collection);
+        $collection=$scroll->generateId();
+        return $collection;
     }
 }

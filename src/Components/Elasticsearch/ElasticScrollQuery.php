@@ -5,6 +5,7 @@ namespace App\Components\Elasticsearch;
 
 use Elasticsearch\Client;
 use stdClass;
+use Throwable;
 
 /**
  * Class ElasticScrollQuery
@@ -128,6 +129,30 @@ class ElasticScrollQuery
         return new ElasticScrollParse($this->client->search($this->getQuery()), $this);
     }
 
+    /**
+     * @return string
+     */
+    public function generateId():string
+    {
+        return $this->get()->id();
+    }
+
+    /**
+     * @param string $id
+     * @return bool
+     */
+    public function deleteId(string $id):bool
+    {
+        try {
+            $clearScroll= $this->client->clearScroll([
+                'scroll_id'=>[$id]
+            ]);
+        } catch (Throwable $exception) {
+            return false;
+        } finally {
+            return (bool)($clearScroll['succeeded'] ?? false);
+        }
+    }
     /**
      * @return ElasticBuilderQuery
      */

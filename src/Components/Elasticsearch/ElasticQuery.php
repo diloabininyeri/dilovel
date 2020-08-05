@@ -107,6 +107,6 @@ class ElasticQuery
      */
     public function search(): Collection
     {
-        return ElasticCollection::make($this->model,$this->client->search($this->query));
+        return ElasticCollection::make($this->model, $this->client->search($this->query));
     }
 }
