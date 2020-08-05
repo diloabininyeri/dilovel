@@ -406,6 +406,16 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
     }
 
     /**
+     * @param string $key
+     * @return $this
+     */
+    public function sortBy(string $key):self
+    {
+        uasort($this->collection, fn ($a, $b) =>$a->$key<=>$b->$key);
+        return $this;
+    }
+
+    /**
      * @param string ...$attributes
      * @return $this
      */

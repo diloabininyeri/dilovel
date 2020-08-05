@@ -19,13 +19,8 @@ class Deneme
 {
     public function index(Request $request)
     {
-        $faker = Factory::create('tr_TR');
-        $model=new ElasticModelExample();
-        $model->name=$faker->firstName;
-        $model->surname=$faker->lastName;
-        $model->age=random_int(1, 80);
-        $model->save();
+        $dd= ElasticModelExample::all(20)->sortBy('name');
 
-        return ElasticModelExample::all();
+        dd($dd);
     }
 }
