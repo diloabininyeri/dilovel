@@ -411,9 +411,8 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function sortByAsc(string $key):self
     {
-        $array=$this->collection;
-        uasort($array, fn ($a, $b) =>$a->$key<=>$b->$key);
-        $this->collection = array_values($array);
+        uasort($this->collection, fn ($a, $b) =>$a->$key<=>$b->$key);
+        $this->collection = array_values($this->collection);
         return $this;
     }
 
@@ -423,9 +422,8 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function sortByDesc(string $key): Collection
     {
-        $array=$this->collection;
-        uasort($array, fn ($a, $b) =>-1*($a->$key<=>$b->$key));
-        $this->collection = array_values($array);
+        uasort($this->collection, fn ($a, $b) =>-1*($a->$key<=>$b->$key));
+        $this->collection = array_values($this->collection);
         return $this;
     }
 
