@@ -4,6 +4,7 @@
 namespace App\Application\Elastic;
 
 use App\Components\Collection\Collection;
+use App\Components\Elasticsearch\ElasticBoolQuery;
 use App\Components\Elasticsearch\Model;
 
 /**
@@ -12,6 +13,7 @@ use App\Components\Elasticsearch\Model;
  * @method static exists()
  * @method static Collection all()
  * @method static self find($id)
+ * @method static ElasticBoolQuery  bool();
  * @construct(deneme)
  * @property $id
  * @property $testField
@@ -21,7 +23,7 @@ class ElasticModelExample extends Model
     /**
      * @var string
      */
-    protected string $index='my_index';
+    protected string $index='users';
 
     /**
      * @var string

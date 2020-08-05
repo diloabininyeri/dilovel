@@ -127,6 +127,9 @@ class ElasticBuilderQuery
         ];
     }
 
+    /**
+     * @return array
+     */
     private function builderDeleteQuery():array
     {
         return [
@@ -161,5 +164,21 @@ class ElasticBuilderQuery
             ]
         ];
         return $this->executeQuery($params, 'search');
+    }
+
+    /**
+     * @return Model
+     */
+    public function getModel(): Model
+    {
+        return $this->model;
+    }
+
+    /**
+     * @return ElasticBoolQuery
+     */
+    public function bool(): ElasticBoolQuery
+    {
+        return new ElasticBoolQuery($this);
     }
 }
