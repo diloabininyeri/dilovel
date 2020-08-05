@@ -107,7 +107,6 @@ class ElasticQuery
      */
     public function search(): Collection
     {
-        $result = $this->client->search($this->query);
-        return new Collection(ModelMapper::make($this->model, $result));
+        return ElasticCollection::make($this->model,$this->client->search($this->query));
     }
 }
