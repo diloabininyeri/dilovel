@@ -93,9 +93,11 @@ class ElasticBuilderQuery
         $attributes = $this->getModelAttributes();
 
         if ($this->model->isHasPrimaryKeyValue()) {
+            $attributes= array_merge($attributes, ['updated_time'=>date('Y/m/d H:i:s')]);
             $params = $this->builderUpdateQuery($this->model->getPrimaryKeyValue(), $attributes);
             return $this->executeQuery($params, 'updateWithInstance');
         }
+        $attributes=array_merge($attributes, ['created_time'=>date('Y/m/d H:i:s'),'updated_time'=>date('Y/m/d H:i:s')]);
         return $this->executeQuery($this->builderQuery($attributes), 'create');
     }
 
@@ -150,9 +152,10 @@ class ElasticBuilderQuery
     }
 
     /**
+     * @param int $size
      * @return Collection
      */
-    public function all(): Collection
+    public function all(int $size=1000): Collection
     {
         $params = [
             'index' => $this->model->getIndex(),
@@ -160,7 +163,8 @@ class ElasticBuilderQuery
                 'query' =>
                     [
                         'match_all' => (object)[]
-                    ]
+                    ],
+                'size'=>$size
             ]
         ];
         return $this->executeQuery($params, 'search');
