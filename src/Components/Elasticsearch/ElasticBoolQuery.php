@@ -3,6 +3,8 @@
 
 namespace App\Components\Elasticsearch;
 
+use App\Application\Elastic\ElasticModelExample;
+use App\Components\Collection\Collection;
 use Elasticsearch\Client;
 use stdClass;
 
@@ -26,6 +28,11 @@ class ElasticBoolQuery
      * @var int|null
      */
     private ?int $from = null;
+
+    /**
+     * @var array
+     */
+    private array $sort = [];
 
     /**
      * @var int|null
@@ -253,13 +260,47 @@ class ElasticBoolQuery
     {
         return $this->client->deleteByQuery($this->getQuery());
     }
+
     /**
-     * @return array
+     * @return Collection
      */
-    public function get(): array
+    public function get(): Collection
     {
         $records=$this->client->search($this->getQuery());
-        return ModelMapper::make($this->builderQuery->getModel(), $records);
+        return ElasticCollection::make($this->builderQuery->getModel(), $records);
+    }
+
+    /**
+     * @param array $sort
+     * @return $this
+     */
+    public function sort(array $sort):self
+    {
+        $this->sort=[$sort];
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param string $direction
+     * @return $this
+     */
+    public function sortBy(string $key, string $direction='asc'):self
+    {
+        return $this->sortWithScore([$key=> $direction]);
+    }
+
+    /**
+     * @example as such  ['name'=>'asc','age'=>'desc']
+     * @param array $sort
+     * @return $this
+     */
+    public function sortWithScore(array $sort):self
+    {
+        $sortRule=[$sort];
+        $sortRule[]='_score';
+        $this->sort=$sortRule;
+        return  $this;
     }
     /**
      * @return \array[][]
@@ -285,6 +326,10 @@ class ElasticBoolQuery
 
         if ($this->boost) {
             $body['query']['bool']['boost']=$this->boost;
+        }
+
+        if ($this->sort) {
+            $body['sort']=$this->sort;
         }
         return $body;
     }

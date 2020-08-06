@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Elastic\ElasticModelExample;
+use App\Components\Collection\Collection;
 use App\Components\Http\Request;
 
 /**
@@ -12,22 +13,13 @@ use App\Components\Http\Request;
  */
 class Deneme
 {
-    public function index(Request $request)
+    public function index(Request $request): Collection
     {
-        if (!$request->cookie()->exists('scroll')) {
-            $scroll=ElasticModelExample::scroll();
-            $scroll->mustMatch('name', 'Ümran');
-            $scroll->mustMatch('age', 8);
-            $scroll->mustNotMatch('surname', 'Akman');
-            $scroll->life('30s');
-            $id=$scroll->generateId();
-            $request->cookie()->set('scroll', $id, 30);
-        }
+        $bool=ElasticModelExample::bool();
 
-
-        $scrollId=$request->cookie()->get('scroll');
-
-        $scroll= ElasticModelExample::scroll();
-        return $scroll->lazyLoad($scrollId, '30s');
+        return  $bool->mustMatchAll()
+            ->size(50)
+            ->sortBy('age', 'desc')
+            ->get();
     }
 }
