@@ -290,6 +290,38 @@ class ElasticBoolQuery
         return $this->sortWithScore([$key=> $direction]);
     }
 
+
+    /**
+     * @param string ...$keys
+     * @return $this
+     */
+    public function sortDescByMultiKey(string ...$keys):self
+    {
+        return $this->sortMultiKeyCreator($keys, 'desc');
+    }
+
+    /**
+     * @param array $keys
+     * @param string $direction
+     * @return $this
+     */
+    private function sortMultiKeyCreator(array $keys, string $direction='asc'):self
+    {
+        $fields=[];
+        foreach ($keys as $key) {
+            $fields[$key]=$direction;
+        }
+        return $this->sortWithScore($fields);
+    }
+
+    /**
+     * @param string ...$keys
+     * @return $this
+     */
+    public function sortAscByMultiKey(string ...$keys):self
+    {
+        return $this->sortMultiKeyCreator($keys, 'asc');
+    }
     /**
      * @example as such  ['name'=>'asc','age'=>'desc']
      * @param array $sort

@@ -13,13 +13,13 @@ use App\Components\Http\Request;
  */
 class Deneme
 {
-    public function index(Request $request): Collection
+    public function index(Request $request)
     {
         $bool=ElasticModelExample::bool();
 
         return  $bool->mustMatchAll()
             ->size(50)
-            ->sortBy('age', 'desc')
+            ->sortDescByMultiKey('age', 'age')
             ->get();
     }
 }
