@@ -274,7 +274,7 @@ class ElasticBoolQuery
      * @param array $sort
      * @return $this
      */
-    public function sort(array $sort):self
+    public function sortWithoutScore(array $sort):self
     {
         $this->sort=[$sort];
         return $this;
