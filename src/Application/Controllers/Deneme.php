@@ -5,7 +5,6 @@ namespace App\Application\Controllers;
 
 use App\Application\Elastic\ElasticModelExample;
 use App\Components\Collection\Collection;
-use App\Components\Http\Request;
 
 /**
  * Class Deneme
@@ -13,13 +12,13 @@ use App\Components\Http\Request;
  */
 class Deneme
 {
-    public function index(Request $request)
+    public function index():Collection
     {
         $bool=ElasticModelExample::bool();
 
         return  $bool->mustMatchAll()
             ->size(50)
-            ->sortDescByMultiKey('age', 'age')
+            ->sortBy('age')
             ->get();
     }
 }

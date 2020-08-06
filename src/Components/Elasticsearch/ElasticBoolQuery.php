@@ -3,7 +3,6 @@
 
 namespace App\Components\Elasticsearch;
 
-use App\Application\Elastic\ElasticModelExample;
 use App\Components\Collection\Collection;
 use Elasticsearch\Client;
 use stdClass;
