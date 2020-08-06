@@ -6,12 +6,12 @@ namespace App\Components\Elasticsearch;
 use App\Components\Collection\Collection;
 use Elasticsearch\Client;
 use Exception;
-use stdClass;
 use Throwable;
 
 /**
  * Class ElasticScrollQuery
  * @package App\Components\Elasticsearch
+ * @mixin ElasticBoolQuery
  */
 class ElasticScrollQuery
 {
@@ -43,35 +43,19 @@ class ElasticScrollQuery
     private ?int  $size = null;
 
     /**
+     * @var ElasticBoolQuery
+     */
+    private ElasticBoolQuery $boolQuery;
+
+    /**
      * ElasticScrollQuery constructor.
      * @param ElasticBuilderQuery $builderQuery
      */
     public function __construct(ElasticBuilderQuery $builderQuery)
     {
         $this->client = Elastic::connection();
+        $this->boolQuery = new ElasticBoolQuery($builderQuery);
         $this->builderQuery = $builderQuery;
-    }
-
-    /**
-     * @return $this
-     */
-    public function matchAll(): self
-    {
-        $this->query['match_all'] = new stdClass();
-        return $this;
-    }
-
-    /**
-     * @param string $key
-     * @param array $logical
-     * @return $this
-     */
-    public function range(string $key, array $logical):self
-    {
-        $this->query['range']=[
-            $key=>$logical
-        ];
-        return $this;
     }
 
     /**
@@ -99,10 +83,8 @@ class ElasticScrollQuery
      */
     public function getQuery(): array
     {
-        $query= [
-            'index' => $this->builderQuery->getModel()->getIndex(),
-            'body' => $this->getBodyQuery()
-        ];
+        $query= $this->boolQuery->getQuery();
+
         if ($this->size) {
             $query['size'] = $this->size;
         }
@@ -113,15 +95,6 @@ class ElasticScrollQuery
         return $query;
     }
 
-    /**
-     * @return array
-     */
-    private function getBodyQuery(): array
-    {
-        return [
-            'query' => $this->query
-        ];
-    }
 
     /**
      * @return ElasticScrollParse
@@ -140,7 +113,7 @@ class ElasticScrollQuery
             $this->life('1m');
         }
         if (empty($this->query)) {
-            $this->matchAll();
+            $this->mustMatchAll();
         }
         return $this->get()->id();
     }
@@ -202,5 +175,16 @@ class ElasticScrollQuery
         ];
         $result = $this->client->scroll($scrollQuery);
         return ElasticCollection::make($this->builderQuery->getModel(), $result);
+    }
+
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        return $this->boolQuery->$name(...$arguments);
     }
 }

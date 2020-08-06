@@ -15,7 +15,7 @@ class ElasticBoolQuery
     /**
      * @var array
      */
-    private array $query;
+    private array $query=[];
 
     /**
      * @var int|null

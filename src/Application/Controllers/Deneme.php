@@ -14,16 +14,20 @@ class Deneme
 {
     public function index(Request $request)
     {
-
         if (!$request->cookie()->exists('scroll')) {
-            $id=ElasticModelExample::scroll()->generateId();
-            $request->cookie()->set('scroll', $id,60);
+            $scroll=ElasticModelExample::scroll();
+            $scroll->mustMatch('name', 'Ümran');
+            $scroll->mustMatch('age', 8);
+            $scroll->mustNotMatch('surname', 'Akman');
+            $scroll->life('30s');
+            $id=$scroll->generateId();
+            $request->cookie()->set('scroll', $id, 30);
         }
 
 
         $scrollId=$request->cookie()->get('scroll');
 
         $scroll= ElasticModelExample::scroll();
-        return $scroll->lazyLoad($scrollId, '1m');
+        return $scroll->lazyLoad($scrollId, '30s');
     }
 }
