@@ -16,7 +16,10 @@ class Deneme
     {
         $bool=ElasticModelExample::bool();
 
-        return  $bool->mustMatchAll()
+        return  $bool->mustMatch('name','Dılo')
+            ->mustNotMatch('surname','sürücü')
+            ->mustMatch('email','berxudar@gmail.com')
+            ->filterMatch('is_active',1)
             ->size(50)
             ->sortBy('age')
             ->get();
