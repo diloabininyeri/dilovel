@@ -4,6 +4,7 @@
 namespace App\Components\Elasticsearch;
 
 use App\Components\Collection\Collection;
+use Elasticsearch\Client;
 
 /**
  * Class ElasticBuilderQuery
@@ -21,6 +22,10 @@ class ElasticBuilderQuery
      */
     private ElasticQuery $elasticQuery;
 
+    /**
+     * @var Client
+     */
+    private Client  $client;
 
     /**
      * ElasticBuilderQuery constructor.
@@ -29,6 +34,7 @@ class ElasticBuilderQuery
     public function __construct(Model $model)
     {
         $this->elasticQuery = new ElasticQuery($this);
+        $this->client = Elastic::connection();
         $this->model = $model;
     }
 
@@ -81,30 +87,31 @@ class ElasticBuilderQuery
     /**
      * @return array
      */
-    private function getModelAttributes():array
+    private function getModelAttributes(): array
     {
         return get_object_vars($this->model);
     }
+
     /**
      * @return mixed
      */
-    public function save():Model
+    public function save(): Model
     {
         $attributes = $this->getModelAttributes();
 
         if ($this->model->isHasPrimaryKeyValue()) {
-            $attributes= array_merge($attributes, ['updated_time'=>date('Y/m/d H:i:s')]);
+            $attributes = array_merge($attributes, ['updated_time' => date('Y/m/d H:i:s')]);
             $params = $this->builderUpdateQuery($this->model->getPrimaryKeyValue(), $attributes);
             return $this->executeQuery($params, 'updateWithInstance');
         }
-        $attributes=array_merge($attributes, ['created_time'=>date('Y/m/d H:i:s'),'updated_time'=>date('Y/m/d H:i:s')]);
+        $attributes = array_merge($attributes, ['created_time' => date('Y/m/d H:i:s'), 'updated_time' => date('Y/m/d H:i:s')]);
         return $this->executeQuery($this->builderQuery($attributes), 'create');
     }
 
     /**
      * @return bool
      */
-    public function delete():bool
+    public function delete(): bool
     {
         if ($this->model->isHasPrimaryKeyValue()) {
             return $this->executeQuery($this->builderDeleteQuery(), 'deleteWithInstance');
@@ -118,13 +125,13 @@ class ElasticBuilderQuery
      * @param array $params
      * @return array
      */
-    private function builderUpdateQuery($id, array $params):array
+    private function builderUpdateQuery($id, array $params): array
     {
         return [
             'index' => $this->model->getIndex(),
-            'id'=>$id,
-            'body' =>[
-                'doc'=>$params
+            'id' => $id,
+            'body' => [
+                'doc' => $params
             ]
         ];
     }
@@ -132,13 +139,14 @@ class ElasticBuilderQuery
     /**
      * @return array
      */
-    private function builderDeleteQuery():array
+    private function builderDeleteQuery(): array
     {
         return [
             'index' => $this->model->getIndex(),
             'id' => $this->model->getPrimaryKeyValue()
         ];
     }
+
     /**
      * @param array $params
      * @return array
@@ -155,7 +163,7 @@ class ElasticBuilderQuery
      * @param int $size
      * @return Collection
      */
-    public function all(int $size=1000): Collection
+    public function all(int $size = 1000): Collection
     {
         $params = [
             'index' => $this->model->getIndex(),
@@ -164,7 +172,7 @@ class ElasticBuilderQuery
                     [
                         'match_all' => (object)[]
                     ],
-                'size'=>$size
+                'size' => $size
             ]
         ];
         return $this->executeQuery($params, 'search');
@@ -176,6 +184,26 @@ class ElasticBuilderQuery
     public function getModel(): Model
     {
         return $this->model;
+    }
+
+    /**
+     * @param string $sqlQuery
+     * @return Collection
+     */
+    public function searchWithSql(string $sqlQuery): Collection
+    {
+        $params = [
+            'body' => [
+                'query' => $sqlQuery
+            ]
+        ];
+
+        $resultSearch = $this->client->search([
+            'index' => 'users',
+            'body' => $this->client->sql()->translate($params)
+        ]);
+
+        return ElasticCollection::make($this->getModel(), $resultSearch);
     }
 
     /**

@@ -16,11 +16,12 @@ use App\Components\Elasticsearch\Model;
  * @method static self find($id)
  * @method static ElasticBoolQuery  bool();
  * @method static ElasticScrollQuery  scroll();
+ * @method static Collection  searchWithSql(string $sqlQuery);
  * @construct(deneme)
  * @property $id
  * @property $testField
  */
-class ElasticModelExample extends Model
+class ElasticSearchModel extends Model
 {
     /**
      * @var string

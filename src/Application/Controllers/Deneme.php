@@ -3,7 +3,7 @@
 
 namespace App\Application\Controllers;
 
-use App\Application\Elastic\ElasticModelExample;
+use App\Application\Elastic\ElasticSearchModel;
 use App\Components\Collection\Collection;
 
 /**
@@ -12,16 +12,8 @@ use App\Components\Collection\Collection;
  */
 class Deneme
 {
-    public function index():Collection
+    public function index(): Collection
     {
-        $bool=ElasticModelExample::bool();
-
-        return  $bool->mustMatch('name','Dılo')
-            ->mustNotMatch('surname','sürücü')
-            ->mustMatch('email','berxudar@gmail.com')
-            ->filterMatch('is_active',1)
-            ->size(50)
-            ->sortBy('age')
-            ->get();
+        return ElasticSearchModel::searchWithSql("select * from users where name='Ege'  limit 10");
     }
 }
