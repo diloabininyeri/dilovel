@@ -192,15 +192,9 @@ class ElasticBuilderQuery
      */
     public function searchWithSql(string $sqlQuery): Collection
     {
-        $params = [
-            'body' => [
-                'query' => $sqlQuery
-            ]
-        ];
-
         $resultSearch = $this->client->search([
             'index' => $this->getModel()->getIndex(),
-            'body' => $this->client->sql()->translate($params)
+            'body' => $this->client->sql()->translate(['body' => ['query' => $sqlQuery]])
         ]);
 
         return ElasticCollection::make($this->getModel(), $resultSearch);

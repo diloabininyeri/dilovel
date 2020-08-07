@@ -14,6 +14,6 @@ class Deneme
 {
     public function index(): Collection
     {
-        return ElasticSearchModel::searchWithSql("select * from users where name='Ege'  limit 10");
+        return ElasticSearchModel::searchWithSql("select * from users where name='Ege' and age between 25 and 45 order by age asc  limit 10");
     }
 }
