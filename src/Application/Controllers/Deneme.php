@@ -12,8 +12,14 @@ use App\Components\Collection\Collection;
  */
 class Deneme
 {
-    public function index(): Collection
+    public function index()
     {
-        return ElasticSearchModel::searchWithSql("select * from users where name='Ege' and age between 25 and 45 order by age asc  limit 10");
+        $users = ElasticSearchModel::searchWithSql("select * from users where name='Ege' and age between 25 and 45 order by age asc  limit 10");
+        $users->combineAttributes(['name', 'surname']);
+        $users->setAttribute('name_surname', fn($item) => ucfirst($item));
+
+        foreach ($users as $user) {
+            echo $user->name_surname . "<br>";
+        }
     }
 }
