@@ -199,7 +199,7 @@ class ElasticBuilderQuery
         ];
 
         $resultSearch = $this->client->search([
-            'index' => 'users',
+            'index' => $this->getModel()->getIndex(),
             'body' => $this->client->sql()->translate($params)
         ]);
 
