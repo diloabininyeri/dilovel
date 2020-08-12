@@ -4,7 +4,6 @@
 namespace App\Application\Controllers;
 
 use App\Application\Elastic\ElasticSearchModel;
-use App\Components\Collection\Collection;
 
 /**
  * Class Deneme
@@ -14,6 +13,7 @@ class Deneme
 {
     public function index()
     {
-        return ElasticSearchModel::aggregation()->terms('name.keyword');
+        $terms= ElasticSearchModel::aggregation()->terms('name.keyword', 25);
+        return $terms->getBuckets();
     }
 }

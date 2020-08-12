@@ -29,27 +29,26 @@ class ElasticAggregationQuery
     /**
      * @param string $key
      * @param int $size
-     * @return array
+     * @return TermAggregationParse
      */
-    public function terms(string $key,int $size=10): array
+    public function terms(string $key, int $size=10): TermAggregationParse
     {
         $params = [
             'index' => 'users',
             'body' => [
                 'aggs' => [
-                    'term_aggregation' => [
+                    'terms_aggregation' => [
                         'terms' => [
                             'field' => $key,
                             'size'=>$size
                         ]
                     ],
-
                 ]
             ]
         ];
 
-
-        return $this->builderQuery->getClient()->search($params);
+        $result=$this->builderQuery->getClient()->search($params);
+        return new TermAggregationParse($result);
     }
 
     /**
