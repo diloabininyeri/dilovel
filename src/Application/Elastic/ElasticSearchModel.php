@@ -4,6 +4,7 @@
 namespace App\Application\Elastic;
 
 use App\Components\Collection\Collection;
+use App\Components\Elasticsearch\ElasticAggregationQuery;
 use App\Components\Elasticsearch\ElasticBoolQuery;
 use App\Components\Elasticsearch\ElasticScrollQuery;
 use App\Components\Elasticsearch\Model;
@@ -17,6 +18,7 @@ use App\Components\Elasticsearch\Model;
  * @method static ElasticBoolQuery  bool();
  * @method static ElasticScrollQuery  scroll();
  * @method static Collection  searchWithSql(string $sqlQuery);
+ * @method static ElasticAggregationQuery  aggregation();
  * @construct(deneme)
  * @property $id
  * @property $testField

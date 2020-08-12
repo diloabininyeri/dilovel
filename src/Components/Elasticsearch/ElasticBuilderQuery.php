@@ -208,6 +208,14 @@ class ElasticBuilderQuery
         return new ElasticBoolQuery($this);
     }
 
+
+    /**
+     * @return ElasticAggregationQuery
+     */
+    public function aggregation(): ElasticAggregationQuery
+    {
+        return new ElasticAggregationQuery($this);
+    }
     /**
      * @return ElasticScrollQuery
      */
