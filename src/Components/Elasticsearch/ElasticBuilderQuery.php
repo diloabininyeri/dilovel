@@ -223,4 +223,12 @@ class ElasticBuilderQuery
     {
         return new ElasticScrollQuery($this);
     }
+
+    /**
+     * @return Client
+     */
+    public function getClient(): Client
+    {
+        return $this->client;
+    }
 }

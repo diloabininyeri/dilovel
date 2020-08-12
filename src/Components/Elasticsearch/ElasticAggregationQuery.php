@@ -16,6 +16,7 @@ class ElasticAggregationQuery
      */
     private ElasticBuilderQuery $builderQuery;
 
+
     /**
      * ElasticAggregationQuery constructor.
      * @param ElasticBuilderQuery $builderQuery
@@ -25,6 +26,29 @@ class ElasticAggregationQuery
         $this->builderQuery = $builderQuery;
     }
 
+    /**
+     * @param string $key
+     * @return array
+     */
+    public function terms(string $key): array
+    {
+        $params = [
+            'index' => 'users',
+            'body' => [
+                'aggs' => [
+                    'term_aggregation' => [
+                        'terms' => [
+                            'field' => $key,
+                        ]
+                    ],
+
+                ]
+            ]
+        ];
+
+
+        return $this->builderQuery->getClient()->search($params);
+    }
 
     /**
      * @return string

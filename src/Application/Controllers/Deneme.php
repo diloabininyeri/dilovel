@@ -14,6 +14,6 @@ class Deneme
 {
     public function index()
     {
-        return ElasticSearchModel::aggregation()->getModel();
+        return ElasticSearchModel::aggregation()->terms('name.keyword');
     }
 }
