@@ -34,7 +34,7 @@ class ElasticAggregationQuery
     public function terms(string $key, int $size=10): TermAggregationParse
     {
         $params = [
-            'index' => 'users',
+            'index' => $this->builderQuery->getModel()->getIndex(),
             'body' => [
                 'aggs' => [
                     'terms_aggregation' => [
@@ -46,16 +46,9 @@ class ElasticAggregationQuery
                 ]
             ]
         ];
-
-        $result=$this->builderQuery->getClient()->search($params);
-        return new TermAggregationParse($result);
+        return new TermAggregationParse(
+            $this->builderQuery->getClient()->search($params)
+        );
     }
 
-    /**
-     * @return string
-     */
-    public function getModel(): string
-    {
-        return $this->builderQuery->getModel()->getIndex();
-    }
 }
