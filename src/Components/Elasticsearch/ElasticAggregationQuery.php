@@ -28,9 +28,10 @@ class ElasticAggregationQuery
 
     /**
      * @param string $key
+     * @param int $size
      * @return array
      */
-    public function terms(string $key): array
+    public function terms(string $key,int $size=10): array
     {
         $params = [
             'index' => 'users',
@@ -39,6 +40,7 @@ class ElasticAggregationQuery
                     'term_aggregation' => [
                         'terms' => [
                             'field' => $key,
+                            'size'=>$size
                         ]
                     ],
 
