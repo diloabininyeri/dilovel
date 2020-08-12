@@ -4,13 +4,14 @@
 namespace App\Components\Elasticsearch;
 
 use App\Interfaces\ArrayAble;
+use App\Interfaces\ToJson;
 use JsonException;
 
 /**
  * Class TermAggregationParse
  * @package App\Components\Elasticsearch
  */
-class TermAggregationParse implements ArrayAble
+class TermAggregationParse implements ArrayAble, ToJson
 {
     /**
      * @var array
@@ -53,16 +54,26 @@ class TermAggregationParse implements ArrayAble
     /**
      * @return array|mixed
      */
-    public function getBuckets()
+    public function getBuckets():array
     {
         return $this->termsArray['aggregations']['terms_aggregation']['buckets'] ?? [];
+    }
+
+
+    /**
+     * @return string
+     * @throws JsonException
+     */
+    public function __toString():string
+    {
+        return  $this->toJson();
     }
 
     /**
      * @return string
      * @throws JsonException
      */
-    public function __toString()
+    public function toJson(): string
     {
         return (string)json_encode($this->termsArray, JSON_THROW_ON_ERROR|JSON_PRETTY_PRINT);
     }
