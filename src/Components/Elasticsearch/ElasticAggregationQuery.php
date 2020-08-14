@@ -52,6 +52,31 @@ class ElasticAggregationQuery
 
     /**
      * @param string $key
+     * @param array $percents
+     * @return array
+     */
+    public function percentiles(string $key, array $percents=[]):array
+    {
+        $params= [
+            'index' => $this->builderQuery->getModel()->getIndex(),
+            'body' => [
+                'aggs' => [
+                    'percentiles' => [
+                        'percentiles' => [
+                            'field' => $key,
+                            'percents'=>$percents ?: range(0, 100, 5)
+                        ]
+                    ],
+                ]
+            ]
+        ];
+
+        $result= $this->builderQuery->getClient()->search($params);
+        return $result['aggregations']['percentiles']['values'];
+    }
+
+    /**
+     * @param string $key
      * @return mixed
      */
     public function max(string $key)
