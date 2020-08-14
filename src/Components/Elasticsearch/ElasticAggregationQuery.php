@@ -220,4 +220,15 @@ class ElasticAggregationQuery
             $this->builderQuery->getClient()->search($params)
         );
     }
+
+
+    /**
+     * @param string $key
+     * @return array|callable
+     */
+    public function cardinality(string $key)
+    {
+        $params = $this->aggregationArray($key, 'cardinality', 'cardinality');
+        return $this->builderQuery->getClient()->search($params);
+    }
 }

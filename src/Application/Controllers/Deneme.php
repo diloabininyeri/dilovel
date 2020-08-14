@@ -15,7 +15,6 @@ class Deneme
 {
     public function index()
     {
-        $geo = Museum::aggregation()->geoBounds();
-        return $geo->get();
+        return Museum::aggregation()->cardinality('type');
     }
 }
