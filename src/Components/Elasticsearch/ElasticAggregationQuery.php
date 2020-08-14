@@ -26,25 +26,90 @@ class ElasticAggregationQuery
         $this->builderQuery = $builderQuery;
     }
 
+
     /**
      * @param string $key
+     * @param string $aggregation
+     * @param string $aggregationName
      * @return array
      */
-    public function stats(string $key): array
+    private function aggregationArray(string $key, string $aggregation, string $aggregationName): array
     {
-        $params = [
+        return [
             'index' => $this->builderQuery->getModel()->getIndex(),
             'body' => [
                 'aggs' => [
-                    'stats_aggregation' => [
-                        'stats' => [
+                    $aggregationName => [
+                        $aggregation => [
                             'field' => $key
                         ]
                     ],
                 ]
             ]
         ];
-        $results= $this->builderQuery->getClient()->search($params);
+    }
+
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function max(string $key)
+    {
+        $params = $this->aggregationArray($key, 'max', 'max_aggregation');
+        $results = $this->builderQuery->getClient()->search($params);
+        return $results['aggregations']['max_aggregation']['value'];
+    }
+
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function count(string $key)
+    {
+        return $this->stats($key)['count'];
+    }
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function min(string $key)
+    {
+        $params = $this->aggregationArray($key, 'min', 'min_aggregation');
+        $results = $this->builderQuery->getClient()->search($params);
+        return $results['aggregations']['min_aggregation']['value'];
+    }
+    /**
+     * @param string $key
+     * @return int
+     */
+    public function sum(string $key):int
+    {
+        $params = $this->aggregationArray($key, 'sum', 'sum_aggregation');
+        $results = $this->builderQuery->getClient()->search($params);
+        return $results['aggregations']['sum_aggregation']['value'];
+    }
+
+    /**
+     * @param string $key
+     * @return float
+     */
+    public function avg(string $key): float
+    {
+        $params = $this->aggregationArray($key, 'avg', 'avg_aggregation');
+        $results = $this->builderQuery->getClient()->search($params);
+        return $results['aggregations']['avg_aggregation']['value'];
+    }
+
+    /**
+     * @param string $key
+     * @return array
+     */
+    public function stats(string $key): array
+    {
+        $params = $this->aggregationArray($key, 'stats', 'stats_aggregation');
+        $results = $this->builderQuery->getClient()->search($params);
         return $results['aggregations']['stats_aggregation'];
     }
 
