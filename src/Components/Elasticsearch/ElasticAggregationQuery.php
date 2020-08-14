@@ -198,11 +198,14 @@ class ElasticAggregationQuery
 
     /**
      * @param string $key
-     * @return array
+     * @return GeoCentroidParse
      */
-    public function geoCentroid(string $key):array
+    public function geoCentroid(string $key):GeoCentroidParse
     {
         $params = $this->aggregationArray($key, 'geo_centroid', 'geo_centroid');
-        return $this->builderQuery->getClient()->search($params);
+
+        return new GeoCentroidParse(
+            $this->builderQuery->getClient()->search($params)
+        );
     }
 }
