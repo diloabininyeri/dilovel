@@ -29,7 +29,7 @@ class ElasticAggregationQuery
     public function __construct(ElasticBuilderQuery $builderQuery)
     {
         $this->builderQuery = $builderQuery;
-        $this->index=$builderQuery->getModel()->getIndex();
+        $this->index = $builderQuery->getModel()->getIndex();
     }
 
 
@@ -200,11 +200,23 @@ class ElasticAggregationQuery
      * @param string $key
      * @return GeoCentroidParse
      */
-    public function geoCentroid(string $key):GeoCentroidParse
+    public function geoCentroid(string $key = 'location'): GeoCentroidParse
     {
         $params = $this->aggregationArray($key, 'geo_centroid', 'geo_centroid');
-
         return new GeoCentroidParse(
+            $this->builderQuery->getClient()->search($params)
+        );
+    }
+
+    /**
+     * @param string $key
+     * @return GeoBoundsParse
+     *
+     */
+    public function geoBounds(string $key = 'location'): GeoBoundsParse
+    {
+        $params = $this->aggregationArray($key, 'geo_bounds', 'geo_bounds');
+        return new GeoBoundsParse(
             $this->builderQuery->getClient()->search($params)
         );
     }

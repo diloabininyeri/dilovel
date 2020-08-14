@@ -15,7 +15,7 @@ class Deneme
 {
     public function index()
     {
-        $location= Museum::aggregation()->geoCentroid('location');
-        return $location->getLocation();
+        $geo = Museum::aggregation()->geoBounds();
+        return $geo->get();
     }
 }

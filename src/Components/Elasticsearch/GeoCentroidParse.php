@@ -62,9 +62,20 @@ class GeoCentroidParse implements ArrayAble, ToJson
         return $this->centroid['aggregations']['geo_centroid']['location'] ?? [];
     }
 
+    /**
+     * @return int
+     */
     public function getCount():int
     {
         return $this->centroid['aggregations']['geo_centroid']['count'] ?? 0;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDetail(): array
+    {
+        return $this->centroid;
     }
     /**
      * @return string
