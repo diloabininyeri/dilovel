@@ -14,6 +14,6 @@ class Deneme
 {
     public function index()
     {
-        return ElasticSearchModel::aggregation()->percentiles('age');
+        return ElasticSearchModel::aggregation()->percentileRanks('age', [10,30]);
     }
 }

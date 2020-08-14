@@ -16,6 +16,11 @@ class ElasticAggregationQuery
      */
     private ElasticBuilderQuery $builderQuery;
 
+    /**
+     * @var string
+     */
+    private string $index;
+
 
     /**
      * ElasticAggregationQuery constructor.
@@ -24,6 +29,7 @@ class ElasticAggregationQuery
     public function __construct(ElasticBuilderQuery $builderQuery)
     {
         $this->builderQuery = $builderQuery;
+        $this->index=$builderQuery->getModel()->getIndex();
     }
 
 
@@ -36,7 +42,7 @@ class ElasticAggregationQuery
     private function aggregationArray(string $key, string $aggregation, string $aggregationName): array
     {
         return [
-            'index' => $this->builderQuery->getModel()->getIndex(),
+            'index' => $this->index,
             'body' => [
                 'aggs' => [
                     $aggregationName => [
@@ -52,26 +58,51 @@ class ElasticAggregationQuery
 
     /**
      * @param string $key
-     * @param array $percents
+     * @param array $values
      * @return array
      */
-    public function percentiles(string $key, array $percents=[]):array
+    public function percentileRanks(string $key, array $values): array
     {
-        $params= [
-            'index' => $this->builderQuery->getModel()->getIndex(),
+        $params = [
+            'index' => $this->index,
             'body' => [
                 'aggs' => [
-                    'percentiles' => [
-                        'percentiles' => [
+                    'percentile_ranks' => [
+                        'percentile_ranks' => [
                             'field' => $key,
-                            'percents'=>$percents ?: range(0, 100, 5)
+                            'values' => $values
                         ]
                     ],
                 ]
             ]
         ];
 
-        $result= $this->builderQuery->getClient()->search($params);
+        $result = $this->builderQuery->getClient()->search($params);
+        return $result['aggregations']['percentile_ranks']['values'];
+    }
+
+    /**
+     * @param string $key
+     * @param array $percents
+     * @return array
+     */
+    public function percentiles(string $key, array $percents = []): array
+    {
+        $params = [
+            'index' => $this->index,
+            'body' => [
+                'aggs' => [
+                    'percentiles' => [
+                        'percentiles' => [
+                            'field' => $key,
+                            'percents' => $percents ?: range(0, 100, 5)
+                        ]
+                    ],
+                ]
+            ]
+        ];
+
+        $result = $this->builderQuery->getClient()->search($params);
         return $result['aggregations']['percentiles']['values'];
     }
 
@@ -95,6 +126,7 @@ class ElasticAggregationQuery
     {
         return $this->stats($key)['count'];
     }
+
     /**
      * @param string $key
      * @return mixed
@@ -105,11 +137,12 @@ class ElasticAggregationQuery
         $results = $this->builderQuery->getClient()->search($params);
         return $results['aggregations']['min_aggregation']['value'];
     }
+
     /**
      * @param string $key
      * @return int
      */
-    public function sum(string $key):int
+    public function sum(string $key): int
     {
         $params = $this->aggregationArray($key, 'sum', 'sum_aggregation');
         $results = $this->builderQuery->getClient()->search($params);
