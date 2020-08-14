@@ -31,11 +31,6 @@ class ElasticSearchModel extends Model
     protected string $index='users';
 
     /**
-     * @var string
-     */
-    protected string $primaryKey='id';
-
-    /**
      * @return mixed
      */
     public function getId()

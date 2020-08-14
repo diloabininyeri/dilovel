@@ -30,7 +30,7 @@ class TermAggregationParse implements ArrayAble, ToJson
     /**
      * @return array
      */
-    public function getHits():array
+    public function getHits(): array
     {
         return $this->termsArray['hits']['hits'];
     }
@@ -38,23 +38,23 @@ class TermAggregationParse implements ArrayAble, ToJson
     /**
      * @return int
      */
-    public function getTotal():int
+    public function getTotal(): int
     {
-        return  $this->termsArray['hits']['total']['value'] ?? 0;
+        return $this->termsArray['hits']['total']['value'] ?? 0;
     }
 
     /**
      * @return array
      */
-    public function toArray():array
+    public function toArray(): array
     {
-        return  $this->termsArray;
+        return $this->termsArray;
     }
 
     /**
      * @return array|mixed
      */
-    public function getBuckets():array
+    public function getBuckets(): array
     {
         return $this->termsArray['aggregations']['terms_aggregation']['buckets'] ?? [];
     }
@@ -64,9 +64,9 @@ class TermAggregationParse implements ArrayAble, ToJson
      * @return string
      * @throws JsonException
      */
-    public function __toString():string
+    public function __toString(): string
     {
-        return  $this->toJson();
+        return $this->toJson();
     }
 
     /**
@@ -75,6 +75,6 @@ class TermAggregationParse implements ArrayAble, ToJson
      */
     public function toJson(): string
     {
-        return (string)json_encode($this->termsArray, JSON_THROW_ON_ERROR|JSON_PRETTY_PRINT);
+        return (string)json_encode($this->termsArray, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
     }
 }

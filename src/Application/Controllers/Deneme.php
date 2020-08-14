@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Elastic\ElasticSearchModel;
+use App\Application\Elastic\Museum;
 use Faker\Factory;
 
 /**
@@ -14,6 +15,6 @@ class Deneme
 {
     public function index()
     {
-        return ElasticSearchModel::aggregation()->percentileRanks('age', [10,30]);
+        return Museum::aggregation()->geoCentroid('location');
     }
 }

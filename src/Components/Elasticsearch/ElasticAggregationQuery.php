@@ -195,4 +195,14 @@ class ElasticAggregationQuery
             $this->builderQuery->getClient()->search($params)
         );
     }
+
+    /**
+     * @param string $key
+     * @return array
+     */
+    public function geoCentroid(string $key):array
+    {
+        $params = $this->aggregationArray($key, 'geo_centroid', 'geo_centroid');
+        return $this->builderQuery->getClient()->search($params);
+    }
 }
