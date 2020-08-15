@@ -262,6 +262,16 @@ class ElasticBoolQuery
 
     /**
      * @return Collection
+     *
+     */
+    public function all():Collection
+    {
+        $this->mustMatchAll();
+        return  $this->get();
+    }
+
+    /**
+     * @return Collection
      */
     public function get(): Collection
     {

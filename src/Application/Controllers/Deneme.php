@@ -15,6 +15,6 @@ class Deneme
 {
     public function index()
     {
-        return Museum::aggregation()->cardinality('type');
+        return Museum::bool()->all();
     }
 }

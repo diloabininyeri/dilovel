@@ -7,6 +7,7 @@ namespace App\Components\Elasticsearch;
  * Class Model
  * @package App\Components\Elasticsearch
  * @property $_id
+ * @method static ElasticBoolQuery bool();
  */
 class Model
 {
