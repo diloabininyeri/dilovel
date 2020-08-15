@@ -32,24 +32,36 @@ class GeoBoundingBox
     }
 
     /**
-     * @param $latitude
-     * @param $longitude
+     * @param string $topLeft
+     * @param string $bottomRight
      * @return $this
      */
-    public function topLeft($latitude, $longitude): self
+    public function geoHash(string $topLeft, string $bottomRight): self
     {
-        $this->query['filter']['geo_bounding_box'][$this->key]['top_left'] =['lat' => $latitude, 'lon' => $longitude];
-        return  $this;
+        $this->query['filter']['geo_bounding_box'][$this->key]['top_left'] = $topLeft;
+        $this->query['filter']['geo_bounding_box'][$this->key]['bottom_right'] = $bottomRight;
+        return $this;
     }
 
     /**
-     * @param $latitude
-     * @param $longitude
+     * @param $top
+     * @param $left
      * @return $this
      */
-    public function bottomRight($latitude, $longitude): self
+    public function topLeft($top, $left): self
     {
-        $this->query['filter']['geo_bounding_box'][$this->key]['bottom_right'] =['lat' => $latitude, 'lon' => $longitude];
+        $this->query['filter']['geo_bounding_box'][$this->key]['top_left'] = ['lat' => $top, 'lon' => $left];
+        return $this;
+    }
+
+    /**
+     * @param $bottom
+     * @param $right
+     * @return $this
+     */
+    public function bottomRight($bottom, $right): self
+    {
+        $this->query['filter']['geo_bounding_box'][$this->key]['bottom_right'] = ['lat' => $bottom, 'lon' => $right];
 
         return $this;
     }
