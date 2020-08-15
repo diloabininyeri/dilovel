@@ -366,6 +366,15 @@ class ElasticBoolQuery
     }
 
     /**
+     * @param string $key
+     * @return GeoBoundingBox
+     */
+    public function geoBoundingBox(string $key):GeoBoundingBox
+    {
+        return  new GeoBoundingBox($this->query, $key);
+    }
+
+    /**
      * @return \array[][]
      */
     private function bodyQuery(): array

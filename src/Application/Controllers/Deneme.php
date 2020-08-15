@@ -5,7 +5,6 @@ namespace App\Application\Controllers;
 
 use App\Application\Elastic\Museum;
 
-
 /**
  * Class Deneme
  * @package App\Application\Controllers
@@ -16,7 +15,9 @@ class Deneme
     {
         $bool = Museum::bool();
         $bool->mustMatch('city', 'Paris');
-        $bool->geoDistance('location', 45.555, 45.89999, '5000km');
+        $bool->geoBoundingBox('location')
+            ->topLeft(45, 8)
+            ->bottomRight(4, 5);
         return $bool->get();
     }
 }
