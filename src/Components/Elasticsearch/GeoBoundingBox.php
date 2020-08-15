@@ -44,6 +44,17 @@ class GeoBoundingBox
     }
 
     /**
+     * @param mixed ...$coordinates
+     * @return $this
+     */
+    public function wktBbox(...$coordinates): self
+    {
+        $points = implode(',', $coordinates);
+        $this->query['filter']['geo_bounding_box'][$this->key]['wkt'] = "BBOX ($points)";
+        return $this;
+    }
+
+    /**
      * @param $top
      * @param $left
      * @return $this

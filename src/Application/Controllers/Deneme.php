@@ -16,7 +16,7 @@ class Deneme
         $bool = Museum::bool();
         $bool->mustMatch('city', 'Paris');
         $bool->geoBoundingBox('location')
-            ->geoHash('dr5r9ydj2y73', 'drj7teegpus6');
+            ->wktBbox(-74.1, -71.12, 40.73, 40.01);
         return $bool->get();
     }
 }
