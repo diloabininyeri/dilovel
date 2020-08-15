@@ -16,7 +16,7 @@ class ElasticBoolQuery
     /**
      * @var array
      */
-    private array $query=[];
+    private array $query = [];
 
     /**
      * @var int|null
@@ -36,13 +36,13 @@ class ElasticBoolQuery
     /**
      * @var int|null
      */
-    private ?int $minShouldMatch=null;
+    private ?int $minShouldMatch = null;
 
 
     /**
      * @var int|null
      */
-    private ?int $boost=null;
+    private ?int $boost = null;
     /**
      * @var ElasticBuilderQuery
      */
@@ -59,7 +59,7 @@ class ElasticBoolQuery
      */
     public function __construct(ElasticBuilderQuery $builderQuery)
     {
-        $this->client=Elastic::connection();
+        $this->client = Elastic::connection();
         $this->builderQuery = $builderQuery;
     }
 
@@ -94,9 +94,9 @@ class ElasticBoolQuery
      * @param int $maxExpansions
      * @return $this
      */
-    public function mustMultiMatch(array $keys, $value, $fuzziness='AUTO', $maxExpansions=50):self
+    public function mustMultiMatch(array $keys, $value, $fuzziness = 'AUTO', $maxExpansions = 50): self
     {
-        $this->query['must'][] = ['multi_match' => ['fields'=>$keys,'query'=>$value,'fuzziness'=>$fuzziness,'max_expansions'=>$maxExpansions]];
+        $this->query['must'][] = ['multi_match' => ['fields' => $keys, 'query' => $value, 'fuzziness' => $fuzziness, 'max_expansions' => $maxExpansions]];
 
         return $this;
     }
@@ -126,6 +126,7 @@ class ElasticBoolQuery
 
         return $this;
     }
+
     /**
      * @param string $key
      * @param $value
@@ -175,6 +176,7 @@ class ElasticBoolQuery
         $this->query['should'] [] = ['term' => [$key => $value]];
         return $this;
     }
+
     /**
      * @param string $key
      * @param $value
@@ -225,9 +227,9 @@ class ElasticBoolQuery
      * @param int $minimumMatch
      * @return $this
      */
-    public function minimumShouldMatch(int $minimumMatch):self
+    public function minimumShouldMatch(int $minimumMatch): self
     {
-        $this->minShouldMatch=$minimumMatch;
+        $this->minShouldMatch = $minimumMatch;
         return $this;
     }
 
@@ -235,10 +237,10 @@ class ElasticBoolQuery
      * @param int $boost
      * @return $this
      */
-    public function boost(int $boost):self
+    public function boost(int $boost): self
     {
-        $this->boost=$boost;
-        return  $this;
+        $this->boost = $boost;
+        return $this;
     }
 
     /**
@@ -255,7 +257,7 @@ class ElasticBoolQuery
     /**
      * @return array
      */
-    public function delete():array
+    public function delete(): array
     {
         return $this->client->deleteByQuery($this->getQuery());
     }
@@ -264,10 +266,10 @@ class ElasticBoolQuery
      * @return Collection
      *
      */
-    public function all():Collection
+    public function all(): Collection
     {
         $this->mustMatchAll();
-        return  $this->get();
+        return $this->get();
     }
 
     /**
@@ -275,7 +277,7 @@ class ElasticBoolQuery
      */
     public function get(): Collection
     {
-        $records=$this->client->search($this->getQuery());
+        $records = $this->client->search($this->getQuery());
         return ElasticCollection::make($this->builderQuery->getModel(), $records);
     }
 
@@ -283,9 +285,9 @@ class ElasticBoolQuery
      * @param array $sort
      * @return $this
      */
-    public function sortWithoutScore(array $sort):self
+    public function sortWithoutScore(array $sort): self
     {
-        $this->sort=[$sort];
+        $this->sort = [$sort];
         return $this;
     }
 
@@ -294,9 +296,9 @@ class ElasticBoolQuery
      * @param string $direction
      * @return $this
      */
-    public function sortBy(string $key, string $direction='asc'):self
+    public function sortBy(string $key, string $direction = 'asc'): self
     {
-        return $this->sortWithScore([$key=> $direction]);
+        return $this->sortWithScore([$key => $direction]);
     }
 
 
@@ -304,7 +306,7 @@ class ElasticBoolQuery
      * @param string ...$keys
      * @return $this
      */
-    public function sortDescByMultiKey(string ...$keys):self
+    public function sortDescByMultiKey(string ...$keys): self
     {
         return $this->sortMultiKeyCreator($keys, 'desc');
     }
@@ -314,11 +316,11 @@ class ElasticBoolQuery
      * @param string $direction
      * @return $this
      */
-    private function sortMultiKeyCreator(array $keys, string $direction='asc'):self
+    private function sortMultiKeyCreator(array $keys, string $direction = 'asc'): self
     {
-        $fields=[];
+        $fields = [];
         foreach ($keys as $key) {
-            $fields[$key]=$direction;
+            $fields[$key] = $direction;
         }
         return $this->sortWithScore($fields);
     }
@@ -327,22 +329,42 @@ class ElasticBoolQuery
      * @param string ...$keys
      * @return $this
      */
-    public function sortAscByMultiKey(string ...$keys):self
+    public function sortAscByMultiKey(string ...$keys): self
     {
         return $this->sortMultiKeyCreator($keys, 'asc');
     }
+
     /**
-     * @example as such  ['name'=>'asc','age'=>'desc']
      * @param array $sort
      * @return $this
+     * @example as such  ['name'=>'asc','age'=>'desc']
      */
-    public function sortWithScore(array $sort):self
+    public function sortWithScore(array $sort): self
     {
-        $sortRule=[$sort];
-        $sortRule[]='_score';
-        $this->sort=$sortRule;
-        return  $this;
+        $sortRule = [$sort];
+        $sortRule[] = '_score';
+        $this->sort = $sortRule;
+        return $this;
     }
+
+    /**
+     * @param $key
+     * @param $lat
+     * @param $long
+     * @param string $distance
+     * @return $this
+     */
+    public function geoDistance($key, $lat, $long, $distance = '50km'): self
+    {
+        $this->query['filter'][] = [
+            'geo_distance' => [
+                'distance' => $distance,
+                $key => ['lat'=>$lat,'lon'=> $long]
+            ]
+        ];
+        return $this;
+    }
+
     /**
      * @return \array[][]
      */
@@ -362,16 +384,17 @@ class ElasticBoolQuery
         }
 
         if ($this->minShouldMatch) {
-            $body['query']['bool']['minimum_should_match']=$this->minShouldMatch;
+            $body['query']['bool']['minimum_should_match'] = $this->minShouldMatch;
         }
 
         if ($this->boost) {
-            $body['query']['bool']['boost']=$this->boost;
+            $body['query']['bool']['boost'] = $this->boost;
         }
 
         if ($this->sort) {
-            $body['sort']=$this->sort;
+            $body['sort'] = $this->sort;
         }
+
         return $body;
     }
 }
