@@ -4,6 +4,7 @@
 namespace App\Application\Controllers;
 
 use App\Application\Elastic\Museum;
+use App\Components\Collection\Collection;
 
 /**
  * Class Deneme
@@ -11,12 +12,15 @@ use App\Application\Elastic\Museum;
  */
 class Deneme
 {
-    public function index()
+    public function index(): Collection
     {
         $bool = Museum::bool();
-        $bool->mustMatch('city', 'Paris');
+        $bool->mustMatchAll();
+
         $bool->geoBoundingBox('location')
-            ->wktBbox(-74.1, -71.12, 40.73, 40.01);
+            ->topLeft(74, -71)
+            ->bottomRight(40, 40);
+
         return $bool->get();
     }
 }

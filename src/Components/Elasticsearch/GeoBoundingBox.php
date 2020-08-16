@@ -14,7 +14,7 @@ class GeoBoundingBox
     /**
      * @var array
      */
-    public array $query = [];
+    private array $query;
     /**
      * @var string
      */
