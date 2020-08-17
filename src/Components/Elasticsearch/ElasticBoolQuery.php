@@ -367,6 +367,14 @@ class ElasticBoolQuery
 
     /**
      * @param string $key
+     * @return GeoShape
+     */
+    public function geoShape(string $key): GeoShape
+    {
+        return new GeoShape($this->query, $key);
+    }
+    /**
+     * @param string $key
      * @return GeoBoundingBox
      */
     public function geoBoundingBox(string $key):GeoBoundingBox

@@ -3,8 +3,7 @@
 
 namespace App\Application\Controllers;
 
-use App\Application\Elastic\Museum;
-use App\Components\Collection\Collection;
+use App\Application\Elastic\Restaurant;
 
 /**
  * Class Deneme
@@ -12,14 +11,19 @@ use App\Components\Collection\Collection;
  */
 class Deneme
 {
-    public function index(): Collection
+    public function index()
     {
-        $bool = Museum::bool();
+        /**
+         * ->topLeft(74, -71)
+         *  ->bottomRight(40, 40);
+         */
+        $bool = Restaurant::bool();
         $bool->mustMatchAll();
 
-        $bool->geoBoundingBox('location')
-            ->topLeft(74, -71)
-            ->bottomRight(40, 40);
+        $bool->geoShape('location')
+            ->shape([[ 13.0, 53.0 ], [ 14.0, 52.0 ]])
+            ->setType('envelope');
+
 
         return $bool->get();
     }
