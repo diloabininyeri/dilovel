@@ -44,7 +44,7 @@ class GeoShape
      */
     public function shape(array $coordinates): self
     {
-        $this->query['filter']['geo_shape'] = [
+        $this->query['filter'][]['geo_shape'] = [
             $this->key => [
                 'shape' => [
                     'type' => $this->type,
