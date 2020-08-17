@@ -42,7 +42,7 @@ class GeoShape
      * @param array $coordinates
      * @return $this
      */
-    public function shape(array $coordinates): self
+    public function setCoordinates(array $coordinates): self
     {
         $this->query['filter'][]['geo_shape'] = [
             $this->key => [

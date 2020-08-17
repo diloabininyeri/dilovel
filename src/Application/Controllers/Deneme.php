@@ -18,7 +18,7 @@ class Deneme
         $bool->mustMatchAll();
 
         $bool->geoShape('location')
-            ->shape([[13.0, 53.0], [14.0, 52.0]])
+            ->setCoordinates([[13.0, 53.0], [14.0, 52.0]])
             ->setType('envelope');
 
 
