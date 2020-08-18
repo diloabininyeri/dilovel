@@ -277,8 +277,15 @@ class ElasticBoolQuery
      */
     public function get(): Collection
     {
-        $records = $this->client->search($this->getQuery());
-        return ElasticCollection::make($this->builderQuery->getModel(), $records);
+        return ElasticCollection::make($this->builderQuery->getModel(), $this->getDetail());
+    }
+
+    /**
+     * @return array
+     */
+    public function getDetail(): array
+    {
+        return $this->client->search($this->getQuery());
     }
 
     /**
@@ -359,9 +366,25 @@ class ElasticBoolQuery
         $this->query['filter'][] = [
             'geo_distance' => [
                 'distance' => $distance,
-                $key => ['lat'=>$lat,'lon'=> $long]
+                $key => ['lat' => $lat, 'lon' => $long]
             ]
         ];
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param array $points
+     * @return $this
+     */
+    public function geoPolygon(string $key, array $points): self
+    {
+        $this->query['filter'][] = ['geo_polygon' => [
+            $key => [
+                'points' => $points
+            ]
+        ]];
+
         return $this;
     }
 
@@ -373,13 +396,14 @@ class ElasticBoolQuery
     {
         return new GeoShape($this->query, $key);
     }
+
     /**
      * @param string $key
      * @return GeoBoundingBox
      */
-    public function geoBoundingBox(string $key):GeoBoundingBox
+    public function geoBoundingBox(string $key): GeoBoundingBox
     {
-        return  new GeoBoundingBox($this->query, $key);
+        return new GeoBoundingBox($this->query, $key);
     }
 
     /**
