@@ -1,6 +1,9 @@
 # DILOVEL php framework 
 
-
+for install 
+```
+composer require zeus/hmvc:dev-master
+```
 
 #continues to develop
 
