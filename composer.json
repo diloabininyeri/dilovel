@@ -1,5 +1,5 @@
 {
-  "name": "zues/hmvc",
+  "name": "zeus/hmvc",
   "description": "An advanced framework is written in PHP, a framework containing rich components such as middleware, orm, request management, template engine, elasticsearch, template engine, many modern frameworks have been written by adopting clean code principles completely written in accordance with PHP standards. like linux operating system ...All of control…",
   "minimum-stability": "stable",
   "license": "proprietary",
