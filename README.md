@@ -2,7 +2,7 @@
 
 for install 
 ```
-composer require zeus/hmvc:dev-master
+composer create-project zeus/hmvc:dev-master
 ```
 
 #continues to develop
