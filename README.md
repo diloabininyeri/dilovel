@@ -10,6 +10,8 @@ composer create-project zeus/hmvc:dev-master
 
 stay on at http://localhost
 
+![](https://i.ibb.co/Mnj8H9X/Screenshot-from-2020-09-03-22-12-40.png)
+
 ![](https://i.ibb.co/ZN5FGfQ/carbon-2.png)
 
 ![](https://i.ibb.co/Gs8mn0C/carbon-1.png)
