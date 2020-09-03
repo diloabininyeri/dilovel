@@ -4,7 +4,6 @@
 namespace Bin\Commands;
 
 use App\Components\Reflection\ProtectedProperty;
-use Bin\Components\Animation;
 use Bin\Components\Command;
 use Bin\Components\CommandInterface;
 use ReflectionException;
@@ -96,9 +95,11 @@ class CommandList implements CommandInterface
 
     private function printTextBanner(): string
     {
-        return '
+        $text= '
                  __        __                      __      ___  __              ___       __   __       
                 |__) |__| |__)    |__|  |\/| \  / /  `    |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/ 
                 |    |  | |       |  |  |  |  \/  \__,    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \ ';
+
+        return "\033[1m$text\033[0m";
     }
 }
