@@ -48,9 +48,10 @@ class CommandList implements CommandInterface
      */
     private function printGroupBy($commandList): void
     {
-        echo str_repeat('_', 150) . "\n";
+        echo str_repeat("\n", 1);
+
         foreach ($commandList as $command => $class) {
-            echo $this->addPadRight($command) . $this->getDescription(new $class) . "\n";
+            echo "\t" . $this->addPadRight($command) . $this->getDescription(new $class) . "\n";
         }
     }
 
@@ -76,7 +77,7 @@ class CommandList implements CommandInterface
      */
     private function addPadRight($command): string
     {
-        return str_pad($command, 50, ' ', STR_PAD_RIGHT);
+        return str_pad($command, 30, ' ', STR_PAD_RIGHT);
     }
 
     /**
@@ -93,7 +94,7 @@ class CommandList implements CommandInterface
     }
 
 
-    private function printTextBanner():string
+    private function printTextBanner(): string
     {
         return '
                  __        __                      __      ___  __              ___       __   __       

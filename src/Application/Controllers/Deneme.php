@@ -22,7 +22,7 @@ class Deneme
             ->setCoordinates([[13.0, 53.0], [14.0, 52.0]])
             ->setType('envelope');*/
 
-        $bool->geoPolygon('location',[
+        $bool->geoPolygon('location', [
             "40, -70",
             "30, -80",
             "20, -90"
