@@ -41,7 +41,8 @@
     "ext-exif": "*",
     "mpdf/mpdf": "^8.0",
     "shuchkin/simplexlsx": "^0.8.17",
-    "elasticsearch/elasticsearch": "^7.8"
+    "elasticsearch/elasticsearch": "^7.8",
+    "zeus/cli-color": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.1",
