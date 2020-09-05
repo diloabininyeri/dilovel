@@ -5,6 +5,12 @@ for install
 composer create-project zeus/hmvc:dev-master
 ```
 
+install without extensions
+
+```
+composer create-project zeus/hmvc:dev-master --ignore-platform-reqs
+```
+
 #continues to develop
 
 
