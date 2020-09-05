@@ -1,13 +1,13 @@
 # DILOVEL php framework 
 
 for install 
-```
+```console
 composer create-project zeus/hmvc:dev-master
 ```
 
 install without extensions
 
-```
+```console
 composer create-project zeus/hmvc:dev-master --ignore-platform-reqs
 ```
 
