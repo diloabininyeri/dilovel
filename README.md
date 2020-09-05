@@ -11,7 +11,7 @@ __install without extensions__
 composer create-project zeus/hmvc:dev-master --ignore-platform-reqs
 ```
 
-#continues to develop
+> continues to develop
 
 
 stay on at http://localhost
