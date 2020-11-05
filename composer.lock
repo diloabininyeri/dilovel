@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "41023e5860949187e03f2e818b1a0957",
+    "content-hash": "64d539597d5b1b38a1b25fdcfa2b39a3",
     "packages": [
         {
             "name": "doctrine/lexer",
@@ -457,6 +457,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
@@ -3075,6 +3076,43 @@
                 "terminal coloring"
             ],
             "time": "2020-08-29T13:21:55+00:00"
+        },
+        {
+            "name": "zeus/throttle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/diloabininyeri/throttle.git",
+                "reference": "d2322e2549d9adddd6ea7e85e7e8f7cab518e43a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/diloabininyeri/throttle/zipball/d2322e2549d9adddd6ea7e85e7e8f7cab518e43a",
+                "reference": "d2322e2549d9adddd6ea7e85e7e8f7cab518e43a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Throttle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "dılo sürücü",
+                    "email": "berxudar@gmail.com"
+                }
+            ],
+            "description": "php  throttler  library package",
+            "time": "2020-10-30T21:16:48+00:00"
         }
     ],
     "packages-dev": [
@@ -4637,7 +4675,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zeus/cli-color": 20
+        "zeus/cli-color": 20,
+        "zeus/throttle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
