@@ -4,6 +4,9 @@ Route::get('/', fn () => view('index'))->name('index');
 
 
 
+Route::get('throttle', fn () =>'hello')->middleware('throttle');
+
+
 Route::get('router_test', fn () =>route('custom_name.test'));
 Route::view('/view-test', 'index');
 

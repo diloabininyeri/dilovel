@@ -104,9 +104,8 @@ function view_cache($file, int $time, array $compact = [])
  */
 function abort($status)
 {
-    http_response_code(404);
-    view($status);
-    die();
+    http_response_code($status);
+    die(view('errors/'.$status));
 }
 
 /**

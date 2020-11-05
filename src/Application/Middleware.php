@@ -10,6 +10,7 @@ use App\Application\Middleware\GuestMiddleware;
 use App\Application\Middleware\NameMiddleware;
 use App\Application\Middleware\RequestIdMustBeInteger;
 use App\Application\Middleware\TestExample;
+use App\Application\Middleware\ThrottleMiddleware;
 use App\Components\Http\MiddlewareAbstract;
 
 /**
@@ -30,6 +31,7 @@ class Middleware extends MiddlewareAbstract
         'guest'=>GuestMiddleware::class,
         'csrf' => CsrfTokenMiddleware::class,
         'captcha'=>CaptchaVerifyMiddleware::class,
+        'throttle'=>ThrottleMiddleware::class,
 
     ];
 

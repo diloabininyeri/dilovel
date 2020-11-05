@@ -23,11 +23,11 @@ class ThrottleMiddleware implements MiddlewareInterface
      */
     public function handle(Closure $next, Request $request)
     {
-        $throttle = new Throttle(new Time(60, 60));
+        $throttle = new Throttle(new Time(40, 10));
         $throttle->commit();
         if ($throttle->isHasAccessLimit()) {
             return $next($request);
         }
-        return abort(404);
+        return abort(403);
     }
 }
