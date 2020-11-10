@@ -20,11 +20,13 @@ use App\Components\Flash\HtmlFormValuesStorage;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Lang\Lang;
+use App\Components\Queue\MessageQueue;
 use App\Components\Route\GenerateRoute;
 use App\Components\View\Master;
 use App\Components\View\View;
 use App\Components\Route\Redirect\Redirect;
 use App\Components\Flash\Flash;
+use App\Interfaces\QueueInterface;
 
 /**
  * @param $function
@@ -479,4 +481,14 @@ function array_flatten(array $array): array
 function old(string $input, $default=null)
 {
     return HtmlFormValuesStorage::getInstance()->get($input) ?: $default;
+}
+
+/**
+ * @param QueueInterface $queue
+ * @param string $queueName
+ */
+function enqueue(QueueInterface $queue, string $queueName='default'):void
+{
+    $amq = new MessageQueue($queueName);
+    $amq->addToQueue(serialize($queue), $queueName);
 }
