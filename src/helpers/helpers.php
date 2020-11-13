@@ -20,13 +20,12 @@ use App\Components\Flash\HtmlFormValuesStorage;
 use App\Components\Http\SingletonRequest;
 use App\Components\Http\Url;
 use App\Components\Lang\Lang;
-use App\Components\Queue\MessageQueue;
+use App\Components\Queue\Queue;
 use App\Components\Route\GenerateRoute;
 use App\Components\View\Master;
 use App\Components\View\View;
 use App\Components\Route\Redirect\Redirect;
 use App\Components\Flash\Flash;
-use App\Interfaces\QueueInterface;
 
 /**
  * @param $function
@@ -484,11 +483,11 @@ function old(string $input, $default=null)
 }
 
 /**
- * @param QueueInterface $queue
  * @param string $queueName
+ * @return Queue
+ *
  */
-function enqueue(QueueInterface $queue, string $queueName='default'):void
+function enqueue(string $queueName='default'): Queue
 {
-    $amq = new MessageQueue($queueName);
-    $amq->addToQueue(serialize($queue), $queueName);
+    return new Queue($queueName);
 }
