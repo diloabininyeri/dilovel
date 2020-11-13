@@ -487,7 +487,7 @@ function old(string $input, $default=null)
  * @return Queue
  *
  */
-function enqueue(string $queueName='default'): Queue
+function queue(string $queueName='default'): Queue
 {
     return new Queue($queueName);
 }
