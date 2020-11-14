@@ -19,7 +19,7 @@ class Deneme implements QueueInterface
      */
     public function handle()
     {
-        sleep(10);
+        // sleep(10);
         return  'foo something bar'.random_int(1, 100);
     }
 

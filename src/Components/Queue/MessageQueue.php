@@ -34,7 +34,7 @@ class MessageQueue
     /**
      * @var int
      */
-    private int  $microSleep = 100000;
+    private int  $microSleep = 0;
 
     /**
      * MessageQueue constructor.
@@ -68,7 +68,15 @@ class MessageQueue
 
         $this->channel->basic_qos(null, 1, null);
         $this->channel->basic_consume($queueName, '', false, false, false, false, $callback);
+        $this->consumerFromCli();
+    }
 
+
+    /**
+     * @throws ErrorException
+     */
+    private function consumerFromCli(): void
+    {
         echo "waiting..." . PHP_EOL;
         while (count($this->channel->callbacks)) {
             $this->channel->wait();
@@ -90,12 +98,7 @@ class MessageQueue
 
         $this->channel->basic_qos(null, 1, null);
         $this->channel->basic_consume($queueName, '', false, false, false, false, $callback);
-
-        echo "waiting..." . PHP_EOL;
-        while (count($this->channel->callbacks)) {
-            $this->channel->wait();
-            usleep($this->getMicroSleep());
-        }
+        $this->consumerFromCli();
     }
 
     /**
@@ -123,14 +126,6 @@ class MessageQueue
     {
         [$queue, $message_count, $listener_count] = $this->status;
         return compact('queue', 'message_count', 'listener_count');
-    }
-
-    /**
-     * @return int
-     */
-    public function getMicroSleep(): int
-    {
-        return $this->microSleep;
     }
 
     /**
