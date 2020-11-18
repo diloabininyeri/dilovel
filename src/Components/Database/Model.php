@@ -4,8 +4,8 @@ namespace App\Components\Database;
 
 use App\Components\Database\Relation\BelongsTo;
 use App\Components\Database\Relation\BelongsToMany;
-use App\Components\Database\Relation\HasOne;
 use App\Components\Database\Relation\HasMany;
+use App\Components\Database\Relation\HasOne;
 use Carbon\Carbon;
 use JsonException;
 
@@ -17,6 +17,7 @@ use JsonException;
  */
 abstract class Model
 {
+    protected string $connection = 'default';
     /**
      * @var BuilderQuery
      */
@@ -98,6 +99,16 @@ abstract class Model
     final public function getStaticClass(): string
     {
         return static::class;
+    }
+
+    /**
+     * @param string $connectionName
+     * @return $this
+     */
+    public function setConnection(string $connectionName): self
+    {
+        $this->connection = $connectionName;
+        return $this;
     }
 
     /**
