@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-services=(mysql redis elasticsearch kibana memcached php-fpm)
+services=(mysql redis-server elasticsearch kibana memcached php-fpm)
 echo "$1"ing .....
 for i in "${services[@]}";
 do
