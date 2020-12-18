@@ -1,5 +1,6 @@
 #!/bin/bash
-
+#using  service.sh start|restart|stop 
+#start all of service service.sh start 
 
 services=(mysql redis-server elasticsearch kibana memcached php-fpm)
 echo "$1"ing .....
