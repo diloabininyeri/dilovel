@@ -106,7 +106,7 @@ class Collection implements ArrayAccess, IteratorAggregate, JsonSerializable, Co
      */
     public function first()
     {
-        return $this->collection[0];
+        return $this->collection[0] ?? null;
     }
 
     /**
