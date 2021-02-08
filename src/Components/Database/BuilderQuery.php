@@ -1296,7 +1296,7 @@ class BuilderQuery
      * @return object
      *
      */
-    public function save(): object
+    public function save()
     {
         if ($this->modelInstance->isPrimaryKeyHasValue()) {
             $execute = $this->update(get_object_vars($this->getModelInstance()));
