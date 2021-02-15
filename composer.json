@@ -23,7 +23,6 @@
     "php": ">=7.4",
     "ext-pdo": "*",
     "ext-json": "*",
-    "ext-apache": "*",
     "ext-pcntl": "*",
     "predis/predis": "^1.1",
     "nesbot/carbon": "^2.33",
