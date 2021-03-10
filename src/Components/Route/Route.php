@@ -117,7 +117,7 @@ class Route
      */
     public static function ip(array $ip, Closure $closure)
     {
-        if (in_array('::1', $ip, true)) {
+        if (in_array(request()->ip(), $ip, true)) {
             return $closure();
         }
         return  null;
