@@ -132,7 +132,7 @@ class HasMany implements RelationInterface
     {
         $status=[];
         foreach ($this->get() as $item) {
-            $status[]=$item->delelte();
+            $status[]=$item->delete();
         }
         return $status;
     }
