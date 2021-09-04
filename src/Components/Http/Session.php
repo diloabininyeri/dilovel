@@ -123,6 +123,7 @@ class Session implements SessionInterface
     public function flushAll(): bool
     {
         unset($this->session);
+        session_destroy();
         return empty($this->session);
     }
 
